@@ -1,0 +1,43 @@
+<%= form_for(@cinema_film) do |f| %>
+  <% if @cinema_film.errors.any? %>
+    <div id="error_explanation">
+      <h2>Zaszły następujące nieprawidłowości:</h2>
+
+      <ul>
+      <% @cinema_film.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :cinema_id %><br />
+    <% if @cinemas.size > 1-%>
+      <%= select_tag('cinema_film[cinema_id]', options_for_select([['Wybierz kino', '']] + @cinemas.collect{|c| [c.name, c.id]}, @cinema_film.cinema_id)) %>
+    <% else if -%>
+      <%= select_tag('cinema_film[cinema_id]', options_for_select(@cinemas.collect{|c| [c.name, c.id]}, @cinema_film.cinema_id)) %>
+    <% else -%>
+    <%= f.text_field :cinema_id %>
+    <% end end-%>
+  </div>
+  <div class="field">
+    <%= f.label :film_id %><br />
+        <% if @films -%>
+    <%= select_tag('cinema_film[film_id]', options_for_select([['Wybierz film', '']] + @films.collect{|f| [f.title, f.id]}, @cinema_film.film_id)) %>
+    <% else -%>
+    <%= f.text_field :film_id %>
+    <% end -%>
+  </div>
+  <div class="field">
+    <%= f.label :date_from %><br />
+    <%= f.text_field :date_from, :class => "datePick" %>(format: rrrr-mm-dd)
+  </div>
+    <div class="field">
+    <%= f.label :date_untill %><br />
+    <%= f.text_field :date_untill, :class => "datePick" %>(format: rrrr-mm-dd)
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

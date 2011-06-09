@@ -1,0 +1,31 @@
+<table align=center border=1>
+	<th> Cena (zł)</th>
+	<th> Opis </th>
+<% for p in @prices do-%>
+<tr>
+	<td align=right>
+		<%= p.price %>
+	</td>
+	<td align=center>
+		<%= p.description %>
+	</td>
+</tr>	
+<% end -%>
+</table>
+
+<br/>
+
+<table align=center border=1>
+	<th> Zniżka (%)</th>
+	<th> Opis </th>
+<% for d in @discounts do-%>
+<tr>
+	<td align=right>
+		<%= d.discount.to_i %>
+	</td>
+	<td align=center>
+		<%= d.description %>
+	</td>
+</tr>	
+<% end -%>
+</table>

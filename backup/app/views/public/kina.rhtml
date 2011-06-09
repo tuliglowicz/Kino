@@ -1,0 +1,8 @@
+<% if @cinemas and @cinemas.size > 0-%>
+	<% for cinema in @cinemas do-%>
+		<%= cinema.name + " - " + cinema.city.name%><br/>
+		
+	<% end -%>
+<% else -%>	
+W wybranym przez Ciebie kinie nie sa grane zadne filmy
+<% end -%>

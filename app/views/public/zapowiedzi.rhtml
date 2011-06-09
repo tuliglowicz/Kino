@@ -1,0 +1,22 @@
+<% if cookies[:cinema_id] %>
+	<% if @films and @films.size > 0 -%>
+		<table align=center border=1>
+		<% for film in @films do-%>
+		<tr>
+			<td width=450px>
+				<%= film.title + "(" + film.year.to_s + ")" %> &nbsp; 
+				<%= link_to("Trailer", {}, :target => "_blank", :href => film.trailer, :class=>"movieTitle") if film.trailer%>
+				<%= image_tag("film_posters"+film.poster, :size => "75x110", :align => "left") %><br/>
+				<strong>Rezyser:</strong> <%= film.director %><br/>
+				<strong>Czas trwania:</strong> <%= film.length %><br/>
+				<strong>Opis:</strong><br/> <%= film.description %> 
+			</td>	
+		</tr>	
+		<% end -%>
+		</table>
+	<% else -%>	
+	<br/><br/>W wybranym przez Ciebie kinie nie ma żadnych zapowiedzi.
+	<% end -%>
+<% else -%>	
+<br/><br/>Wybierz interesujące Cię kino z listy powyżej.
+<% end -%>

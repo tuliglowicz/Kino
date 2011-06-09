@@ -1,0 +1,10 @@
+<h1>Edytuj film w kinie</h1>
+
+<% if @cinema_film -%>
+	<%= render 'form' %>
+	
+	<%= link_to 'Pokaż', @cinema_film %> |
+	<%= link_to 'Wróć', cinema_films_path %>
+<% else -%>
+<p>Nie masz uprawnień, aby edytować ten rekord</p>
+<% end -%>

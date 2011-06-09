@@ -1,0 +1,8 @@
+
+{
+	
+	for $x in doc(http://localhost:3000/public/test/1.xml)/bookstore/book
+	order by $x/title
+	return <li>{data($x/title)}. Category: {data($x/@category)}</li>
+	
+}

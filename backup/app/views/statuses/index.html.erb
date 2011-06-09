@@ -1,0 +1,29 @@
+<h1>Listing statuses</h1>
+<% if session[:isGA] -%>
+<%= link_to 'Dodaj', new_status_path %><br><br>
+<% end -%>
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Nazwa</th>
+    <th></th>
+  </tr>
+
+<% @statuses.each do |status| %>
+  <tr>
+    <td><%= status.id %></td>
+    <td><%= status.name %></td>
+    <td>
+        <% if session[:isGA] -%>
+    		<%= link_to 'Edytuj', edit_status_path(status) %>
+    		<%= link_to 'Usuń', status, :confirm => 'Czy na pewno chcesz usunąć ten rekord?', :method => :delete %></td>
+    	<% end -%>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<% if session[:isGA] -%>
+<%= link_to 'Dodaj', new_status_path %><br><br>
+<% end -%>

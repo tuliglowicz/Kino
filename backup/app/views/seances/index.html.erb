@@ -1,0 +1,39 @@
+<h1>Lista seansów</h1>
+<%= link_to 'Dodaj', new_seance_path %><br><br>
+
+<% if @seances -%>
+	<table>
+	  <tr>
+	    <th>Id</th>
+	    <th>Tytuł Filmu</th>
+	    <th>Nazwa Kina</th>
+	    <th>Sala</th>
+	    <th>Data</th>
+	    <th>Godzina</th>
+	    <th></th>
+	  </tr>
+	
+	
+	<% @seances.each do |seance| %>
+	  <tr>
+	    <td><%= seance.id %></td>
+	    <td align="center"><%= seance.cinema_film.film.title if seance.cinema_film.film %></td>
+	    <td align="center"><%= seance.cinema_film.cinema.name if seance.cinema_film.cinema %></td>
+	    <td align="center"><%= seance.room.number if seance.room %>
+	    <td><%= seance.date_from %></td>
+	    <td align="center"><%= seance.time_from.strftime("%H:%M") %></td>
+	    <td><%= link_to 'Pokaż', seance %>
+	    	<%= link_to 'Edytuj', edit_seance_path(seance) %>
+	    	<%= link_to 'Usuń', seance, :confirm => 'Czy na pewno chcesz usunąć ten rekord?', :method => :delete %></td>
+	  </tr>
+	<% end %>
+	</table>
+<% else -%>
+
+	<p>Albo nie ma danych w bazie, albo masz niewystarczające uprawnienia, aby przeglądać te dane.</p><br><br>
+
+<% end -%>
+
+<br />
+
+<%= link_to 'Dodaj', new_seance_path %>

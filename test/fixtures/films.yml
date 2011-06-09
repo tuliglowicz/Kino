@@ -1,0 +1,21 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  id: 
+  title: 
+  director: 
+  year: 
+  category_id: 
+  trailer: 
+  length: 
+  description: MyString
+
+two:
+  id: 
+  title: 
+  director: 
+  year: 
+  category_id: 
+  trailer: 
+  length: 
+  description: MyString

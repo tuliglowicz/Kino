@@ -1,0 +1,23 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  id: 
+  cinema_id: 
+  status_id: 
+  login: 
+  password: 
+  first_name: 
+  last_name: 
+  phone: 
+  email: MyString
+
+two:
+  id: 
+  cinema_id: 
+  status_id: 
+  login: 
+  password: 
+  first_name: 
+  last_name: 
+  phone: 
+  email: MyString

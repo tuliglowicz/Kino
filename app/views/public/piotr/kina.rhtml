@@ -1,0 +1,11 @@
+<STRONG><font color=white><p style="margin-bottomt: 10px;">KINA</p></font></STRONG>
+
+<% if @cinemas and @cinemas.size > 0-%>
+	<% for cinema in @cinemas do-%>
+		<p style="color:white;"><%= cinema.name + " - " + cinema.city.name%></p>
+		
+	<% end -%>
+<% else -%>	
+W wybranym przez Ciebie kinie nie sa grane zadne filmy
+<% end -%>
+

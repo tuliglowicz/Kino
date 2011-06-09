@@ -1,0 +1,155 @@
+<% # encoding: UTF-8 %>
+<!DOCTYPE html>
+<html>
+<head>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8"/>
+
+  <%= stylesheet_link_tag :all %>
+  <%= javascript_include_tag :defaults %>   
+  <%= javascript_include_tag "jquery-1.5.2.min.js" %>
+  <%= javascript_include_tag "jscript.js" %>
+  <%= javascript_include_tag "javascript.js" %>
+  <%= javascript_include_tag "jscript.js" %>
+  <%= javascript_include_tag "bannerRotator.js" %>
+  <%= javascript_include_tag "sliderotator.js" %>
+  <%= javascript_include_tag "jqueryy.js" %>
+  <%= javascript_include_tag "easySlider1.7.js" %>
+  <%= javascript_include_tag "screenrotator.js" %>
+  <%= javascript_include_tag "dynamic_states.js" %>
+  
+  
+  <%= csrf_meta_tag %>
+  <title><%= @title+" - " if @title %>Interplex</title>
+ 
+  
+</head>
+
+<BODY LEFTMARGIN="0" bgcolor="gray" RIGHTMARGIN="0" TOPMARGIN="0" BOTTOMMARGIN="0" MARGINWIDTH="0" MARGINHEIGHT="0">
+
+<div id="header"></div>
+
+
+<!-- Gorny Pasek -->
+
+<center><div id="logo">
+
+</div></center>
+<center><div id="gornyPasek">
+
+<ul>
+    <li><a href="http://localhost:3000/"><span>Home</span></a></li>
+    <li><a href="/public/kina"><span>Kina</span></a></li>
+    <li><a href="/public/repertuar"><span>Repertuar</span></a></li>
+    <li><a href="/public/zapowiedzi"><span>Zapowiedzi</span></a></li>
+    <li><a href="/public/ceny"><span>Ceny i Promocje</span></a></li>
+    <li><a href="/public/kontakt"><span>Kontakt</span></a></li>
+	<li><a href="/public/selectedfilms"><span>WybraneKino</span></a></li>
+</ul>
+
+</DIV></center>
+<!-- EOF Gorny Pasek -->
+
+<!-- BANER -->
+
+<table align="center" bgcolor="orange" cellpadding="0px" cellspacing="1px">
+<tr>
+	<td>
+		<div id="bannerRotator" >
+			<ul>
+				<li>
+					<a href="#">
+						<img src="/images/pic/banner1.jpg" alt="bannerImage1" width="900px" height="150px">
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<img src="/images/pic/banner2.jpg" alt="bannerImage2" width="900px" height="150px">
+					</a
+				</li>
+				<li>
+					<a href="#">
+						<img src="/images/pic/banner3.jpg" alt="bannerImage3" width="900px" height="150px">
+					</a
+				 </li>         
+			</ul>
+		</div>
+	</td>
+<tr>	
+</table>
+
+<!-- EOF BANER -->
+
+<!-- Cialo Strony -->
+<table id="tableMain" align="center">
+
+	<tr>
+
+		<td id="td1" align="center" valign="top">
+
+			<table id="table1" align="center">
+				<tr>
+					<td>
+						<div id="bookOnLine">&gt;Szybka rezerwacja On-line&lt;
+							
+								<%= form_tag(:controller => 'private', :action => 'send_login', :method => "get") do %>
+								<%= label_tag(:login, "Login:") %><%= text_field_tag(:login) %><br/>
+								<%= label_tag(:password, "Hasło:") %><%= password_field_tag(:password) %><br/>
+								<%= submit_tag("Login") %>
+								<% end %>
+								Nie masz konta? <%= link_to("Zarejestruj się!", {:controller => "public", :action => "register" }, :id => 'logout')%>
+								
+								<br><%= select("cinema", "id", Cinema.all.collect {|p| [ p.name, p.id ] }, { :include_blank => false }) %></br>
+								<br><%= select("film", "id", Film.all.collect {|p| [ p.title, p.id ] }, { :include_blank => false }) %></br>
+								<br><%= select("seance", "id", Seance.all.collect {|p| [ p.date_from, p.id ] }, { :include_blank => false }) %></br>
+								<br><%= select("cinema_films", "id", CinemaFilm.all.collect {|p| [ p.date_from, p.id ] }, { :include_blank => false }) %></br>
+								
+								
+								
+								
+						</div>
+					</td>
+				</tr>	
+			
+				<tr>
+					<td>
+						<div id="checkBook">&gt;Sprawdzanie swojej rezerwacji&lt;</div>
+					</td>
+				</tr>
+			
+				<tr>
+					<td>
+						<div id="events">
+							<div >
+								<img id="Img0" src="/images/movies/gomorra.jpg" alt="never" width="270px" height="230px" />
+							</div>
+							<div >
+								<img id="Img1" src="/images/movies/adams.jpg" alt="" width="270px" height="230px" />
+							</div>
+							<div >
+								<img id="Img2" src="/images/movies/pulapka.jpg" alt="" width="270px" height="230px" />
+							</div>
+							<div >
+								<img id="Img3" src="/images/movies/wesele.jpg" alt="" width="270px" height="230px" />
+							</div>
+						</div>
+					</td>
+				</tr>
+			</table>
+
+		</td>
+
+
+		<td id="td2" >
+			<%= yield %>
+		</td>
+	</tr>
+</table>
+
+<!-- EOF Cialo Strony -->
+<div width="900px" align="center" bgcolor="white" cellpadding="0px" cellspacing="1px" border="1px">
+<font size="1"><p> Copyright (c) 2008 , W.Tuligłowicz, P.Zuzak</p></font>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  id: 
+  room_id: 
+  row: 
+  collumn: 
+
+two:
+  id: 
+  room_id: 
+  row: 
+  collumn: 

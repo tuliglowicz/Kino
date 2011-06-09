@@ -1,0 +1,29 @@
+<h1>Lista siedzeń</h1>
+
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Kino</th>
+    <th>Sala</th>
+    <th>Rząd</th>
+    <th>Kolumna</th>
+    <th></th>
+  </tr>
+
+<% @seats.each do |seat| %>
+  <tr>
+    <td align="center"><%= seat.id %></td>
+    <td><%= seat.room.cinema.name %></td>
+    <td align="center"><%= seat.room.number %></td>
+    <td align="center"><%= seat.row %></td>
+    <td align="center"><%= seat.collumn %></td>
+    <td><%= link_to 'Pokaż', seat %>
+    	<%= link_to 'Edytuj', edit_seat_path(seat) %>
+    	<%= link_to 'Usuń', seat, :confirm => 'Czy na pewno chcesz usunąć ten rekord?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Dodaj', new_seat_path %>

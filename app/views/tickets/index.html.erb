@@ -1,0 +1,35 @@
+<h1>Lista biletów</h1>
+
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Tytuł filmu</th>
+    <th>Siedzenie</th>
+    <th>Cena</th>
+    <th>User</th>
+    <th>Zniżka</th>
+    <th>Wykupiony</th>
+    <th>Anulowany</th>
+    <th></th>
+  </tr>
+
+<% @tickets.each do |ticket| %>
+  <tr>
+    <td><%= ticket.id %></td>
+    <td><%= ticket.seance.cinema_film.film.title %></td>
+    <td><%= ticket.seat.row.to_s + ticket.seat.collumn.to_s %></td>
+    <td><%= ticket.price.price %></td>
+    <td><%= ticket.user_id + 1000 %></td>
+    <td><%= ticket.discount.discount.to_s %></td>
+    <td><%= ticket.bought.to_s %></td>
+    <td><%= ticket.canceled.to_s %></td>
+    <td><%= link_to 'Pokaż', ticket %>
+    	<%= link_to 'Edytuj', edit_ticket_path(ticket) %>
+    	<%= link_to 'Usuń', ticket, :confirm => 'Czy na pewno chcesz usunąć ten rekord?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Dodaj', new_ticket_path %>

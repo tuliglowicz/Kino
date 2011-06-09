@@ -1,0 +1,24 @@
+<% if session[:worker] -%>
+	<% if session[:worker].status_id < 5 -%>
+		<li><%= link_to("Bilety", {:controller => "tickets", :action => "index", :id => 0 })%></li>
+		<br>
+		<br>
+	<% # if session[:worker].status_id < 1 -%>
+		<li><%= link_to("Użytkownicy", {:controller => "users" })%></li>
+		<li><%= link_to("Filmy w Kinach", {:controller => "cinema_films" })%></li>
+		<li><%= link_to("Kina", {:controller => "cinemas" })%></li>
+		<li><%= link_to("Seanse", {:controller => "seances" })%></li>
+		<li><%= link_to("Sale Filmowe", {:controller => "rooms" })%></li>
+		<li><%= link_to("Ceny", {:controller => "prices" })%></li>
+		<li><%= link_to("Zniżki", {:controller => "discounts" })%></li>
+		<li><%= link_to("Filmy", {:controller => "films" })%></li>
+		<li><%= link_to("Miasta", {:controller => "cities" })%></li>
+		<li><%= link_to("Siedzenia", {:controller => "seats" })%></li>
+		<li><%= link_to("Statusy Pracowników", {:controller => "statuses" })%></li>
+		<li><%= link_to("Kategorie Filmów", {:controller => "categories" })%></li>
+		<li><%= link_to("Pracownicy", {:controller => "workers" })%></li>
+	<%# end -%>
+<% end end%>
+<br/><br/>
+
+<li> <%= link_to("Wyloguj", {:controller => "private", :action => "logout" }, :id => 'logout')%></li>

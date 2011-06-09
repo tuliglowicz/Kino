@@ -1,0 +1,280 @@
+<% if @error == true -%>
+	<table class='problemTable' id='errorTable' align=center><tr><td align='center'>
+	1. Miejsca, które zamówiłeś zostały zarezerwowane chwilę przed Tobą i nie są już dostepne.<br/>
+	Proszę wybierz inne miejsca. Za utrudnienia przepraszamy.
+	<% if @accepted_payment == false -%>
+	<br/>
+	2. Posiadasz zbyt mało środków na koncie.
+	<% end -%>
+	<br/><br/>
+	<a href="#" onclick="$('#errorTable').fadeOut('fast');">Zamknij to okno</a>
+	</td></tr></table><br/>
+<% else if @error == false and @accepted_payment == true -%>
+	<table class='allCorrectTable' id='errorTable' align=center><tr><td align='center'>
+	1. Miejsca, które zamówiłeś zostały poprawnie zarezerwowane!
+	<br/><br/>
+	<a href="#" onclick="$('#errorTable').fadeOut('fast');">Zamknij to okno</a>
+	</td></tr></table>
+<% else if @accepted_payment == false-%>	
+<table class='problemTable' id='errorTable' align=center><tr><td align='center'>
+	1. Posiadasz zbyt mało środków na koncie.
+	<br/><br/>
+	<a href="#" onclick="$('#errorTable').fadeOut('fast');">Zamknij to okno</a>
+	</td></tr></table>
+<% end end end -%>
+<br/>
+<% if @seance -%>
+	Kino: <%= @seance.cinema_film.cinema.name %><br/>
+	Tytuł: <%= @seance.cinema_film.film.title %><br/>
+	Data: <%= @seance.date_from %><br/>
+	Godzina: <%= @seance.time_from.strftime("%H:%M") %><br/>
+        
+    <table align=center border=0px cellpadding=0px cellspacing=5px style="padding-bottom:25px">
+    	
+    	<tr><td colspan=3 align=center style="padding-bottom:20px; color: gray;"><b>
+    		1. Przed wyborem miejsc <u>zaloguj się</u>, aby nie stracić przywilejów!<br>
+    		2. Możesz zamówić maksymalnie 5 biletów.<br>
+    		3. W calu zamówienia wiekszej liczby biletów skontaktuj się z nami telefonicznie. Dla grup zorganizowanych przewidziane są zniżki. </b></td></tr>
+    	<tr><td colspan=3 align=center style="padding-bottom:20px; color: gray;"><b> - E K R A N - </b></td></tr>
+
+		<script>
+			var reserved = new Array();
+			<% i=0 -%>
+			<% for s in @reserved_seats -%>
+				reserved[<%= i %>]= <%= s -%>;
+				<% i+=1 -%>
+			<% end -%>			
+		
+			var chars = new Array('A','B','C','D','E','F','G','H');
+			var maxCols = 19;
+
+			for(i=0; i<chars.length; i++)
+			{
+				document.write("<tr align=centera valign='middle'><td width='10px' align='right' valign='middle'>"+chars[i]+"</td><td align='center' valign='middle' width='"+(25*maxCols)+"px'>")
+				for(j=1; j<=maxCols; j++)
+				{
+					var wypełniacz = ""
+					if(j<10) wypełniacz = "&nbsp;"
+					document.write("<div id='seat"+(i*maxCols+j)+"' class='seat' align=center valign='middle'>"+j+"</div>")
+				}
+				document.write("</td><td width='10px' valign='middle'>"+chars[i]+"</td></tr>")
+			}
+			
+			for(i=0; i<reserved.length; i++)
+				document.getElementById("seat"+reserved[i]).className = "seatResrved";
+		</script>
+		
+    </table>
+    <br>
+    <em onclick="$('#opis').toggle('slow');" style="cursor:pointer"><u> Wyświetl opis</u></em>:<br>
+    <span id=opis style='display:none'>
+    kolor <font color=red>czerwony</font> oznacza, że dane siedzenie jest już <u>zajęte</u>.<br>
+    kolor <font color=lime>zielony</font> oznacza, że dane siedzenie jest <u>wolne</u>.<br>
+    kolor <font color=orange>pomajańczowy</font> reprezentuje siedzenia wybrane przez Ciebie.<br>Aby zrezygnować z tego siedzeniia kliknij w nie.</span>
+    
+    <br><br><br>
+    
+    &nbsp; Lista zamówionych biletów:
+    <hr width=90%>
+    <span id="t0" ><font color="gray" align=right>&nbsp; -- lista pusta --</font></span>
+    <span id="t1"> </span>
+    <span id="t2"> </span>
+    <span id="t3"> </span>
+    <span id="t4"> </span>
+    <p align='right' id="tcena" style='font-weight:bold'>Suma: 0 zł</p>
+    <center style='padding-bottom:10px; display:none;' id="kup_center">
+    	<input type="button" id="kup" value="Kliknij, aby potwierdzić zamówienie" onclick="send_my_data();">
+    </center>
+
+<%= form_tag('/public/zakup/'+@seance.id.to_s, :method => 'post', :id => "theForm")%>
+    <%= hidden_field_tag('ticket[seance_id]', @seance.id) %>
+    <%= hidden_field_tag('ticket[price_id]', @price_id) %>
+    
+    <%= hidden_field_tag('ticket[disc0_id]', '') %>
+    <%= hidden_field_tag('ticket[disc1_id]', '') %>
+    <%= hidden_field_tag('ticket[disc2_id]', '') %>
+    <%= hidden_field_tag('ticket[disc3_id]', '') %>
+    <%= hidden_field_tag('ticket[disc4_id]', '') %>
+    
+    <%= hidden_field_tag('ticket[seat0_id]', '') %>
+    <%= hidden_field_tag('ticket[seat1_id]', '') %>
+    <%= hidden_field_tag('ticket[seat2_id]', '') %>
+    <%= hidden_field_tag('ticket[seat3_id]', '') %>
+    <%= hidden_field_tag('ticket[seat4_id]', '') %>
+    
+    <%= hidden_field_tag('ticket[how_much]', ) %>
+</form>
+
+    <div id="disc_sel" style="position:absolute;display:none;"><%= select_tag('ticket[discount_id]', options_for_select([['wybierz rodzaj biletu', '-1']] + @discounts.collect{|r| [r.description, r.id]}), :id => "theSel", :onchange => "changed(this)") %></div>
+
+<% else -%>
+	Wybierz seans przy pomocy narzedzia po lewej.
+<% end -%>
+<script>
+
+function send_my_data(){
+	var price = 0;
+	
+	for(var i=0; i<5; i++)
+		if(seatId[i])
+		{
+			document.getElementById("ticket_seat"+i+"_id").value = seatId[i];
+			document.getElementById("ticket_disc"+i+"_id").value = discId[i];
+			price += Math.floor( (discId[i]==2 ? 24*0.8 : 24) );
+		}
+		else
+		{
+			document.getElementById("ticket_seat"+i+"_id").value = "";
+			document.getElementById("ticket_disc"+i+"_id").value = "";
+		}
+
+	document.getElementById("ticket_how_much").value = price;
+	
+	document.getElementById("theForm").submit();
+}
+
+				var tmpId = -1;
+				var tmp = new Array(3); //przechowuje poprzedni kliknięty kwadracik
+				var seatId = new Array(5);	//przechowuje idSeatów
+				var discId = new Array(5);	//przechowuje idDiscount
+				var count = 0;
+				$(".seat").each(
+					function(){						
+						$(this).click(
+							function(evt){
+								
+								substr = evt.currentTarget.id.substring(4)
+								for(var i=0; i<5; i++){
+									if(seatId[i] && seatId[i] == substr)
+									{
+										innerhtml = substr % maxCols
+										evt.currentTarget.innerHTML = (innerhtml < 10 ? " "+innerhtml : innerhtml);
+										document.getElementById(evt.currentTarget.id).className = "seat"
+										
+										seatId[i] = null;
+										discId[i] = null;
+										
+										count--;
+										if(count <= 0){
+											$("#kup_center").fadeOut("fast");
+										}
+										
+										//print_tabs();
+										print_tickets();
+										
+										return false;
+									}
+								}
+								if(count > 4) alert("Maksymalnie możesz zamówić 5 biletów.")
+								else 
+								{
+									if(tmp[0] != null)
+									{
+										document.getElementById(tmp[0]).innerHTML = tmp[1];
+										document.getElementById(tmp[0]).className = "seat";
+									}
+									
+									if(tmp[0] != evt.currentTarget.id)
+									{
+										tmp[0] = evt.currentTarget.id;			// 0 - id
+										tmp[1] = evt.currentTarget.innerHTML;	// 1 - innerHTML
+										tmp[2] = "#559955";						// 2- color
+										
+										evt.currentTarget.innerHTML = "X";
+										document.getElementById("disc_sel").style.left = (evt.pageX+10)+"px";
+										document.getElementById("disc_sel").style.top = (evt.pageY+5)+"px";
+										document.getElementById("disc_sel").style.display = "block";
+										document.getElementById(evt.currentTarget.id).className = "seatSelected"
+										tmpId = evt.currentTarget.id.substring(4);
+									}
+									else
+									{
+										//skasuj 'aktywny'
+										document.getElementById("disc_sel").style.display = "none";
+										tmpId = -1;
+										tmp = new Array(3);
+									}
+								}
+							}
+						)
+					}
+				)
+				function changed(sel)
+				{
+					if(tmpId < 0 || count > 4) return false;
+					else
+					{
+						var i=-1;
+						while(seatId[++i]);
+						
+						seatId[i] = tmpId;
+						discId[i] = sel.value;
+						document.getElementById(tmp[0]).innerHTML = tmp[1];
+						count++;
+						
+						
+						//print_tabs();
+						print_tickets();
+						
+						if(count==1) $("#kup_center").show("slow");
+											
+						
+						//czyszczenie
+						tmpId = -1;
+						tmp = new Array(3);
+						sel.value = '-1';
+						document.getElementById("disc_sel").style.display = "none";
+					}
+				}
+				
+				function print_tickets()
+				{
+					var nr = 1;
+					var total = 0;
+					for(var i=0; i<5; i++)
+						if(seatId[i])
+						{
+							$('#t'+i).hide();
+							
+							var col = seatId[i]%maxCols;
+							var row = chars[(seatId[i] - col) / maxCols];
+							var typ = document.getElementById("theSel").options[discId[i]].text;
+							var cena = Math.floor( (discId[i]==2 ? 24*0.8 : 24) );
+							
+							
+							document.getElementById('t'+i).innerHTML = " &nbsp; "+nr+". &nbsp; Miejsce: "+row+col+", <em>"+typ+"</em>, cena: "+cena+" zł<br/>";
+							
+							$('#t'+i).show("slow");
+							total += cena;
+							nr++;	
+						}
+						else
+						{
+							document.getElementById('t'+i).innerHTML = "";
+						}
+						document.getElementById('tcena').innerHTML = "Suma: "+total+" zł"
+				}
+								
+				function isInside(tab, val)
+				{
+					for(i=0; i<tab.length; i++)
+						if(tab[i] == val)
+							return true;
+						
+					return false;
+				}
+				
+				
+	document.getElementById("theSel").remove(document.getElementById("theSel").length-1) //usówa opcję zniżki dla 10 osób...
+</script>
+<!--
+<%# debug(@posted_data) %>
+<%# debug(@seance_id) %>
+<%# debug(@price_id) %>
+<%# debug(@how_much) %>
+<%# debug(@seat_tab) %>
+<%# debug(@disc_tab) %>
+
+<%# debug(@error) %>
+<%# debug(@reserved_seats) %>
+-->

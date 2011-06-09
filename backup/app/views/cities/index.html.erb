@@ -1,0 +1,29 @@
+<h1>Lista miast</h1>
+<% if session[:isGA] -%>
+<%= link_to 'Dodaj', new_city_path %><br><br>
+<% end -%>
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Nazwa</th>
+    <th></th>
+  </tr>
+
+<% @cities.each do |city| %>
+  <tr>
+    <td><%= city.id %></td>
+    <td><%= city.name %></td>
+    <td>
+    	<% if session[:isGA] -%>
+    	<%= link_to 'Edytuj', edit_city_path(city) %>
+    	<%= link_to 'Usuń', city_path(city), :confirm => 'Czy na pewno chcesz usunąć ten rekord?', :method => :delete %></td>
+    	<% end -%>
+    </td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+<% if session[:isGA] -%>
+<%= link_to 'Dodaj', new_city_path %><br><br>
+<% end -%>

@@ -1,0 +1,41 @@
+<%= form_for(@cinema) do |f| %>
+  <% if @cinema.errors.any? %>
+    <div id="error_explanation">
+      <h2>Zaszły następujące nieprawidłowości:</h2>
+
+      <ul>
+      <% @cinema.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :city_id %><br />
+    <% if @cities -%>
+    <%= select_tag('cinema[city_id]', options_for_select([['Wybierz miasto', '']] + @cities.collect{|city| [city.name, city.id]}, @cinema.city_id)) if @cities %>
+    <% else -%>
+    <%= f.text_field :city_id %>
+    <% end -%>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :address %><br />
+    <%= f.text_field :address %>
+  </div>
+  <div class="field">
+    <%= f.label :phone %><br />
+    <%= f.text_field :phone %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<script>
+	$("document").ready(function(){$('#cinema_name').focus();});
+</script>

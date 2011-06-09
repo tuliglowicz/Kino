@@ -1,0 +1,4 @@
+		<li><%= link_to("Użytkownicy", {:controller => "users", :action => "show", :id => session[:user].id })%></li>
+		<li><%= link_to("Bilety", {:controller => "tickets", :action => "index", :id => 0 })%></li>
+		<br/><br/>
+		<li> <%= link_to("Wyloguj", {:controller => "private", :action => "logout" }, :id => 'logout')%></li>

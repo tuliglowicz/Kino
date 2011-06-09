@@ -1,0 +1,21 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  id: 
+  seance_id: 
+  seat_id: 
+  price_id: 
+  user_id: 
+  discount_id: 
+  bought: 
+  canceled: false
+
+two:
+  id: 
+  seance_id: 
+  seat_id: 
+  price_id: 
+  user_id: 
+  discount_id: 
+  bought: 
+  canceled: false

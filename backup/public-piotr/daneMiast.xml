@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!-- Dane dotyczące poszczególnych kin w miastach-->
+
+<!DOCTYPE BAZAKIN SYSTEM "definition.dtd">
+
+<BAZAKIN>
+    <MIASTO>
+        <NAZWA_MIASTA>BIAŁYSTOK</NAZWA_MIASTA>
+        <KINO>
+            <ADRES>ul. Storczykowa 56</ADRES>
+            <GODZINYOTWARCIA>
+                <PnPt>9:00-22:00</PnPt>
+                <SoNd>12:00-23:00</SoNd>
+            </GODZINYOTWARCIA>
+        </KINO>
+        <KINO>
+            <ADRES>ul. Wojska Polskiego 12</ADRES>
+            <GODZINYOTWARCIA>
+                <PnPt>9:00-22:00</PnPt>
+                <SoNd>12:00-23:00</SoNd>
+            </GODZINYOTWARCIA>
+        </KINO>
+        <KINO>
+            <ADRES>ul. Powstańców Ślądkich 10</ADRES>
+            <GODZINYOTWARCIA>
+                <PnPt>9:00-22:00</PnPt>
+                <SoNd>12:00-23:00</SoNd>
+            </GODZINYOTWARCIA>
+        </KINO>
+        <KINO>
+            <ADRES>ul. Sikorskiego 12</ADRES>
+            <GODZINYOTWARCIA>
+                <PnPt>9:00-22:00</PnPt>
+                <SoNd>12:00-23:00</SoNd>
+            </GODZINYOTWARCIA>
+        </KINO>
+    </MIASTO>
+    <MIASTO>
+        <NAZWA_MIASTA>WARSZAWA</NAZWA_MIASTA>
+        <KINO>
+            <ADRES>ul. Andersa 28</ADRES>
+            <GODZINYOTWARCIA>
+                <PnPt>10:00-20:00</PnPt>
+                <SoNd>12:00-22:00</SoNd>
+            </GODZINYOTWARCIA>
+        </KINO>
+    </MIASTO>
+    <MIASTO>
+        <NAZWA_MIASTA>CZĘSTOCHOWA</NAZWA_MIASTA>
+        <KINO>
+            <ADRES>ul. Jana Pawła II 28a</ADRES>
+            <GODZINYOTWARCIA>
+                <PnPt>10:00-20:00</PnPt>
+                <SoNd>12:00-22:00</SoNd>
+            </GODZINYOTWARCIA>
+        </KINO>
+    </MIASTO>
+    <MIASTO>
+        <NAZWA_MIASTA>KRAKÓW</NAZWA_MIASTA>
+        <KINO>
+            <ADRES>ul. Radzikowskiego 89</ADRES>
+            <GODZINYOTWARCIA>
+                <PnPt>10:00-24:00</PnPt>
+                <SoNd>9:00-1:00</SoNd>
+            </GODZINYOTWARCIA>
+        </KINO>
+    </MIASTO>
+    <MIASTO>
+        <NAZWA_MIASTA>WROCŁAW</NAZWA_MIASTA>
+        <KINO>
+            <ADRES>ul. Plac Grunwaldzki 2</ADRES>
+            <GODZINYOTWARCIA>
+                <PnPt>10:15-24:00</PnPt>
+                <SoNd>12:00-24:30</SoNd>
+            </GODZINYOTWARCIA>
+        </KINO>
+    </MIASTO>
+    <MIASTO>
+        <NAZWA_MIASTA>GDAŃSK</NAZWA_MIASTA>
+        <KINO>
+            <ADRES>ul. Pomorska 4</ADRES>
+            <GODZINYOTWARCIA>
+                <PnPt>9:300-24:00</PnPt>
+                <SoNd>7:30-24:00</SoNd>
+            </GODZINYOTWARCIA>
+        </KINO>
+    </MIASTO>
+    <MIASTO>
+        <NAZWA_MIASTA>BOLESŁAWIEC</NAZWA_MIASTA>
+        <KINO>
+            <ADRES>ul. Batorego 32</ADRES>
+            <GODZINYOTWARCIA>
+                <PnPt>9:00-23:00</PnPt>
+                <SoNd>10:15-1:45</SoNd>
+            </GODZINYOTWARCIA>
+        </KINO>
+    </MIASTO>
+    <MIASTO>
+        <NAZWA_MIASTA>KATOWICE</NAZWA_MIASTA>
+        <KINO>
+            <ADRES>ul. Barbary 23</ADRES>
+            <GODZINYOTWARCIA>
+                <PnPt>10:15-24:00</PnPt>
+                <SoNd>12:30-24:00</SoNd>
+            </GODZINYOTWARCIA>
+        </KINO>
+    </MIASTO>
+    <MIASTO>
+        <NAZWA_MIASTA>SZCZECIN</NAZWA_MIASTA>
+        <KINO>
+            <ADRES>ul. Portowa 10</ADRES>
+            <GODZINYOTWARCIA>
+                <PnPt>8:15-1:00</PnPt>
+                <SoNd>9:15-1:30</SoNd>
+            </GODZINYOTWARCIA>
+        </KINO>
+    </MIASTO>
+    <MIASTO>
+        <NAZWA_MIASTA>WARSZAWA</NAZWA_MIASTA>
+        <KINO>
+            <ADRES>ul. Lecha Kaczyńskiego 25</ADRES>
+            <GODZINYOTWARCIA>
+                <PnPt>9:15-22:00</PnPt>
+                <SoNd>11:15-24:00</SoNd>
+            </GODZINYOTWARCIA>
+        </KINO>
+    </MIASTO>
+    <MIASTO>
+        <NAZWA_MIASTA>POZNAŃ</NAZWA_MIASTA>
+        <KINO>
+            <ADRES>ul. Adama Mickiewicza 5</ADRES>
+            <GODZINYOTWARCIA>
+                <PnPt>9:30-24:00</PnPt>
+                <SoNd>9:30-24:00</SoNd>
+            </GODZINYOTWARCIA>
+        </KINO>
+    </MIASTO>
+    <MIASTO>
+        <NAZWA_MIASTA>ŁÓDŹ</NAZWA_MIASTA>
+        <KINO>
+            <ADRES>ul. Aleja Karkonoska 20</ADRES>
+            <GODZINYOTWARCIA>
+                <PnPt>10:00-1:00</PnPt>
+                <SoNd>10:30-1:30</SoNd>
+            </GODZINYOTWARCIA>
+        </KINO>
+    </MIASTO>
+    <MIASTO>
+        <NAZWA_MIASTA>OPOLE</NAZWA_MIASTA>
+        <KINO>
+            <ADRES>ul. Gabriela Narutowicza 24</ADRES>
+            <GODZINYOTWARCIA>
+                <PnPt>10:15-24:00</PnPt>
+                <SoNd>11:45-1:30</SoNd>
+            </GODZINYOTWARCIA>
+        </KINO>
+    </MIASTO>
+    <MIASTO>
+        <NAZWA_MIASTA>ZIELONA GÓRA</NAZWA_MIASTA>
+        <KINO>
+            <ADRES>ul. Wzgórza Winiarskie 24</ADRES>
+            <GODZINYOTWARCIA>
+                <PnPt>9:15-23:00</PnPt>
+                <SoNd>11:15-2:00</SoNd>
+            </GODZINYOTWARCIA>
+        </KINO>
+    </MIASTO>
+</BAZAKIN>

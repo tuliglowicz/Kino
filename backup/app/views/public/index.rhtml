@@ -1,0 +1,176 @@
+
+<!-- Gorny Pasek -->
+<center>
+<div id="gornyPasek" style='background-color:orange; width:900px; height:35px; vertical-align:middle; font-size:14px'>
+
+<a href="" id="A0" title="">Home</a>
+<a href="/public/kina" id="A1" title="">Kina</a>
+<a href="/public/repertuar" id="A2" title="">Repertuar</a>
+<a href="/public/zapowiedzi" id="A3" title="">Zapowiedzi</a>
+<a href="" id="A4" title="">Ceny i Promocje</a>
+<a href="" id="A5" title="">Kontakt</a>
+
+</DIV>
+</center>
+<!-- EOF Gorny Pasek -->
+
+<!-- BANER -->
+<center><div style='width:900px; height: 150px; background-color:gray;text-align:right'>
+</div></center>
+<!-- EOF BANER -->
+
+<!-- Cialo Strony -->
+<table width="900px" height="100%" align="center" bgcolor="white" cellpadding="0px" cellspacing="0px" border=0 bordercolor=lime><tr>
+
+<td width="270px" align="center" valign="top">
+
+<div id="bookOnLine" style="background-color:purple; width:100%; padding-bottom:15px;">
+
+
+<% if session[:user] -%>
+	<%= render 'public/menu' -%>
+<% else %>
+	&nbsp;<strong>Zaloguj!</strong><br/>
+	&nbsp;<%= form_tag(:controller => 'private', :action => 'send_login', :method => "get") do %>
+	<%= label_tag(:login, "Login:") %><%= text_field_tag(:login) %><br/>
+	<%= label_tag(:password, "Hasło:") %><%= password_field_tag(:password) %><br/>
+	<%= submit_tag("Login") %><br/><br/>
+	Nie masz konta? <%= link_to("Zarejestruj się!", {:controller => "public", :action => "register" }, :id => 'logout')%>
+<% end -%>	
+<% end -%>
+
+</div>
+
+<div id="bookOnLine" style="background-color:red; width:100%; height:300px;">&gt;Szybka rezerwacja On-line&lt;</div>
+
+<div id="checkBook" style="background-color:Orange; font-size:12px; width:100%; height:30px">&gt;Sprawdzanie swojej rezerwacji&lt;</div>
+
+
+<div id="events" height="230px">
+    <div class="current">
+        <img id="Img0" src="images/movies/gomorra.jpg" alt="" width="265px" height="230px" />
+    </div>
+    <div>
+        <img id="Img1" src="images/movies/adams.jpg" alt="" width="265px" height="230px" />
+    </div>
+    <div>
+        <img id="Img2" src="images/movies/pulapka.jpg" alt="" width="265px" height="230px" />
+    </div>
+    <div>
+        <img id="Img3" src="images/movies/wesele.jpg" alt="" width="265px" height="230px" />
+    </div>
+</div>
+
+</td>
+
+
+<td width="630px" valign="top">
+<div id="mapa" style="background-color:black; color:white; width:624px;height: AUTO; padding-bottom:10px;">
+
+<div style="width:100%; vertical-align:middle; background-image: url(images/pic/bar.png); height:41px;">&nbsp;Mapa Kraju</div>
+
+<ul>
+<li><a href="http://naszekino.pl/miasto/show/1" class="miasto" id="bialystok">Białystok</a></li>
+<li><a href="http://naszekino.pl/miasto/show/2" class="miasto" id="boleslawiec">Bolesławiec</a></li>
+<li><a href="http://naszekino.pl/miasto/show/3" class="miasto" id="czestochowa">Częstochowa</a></li>
+<li><a href="http://naszekino.pl/miasto/show/4" class="miasto" id="gdansk">Gdańsk</a></li>
+<li><a href="http://naszekino.pl/miasto/show/5" class="miasto" id="katowice">Katowice</a></li>
+<li><a href="http://naszekino.pl/miasto/show/6" class="miasto" id="krakow">Kraków</a></li>
+<li><a href="http://naszekino.pl/miasto/show/7" class="miasto" id="lodz">Łódź</a></li>
+<li><a href="http://naszekino.pl/miasto/show/8" class="miasto" id="opole">Opole</a></li>
+<li><a href="http://naszekino.pl/miasto/show/9" class="miasto" id="poznan">Poznań</a></li>
+<li><a href="http://naszekino.pl/miasto/show/10" class="miasto" id="szczecin">Szczecin</a></li>
+<li><a href="http://naszekino.pl/miasto/show/11" class="miasto" id="warszawa">Warszawa</a></li>
+<li><a href="http://naszekino.pl/miasto/show/12" class="miasto" id="wroclaw">Wrocław</a></li>
+<li><a href="http://naszekino.pl/miasto/show/13" class="miasto" id="zielona">Zielona Góra</a></li>
+</ul>
+<!-- <img src="pl.jpg" /> -->
+<div class="cart">&nbsp;</div>
+
+
+<div id="opis_kina" style="font-size: 12px">&nbsp;</div>
+
+</div>
+
+<div id="trailery" style="background-color:#222; color:white; width:99%; height:260px;" >&nbsp;<br/>
+	
+	<div class="video_object">                    
+		<object scale="showall" allowfullscreen="true" type="application/x-shockwave-flash" data="http://www.youtube.com/v/5ZSAnUGLH8g&rel=0" flashvars="fs=1&color1=0xEBEBEB&color2=0xEBEBEB&showinfo=0&showsearch=0&iv_load_policy=3" width="580" height="350">
+			<param name="allowfullscreen" value="true">
+			<param name="AllowScriptAccess" value="always">
+			<param name="scale" value="showAll">
+			<param name="wmode" value="opaque">
+			<param name="movie" value="http://www.youtube.com/v/5ZSAnUGLH8g&rel=0">
+			<param name="flashvars" value="fs=1&color1=0xEBEBEB&color2=0xEBEBEB&showinfo=0&showsearch=0&iv_load_policy=3">
+		</object>
+	</div>
+
+</div>
+</td>
+
+</tr>
+</table>
+<table width="900px" align="center" bgcolor="white" cellpadding="0px" cellspacing="0px"><tr><td>&nbsp;</td></tr></table>
+
+<!-- EOF Cialo Strony -->
+
+
+<script type="text/javascript">
+
+// efekty aQuery
+
+
+
+</script>
+
+
+<!--
+	
+	<script type="text/javascript">
+  function initialize() {
+    var myLatlng = new google.maps.LatLng(51.111, 17.055);
+    var myOptions = {
+      zoom: 13,
+      center: myLatlng,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    }
+
+    var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+
+    var marker = new google.maps.Marker({map: map, position:
+        map.getCenter()});
+    var infowindow = new google.maps.InfoWindow();
+       
+          infowindow.setContent('<b>Tu jestesmy!</b>');
+      
+
+    google.maps.event.addListener(marker, 'click', function() {
+      infowindow.open(map, marker);
+    });
+
+  }
+
+  function loadScript() {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "http://maps.google.com/maps/api/js?sensor=false&callback=initialize";
+    document.body.appendChild(script);
+  }
+
+  window.onload = loadScript;
+</script>
+
+<div id="cinema_info" style="margin-left:15px">
+	<br/>  <h2>Kino Multipleks</h2>
+	NIP: 11111111 <br/>
+	Regon: 098827
+	<br/><br/>	
+	Na mapie ponizej zaznaczono glowna siedzibe firmy:	
+</div>
+
+
+<br/>&nbsp;
+
+<div id="map_canvas" style="width: 600px; height:250px; margin-left:15px"></div>
+
+	-->

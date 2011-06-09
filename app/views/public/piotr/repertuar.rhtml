@@ -1,0 +1,92 @@
+Kino: <SPAN class="title" style='color:grey'>
+	<center><p style="margin-bottomt: 10px;"><%= @cinema.name %></p></center> 
+	<center>Dzisiaj i przyszly tydzien:
+	<% 	i=0
+		date = Date.today -%>
+	<%	7.times do -%> | 
+		<% if i == @since -%>
+			<b style='color:white'><%= date.strftime("%d-%m") %></b>
+		<% else -%>
+			<%= link_to(date.strftime("%d-%m"), {:controller => "public", :action => "repertuar", :id => i}, :class=>"repertuarTime" , :style=>'color:grey;') %>
+		<% end -%>
+		
+		<% date = date.tomorrow 
+			i = i+1	-%>
+	<% end -%> &nbsp;| 
+	</center>
+<br></br>	
+<% if @films and @films.size > 0 -%>
+	<table align=center border=1>
+	
+	<% i=0 -%>
+	<% for film in @films do-%>
+	<tr>
+		<td width=90px bgcolor=black valign="top">
+			<table width=90px >
+				<tr align="center">
+					<td>
+						<%= image_tag("film_posters"+film.poster, :size => "75x110", :align => "center") %>
+					</td>
+				</tr>
+				<tr align="left">
+					<td><font size=0.5% color=#A8A8A8 >
+					<font size=0.5% color=white><strong>Kategoria:</strong></font> 
+					<p style="margin-left: 10px;"><%= film.category.name %></p>
+					<font size=0.5% color=white><strong>Rezyser:</strong></font>
+					<p style="margin-left: 10px;"><%= film.director %></p>
+					<font size=0.5% color=white><strong>Rok premiery:</strong></font> 
+					<p style="margin-left: 10px;"><%= film.year.to_s%></p>	
+					<font size=0.5% color=white><strong>Czas trwania:</strong></font> 
+					<p style="margin-left: 10px;"><%= film.length %></p>
+					<p style="margin-bottom:10px;"><%= link_to("Trailer", {}, :target => "_blank", :href => film.trailer, :class=>"movieTitle" , :style=>'color:white;') if film.trailer%>
+					</p></font>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td valign="top">
+			<table width=390>
+				<tr align="center">
+					<td bgcolor="#282828"><font size=5%><p style="color: white; font-family: arial; ">
+						<strong><%= film.title %> &nbsp;</strong> 
+						</p></font>	
+					</td>
+				</tr>
+				<tr valign="left">
+					<td bgcolor="black"><p style="color: #808080 ; font-size: 2; text-align: justify ;">
+					<strong>Opis:</strong><br/> <%= film.description %>
+					</p>
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td width=150px valign="top"><center>
+			<% if @s -%>
+				<p style="margin-bottomt: 10px;">Kup bilet na godz.:</p>
+				
+				<% for seance in @s do-%>
+				
+					<% if seance.cinema_film.film_id == film.id -%>
+						<% time = seance.time_from.strftime("%H:%M") %>
+						
+						<% if seance.time_from.seconds_since_midnight < Time.now.seconds_since_midnight+1800 -%>
+							<span style='color:gray' class="pastSeance"><%= time %></span> &nbsp;
+						<% else -%>
+							<%= link_to( time , {:controller => "public", :action => "rezerwacja", :id => seance.id}, :class =>"futureSeance" , :style=>'color:white;' ) %> &nbsp;
+						<% end -%>
+						
+					<% end -%>
+				<% end -%>
+			<% end -%>
+			</center>
+		</td>
+	</tr>	
+	<% end -%>
+	
+	</table>
+<% else -%>	
+W wybranym przez Ciebie kinie nie sa grane zadne filmy
+<% end -%>
+
+ <%# debug(@films) %>
+<%# debug(@s) %>

@@ -1,0 +1,25 @@
+<%= form_for(@discount) do |f| %>
+  <% if @discount.errors.any? %>
+    <div id="error_explanation">
+      <h2>Zaszły następujące nieprawidłowości:</h2>
+
+      <ul>
+      <% @discount.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :discount %><br />
+    <%= f.text_field :discount %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

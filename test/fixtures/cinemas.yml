@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  id: 
+  city_id: 
+  name: 
+  address: 
+  phone: 
+
+two:
+  id: 
+  city_id: 
+  name: 
+  address: 
+  phone: 

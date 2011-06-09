@@ -1,0 +1,39 @@
+
+<p>
+  <b>Id:</b>
+  <%= @user.id %>
+</p>
+
+<p>
+  <b>Login:</b>
+  <%= @user.login %>
+</p>
+
+<p>
+  <b>Hasło:</b>
+  <%= "*Hidden*" if @user.hashed_password %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @user.email %>
+</p>
+
+<p>
+  <b>Imie:</b>
+  <%= @user.first_name %>
+</p>
+
+<p>
+  <b>Nazwisko:</b>
+  <%= @user.last_name %>
+</p>
+
+<p>
+  <b>Telefon:</b>
+  <%= @user.phone %>
+</p>
+
+
+<%= link_to 'Edytuj', edit_user_path(@user) %> |
+<%= link_to 'Wróć', users_path %>

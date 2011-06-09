@@ -1,0 +1,49 @@
+<!--[if lte IE 6]>
+<div id="ie6msg">
+<h4>Did you know that your Internet Explorer is out of date?</h4>
+<p>To get the best possible experience using<strong> Omniplex.ie</strong> we recommend that you upgrade to a newer version or other web browser. 
+<br />Your Current internet browser will not display this website correctly <br /> A list of the most popular web browsers can be found below. 
+<strong>Just click on the icons to get to the download page ( We Recommend Firefox! )</strong></p>
+<a href="http://www.mozilla.com/firefox/">
+<img src="http://www.omniplex.ie/imgs/UI/icons/ie6/browser_firefox.gif" alt="" width="100" height="100" /></a>
+<a href="http://www.microsoft.com/windows/Internet-explorer/default.aspx">
+<img src="http://www.omniplex.ie/imgs/UI/icons/ie6/browser_ie.gif" alt="" width="100" height="100" /></a>
+<a href="http://www.opera.com/download/">
+<img src="imgs/UI/icons/ie6/browser_opera.gif" alt="" width="100" height="100" /></a>
+<a href="http://www.google.com/chrome">
+<img src="http://www.omniplex.ie/imgs/UI/icons/ie6/browser_chrome.gif" alt="" width="100" height="100" /></a>
+<a href="http://www.apple.com/safari/download/">
+<img src="http://www.omniplex.ie/imgs/UI/icons/ie6/browser_safari.gif" alt="" width="100" height="100" /></a>
+<br /> <p>If you are unable to upgrade you can also find our times <a href="http://www.rte.ie/aertel/350-01.html">HERE</a></p>
+</div>
+<![endif]-->
+
+
+<% text = news.english_news.split(" ") %>
+<p>
+<% for i in 0...PagesController.news_length %>
+<%= text[i].to_s + " " %>
+<% end %>
+<% if text.length > PagesController.news_length %>
+         ...
+<% end %>
+</p>
+
+
+	<script>
+	$(function() {
+		$( "#cinema_film_date_from" ).datepicker({
+			changeMonth: true,
+			changeYear: true,
+			dateFormat: 'yy-mm-dd'
+		});
+		$( "#cinema_film_date_untill" ).datepicker({
+			changeMonth: true,
+			changeYear: true,
+			dateFormat: 'yy-mm-dd'
+		});
+	});
+
+	</script>
+
+ Last name: <input type="text" name="lname" disabled="disabled" /><br />

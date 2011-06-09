@@ -1,0 +1,28 @@
+<h1>Lista sal</h1>
+<%= link_to 'Dodaj', new_room_path %><br><br>
+
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Nazwa Kina</th>
+    <th>Numer</th>
+    <th>Liczba miejsc</th>
+    <th></th>
+  </tr>
+
+<% @rooms.each do |room| %>
+  <tr>
+    <td><%= room.id %></td>
+    <td><%= room.cinema.name if room.cinema %></td>
+    <td><%= room.number %></td>
+    <td><%= room.size %></td>
+    <td><%= link_to 'Pokaż', room %>
+    	<%= link_to 'Edytuj', edit_room_path(room) %>
+    	<%= link_to 'Usuń', room, :confirm => 'Czy na pewno chcesz usunąć ten rekord?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Dodaj', new_room_path %>

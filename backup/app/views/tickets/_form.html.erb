@@ -1,0 +1,47 @@
+<%= form_for(@ticket) do |f| %>
+  <% if @ticket.errors.any? %>
+    <div id="error_explanation">
+      <h2>Zaszły następujące nieprawidłowości:</h2>
+
+      <ul>
+      <% @ticket.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :seance_id %><br />
+    <%= f.text_field :seance_id %>
+  </div>
+  <div class="field">
+    <%= f.label :seat_id %><br />
+    <%= f.text_field :seat_id %>
+  </div>
+  <div class="field">
+    <%= f.label :price_id %><br />
+    <%= f.text_field :price_id %>
+  </div>
+  <div class="field">
+    <%= f.label :user_id %><br />
+    <%= f.text_field :user_id %>
+  </div>
+  <div class="field">
+    <%= f.label :discount_id %><br />
+    <%= f.text_field :discount_id %>
+  </div>
+  <div class="field">
+    <%= f.label :bought %><br />
+    <%= f.check_box :bought %>
+  </div>
+  <% if @edit  #jeśli tworzymy nowy bilet to domyślnie to pole jest false, dopiero przy edycji możemy je zmienić-%>
+  <div class="field">
+    <%= f.label :canceled %><br />
+    <%= f.check_box :canceled %>
+  </div>
+  <% end -%>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

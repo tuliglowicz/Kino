@@ -6,8 +6,35 @@ class UsersController < ApplicationController
 	before_filter :auth, :only => ["index", "destroy"]
 	before_filter :auth_isGA, :except => ["index", "destroy", "update", "new", "create"]
 	
-  # GET /users
-  # GET /users.xml
+  def new
+  	
+    @user = User.new
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.xml  { render :xml => @user }
+    end
+  end
+
+  def create
+  	#sprawdź, czy zgłoszenie zostało wysłane z naszej strony - zabezpieczenie przed hakerami
+  	
+    @user = User.new(params[:user])
+    user_role = @user.role.name
+
+    respond_to do |format|
+      if @user.save
+      	flash[:notice] = 'User was successfully created.'
+        format.html { redirect_to(:controller => "public", :action => "index") }
+        format.xml  { render :xml => @user, :status => :created, :location => @user }
+      else
+			format.html { render :action => "new" }
+	        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
+
+      end
+    end
+  end
+  
   def index
     @users = User.all
 
@@ -17,8 +44,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # GET /users/1
-  # GET /users/1.xml
   def show
   	if session[:isGA] or params[:id] == session[:user].id.to_s
     	@user = User.find(params[:id])
@@ -35,19 +60,6 @@ class UsersController < ApplicationController
 	end
   end
 
-  # GET /users/new
-  # GET /users/new.xml
-  def new
-  	
-    @user = User.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @user }
-    end
-  end
-
-  # GET /users/1/edit
   def edit
   	if session[:isGA] or params[:id] == session[:user].id.to_s
     	@user = User.find(params[:id])
@@ -57,29 +69,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # POST /users
-  # POST /users.xml
-  def create
-  	#sprawdź, czy zgłoszenie zostało wysłane z naszej strony - zabezpieczenie przed hakerami
-  		
-  	
-    @user = User.new(params[:user])
-
-    respond_to do |format|
-      if @user.save
-      	flash[:notice] = 'User was successfully created.'
-        format.html { redirect_to(:controller => "public", :action => "index") }
-        format.xml  { render :xml => @user, :status => :created, :location => @user }
-      else
-			format.html { render :action => "new" }
-	        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
-
-      end
-    end
-  end
-
-  # PUT /users/1
-  # PUT /users/1.xml
   def update
   	if session[:isGA] or params[:id] == session[:user].id.to_s
     	@user = User.find(params[:id])
@@ -99,8 +88,6 @@ class UsersController < ApplicationController
 	end
   end
 
-  # DELETE /users/1
-  # DELETE /users/1.xml
   def destroy
     @user = User.find(params[:id])
     @user.destroy

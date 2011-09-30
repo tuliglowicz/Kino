@@ -1,0 +1,62 @@
+<div>
+			Ticket
+			<% @myvar.each do |v| %>
+			<table width=800 align=center border=1 bordercolor="green">
+				<tr>
+					      <td>
+					      	<%= v.id.to_s %>
+					      </td>	
+					      <% sqlQ= "SELECT * FROM seances Where seances.id = ("+ v.seance_id.to_s+") " %>  
+						  <% @seances =  Seance.find_by_sql(sqlQ) %>
+							<!-- numer seansu  -->
+					      <td>
+					      	Seans: <%=  var1 = @seances.first.id.to_s %>
+					      </td>
+							<!-- nazwa kina	-->
+					      <td> 	
+					      	<% var2 = CinemaFilm.find(var1).cinema_id.to_s %>
+					      	Kino: <%= Cinema.find(var2).name.to_s %>
+					      </td>	
+							<!-- 	nazwa filmu	 -->
+					      <td> 	
+					      	<% var2 = CinemaFilm.find(var1).film_id.to_s %>
+					      	Film: <%= Film.find(var2).title.to_s %>
+					      </td>
+					      	<!-- 	data i time seansu	 -->
+					      <td> 	
+					      	<td><%= @seances.first.date_from.to_s %></td>
+					      	<td><%= @seances.first.time_from.to_s %></td>
+					      </td>
+					      
+					      <% sqlQ= "SELECT * FROM seats Where seats.id = ("+ v.seat_id.to_s+") " %>  
+						  <% @seats =  Seat.find_by_sql(sqlQ) %>
+					      	<!-- 	numer pokoju, rząd i kolumna siedzenia	 -->
+					      <td>
+					      	<% var1 = @seats.first.room_id.to_s %>
+					      	<td>Pokój: <%= var2 = Room.find(var1).number.to_s %></td>
+					      	<td>Rząd: <%= @seats.first.row.to_s %></td>
+					      	<td>Kolumna: <%= @seats.first.column.to_s %></td>
+					      </td>
+							<!-- 	imie i nazwisko klienta				       -->
+					      <% sqlQ= "SELECT * FROM users Where users.id = ("+ v.user_id.to_s+") " %>  
+						  <% @users =  User.find_by_sql(sqlQ) %>
+					      <td>
+					      	imie
+					      	nazwisko
+					      </td>
+							<!-- numer rezerwacji					       -->
+					      <td>
+					      	Rezerwacja: <%= v.reservation_id.to_s %>
+					      </td>
+					      <td>
+					      	
+					      </td>
+							<!-- 	numer widoczny tylko w kodzie kreskowym				       -->
+					      <td>
+					      	<%= v.worker_id.to_s %>
+					      </td>
+					</tr>	
+			</table>
+			<% end %>    			
+			
+		</div>	

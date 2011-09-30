@@ -18,9 +18,20 @@ class PublicController < ApplicationController
 		@cinemas = Cinema.all
 	end
 
+  def printTicket
+      if session[:user]
+         @user=session[:user]
+         sqlQuery = "SELECT * FROM tickets Where tickets.user_id = ("+@user.id.to_s+") "
+         #sqlQuery = "SELECT * FROM tickets Where tickets.user_id = 1 "
+         @myvar = Ticket.find_by_sql(sqlQuery)
+      else
+          redirect_to(:controller => "public", :action => "index")
+      end
+  end
+
 	def profile
     	if session[:user]
-			@user=session[:user]
+			   @user=session[:user]
 		else
 			redirect_to(:controller => "public", :action => "index")
     	end

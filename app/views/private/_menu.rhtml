@@ -57,7 +57,9 @@
 	<% if Auth.can_read_in_self_cinema?(worker_id, "workers") -%>
 		<li><%= link_to("Pracownicy", {:controller => "workers" }, :class=>"aMenu")%></li>
 	<% end %>
-	
+	<% if Auth.can_read_in_self_cinema?(worker_id, "permissions") -%>
+		<li><%= link_to("Uprawnienia", {:controller => "permissions" }, :class=>"aMenu")%></li>
+	<% end %>
 
 	
 	

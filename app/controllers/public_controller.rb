@@ -7,6 +7,12 @@ class PublicController < ApplicationController
 	def panel
 		render :layout => 'admin'
 	end
+	
+	def login
+	end
+	
+	def register
+	end
 
 	def index
 	end
@@ -202,19 +208,19 @@ class PublicController < ApplicationController
 			end
 			
 			#REST REST REST REST REST REST REST REST REST REST REST REST REST REST REST REST REST REST REST REST REST REST REST REST
-			  #uri = URI.parse( 'http://localhost:3001/payments/isOk' ); params = { :price => @how_much}
-			  #http = Net::HTTP.new(uri.host, uri.port) 
-			  #request = Net::HTTP::Get.new(uri.path) 
-			 # request.set_form_data( params )
+			  uri = URI.parse( 'http://localhost:3001/payments/isOk' ); params = { :price => @how_much}
+			  http = Net::HTTP.new(uri.host, uri.port) 
+			  request = Net::HTTP::Get.new(uri.path) 
+			  request.set_form_data( params )
 			
-			  #response = http.request(request)
+			  response = http.request(request)
 			
 				#@response = response
 			
-			  #puts "Code: #{response.code}" 
-			  #puts "Message: #{response.message}"
-			  #puts "Body:\n #{response.body}"
-			  @accepted_payment = true #Hash.from_xml( response.body )['result']['accepted']
+			  puts "Code: #{response.code}" 
+			  puts "Message: #{response.message}"
+			  puts "Body:\n #{response.body}"
+			  @accepted_payment = Hash.from_xml( response.body )['result']['accepted']
 			  
 			  
 			@error = false

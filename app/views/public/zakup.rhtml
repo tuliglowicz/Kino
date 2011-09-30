@@ -102,7 +102,7 @@
     <%= hidden_field_tag('ticket[seat3_id]', '') %>
     <%= hidden_field_tag('ticket[seat4_id]', '') %>
     
-    <%= hidden_field_tag('ticket[how_much]', ) %>
+    <%= hidden_field_tag('ticket[how_much]', '') %>
 </form>
 
     <div id="disc_sel" style="position:absolute;display:none;"><%= select_tag('ticket[discount_id]', options_for_select([['wybierz rodzaj biletu', '-1']] + @discounts.collect{|r| [r.description, r.id]}), :id => "theSel", :onchange => "changed(this)") %></div>

@@ -1,32 +1,22 @@
-
-
 #logo {
 width:900px; 
 	height:90px; 
-	vertical-align:middle; 
+	vertical-align:top; 
+	text-align:right;
 	background:url("logo.jpg")
 }
-
 #gornyPasek {
 	width:900px; 
 	height:24px;
-	
-	
 	background:orange;
 	font-size:80%;
 	line-height:normal;
-	
-	
 	}
-
 #gornyPasek ul {
 	margin:0;
 	padding:2px 0px 0 10px;
 	list-style:none;
 	}
-
-
-
 #gornyPasek a {
 	float:left;
 	background:url("tableft.gif") no-repeat left top;
@@ -34,7 +24,6 @@ width:900px;
 	padding:0 0 0 5px;
 	text-decoration:none;
 	}
-
 #gornyPasek a span {
 	float:left;
 	display:block;

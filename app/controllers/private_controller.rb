@@ -8,8 +8,7 @@ class PrivateController < ApplicationController
 	def panel
 	end
 
-	def stats
-		
+	def stats		
 	    if Auth.try_to_login_stats(params[:password])
 	    				  					
 				sqlQuery = case 
@@ -24,7 +23,7 @@ class PrivateController < ApplicationController
 									) AS count
 								from categories cat
 								order by cat.\"name\"
-								"				  					
+								"
 				  		when params[:req].downcase=="city" then
 				  			"SELECT distinct cit.id, cit.\"name\" As city,
 							(select count(t.id)
@@ -46,9 +45,9 @@ class PrivateController < ApplicationController
 							order by cin.\"name\"
 							"
 						else
-							render :text => ""
+							""
 				end
-				
+		if 	sqlQuery != ""	
 				@tmp = ActiveRecord::Base.connection.execute(sqlQuery)
 	    
 	    
@@ -62,7 +61,10 @@ class PrivateController < ApplicationController
 				render :xml => @cf
 			end
 			
-		else
+			else
+				render :text => ""
+			end
+		else 
 			render :text => ""
 		end
 	end

@@ -1,0 +1,67 @@
+drop function if exists update_users_settings();
+CREATE FUNCTION update_users_settings() RETURNS void AS $$
+declare sums xml;
+	bestCats xml; x xml[];
+	bestCities xml; y xml[];
+	bestCinemas xml; z xml[];	
+BEGIN
+	FOR j IN 1.. count(*) from users LOOP
+		sums=xmlelement(name "suma", (select count(*) from tickets where user_id=j) );
+		x[1]=( xpath('/user/films/category[1]', (select about from users where id=j)))[1];
+		--for k in 1.. 3 loop
+			for i in 1.. cast( xmlserialize(content (xpath('/user/films/category[last()]/@id', (select about from users where id=j)))[1] as text) as numeric) loop
+				if cast ( xmlserialize(content ( xpath('/user/films/category[' || i ||']/text()', (select about from users where id=j)) )[1] as text) as numeric)
+				> 
+				cast ( xmlserialize(content (xpath('/', x[1]) )[1] as text) as numeric)
+				then x[1] = ( xpath('/user/films/category[' || i ||']', (select about from users where id=j)) )[1];
+				end if;
+			end loop;
+		--end loop;
+		y[1]=( xpath('/user/cities/city[1]', (select about from users where id=j)))[1];
+		--for k in 1.. 3 loop
+			for i in 1.. cast( xmlserialize(content (xpath('/user/cities/city[last()]/@id', (select about from users where id=j)))[1] as text) as numeric) loop
+				if cast ( xmlserialize(content ( xpath('/user/cities/city[' || i ||']/text()', (select about from users where id=j)) )[1] as text) as numeric)
+				> 
+				cast ( xmlserialize(content (xpath('/', y[1]) )[1] as text) as numeric)
+				then y[1] = ( xpath('/user/cities/city[' || i ||']', (select about from users where id=j)) )[1];
+				end if;
+			end loop;
+		--end loop;
+		z[1]=( xpath('/user/cinemas/cinema[1]', (select about from users where id=j)))[1];
+		--for k in 1.. 3 loop
+			for i in 1.. cast( xmlserialize(content (xpath('/user/cinemas/cinema[last()]/@id', (select about from users where id=j)))[1] as text) as numeric) loop
+				if cast ( xmlserialize(content ( xpath('/user/cinemas/cinema[' || i ||']/text()', (select about from users where id=j)) )[1] as text) as numeric)
+				> 
+				cast ( xmlserialize(content (xpath('/', z[1]) )[1] as text) as numeric)
+				then z[1] = ( xpath('/user/cinemas/cinema[' || i ||']', (select about from users where id=j)) )[1];
+				end if;
+			end loop;
+		--end loop;
+		bestCats=xmlelement(name "bestCategories", x[1] );
+		bestCities=xmlelement(name "bestCities", y[1] );
+		bestCinemas=xmlelement(name "bestCinemas", z[1] );
+
+		UPDATE users SET about = 
+		xmlelement(name "user", 
+				xmlconcat(s1.cinemas[1], s2.cities[1], s3.films[1]), 
+				xmlelement(name "settings", sums, bestCats, bestCities, bestCinemas)
+				) 
+		FROM 
+			(select 
+				xpath('/user/cinemas', (select about from users where id=j) 
+				)  as cinemas
+			) as s1,
+			
+			(select 
+				xpath('/user/cities', (select about from users where id=j)  
+				)as cities
+			) as s2,
+		(select 
+				xpath('/user/films', (select about from users where id=j)  
+				)as films
+			) as s3   
+		where id=j;
+	END LOOP;
+END;
+$$
+LANGUAGE plpgsql;

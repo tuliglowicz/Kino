@@ -36,6 +36,15 @@
 		<li><%= link_to("Rodzaje seansów", {:controller => "seance_types" }, :class=>"aMenu")%></li>
 	<% end %>
 	
+	<% if Auth.can_read_in_self_cinema?(worker_id, "statuses") -%>
+		<li><%= link_to("Statusy Pracowników", {:controller => "statuses" }, :class=>"aMenu")%></li>
+	<% end %>
+	<% if Auth.can_read_in_self_cinema?(worker_id, "tickets") -%>
+		<li><%= link_to("Bilety", {:controller => "tickets" }, :class=>"aMenu")%></li>
+	<% end %>
+	<% if Auth.can_read_in_self_cinema?(worker_id, "ticket_sort_prices") -%>
+		<li><%= link_to("Rodzaje cen biletów", {:controller => "ticket_sort_prices" }, :class=>"aMenu")%></li>
+	<% end %>
 	<% if Auth.can_read_in_self_cinema?(worker_id, "ticket_types") -%>
 		<li><%= link_to("Rodzaje biletów", {:controller => "ticket_types" }, :class=>"aMenu")%></li>
 	<% end %>

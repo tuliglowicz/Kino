@@ -1,0 +1,17 @@
+<ul class="aMenu">
+<% if session[:worker]-%>
+
+	<% worker_id = session[:worker].id %>
+	<% if Auth.can_read_in_self_cinema?(worker_id, "categories") -%>
+		<li><%= link_to("Kategorie Filmów", {:controller => "categories" }, :class=>"aMenu")%></li>
+	<% end %>
+	
+
+	
+	
+<% end %>
+</ul>
+<br/><br/>
+
+
+

@@ -35,13 +35,7 @@
 	<% if Auth.can_read_in_self_cinema?(worker_id, "seance_types") -%>
 		<li><%= link_to("Rodzaje seansów", {:controller => "seance_types" }, :class=>"aMenu")%></li>
 	<% end %>
-	<%# if Auth.can_read_in_self_cinema?(worker_id, "seats") -%>
-		<%#<li> link_to("Siedzenia", {:controller => "seats" })</li>%>
-	<%# end %>
-	<%#do weryfikacji %>
-	<% if Auth.can_read_in_self_cinema?(worker_id, "statuses") -%>
-		<li><%= link_to("Statusy Pracowników", {:controller => "statuses" }, :class=>"aMenu")%></li>
-	<% end %>
+	
 	<% if Auth.can_read_in_self_cinema?(worker_id, "tickets") -%>
 		<li><%= link_to("Bilety", {:controller => "tickets" }, :class=>"aMenu")%></li>
 	<% end %>

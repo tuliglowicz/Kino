@@ -6,7 +6,7 @@ CREATE TABLE "seances" (
 						room_id int not null,
 						date_from date,
 						time_from time without time zone,
-						-- date_untill i time_untill nie są potrzebne
+						--date_untill i time_untill nie są potrzebne
 						--date_untill date,
 						--time_untill time without time zone,
 						created_at timestamp without time zone,
@@ -14,4881 +14,4881 @@ CREATE TABLE "seances" (
 						);
 --kwiecien lalka social network
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-04','2011-04-04 10:00:00 UTC'); 
+VALUES (15,1,'2011-09-04','2011-09-04 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-05','2011-04-05 10:15:00 UTC'); 
+VALUES (15,1,'2011-09-05','2011-09-05 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-06','2011-04-06 10:00:00 UTC'); 
+VALUES (15,1,'2011-09-06','2011-09-06 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-07','2011-04-07 10:00:00 UTC'); 
+VALUES (15,1,'2011-09-07','2011-09-07 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-08','2011-04-08 10:15:00 UTC'); 
+VALUES (15,1,'2011-09-08','2011-09-08 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-09','2011-04-09 10:00:00 UTC'); 
+VALUES (15,1,'2011-09-09','2011-09-09 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-10','2011-04-10 10:00:00 UTC'); 
+VALUES (15,1,'2011-09-10','2011-09-10 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-11','2011-04-11 10:15:00 UTC'); 
+VALUES (15,1,'2011-09-11','2011-09-11 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-12','2011-04-12 10:00:00 UTC'); 
+VALUES (15,1,'2011-09-12','2011-09-12 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-13','2011-04-13 10:00:00 UTC'); 
+VALUES (15,1,'2011-09-13','2011-09-13 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-14','2011-04-14 10:00:00 UTC'); 
+VALUES (15,1,'2011-09-14','2011-09-14 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-15','2011-04-15 10:15:00 UTC'); 
+VALUES (15,1,'2011-09-15','2011-09-15 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-16','2011-04-16 10:00:00 UTC'); 
+VALUES (15,1,'2011-09-16','2011-09-16 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-17','2011-04-17 10:00:00 UTC'); 
+VALUES (15,1,'2011-09-17','2011-09-17 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-18','2011-04-18 10:15:00 UTC'); 
+VALUES (15,1,'2011-09-18','2011-09-18 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-19','2011-04-19 10:00:00 UTC'); 
+VALUES (15,1,'2011-09-19','2011-09-19 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-20','2011-04-20 10:00:00 UTC'); 
+VALUES (15,1,'2011-09-20','2011-09-20 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-21','2011-04-21 10:15:00 UTC'); 
+VALUES (15,1,'2011-09-21','2011-09-21 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-22','2011-04-22 10:00:00 UTC'); 
+VALUES (15,1,'2011-09-22','2011-09-22 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-23','2011-04-23 10:00:00 UTC'); 
+VALUES (15,1,'2011-09-23','2011-09-23 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-24','2011-04-24 10:00:00 UTC'); 
+VALUES (15,1,'2011-09-24','2011-09-24 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-25','2011-04-25 10:15:00 UTC'); 
+VALUES (15,1,'2011-09-25','2011-09-25 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-26','2011-04-26 10:00:00 UTC'); 
+VALUES (15,1,'2011-09-26','2011-09-26 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-27','2011-04-27 10:00:00 UTC'); 
+VALUES (15,1,'2011-09-27','2011-09-27 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-28','2011-04-28 10:15:00 UTC'); 
+VALUES (15,1,'2011-09-28','2011-09-28 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-29','2011-04-29 10:00:00 UTC'); 
+VALUES (15,1,'2011-09-29','2011-09-29 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-30','2011-04-30 10:00:00 UTC'); 
+VALUES (15,1,'2011-09-30','2011-09-30 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-04','2011-04-04 14:00:00 UTC'); 
+VALUES (15,1,'2011-09-04','2011-09-04 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-05','2011-04-05 14:15:00 UTC'); 
+VALUES (15,1,'2011-09-05','2011-09-05 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-06','2011-04-06 14:00:00 UTC'); 
+VALUES (15,1,'2011-09-06','2011-09-06 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-07','2011-04-07 14:00:00 UTC'); 
+VALUES (15,1,'2011-09-07','2011-09-07 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-08','2011-04-08 14:15:00 UTC'); 
+VALUES (15,1,'2011-09-08','2011-09-08 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-09','2011-04-09 14:00:00 UTC'); 
+VALUES (15,1,'2011-09-09','2011-09-09 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-10','2011-04-10 14:00:00 UTC'); 
+VALUES (15,1,'2011-09-10','2011-09-10 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-11','2011-04-11 14:15:00 UTC'); 
+VALUES (15,1,'2011-09-11','2011-09-11 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-12','2011-04-12 14:00:00 UTC'); 
+VALUES (15,1,'2011-09-12','2011-09-12 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-13','2011-04-13 14:00:00 UTC'); 
+VALUES (15,1,'2011-09-13','2011-09-13 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-14','2011-04-14 14:00:00 UTC'); 
+VALUES (15,1,'2011-09-14','2011-09-14 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-15','2011-04-15 14:15:00 UTC'); 
+VALUES (15,1,'2011-09-15','2011-09-15 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-16','2011-04-16 14:00:00 UTC'); 
+VALUES (15,1,'2011-09-16','2011-09-16 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-17','2011-04-17 14:00:00 UTC'); 
+VALUES (15,1,'2011-09-17','2011-09-17 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-18','2011-04-18 14:15:00 UTC'); 
+VALUES (15,1,'2011-09-18','2011-09-18 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-19','2011-04-19 14:00:00 UTC'); 
+VALUES (15,1,'2011-09-19','2011-09-19 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-20','2011-04-20 14:00:00 UTC'); 
+VALUES (15,1,'2011-09-20','2011-09-20 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-21','2011-04-21 14:15:00 UTC'); 
+VALUES (15,1,'2011-09-21','2011-09-21 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-22','2011-04-22 14:00:00 UTC'); 
+VALUES (15,1,'2011-09-22','2011-09-22 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-23','2011-04-23 14:00:00 UTC'); 
+VALUES (15,1,'2011-09-23','2011-09-23 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-24','2011-04-24 14:00:00 UTC'); 
+VALUES (15,1,'2011-09-24','2011-09-24 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-25','2011-04-25 14:15:00 UTC'); 
+VALUES (15,1,'2011-09-25','2011-09-25 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-26','2011-04-26 14:00:00 UTC'); 
+VALUES (15,1,'2011-09-26','2011-09-26 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-27','2011-04-27 14:00:00 UTC'); 
+VALUES (15,1,'2011-09-27','2011-09-27 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-28','2011-04-28 14:15:00 UTC'); 
+VALUES (15,1,'2011-09-28','2011-09-28 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-29','2011-04-29 14:00:00 UTC'); 
+VALUES (15,1,'2011-09-29','2011-09-29 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-30','2011-04-30 14:00:00 UTC'); 
+VALUES (15,1,'2011-09-30','2011-09-30 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-04','2011-04-04 17:00:00 UTC'); 
+VALUES (15,1,'2011-09-04','2011-09-04 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-05','2011-04-05 17:15:00 UTC'); 
+VALUES (15,1,'2011-09-05','2011-09-05 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-06','2011-04-06 17:00:00 UTC'); 
+VALUES (15,1,'2011-09-06','2011-09-06 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-07','2011-04-07 17:00:00 UTC'); 
+VALUES (15,1,'2011-09-07','2011-09-07 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-08','2011-04-08 17:15:00 UTC'); 
+VALUES (15,1,'2011-09-08','2011-09-08 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-09','2011-04-09 17:00:00 UTC'); 
+VALUES (15,1,'2011-09-09','2011-09-09 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-10','2011-04-10 17:00:00 UTC'); 
+VALUES (15,1,'2011-09-10','2011-09-10 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-11','2011-04-11 17:15:00 UTC'); 
+VALUES (15,1,'2011-09-11','2011-09-11 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-12','2011-04-12 17:00:00 UTC'); 
+VALUES (15,1,'2011-09-12','2011-09-12 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-13','2011-04-13 17:00:00 UTC'); 
+VALUES (15,1,'2011-09-13','2011-09-13 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-14','2011-04-14 17:00:00 UTC'); 
+VALUES (15,1,'2011-09-14','2011-09-14 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-15','2011-04-15 17:15:00 UTC'); 
+VALUES (15,1,'2011-09-15','2011-09-15 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-16','2011-04-16 17:00:00 UTC'); 
+VALUES (15,1,'2011-09-16','2011-09-16 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-17','2011-04-17 17:00:00 UTC'); 
+VALUES (15,1,'2011-09-17','2011-09-17 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-18','2011-04-18 17:15:00 UTC'); 
+VALUES (15,1,'2011-09-18','2011-09-18 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-19','2011-04-19 17:00:00 UTC'); 
+VALUES (15,1,'2011-09-19','2011-09-19 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-20','2011-04-20 17:00:00 UTC'); 
+VALUES (15,1,'2011-09-20','2011-09-20 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-21','2011-04-21 17:15:00 UTC'); 
+VALUES (15,1,'2011-09-21','2011-09-21 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-22','2011-04-22 17:00:00 UTC'); 
+VALUES (15,1,'2011-09-22','2011-09-22 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-23','2011-04-23 17:00:00 UTC'); 
+VALUES (15,1,'2011-09-23','2011-09-23 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-24','2011-04-24 17:00:00 UTC'); 
+VALUES (15,1,'2011-09-24','2011-09-24 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-25','2011-04-25 17:15:00 UTC'); 
+VALUES (15,1,'2011-09-25','2011-09-25 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-26','2011-04-26 17:00:00 UTC'); 
+VALUES (15,1,'2011-09-26','2011-09-26 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-27','2011-04-27 17:00:00 UTC'); 
+VALUES (15,1,'2011-09-27','2011-09-27 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-28','2011-04-28 17:15:00 UTC'); 
+VALUES (15,1,'2011-09-28','2011-09-28 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-29','2011-04-29 17:00:00 UTC'); 
+VALUES (15,1,'2011-09-29','2011-09-29 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-30','2011-04-30 17:00:00 UTC'); 
+VALUES (15,1,'2011-09-30','2011-09-30 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-04','2011-04-04 20:00:00 UTC'); 
+VALUES (15,1,'2011-09-04','2011-09-04 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-05','2011-04-05 20:15:00 UTC'); 
+VALUES (15,1,'2011-09-05','2011-09-05 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-06','2011-04-06 20:00:00 UTC'); 
+VALUES (15,1,'2011-09-06','2011-09-06 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-07','2011-04-07 20:00:00 UTC'); 
+VALUES (15,1,'2011-09-07','2011-09-07 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-08','2011-04-08 20:15:00 UTC'); 
+VALUES (15,1,'2011-09-08','2011-09-08 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-09','2011-04-09 20:00:00 UTC'); 
+VALUES (15,1,'2011-09-09','2011-09-09 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-10','2011-04-10 20:00:00 UTC'); 
+VALUES (15,1,'2011-09-10','2011-09-10 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-11','2011-04-11 20:15:00 UTC'); 
+VALUES (15,1,'2011-09-11','2011-09-11 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-12','2011-04-12 20:00:00 UTC'); 
+VALUES (15,1,'2011-09-12','2011-09-12 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-13','2011-04-13 20:00:00 UTC'); 
+VALUES (15,1,'2011-09-13','2011-09-13 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-14','2011-04-14 20:00:00 UTC'); 
+VALUES (15,1,'2011-09-14','2011-09-14 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-15','2011-04-15 20:15:00 UTC'); 
+VALUES (15,1,'2011-09-15','2011-09-15 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-16','2011-04-16 20:00:00 UTC'); 
+VALUES (15,1,'2011-09-16','2011-09-16 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-17','2011-04-17 20:00:00 UTC'); 
+VALUES (15,1,'2011-09-17','2011-09-17 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-18','2011-04-18 20:15:00 UTC'); 
+VALUES (15,1,'2011-09-18','2011-09-18 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-19','2011-04-19 20:00:00 UTC'); 
+VALUES (15,1,'2011-09-19','2011-09-19 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-20','2011-04-20 20:00:00 UTC'); 
+VALUES (15,1,'2011-09-20','2011-09-20 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-21','2011-04-21 20:15:00 UTC'); 
+VALUES (15,1,'2011-09-21','2011-09-21 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-22','2011-04-22 20:00:00 UTC'); 
+VALUES (15,1,'2011-09-22','2011-09-22 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-23','2011-04-23 20:00:00 UTC'); 
+VALUES (15,1,'2011-09-23','2011-09-23 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-24','2011-04-24 20:00:00 UTC'); 
+VALUES (15,1,'2011-09-24','2011-09-24 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-25','2011-04-25 20:15:00 UTC'); 
+VALUES (15,1,'2011-09-25','2011-09-25 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-26','2011-04-26 20:00:00 UTC'); 
+VALUES (15,1,'2011-09-26','2011-09-26 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-27','2011-04-27 20:00:00 UTC'); 
+VALUES (15,1,'2011-09-27','2011-09-27 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-28','2011-04-28 20:15:00 UTC'); 
+VALUES (15,1,'2011-09-28','2011-09-28 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-29','2011-04-29 20:00:00 UTC'); 
+VALUES (15,1,'2011-09-29','2011-09-29 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (15,1,'2011-04-30','2011-04-30 20:00:00 UTC'); 
+VALUES (15,1,'2011-09-30','2011-09-30 20:00:00 UTC'); 
 
 --kino 5d hary poter
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-04','2011-05-04 10:00:00 UTC'); 
+VALUES (7,7,'2011-10-04','2011-10-04 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-05','2011-05-05 10:15:00 UTC'); 
+VALUES (7,7,'2011-10-05','2011-10-05 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-06','2011-05-06 10:00:00 UTC'); 
+VALUES (7,7,'2011-10-06','2011-10-06 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-07','2011-05-07 10:00:00 UTC'); 
+VALUES (7,7,'2011-10-07','2011-10-07 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-08','2011-05-08 10:15:00 UTC'); 
+VALUES (7,7,'2011-10-08','2011-10-08 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-09','2011-05-09 10:00:00 UTC'); 
+VALUES (7,7,'2011-10-09','2011-10-09 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-10','2011-05-10 10:00:00 UTC'); 
+VALUES (7,7,'2011-10-10','2011-10-10 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-11','2011-05-11 10:15:00 UTC'); 
+VALUES (7,7,'2011-10-11','2011-10-11 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-12','2011-05-12 10:00:00 UTC'); 
+VALUES (7,7,'2011-10-12','2011-10-12 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-13','2011-05-13 10:00:00 UTC'); 
+VALUES (7,7,'2011-10-13','2011-10-13 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-14','2011-05-14 10:00:00 UTC'); 
+VALUES (7,7,'2011-10-14','2011-10-14 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-15','2011-05-15 10:15:00 UTC'); 
+VALUES (7,7,'2011-10-15','2011-10-15 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-16','2011-05-16 10:00:00 UTC'); 
+VALUES (7,7,'2011-10-16','2011-10-16 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-17','2011-05-17 10:00:00 UTC'); 
+VALUES (7,7,'2011-10-17','2011-10-17 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-18','2011-05-18 10:15:00 UTC'); 
+VALUES (7,7,'2011-10-18','2011-10-18 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-19','2011-05-19 10:00:00 UTC'); 
+VALUES (7,7,'2011-10-19','2011-10-19 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-20','2011-05-20 10:00:00 UTC'); 
+VALUES (7,7,'2011-10-20','2011-10-20 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-21','2011-05-21 10:15:00 UTC'); 
+VALUES (7,7,'2011-10-21','2011-10-21 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-22','2011-05-22 10:00:00 UTC'); 
+VALUES (7,7,'2011-10-22','2011-10-22 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-23','2011-05-23 10:00:00 UTC'); 
+VALUES (7,7,'2011-10-23','2011-10-23 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-24','2011-05-24 10:00:00 UTC'); 
+VALUES (7,7,'2011-10-24','2011-10-24 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-25','2011-05-25 10:15:00 UTC'); 
+VALUES (7,7,'2011-10-25','2011-10-25 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-26','2011-05-26 10:00:00 UTC'); 
+VALUES (7,7,'2011-10-26','2011-10-26 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-27','2011-05-27 10:00:00 UTC'); 
+VALUES (7,7,'2011-10-27','2011-10-27 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-28','2011-05-28 10:15:00 UTC'); 
+VALUES (7,7,'2011-10-28','2011-10-28 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-29','2011-05-29 10:00:00 UTC'); 
+VALUES (7,7,'2011-10-29','2011-10-29 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-30','2011-05-30 10:00:00 UTC'); 
+VALUES (7,7,'2011-10-30','2011-10-30 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-04','2011-05-04 14:00:00 UTC'); 
+VALUES (7,7,'2011-10-04','2011-10-04 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-05','2011-05-05 14:15:00 UTC'); 
+VALUES (7,7,'2011-10-05','2011-10-05 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-06','2011-05-06 14:00:00 UTC'); 
+VALUES (7,7,'2011-10-06','2011-10-06 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-07','2011-05-07 14:00:00 UTC'); 
+VALUES (7,7,'2011-10-07','2011-10-07 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-08','2011-05-08 14:15:00 UTC'); 
+VALUES (7,7,'2011-10-08','2011-10-08 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-09','2011-05-09 14:00:00 UTC'); 
+VALUES (7,7,'2011-10-09','2011-10-09 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-10','2011-05-10 14:00:00 UTC'); 
+VALUES (7,7,'2011-10-10','2011-10-10 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-11','2011-05-11 14:15:00 UTC'); 
+VALUES (7,7,'2011-10-11','2011-10-11 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-12','2011-05-12 14:00:00 UTC'); 
+VALUES (7,7,'2011-10-12','2011-10-12 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-13','2011-05-13 14:00:00 UTC'); 
+VALUES (7,7,'2011-10-13','2011-10-13 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-14','2011-05-14 14:00:00 UTC'); 
+VALUES (7,7,'2011-10-14','2011-10-14 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-15','2011-05-15 14:15:00 UTC'); 
+VALUES (7,7,'2011-10-15','2011-10-15 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-16','2011-05-16 14:00:00 UTC'); 
+VALUES (7,7,'2011-10-16','2011-10-16 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-17','2011-05-17 14:00:00 UTC'); 
+VALUES (7,7,'2011-10-17','2011-10-17 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-18','2011-05-18 14:15:00 UTC'); 
+VALUES (7,7,'2011-10-18','2011-10-18 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-19','2011-05-19 14:00:00 UTC'); 
+VALUES (7,7,'2011-10-19','2011-10-19 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-20','2011-05-20 14:00:00 UTC'); 
+VALUES (7,7,'2011-10-20','2011-10-20 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-21','2011-05-21 14:15:00 UTC'); 
+VALUES (7,7,'2011-10-21','2011-10-21 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-22','2011-05-22 14:00:00 UTC'); 
+VALUES (7,7,'2011-10-22','2011-10-22 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-23','2011-05-23 14:00:00 UTC'); 
+VALUES (7,7,'2011-10-23','2011-10-23 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-24','2011-05-24 14:00:00 UTC'); 
+VALUES (7,7,'2011-10-24','2011-10-24 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-25','2011-05-25 14:15:00 UTC'); 
+VALUES (7,7,'2011-10-25','2011-10-25 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-26','2011-05-26 14:00:00 UTC'); 
+VALUES (7,7,'2011-10-26','2011-10-26 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-27','2011-05-27 14:00:00 UTC'); 
+VALUES (7,7,'2011-10-27','2011-10-27 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-28','2011-05-28 14:15:00 UTC'); 
+VALUES (7,7,'2011-10-28','2011-10-28 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-29','2011-05-29 14:00:00 UTC'); 
+VALUES (7,7,'2011-10-29','2011-10-29 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-30','2011-05-30 14:00:00 UTC'); 
+VALUES (7,7,'2011-10-30','2011-10-30 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-04','2011-05-04 17:00:00 UTC'); 
+VALUES (7,7,'2011-10-04','2011-10-04 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-05','2011-05-05 17:15:00 UTC'); 
+VALUES (7,7,'2011-10-05','2011-10-05 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-06','2011-05-06 17:00:00 UTC'); 
+VALUES (7,7,'2011-10-06','2011-10-06 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-07','2011-05-07 17:00:00 UTC'); 
+VALUES (7,7,'2011-10-07','2011-10-07 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-08','2011-05-08 17:15:00 UTC'); 
+VALUES (7,7,'2011-10-08','2011-10-08 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-09','2011-05-09 17:00:00 UTC'); 
+VALUES (7,7,'2011-10-09','2011-10-09 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-10','2011-05-10 17:00:00 UTC'); 
+VALUES (7,7,'2011-10-10','2011-10-10 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-11','2011-05-11 17:15:00 UTC'); 
+VALUES (7,7,'2011-10-11','2011-10-11 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-12','2011-05-12 17:00:00 UTC'); 
+VALUES (7,7,'2011-10-12','2011-10-12 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-13','2011-05-13 17:00:00 UTC'); 
+VALUES (7,7,'2011-10-13','2011-10-13 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-14','2011-05-14 17:00:00 UTC'); 
+VALUES (7,7,'2011-10-14','2011-10-14 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-15','2011-05-15 17:15:00 UTC'); 
+VALUES (7,7,'2011-10-15','2011-10-15 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-16','2011-05-16 17:00:00 UTC'); 
+VALUES (7,7,'2011-10-16','2011-10-16 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-17','2011-05-17 17:00:00 UTC'); 
+VALUES (7,7,'2011-10-17','2011-10-17 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-18','2011-05-18 17:15:00 UTC'); 
+VALUES (7,7,'2011-10-18','2011-10-18 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-19','2011-05-19 17:00:00 UTC'); 
+VALUES (7,7,'2011-10-19','2011-10-19 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-20','2011-05-20 17:00:00 UTC'); 
+VALUES (7,7,'2011-10-20','2011-10-20 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-21','2011-05-21 17:15:00 UTC'); 
+VALUES (7,7,'2011-10-21','2011-10-21 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-22','2011-05-22 17:00:00 UTC'); 
+VALUES (7,7,'2011-10-22','2011-10-22 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-23','2011-05-23 17:00:00 UTC'); 
+VALUES (7,7,'2011-10-23','2011-10-23 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-24','2011-05-24 17:00:00 UTC'); 
+VALUES (7,7,'2011-10-24','2011-10-24 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-25','2011-05-25 17:15:00 UTC'); 
+VALUES (7,7,'2011-10-25','2011-10-25 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-26','2011-05-26 17:00:00 UTC'); 
+VALUES (7,7,'2011-10-26','2011-10-26 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-27','2011-05-27 17:00:00 UTC'); 
+VALUES (7,7,'2011-10-27','2011-10-27 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-28','2011-05-28 17:15:00 UTC'); 
+VALUES (7,7,'2011-10-28','2011-10-28 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-29','2011-05-29 17:00:00 UTC'); 
+VALUES (7,7,'2011-10-29','2011-10-29 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-30','2011-05-30 17:00:00 UTC'); 
+VALUES (7,7,'2011-10-30','2011-10-30 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-04','2011-05-04 20:00:00 UTC'); 
+VALUES (7,7,'2011-10-04','2011-10-04 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-05','2011-05-05 20:15:00 UTC'); 
+VALUES (7,7,'2011-10-05','2011-10-05 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-06','2011-05-06 20:00:00 UTC'); 
+VALUES (7,7,'2011-10-06','2011-10-06 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-07','2011-05-07 20:00:00 UTC'); 
+VALUES (7,7,'2011-10-07','2011-10-07 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-08','2011-05-08 20:15:00 UTC'); 
+VALUES (7,7,'2011-10-08','2011-10-08 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-09','2011-05-09 20:00:00 UTC'); 
+VALUES (7,7,'2011-10-09','2011-10-09 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-10','2011-05-10 20:00:00 UTC'); 
+VALUES (7,7,'2011-10-10','2011-10-10 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-11','2011-05-11 20:15:00 UTC'); 
+VALUES (7,7,'2011-10-11','2011-10-11 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-12','2011-05-12 20:00:00 UTC'); 
+VALUES (7,7,'2011-10-12','2011-10-12 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-13','2011-05-13 20:00:00 UTC'); 
+VALUES (7,7,'2011-10-13','2011-10-13 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-14','2011-05-14 20:00:00 UTC'); 
+VALUES (7,7,'2011-10-14','2011-10-14 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-15','2011-05-15 20:15:00 UTC'); 
+VALUES (7,7,'2011-10-15','2011-10-15 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-16','2011-05-16 20:00:00 UTC'); 
+VALUES (7,7,'2011-10-16','2011-10-16 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-17','2011-05-17 20:00:00 UTC'); 
+VALUES (7,7,'2011-10-17','2011-10-17 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-18','2011-05-18 20:15:00 UTC'); 
+VALUES (7,7,'2011-10-18','2011-10-18 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-19','2011-05-19 20:00:00 UTC'); 
+VALUES (7,7,'2011-10-19','2011-10-19 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-20','2011-05-20 20:00:00 UTC'); 
+VALUES (7,7,'2011-10-20','2011-10-20 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-21','2011-05-21 20:15:00 UTC'); 
+VALUES (7,7,'2011-10-21','2011-10-21 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-22','2011-05-22 20:00:00 UTC'); 
+VALUES (7,7,'2011-10-22','2011-10-22 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-23','2011-05-23 20:00:00 UTC'); 
+VALUES (7,7,'2011-10-23','2011-10-23 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-24','2011-05-24 20:00:00 UTC'); 
+VALUES (7,7,'2011-10-24','2011-10-24 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-25','2011-05-25 20:15:00 UTC'); 
+VALUES (7,7,'2011-10-25','2011-10-25 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-26','2011-05-26 20:00:00 UTC'); 
+VALUES (7,7,'2011-10-26','2011-10-26 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-27','2011-05-27 20:00:00 UTC'); 
+VALUES (7,7,'2011-10-27','2011-10-27 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-28','2011-05-28 20:15:00 UTC'); 
+VALUES (7,7,'2011-10-28','2011-10-28 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-29','2011-05-29 20:00:00 UTC'); 
+VALUES (7,7,'2011-10-29','2011-10-29 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (7,7,'2011-05-30','2011-05-30 20:00:00 UTC'); 
+VALUES (7,7,'2011-10-30','2011-10-30 20:00:00 UTC'); 
 
 
 --kino 5d avatar
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-04','2011-05-04 10:00:00 UTC'); 
+VALUES (8,8,'2011-10-04','2011-10-04 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-05','2011-05-05 10:15:00 UTC'); 
+VALUES (8,8,'2011-10-05','2011-10-05 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-06','2011-05-06 10:00:00 UTC'); 
+VALUES (8,8,'2011-10-06','2011-10-06 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-07','2011-05-07 10:00:00 UTC'); 
+VALUES (8,8,'2011-10-07','2011-10-07 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-08','2011-05-08 10:15:00 UTC'); 
+VALUES (8,8,'2011-10-08','2011-10-08 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-09','2011-05-09 10:00:00 UTC'); 
+VALUES (8,8,'2011-10-09','2011-10-09 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-10','2011-05-10 10:00:00 UTC'); 
+VALUES (8,8,'2011-10-10','2011-10-10 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-11','2011-05-11 10:15:00 UTC'); 
+VALUES (8,8,'2011-10-11','2011-10-11 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-12','2011-05-12 10:00:00 UTC'); 
+VALUES (8,8,'2011-10-12','2011-10-12 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-13','2011-05-13 10:00:00 UTC'); 
+VALUES (8,8,'2011-10-13','2011-10-13 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-14','2011-05-14 10:00:00 UTC'); 
+VALUES (8,8,'2011-10-14','2011-10-14 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-15','2011-05-15 10:15:00 UTC'); 
+VALUES (8,8,'2011-10-15','2011-10-15 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-16','2011-05-16 10:00:00 UTC'); 
+VALUES (8,8,'2011-10-16','2011-10-16 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-17','2011-05-17 10:00:00 UTC'); 
+VALUES (8,8,'2011-10-17','2011-10-17 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-18','2011-05-18 10:15:00 UTC'); 
+VALUES (8,8,'2011-10-18','2011-10-18 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-19','2011-05-19 10:00:00 UTC'); 
+VALUES (8,8,'2011-10-19','2011-10-19 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-20','2011-05-20 10:00:00 UTC'); 
+VALUES (8,8,'2011-10-20','2011-10-20 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-21','2011-05-21 10:15:00 UTC'); 
+VALUES (8,8,'2011-10-21','2011-10-21 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-22','2011-05-22 10:00:00 UTC'); 
+VALUES (8,8,'2011-10-22','2011-10-22 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-23','2011-05-23 10:00:00 UTC'); 
+VALUES (8,8,'2011-10-23','2011-10-23 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-24','2011-05-24 10:00:00 UTC'); 
+VALUES (8,8,'2011-10-24','2011-10-24 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-25','2011-05-25 10:15:00 UTC'); 
+VALUES (8,8,'2011-10-25','2011-10-25 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-26','2011-05-26 10:00:00 UTC'); 
+VALUES (8,8,'2011-10-26','2011-10-26 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-27','2011-05-27 10:00:00 UTC'); 
+VALUES (8,8,'2011-10-27','2011-10-27 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-28','2011-05-28 10:15:00 UTC'); 
+VALUES (8,8,'2011-10-28','2011-10-28 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-29','2011-05-29 10:00:00 UTC'); 
+VALUES (8,8,'2011-10-29','2011-10-29 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-30','2011-05-30 10:00:00 UTC'); 
+VALUES (8,8,'2011-10-30','2011-10-30 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-04','2011-05-04 14:00:00 UTC'); 
+VALUES (8,8,'2011-10-04','2011-10-04 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-05','2011-05-05 14:15:00 UTC'); 
+VALUES (8,8,'2011-10-05','2011-10-05 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-06','2011-05-06 14:00:00 UTC'); 
+VALUES (8,8,'2011-10-06','2011-10-06 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-07','2011-05-07 14:00:00 UTC'); 
+VALUES (8,8,'2011-10-07','2011-10-07 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-08','2011-05-08 14:15:00 UTC'); 
+VALUES (8,8,'2011-10-08','2011-10-08 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-09','2011-05-09 14:00:00 UTC'); 
+VALUES (8,8,'2011-10-09','2011-10-09 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-10','2011-05-10 14:00:00 UTC'); 
+VALUES (8,8,'2011-10-10','2011-10-10 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-11','2011-05-11 14:15:00 UTC'); 
+VALUES (8,8,'2011-10-11','2011-10-11 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-12','2011-05-12 14:00:00 UTC'); 
+VALUES (8,8,'2011-10-12','2011-10-12 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-13','2011-05-13 14:00:00 UTC'); 
+VALUES (8,8,'2011-10-13','2011-10-13 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-14','2011-05-14 14:00:00 UTC'); 
+VALUES (8,8,'2011-10-14','2011-10-14 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-15','2011-05-15 14:15:00 UTC'); 
+VALUES (8,8,'2011-10-15','2011-10-15 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-16','2011-05-16 14:00:00 UTC'); 
+VALUES (8,8,'2011-10-16','2011-10-16 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-17','2011-05-17 14:00:00 UTC'); 
+VALUES (8,8,'2011-10-17','2011-10-17 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-18','2011-05-18 14:15:00 UTC'); 
+VALUES (8,8,'2011-10-18','2011-10-18 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-19','2011-05-19 14:00:00 UTC'); 
+VALUES (8,8,'2011-10-19','2011-10-19 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-20','2011-05-20 14:00:00 UTC'); 
+VALUES (8,8,'2011-10-20','2011-10-20 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-21','2011-05-21 14:15:00 UTC'); 
+VALUES (8,8,'2011-10-21','2011-10-21 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-22','2011-05-22 14:00:00 UTC'); 
+VALUES (8,8,'2011-10-22','2011-10-22 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-23','2011-05-23 14:00:00 UTC'); 
+VALUES (8,8,'2011-10-23','2011-10-23 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-24','2011-05-24 14:00:00 UTC'); 
+VALUES (8,8,'2011-10-24','2011-10-24 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-25','2011-05-25 14:15:00 UTC'); 
+VALUES (8,8,'2011-10-25','2011-10-25 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-26','2011-05-26 14:00:00 UTC'); 
+VALUES (8,8,'2011-10-26','2011-10-26 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-27','2011-05-27 14:00:00 UTC'); 
+VALUES (8,8,'2011-10-27','2011-10-27 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-28','2011-05-28 14:15:00 UTC'); 
+VALUES (8,8,'2011-10-28','2011-10-28 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-29','2011-05-29 14:00:00 UTC'); 
+VALUES (8,8,'2011-10-29','2011-10-29 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-30','2011-05-30 14:00:00 UTC'); 
+VALUES (8,8,'2011-10-30','2011-10-30 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-04','2011-05-04 17:00:00 UTC'); 
+VALUES (8,8,'2011-10-04','2011-10-04 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-05','2011-05-05 17:15:00 UTC'); 
+VALUES (8,8,'2011-10-05','2011-10-05 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-06','2011-05-06 17:00:00 UTC'); 
+VALUES (8,8,'2011-10-06','2011-10-06 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-07','2011-05-07 17:00:00 UTC'); 
+VALUES (8,8,'2011-10-07','2011-10-07 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-08','2011-05-08 17:15:00 UTC'); 
+VALUES (8,8,'2011-10-08','2011-10-08 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-09','2011-05-09 17:00:00 UTC'); 
+VALUES (8,8,'2011-10-09','2011-10-09 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-10','2011-05-10 17:00:00 UTC'); 
+VALUES (8,8,'2011-10-10','2011-10-10 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-11','2011-05-11 17:15:00 UTC'); 
+VALUES (8,8,'2011-10-11','2011-10-11 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-12','2011-05-12 17:00:00 UTC'); 
+VALUES (8,8,'2011-10-12','2011-10-12 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-13','2011-05-13 17:00:00 UTC'); 
+VALUES (8,8,'2011-10-13','2011-10-13 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-14','2011-05-14 17:00:00 UTC'); 
+VALUES (8,8,'2011-10-14','2011-10-14 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-15','2011-05-15 17:15:00 UTC'); 
+VALUES (8,8,'2011-10-15','2011-10-15 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-16','2011-05-16 17:00:00 UTC'); 
+VALUES (8,8,'2011-10-16','2011-10-16 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-17','2011-05-17 17:00:00 UTC'); 
+VALUES (8,8,'2011-10-17','2011-10-17 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-18','2011-05-18 17:15:00 UTC'); 
+VALUES (8,8,'2011-10-18','2011-10-18 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-19','2011-05-19 17:00:00 UTC'); 
+VALUES (8,8,'2011-10-19','2011-10-19 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-20','2011-05-20 17:00:00 UTC'); 
+VALUES (8,8,'2011-10-20','2011-10-20 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-21','2011-05-21 17:15:00 UTC'); 
+VALUES (8,8,'2011-10-21','2011-10-21 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-22','2011-05-22 17:00:00 UTC'); 
+VALUES (8,8,'2011-10-22','2011-10-22 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-23','2011-05-23 17:00:00 UTC'); 
+VALUES (8,8,'2011-10-23','2011-10-23 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-24','2011-05-24 17:00:00 UTC'); 
+VALUES (8,8,'2011-10-24','2011-10-24 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-25','2011-05-25 17:15:00 UTC'); 
+VALUES (8,8,'2011-10-25','2011-10-25 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-26','2011-05-26 17:00:00 UTC'); 
+VALUES (8,8,'2011-10-26','2011-10-26 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-27','2011-05-27 17:00:00 UTC'); 
+VALUES (8,8,'2011-10-27','2011-10-27 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-28','2011-05-28 17:15:00 UTC'); 
+VALUES (8,8,'2011-10-28','2011-10-28 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-29','2011-05-29 17:00:00 UTC'); 
+VALUES (8,8,'2011-10-29','2011-10-29 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-30','2011-05-30 17:00:00 UTC'); 
+VALUES (8,8,'2011-10-30','2011-10-30 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-04','2011-05-04 20:00:00 UTC'); 
+VALUES (8,8,'2011-10-04','2011-10-04 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-05','2011-05-05 20:15:00 UTC'); 
+VALUES (8,8,'2011-10-05','2011-10-05 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-06','2011-05-06 20:00:00 UTC'); 
+VALUES (8,8,'2011-10-06','2011-10-06 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-07','2011-05-07 20:00:00 UTC'); 
+VALUES (8,8,'2011-10-07','2011-10-07 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-08','2011-05-08 20:15:00 UTC'); 
+VALUES (8,8,'2011-10-08','2011-10-08 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-09','2011-05-09 20:00:00 UTC'); 
+VALUES (8,8,'2011-10-09','2011-10-09 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-10','2011-05-10 20:00:00 UTC'); 
+VALUES (8,8,'2011-10-10','2011-10-10 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-11','2011-05-11 20:15:00 UTC'); 
+VALUES (8,8,'2011-10-11','2011-10-11 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-12','2011-05-12 20:00:00 UTC'); 
+VALUES (8,8,'2011-10-12','2011-10-12 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-13','2011-05-13 20:00:00 UTC'); 
+VALUES (8,8,'2011-10-13','2011-10-13 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-14','2011-05-14 20:00:00 UTC'); 
+VALUES (8,8,'2011-10-14','2011-10-14 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-15','2011-05-15 20:15:00 UTC'); 
+VALUES (8,8,'2011-10-15','2011-10-15 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-16','2011-05-16 20:00:00 UTC'); 
+VALUES (8,8,'2011-10-16','2011-10-16 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-17','2011-05-17 20:00:00 UTC'); 
+VALUES (8,8,'2011-10-17','2011-10-17 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-18','2011-05-18 20:15:00 UTC'); 
+VALUES (8,8,'2011-10-18','2011-10-18 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-19','2011-05-19 20:00:00 UTC'); 
+VALUES (8,8,'2011-10-19','2011-10-19 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-20','2011-05-20 20:00:00 UTC'); 
+VALUES (8,8,'2011-10-20','2011-10-20 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-21','2011-05-21 20:15:00 UTC'); 
+VALUES (8,8,'2011-10-21','2011-10-21 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-22','2011-05-22 20:00:00 UTC'); 
+VALUES (8,8,'2011-10-22','2011-10-22 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-23','2011-05-23 20:00:00 UTC'); 
+VALUES (8,8,'2011-10-23','2011-10-23 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-24','2011-05-24 20:00:00 UTC'); 
+VALUES (8,8,'2011-10-24','2011-10-24 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-25','2011-05-25 20:15:00 UTC'); 
+VALUES (8,8,'2011-10-25','2011-10-25 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-26','2011-05-26 20:00:00 UTC'); 
+VALUES (8,8,'2011-10-26','2011-10-26 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-27','2011-05-27 20:00:00 UTC'); 
+VALUES (8,8,'2011-10-27','2011-10-27 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-28','2011-05-28 20:15:00 UTC'); 
+VALUES (8,8,'2011-10-28','2011-10-28 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-29','2011-05-29 20:00:00 UTC'); 
+VALUES (8,8,'2011-10-29','2011-10-29 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (8,8,'2011-05-30','2011-05-30 20:00:00 UTC'); 
+VALUES (8,8,'2011-10-30','2011-10-30 20:00:00 UTC'); 
 
 
 --helios erratum
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-04','2011-05-04 10:00:00 UTC'); 
+VALUES (9,9,'2011-10-04','2011-10-04 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-05','2011-05-05 10:15:00 UTC'); 
+VALUES (9,9,'2011-10-05','2011-10-05 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-06','2011-05-06 10:00:00 UTC'); 
+VALUES (9,9,'2011-10-06','2011-10-06 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-07','2011-05-07 10:00:00 UTC'); 
+VALUES (9,9,'2011-10-07','2011-10-07 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-08','2011-05-08 10:15:00 UTC'); 
+VALUES (9,9,'2011-10-08','2011-10-08 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-09','2011-05-09 10:00:00 UTC'); 
+VALUES (9,9,'2011-10-09','2011-10-09 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-10','2011-05-10 10:00:00 UTC'); 
+VALUES (9,9,'2011-10-10','2011-10-10 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-11','2011-05-11 10:15:00 UTC'); 
+VALUES (9,9,'2011-10-11','2011-10-11 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-12','2011-05-12 10:00:00 UTC'); 
+VALUES (9,9,'2011-10-12','2011-10-12 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-13','2011-05-13 10:00:00 UTC'); 
+VALUES (9,9,'2011-10-13','2011-10-13 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-14','2011-05-14 10:00:00 UTC'); 
+VALUES (9,9,'2011-10-14','2011-10-14 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-15','2011-05-15 10:15:00 UTC'); 
+VALUES (9,9,'2011-10-15','2011-10-15 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-16','2011-05-16 10:00:00 UTC'); 
+VALUES (9,9,'2011-10-16','2011-10-16 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-17','2011-05-17 10:00:00 UTC'); 
+VALUES (9,9,'2011-10-17','2011-10-17 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-18','2011-05-18 10:15:00 UTC'); 
+VALUES (9,9,'2011-10-18','2011-10-18 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-19','2011-05-19 10:00:00 UTC'); 
+VALUES (9,9,'2011-10-19','2011-10-19 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-20','2011-05-20 10:00:00 UTC'); 
+VALUES (9,9,'2011-10-20','2011-10-20 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-21','2011-05-21 10:15:00 UTC'); 
+VALUES (9,9,'2011-10-21','2011-10-21 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-22','2011-05-22 10:00:00 UTC'); 
+VALUES (9,9,'2011-10-22','2011-10-22 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-23','2011-05-23 10:00:00 UTC'); 
+VALUES (9,9,'2011-10-23','2011-10-23 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-24','2011-05-24 10:00:00 UTC'); 
+VALUES (9,9,'2011-10-24','2011-10-24 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-25','2011-05-25 10:15:00 UTC'); 
+VALUES (9,9,'2011-10-25','2011-10-25 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-26','2011-05-26 10:00:00 UTC'); 
+VALUES (9,9,'2011-10-26','2011-10-26 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-27','2011-05-27 10:00:00 UTC'); 
+VALUES (9,9,'2011-10-27','2011-10-27 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-28','2011-05-28 10:15:00 UTC'); 
+VALUES (9,9,'2011-10-28','2011-10-28 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-29','2011-05-29 10:00:00 UTC'); 
+VALUES (9,9,'2011-10-29','2011-10-29 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-30','2011-05-30 10:00:00 UTC'); 
+VALUES (9,9,'2011-10-30','2011-10-30 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-04','2011-05-04 14:00:00 UTC'); 
+VALUES (9,9,'2011-10-04','2011-10-04 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-05','2011-05-05 14:15:00 UTC'); 
+VALUES (9,9,'2011-10-05','2011-10-05 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-06','2011-05-06 14:00:00 UTC'); 
+VALUES (9,9,'2011-10-06','2011-10-06 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-07','2011-05-07 14:00:00 UTC'); 
+VALUES (9,9,'2011-10-07','2011-10-07 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-08','2011-05-08 14:15:00 UTC'); 
+VALUES (9,9,'2011-10-08','2011-10-08 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-09','2011-05-09 14:00:00 UTC'); 
+VALUES (9,9,'2011-10-09','2011-10-09 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-10','2011-05-10 14:00:00 UTC'); 
+VALUES (9,9,'2011-10-10','2011-10-10 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-11','2011-05-11 14:15:00 UTC'); 
+VALUES (9,9,'2011-10-11','2011-10-11 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-12','2011-05-12 14:00:00 UTC'); 
+VALUES (9,9,'2011-10-12','2011-10-12 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-13','2011-05-13 14:00:00 UTC'); 
+VALUES (9,9,'2011-10-13','2011-10-13 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-14','2011-05-14 14:00:00 UTC'); 
+VALUES (9,9,'2011-10-14','2011-10-14 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-15','2011-05-15 14:15:00 UTC'); 
+VALUES (9,9,'2011-10-15','2011-10-15 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-16','2011-05-16 14:00:00 UTC'); 
+VALUES (9,9,'2011-10-16','2011-10-16 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-17','2011-05-17 14:00:00 UTC'); 
+VALUES (9,9,'2011-10-17','2011-10-17 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-18','2011-05-18 14:15:00 UTC'); 
+VALUES (9,9,'2011-10-18','2011-10-18 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-19','2011-05-19 14:00:00 UTC'); 
+VALUES (9,9,'2011-10-19','2011-10-19 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-20','2011-05-20 14:00:00 UTC'); 
+VALUES (9,9,'2011-10-20','2011-10-20 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-21','2011-05-21 14:15:00 UTC'); 
+VALUES (9,9,'2011-10-21','2011-10-21 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-22','2011-05-22 14:00:00 UTC'); 
+VALUES (9,9,'2011-10-22','2011-10-22 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-23','2011-05-23 14:00:00 UTC'); 
+VALUES (9,9,'2011-10-23','2011-10-23 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-24','2011-05-24 14:00:00 UTC'); 
+VALUES (9,9,'2011-10-24','2011-10-24 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-25','2011-05-25 14:15:00 UTC'); 
+VALUES (9,9,'2011-10-25','2011-10-25 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-26','2011-05-26 14:00:00 UTC'); 
+VALUES (9,9,'2011-10-26','2011-10-26 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-27','2011-05-27 14:00:00 UTC'); 
+VALUES (9,9,'2011-10-27','2011-10-27 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-28','2011-05-28 14:15:00 UTC'); 
+VALUES (9,9,'2011-10-28','2011-10-28 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-29','2011-05-29 14:00:00 UTC'); 
+VALUES (9,9,'2011-10-29','2011-10-29 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-30','2011-05-30 14:00:00 UTC'); 
+VALUES (9,9,'2011-10-30','2011-10-30 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-04','2011-05-04 17:00:00 UTC'); 
+VALUES (9,9,'2011-10-04','2011-10-04 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-05','2011-05-05 17:15:00 UTC'); 
+VALUES (9,9,'2011-10-05','2011-10-05 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-06','2011-05-06 17:00:00 UTC'); 
+VALUES (9,9,'2011-10-06','2011-10-06 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-07','2011-05-07 17:00:00 UTC'); 
+VALUES (9,9,'2011-10-07','2011-10-07 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-08','2011-05-08 17:15:00 UTC'); 
+VALUES (9,9,'2011-10-08','2011-10-08 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-09','2011-05-09 17:00:00 UTC'); 
+VALUES (9,9,'2011-10-09','2011-10-09 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-10','2011-05-10 17:00:00 UTC'); 
+VALUES (9,9,'2011-10-10','2011-10-10 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-11','2011-05-11 17:15:00 UTC'); 
+VALUES (9,9,'2011-10-11','2011-10-11 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-12','2011-05-12 17:00:00 UTC'); 
+VALUES (9,9,'2011-10-12','2011-10-12 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-13','2011-05-13 17:00:00 UTC'); 
+VALUES (9,9,'2011-10-13','2011-10-13 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-14','2011-05-14 17:00:00 UTC'); 
+VALUES (9,9,'2011-10-14','2011-10-14 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-15','2011-05-15 17:15:00 UTC'); 
+VALUES (9,9,'2011-10-15','2011-10-15 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-16','2011-05-16 17:00:00 UTC'); 
+VALUES (9,9,'2011-10-16','2011-10-16 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-17','2011-05-17 17:00:00 UTC'); 
+VALUES (9,9,'2011-10-17','2011-10-17 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-18','2011-05-18 17:15:00 UTC'); 
+VALUES (9,9,'2011-10-18','2011-10-18 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-19','2011-05-19 17:00:00 UTC'); 
+VALUES (9,9,'2011-10-19','2011-10-19 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-20','2011-05-20 17:00:00 UTC'); 
+VALUES (9,9,'2011-10-20','2011-10-20 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-21','2011-05-21 17:15:00 UTC'); 
+VALUES (9,9,'2011-10-21','2011-10-21 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-22','2011-05-22 17:00:00 UTC'); 
+VALUES (9,9,'2011-10-22','2011-10-22 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-23','2011-05-23 17:00:00 UTC'); 
+VALUES (9,9,'2011-10-23','2011-10-23 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-24','2011-05-24 17:00:00 UTC'); 
+VALUES (9,9,'2011-10-24','2011-10-24 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-25','2011-05-25 17:15:00 UTC'); 
+VALUES (9,9,'2011-10-25','2011-10-25 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-26','2011-05-26 17:00:00 UTC'); 
+VALUES (9,9,'2011-10-26','2011-10-26 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-27','2011-05-27 17:00:00 UTC'); 
+VALUES (9,9,'2011-10-27','2011-10-27 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-28','2011-05-28 17:15:00 UTC'); 
+VALUES (9,9,'2011-10-28','2011-10-28 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-29','2011-05-29 17:00:00 UTC'); 
+VALUES (9,9,'2011-10-29','2011-10-29 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-30','2011-05-30 17:00:00 UTC'); 
+VALUES (9,9,'2011-10-30','2011-10-30 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-04','2011-05-04 20:00:00 UTC'); 
+VALUES (9,9,'2011-10-04','2011-10-04 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-05','2011-05-05 20:15:00 UTC'); 
+VALUES (9,9,'2011-10-05','2011-10-05 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-06','2011-05-06 20:00:00 UTC'); 
+VALUES (9,9,'2011-10-06','2011-10-06 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-07','2011-05-07 20:00:00 UTC'); 
+VALUES (9,9,'2011-10-07','2011-10-07 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-08','2011-05-08 20:15:00 UTC'); 
+VALUES (9,9,'2011-10-08','2011-10-08 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-09','2011-05-09 20:00:00 UTC'); 
+VALUES (9,9,'2011-10-09','2011-10-09 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-10','2011-05-10 20:00:00 UTC'); 
+VALUES (9,9,'2011-10-10','2011-10-10 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-11','2011-05-11 20:15:00 UTC'); 
+VALUES (9,9,'2011-10-11','2011-10-11 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-12','2011-05-12 20:00:00 UTC'); 
+VALUES (9,9,'2011-10-12','2011-10-12 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-13','2011-05-13 20:00:00 UTC'); 
+VALUES (9,9,'2011-10-13','2011-10-13 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-14','2011-05-14 20:00:00 UTC'); 
+VALUES (9,9,'2011-10-14','2011-10-14 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-15','2011-05-15 20:15:00 UTC'); 
+VALUES (9,9,'2011-10-15','2011-10-15 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-16','2011-05-16 20:00:00 UTC'); 
+VALUES (9,9,'2011-10-16','2011-10-16 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-17','2011-05-17 20:00:00 UTC'); 
+VALUES (9,9,'2011-10-17','2011-10-17 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-18','2011-05-18 20:15:00 UTC'); 
+VALUES (9,9,'2011-10-18','2011-10-18 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-19','2011-05-19 20:00:00 UTC'); 
+VALUES (9,9,'2011-10-19','2011-10-19 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-20','2011-05-20 20:00:00 UTC'); 
+VALUES (9,9,'2011-10-20','2011-10-20 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-21','2011-05-21 20:15:00 UTC'); 
+VALUES (9,9,'2011-10-21','2011-10-21 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-22','2011-05-22 20:00:00 UTC'); 
+VALUES (9,9,'2011-10-22','2011-10-22 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-23','2011-05-23 20:00:00 UTC'); 
+VALUES (9,9,'2011-10-23','2011-10-23 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-24','2011-05-24 20:00:00 UTC'); 
+VALUES (9,9,'2011-10-24','2011-10-24 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-25','2011-05-25 20:15:00 UTC'); 
+VALUES (9,9,'2011-10-25','2011-10-25 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-26','2011-05-26 20:00:00 UTC'); 
+VALUES (9,9,'2011-10-26','2011-10-26 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-27','2011-05-27 20:00:00 UTC'); 
+VALUES (9,9,'2011-10-27','2011-10-27 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-28','2011-05-28 20:15:00 UTC'); 
+VALUES (9,9,'2011-10-28','2011-10-28 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-29','2011-05-29 20:00:00 UTC'); 
+VALUES (9,9,'2011-10-29','2011-10-29 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (9,9,'2011-05-30','2011-05-30 20:00:00 UTC'); 
+VALUES (9,9,'2011-10-30','2011-10-30 20:00:00 UTC'); 
 
 
 --helios ghost writer
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-04','2011-05-04 10:00:00 UTC'); 
+VALUES (10,10,'2011-10-04','2011-10-04 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-05','2011-05-05 10:15:00 UTC'); 
+VALUES (10,10,'2011-10-05','2011-10-05 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-06','2011-05-06 10:00:00 UTC'); 
+VALUES (10,10,'2011-10-06','2011-10-06 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-07','2011-05-07 10:00:00 UTC'); 
+VALUES (10,10,'2011-10-07','2011-10-07 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-08','2011-05-08 10:15:00 UTC'); 
+VALUES (10,10,'2011-10-08','2011-10-08 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-09','2011-05-09 10:00:00 UTC'); 
+VALUES (10,10,'2011-10-09','2011-10-09 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-10','2011-05-10 10:00:00 UTC'); 
+VALUES (10,10,'2011-10-10','2011-10-10 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-11','2011-05-11 10:15:00 UTC'); 
+VALUES (10,10,'2011-10-11','2011-10-11 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-12','2011-05-12 10:00:00 UTC'); 
+VALUES (10,10,'2011-10-12','2011-10-12 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-13','2011-05-13 10:00:00 UTC'); 
+VALUES (10,10,'2011-10-13','2011-10-13 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-14','2011-05-14 10:00:00 UTC'); 
+VALUES (10,10,'2011-10-14','2011-10-14 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-15','2011-05-15 10:15:00 UTC'); 
+VALUES (10,10,'2011-10-15','2011-10-15 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-16','2011-05-16 10:00:00 UTC'); 
+VALUES (10,10,'2011-10-16','2011-10-16 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-17','2011-05-17 10:00:00 UTC'); 
+VALUES (10,10,'2011-10-17','2011-10-17 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-18','2011-05-18 10:15:00 UTC'); 
+VALUES (10,10,'2011-10-18','2011-10-18 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-19','2011-05-19 10:00:00 UTC'); 
+VALUES (10,10,'2011-10-19','2011-10-19 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-20','2011-05-20 10:00:00 UTC'); 
+VALUES (10,10,'2011-10-20','2011-10-20 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-21','2011-05-21 10:15:00 UTC'); 
+VALUES (10,10,'2011-10-21','2011-10-21 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-22','2011-05-22 10:00:00 UTC'); 
+VALUES (10,10,'2011-10-22','2011-10-22 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-23','2011-05-23 10:00:00 UTC'); 
+VALUES (10,10,'2011-10-23','2011-10-23 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-24','2011-05-24 10:00:00 UTC'); 
+VALUES (10,10,'2011-10-24','2011-10-24 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-25','2011-05-25 10:15:00 UTC'); 
+VALUES (10,10,'2011-10-25','2011-10-25 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-26','2011-05-26 10:00:00 UTC'); 
+VALUES (10,10,'2011-10-26','2011-10-26 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-27','2011-05-27 10:00:00 UTC'); 
+VALUES (10,10,'2011-10-27','2011-10-27 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-28','2011-05-28 10:15:00 UTC'); 
+VALUES (10,10,'2011-10-28','2011-10-28 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-29','2011-05-29 10:00:00 UTC'); 
+VALUES (10,10,'2011-10-29','2011-10-29 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-30','2011-05-30 10:00:00 UTC'); 
+VALUES (10,10,'2011-10-30','2011-10-30 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-04','2011-05-04 14:00:00 UTC'); 
+VALUES (10,10,'2011-10-04','2011-10-04 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-05','2011-05-05 14:15:00 UTC'); 
+VALUES (10,10,'2011-10-05','2011-10-05 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-06','2011-05-06 14:00:00 UTC'); 
+VALUES (10,10,'2011-10-06','2011-10-06 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-07','2011-05-07 14:00:00 UTC'); 
+VALUES (10,10,'2011-10-07','2011-10-07 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-08','2011-05-08 14:15:00 UTC'); 
+VALUES (10,10,'2011-10-08','2011-10-08 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-09','2011-05-09 14:00:00 UTC'); 
+VALUES (10,10,'2011-10-09','2011-10-09 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-10','2011-05-10 14:00:00 UTC'); 
+VALUES (10,10,'2011-10-10','2011-10-10 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-11','2011-05-11 14:15:00 UTC'); 
+VALUES (10,10,'2011-10-11','2011-10-11 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-12','2011-05-12 14:00:00 UTC'); 
+VALUES (10,10,'2011-10-12','2011-10-12 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-13','2011-05-13 14:00:00 UTC'); 
+VALUES (10,10,'2011-10-13','2011-10-13 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-14','2011-05-14 14:00:00 UTC'); 
+VALUES (10,10,'2011-10-14','2011-10-14 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-15','2011-05-15 14:15:00 UTC'); 
+VALUES (10,10,'2011-10-15','2011-10-15 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-16','2011-05-16 14:00:00 UTC'); 
+VALUES (10,10,'2011-10-16','2011-10-16 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-17','2011-05-17 14:00:00 UTC'); 
+VALUES (10,10,'2011-10-17','2011-10-17 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-18','2011-05-18 14:15:00 UTC'); 
+VALUES (10,10,'2011-10-18','2011-10-18 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-19','2011-05-19 14:00:00 UTC'); 
+VALUES (10,10,'2011-10-19','2011-10-19 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-20','2011-05-20 14:00:00 UTC'); 
+VALUES (10,10,'2011-10-20','2011-10-20 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-21','2011-05-21 14:15:00 UTC'); 
+VALUES (10,10,'2011-10-21','2011-10-21 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-22','2011-05-22 14:00:00 UTC'); 
+VALUES (10,10,'2011-10-22','2011-10-22 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-23','2011-05-23 14:00:00 UTC'); 
+VALUES (10,10,'2011-10-23','2011-10-23 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-24','2011-05-24 14:00:00 UTC'); 
+VALUES (10,10,'2011-10-24','2011-10-24 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-25','2011-05-25 14:15:00 UTC'); 
+VALUES (10,10,'2011-10-25','2011-10-25 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-26','2011-05-26 14:00:00 UTC'); 
+VALUES (10,10,'2011-10-26','2011-10-26 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-27','2011-05-27 14:00:00 UTC'); 
+VALUES (10,10,'2011-10-27','2011-10-27 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-28','2011-05-28 14:15:00 UTC'); 
+VALUES (10,10,'2011-10-28','2011-10-28 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-29','2011-05-29 14:00:00 UTC'); 
+VALUES (10,10,'2011-10-29','2011-10-29 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-30','2011-05-30 14:00:00 UTC'); 
+VALUES (10,10,'2011-10-30','2011-10-30 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-04','2011-05-04 17:00:00 UTC'); 
+VALUES (10,10,'2011-10-04','2011-10-04 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-05','2011-05-05 17:15:00 UTC'); 
+VALUES (10,10,'2011-10-05','2011-10-05 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-06','2011-05-06 17:00:00 UTC'); 
+VALUES (10,10,'2011-10-06','2011-10-06 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-07','2011-05-07 17:00:00 UTC'); 
+VALUES (10,10,'2011-10-07','2011-10-07 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-08','2011-05-08 17:15:00 UTC'); 
+VALUES (10,10,'2011-10-08','2011-10-08 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-09','2011-05-09 17:00:00 UTC'); 
+VALUES (10,10,'2011-10-09','2011-10-09 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-10','2011-05-10 17:00:00 UTC'); 
+VALUES (10,10,'2011-10-10','2011-10-10 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-11','2011-05-11 17:15:00 UTC'); 
+VALUES (10,10,'2011-10-11','2011-10-11 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-12','2011-05-12 17:00:00 UTC'); 
+VALUES (10,10,'2011-10-12','2011-10-12 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-13','2011-05-13 17:00:00 UTC'); 
+VALUES (10,10,'2011-10-13','2011-10-13 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-14','2011-05-14 17:00:00 UTC'); 
+VALUES (10,10,'2011-10-14','2011-10-14 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-15','2011-05-15 17:15:00 UTC'); 
+VALUES (10,10,'2011-10-15','2011-10-15 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-16','2011-05-16 17:00:00 UTC'); 
+VALUES (10,10,'2011-10-16','2011-10-16 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-17','2011-05-17 17:00:00 UTC'); 
+VALUES (10,10,'2011-10-17','2011-10-17 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-18','2011-05-18 17:15:00 UTC'); 
+VALUES (10,10,'2011-10-18','2011-10-18 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-19','2011-05-19 17:00:00 UTC'); 
+VALUES (10,10,'2011-10-19','2011-10-19 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-20','2011-05-20 17:00:00 UTC'); 
+VALUES (10,10,'2011-10-20','2011-10-20 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-21','2011-05-21 17:15:00 UTC'); 
+VALUES (10,10,'2011-10-21','2011-10-21 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-22','2011-05-22 17:00:00 UTC'); 
+VALUES (10,10,'2011-10-22','2011-10-22 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-23','2011-05-23 17:00:00 UTC'); 
+VALUES (10,10,'2011-10-23','2011-10-23 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-24','2011-05-24 17:00:00 UTC'); 
+VALUES (10,10,'2011-10-24','2011-10-24 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-25','2011-05-25 17:15:00 UTC'); 
+VALUES (10,10,'2011-10-25','2011-10-25 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-26','2011-05-26 17:00:00 UTC'); 
+VALUES (10,10,'2011-10-26','2011-10-26 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-27','2011-05-27 17:00:00 UTC'); 
+VALUES (10,10,'2011-10-27','2011-10-27 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-28','2011-05-28 17:15:00 UTC'); 
+VALUES (10,10,'2011-10-28','2011-10-28 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-29','2011-05-29 17:00:00 UTC'); 
+VALUES (10,10,'2011-10-29','2011-10-29 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-30','2011-05-30 17:00:00 UTC'); 
+VALUES (10,10,'2011-10-30','2011-10-30 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-04','2011-05-04 20:00:00 UTC'); 
+VALUES (10,10,'2011-10-04','2011-10-04 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-05','2011-05-05 20:15:00 UTC'); 
+VALUES (10,10,'2011-10-05','2011-10-05 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-06','2011-05-06 20:00:00 UTC'); 
+VALUES (10,10,'2011-10-06','2011-10-06 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-07','2011-05-07 20:00:00 UTC'); 
+VALUES (10,10,'2011-10-07','2011-10-07 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-08','2011-05-08 20:15:00 UTC'); 
+VALUES (10,10,'2011-10-08','2011-10-08 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-09','2011-05-09 20:00:00 UTC'); 
+VALUES (10,10,'2011-10-09','2011-10-09 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-10','2011-05-10 20:00:00 UTC'); 
+VALUES (10,10,'2011-10-10','2011-10-10 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-11','2011-05-11 20:15:00 UTC'); 
+VALUES (10,10,'2011-10-11','2011-10-11 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-12','2011-05-12 20:00:00 UTC'); 
+VALUES (10,10,'2011-10-12','2011-10-12 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-13','2011-05-13 20:00:00 UTC'); 
+VALUES (10,10,'2011-10-13','2011-10-13 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-14','2011-05-14 20:00:00 UTC'); 
+VALUES (10,10,'2011-10-14','2011-10-14 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-15','2011-05-15 20:15:00 UTC'); 
+VALUES (10,10,'2011-10-15','2011-10-15 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-16','2011-05-16 20:00:00 UTC'); 
+VALUES (10,10,'2011-10-16','2011-10-16 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-17','2011-05-17 20:00:00 UTC'); 
+VALUES (10,10,'2011-10-17','2011-10-17 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-18','2011-05-18 20:15:00 UTC'); 
+VALUES (10,10,'2011-10-18','2011-10-18 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-19','2011-05-19 20:00:00 UTC'); 
+VALUES (10,10,'2011-10-19','2011-10-19 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-20','2011-05-20 20:00:00 UTC'); 
+VALUES (10,10,'2011-10-20','2011-10-20 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-21','2011-05-21 20:15:00 UTC'); 
+VALUES (10,10,'2011-10-21','2011-10-21 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-22','2011-05-22 20:00:00 UTC'); 
+VALUES (10,10,'2011-10-22','2011-10-22 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-23','2011-05-23 20:00:00 UTC'); 
+VALUES (10,10,'2011-10-23','2011-10-23 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-24','2011-05-24 20:00:00 UTC'); 
+VALUES (10,10,'2011-10-24','2011-10-24 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-25','2011-05-25 20:15:00 UTC'); 
+VALUES (10,10,'2011-10-25','2011-10-25 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-26','2011-05-26 20:00:00 UTC'); 
+VALUES (10,10,'2011-10-26','2011-10-26 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-27','2011-05-27 20:00:00 UTC'); 
+VALUES (10,10,'2011-10-27','2011-10-27 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-28','2011-05-28 20:15:00 UTC'); 
+VALUES (10,10,'2011-10-28','2011-10-28 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-29','2011-05-29 20:00:00 UTC'); 
+VALUES (10,10,'2011-10-29','2011-10-29 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (10,10,'2011-05-30','2011-05-30 20:00:00 UTC'); 
+VALUES (10,10,'2011-10-30','2011-10-30 20:00:00 UTC'); 
 
 --helios thor maj
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-04','2011-05-04 10:00:00 UTC'); 
+VALUES (11,11,'2011-10-04','2011-10-04 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-05','2011-05-05 10:15:00 UTC'); 
+VALUES (11,11,'2011-10-05','2011-10-05 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-06','2011-05-06 10:00:00 UTC'); 
+VALUES (11,11,'2011-10-06','2011-10-06 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-07','2011-05-07 10:00:00 UTC'); 
+VALUES (11,11,'2011-10-07','2011-10-07 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-08','2011-05-08 10:15:00 UTC'); 
+VALUES (11,11,'2011-10-08','2011-10-08 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-09','2011-05-09 10:00:00 UTC'); 
+VALUES (11,11,'2011-10-09','2011-10-09 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-10','2011-05-10 10:00:00 UTC'); 
+VALUES (11,11,'2011-10-10','2011-10-10 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-11','2011-05-11 10:15:00 UTC'); 
+VALUES (11,11,'2011-10-11','2011-10-11 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-12','2011-05-12 10:00:00 UTC'); 
+VALUES (11,11,'2011-10-12','2011-10-12 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-13','2011-05-13 10:00:00 UTC'); 
+VALUES (11,11,'2011-10-13','2011-10-13 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-14','2011-05-14 10:00:00 UTC'); 
+VALUES (11,11,'2011-10-14','2011-10-14 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-15','2011-05-15 10:15:00 UTC'); 
+VALUES (11,11,'2011-10-15','2011-10-15 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-16','2011-05-16 10:00:00 UTC'); 
+VALUES (11,11,'2011-10-16','2011-10-16 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-17','2011-05-17 10:00:00 UTC'); 
+VALUES (11,11,'2011-10-17','2011-10-17 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-18','2011-05-18 10:15:00 UTC'); 
+VALUES (11,11,'2011-10-18','2011-10-18 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-19','2011-05-19 10:00:00 UTC'); 
+VALUES (11,11,'2011-10-19','2011-10-19 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-20','2011-05-20 10:00:00 UTC'); 
+VALUES (11,11,'2011-10-20','2011-10-20 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-21','2011-05-21 10:15:00 UTC'); 
+VALUES (11,11,'2011-10-21','2011-10-21 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-22','2011-05-22 10:00:00 UTC'); 
+VALUES (11,11,'2011-10-22','2011-10-22 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-23','2011-05-23 10:00:00 UTC'); 
+VALUES (11,11,'2011-10-23','2011-10-23 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-24','2011-05-24 10:00:00 UTC'); 
+VALUES (11,11,'2011-10-24','2011-10-24 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-25','2011-05-25 10:15:00 UTC'); 
+VALUES (11,11,'2011-10-25','2011-10-25 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-26','2011-05-26 10:00:00 UTC'); 
+VALUES (11,11,'2011-10-26','2011-10-26 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-27','2011-05-27 10:00:00 UTC'); 
+VALUES (11,11,'2011-10-27','2011-10-27 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-28','2011-05-28 10:15:00 UTC'); 
+VALUES (11,11,'2011-10-28','2011-10-28 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-29','2011-05-29 10:00:00 UTC'); 
+VALUES (11,11,'2011-10-29','2011-10-29 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-30','2011-05-30 10:00:00 UTC'); 
+VALUES (11,11,'2011-10-30','2011-10-30 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-04','2011-05-04 14:00:00 UTC'); 
+VALUES (11,11,'2011-10-04','2011-10-04 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-05','2011-05-05 14:15:00 UTC'); 
+VALUES (11,11,'2011-10-05','2011-10-05 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-06','2011-05-06 14:00:00 UTC'); 
+VALUES (11,11,'2011-10-06','2011-10-06 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-07','2011-05-07 14:00:00 UTC'); 
+VALUES (11,11,'2011-10-07','2011-10-07 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-08','2011-05-08 14:15:00 UTC'); 
+VALUES (11,11,'2011-10-08','2011-10-08 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-09','2011-05-09 14:00:00 UTC'); 
+VALUES (11,11,'2011-10-09','2011-10-09 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-10','2011-05-10 14:00:00 UTC'); 
+VALUES (11,11,'2011-10-10','2011-10-10 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-11','2011-05-11 14:15:00 UTC'); 
+VALUES (11,11,'2011-10-11','2011-10-11 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-12','2011-05-12 14:00:00 UTC'); 
+VALUES (11,11,'2011-10-12','2011-10-12 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-13','2011-05-13 14:00:00 UTC'); 
+VALUES (11,11,'2011-10-13','2011-10-13 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-14','2011-05-14 14:00:00 UTC'); 
+VALUES (11,11,'2011-10-14','2011-10-14 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-15','2011-05-15 14:15:00 UTC'); 
+VALUES (11,11,'2011-10-15','2011-10-15 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-16','2011-05-16 14:00:00 UTC'); 
+VALUES (11,11,'2011-10-16','2011-10-16 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-17','2011-05-17 14:00:00 UTC'); 
+VALUES (11,11,'2011-10-17','2011-10-17 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-18','2011-05-18 14:15:00 UTC'); 
+VALUES (11,11,'2011-10-18','2011-10-18 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-19','2011-05-19 14:00:00 UTC'); 
+VALUES (11,11,'2011-10-19','2011-10-19 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-20','2011-05-20 14:00:00 UTC'); 
+VALUES (11,11,'2011-10-20','2011-10-20 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-21','2011-05-21 14:15:00 UTC'); 
+VALUES (11,11,'2011-10-21','2011-10-21 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-22','2011-05-22 14:00:00 UTC'); 
+VALUES (11,11,'2011-10-22','2011-10-22 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-23','2011-05-23 14:00:00 UTC'); 
+VALUES (11,11,'2011-10-23','2011-10-23 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-24','2011-05-24 14:00:00 UTC'); 
+VALUES (11,11,'2011-10-24','2011-10-24 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-25','2011-05-25 14:15:00 UTC'); 
+VALUES (11,11,'2011-10-25','2011-10-25 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-26','2011-05-26 14:00:00 UTC'); 
+VALUES (11,11,'2011-10-26','2011-10-26 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-27','2011-05-27 14:00:00 UTC'); 
+VALUES (11,11,'2011-10-27','2011-10-27 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-28','2011-05-28 14:15:00 UTC'); 
+VALUES (11,11,'2011-10-28','2011-10-28 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-29','2011-05-29 14:00:00 UTC'); 
+VALUES (11,11,'2011-10-29','2011-10-29 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-30','2011-05-30 14:00:00 UTC'); 
+VALUES (11,11,'2011-10-30','2011-10-30 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-04','2011-05-04 17:00:00 UTC'); 
+VALUES (11,11,'2011-10-04','2011-10-04 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-05','2011-05-05 17:15:00 UTC'); 
+VALUES (11,11,'2011-10-05','2011-10-05 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-06','2011-05-06 17:00:00 UTC'); 
+VALUES (11,11,'2011-10-06','2011-10-06 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-07','2011-05-07 17:00:00 UTC'); 
+VALUES (11,11,'2011-10-07','2011-10-07 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-08','2011-05-08 17:15:00 UTC'); 
+VALUES (11,11,'2011-10-08','2011-10-08 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-09','2011-05-09 17:00:00 UTC'); 
+VALUES (11,11,'2011-10-09','2011-10-09 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-10','2011-05-10 17:00:00 UTC'); 
+VALUES (11,11,'2011-10-10','2011-10-10 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-11','2011-05-11 17:15:00 UTC'); 
+VALUES (11,11,'2011-10-11','2011-10-11 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-12','2011-05-12 17:00:00 UTC'); 
+VALUES (11,11,'2011-10-12','2011-10-12 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-13','2011-05-13 17:00:00 UTC'); 
+VALUES (11,11,'2011-10-13','2011-10-13 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-14','2011-05-14 17:00:00 UTC'); 
+VALUES (11,11,'2011-10-14','2011-10-14 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-15','2011-05-15 17:15:00 UTC'); 
+VALUES (11,11,'2011-10-15','2011-10-15 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-16','2011-05-16 17:00:00 UTC'); 
+VALUES (11,11,'2011-10-16','2011-10-16 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-17','2011-05-17 17:00:00 UTC'); 
+VALUES (11,11,'2011-10-17','2011-10-17 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-18','2011-05-18 17:15:00 UTC'); 
+VALUES (11,11,'2011-10-18','2011-10-18 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-19','2011-05-19 17:00:00 UTC'); 
+VALUES (11,11,'2011-10-19','2011-10-19 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-20','2011-05-20 17:00:00 UTC'); 
+VALUES (11,11,'2011-10-20','2011-10-20 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-21','2011-05-21 17:15:00 UTC'); 
+VALUES (11,11,'2011-10-21','2011-10-21 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-22','2011-05-22 17:00:00 UTC'); 
+VALUES (11,11,'2011-10-22','2011-10-22 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-23','2011-05-23 17:00:00 UTC'); 
+VALUES (11,11,'2011-10-23','2011-10-23 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-24','2011-05-24 17:00:00 UTC'); 
+VALUES (11,11,'2011-10-24','2011-10-24 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-25','2011-05-25 17:15:00 UTC'); 
+VALUES (11,11,'2011-10-25','2011-10-25 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-26','2011-05-26 17:00:00 UTC'); 
+VALUES (11,11,'2011-10-26','2011-10-26 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-27','2011-05-27 17:00:00 UTC'); 
+VALUES (11,11,'2011-10-27','2011-10-27 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-28','2011-05-28 17:15:00 UTC'); 
+VALUES (11,11,'2011-10-28','2011-10-28 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-29','2011-05-29 17:00:00 UTC'); 
+VALUES (11,11,'2011-10-29','2011-10-29 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-30','2011-05-30 17:00:00 UTC'); 
+VALUES (11,11,'2011-10-30','2011-10-30 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-04','2011-05-04 20:00:00 UTC'); 
+VALUES (11,11,'2011-10-04','2011-10-04 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-05','2011-05-05 20:15:00 UTC'); 
+VALUES (11,11,'2011-10-05','2011-10-05 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-06','2011-05-06 20:00:00 UTC'); 
+VALUES (11,11,'2011-10-06','2011-10-06 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-07','2011-05-07 20:00:00 UTC'); 
+VALUES (11,11,'2011-10-07','2011-10-07 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-08','2011-05-08 20:15:00 UTC'); 
+VALUES (11,11,'2011-10-08','2011-10-08 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-09','2011-05-09 20:00:00 UTC'); 
+VALUES (11,11,'2011-10-09','2011-10-09 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-10','2011-05-10 20:00:00 UTC'); 
+VALUES (11,11,'2011-10-10','2011-10-10 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-11','2011-05-11 20:15:00 UTC'); 
+VALUES (11,11,'2011-10-11','2011-10-11 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-12','2011-05-12 20:00:00 UTC'); 
+VALUES (11,11,'2011-10-12','2011-10-12 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-13','2011-05-13 20:00:00 UTC'); 
+VALUES (11,11,'2011-10-13','2011-10-13 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-14','2011-05-14 20:00:00 UTC'); 
+VALUES (11,11,'2011-10-14','2011-10-14 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-15','2011-05-15 20:15:00 UTC'); 
+VALUES (11,11,'2011-10-15','2011-10-15 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-16','2011-05-16 20:00:00 UTC'); 
+VALUES (11,11,'2011-10-16','2011-10-16 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-17','2011-05-17 20:00:00 UTC'); 
+VALUES (11,11,'2011-10-17','2011-10-17 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-18','2011-05-18 20:15:00 UTC'); 
+VALUES (11,11,'2011-10-18','2011-10-18 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-19','2011-05-19 20:00:00 UTC'); 
+VALUES (11,11,'2011-10-19','2011-10-19 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-20','2011-05-20 20:00:00 UTC'); 
+VALUES (11,11,'2011-10-20','2011-10-20 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-21','2011-05-21 20:15:00 UTC'); 
+VALUES (11,11,'2011-10-21','2011-10-21 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-22','2011-05-22 20:00:00 UTC'); 
+VALUES (11,11,'2011-10-22','2011-10-22 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-23','2011-05-23 20:00:00 UTC'); 
+VALUES (11,11,'2011-10-23','2011-10-23 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-24','2011-05-24 20:00:00 UTC'); 
+VALUES (11,11,'2011-10-24','2011-10-24 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-25','2011-05-25 20:15:00 UTC'); 
+VALUES (11,11,'2011-10-25','2011-10-25 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-26','2011-05-26 20:00:00 UTC'); 
+VALUES (11,11,'2011-10-26','2011-10-26 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-27','2011-05-27 20:00:00 UTC'); 
+VALUES (11,11,'2011-10-27','2011-10-27 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-28','2011-05-28 20:15:00 UTC'); 
+VALUES (11,11,'2011-10-28','2011-10-28 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-29','2011-05-29 20:00:00 UTC'); 
+VALUES (11,11,'2011-10-29','2011-10-29 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (11,11,'2011-05-30','2011-05-30 20:00:00 UTC'); 
+VALUES (11,11,'2011-10-30','2011-10-30 20:00:00 UTC'); 
 
 --thor korona maj
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-04','2011-05-04 10:00:00 UTC'); 
+VALUES (4,5,'2011-10-04','2011-10-04 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-05','2011-05-05 10:15:00 UTC'); 
+VALUES (4,5,'2011-10-05','2011-10-05 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-06','2011-05-06 10:00:00 UTC'); 
+VALUES (4,5,'2011-10-06','2011-10-06 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-07','2011-05-07 10:00:00 UTC'); 
+VALUES (4,5,'2011-10-07','2011-10-07 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-08','2011-05-08 10:15:00 UTC'); 
+VALUES (4,5,'2011-10-08','2011-10-08 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-09','2011-05-09 10:00:00 UTC'); 
+VALUES (4,5,'2011-10-09','2011-10-09 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-10','2011-05-10 10:00:00 UTC'); 
+VALUES (4,5,'2011-10-10','2011-10-10 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-11','2011-05-11 10:15:00 UTC'); 
+VALUES (4,5,'2011-10-11','2011-10-11 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-12','2011-05-12 10:00:00 UTC'); 
+VALUES (4,5,'2011-10-12','2011-10-12 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-13','2011-05-13 10:00:00 UTC'); 
+VALUES (4,5,'2011-10-13','2011-10-13 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-14','2011-05-14 10:00:00 UTC'); 
+VALUES (4,5,'2011-10-14','2011-10-14 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-15','2011-05-15 10:15:00 UTC'); 
+VALUES (4,5,'2011-10-15','2011-10-15 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-16','2011-05-16 10:00:00 UTC'); 
+VALUES (4,5,'2011-10-16','2011-10-16 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-17','2011-05-17 10:00:00 UTC'); 
+VALUES (4,5,'2011-10-17','2011-10-17 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-18','2011-05-18 10:15:00 UTC'); 
+VALUES (4,5,'2011-10-18','2011-10-18 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-19','2011-05-19 10:00:00 UTC'); 
+VALUES (4,5,'2011-10-19','2011-10-19 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-20','2011-05-20 10:00:00 UTC'); 
+VALUES (4,5,'2011-10-20','2011-10-20 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-21','2011-05-21 10:15:00 UTC'); 
+VALUES (4,5,'2011-10-21','2011-10-21 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-22','2011-05-22 10:00:00 UTC'); 
+VALUES (4,5,'2011-10-22','2011-10-22 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-23','2011-05-23 10:00:00 UTC'); 
+VALUES (4,5,'2011-10-23','2011-10-23 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-24','2011-05-24 10:00:00 UTC'); 
+VALUES (4,5,'2011-10-24','2011-10-24 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-25','2011-05-25 10:15:00 UTC'); 
+VALUES (4,5,'2011-10-25','2011-10-25 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-26','2011-05-26 10:00:00 UTC'); 
+VALUES (4,5,'2011-10-26','2011-10-26 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-27','2011-05-27 10:00:00 UTC'); 
+VALUES (4,5,'2011-10-27','2011-10-27 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-28','2011-05-28 10:15:00 UTC'); 
+VALUES (4,5,'2011-10-28','2011-10-28 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-29','2011-05-29 10:00:00 UTC'); 
+VALUES (4,5,'2011-10-29','2011-10-29 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-30','2011-05-30 10:00:00 UTC'); 
+VALUES (4,5,'2011-10-30','2011-10-30 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-04','2011-05-04 14:00:00 UTC'); 
+VALUES (4,5,'2011-10-04','2011-10-04 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-05','2011-05-05 14:15:00 UTC'); 
+VALUES (4,5,'2011-10-05','2011-10-05 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-06','2011-05-06 14:00:00 UTC'); 
+VALUES (4,5,'2011-10-06','2011-10-06 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-07','2011-05-07 14:00:00 UTC'); 
+VALUES (4,5,'2011-10-07','2011-10-07 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-08','2011-05-08 14:15:00 UTC'); 
+VALUES (4,5,'2011-10-08','2011-10-08 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-09','2011-05-09 14:00:00 UTC'); 
+VALUES (4,5,'2011-10-09','2011-10-09 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-10','2011-05-10 14:00:00 UTC'); 
+VALUES (4,5,'2011-10-10','2011-10-10 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-11','2011-05-11 14:15:00 UTC'); 
+VALUES (4,5,'2011-10-11','2011-10-11 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-12','2011-05-12 14:00:00 UTC'); 
+VALUES (4,5,'2011-10-12','2011-10-12 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-13','2011-05-13 14:00:00 UTC'); 
+VALUES (4,5,'2011-10-13','2011-10-13 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-14','2011-05-14 14:00:00 UTC'); 
+VALUES (4,5,'2011-10-14','2011-10-14 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-15','2011-05-15 14:15:00 UTC'); 
+VALUES (4,5,'2011-10-15','2011-10-15 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-16','2011-05-16 14:00:00 UTC'); 
+VALUES (4,5,'2011-10-16','2011-10-16 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-17','2011-05-17 14:00:00 UTC'); 
+VALUES (4,5,'2011-10-17','2011-10-17 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-18','2011-05-18 14:15:00 UTC'); 
+VALUES (4,5,'2011-10-18','2011-10-18 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-19','2011-05-19 14:00:00 UTC'); 
+VALUES (4,5,'2011-10-19','2011-10-19 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-20','2011-05-20 14:00:00 UTC'); 
+VALUES (4,5,'2011-10-20','2011-10-20 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-21','2011-05-21 14:15:00 UTC'); 
+VALUES (4,5,'2011-10-21','2011-10-21 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-22','2011-05-22 14:00:00 UTC'); 
+VALUES (4,5,'2011-10-22','2011-10-22 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-23','2011-05-23 14:00:00 UTC'); 
+VALUES (4,5,'2011-10-23','2011-10-23 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-24','2011-05-24 14:00:00 UTC'); 
+VALUES (4,5,'2011-10-24','2011-10-24 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-25','2011-05-25 14:15:00 UTC'); 
+VALUES (4,5,'2011-10-25','2011-10-25 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-26','2011-05-26 14:00:00 UTC'); 
+VALUES (4,5,'2011-10-26','2011-10-26 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-27','2011-05-27 14:00:00 UTC'); 
+VALUES (4,5,'2011-10-27','2011-10-27 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-28','2011-05-28 14:15:00 UTC'); 
+VALUES (4,5,'2011-10-28','2011-10-28 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-29','2011-05-29 14:00:00 UTC'); 
+VALUES (4,5,'2011-10-29','2011-10-29 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-30','2011-05-30 14:00:00 UTC'); 
+VALUES (4,5,'2011-10-30','2011-10-30 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-04','2011-05-04 17:00:00 UTC'); 
+VALUES (4,5,'2011-10-04','2011-10-04 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-05','2011-05-05 17:15:00 UTC'); 
+VALUES (4,5,'2011-10-05','2011-10-05 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-06','2011-05-06 17:00:00 UTC'); 
+VALUES (4,5,'2011-10-06','2011-10-06 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-07','2011-05-07 17:00:00 UTC'); 
+VALUES (4,5,'2011-10-07','2011-10-07 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-08','2011-05-08 17:15:00 UTC'); 
+VALUES (4,5,'2011-10-08','2011-10-08 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-09','2011-05-09 17:00:00 UTC'); 
+VALUES (4,5,'2011-10-09','2011-10-09 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-10','2011-05-10 17:00:00 UTC'); 
+VALUES (4,5,'2011-10-10','2011-10-10 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-11','2011-05-11 17:15:00 UTC'); 
+VALUES (4,5,'2011-10-11','2011-10-11 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-12','2011-05-12 17:00:00 UTC'); 
+VALUES (4,5,'2011-10-12','2011-10-12 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-13','2011-05-13 17:00:00 UTC'); 
+VALUES (4,5,'2011-10-13','2011-10-13 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-14','2011-05-14 17:00:00 UTC'); 
+VALUES (4,5,'2011-10-14','2011-10-14 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-15','2011-05-15 17:15:00 UTC'); 
+VALUES (4,5,'2011-10-15','2011-10-15 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-16','2011-05-16 17:00:00 UTC'); 
+VALUES (4,5,'2011-10-16','2011-10-16 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-17','2011-05-17 17:00:00 UTC'); 
+VALUES (4,5,'2011-10-17','2011-10-17 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-18','2011-05-18 17:15:00 UTC'); 
+VALUES (4,5,'2011-10-18','2011-10-18 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-19','2011-05-19 17:00:00 UTC'); 
+VALUES (4,5,'2011-10-19','2011-10-19 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-20','2011-05-20 17:00:00 UTC'); 
+VALUES (4,5,'2011-10-20','2011-10-20 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-21','2011-05-21 17:15:00 UTC'); 
+VALUES (4,5,'2011-10-21','2011-10-21 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-22','2011-05-22 17:00:00 UTC'); 
+VALUES (4,5,'2011-10-22','2011-10-22 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-23','2011-05-23 17:00:00 UTC'); 
+VALUES (4,5,'2011-10-23','2011-10-23 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-24','2011-05-24 17:00:00 UTC'); 
+VALUES (4,5,'2011-10-24','2011-10-24 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-25','2011-05-25 17:15:00 UTC'); 
+VALUES (4,5,'2011-10-25','2011-10-25 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-26','2011-05-26 17:00:00 UTC'); 
+VALUES (4,5,'2011-10-26','2011-10-26 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-27','2011-05-27 17:00:00 UTC'); 
+VALUES (4,5,'2011-10-27','2011-10-27 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-28','2011-05-28 17:15:00 UTC'); 
+VALUES (4,5,'2011-10-28','2011-10-28 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-29','2011-05-29 17:00:00 UTC'); 
+VALUES (4,5,'2011-10-29','2011-10-29 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-30','2011-05-30 17:00:00 UTC'); 
+VALUES (4,5,'2011-10-30','2011-10-30 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-04','2011-05-04 20:00:00 UTC'); 
+VALUES (4,5,'2011-10-04','2011-10-04 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-05','2011-05-05 20:15:00 UTC'); 
+VALUES (4,5,'2011-10-05','2011-10-05 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-06','2011-05-06 20:00:00 UTC'); 
+VALUES (4,5,'2011-10-06','2011-10-06 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-07','2011-05-07 20:00:00 UTC'); 
+VALUES (4,5,'2011-10-07','2011-10-07 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-08','2011-05-08 20:15:00 UTC'); 
+VALUES (4,5,'2011-10-08','2011-10-08 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-09','2011-05-09 20:00:00 UTC'); 
+VALUES (4,5,'2011-10-09','2011-10-09 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-10','2011-05-10 20:00:00 UTC'); 
+VALUES (4,5,'2011-10-10','2011-10-10 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-11','2011-05-11 20:15:00 UTC'); 
+VALUES (4,5,'2011-10-11','2011-10-11 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-12','2011-05-12 20:00:00 UTC'); 
+VALUES (4,5,'2011-10-12','2011-10-12 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-13','2011-05-13 20:00:00 UTC'); 
+VALUES (4,5,'2011-10-13','2011-10-13 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-14','2011-05-14 20:00:00 UTC'); 
+VALUES (4,5,'2011-10-14','2011-10-14 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-15','2011-05-15 20:15:00 UTC'); 
+VALUES (4,5,'2011-10-15','2011-10-15 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-16','2011-05-16 20:00:00 UTC'); 
+VALUES (4,5,'2011-10-16','2011-10-16 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-17','2011-05-17 20:00:00 UTC'); 
+VALUES (4,5,'2011-10-17','2011-10-17 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-18','2011-05-18 20:15:00 UTC'); 
+VALUES (4,5,'2011-10-18','2011-10-18 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-19','2011-05-19 20:00:00 UTC'); 
+VALUES (4,5,'2011-10-19','2011-10-19 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-20','2011-05-20 20:00:00 UTC'); 
+VALUES (4,5,'2011-10-20','2011-10-20 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-21','2011-05-21 20:15:00 UTC'); 
+VALUES (4,5,'2011-10-21','2011-10-21 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-22','2011-05-22 20:00:00 UTC'); 
+VALUES (4,5,'2011-10-22','2011-10-22 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-23','2011-05-23 20:00:00 UTC'); 
+VALUES (4,5,'2011-10-23','2011-10-23 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-24','2011-05-24 20:00:00 UTC'); 
+VALUES (4,5,'2011-10-24','2011-10-24 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-25','2011-05-25 20:15:00 UTC'); 
+VALUES (4,5,'2011-10-25','2011-10-25 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-26','2011-05-26 20:00:00 UTC'); 
+VALUES (4,5,'2011-10-26','2011-10-26 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-27','2011-05-27 20:00:00 UTC'); 
+VALUES (4,5,'2011-10-27','2011-10-27 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-28','2011-05-28 20:15:00 UTC'); 
+VALUES (4,5,'2011-10-28','2011-10-28 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-29','2011-05-29 20:00:00 UTC'); 
+VALUES (4,5,'2011-10-29','2011-10-29 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (4,5,'2011-05-30','2011-05-30 20:00:00 UTC'); 
+VALUES (4,5,'2011-10-30','2011-10-30 20:00:00 UTC'); 
 
 --hary korona maj
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-04','2011-05-04 10:00:00 UTC'); 
+VALUES (5,6,'2011-10-04','2011-10-04 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-05','2011-05-05 10:15:00 UTC'); 
+VALUES (5,6,'2011-10-05','2011-10-05 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-06','2011-05-06 10:00:00 UTC'); 
+VALUES (5,6,'2011-10-06','2011-10-06 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-07','2011-05-07 10:00:00 UTC'); 
+VALUES (5,6,'2011-10-07','2011-10-07 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-08','2011-05-08 10:15:00 UTC'); 
+VALUES (5,6,'2011-10-08','2011-10-08 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-09','2011-05-09 10:00:00 UTC'); 
+VALUES (5,6,'2011-10-09','2011-10-09 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-10','2011-05-10 10:00:00 UTC'); 
+VALUES (5,6,'2011-10-10','2011-10-10 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-11','2011-05-11 10:15:00 UTC'); 
+VALUES (5,6,'2011-10-11','2011-10-11 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-12','2011-05-12 10:00:00 UTC'); 
+VALUES (5,6,'2011-10-12','2011-10-12 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-13','2011-05-13 10:00:00 UTC'); 
+VALUES (5,6,'2011-10-13','2011-10-13 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-14','2011-05-14 10:00:00 UTC'); 
+VALUES (5,6,'2011-10-14','2011-10-14 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-15','2011-05-15 10:15:00 UTC'); 
+VALUES (5,6,'2011-10-15','2011-10-15 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-16','2011-05-16 10:00:00 UTC'); 
+VALUES (5,6,'2011-10-16','2011-10-16 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-17','2011-05-17 10:00:00 UTC'); 
+VALUES (5,6,'2011-10-17','2011-10-17 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-18','2011-05-18 10:15:00 UTC'); 
+VALUES (5,6,'2011-10-18','2011-10-18 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-19','2011-05-19 10:00:00 UTC'); 
+VALUES (5,6,'2011-10-19','2011-10-19 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-20','2011-05-20 10:00:00 UTC'); 
+VALUES (5,6,'2011-10-20','2011-10-20 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-21','2011-05-21 10:15:00 UTC'); 
+VALUES (5,6,'2011-10-21','2011-10-21 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-22','2011-05-22 10:00:00 UTC'); 
+VALUES (5,6,'2011-10-22','2011-10-22 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-23','2011-05-23 10:00:00 UTC'); 
+VALUES (5,6,'2011-10-23','2011-10-23 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-24','2011-05-24 10:00:00 UTC'); 
+VALUES (5,6,'2011-10-24','2011-10-24 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-25','2011-05-25 10:15:00 UTC'); 
+VALUES (5,6,'2011-10-25','2011-10-25 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-26','2011-05-26 10:00:00 UTC'); 
+VALUES (5,6,'2011-10-26','2011-10-26 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-27','2011-05-27 10:00:00 UTC'); 
+VALUES (5,6,'2011-10-27','2011-10-27 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-28','2011-05-28 10:15:00 UTC'); 
+VALUES (5,6,'2011-10-28','2011-10-28 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-29','2011-05-29 10:00:00 UTC'); 
+VALUES (5,6,'2011-10-29','2011-10-29 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-30','2011-05-30 10:00:00 UTC'); 
+VALUES (5,6,'2011-10-30','2011-10-30 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-04','2011-05-04 14:00:00 UTC'); 
+VALUES (5,6,'2011-10-04','2011-10-04 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-05','2011-05-05 14:15:00 UTC'); 
+VALUES (5,6,'2011-10-05','2011-10-05 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-06','2011-05-06 14:00:00 UTC'); 
+VALUES (5,6,'2011-10-06','2011-10-06 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-07','2011-05-07 14:00:00 UTC'); 
+VALUES (5,6,'2011-10-07','2011-10-07 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-08','2011-05-08 14:15:00 UTC'); 
+VALUES (5,6,'2011-10-08','2011-10-08 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-09','2011-05-09 14:00:00 UTC'); 
+VALUES (5,6,'2011-10-09','2011-10-09 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-10','2011-05-10 14:00:00 UTC'); 
+VALUES (5,6,'2011-10-10','2011-10-10 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-11','2011-05-11 14:15:00 UTC'); 
+VALUES (5,6,'2011-10-11','2011-10-11 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-12','2011-05-12 14:00:00 UTC'); 
+VALUES (5,6,'2011-10-12','2011-10-12 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-13','2011-05-13 14:00:00 UTC'); 
+VALUES (5,6,'2011-10-13','2011-10-13 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-14','2011-05-14 14:00:00 UTC'); 
+VALUES (5,6,'2011-10-14','2011-10-14 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-15','2011-05-15 14:15:00 UTC'); 
+VALUES (5,6,'2011-10-15','2011-10-15 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-16','2011-05-16 14:00:00 UTC'); 
+VALUES (5,6,'2011-10-16','2011-10-16 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-17','2011-05-17 14:00:00 UTC'); 
+VALUES (5,6,'2011-10-17','2011-10-17 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-18','2011-05-18 14:15:00 UTC'); 
+VALUES (5,6,'2011-10-18','2011-10-18 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-19','2011-05-19 14:00:00 UTC'); 
+VALUES (5,6,'2011-10-19','2011-10-19 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-20','2011-05-20 14:00:00 UTC'); 
+VALUES (5,6,'2011-10-20','2011-10-20 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-21','2011-05-21 14:15:00 UTC'); 
+VALUES (5,6,'2011-10-21','2011-10-21 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-22','2011-05-22 14:00:00 UTC'); 
+VALUES (5,6,'2011-10-22','2011-10-22 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-23','2011-05-23 14:00:00 UTC'); 
+VALUES (5,6,'2011-10-23','2011-10-23 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-24','2011-05-24 14:00:00 UTC'); 
+VALUES (5,6,'2011-10-24','2011-10-24 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-25','2011-05-25 14:15:00 UTC'); 
+VALUES (5,6,'2011-10-25','2011-10-25 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-26','2011-05-26 14:00:00 UTC'); 
+VALUES (5,6,'2011-10-26','2011-10-26 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-27','2011-05-27 14:00:00 UTC'); 
+VALUES (5,6,'2011-10-27','2011-10-27 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-28','2011-05-28 14:15:00 UTC'); 
+VALUES (5,6,'2011-10-28','2011-10-28 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-29','2011-05-29 14:00:00 UTC'); 
+VALUES (5,6,'2011-10-29','2011-10-29 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-30','2011-05-30 14:00:00 UTC'); 
+VALUES (5,6,'2011-10-30','2011-10-30 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-04','2011-05-04 17:00:00 UTC'); 
+VALUES (5,6,'2011-10-04','2011-10-04 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-05','2011-05-05 17:15:00 UTC'); 
+VALUES (5,6,'2011-10-05','2011-10-05 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-06','2011-05-06 17:00:00 UTC'); 
+VALUES (5,6,'2011-10-06','2011-10-06 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-07','2011-05-07 17:00:00 UTC'); 
+VALUES (5,6,'2011-10-07','2011-10-07 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-08','2011-05-08 17:15:00 UTC'); 
+VALUES (5,6,'2011-10-08','2011-10-08 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-09','2011-05-09 17:00:00 UTC'); 
+VALUES (5,6,'2011-10-09','2011-10-09 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-10','2011-05-10 17:00:00 UTC'); 
+VALUES (5,6,'2011-10-10','2011-10-10 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-11','2011-05-11 17:15:00 UTC'); 
+VALUES (5,6,'2011-10-11','2011-10-11 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-12','2011-05-12 17:00:00 UTC'); 
+VALUES (5,6,'2011-10-12','2011-10-12 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-13','2011-05-13 17:00:00 UTC'); 
+VALUES (5,6,'2011-10-13','2011-10-13 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-14','2011-05-14 17:00:00 UTC'); 
+VALUES (5,6,'2011-10-14','2011-10-14 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-15','2011-05-15 17:15:00 UTC'); 
+VALUES (5,6,'2011-10-15','2011-10-15 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-16','2011-05-16 17:00:00 UTC'); 
+VALUES (5,6,'2011-10-16','2011-10-16 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-17','2011-05-17 17:00:00 UTC'); 
+VALUES (5,6,'2011-10-17','2011-10-17 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-18','2011-05-18 17:15:00 UTC'); 
+VALUES (5,6,'2011-10-18','2011-10-18 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-19','2011-05-19 17:00:00 UTC'); 
+VALUES (5,6,'2011-10-19','2011-10-19 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-20','2011-05-20 17:00:00 UTC'); 
+VALUES (5,6,'2011-10-20','2011-10-20 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-21','2011-05-21 17:15:00 UTC'); 
+VALUES (5,6,'2011-10-21','2011-10-21 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-22','2011-05-22 17:00:00 UTC'); 
+VALUES (5,6,'2011-10-22','2011-10-22 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-23','2011-05-23 17:00:00 UTC'); 
+VALUES (5,6,'2011-10-23','2011-10-23 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-24','2011-05-24 17:00:00 UTC'); 
+VALUES (5,6,'2011-10-24','2011-10-24 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-25','2011-05-25 17:15:00 UTC'); 
+VALUES (5,6,'2011-10-25','2011-10-25 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-26','2011-05-26 17:00:00 UTC'); 
+VALUES (5,6,'2011-10-26','2011-10-26 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-27','2011-05-27 17:00:00 UTC'); 
+VALUES (5,6,'2011-10-27','2011-10-27 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-28','2011-05-28 17:15:00 UTC'); 
+VALUES (5,6,'2011-10-28','2011-10-28 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-29','2011-05-29 17:00:00 UTC'); 
+VALUES (5,6,'2011-10-29','2011-10-29 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-30','2011-05-30 17:00:00 UTC'); 
+VALUES (5,6,'2011-10-30','2011-10-30 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-04','2011-05-04 20:00:00 UTC'); 
+VALUES (5,6,'2011-10-04','2011-10-04 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-05','2011-05-05 20:15:00 UTC'); 
+VALUES (5,6,'2011-10-05','2011-10-05 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-06','2011-05-06 20:00:00 UTC'); 
+VALUES (5,6,'2011-10-06','2011-10-06 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-07','2011-05-07 20:00:00 UTC'); 
+VALUES (5,6,'2011-10-07','2011-10-07 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-08','2011-05-08 20:15:00 UTC'); 
+VALUES (5,6,'2011-10-08','2011-10-08 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-09','2011-05-09 20:00:00 UTC'); 
+VALUES (5,6,'2011-10-09','2011-10-09 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-10','2011-05-10 20:00:00 UTC'); 
+VALUES (5,6,'2011-10-10','2011-10-10 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-11','2011-05-11 20:15:00 UTC'); 
+VALUES (5,6,'2011-10-11','2011-10-11 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-12','2011-05-12 20:00:00 UTC'); 
+VALUES (5,6,'2011-10-12','2011-10-12 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-13','2011-05-13 20:00:00 UTC'); 
+VALUES (5,6,'2011-10-13','2011-10-13 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-14','2011-05-14 20:00:00 UTC'); 
+VALUES (5,6,'2011-10-14','2011-10-14 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-15','2011-05-15 20:15:00 UTC'); 
+VALUES (5,6,'2011-10-15','2011-10-15 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-16','2011-05-16 20:00:00 UTC'); 
+VALUES (5,6,'2011-10-16','2011-10-16 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-17','2011-05-17 20:00:00 UTC'); 
+VALUES (5,6,'2011-10-17','2011-10-17 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-18','2011-05-18 20:15:00 UTC'); 
+VALUES (5,6,'2011-10-18','2011-10-18 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-19','2011-05-19 20:00:00 UTC'); 
+VALUES (5,6,'2011-10-19','2011-10-19 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-20','2011-05-20 20:00:00 UTC'); 
+VALUES (5,6,'2011-10-20','2011-10-20 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-21','2011-05-21 20:15:00 UTC'); 
+VALUES (5,6,'2011-10-21','2011-10-21 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-22','2011-05-22 20:00:00 UTC'); 
+VALUES (5,6,'2011-10-22','2011-10-22 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-23','2011-05-23 20:00:00 UTC'); 
+VALUES (5,6,'2011-10-23','2011-10-23 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-24','2011-05-24 20:00:00 UTC'); 
+VALUES (5,6,'2011-10-24','2011-10-24 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-25','2011-05-25 20:15:00 UTC'); 
+VALUES (5,6,'2011-10-25','2011-10-25 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-26','2011-05-26 20:00:00 UTC'); 
+VALUES (5,6,'2011-10-26','2011-10-26 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-27','2011-05-27 20:00:00 UTC'); 
+VALUES (5,6,'2011-10-27','2011-10-27 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-28','2011-05-28 20:15:00 UTC'); 
+VALUES (5,6,'2011-10-28','2011-10-28 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-29','2011-05-29 20:00:00 UTC'); 
+VALUES (5,6,'2011-10-29','2011-10-29 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (5,6,'2011-05-30','2011-05-30 20:00:00 UTC'); 
+VALUES (5,6,'2011-10-30','2011-10-30 20:00:00 UTC'); 
 
 --ghost maj dworcowe
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-04','2011-05-04 10:00:00 UTC'); 
+VALUES (3,3,'2011-10-04','2011-10-04 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-05','2011-05-05 10:15:00 UTC'); 
+VALUES (3,3,'2011-10-05','2011-10-05 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-06','2011-05-06 10:00:00 UTC'); 
+VALUES (3,3,'2011-10-06','2011-10-06 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-07','2011-05-07 10:00:00 UTC'); 
+VALUES (3,3,'2011-10-07','2011-10-07 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-08','2011-05-08 10:15:00 UTC'); 
+VALUES (3,3,'2011-10-08','2011-10-08 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-09','2011-05-09 10:00:00 UTC'); 
+VALUES (3,3,'2011-10-09','2011-10-09 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-10','2011-05-10 10:00:00 UTC'); 
+VALUES (3,3,'2011-10-10','2011-10-10 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-11','2011-05-11 10:15:00 UTC'); 
+VALUES (3,3,'2011-10-11','2011-10-11 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-12','2011-05-12 10:00:00 UTC'); 
+VALUES (3,3,'2011-10-12','2011-10-12 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-13','2011-05-13 10:00:00 UTC'); 
+VALUES (3,3,'2011-10-13','2011-10-13 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-14','2011-05-14 10:00:00 UTC'); 
+VALUES (3,3,'2011-10-14','2011-10-14 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-15','2011-05-15 10:15:00 UTC'); 
+VALUES (3,3,'2011-10-15','2011-10-15 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-16','2011-05-16 10:00:00 UTC'); 
+VALUES (3,3,'2011-10-16','2011-10-16 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-17','2011-05-17 10:00:00 UTC'); 
+VALUES (3,3,'2011-10-17','2011-10-17 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-18','2011-05-18 10:15:00 UTC'); 
+VALUES (3,3,'2011-10-18','2011-10-18 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-19','2011-05-19 10:00:00 UTC'); 
+VALUES (3,3,'2011-10-19','2011-10-19 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-20','2011-05-20 10:00:00 UTC'); 
+VALUES (3,3,'2011-10-20','2011-10-20 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-21','2011-05-21 10:15:00 UTC'); 
+VALUES (3,3,'2011-10-21','2011-10-21 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-22','2011-05-22 10:00:00 UTC'); 
+VALUES (3,3,'2011-10-22','2011-10-22 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-23','2011-05-23 10:00:00 UTC'); 
+VALUES (3,3,'2011-10-23','2011-10-23 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-24','2011-05-24 10:00:00 UTC'); 
+VALUES (3,3,'2011-10-24','2011-10-24 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-25','2011-05-25 10:15:00 UTC'); 
+VALUES (3,3,'2011-10-25','2011-10-25 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-26','2011-05-26 10:00:00 UTC'); 
+VALUES (3,3,'2011-10-26','2011-10-26 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-27','2011-05-27 10:00:00 UTC'); 
+VALUES (3,3,'2011-10-27','2011-10-27 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-28','2011-05-28 10:15:00 UTC'); 
+VALUES (3,3,'2011-10-28','2011-10-28 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-29','2011-05-29 10:00:00 UTC'); 
+VALUES (3,3,'2011-10-29','2011-10-29 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-30','2011-05-30 10:00:00 UTC'); 
+VALUES (3,3,'2011-10-30','2011-10-30 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-04','2011-05-04 14:00:00 UTC'); 
+VALUES (3,3,'2011-10-04','2011-10-04 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-05','2011-05-05 14:15:00 UTC'); 
+VALUES (3,3,'2011-10-05','2011-10-05 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-06','2011-05-06 14:00:00 UTC'); 
+VALUES (3,3,'2011-10-06','2011-10-06 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-07','2011-05-07 14:00:00 UTC'); 
+VALUES (3,3,'2011-10-07','2011-10-07 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-08','2011-05-08 14:15:00 UTC'); 
+VALUES (3,3,'2011-10-08','2011-10-08 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-09','2011-05-09 14:00:00 UTC'); 
+VALUES (3,3,'2011-10-09','2011-10-09 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-10','2011-05-10 14:00:00 UTC'); 
+VALUES (3,3,'2011-10-10','2011-10-10 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-11','2011-05-11 14:15:00 UTC'); 
+VALUES (3,3,'2011-10-11','2011-10-11 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-12','2011-05-12 14:00:00 UTC'); 
+VALUES (3,3,'2011-10-12','2011-10-12 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-13','2011-05-13 14:00:00 UTC'); 
+VALUES (3,3,'2011-10-13','2011-10-13 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-14','2011-05-14 14:00:00 UTC'); 
+VALUES (3,3,'2011-10-14','2011-10-14 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-15','2011-05-15 14:15:00 UTC'); 
+VALUES (3,3,'2011-10-15','2011-10-15 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-16','2011-05-16 14:00:00 UTC'); 
+VALUES (3,3,'2011-10-16','2011-10-16 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-17','2011-05-17 14:00:00 UTC'); 
+VALUES (3,3,'2011-10-17','2011-10-17 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-18','2011-05-18 14:15:00 UTC'); 
+VALUES (3,3,'2011-10-18','2011-10-18 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-19','2011-05-19 14:00:00 UTC'); 
+VALUES (3,3,'2011-10-19','2011-10-19 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-20','2011-05-20 14:00:00 UTC'); 
+VALUES (3,3,'2011-10-20','2011-10-20 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-21','2011-05-21 14:15:00 UTC'); 
+VALUES (3,3,'2011-10-21','2011-10-21 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-22','2011-05-22 14:00:00 UTC'); 
+VALUES (3,3,'2011-10-22','2011-10-22 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-23','2011-05-23 14:00:00 UTC'); 
+VALUES (3,3,'2011-10-23','2011-10-23 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-24','2011-05-24 14:00:00 UTC'); 
+VALUES (3,3,'2011-10-24','2011-10-24 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-25','2011-05-25 14:15:00 UTC'); 
+VALUES (3,3,'2011-10-25','2011-10-25 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-26','2011-05-26 14:00:00 UTC'); 
+VALUES (3,3,'2011-10-26','2011-10-26 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-27','2011-05-27 14:00:00 UTC'); 
+VALUES (3,3,'2011-10-27','2011-10-27 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-28','2011-05-28 14:15:00 UTC'); 
+VALUES (3,3,'2011-10-28','2011-10-28 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-29','2011-05-29 14:00:00 UTC'); 
+VALUES (3,3,'2011-10-29','2011-10-29 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-30','2011-05-30 14:00:00 UTC'); 
+VALUES (3,3,'2011-10-30','2011-10-30 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-04','2011-05-04 17:00:00 UTC'); 
+VALUES (3,3,'2011-10-04','2011-10-04 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-05','2011-05-05 17:15:00 UTC'); 
+VALUES (3,3,'2011-10-05','2011-10-05 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-06','2011-05-06 17:00:00 UTC'); 
+VALUES (3,3,'2011-10-06','2011-10-06 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-07','2011-05-07 17:00:00 UTC'); 
+VALUES (3,3,'2011-10-07','2011-10-07 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-08','2011-05-08 17:15:00 UTC'); 
+VALUES (3,3,'2011-10-08','2011-10-08 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-09','2011-05-09 17:00:00 UTC'); 
+VALUES (3,3,'2011-10-09','2011-10-09 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-10','2011-05-10 17:00:00 UTC'); 
+VALUES (3,3,'2011-10-10','2011-10-10 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-11','2011-05-11 17:15:00 UTC'); 
+VALUES (3,3,'2011-10-11','2011-10-11 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-12','2011-05-12 17:00:00 UTC'); 
+VALUES (3,3,'2011-10-12','2011-10-12 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-13','2011-05-13 17:00:00 UTC'); 
+VALUES (3,3,'2011-10-13','2011-10-13 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-14','2011-05-14 17:00:00 UTC'); 
+VALUES (3,3,'2011-10-14','2011-10-14 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-15','2011-05-15 17:15:00 UTC'); 
+VALUES (3,3,'2011-10-15','2011-10-15 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-16','2011-05-16 17:00:00 UTC'); 
+VALUES (3,3,'2011-10-16','2011-10-16 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-17','2011-05-17 17:00:00 UTC'); 
+VALUES (3,3,'2011-10-17','2011-10-17 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-18','2011-05-18 17:15:00 UTC'); 
+VALUES (3,3,'2011-10-18','2011-10-18 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-19','2011-05-19 17:00:00 UTC'); 
+VALUES (3,3,'2011-10-19','2011-10-19 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-20','2011-05-20 17:00:00 UTC'); 
+VALUES (3,3,'2011-10-20','2011-10-20 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-21','2011-05-21 17:15:00 UTC'); 
+VALUES (3,3,'2011-10-21','2011-10-21 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-22','2011-05-22 17:00:00 UTC'); 
+VALUES (3,3,'2011-10-22','2011-10-22 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-23','2011-05-23 17:00:00 UTC'); 
+VALUES (3,3,'2011-10-23','2011-10-23 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-24','2011-05-24 17:00:00 UTC'); 
+VALUES (3,3,'2011-10-24','2011-10-24 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-25','2011-05-25 17:15:00 UTC'); 
+VALUES (3,3,'2011-10-25','2011-10-25 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-26','2011-05-26 17:00:00 UTC'); 
+VALUES (3,3,'2011-10-26','2011-10-26 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-27','2011-05-27 17:00:00 UTC'); 
+VALUES (3,3,'2011-10-27','2011-10-27 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-28','2011-05-28 17:15:00 UTC'); 
+VALUES (3,3,'2011-10-28','2011-10-28 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-29','2011-05-29 17:00:00 UTC'); 
+VALUES (3,3,'2011-10-29','2011-10-29 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-30','2011-05-30 17:00:00 UTC'); 
+VALUES (3,3,'2011-10-30','2011-10-30 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-04','2011-05-04 20:00:00 UTC'); 
+VALUES (3,3,'2011-10-04','2011-10-04 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-05','2011-05-05 20:15:00 UTC'); 
+VALUES (3,3,'2011-10-05','2011-10-05 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-06','2011-05-06 20:00:00 UTC'); 
+VALUES (3,3,'2011-10-06','2011-10-06 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-07','2011-05-07 20:00:00 UTC'); 
+VALUES (3,3,'2011-10-07','2011-10-07 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-08','2011-05-08 20:15:00 UTC'); 
+VALUES (3,3,'2011-10-08','2011-10-08 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-09','2011-05-09 20:00:00 UTC'); 
+VALUES (3,3,'2011-10-09','2011-10-09 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-10','2011-05-10 20:00:00 UTC'); 
+VALUES (3,3,'2011-10-10','2011-10-10 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-11','2011-05-11 20:15:00 UTC'); 
+VALUES (3,3,'2011-10-11','2011-10-11 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-12','2011-05-12 20:00:00 UTC'); 
+VALUES (3,3,'2011-10-12','2011-10-12 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-13','2011-05-13 20:00:00 UTC'); 
+VALUES (3,3,'2011-10-13','2011-10-13 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-14','2011-05-14 20:00:00 UTC'); 
+VALUES (3,3,'2011-10-14','2011-10-14 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-15','2011-05-15 20:15:00 UTC'); 
+VALUES (3,3,'2011-10-15','2011-10-15 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-16','2011-05-16 20:00:00 UTC'); 
+VALUES (3,3,'2011-10-16','2011-10-16 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-17','2011-05-17 20:00:00 UTC'); 
+VALUES (3,3,'2011-10-17','2011-10-17 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-18','2011-05-18 20:15:00 UTC'); 
+VALUES (3,3,'2011-10-18','2011-10-18 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-19','2011-05-19 20:00:00 UTC'); 
+VALUES (3,3,'2011-10-19','2011-10-19 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-20','2011-05-20 20:00:00 UTC'); 
+VALUES (3,3,'2011-10-20','2011-10-20 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-21','2011-05-21 20:15:00 UTC'); 
+VALUES (3,3,'2011-10-21','2011-10-21 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-22','2011-05-22 20:00:00 UTC'); 
+VALUES (3,3,'2011-10-22','2011-10-22 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-23','2011-05-23 20:00:00 UTC'); 
+VALUES (3,3,'2011-10-23','2011-10-23 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-24','2011-05-24 20:00:00 UTC'); 
+VALUES (3,3,'2011-10-24','2011-10-24 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-25','2011-05-25 20:15:00 UTC'); 
+VALUES (3,3,'2011-10-25','2011-10-25 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-26','2011-05-26 20:00:00 UTC'); 
+VALUES (3,3,'2011-10-26','2011-10-26 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-27','2011-05-27 20:00:00 UTC'); 
+VALUES (3,3,'2011-10-27','2011-10-27 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-28','2011-05-28 20:15:00 UTC'); 
+VALUES (3,3,'2011-10-28','2011-10-28 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-29','2011-05-29 20:00:00 UTC'); 
+VALUES (3,3,'2011-10-29','2011-10-29 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (3,3,'2011-05-30','2011-05-30 20:00:00 UTC'); 
+VALUES (3,3,'2011-10-30','2011-10-30 20:00:00 UTC'); 
 
 --thor maj dworcowe
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-04','2011-05-04 10:00:00 UTC'); 
+VALUES (6,4,'2011-10-04','2011-10-04 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-05','2011-05-05 10:15:00 UTC'); 
+VALUES (6,4,'2011-10-05','2011-10-05 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-06','2011-05-06 10:00:00 UTC'); 
+VALUES (6,4,'2011-10-06','2011-10-06 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-07','2011-05-07 10:00:00 UTC'); 
+VALUES (6,4,'2011-10-07','2011-10-07 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-08','2011-05-08 10:15:00 UTC'); 
+VALUES (6,4,'2011-10-08','2011-10-08 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-09','2011-05-09 10:00:00 UTC'); 
+VALUES (6,4,'2011-10-09','2011-10-09 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-10','2011-05-10 10:00:00 UTC'); 
+VALUES (6,4,'2011-10-10','2011-10-10 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-11','2011-05-11 10:15:00 UTC'); 
+VALUES (6,4,'2011-10-11','2011-10-11 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-12','2011-05-12 10:00:00 UTC'); 
+VALUES (6,4,'2011-10-12','2011-10-12 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-13','2011-05-13 10:00:00 UTC'); 
+VALUES (6,4,'2011-10-13','2011-10-13 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-14','2011-05-14 10:00:00 UTC'); 
+VALUES (6,4,'2011-10-14','2011-10-14 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-15','2011-05-15 10:15:00 UTC'); 
+VALUES (6,4,'2011-10-15','2011-10-15 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-16','2011-05-16 10:00:00 UTC'); 
+VALUES (6,4,'2011-10-16','2011-10-16 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-17','2011-05-17 10:00:00 UTC'); 
+VALUES (6,4,'2011-10-17','2011-10-17 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-18','2011-05-18 10:15:00 UTC'); 
+VALUES (6,4,'2011-10-18','2011-10-18 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-19','2011-05-19 10:00:00 UTC'); 
+VALUES (6,4,'2011-10-19','2011-10-19 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-20','2011-05-20 10:00:00 UTC'); 
+VALUES (6,4,'2011-10-20','2011-10-20 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-21','2011-05-21 10:15:00 UTC'); 
+VALUES (6,4,'2011-10-21','2011-10-21 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-22','2011-05-22 10:00:00 UTC'); 
+VALUES (6,4,'2011-10-22','2011-10-22 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-23','2011-05-23 10:00:00 UTC'); 
+VALUES (6,4,'2011-10-23','2011-10-23 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-24','2011-05-24 10:00:00 UTC'); 
+VALUES (6,4,'2011-10-24','2011-10-24 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-25','2011-05-25 10:15:00 UTC'); 
+VALUES (6,4,'2011-10-25','2011-10-25 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-26','2011-05-26 10:00:00 UTC'); 
+VALUES (6,4,'2011-10-26','2011-10-26 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-27','2011-05-27 10:00:00 UTC'); 
+VALUES (6,4,'2011-10-27','2011-10-27 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-28','2011-05-28 10:15:00 UTC'); 
+VALUES (6,4,'2011-10-28','2011-10-28 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-29','2011-05-29 10:00:00 UTC'); 
+VALUES (6,4,'2011-10-29','2011-10-29 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-30','2011-05-30 10:00:00 UTC'); 
+VALUES (6,4,'2011-10-30','2011-10-30 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-04','2011-05-04 14:00:00 UTC'); 
+VALUES (6,4,'2011-10-04','2011-10-04 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-05','2011-05-05 14:15:00 UTC'); 
+VALUES (6,4,'2011-10-05','2011-10-05 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-06','2011-05-06 14:00:00 UTC'); 
+VALUES (6,4,'2011-10-06','2011-10-06 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-07','2011-05-07 14:00:00 UTC'); 
+VALUES (6,4,'2011-10-07','2011-10-07 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-08','2011-05-08 14:15:00 UTC'); 
+VALUES (6,4,'2011-10-08','2011-10-08 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-09','2011-05-09 14:00:00 UTC'); 
+VALUES (6,4,'2011-10-09','2011-10-09 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-10','2011-05-10 14:00:00 UTC'); 
+VALUES (6,4,'2011-10-10','2011-10-10 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-11','2011-05-11 14:15:00 UTC'); 
+VALUES (6,4,'2011-10-11','2011-10-11 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-12','2011-05-12 14:00:00 UTC'); 
+VALUES (6,4,'2011-10-12','2011-10-12 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-13','2011-05-13 14:00:00 UTC'); 
+VALUES (6,4,'2011-10-13','2011-10-13 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-14','2011-05-14 14:00:00 UTC'); 
+VALUES (6,4,'2011-10-14','2011-10-14 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-15','2011-05-15 14:15:00 UTC'); 
+VALUES (6,4,'2011-10-15','2011-10-15 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-16','2011-05-16 14:00:00 UTC'); 
+VALUES (6,4,'2011-10-16','2011-10-16 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-17','2011-05-17 14:00:00 UTC'); 
+VALUES (6,4,'2011-10-17','2011-10-17 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-18','2011-05-18 14:15:00 UTC'); 
+VALUES (6,4,'2011-10-18','2011-10-18 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-19','2011-05-19 14:00:00 UTC'); 
+VALUES (6,4,'2011-10-19','2011-10-19 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-20','2011-05-20 14:00:00 UTC'); 
+VALUES (6,4,'2011-10-20','2011-10-20 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-21','2011-05-21 14:15:00 UTC'); 
+VALUES (6,4,'2011-10-21','2011-10-21 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-22','2011-05-22 14:00:00 UTC'); 
+VALUES (6,4,'2011-10-22','2011-10-22 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-23','2011-05-23 14:00:00 UTC'); 
+VALUES (6,4,'2011-10-23','2011-10-23 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-24','2011-05-24 14:00:00 UTC'); 
+VALUES (6,4,'2011-10-24','2011-10-24 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-25','2011-05-25 14:15:00 UTC'); 
+VALUES (6,4,'2011-10-25','2011-10-25 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-26','2011-05-26 14:00:00 UTC'); 
+VALUES (6,4,'2011-10-26','2011-10-26 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-27','2011-05-27 14:00:00 UTC'); 
+VALUES (6,4,'2011-10-27','2011-10-27 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-28','2011-05-28 14:15:00 UTC'); 
+VALUES (6,4,'2011-10-28','2011-10-28 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-29','2011-05-29 14:00:00 UTC'); 
+VALUES (6,4,'2011-10-29','2011-10-29 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-30','2011-05-30 14:00:00 UTC'); 
+VALUES (6,4,'2011-10-30','2011-10-30 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-04','2011-05-04 17:00:00 UTC'); 
+VALUES (6,4,'2011-10-04','2011-10-04 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-05','2011-05-05 17:15:00 UTC'); 
+VALUES (6,4,'2011-10-05','2011-10-05 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-06','2011-05-06 17:00:00 UTC'); 
+VALUES (6,4,'2011-10-06','2011-10-06 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-07','2011-05-07 17:00:00 UTC'); 
+VALUES (6,4,'2011-10-07','2011-10-07 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-08','2011-05-08 17:15:00 UTC'); 
+VALUES (6,4,'2011-10-08','2011-10-08 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-09','2011-05-09 17:00:00 UTC'); 
+VALUES (6,4,'2011-10-09','2011-10-09 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-10','2011-05-10 17:00:00 UTC'); 
+VALUES (6,4,'2011-10-10','2011-10-10 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-11','2011-05-11 17:15:00 UTC'); 
+VALUES (6,4,'2011-10-11','2011-10-11 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-12','2011-05-12 17:00:00 UTC'); 
+VALUES (6,4,'2011-10-12','2011-10-12 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-13','2011-05-13 17:00:00 UTC'); 
+VALUES (6,4,'2011-10-13','2011-10-13 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-14','2011-05-14 17:00:00 UTC'); 
+VALUES (6,4,'2011-10-14','2011-10-14 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-15','2011-05-15 17:15:00 UTC'); 
+VALUES (6,4,'2011-10-15','2011-10-15 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-16','2011-05-16 17:00:00 UTC'); 
+VALUES (6,4,'2011-10-16','2011-10-16 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-17','2011-05-17 17:00:00 UTC'); 
+VALUES (6,4,'2011-10-17','2011-10-17 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-18','2011-05-18 17:15:00 UTC'); 
+VALUES (6,4,'2011-10-18','2011-10-18 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-19','2011-05-19 17:00:00 UTC'); 
+VALUES (6,4,'2011-10-19','2011-10-19 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-20','2011-05-20 17:00:00 UTC'); 
+VALUES (6,4,'2011-10-20','2011-10-20 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-21','2011-05-21 17:15:00 UTC'); 
+VALUES (6,4,'2011-10-21','2011-10-21 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-22','2011-05-22 17:00:00 UTC'); 
+VALUES (6,4,'2011-10-22','2011-10-22 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-23','2011-05-23 17:00:00 UTC'); 
+VALUES (6,4,'2011-10-23','2011-10-23 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-24','2011-05-24 17:00:00 UTC'); 
+VALUES (6,4,'2011-10-24','2011-10-24 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-25','2011-05-25 17:15:00 UTC'); 
+VALUES (6,4,'2011-10-25','2011-10-25 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-26','2011-05-26 17:00:00 UTC'); 
+VALUES (6,4,'2011-10-26','2011-10-26 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-27','2011-05-27 17:00:00 UTC'); 
+VALUES (6,4,'2011-10-27','2011-10-27 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-28','2011-05-28 17:15:00 UTC'); 
+VALUES (6,4,'2011-10-28','2011-10-28 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-29','2011-05-29 17:00:00 UTC'); 
+VALUES (6,4,'2011-10-29','2011-10-29 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-30','2011-05-30 17:00:00 UTC'); 
+VALUES (6,4,'2011-10-30','2011-10-30 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-04','2011-05-04 20:00:00 UTC'); 
+VALUES (6,4,'2011-10-04','2011-10-04 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-05','2011-05-05 20:15:00 UTC'); 
+VALUES (6,4,'2011-10-05','2011-10-05 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-06','2011-05-06 20:00:00 UTC'); 
+VALUES (6,4,'2011-10-06','2011-10-06 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-07','2011-05-07 20:00:00 UTC'); 
+VALUES (6,4,'2011-10-07','2011-10-07 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-08','2011-05-08 20:15:00 UTC'); 
+VALUES (6,4,'2011-10-08','2011-10-08 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-09','2011-05-09 20:00:00 UTC'); 
+VALUES (6,4,'2011-10-09','2011-10-09 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-10','2011-05-10 20:00:00 UTC'); 
+VALUES (6,4,'2011-10-10','2011-10-10 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-11','2011-05-11 20:15:00 UTC'); 
+VALUES (6,4,'2011-10-11','2011-10-11 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-12','2011-05-12 20:00:00 UTC'); 
+VALUES (6,4,'2011-10-12','2011-10-12 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-13','2011-05-13 20:00:00 UTC'); 
+VALUES (6,4,'2011-10-13','2011-10-13 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-14','2011-05-14 20:00:00 UTC'); 
+VALUES (6,4,'2011-10-14','2011-10-14 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-15','2011-05-15 20:15:00 UTC'); 
+VALUES (6,4,'2011-10-15','2011-10-15 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-16','2011-05-16 20:00:00 UTC'); 
+VALUES (6,4,'2011-10-16','2011-10-16 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-17','2011-05-17 20:00:00 UTC'); 
+VALUES (6,4,'2011-10-17','2011-10-17 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-18','2011-05-18 20:15:00 UTC'); 
+VALUES (6,4,'2011-10-18','2011-10-18 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-19','2011-05-19 20:00:00 UTC'); 
+VALUES (6,4,'2011-10-19','2011-10-19 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-20','2011-05-20 20:00:00 UTC'); 
+VALUES (6,4,'2011-10-20','2011-10-20 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-21','2011-05-21 20:15:00 UTC'); 
+VALUES (6,4,'2011-10-21','2011-10-21 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-22','2011-05-22 20:00:00 UTC'); 
+VALUES (6,4,'2011-10-22','2011-10-22 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-23','2011-05-23 20:00:00 UTC'); 
+VALUES (6,4,'2011-10-23','2011-10-23 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-24','2011-05-24 20:00:00 UTC'); 
+VALUES (6,4,'2011-10-24','2011-10-24 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-25','2011-05-25 20:15:00 UTC'); 
+VALUES (6,4,'2011-10-25','2011-10-25 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-26','2011-05-26 20:00:00 UTC'); 
+VALUES (6,4,'2011-10-26','2011-10-26 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-27','2011-05-27 20:00:00 UTC'); 
+VALUES (6,4,'2011-10-27','2011-10-27 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-28','2011-05-28 20:15:00 UTC'); 
+VALUES (6,4,'2011-10-28','2011-10-28 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-29','2011-05-29 20:00:00 UTC'); 
+VALUES (6,4,'2011-10-29','2011-10-29 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (6,4,'2011-05-30','2011-05-30 20:00:00 UTC'); 
+VALUES (6,4,'2011-10-30','2011-10-30 20:00:00 UTC'); 
 
 --kwiecien 5d incepcja
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-04','2011-04-04 10:00:00 UTC'); 
+VALUES (12,7,'2011-09-04','2011-09-04 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-05','2011-04-05 10:15:00 UTC'); 
+VALUES (12,7,'2011-09-05','2011-09-05 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-06','2011-04-06 10:00:00 UTC'); 
+VALUES (12,7,'2011-09-06','2011-09-06 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-07','2011-04-07 10:00:00 UTC'); 
+VALUES (12,7,'2011-09-07','2011-09-07 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-08','2011-04-08 10:15:00 UTC'); 
+VALUES (12,7,'2011-09-08','2011-09-08 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-09','2011-04-09 10:00:00 UTC'); 
+VALUES (12,7,'2011-09-09','2011-09-09 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-10','2011-04-10 10:00:00 UTC'); 
+VALUES (12,7,'2011-09-10','2011-09-10 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-11','2011-04-11 10:15:00 UTC'); 
+VALUES (12,7,'2011-09-11','2011-09-11 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-12','2011-04-12 10:00:00 UTC'); 
+VALUES (12,7,'2011-09-12','2011-09-12 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-13','2011-04-13 10:00:00 UTC'); 
+VALUES (12,7,'2011-09-13','2011-09-13 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-14','2011-04-14 10:00:00 UTC'); 
+VALUES (12,7,'2011-09-14','2011-09-14 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-15','2011-04-15 10:15:00 UTC'); 
+VALUES (12,7,'2011-09-15','2011-09-15 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-16','2011-04-16 10:00:00 UTC'); 
+VALUES (12,7,'2011-09-16','2011-09-16 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-17','2011-04-17 10:00:00 UTC'); 
+VALUES (12,7,'2011-09-17','2011-09-17 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-18','2011-04-18 10:15:00 UTC'); 
+VALUES (12,7,'2011-09-18','2011-09-18 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-19','2011-04-19 10:00:00 UTC'); 
+VALUES (12,7,'2011-09-19','2011-09-19 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-20','2011-04-20 10:00:00 UTC'); 
+VALUES (12,7,'2011-09-20','2011-09-20 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-21','2011-04-21 10:15:00 UTC'); 
+VALUES (12,7,'2011-09-21','2011-09-21 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-22','2011-04-22 10:00:00 UTC'); 
+VALUES (12,7,'2011-09-22','2011-09-22 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-23','2011-04-23 10:00:00 UTC'); 
+VALUES (12,7,'2011-09-23','2011-09-23 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-24','2011-04-24 10:00:00 UTC'); 
+VALUES (12,7,'2011-09-24','2011-09-24 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-25','2011-04-25 10:15:00 UTC'); 
+VALUES (12,7,'2011-09-25','2011-09-25 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-26','2011-04-26 10:00:00 UTC'); 
+VALUES (12,7,'2011-09-26','2011-09-26 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-27','2011-04-27 10:00:00 UTC'); 
+VALUES (12,7,'2011-09-27','2011-09-27 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-28','2011-04-28 10:15:00 UTC'); 
+VALUES (12,7,'2011-09-28','2011-09-28 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-29','2011-04-29 10:00:00 UTC'); 
+VALUES (12,7,'2011-09-29','2011-09-29 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-30','2011-04-30 10:00:00 UTC'); 
+VALUES (12,7,'2011-09-30','2011-09-30 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-04','2011-04-04 14:00:00 UTC'); 
+VALUES (12,7,'2011-09-04','2011-09-04 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-05','2011-04-05 14:15:00 UTC'); 
+VALUES (12,7,'2011-09-05','2011-09-05 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-06','2011-04-06 14:00:00 UTC'); 
+VALUES (12,7,'2011-09-06','2011-09-06 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-07','2011-04-07 14:00:00 UTC'); 
+VALUES (12,7,'2011-09-07','2011-09-07 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-08','2011-04-08 14:15:00 UTC'); 
+VALUES (12,7,'2011-09-08','2011-09-08 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-09','2011-04-09 14:00:00 UTC'); 
+VALUES (12,7,'2011-09-09','2011-09-09 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-10','2011-04-10 14:00:00 UTC'); 
+VALUES (12,7,'2011-09-10','2011-09-10 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-11','2011-04-11 14:15:00 UTC'); 
+VALUES (12,7,'2011-09-11','2011-09-11 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-12','2011-04-12 14:00:00 UTC'); 
+VALUES (12,7,'2011-09-12','2011-09-12 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-13','2011-04-13 14:00:00 UTC'); 
+VALUES (12,7,'2011-09-13','2011-09-13 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-14','2011-04-14 14:00:00 UTC'); 
+VALUES (12,7,'2011-09-14','2011-09-14 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-15','2011-04-15 14:15:00 UTC'); 
+VALUES (12,7,'2011-09-15','2011-09-15 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-16','2011-04-16 14:00:00 UTC'); 
+VALUES (12,7,'2011-09-16','2011-09-16 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-17','2011-04-17 14:00:00 UTC'); 
+VALUES (12,7,'2011-09-17','2011-09-17 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-18','2011-04-18 14:15:00 UTC'); 
+VALUES (12,7,'2011-09-18','2011-09-18 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-19','2011-04-19 14:00:00 UTC'); 
+VALUES (12,7,'2011-09-19','2011-09-19 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-20','2011-04-20 14:00:00 UTC'); 
+VALUES (12,7,'2011-09-20','2011-09-20 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-21','2011-04-21 14:15:00 UTC'); 
+VALUES (12,7,'2011-09-21','2011-09-21 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-22','2011-04-22 14:00:00 UTC'); 
+VALUES (12,7,'2011-09-22','2011-09-22 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-23','2011-04-23 14:00:00 UTC'); 
+VALUES (12,7,'2011-09-23','2011-09-23 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-24','2011-04-24 14:00:00 UTC'); 
+VALUES (12,7,'2011-09-24','2011-09-24 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-25','2011-04-25 14:15:00 UTC'); 
+VALUES (12,7,'2011-09-25','2011-09-25 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-26','2011-04-26 14:00:00 UTC'); 
+VALUES (12,7,'2011-09-26','2011-09-26 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-27','2011-04-27 14:00:00 UTC'); 
+VALUES (12,7,'2011-09-27','2011-09-27 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-28','2011-04-28 14:15:00 UTC'); 
+VALUES (12,7,'2011-09-28','2011-09-28 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-29','2011-04-29 14:00:00 UTC'); 
+VALUES (12,7,'2011-09-29','2011-09-29 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-30','2011-04-30 14:00:00 UTC'); 
+VALUES (12,7,'2011-09-30','2011-09-30 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-04','2011-04-04 17:00:00 UTC'); 
+VALUES (12,7,'2011-09-04','2011-09-04 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-05','2011-04-05 17:15:00 UTC'); 
+VALUES (12,7,'2011-09-05','2011-09-05 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-06','2011-04-06 17:00:00 UTC'); 
+VALUES (12,7,'2011-09-06','2011-09-06 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-07','2011-04-07 17:00:00 UTC'); 
+VALUES (12,7,'2011-09-07','2011-09-07 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-08','2011-04-08 17:15:00 UTC'); 
+VALUES (12,7,'2011-09-08','2011-09-08 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-09','2011-04-09 17:00:00 UTC'); 
+VALUES (12,7,'2011-09-09','2011-09-09 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-10','2011-04-10 17:00:00 UTC'); 
+VALUES (12,7,'2011-09-10','2011-09-10 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-11','2011-04-11 17:15:00 UTC'); 
+VALUES (12,7,'2011-09-11','2011-09-11 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-12','2011-04-12 17:00:00 UTC'); 
+VALUES (12,7,'2011-09-12','2011-09-12 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-13','2011-04-13 17:00:00 UTC'); 
+VALUES (12,7,'2011-09-13','2011-09-13 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-14','2011-04-14 17:00:00 UTC'); 
+VALUES (12,7,'2011-09-14','2011-09-14 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-15','2011-04-15 17:15:00 UTC'); 
+VALUES (12,7,'2011-09-15','2011-09-15 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-16','2011-04-16 17:00:00 UTC'); 
+VALUES (12,7,'2011-09-16','2011-09-16 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-17','2011-04-17 17:00:00 UTC'); 
+VALUES (12,7,'2011-09-17','2011-09-17 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-18','2011-04-18 17:15:00 UTC'); 
+VALUES (12,7,'2011-09-18','2011-09-18 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-19','2011-04-19 17:00:00 UTC'); 
+VALUES (12,7,'2011-09-19','2011-09-19 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-20','2011-04-20 17:00:00 UTC'); 
+VALUES (12,7,'2011-09-20','2011-09-20 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-21','2011-04-21 17:15:00 UTC'); 
+VALUES (12,7,'2011-09-21','2011-09-21 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-22','2011-04-22 17:00:00 UTC'); 
+VALUES (12,7,'2011-09-22','2011-09-22 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-23','2011-04-23 17:00:00 UTC'); 
+VALUES (12,7,'2011-09-23','2011-09-23 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-24','2011-04-24 17:00:00 UTC'); 
+VALUES (12,7,'2011-09-24','2011-09-24 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-25','2011-04-25 17:15:00 UTC'); 
+VALUES (12,7,'2011-09-25','2011-09-25 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-26','2011-04-26 17:00:00 UTC'); 
+VALUES (12,7,'2011-09-26','2011-09-26 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-27','2011-04-27 17:00:00 UTC'); 
+VALUES (12,7,'2011-09-27','2011-09-27 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-28','2011-04-28 17:15:00 UTC'); 
+VALUES (12,7,'2011-09-28','2011-09-28 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-29','2011-04-29 17:00:00 UTC'); 
+VALUES (12,7,'2011-09-29','2011-09-29 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-30','2011-04-30 17:00:00 UTC'); 
+VALUES (12,7,'2011-09-30','2011-09-30 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-04','2011-04-04 20:00:00 UTC'); 
+VALUES (12,7,'2011-09-04','2011-09-04 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-05','2011-04-05 20:15:00 UTC'); 
+VALUES (12,7,'2011-09-05','2011-09-05 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-06','2011-04-06 20:00:00 UTC'); 
+VALUES (12,7,'2011-09-06','2011-09-06 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-07','2011-04-07 20:00:00 UTC'); 
+VALUES (12,7,'2011-09-07','2011-09-07 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-08','2011-04-08 20:15:00 UTC'); 
+VALUES (12,7,'2011-09-08','2011-09-08 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-09','2011-04-09 20:00:00 UTC'); 
+VALUES (12,7,'2011-09-09','2011-09-09 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-10','2011-04-10 20:00:00 UTC'); 
+VALUES (12,7,'2011-09-10','2011-09-10 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-11','2011-04-11 20:15:00 UTC'); 
+VALUES (12,7,'2011-09-11','2011-09-11 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-12','2011-04-12 20:00:00 UTC'); 
+VALUES (12,7,'2011-09-12','2011-09-12 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-13','2011-04-13 20:00:00 UTC'); 
+VALUES (12,7,'2011-09-13','2011-09-13 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-14','2011-04-14 20:00:00 UTC'); 
+VALUES (12,7,'2011-09-14','2011-09-14 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-15','2011-04-15 20:15:00 UTC'); 
+VALUES (12,7,'2011-09-15','2011-09-15 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-16','2011-04-16 20:00:00 UTC'); 
+VALUES (12,7,'2011-09-16','2011-09-16 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-17','2011-04-17 20:00:00 UTC'); 
+VALUES (12,7,'2011-09-17','2011-09-17 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-18','2011-04-18 20:15:00 UTC'); 
+VALUES (12,7,'2011-09-18','2011-09-18 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-19','2011-04-19 20:00:00 UTC'); 
+VALUES (12,7,'2011-09-19','2011-09-19 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-20','2011-04-20 20:00:00 UTC'); 
+VALUES (12,7,'2011-09-20','2011-09-20 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-21','2011-04-21 20:15:00 UTC'); 
+VALUES (12,7,'2011-09-21','2011-09-21 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-22','2011-04-22 20:00:00 UTC'); 
+VALUES (12,7,'2011-09-22','2011-09-22 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-23','2011-04-23 20:00:00 UTC'); 
+VALUES (12,7,'2011-09-23','2011-09-23 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-24','2011-04-24 20:00:00 UTC'); 
+VALUES (12,7,'2011-09-24','2011-09-24 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-25','2011-04-25 20:15:00 UTC'); 
+VALUES (12,7,'2011-09-25','2011-09-25 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-26','2011-04-26 20:00:00 UTC'); 
+VALUES (12,7,'2011-09-26','2011-09-26 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-27','2011-04-27 20:00:00 UTC'); 
+VALUES (12,7,'2011-09-27','2011-09-27 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-28','2011-04-28 20:15:00 UTC'); 
+VALUES (12,7,'2011-09-28','2011-09-28 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-29','2011-04-29 20:00:00 UTC'); 
+VALUES (12,7,'2011-09-29','2011-09-29 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (12,7,'2011-04-30','2011-04-30 20:00:00 UTC'); 
+VALUES (12,7,'2011-09-30','2011-09-30 20:00:00 UTC'); 
 
 --kwiecien korona prawdzwie męstwo
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-04','2011-04-04 10:00:00 UTC'); 
+VALUES (13,5,'2011-09-04','2011-09-04 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-05','2011-04-05 10:15:00 UTC'); 
+VALUES (13,5,'2011-09-05','2011-09-05 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-06','2011-04-06 10:00:00 UTC'); 
+VALUES (13,5,'2011-09-06','2011-09-06 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-07','2011-04-07 10:00:00 UTC'); 
+VALUES (13,5,'2011-09-07','2011-09-07 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-08','2011-04-08 10:15:00 UTC'); 
+VALUES (13,5,'2011-09-08','2011-09-08 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-09','2011-04-09 10:00:00 UTC'); 
+VALUES (13,5,'2011-09-09','2011-09-09 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-10','2011-04-10 10:00:00 UTC'); 
+VALUES (13,5,'2011-09-10','2011-09-10 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-11','2011-04-11 10:15:00 UTC'); 
+VALUES (13,5,'2011-09-11','2011-09-11 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-12','2011-04-12 10:00:00 UTC'); 
+VALUES (13,5,'2011-09-12','2011-09-12 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-13','2011-04-13 10:00:00 UTC'); 
+VALUES (13,5,'2011-09-13','2011-09-13 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-14','2011-04-14 10:00:00 UTC'); 
+VALUES (13,5,'2011-09-14','2011-09-14 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-15','2011-04-15 10:15:00 UTC'); 
+VALUES (13,5,'2011-09-15','2011-09-15 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-16','2011-04-16 10:00:00 UTC'); 
+VALUES (13,5,'2011-09-16','2011-09-16 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-17','2011-04-17 10:00:00 UTC'); 
+VALUES (13,5,'2011-09-17','2011-09-17 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-18','2011-04-18 10:15:00 UTC'); 
+VALUES (13,5,'2011-09-18','2011-09-18 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-19','2011-04-19 10:00:00 UTC'); 
+VALUES (13,5,'2011-09-19','2011-09-19 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-20','2011-04-20 10:00:00 UTC'); 
+VALUES (13,5,'2011-09-20','2011-09-20 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-21','2011-04-21 10:15:00 UTC'); 
+VALUES (13,5,'2011-09-21','2011-09-21 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-22','2011-04-22 10:00:00 UTC'); 
+VALUES (13,5,'2011-09-22','2011-09-22 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-23','2011-04-23 10:00:00 UTC'); 
+VALUES (13,5,'2011-09-23','2011-09-23 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-24','2011-04-24 10:00:00 UTC'); 
+VALUES (13,5,'2011-09-24','2011-09-24 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-25','2011-04-25 10:15:00 UTC'); 
+VALUES (13,5,'2011-09-25','2011-09-25 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-26','2011-04-26 10:00:00 UTC'); 
+VALUES (13,5,'2011-09-26','2011-09-26 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-27','2011-04-27 10:00:00 UTC'); 
+VALUES (13,5,'2011-09-27','2011-09-27 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-28','2011-04-28 10:15:00 UTC'); 
+VALUES (13,5,'2011-09-28','2011-09-28 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-29','2011-04-29 10:00:00 UTC'); 
+VALUES (13,5,'2011-09-29','2011-09-29 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-30','2011-04-30 10:00:00 UTC'); 
+VALUES (13,5,'2011-09-30','2011-09-30 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-04','2011-04-04 14:00:00 UTC'); 
+VALUES (13,5,'2011-09-04','2011-09-04 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-05','2011-04-05 14:15:00 UTC'); 
+VALUES (13,5,'2011-09-05','2011-09-05 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-06','2011-04-06 14:00:00 UTC'); 
+VALUES (13,5,'2011-09-06','2011-09-06 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-07','2011-04-07 14:00:00 UTC'); 
+VALUES (13,5,'2011-09-07','2011-09-07 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-08','2011-04-08 14:15:00 UTC'); 
+VALUES (13,5,'2011-09-08','2011-09-08 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-09','2011-04-09 14:00:00 UTC'); 
+VALUES (13,5,'2011-09-09','2011-09-09 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-10','2011-04-10 14:00:00 UTC'); 
+VALUES (13,5,'2011-09-10','2011-09-10 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-11','2011-04-11 14:15:00 UTC'); 
+VALUES (13,5,'2011-09-11','2011-09-11 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-12','2011-04-12 14:00:00 UTC'); 
+VALUES (13,5,'2011-09-12','2011-09-12 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-13','2011-04-13 14:00:00 UTC'); 
+VALUES (13,5,'2011-09-13','2011-09-13 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-14','2011-04-14 14:00:00 UTC'); 
+VALUES (13,5,'2011-09-14','2011-09-14 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-15','2011-04-15 14:15:00 UTC'); 
+VALUES (13,5,'2011-09-15','2011-09-15 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-16','2011-04-16 14:00:00 UTC'); 
+VALUES (13,5,'2011-09-16','2011-09-16 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-17','2011-04-17 14:00:00 UTC'); 
+VALUES (13,5,'2011-09-17','2011-09-17 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-18','2011-04-18 14:15:00 UTC'); 
+VALUES (13,5,'2011-09-18','2011-09-18 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-19','2011-04-19 14:00:00 UTC'); 
+VALUES (13,5,'2011-09-19','2011-09-19 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-20','2011-04-20 14:00:00 UTC'); 
+VALUES (13,5,'2011-09-20','2011-09-20 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-21','2011-04-21 14:15:00 UTC'); 
+VALUES (13,5,'2011-09-21','2011-09-21 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-22','2011-04-22 14:00:00 UTC'); 
+VALUES (13,5,'2011-09-22','2011-09-22 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-23','2011-04-23 14:00:00 UTC'); 
+VALUES (13,5,'2011-09-23','2011-09-23 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-24','2011-04-24 14:00:00 UTC'); 
+VALUES (13,5,'2011-09-24','2011-09-24 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-25','2011-04-25 14:15:00 UTC'); 
+VALUES (13,5,'2011-09-25','2011-09-25 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-26','2011-04-26 14:00:00 UTC'); 
+VALUES (13,5,'2011-09-26','2011-09-26 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-27','2011-04-27 14:00:00 UTC'); 
+VALUES (13,5,'2011-09-27','2011-09-27 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-28','2011-04-28 14:15:00 UTC'); 
+VALUES (13,5,'2011-09-28','2011-09-28 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-29','2011-04-29 14:00:00 UTC'); 
+VALUES (13,5,'2011-09-29','2011-09-29 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-30','2011-04-30 14:00:00 UTC'); 
+VALUES (13,5,'2011-09-30','2011-09-30 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-04','2011-04-04 17:00:00 UTC'); 
+VALUES (13,5,'2011-09-04','2011-09-04 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-05','2011-04-05 17:15:00 UTC'); 
+VALUES (13,5,'2011-09-05','2011-09-05 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-06','2011-04-06 17:00:00 UTC'); 
+VALUES (13,5,'2011-09-06','2011-09-06 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-07','2011-04-07 17:00:00 UTC'); 
+VALUES (13,5,'2011-09-07','2011-09-07 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-08','2011-04-08 17:15:00 UTC'); 
+VALUES (13,5,'2011-09-08','2011-09-08 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-09','2011-04-09 17:00:00 UTC'); 
+VALUES (13,5,'2011-09-09','2011-09-09 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-10','2011-04-10 17:00:00 UTC'); 
+VALUES (13,5,'2011-09-10','2011-09-10 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-11','2011-04-11 17:15:00 UTC'); 
+VALUES (13,5,'2011-09-11','2011-09-11 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-12','2011-04-12 17:00:00 UTC'); 
+VALUES (13,5,'2011-09-12','2011-09-12 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-13','2011-04-13 17:00:00 UTC'); 
+VALUES (13,5,'2011-09-13','2011-09-13 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-14','2011-04-14 17:00:00 UTC'); 
+VALUES (13,5,'2011-09-14','2011-09-14 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-15','2011-04-15 17:15:00 UTC'); 
+VALUES (13,5,'2011-09-15','2011-09-15 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-16','2011-04-16 17:00:00 UTC'); 
+VALUES (13,5,'2011-09-16','2011-09-16 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-17','2011-04-17 17:00:00 UTC'); 
+VALUES (13,5,'2011-09-17','2011-09-17 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-18','2011-04-18 17:15:00 UTC'); 
+VALUES (13,5,'2011-09-18','2011-09-18 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-19','2011-04-19 17:00:00 UTC'); 
+VALUES (13,5,'2011-09-19','2011-09-19 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-20','2011-04-20 17:00:00 UTC'); 
+VALUES (13,5,'2011-09-20','2011-09-20 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-21','2011-04-21 17:15:00 UTC'); 
+VALUES (13,5,'2011-09-21','2011-09-21 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-22','2011-04-22 17:00:00 UTC'); 
+VALUES (13,5,'2011-09-22','2011-09-22 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-23','2011-04-23 17:00:00 UTC'); 
+VALUES (13,5,'2011-09-23','2011-09-23 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-24','2011-04-24 17:00:00 UTC'); 
+VALUES (13,5,'2011-09-24','2011-09-24 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-25','2011-04-25 17:15:00 UTC'); 
+VALUES (13,5,'2011-09-25','2011-09-25 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-26','2011-04-26 17:00:00 UTC'); 
+VALUES (13,5,'2011-09-26','2011-09-26 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-27','2011-04-27 17:00:00 UTC'); 
+VALUES (13,5,'2011-09-27','2011-09-27 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-28','2011-04-28 17:15:00 UTC'); 
+VALUES (13,5,'2011-09-28','2011-09-28 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-29','2011-04-29 17:00:00 UTC'); 
+VALUES (13,5,'2011-09-29','2011-09-29 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-30','2011-04-30 17:00:00 UTC'); 
+VALUES (13,5,'2011-09-30','2011-09-30 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-04','2011-04-04 20:00:00 UTC'); 
+VALUES (13,5,'2011-09-04','2011-09-04 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-05','2011-04-05 20:15:00 UTC'); 
+VALUES (13,5,'2011-09-05','2011-09-05 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-06','2011-04-06 20:00:00 UTC'); 
+VALUES (13,5,'2011-09-06','2011-09-06 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-07','2011-04-07 20:00:00 UTC'); 
+VALUES (13,5,'2011-09-07','2011-09-07 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-08','2011-04-08 20:15:00 UTC'); 
+VALUES (13,5,'2011-09-08','2011-09-08 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-09','2011-04-09 20:00:00 UTC'); 
+VALUES (13,5,'2011-09-09','2011-09-09 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-10','2011-04-10 20:00:00 UTC'); 
+VALUES (13,5,'2011-09-10','2011-09-10 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-11','2011-04-11 20:15:00 UTC'); 
+VALUES (13,5,'2011-09-11','2011-09-11 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-12','2011-04-12 20:00:00 UTC'); 
+VALUES (13,5,'2011-09-12','2011-09-12 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-13','2011-04-13 20:00:00 UTC'); 
+VALUES (13,5,'2011-09-13','2011-09-13 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-14','2011-04-14 20:00:00 UTC'); 
+VALUES (13,5,'2011-09-14','2011-09-14 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-15','2011-04-15 20:15:00 UTC'); 
+VALUES (13,5,'2011-09-15','2011-09-15 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-16','2011-04-16 20:00:00 UTC'); 
+VALUES (13,5,'2011-09-16','2011-09-16 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-17','2011-04-17 20:00:00 UTC'); 
+VALUES (13,5,'2011-09-17','2011-09-17 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-18','2011-04-18 20:15:00 UTC'); 
+VALUES (13,5,'2011-09-18','2011-09-18 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-19','2011-04-19 20:00:00 UTC'); 
+VALUES (13,5,'2011-09-19','2011-09-19 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-20','2011-04-20 20:00:00 UTC'); 
+VALUES (13,5,'2011-09-20','2011-09-20 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-21','2011-04-21 20:15:00 UTC'); 
+VALUES (13,5,'2011-09-21','2011-09-21 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-22','2011-04-22 20:00:00 UTC'); 
+VALUES (13,5,'2011-09-22','2011-09-22 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-23','2011-04-23 20:00:00 UTC'); 
+VALUES (13,5,'2011-09-23','2011-09-23 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-24','2011-04-24 20:00:00 UTC'); 
+VALUES (13,5,'2011-09-24','2011-09-24 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-25','2011-04-25 20:15:00 UTC'); 
+VALUES (13,5,'2011-09-25','2011-09-25 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-26','2011-04-26 20:00:00 UTC'); 
+VALUES (13,5,'2011-09-26','2011-09-26 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-27','2011-04-27 20:00:00 UTC'); 
+VALUES (13,5,'2011-09-27','2011-09-27 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-28','2011-04-28 20:15:00 UTC'); 
+VALUES (13,5,'2011-09-28','2011-09-28 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-29','2011-04-29 20:00:00 UTC'); 
+VALUES (13,5,'2011-09-29','2011-09-29 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (13,5,'2011-04-30','2011-04-30 20:00:00 UTC'); 
+VALUES (13,5,'2011-09-30','2011-09-30 20:00:00 UTC'); 
 
 --kwiecien korona fighter
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-04','2011-04-04 10:00:00 UTC'); 
+VALUES (14,6,'2011-09-04','2011-09-04 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-05','2011-04-05 10:15:00 UTC'); 
+VALUES (14,6,'2011-09-05','2011-09-05 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-06','2011-04-06 10:00:00 UTC'); 
+VALUES (14,6,'2011-09-06','2011-09-06 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-07','2011-04-07 10:00:00 UTC'); 
+VALUES (14,6,'2011-09-07','2011-09-07 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-08','2011-04-08 10:15:00 UTC'); 
+VALUES (14,6,'2011-09-08','2011-09-08 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-09','2011-04-09 10:00:00 UTC'); 
+VALUES (14,6,'2011-09-09','2011-09-09 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-10','2011-04-10 10:00:00 UTC'); 
+VALUES (14,6,'2011-09-10','2011-09-10 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-11','2011-04-11 10:15:00 UTC'); 
+VALUES (14,6,'2011-09-11','2011-09-11 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-12','2011-04-12 10:00:00 UTC'); 
+VALUES (14,6,'2011-09-12','2011-09-12 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-13','2011-04-13 10:00:00 UTC'); 
+VALUES (14,6,'2011-09-13','2011-09-13 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-14','2011-04-14 10:00:00 UTC'); 
+VALUES (14,6,'2011-09-14','2011-09-14 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-15','2011-04-15 10:15:00 UTC'); 
+VALUES (14,6,'2011-09-15','2011-09-15 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-16','2011-04-16 10:00:00 UTC'); 
+VALUES (14,6,'2011-09-16','2011-09-16 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-17','2011-04-17 10:00:00 UTC'); 
+VALUES (14,6,'2011-09-17','2011-09-17 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-18','2011-04-18 10:15:00 UTC'); 
+VALUES (14,6,'2011-09-18','2011-09-18 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-19','2011-04-19 10:00:00 UTC'); 
+VALUES (14,6,'2011-09-19','2011-09-19 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-20','2011-04-20 10:00:00 UTC'); 
+VALUES (14,6,'2011-09-20','2011-09-20 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-21','2011-04-21 10:15:00 UTC'); 
+VALUES (14,6,'2011-09-21','2011-09-21 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-22','2011-04-22 10:00:00 UTC'); 
+VALUES (14,6,'2011-09-22','2011-09-22 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-23','2011-04-23 10:00:00 UTC'); 
+VALUES (14,6,'2011-09-23','2011-09-23 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-24','2011-04-24 10:00:00 UTC'); 
+VALUES (14,6,'2011-09-24','2011-09-24 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-25','2011-04-25 10:15:00 UTC'); 
+VALUES (14,6,'2011-09-25','2011-09-25 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-26','2011-04-26 10:00:00 UTC'); 
+VALUES (14,6,'2011-09-26','2011-09-26 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-27','2011-04-27 10:00:00 UTC'); 
+VALUES (14,6,'2011-09-27','2011-09-27 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-28','2011-04-28 10:15:00 UTC'); 
+VALUES (14,6,'2011-09-28','2011-09-28 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-29','2011-04-29 10:00:00 UTC'); 
+VALUES (14,6,'2011-09-29','2011-09-29 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-30','2011-04-30 10:00:00 UTC'); 
+VALUES (14,6,'2011-09-30','2011-09-30 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-04','2011-04-04 14:00:00 UTC'); 
+VALUES (14,6,'2011-09-04','2011-09-04 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-05','2011-04-05 14:15:00 UTC'); 
+VALUES (14,6,'2011-09-05','2011-09-05 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-06','2011-04-06 14:00:00 UTC'); 
+VALUES (14,6,'2011-09-06','2011-09-06 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-07','2011-04-07 14:00:00 UTC'); 
+VALUES (14,6,'2011-09-07','2011-09-07 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-08','2011-04-08 14:15:00 UTC'); 
+VALUES (14,6,'2011-09-08','2011-09-08 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-09','2011-04-09 14:00:00 UTC'); 
+VALUES (14,6,'2011-09-09','2011-09-09 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-10','2011-04-10 14:00:00 UTC'); 
+VALUES (14,6,'2011-09-10','2011-09-10 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-11','2011-04-11 14:15:00 UTC'); 
+VALUES (14,6,'2011-09-11','2011-09-11 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-12','2011-04-12 14:00:00 UTC'); 
+VALUES (14,6,'2011-09-12','2011-09-12 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-13','2011-04-13 14:00:00 UTC'); 
+VALUES (14,6,'2011-09-13','2011-09-13 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-14','2011-04-14 14:00:00 UTC'); 
+VALUES (14,6,'2011-09-14','2011-09-14 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-15','2011-04-15 14:15:00 UTC'); 
+VALUES (14,6,'2011-09-15','2011-09-15 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-16','2011-04-16 14:00:00 UTC'); 
+VALUES (14,6,'2011-09-16','2011-09-16 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-17','2011-04-17 14:00:00 UTC'); 
+VALUES (14,6,'2011-09-17','2011-09-17 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-18','2011-04-18 14:15:00 UTC'); 
+VALUES (14,6,'2011-09-18','2011-09-18 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-19','2011-04-19 14:00:00 UTC'); 
+VALUES (14,6,'2011-09-19','2011-09-19 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-20','2011-04-20 14:00:00 UTC'); 
+VALUES (14,6,'2011-09-20','2011-09-20 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-21','2011-04-21 14:15:00 UTC'); 
+VALUES (14,6,'2011-09-21','2011-09-21 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-22','2011-04-22 14:00:00 UTC'); 
+VALUES (14,6,'2011-09-22','2011-09-22 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-23','2011-04-23 14:00:00 UTC'); 
+VALUES (14,6,'2011-09-23','2011-09-23 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-24','2011-04-24 14:00:00 UTC'); 
+VALUES (14,6,'2011-09-24','2011-09-24 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-25','2011-04-25 14:15:00 UTC'); 
+VALUES (14,6,'2011-09-25','2011-09-25 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-26','2011-04-26 14:00:00 UTC'); 
+VALUES (14,6,'2011-09-26','2011-09-26 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-27','2011-04-27 14:00:00 UTC'); 
+VALUES (14,6,'2011-09-27','2011-09-27 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-28','2011-04-28 14:15:00 UTC'); 
+VALUES (14,6,'2011-09-28','2011-09-28 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-29','2011-04-29 14:00:00 UTC'); 
+VALUES (14,6,'2011-09-29','2011-09-29 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-30','2011-04-30 14:00:00 UTC'); 
+VALUES (14,6,'2011-09-30','2011-09-30 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-04','2011-04-04 17:00:00 UTC'); 
+VALUES (14,6,'2011-09-04','2011-09-04 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-05','2011-04-05 17:15:00 UTC'); 
+VALUES (14,6,'2011-09-05','2011-09-05 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-06','2011-04-06 17:00:00 UTC'); 
+VALUES (14,6,'2011-09-06','2011-09-06 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-07','2011-04-07 17:00:00 UTC'); 
+VALUES (14,6,'2011-09-07','2011-09-07 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-08','2011-04-08 17:15:00 UTC'); 
+VALUES (14,6,'2011-09-08','2011-09-08 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-09','2011-04-09 17:00:00 UTC'); 
+VALUES (14,6,'2011-09-09','2011-09-09 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-10','2011-04-10 17:00:00 UTC'); 
+VALUES (14,6,'2011-09-10','2011-09-10 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-11','2011-04-11 17:15:00 UTC'); 
+VALUES (14,6,'2011-09-11','2011-09-11 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-12','2011-04-12 17:00:00 UTC'); 
+VALUES (14,6,'2011-09-12','2011-09-12 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-13','2011-04-13 17:00:00 UTC'); 
+VALUES (14,6,'2011-09-13','2011-09-13 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-14','2011-04-14 17:00:00 UTC'); 
+VALUES (14,6,'2011-09-14','2011-09-14 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-15','2011-04-15 17:15:00 UTC'); 
+VALUES (14,6,'2011-09-15','2011-09-15 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-16','2011-04-16 17:00:00 UTC'); 
+VALUES (14,6,'2011-09-16','2011-09-16 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-17','2011-04-17 17:00:00 UTC'); 
+VALUES (14,6,'2011-09-17','2011-09-17 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-18','2011-04-18 17:15:00 UTC'); 
+VALUES (14,6,'2011-09-18','2011-09-18 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-19','2011-04-19 17:00:00 UTC'); 
+VALUES (14,6,'2011-09-19','2011-09-19 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-20','2011-04-20 17:00:00 UTC'); 
+VALUES (14,6,'2011-09-20','2011-09-20 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-21','2011-04-21 17:15:00 UTC'); 
+VALUES (14,6,'2011-09-21','2011-09-21 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-22','2011-04-22 17:00:00 UTC'); 
+VALUES (14,6,'2011-09-22','2011-09-22 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-23','2011-04-23 17:00:00 UTC'); 
+VALUES (14,6,'2011-09-23','2011-09-23 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-24','2011-04-24 17:00:00 UTC'); 
+VALUES (14,6,'2011-09-24','2011-09-24 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-25','2011-04-25 17:15:00 UTC'); 
+VALUES (14,6,'2011-09-25','2011-09-25 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-26','2011-04-26 17:00:00 UTC'); 
+VALUES (14,6,'2011-09-26','2011-09-26 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-27','2011-04-27 17:00:00 UTC'); 
+VALUES (14,6,'2011-09-27','2011-09-27 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-28','2011-04-28 17:15:00 UTC'); 
+VALUES (14,6,'2011-09-28','2011-09-28 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-29','2011-04-29 17:00:00 UTC'); 
+VALUES (14,6,'2011-09-29','2011-09-29 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-30','2011-04-30 17:00:00 UTC'); 
+VALUES (14,6,'2011-09-30','2011-09-30 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-04','2011-04-04 20:00:00 UTC'); 
+VALUES (14,6,'2011-09-04','2011-09-04 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-05','2011-04-05 20:15:00 UTC'); 
+VALUES (14,6,'2011-09-05','2011-09-05 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-06','2011-04-06 20:00:00 UTC'); 
+VALUES (14,6,'2011-09-06','2011-09-06 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-07','2011-04-07 20:00:00 UTC'); 
+VALUES (14,6,'2011-09-07','2011-09-07 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-08','2011-04-08 20:15:00 UTC'); 
+VALUES (14,6,'2011-09-08','2011-09-08 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-09','2011-04-09 20:00:00 UTC'); 
+VALUES (14,6,'2011-09-09','2011-09-09 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-10','2011-04-10 20:00:00 UTC'); 
+VALUES (14,6,'2011-09-10','2011-09-10 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-11','2011-04-11 20:15:00 UTC'); 
+VALUES (14,6,'2011-09-11','2011-09-11 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-12','2011-04-12 20:00:00 UTC'); 
+VALUES (14,6,'2011-09-12','2011-09-12 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-13','2011-04-13 20:00:00 UTC'); 
+VALUES (14,6,'2011-09-13','2011-09-13 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-14','2011-04-14 20:00:00 UTC'); 
+VALUES (14,6,'2011-09-14','2011-09-14 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-15','2011-04-15 20:15:00 UTC'); 
+VALUES (14,6,'2011-09-15','2011-09-15 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-16','2011-04-16 20:00:00 UTC'); 
+VALUES (14,6,'2011-09-16','2011-09-16 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-17','2011-04-17 20:00:00 UTC'); 
+VALUES (14,6,'2011-09-17','2011-09-17 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-18','2011-04-18 20:15:00 UTC'); 
+VALUES (14,6,'2011-09-18','2011-09-18 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-19','2011-04-19 20:00:00 UTC'); 
+VALUES (14,6,'2011-09-19','2011-09-19 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-20','2011-04-20 20:00:00 UTC'); 
+VALUES (14,6,'2011-09-20','2011-09-20 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-21','2011-04-21 20:15:00 UTC'); 
+VALUES (14,6,'2011-09-21','2011-09-21 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-22','2011-04-22 20:00:00 UTC'); 
+VALUES (14,6,'2011-09-22','2011-09-22 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-23','2011-04-23 20:00:00 UTC'); 
+VALUES (14,6,'2011-09-23','2011-09-23 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-24','2011-04-24 20:00:00 UTC'); 
+VALUES (14,6,'2011-09-24','2011-09-24 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-25','2011-04-25 20:15:00 UTC'); 
+VALUES (14,6,'2011-09-25','2011-09-25 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-26','2011-04-26 20:00:00 UTC'); 
+VALUES (14,6,'2011-09-26','2011-09-26 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-27','2011-04-27 20:00:00 UTC'); 
+VALUES (14,6,'2011-09-27','2011-09-27 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-28','2011-04-28 20:15:00 UTC'); 
+VALUES (14,6,'2011-09-28','2011-09-28 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-29','2011-04-29 20:00:00 UTC'); 
+VALUES (14,6,'2011-09-29','2011-09-29 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (14,6,'2011-04-30','2011-04-30 20:00:00 UTC'); 
+VALUES (14,6,'2011-09-30','2011-09-30 20:00:00 UTC'); 
 
 --kwiecien helios avatar
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-04','2011-04-04 10:00:00 UTC'); 
+VALUES (1,9,'2011-09-04','2011-09-04 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-05','2011-04-05 10:15:00 UTC'); 
+VALUES (1,9,'2011-09-05','2011-09-05 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-06','2011-04-06 10:00:00 UTC'); 
+VALUES (1,9,'2011-09-06','2011-09-06 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-07','2011-04-07 10:00:00 UTC'); 
+VALUES (1,9,'2011-09-07','2011-09-07 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-08','2011-04-08 10:15:00 UTC'); 
+VALUES (1,9,'2011-09-08','2011-09-08 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-09','2011-04-09 10:00:00 UTC'); 
+VALUES (1,9,'2011-09-09','2011-09-09 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-10','2011-04-10 10:00:00 UTC'); 
+VALUES (1,9,'2011-09-10','2011-09-10 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-11','2011-04-11 10:15:00 UTC'); 
+VALUES (1,9,'2011-09-11','2011-09-11 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-12','2011-04-12 10:00:00 UTC'); 
+VALUES (1,9,'2011-09-12','2011-09-12 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-13','2011-04-13 10:00:00 UTC'); 
+VALUES (1,9,'2011-09-13','2011-09-13 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-14','2011-04-14 10:00:00 UTC'); 
+VALUES (1,9,'2011-09-14','2011-09-14 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-15','2011-04-15 10:15:00 UTC'); 
+VALUES (1,9,'2011-09-15','2011-09-15 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-16','2011-04-16 10:00:00 UTC'); 
+VALUES (1,9,'2011-09-16','2011-09-16 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-17','2011-04-17 10:00:00 UTC'); 
+VALUES (1,9,'2011-09-17','2011-09-17 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-18','2011-04-18 10:15:00 UTC'); 
+VALUES (1,9,'2011-09-18','2011-09-18 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-19','2011-04-19 10:00:00 UTC'); 
+VALUES (1,9,'2011-09-19','2011-09-19 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-20','2011-04-20 10:00:00 UTC'); 
+VALUES (1,9,'2011-09-20','2011-09-20 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-21','2011-04-21 10:15:00 UTC'); 
+VALUES (1,9,'2011-09-21','2011-09-21 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-22','2011-04-22 10:00:00 UTC'); 
+VALUES (1,9,'2011-09-22','2011-09-22 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-23','2011-04-23 10:00:00 UTC'); 
+VALUES (1,9,'2011-09-23','2011-09-23 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-24','2011-04-24 10:00:00 UTC'); 
+VALUES (1,9,'2011-09-24','2011-09-24 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-25','2011-04-25 10:15:00 UTC'); 
+VALUES (1,9,'2011-09-25','2011-09-25 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-26','2011-04-26 10:00:00 UTC'); 
+VALUES (1,9,'2011-09-26','2011-09-26 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-27','2011-04-27 10:00:00 UTC'); 
+VALUES (1,9,'2011-09-27','2011-09-27 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-28','2011-04-28 10:15:00 UTC'); 
+VALUES (1,9,'2011-09-28','2011-09-28 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-29','2011-04-29 10:00:00 UTC'); 
+VALUES (1,9,'2011-09-29','2011-09-29 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-30','2011-04-30 10:00:00 UTC'); 
+VALUES (1,9,'2011-09-30','2011-09-30 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-04','2011-04-04 14:00:00 UTC'); 
+VALUES (1,9,'2011-09-04','2011-09-04 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-05','2011-04-05 14:15:00 UTC'); 
+VALUES (1,9,'2011-09-05','2011-09-05 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-06','2011-04-06 14:00:00 UTC'); 
+VALUES (1,9,'2011-09-06','2011-09-06 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-07','2011-04-07 14:00:00 UTC'); 
+VALUES (1,9,'2011-09-07','2011-09-07 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-08','2011-04-08 14:15:00 UTC'); 
+VALUES (1,9,'2011-09-08','2011-09-08 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-09','2011-04-09 14:00:00 UTC'); 
+VALUES (1,9,'2011-09-09','2011-09-09 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-10','2011-04-10 14:00:00 UTC'); 
+VALUES (1,9,'2011-09-10','2011-09-10 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-11','2011-04-11 14:15:00 UTC'); 
+VALUES (1,9,'2011-09-11','2011-09-11 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-12','2011-04-12 14:00:00 UTC'); 
+VALUES (1,9,'2011-09-12','2011-09-12 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-13','2011-04-13 14:00:00 UTC'); 
+VALUES (1,9,'2011-09-13','2011-09-13 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-14','2011-04-14 14:00:00 UTC'); 
+VALUES (1,9,'2011-09-14','2011-09-14 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-15','2011-04-15 14:15:00 UTC'); 
+VALUES (1,9,'2011-09-15','2011-09-15 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-16','2011-04-16 14:00:00 UTC'); 
+VALUES (1,9,'2011-09-16','2011-09-16 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-17','2011-04-17 14:00:00 UTC'); 
+VALUES (1,9,'2011-09-17','2011-09-17 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-18','2011-04-18 14:15:00 UTC'); 
+VALUES (1,9,'2011-09-18','2011-09-18 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-19','2011-04-19 14:00:00 UTC'); 
+VALUES (1,9,'2011-09-19','2011-09-19 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-20','2011-04-20 14:00:00 UTC'); 
+VALUES (1,9,'2011-09-20','2011-09-20 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-21','2011-04-21 14:15:00 UTC'); 
+VALUES (1,9,'2011-09-21','2011-09-21 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-22','2011-04-22 14:00:00 UTC'); 
+VALUES (1,9,'2011-09-22','2011-09-22 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-23','2011-04-23 14:00:00 UTC'); 
+VALUES (1,9,'2011-09-23','2011-09-23 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-24','2011-04-24 14:00:00 UTC'); 
+VALUES (1,9,'2011-09-24','2011-09-24 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-25','2011-04-25 14:15:00 UTC'); 
+VALUES (1,9,'2011-09-25','2011-09-25 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-26','2011-04-26 14:00:00 UTC'); 
+VALUES (1,9,'2011-09-26','2011-09-26 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-27','2011-04-27 14:00:00 UTC'); 
+VALUES (1,9,'2011-09-27','2011-09-27 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-28','2011-04-28 14:15:00 UTC'); 
+VALUES (1,9,'2011-09-28','2011-09-28 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-29','2011-04-29 14:00:00 UTC'); 
+VALUES (1,9,'2011-09-29','2011-09-29 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-30','2011-04-30 14:00:00 UTC'); 
+VALUES (1,9,'2011-09-30','2011-09-30 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-04','2011-04-04 17:00:00 UTC'); 
+VALUES (1,9,'2011-09-04','2011-09-04 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-05','2011-04-05 17:15:00 UTC'); 
+VALUES (1,9,'2011-09-05','2011-09-05 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-06','2011-04-06 17:00:00 UTC'); 
+VALUES (1,9,'2011-09-06','2011-09-06 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-07','2011-04-07 17:00:00 UTC'); 
+VALUES (1,9,'2011-09-07','2011-09-07 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-08','2011-04-08 17:15:00 UTC'); 
+VALUES (1,9,'2011-09-08','2011-09-08 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-09','2011-04-09 17:00:00 UTC'); 
+VALUES (1,9,'2011-09-09','2011-09-09 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-10','2011-04-10 17:00:00 UTC'); 
+VALUES (1,9,'2011-09-10','2011-09-10 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-11','2011-04-11 17:15:00 UTC'); 
+VALUES (1,9,'2011-09-11','2011-09-11 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-12','2011-04-12 17:00:00 UTC'); 
+VALUES (1,9,'2011-09-12','2011-09-12 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-13','2011-04-13 17:00:00 UTC'); 
+VALUES (1,9,'2011-09-13','2011-09-13 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-14','2011-04-14 17:00:00 UTC'); 
+VALUES (1,9,'2011-09-14','2011-09-14 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-15','2011-04-15 17:15:00 UTC'); 
+VALUES (1,9,'2011-09-15','2011-09-15 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-16','2011-04-16 17:00:00 UTC'); 
+VALUES (1,9,'2011-09-16','2011-09-16 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-17','2011-04-17 17:00:00 UTC'); 
+VALUES (1,9,'2011-09-17','2011-09-17 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-18','2011-04-18 17:15:00 UTC'); 
+VALUES (1,9,'2011-09-18','2011-09-18 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-19','2011-04-19 17:00:00 UTC'); 
+VALUES (1,9,'2011-09-19','2011-09-19 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-20','2011-04-20 17:00:00 UTC'); 
+VALUES (1,9,'2011-09-20','2011-09-20 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-21','2011-04-21 17:15:00 UTC'); 
+VALUES (1,9,'2011-09-21','2011-09-21 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-22','2011-04-22 17:00:00 UTC'); 
+VALUES (1,9,'2011-09-22','2011-09-22 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-23','2011-04-23 17:00:00 UTC'); 
+VALUES (1,9,'2011-09-23','2011-09-23 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-24','2011-04-24 17:00:00 UTC'); 
+VALUES (1,9,'2011-09-24','2011-09-24 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-25','2011-04-25 17:15:00 UTC'); 
+VALUES (1,9,'2011-09-25','2011-09-25 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-26','2011-04-26 17:00:00 UTC'); 
+VALUES (1,9,'2011-09-26','2011-09-26 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-27','2011-04-27 17:00:00 UTC'); 
+VALUES (1,9,'2011-09-27','2011-09-27 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-28','2011-04-28 17:15:00 UTC'); 
+VALUES (1,9,'2011-09-28','2011-09-28 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-29','2011-04-29 17:00:00 UTC'); 
+VALUES (1,9,'2011-09-29','2011-09-29 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-30','2011-04-30 17:00:00 UTC'); 
+VALUES (1,9,'2011-09-30','2011-09-30 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-04','2011-04-04 20:00:00 UTC'); 
+VALUES (1,9,'2011-09-04','2011-09-04 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-05','2011-04-05 20:15:00 UTC'); 
+VALUES (1,9,'2011-09-05','2011-09-05 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-06','2011-04-06 20:00:00 UTC'); 
+VALUES (1,9,'2011-09-06','2011-09-06 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-07','2011-04-07 20:00:00 UTC'); 
+VALUES (1,9,'2011-09-07','2011-09-07 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-08','2011-04-08 20:15:00 UTC'); 
+VALUES (1,9,'2011-09-08','2011-09-08 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-09','2011-04-09 20:00:00 UTC'); 
+VALUES (1,9,'2011-09-09','2011-09-09 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-10','2011-04-10 20:00:00 UTC'); 
+VALUES (1,9,'2011-09-10','2011-09-10 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-11','2011-04-11 20:15:00 UTC'); 
+VALUES (1,9,'2011-09-11','2011-09-11 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-12','2011-04-12 20:00:00 UTC'); 
+VALUES (1,9,'2011-09-12','2011-09-12 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-13','2011-04-13 20:00:00 UTC'); 
+VALUES (1,9,'2011-09-13','2011-09-13 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-14','2011-04-14 20:00:00 UTC'); 
+VALUES (1,9,'2011-09-14','2011-09-14 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-15','2011-04-15 20:15:00 UTC'); 
+VALUES (1,9,'2011-09-15','2011-09-15 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-16','2011-04-16 20:00:00 UTC'); 
+VALUES (1,9,'2011-09-16','2011-09-16 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-17','2011-04-17 20:00:00 UTC'); 
+VALUES (1,9,'2011-09-17','2011-09-17 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-18','2011-04-18 20:15:00 UTC'); 
+VALUES (1,9,'2011-09-18','2011-09-18 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-19','2011-04-19 20:00:00 UTC'); 
+VALUES (1,9,'2011-09-19','2011-09-19 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-20','2011-04-20 20:00:00 UTC'); 
+VALUES (1,9,'2011-09-20','2011-09-20 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-21','2011-04-21 20:15:00 UTC'); 
+VALUES (1,9,'2011-09-21','2011-09-21 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-22','2011-04-22 20:00:00 UTC'); 
+VALUES (1,9,'2011-09-22','2011-09-22 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-23','2011-04-23 20:00:00 UTC'); 
+VALUES (1,9,'2011-09-23','2011-09-23 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-24','2011-04-24 20:00:00 UTC'); 
+VALUES (1,9,'2011-09-24','2011-09-24 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-25','2011-04-25 20:15:00 UTC'); 
+VALUES (1,9,'2011-09-25','2011-09-25 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-26','2011-04-26 20:00:00 UTC'); 
+VALUES (1,9,'2011-09-26','2011-09-26 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-27','2011-04-27 20:00:00 UTC'); 
+VALUES (1,9,'2011-09-27','2011-09-27 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-28','2011-04-28 20:15:00 UTC'); 
+VALUES (1,9,'2011-09-28','2011-09-28 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-29','2011-04-29 20:00:00 UTC'); 
+VALUES (1,9,'2011-09-29','2011-09-29 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (1,9,'2011-04-30','2011-04-30 20:00:00 UTC'); 
+VALUES (1,9,'2011-09-30','2011-09-30 20:00:00 UTC'); 
 
 --kwiecien helios ghost
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-04','2011-04-04 10:00:00 UTC'); 
+VALUES (2,10,'2011-09-04','2011-09-04 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-05','2011-04-05 10:15:00 UTC'); 
+VALUES (2,10,'2011-09-05','2011-09-05 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-06','2011-04-06 10:00:00 UTC'); 
+VALUES (2,10,'2011-09-06','2011-09-06 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-07','2011-04-07 10:00:00 UTC'); 
+VALUES (2,10,'2011-09-07','2011-09-07 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-08','2011-04-08 10:15:00 UTC'); 
+VALUES (2,10,'2011-09-08','2011-09-08 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-09','2011-04-09 10:00:00 UTC'); 
+VALUES (2,10,'2011-09-09','2011-09-09 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-10','2011-04-10 10:00:00 UTC'); 
+VALUES (2,10,'2011-09-10','2011-09-10 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-11','2011-04-11 10:15:00 UTC'); 
+VALUES (2,10,'2011-09-11','2011-09-11 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-12','2011-04-12 10:00:00 UTC'); 
+VALUES (2,10,'2011-09-12','2011-09-12 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-13','2011-04-13 10:00:00 UTC'); 
+VALUES (2,10,'2011-09-13','2011-09-13 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-14','2011-04-14 10:00:00 UTC'); 
+VALUES (2,10,'2011-09-14','2011-09-14 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-15','2011-04-15 10:15:00 UTC'); 
+VALUES (2,10,'2011-09-15','2011-09-15 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-16','2011-04-16 10:00:00 UTC'); 
+VALUES (2,10,'2011-09-16','2011-09-16 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-17','2011-04-17 10:00:00 UTC'); 
+VALUES (2,10,'2011-09-17','2011-09-17 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-18','2011-04-18 10:15:00 UTC'); 
+VALUES (2,10,'2011-09-18','2011-09-18 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-19','2011-04-19 10:00:00 UTC'); 
+VALUES (2,10,'2011-09-19','2011-09-19 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-20','2011-04-20 10:00:00 UTC'); 
+VALUES (2,10,'2011-09-20','2011-09-20 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-21','2011-04-21 10:15:00 UTC'); 
+VALUES (2,10,'2011-09-21','2011-09-21 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-22','2011-04-22 10:00:00 UTC'); 
+VALUES (2,10,'2011-09-22','2011-09-22 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-23','2011-04-23 10:00:00 UTC'); 
+VALUES (2,10,'2011-09-23','2011-09-23 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-24','2011-04-24 10:00:00 UTC'); 
+VALUES (2,10,'2011-09-24','2011-09-24 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-25','2011-04-25 10:15:00 UTC'); 
+VALUES (2,10,'2011-09-25','2011-09-25 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-26','2011-04-26 10:00:00 UTC'); 
+VALUES (2,10,'2011-09-26','2011-09-26 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-27','2011-04-27 10:00:00 UTC'); 
+VALUES (2,10,'2011-09-27','2011-09-27 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-28','2011-04-28 10:15:00 UTC'); 
+VALUES (2,10,'2011-09-28','2011-09-28 10:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-29','2011-04-29 10:00:00 UTC'); 
+VALUES (2,10,'2011-09-29','2011-09-29 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-30','2011-04-30 10:00:00 UTC'); 
+VALUES (2,10,'2011-09-30','2011-09-30 10:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-04','2011-04-04 14:00:00 UTC'); 
+VALUES (2,10,'2011-09-04','2011-09-04 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-05','2011-04-05 14:15:00 UTC'); 
+VALUES (2,10,'2011-09-05','2011-09-05 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-06','2011-04-06 14:00:00 UTC'); 
+VALUES (2,10,'2011-09-06','2011-09-06 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-07','2011-04-07 14:00:00 UTC'); 
+VALUES (2,10,'2011-09-07','2011-09-07 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-08','2011-04-08 14:15:00 UTC'); 
+VALUES (2,10,'2011-09-08','2011-09-08 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-09','2011-04-09 14:00:00 UTC'); 
+VALUES (2,10,'2011-09-09','2011-09-09 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-10','2011-04-10 14:00:00 UTC'); 
+VALUES (2,10,'2011-09-10','2011-09-10 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-11','2011-04-11 14:15:00 UTC'); 
+VALUES (2,10,'2011-09-11','2011-09-11 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-12','2011-04-12 14:00:00 UTC'); 
+VALUES (2,10,'2011-09-12','2011-09-12 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-13','2011-04-13 14:00:00 UTC'); 
+VALUES (2,10,'2011-09-13','2011-09-13 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-14','2011-04-14 14:00:00 UTC'); 
+VALUES (2,10,'2011-09-14','2011-09-14 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-15','2011-04-15 14:15:00 UTC'); 
+VALUES (2,10,'2011-09-15','2011-09-15 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-16','2011-04-16 14:00:00 UTC'); 
+VALUES (2,10,'2011-09-16','2011-09-16 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-17','2011-04-17 14:00:00 UTC'); 
+VALUES (2,10,'2011-09-17','2011-09-17 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-18','2011-04-18 14:15:00 UTC'); 
+VALUES (2,10,'2011-09-18','2011-09-18 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-19','2011-04-19 14:00:00 UTC'); 
+VALUES (2,10,'2011-09-19','2011-09-19 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-20','2011-04-20 14:00:00 UTC'); 
+VALUES (2,10,'2011-09-20','2011-09-20 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-21','2011-04-21 14:15:00 UTC'); 
+VALUES (2,10,'2011-09-21','2011-09-21 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-22','2011-04-22 14:00:00 UTC'); 
+VALUES (2,10,'2011-09-22','2011-09-22 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-23','2011-04-23 14:00:00 UTC'); 
+VALUES (2,10,'2011-09-23','2011-09-23 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-24','2011-04-24 14:00:00 UTC'); 
+VALUES (2,10,'2011-09-24','2011-09-24 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-25','2011-04-25 14:15:00 UTC'); 
+VALUES (2,10,'2011-09-25','2011-09-25 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-26','2011-04-26 14:00:00 UTC'); 
+VALUES (2,10,'2011-09-26','2011-09-26 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-27','2011-04-27 14:00:00 UTC'); 
+VALUES (2,10,'2011-09-27','2011-09-27 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-28','2011-04-28 14:15:00 UTC'); 
+VALUES (2,10,'2011-09-28','2011-09-28 14:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-29','2011-04-29 14:00:00 UTC'); 
+VALUES (2,10,'2011-09-29','2011-09-29 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-30','2011-04-30 14:00:00 UTC'); 
+VALUES (2,10,'2011-09-30','2011-09-30 14:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-04','2011-04-04 17:00:00 UTC'); 
+VALUES (2,10,'2011-09-04','2011-09-04 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-05','2011-04-05 17:15:00 UTC'); 
+VALUES (2,10,'2011-09-05','2011-09-05 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-06','2011-04-06 17:00:00 UTC'); 
+VALUES (2,10,'2011-09-06','2011-09-06 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-07','2011-04-07 17:00:00 UTC'); 
+VALUES (2,10,'2011-09-07','2011-09-07 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-08','2011-04-08 17:15:00 UTC'); 
+VALUES (2,10,'2011-09-08','2011-09-08 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-09','2011-04-09 17:00:00 UTC'); 
+VALUES (2,10,'2011-09-09','2011-09-09 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-10','2011-04-10 17:00:00 UTC'); 
+VALUES (2,10,'2011-09-10','2011-09-10 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-11','2011-04-11 17:15:00 UTC'); 
+VALUES (2,10,'2011-09-11','2011-09-11 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-12','2011-04-12 17:00:00 UTC'); 
+VALUES (2,10,'2011-09-12','2011-09-12 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-13','2011-04-13 17:00:00 UTC'); 
+VALUES (2,10,'2011-09-13','2011-09-13 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-14','2011-04-14 17:00:00 UTC'); 
+VALUES (2,10,'2011-09-14','2011-09-14 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-15','2011-04-15 17:15:00 UTC'); 
+VALUES (2,10,'2011-09-15','2011-09-15 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-16','2011-04-16 17:00:00 UTC'); 
+VALUES (2,10,'2011-09-16','2011-09-16 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-17','2011-04-17 17:00:00 UTC'); 
+VALUES (2,10,'2011-09-17','2011-09-17 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-18','2011-04-18 17:15:00 UTC'); 
+VALUES (2,10,'2011-09-18','2011-09-18 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-19','2011-04-19 17:00:00 UTC'); 
+VALUES (2,10,'2011-09-19','2011-09-19 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-20','2011-04-20 17:00:00 UTC'); 
+VALUES (2,10,'2011-09-20','2011-09-20 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-21','2011-04-21 17:15:00 UTC'); 
+VALUES (2,10,'2011-09-21','2011-09-21 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-22','2011-04-22 17:00:00 UTC'); 
+VALUES (2,10,'2011-09-22','2011-09-22 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-23','2011-04-23 17:00:00 UTC'); 
+VALUES (2,10,'2011-09-23','2011-09-23 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-24','2011-04-24 17:00:00 UTC'); 
+VALUES (2,10,'2011-09-24','2011-09-24 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-25','2011-04-25 17:15:00 UTC'); 
+VALUES (2,10,'2011-09-25','2011-09-25 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-26','2011-04-26 17:00:00 UTC'); 
+VALUES (2,10,'2011-09-26','2011-09-26 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-27','2011-04-27 17:00:00 UTC'); 
+VALUES (2,10,'2011-09-27','2011-09-27 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-28','2011-04-28 17:15:00 UTC'); 
+VALUES (2,10,'2011-09-28','2011-09-28 17:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-29','2011-04-29 17:00:00 UTC'); 
+VALUES (2,10,'2011-09-29','2011-09-29 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-30','2011-04-30 17:00:00 UTC'); 
+VALUES (2,10,'2011-09-30','2011-09-30 17:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-04','2011-04-04 20:00:00 UTC'); 
+VALUES (2,10,'2011-09-04','2011-09-04 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-05','2011-04-05 20:15:00 UTC'); 
+VALUES (2,10,'2011-09-05','2011-09-05 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-06','2011-04-06 20:00:00 UTC'); 
+VALUES (2,10,'2011-09-06','2011-09-06 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-07','2011-04-07 20:00:00 UTC'); 
+VALUES (2,10,'2011-09-07','2011-09-07 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-08','2011-04-08 20:15:00 UTC'); 
+VALUES (2,10,'2011-09-08','2011-09-08 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-09','2011-04-09 20:00:00 UTC'); 
+VALUES (2,10,'2011-09-09','2011-09-09 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-10','2011-04-10 20:00:00 UTC'); 
+VALUES (2,10,'2011-09-10','2011-09-10 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-11','2011-04-11 20:15:00 UTC'); 
+VALUES (2,10,'2011-09-11','2011-09-11 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-12','2011-04-12 20:00:00 UTC'); 
+VALUES (2,10,'2011-09-12','2011-09-12 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-13','2011-04-13 20:00:00 UTC'); 
+VALUES (2,10,'2011-09-13','2011-09-13 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-14','2011-04-14 20:00:00 UTC'); 
+VALUES (2,10,'2011-09-14','2011-09-14 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-15','2011-04-15 20:15:00 UTC'); 
+VALUES (2,10,'2011-09-15','2011-09-15 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-16','2011-04-16 20:00:00 UTC'); 
+VALUES (2,10,'2011-09-16','2011-09-16 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-17','2011-04-17 20:00:00 UTC'); 
+VALUES (2,10,'2011-09-17','2011-09-17 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-18','2011-04-18 20:15:00 UTC'); 
+VALUES (2,10,'2011-09-18','2011-09-18 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-19','2011-04-19 20:00:00 UTC'); 
+VALUES (2,10,'2011-09-19','2011-09-19 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-20','2011-04-20 20:00:00 UTC'); 
+VALUES (2,10,'2011-09-20','2011-09-20 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-21','2011-04-21 20:15:00 UTC'); 
+VALUES (2,10,'2011-09-21','2011-09-21 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-22','2011-04-22 20:00:00 UTC'); 
+VALUES (2,10,'2011-09-22','2011-09-22 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-23','2011-04-23 20:00:00 UTC'); 
+VALUES (2,10,'2011-09-23','2011-09-23 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-24','2011-04-24 20:00:00 UTC'); 
+VALUES (2,10,'2011-09-24','2011-09-24 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-25','2011-04-25 20:15:00 UTC'); 
+VALUES (2,10,'2011-09-25','2011-09-25 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-26','2011-04-26 20:00:00 UTC'); 
+VALUES (2,10,'2011-09-26','2011-09-26 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-27','2011-04-27 20:00:00 UTC'); 
+VALUES (2,10,'2011-09-27','2011-09-27 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-28','2011-04-28 20:15:00 UTC'); 
+VALUES (2,10,'2011-09-28','2011-09-28 20:15:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-29','2011-04-29 20:00:00 UTC'); 
+VALUES (2,10,'2011-09-29','2011-09-29 20:00:00 UTC'); 
 
 INSERT INTO "seances"(cinema_film_id, room_id, date_from, time_from)
-VALUES (2,10,'2011-04-30','2011-04-30 20:00:00 UTC'); 
+VALUES (2,10,'2011-09-30','2011-09-30 20:00:00 UTC'); 
 
 -- CINEMAS_FILMS
 DROP TABLE IF EXISTS "cinema_films";
@@ -4901,49 +4901,49 @@ CREATE TABLE "cinema_films" (
 							  );
 
 INSERT INTO "cinema_films"(cinema_id, film_id, date_from, date_untill)
-VALUES (2, 2, '2011-05-01', '2011-05-31'); 
+VALUES (2, 2, '2011-10-01', '2011-10-31'); 
 
 INSERT INTO "cinema_films"(cinema_id, film_id, date_from, date_untill)
-VALUES (2, 4, '2011-05-01', '2011-05-31'); 
+VALUES (2, 4, '2011-10-01', '2011-10-31'); 
 
 INSERT INTO "cinema_films"(cinema_id, film_id, date_from, date_untill)
-VALUES (3, 4, '2011-05-01', '2011-05-31'); 
+VALUES (3, 4, '2011-10-01', '2011-10-31'); 
 
 INSERT INTO "cinema_films"(cinema_id, film_id, date_from, date_untill)
-VALUES (3, 5, '2011-05-01', '2011-05-31'); 
+VALUES (3, 5, '2011-10-01', '2011-10-31'); 
 
 INSERT INTO "cinema_films"(cinema_id, film_id, date_from, date_untill)
-VALUES (3, 8, '2011-04-01', '2011-04-30'); 
+VALUES (3, 8, '2011-09-01', '2011-09-30'); 
 
 INSERT INTO "cinema_films"(cinema_id, film_id, date_from, date_untill)
-VALUES (3, 11, '2011-04-01', '2011-04-30'); 
+VALUES (3, 11, '2011-09-01', '2011-09-30'); 
 
 INSERT INTO "cinema_films"(cinema_id, film_id, date_from, date_untill)
-VALUES (4, 1, '2011-05-01', '2011-05-31'); 
+VALUES (4, 1, '2011-10-01', '2011-10-31'); 
 
 INSERT INTO "cinema_films"(cinema_id, film_id, date_from, date_untill)
-VALUES (4, 5, '2011-05-01', '2011-05-31'); 
+VALUES (4, 5, '2011-10-01', '2011-10-31'); 
 
 INSERT INTO "cinema_films"(cinema_id, film_id, date_from, date_untill)
-VALUES (4, 9, '2011-04-01', '2011-04-30'); 
+VALUES (4, 9, '2011-09-01', '2011-09-30'); 
 
 INSERT INTO "cinema_films"(cinema_id, film_id, date_from, date_untill)
-VALUES (5, 1, '2011-04-01', '2011-04-30'); 
+VALUES (5, 1, '2011-09-01', '2011-09-30'); 
 
 INSERT INTO "cinema_films"(cinema_id, film_id, date_from, date_untill)
-VALUES (5, 2, '2011-04-01', '2011-04-30'); 
+VALUES (5, 2, '2011-09-01', '2011-09-30'); 
 
 INSERT INTO "cinema_films"(cinema_id, film_id, date_from, date_untill)
-VALUES (5, 2, '2011-05-01', '2011-05-31'); 
+VALUES (5, 2, '2011-10-01', '2011-10-31'); 
 
 INSERT INTO "cinema_films"(cinema_id, film_id, date_from, date_untill)
-VALUES (5, 4, '2011-05-01', '2011-05-31'); 
+VALUES (5, 4, '2011-10-01', '2011-10-31'); 
 
 INSERT INTO "cinema_films"(cinema_id, film_id, date_from, date_untill)
-VALUES (5, 6, '2011-05-01', '2011-05-31'); 
+VALUES (5, 6, '2011-10-01', '2011-10-31'); 
 
 INSERT INTO "cinema_films"(cinema_id, film_id, date_from, date_untill)
-VALUES (1, 10, '2011-04-01', '2011-04-30'); 
+VALUES (1, 10, '2011-09-01', '2011-09-30'); 
 
 
 -- ROOM
@@ -5184,13 +5184,13 @@ CREATE TABLE "prices" (
 						 );
 
 INSERT INTO "prices"(price, description, created_at, updated_at)
-VALUES (30.0,'film w technologii 5D','2011-05-07 19:46:20 UTC','2011-05-07 19:46:20 UTC'); 
+VALUES (30.0,'film w technologii 5D','2011-10-07 19:46:20 UTC','2011-10-07 19:46:20 UTC'); 
 
 INSERT INTO "prices"(price, description, created_at, updated_at)
-VALUES (27.0,'film w technologii 3D','2011-05-07 19:46:41 UTC','2011-05-07 19:46:41 UTC'); 
+VALUES (27.0,'film w technologii 3D','2011-10-07 19:46:41 UTC','2011-10-07 19:46:41 UTC'); 
 
 INSERT INTO "prices"(price, description, created_at, updated_at)
-VALUES (24.0,'zwykły film','2011-05-07 19:47:18 UTC','2011-05-07 19:47:18 UTC'); 
+VALUES (24.0,'zwykły film','2011-10-07 19:47:18 UTC','2011-10-07 19:47:18 UTC'); 
 
 -- dicsounts
 DROP TABLE IF EXISTS "discounts";
@@ -5203,13 +5203,13 @@ CREATE TABLE "discounts" (
 						 );
 
 INSERT INTO "discounts"(discount, description, created_at, updated_at)
-VALUES (33.0,'ulga studencka','2011-05-07 19:43:58 UTC','2011-05-07 19:43:58 UTC'); 
+VALUES (33.0,'ulga studencka','2011-10-07 19:43:58 UTC','2011-10-07 19:43:58 UTC'); 
 
 INSERT INTO "discounts"(discount, description, created_at, updated_at)
-VALUES (33.0,'ulga uczniowska','2011-05-07 19:43:08 UTC','2011-05-07 19:44:13 UTC'); 
+VALUES (33.0,'ulga uczniowska','2011-10-07 19:43:08 UTC','2011-10-07 19:44:13 UTC'); 
 
 INSERT INTO "discounts"(discount, description, created_at, updated_at)
-VALUES (20.0,'ulga dla grupy pow. 10 osób','2011-05-07 19:45:04 UTC','2011-05-07 19:45:04 UTC'); 
+VALUES (20.0,'ulga dla grupy pow. 10 osób','2011-10-07 19:45:04 UTC','2011-10-07 19:45:04 UTC'); 
 
 drop table if exists "tickets";
 CREATE TABLE tickets(
@@ -5217,6 +5217,7 @@ CREATE TABLE tickets(
   seance_id integer NOT NULL,
   seat_id integer,
   user_id integer,
+  cancelled boolean,
   price_id integer,
   discount_id integer
 );
@@ -5349,18 +5350,40 @@ VALUES ('sebax','9c7550cc418b76f1e63634d174a39d6cfe063f61','sebax@dd.pl','Sebast
 INSERT INTO "users"(login, hashed_password, email,first_name, last_name, phone, about)
 VALUES ('kaska','45aed31126ecbfa48d96c8291faba1b6d1e3f953','kaskakk@gg.pl','Katarzyna','Pajdowska', 123098654, '<root><films/><cinemas/><cities/><settings/></root>');  
 
+INSERT INTO "users"(login, hashed_password, email,first_name, last_name, phone, about)
+VALUES ('user','054e822ba7bbd507d19cbcabe9044c0620414183','kaskkk@gg.pl','Bolek','Lenin', 123098654, '<root><films/><cinemas/><cities/><settings/></root>');  
+
 --select about from users;
+-- WORKERS
+DROP TABLE IF EXISTS "workers";
+CREATE TABLE "workers" (
+	   		 		   	id serial unique primary key,
+						cinema_id int not null,
+						status_id int not null,
+						login varchar(12) not null unique,
+						hashed_password char(40) null,
+						first_name varchar(30) not null,
+						last_name varchar(30) not null,
+						phone decimal(9,0),
+						email varchar(50) unique,
+						created_at timestamp without time zone,
+						updated_at timestamp without time zone
+						);
+---  PRACOWNICY
+INSERT INTO "workers" (cinema_id, status_id, login, hashed_password, first_name, last_name, phone, email)
+Values (3,0,'gadmin','054e822ba7bbd507d19cbcabe9044c0620414183','Jan','Brzechwa',888456789,'klhasj2@wp.pl');
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+INSERT INTO "workers" (cinema_id, status_id, login, hashed_password, first_name, last_name, phone, email)
+Values (3,1,'ladmin','054e822ba7bbd507d19cbcabe9044c0620414183','Jan','Brzechwa',888456789,'klhasj20@wp.pl');
+	
+	
+--==================================Potrzebne dla servisu z platnosciami
+DROP TABLE IF EXISTS "results";
+CREATE TABLE results
+(
+  accepted boolean
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE results OWNER TO postgres;

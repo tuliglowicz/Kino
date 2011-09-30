@@ -26,40 +26,7 @@
 	<% if Auth.can_read_in_self_cinema?(worker_id, "rooms") -%>
 		<li><%= link_to("Sale Filmowe", {:controller => "rooms" }, :class=>"aMenu")%></li>
 	<% end %>
-	<% if Auth.can_read_in_self_cinema?(worker_id, "roomviews") -%>
-		<li><%= link_to("Widoki Sal", {:controller => "roomviews" }, :class=>"aMenu")%></li>
-	<% end %>
-	<% if Auth.can_read_in_self_cinema?(worker_id, "seances") -%>
-		<li><%= link_to("Seanse", {:controller => "seances" }, :class=>"aMenu")%></li>
-	<% end %>
-	<% if Auth.can_read_in_self_cinema?(worker_id, "seance_types") -%>
-		<li><%= link_to("Rodzaje seansów", {:controller => "seance_types" }, :class=>"aMenu")%></li>
-	<% end %>
-	<%# if Auth.can_read_in_self_cinema?(worker_id, "seats") -%>
-		<%#<li> link_to("Siedzenia", {:controller => "seats" })</li>%>
-	<%# end %>
-	<%#do weryfikacji %>
-	<% if Auth.can_read_in_self_cinema?(worker_id, "statuses") -%>
-		<li><%= link_to("Statusy Pracowników", {:controller => "statuses" }, :class=>"aMenu")%></li>
-	<% end %>
-	<% if Auth.can_read_in_self_cinema?(worker_id, "tickets") -%>
-		<li><%= link_to("Bilety", {:controller => "tickets" }, :class=>"aMenu")%></li>
-	<% end %>
-	<% if Auth.can_read_in_self_cinema?(worker_id, "ticket_sort_prices") -%>
-		<li><%= link_to("Rodzaje cen biletów", {:controller => "ticket_sort_prices" }, :class=>"aMenu")%></li>
-	<% end %>
-	<% if Auth.can_read_in_self_cinema?(worker_id, "ticket_types") -%>
-		<li><%= link_to("Rodzaje biletów", {:controller => "ticket_types" }, :class=>"aMenu")%></li>
-	<% end %>
-	<% if Auth.can_read_in_self_cinema?(worker_id, "users") -%>
-		<li><%= link_to("Użytkownicy", {:controller => "users" }, :class=>"aMenu")%></li>
-	<% end %>
-	<% if Auth.can_read_in_self_cinema?(worker_id, "workers") -%>
-		<li><%= link_to("Pracownicy", {:controller => "workers" }, :class=>"aMenu")%></li>
-	<% end %>
-	<% if Auth.can_read_in_self_cinema?(worker_id, "permissions") -%>
-		<li><%= link_to("Uprawnienia", {:controller => "permissions" }, :class=>"aMenu")%></li>
-	<% end %>
+	
 <% end %>
 </ul>
 <br/><br/>

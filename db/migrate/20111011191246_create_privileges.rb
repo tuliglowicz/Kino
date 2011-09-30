@@ -12,7 +12,7 @@ class CreatePrivileges < ActiveRecord::Migration
       t.integer :reservations
       t.integer :seats
       t.integer :seance_types
-      t.integer :statuses
+      t.integer :statusez
       t.integer :seances
       t.integer :tickets
       t.integer :ticket_sort_prices

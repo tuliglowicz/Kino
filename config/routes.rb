@@ -18,8 +18,8 @@ Kino::Application.routes.draw do
   
     # Payment
     match 'public/finalizuj' => 'public#payment', :as => 'finalize'
-    match 'http://zpiheroku2011.heroku.com/public/payment_ok' => 'public#payment_ok', :as => 'payment_ok'
-    match 'http://zpiheroku2011.heroku.com/public/payment_error' => 'public#payment_error', :as => 'payment_error'
+    match 'public/payment_ok' => 'public#payment_ok', :as => 'payment_ok'
+    match 'public/payment_error' => 'public#payment_error', :as => 'payment_error'
   
   #Cities
 	match '/private/cities' => 'cities#index', :as => 'cities'

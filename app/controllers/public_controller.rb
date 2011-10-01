@@ -334,7 +334,7 @@ class PublicController < ApplicationController
 	  
 	  case response
 	   when Net::HTTPSuccess, Net::HTTPRedirection
-      results = res.body.split("\r\n")
+      results = response.body.split("\r\n")
 
       # payment confirmed, ticket's paid flag may be set to true
       if results[1] == "TRUE"         

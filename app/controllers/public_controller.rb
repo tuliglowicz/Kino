@@ -32,19 +32,14 @@ class PublicController < ApplicationController
   end
 
 	def profile
-    	if session[:user]
-<<<<<<< HEAD
+    if session[:user]
 			 @user=session[:user]
 			 tickets_sql="Select * From tickets Where user_id="+@user.id.to_s;
 			 @tickets=Ticket.find_by_sql(tickets_sql);
-			 
-			 #@user_reservations=Reservation.find_by_sql();
-=======
-			   @user=session[:user]
->>>>>>> origin/master
+
 		else
 			redirect_to(:controller => "public", :action => "index")
-    	end
+    end
 	end
 	
 	def delete_ticket

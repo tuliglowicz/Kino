@@ -340,9 +340,9 @@ class PublicController < ApplicationController
       if results[1] == "TRUE"         
         logger = Logger.new('log/payment.log')
         logger.warn Time.now.to_s
-        logger.warn 'Sesja_nr = ' + params[:p24_session_id].to_s
+        logger.warn 'Rejestracja_nr = ' + params[:p24_session_id].to_s
         logger.warn 'Kwota = ' + params[:p24_kwota].to_s
-        logger.warn 'Rezerwacja_nr = ' + params[:p24_order_id]
+        logger.warn 'Order_id_od_p24 = ' + params[:p24_order_id]
         
         logger.warn 'Przed aktualizacją biletów.'
         

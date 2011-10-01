@@ -339,23 +339,23 @@ class PublicController < ApplicationController
       # payment confirmed, ticket's paid flag may be set to true
       if results[1] == "TRUE"         
         logger = Logger.new('log/payment.log')
-        logger.debug Time.now.to_s
-        logger.debug 'Sesja_nr = ' + params[:p24_session_id].to_s
-        logger.debug 'Kwota = ' + params[:p24_kwota].to_s
-        logger.debug 'Rezerwacja_nr = ' + params[:p24_order_id]
+        logger.warn Time.now.to_s
+        logger.warn 'Sesja_nr = ' + params[:p24_session_id].to_s
+        logger.warn 'Kwota = ' + params[:p24_kwota].to_s
+        logger.warn 'Rezerwacja_nr = ' + params[:p24_order_id]
         
-        logger.debug 'Przed aktualizacją biletów.'
+        logger.warn 'Przed aktualizacją biletów.'
         
         #tickets = Ticket.where(:reservation_id => params[:p24_session_id], :cancelled => false)
         #tickets.each { |ticket|
           #ticket.update_attribute(:bought, true)
         #}
         
-        logger.debugg 'Po aktualizacji biletów a przed wysyłką maila.'
+        logger.warn 'Po aktualizacji biletów a przed wysyłką maila.'
         
         # ToDo wysylka maila
         
-        logger.debug 'Mail wyslany. Operacja zakończona pomyślnie'
+        logger.warn 'Mail wyslany. Operacja zakończona pomyślnie'
         redirect_to '/', :notice => 'Bilety zostały zakupione, sprawdź swoją skrzynkę pocztową.'
        else        
         redirect_to "/", :notice => "Błąd przy potwierdzeniu. Rejestracja zakupu nie zapisana. W najbliższym czasie się z Tobą skontaktujemy."

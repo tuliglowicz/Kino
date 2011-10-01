@@ -343,10 +343,16 @@ class PublicController < ApplicationController
 
       # payment confirmed, ticket's paid flag may be set to true
       if results[1] == "TRUE" 
-        tickets = Ticket.where(:reservation_id => params[:p24_session_id])
-        tickets.each { |ticket|
-          ticket.update_attribute(:paid, true)
-        }
+        #tickets = Ticket.where(:reservation_id => params[:p24_session_id])
+        #tickets.each { |ticket|
+          #ticket.update_attribute(:paid, true)
+        #}
+        
+        logger = Logger.new('log/payment.log')
+        logger.debug Time.now.to_s
+        logger.debug 'Sesja_nr = ' + params[:p24_session_id].to_s
+        logger.debug 'Kwota = ' + params[:p24_kwota].to_s
+        logger.debug 'Rezerwacja_nr = ' + params[:p24_order_id]
         
         redirect_to '/', :notice => 'Transakcja zakończona pomyślnie.'
       else

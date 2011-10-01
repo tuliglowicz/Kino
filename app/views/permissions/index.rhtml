@@ -206,7 +206,7 @@
 
 <h4><a id="add_new_permission_a">Dodaj nowy poziom uprawnień</a></h4>
 <div id="add_new_permission_div" style="display: none">
-	<form id="add_new_permission_form" action="/private/permissions/create" method="post" accept-charset="utf-8">
+	<form id="add_new_permission_form" action=<%= add_new_permission_path %> method="post" accept-charset="utf-8">
 	  <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" /></div>
 	  <label>Nazwa</label>
 	  <input id="new_permission_name" name="new_permission_name" type="text" required="required"/>
@@ -235,7 +235,7 @@
 
 <h4><a id="edit_permissions_a">Sprawdź i edytuj dodane poziomy uprawnień</a></h4>
 <div id="edit_permissions_div" style="display: none">
-	<form id="edit_permissions_form" action="permissions/update" method="post">
+	<form id="edit_permissions_form" action="<%= permission_update_path %>" method="post">
 		<div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" /></div>
 		
 			<select id="edit_permissions_select" name="edit_permissions_select" >
@@ -273,7 +273,7 @@
 
 <h4><a id="status_permissions_a">Przeglądaj uprawnienia dla konkretnej grupy pracowników</a></h4>
 
-<form id="permissions_changes" method="post" action="permissions/change_status_privilege_permissions" name="permissions_changes">
+<form id="permissions_changes" method="post" action= <%= change_status_privilege_permissions_path %> name="permissions_changes">
 	<div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" /></div>
 	<div id="statuses" style="display: none">
 		<select id="worker_status_name" name="worker_status_name">

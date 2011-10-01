@@ -324,7 +324,7 @@ class PublicController < ApplicationController
 	def payment_ok
 	  url = URI.parse 'https://secure.przelewy24.pl/transakcja.php'
 	  
-	  request = Net::HTTP::Post.new
+	  request = Net::HTTP::Post.new(url.path)
 	  request.set_form_data(get_data_to_verify, '&')
 	  
 	  http = Net::HTTP.new(url.host, url.port)

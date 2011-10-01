@@ -50,23 +50,26 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.xml
   def create
-    logger = Logger.new("log/users.log")
-    @user = User.new(params[:user])
-    user.hashed_password = Auth.hash_password(user.hashed_password)
-    respond_to do |format|       
-      if @user.save
-         # confirmation email sending
-         UserMailer.registration_confirmation(@user).deliver     
-         logger.debug "uzytkownik zapisany, mail wyslany"  
-        
-         format.html { redirect_to("/", :notice => 'Konto utworzone.') }
-         format.xml  { render :xml => @user, :status => :created, :location => @user }               
-                
-      else
-         format.html { render :action => "new" }
-         format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
-      end         
-    end  
+    
+    if params[:user][:hashed_password].to_s != params[:user][:hashed_password_confirmation]
+      redirect_to register_path, :notice => 'Hasła nie są identyczne'
+    else
+      @user = User.new(params[:user])
+      @user.hashed_password = Auth.hash_password(@user.hashed_password)
+      respond_to do |format|       
+        if @user.save
+           # confirmation email sending
+           UserMailer.registration_confirmation(@user).deliver     
+           logger.debug "uzytkownik zapisany, mail wyslany"  
+          
+           format.html { redirect_to("/", :notice => 'Konto utworzone.') }
+           format.xml  { render :xml => @user, :status => :created, :location => @user }                    
+        else
+           format.html { render :action => "new" }
+           format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
+        end         
+      end  
+    end
   end
 
   # PUT /users/1

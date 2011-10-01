@@ -1,7 +1,7 @@
 # encoding: utf-8
 class User < ActiveRecord::Base
     
-    attr_accessor :password, :password_confirmation
+    attr_accessor :hashed_password, :hashed_password_confirmation
   
     has_many :tickets
   
@@ -16,6 +16,6 @@ class User < ActiveRecord::Base
     validates_length_of :phone, :maximum => 9, :message => ' Pole phone nie może mieć więcej niż 9 znaków '
     validates_uniqueness_of :login, :message => "Login już zajęty."
     validates_uniqueness_of :email, :message => "Email już wybrany."
-    validates_confirmation_of :hashed_password, :message => "Hasła nie są identyczne."
+    #validates_confirmation_of :hashed_password, :message => "Hasła nie są identyczne."
     
 end

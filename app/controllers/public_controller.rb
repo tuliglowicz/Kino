@@ -342,33 +342,41 @@ class PublicController < ApplicationController
       results = res.body.split("\r\n")
 
       # payment confirmed, ticket's paid flag may be set to true
-      if results[1] == "TRUE" 
-        #tickets = Ticket.where(:reservation_id => params[:p24_session_id])
-        #tickets.each { |ticket|
-          #ticket.update_attribute(:paid, true)
-        #}
-        
+      if results[1] == "TRUE"         
         logger = Logger.new('log/payment.log')
         logger.debug Time.now.to_s
         logger.debug 'Sesja_nr = ' + params[:p24_session_id].to_s
         logger.debug 'Kwota = ' + params[:p24_kwota].to_s
         logger.debug 'Rezerwacja_nr = ' + params[:p24_order_id]
         
-        redirect_to '/', :notice => 'Transakcja zakończona pomyślnie.'
-      else
+        logger.debug 'Przed aktualizacją biletów.'
         
-        redirect_to "/", :notice => "Błąd przy potwierdzeniu."
-      end
+        #tickets = Ticket.where(:reservation_id => params[:p24_session_id], :cancelled => false)
+        #tickets.each { |ticket|
+          #ticket.update_attribute(:bought, true)
+        #}
+        
+        logger.debugg 'Po aktualizacji biletów a przed wysyłką maila.'
+        
+        # ToDo wysylka maila
+        
+        logger.debug 'Mail wyslany. Operacja zakończona pomyślnie'
+        redirect_to '/', :notice => 'Bilety zostały zakupione, sprawdź swoją skrzynkę pocztową.'
+       else        
+        redirect_to "/", :notice => "Błąd przy potwierdzeniu. Rejestracja zakupu nie zapisana. W najbliższym czasie się z Tobą skontaktujemy."
+        # ToDo obsluga tej sytuacji
+       end
       
       else
-        redirect_to "/", :notice => "Błąd podczas nawiązywania połączenia"      
+        redirect_to "/", :notice => "Płatność niezakończona pomyślnie. W najbliższym czasie nasz pracownik nawiąże z Tobą kontak."      
+	      # ToDo obsluga tej sytuacji
 	  end
  
 	end
 	
 	# run whenerver any error encountered while payment process is being executed
 	def payment_error
-	  redirect_to "/", :notice => "Nie zapłacono za bilet"	  
+	  redirect_to "/", :notice => "Nie zapłacono za bilet. Wciąż to możesz zrobić z poziomu swojego konta, lub bezpośrednio w kinie."	  
 	end
 	
 	def get_data_to_verify

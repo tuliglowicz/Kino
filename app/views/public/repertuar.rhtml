@@ -38,9 +38,13 @@
 				<hr width="750" align=center size=1 style='color:silver'><br/>
 				<table width=750 align=center border=0>
 				<tr>			
-					<td rowspan="2" valign="top"><%= image_tag("film_posters"+film.poster, :size => "100x146", :align => "right") %></td>								
+					<td rowspan="2" valign="top">
+						<%= link_to image_tag("film_posters"+film.poster, :size => "100x146", :align => "right"), :action => "dane_filmu", :id => film.id.to_s %>
+					</td>								
 					<td width="320px">
-						<h1 style='line-height:normal'><%= film.title%> &nbsp;</h1><br/>
+						
+						<h2 style='line-height:normal'> <%= link_to film.title.to_s, :action => "dane_filmu", :id => film.id.to_s %> &nbsp; </h2>
+						<br/>
 						<%= link_to 'Pokaż', :action => "dane_filmu", :id => film.id.to_s %>
 						<%= link_to("Trailer", {}, :target => "_blank", :href => film.trailer, :class=>"movieTitle") if film.trailer%>
 					</td>
@@ -51,7 +55,7 @@
 					</td>
 					
 					
-					<td width="200px" valign="center" rowspan="2">
+					<td width="200px" valign="top" rowspan="2">
 						<% if @s -%>
 							Kup bilet na godz.:<br/>
 							<% for seance in @s do-%>							

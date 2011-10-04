@@ -1,5 +1,7 @@
 Kino::Application.routes.draw do
 	
+  resources :seances_types
+
   resources :reservations
 
   resources :discounts_sorts

@@ -6,6 +6,7 @@ class CreateCinemas < ActiveRecord::Migration
       t.string, :name
       t.string, :address
       t.int :phone
+      
 
       t.timestamps
     end

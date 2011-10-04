@@ -6,8 +6,9 @@ class Seat < ActiveRecord::Base
 
 	default_scope order('room_id, row')
 
-	validates_presence_of :room_id, :row, :collumn, :message => 'nie może być pusty (Not NULL)'
-	validates_format_of :row, :with => /[A-Z]/, :message => 'ma mieć dokładnie jeden znak A-Z'
-	validates_numericality_of :collumn, :room_id, :only_integer => true, :message => 'musi być liczbą całkowitą!'
+	validates_presence_of :room_id, :message => ' Pole Room_id nie może być puste (Not NULL)'
+	validates_presence_of :row, :message => ' Pole row nie może być puste (Not NULL)'
+	validates_format_of :row, :with => /[A-Z]/, :message => 'Pole row ma mieć dokładnie jeden znak A-Z'
+	validates_numericality_of :collumn, :room_id, :only_integer => true, :message => ' musi być liczbą całkowitą!'
 
 end

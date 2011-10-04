@@ -2,18 +2,20 @@
 
 one:
   id: 
-  login: 
-  password: 
-  email: 
-  first_name: 
-  last_name: 
+  login: MyString
+  hashed_password: MyString
+  email: MyString
+  first_name: MyString
+  last_name: MyString
   phone: 
+  about: 
 
 two:
   id: 
-  login: 
-  password: 
-  email: 
-  first_name: 
-  last_name: 
+  login: MyString
+  hashed_password: MyString
+  email: MyString
+  first_name: MyString
+  last_name: MyString
   phone: 
+  about: 

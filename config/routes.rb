@@ -1,5 +1,7 @@
 Kino::Application.routes.draw do
 	
+  resources :users
+
   resources :ticket_types
 
   resources :seances_types

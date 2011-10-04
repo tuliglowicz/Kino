@@ -1,3 +1,4 @@
+<p id="notice"><%= notice %></p>
 
 <p>
   <b>Id:</b>
@@ -10,8 +11,8 @@
 </p>
 
 <p>
-  <b>Hasło:</b>
-  <%= "*Hidden*" if @user.hashed_password %>
+  <b>Hashed password:</b>
+  <%= @user.hashed_password %>
 </p>
 
 <p>
@@ -20,20 +21,25 @@
 </p>
 
 <p>
-  <b>Imie:</b>
+  <b>First name:</b>
   <%= @user.first_name %>
 </p>
 
 <p>
-  <b>Nazwisko:</b>
+  <b>Last name:</b>
   <%= @user.last_name %>
 </p>
 
 <p>
-  <b>Telefon:</b>
+  <b>Phone:</b>
   <%= @user.phone %>
 </p>
 
+<p>
+  <b>About:</b>
+  <%= @user.about %>
+</p>
 
-<%= link_to 'Edytuj', edit_user_path(@user) %> |
-<%= link_to 'Wróć', users_path %>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  id: 
+  cinema_id: 
+  seance_type_id: 
+  ticket_type_id: 
+  price: 1.5
+  discount_sort_id: 
+  description: MyString
+
+two:
+  id: 
+  cinema_id: 
+  seance_type_id: 
+  ticket_type_id: 
+  price: 1.5
+  discount_sort_id: 
+  description: MyString

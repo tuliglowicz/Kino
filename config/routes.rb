@@ -1,5 +1,7 @@
 Kino::Application.routes.draw do
 	
+  resources :tickets_sorts_prices
+
   resources :tickets
   resources :users
   resources :discounts

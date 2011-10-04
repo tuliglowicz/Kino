@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Id:</b>
+  <%= @tickets_sorts_price.id %>
+</p>
+
+<p>
+  <b>Cinema:</b>
+  <%= @tickets_sorts_price.cinema_id %>
+</p>
+
+<p>
+  <b>Seance type:</b>
+  <%= @tickets_sorts_price.seance_type_id %>
+</p>
+
+<p>
+  <b>Ticket type:</b>
+  <%= @tickets_sorts_price.ticket_type_id %>
+</p>
+
+<p>
+  <b>Price:</b>
+  <%= @tickets_sorts_price.price %>
+</p>
+
+<p>
+  <b>Discount sort:</b>
+  <%= @tickets_sorts_price.discount_sort_id %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @tickets_sorts_price.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_tickets_sorts_price_path(@tickets_sorts_price) %> |
+<%= link_to 'Back', tickets_sorts_prices_path %>

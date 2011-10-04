@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  id: 
+  description: MyString
+  is_weekend: false
+
+two:
+  id: 
+  description: MyString
+  is_weekend: false

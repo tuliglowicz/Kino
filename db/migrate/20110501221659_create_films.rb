@@ -9,6 +9,7 @@ class CreateFilms < ActiveRecord::Migration
       t.string, :trailer
       t.int, :length
       t.string :description
+      t.string :poster
 
       t.timestamps
     end

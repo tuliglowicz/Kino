@@ -6,9 +6,14 @@ class Film < ActiveRecord::Base
 	
 	default_scope order('year DESC, title, category_id')
 	
-	validates_presence_of :title, :director, :year, :category_id, :message => 'nie może być pusty (Not NULL)'
-	validates_length_of :title, :director, :minimum => 3, :message => "musi być dłuższy niż 3 znaki"
+	validates_presence_of :title, :message => 'Pole title nie może być puste (Not NULL)' 
+	validates_presence_of :director, :message => 'Pole message nie może być puste (Not NULL)' 
+	validates_presence_of :year, :message => 'Pole year nie może być puste (Not NULL)'
+	validates_length_of :title, :maksimum => 100, :message => "Pole title musi być krótsze niż 100 znaków"
+	validates_length_of :director, :maksimum => 50, :message => "Pole director musi być krótsze niż 50 znaków"
+	validates_length_of :trailer, :maksimum => 75, :message => "Pole trailer musi być krótsze niż 75 znaków"
+	validates_length_of :poster, :maksimum => 50, :message => "Pole poster musi być krótsze niż 50 znaków"
 	validates_numericality_of :year, :only_integer => true, :greater_than => 1999, :less_than_or_equal_to => Time.now.year + 1, :message => "musi być liczbą między 1999, a " + (Time.now.year + 1).to_s
-	validates_uniqueness_of :title, :message => "musi być unikalny; jest już w bazie"
+	
 	
 end

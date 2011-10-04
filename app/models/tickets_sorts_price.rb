@@ -1,9 +1,9 @@
 class TicketsSortsPrice < ActiveRecord::Base
   
-  belongs_to :discounts_sorts
-  belongs_to :cinemas
-  belongs_to :seamces_types
-  belongs_to :tickets_types
+  belongs_to :discounts_sort
+  belongs_to :cinema
+  belongs_to :seamces_type
+  belongs_to :tickets_type
   has_many :tickets
   
   validates_presence_of :cinema_id, :message => 'Pole cinema_id nie może być puste (Not NULL)'

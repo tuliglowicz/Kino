@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class ReservationsController < ApplicationController
   # GET /reservations
   # GET /reservations.xml

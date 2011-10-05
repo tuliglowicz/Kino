@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class SeancesTypesController < ApplicationController
   # GET /seances_types
   # GET /seances_types.xml

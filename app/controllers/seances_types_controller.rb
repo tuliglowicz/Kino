@@ -2,6 +2,10 @@
 class SeancesTypesController < ApplicationController
   # GET /seances_types
   # GET /seances_types.xml
+  layout 'admin'
+  
+  before_filter :auth,  :except => ["show", "index", "edit", "update"]
+  
   def index
     @seances_types = SeancesType.all
 
@@ -81,4 +85,21 @@ class SeancesTypesController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  private #===============================
+  def auth_exept_show
+    if session[:worker] == nil 
+        flash[:notice] = "Please log in, first!"
+        redirect_to(:controller => "public", :action => "index")
+        return false
+      else if session[:worker].status_id > 0
+        flash[:notice] = "Nie masz wymaganych uprawnień!"
+        if request.referer == "/"
+          redirect_to("/403.html")
+        else
+          redirect_to(request.referer)
+        end
+      end
+    end
+  
 end

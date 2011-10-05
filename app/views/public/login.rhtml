@@ -1,3 +1,4 @@
+# encoding UTF-8
 <html>
 <head>
 	<title>
@@ -8,7 +9,7 @@
 <center><div style='width:250px; height: 250px; background-color:orange;text-align:right'>
 <%= form_tag(:controller => 'private', :action => 'send_login', :method => "get") do %>
   <%= label_tag(:login, "Login:") %><%= text_field_tag(:login) %><br/>
-  <%= label_tag(:password, "Has³o:") %><%= password_field_tag(:password) %><br/>
+  <%= label_tag(:password, "Hasï¿½o:") %><%= password_field_tag(:password) %><br/>
   <%= submit_tag("Login") %>
   <% end %>
 </body>

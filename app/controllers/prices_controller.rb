@@ -2,8 +2,10 @@
 class PricesController < ApplicationController
 	
 	layout 'admin'
-	
-	before_filter :auth
+	layout 'admin'
+
+
+	before_filter :auth, :except => ["show", "index", "edit", "update"]
 	
   # GET /prices
   # GET /prices.xml

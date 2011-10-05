@@ -3,7 +3,7 @@ class SeancesController < ApplicationController
 	
 	layout 'admin'
 	
-	before_filter :auth, :except => ["show"]
+	before_filter :auth,  :except => ["show", "index", "edit", "update"]
 
   # GET /seances
   # GET /seances.xml

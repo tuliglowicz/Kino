@@ -3,7 +3,7 @@ class RoomsController < ApplicationController
 	
 	layout 'admin'
 	
-	before_filter :auth
+	before_filter :auth, :except => ["show", "index", "edit", "update"]
 
   # GET /rooms
   # GET /rooms.xml

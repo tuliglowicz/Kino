@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Reservation < ActiveRecord::Base
   
   has_many :tickets

@@ -1,3 +1,4 @@
+# encoding: utf-8
 class TicketType < ActiveRecord::Base
   
   has_many :tickets_sorts_prices

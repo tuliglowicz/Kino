@@ -1,3 +1,4 @@
+# encoding: utf-8
 class SeancesType < ActiveRecord::Base
   
   has_many :seances

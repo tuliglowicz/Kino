@@ -1,3 +1,4 @@
+# encoding: utf-8
 class TicketsSortsPrice < ActiveRecord::Base
   
   belongs_to :discounts_sort

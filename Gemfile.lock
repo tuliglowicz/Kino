@@ -70,5 +70,6 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
+  actionmailer
   pg
   rails (= 3.0.7)

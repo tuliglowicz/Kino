@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class TicketsTypesController < ApplicationController
   # GET /tickets_types
   # GET /tickets_types.xml

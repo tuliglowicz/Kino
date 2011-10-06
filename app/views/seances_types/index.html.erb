@@ -3,7 +3,7 @@
 <table>
   <tr>
     <th>Id</th>
-    <th>Type</th>
+    <th>Name</th>
     <th></th>
     <th></th>
     <th></th>
@@ -12,7 +12,7 @@
 <% @seances_types.each do |seances_type| %>
   <tr>
     <td><%= seances_type.id %></td>
-    <td><%= seances_type.type %></td>
+    <td><%= seances_type.name %></td>
     <td><%= link_to 'Show', seances_type %></td>
     <td><%= link_to 'Edit', edit_seances_type_path(seances_type) %></td>
     <td><%= link_to 'Destroy', seances_type, :confirm => 'Are you sure?', :method => :delete %></td>

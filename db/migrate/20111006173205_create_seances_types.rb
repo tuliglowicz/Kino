@@ -2,7 +2,7 @@ class CreateSeancesTypes < ActiveRecord::Migration
   def self.up
     create_table :seances_types do |t|
       t.int :id
-      t.string :type
+      t.string :name
 
       t.timestamps
     end

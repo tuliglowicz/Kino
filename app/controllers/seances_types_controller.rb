@@ -1,7 +1,7 @@
-# encoding: UTF-8
 class SeancesTypesController < ApplicationController
   # GET /seances_types
   # GET /seances_types.xml
+  
   layout 'admin'
   
   before_filter :auth,  :except => ["show", "index", "edit", "update"]
@@ -87,7 +87,7 @@ class SeancesTypesController < ApplicationController
   end
   
   private #===============================
-  def auth_exept_show
+  def auth
     if session[:worker] == nil 
         flash[:notice] = "Please log in, first!"
         redirect_to(:controller => "public", :action => "index")
@@ -101,5 +101,7 @@ class SeancesTypesController < ApplicationController
         end
       end
     end
+  end
+  
   
 end

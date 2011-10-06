@@ -1,10 +1,12 @@
 Kino::Application.routes.draw do
 	
+  resources :tickets_types
+
+  resources :seances_types
+
   resources :users
 
   resources :ticket_types
-
-  resources :seances_types
 
   resources :reservations
 

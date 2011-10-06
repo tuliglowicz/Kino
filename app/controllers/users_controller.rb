@@ -48,11 +48,17 @@ class UsersController < ApplicationController
   # POST /users.xml
   def create
     @user = User.new(params[:user])
+    
+    # confirmation email sending
+        UserMailer.registration_confirmation(@user).deliver       
 
     respond_to do |format|
       if @user.save
         format.html { redirect_to(@user, :notice => 'User was successfully created.') }
-        format.xml  { render :xml => @user, :status => :created, :location => @user }
+        #format.xml  { render :xml => @user, :status => :created, :location => @user }
+        
+        # confirmation email sending
+        UserMailer.registration_confirmation(@user).deliver        
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }

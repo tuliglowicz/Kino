@@ -3,7 +3,7 @@ class TicketsController < ApplicationController
 	
 	layout 'admin'
 
-	before_filter :auth
+	before_filter :auth, :except => ["show", "index", "edit", "update"]
 	
 
   # GET /tickets

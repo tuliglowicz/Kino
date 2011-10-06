@@ -4,7 +4,7 @@ class WorkersController < ApplicationController
 	
 	layout 'admin'
 	
-	before_filter :auth
+	before_filter :auth, :except => ["show", "index", "edit", "update"]
 		
   # GET /workers
   # GET /workers.xml

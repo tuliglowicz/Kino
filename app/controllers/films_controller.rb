@@ -4,7 +4,7 @@ class FilmsController < ApplicationController
 	layout 'admin'
 	
 	#before_filter :auth_access
-	before_filter :auth_exept_show, :except => ["show", "index"]
+	before_filter :auth_exept_show, :except => ["show", "index", "edit", "update"]
 	
 	
   # GET /films(.xml)

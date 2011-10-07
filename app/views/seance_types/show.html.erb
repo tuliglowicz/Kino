@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Id:</b>
+  <%= @seance_type.id %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @seance_type.name %>
+</p>
+
+
+<%= link_to 'Edit', edit_seance_type_path(@seance_type) %> |
+<%= link_to 'Back', seance_types_path %>

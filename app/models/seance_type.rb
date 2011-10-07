@@ -1,5 +1,5 @@
 # encoding: UTF-8
-class SeancesType < ActiveRecord::Base
+class SeanceType < ActiveRecord::Base
   
   has_many :seances
   has_many :ticket_sort_prices

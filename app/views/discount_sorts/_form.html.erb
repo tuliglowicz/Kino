@@ -1,0 +1,29 @@
+<%= form_for(@discount_sort) do |f| %>
+  <% if @discount_sort.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@discount_sort.errors.count, "error") %> prohibited this discount_sort from being saved:</h2>
+
+      <ul>
+      <% @discount_sort.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :id %><br />
+    <%= f.text_field :id %>
+  </div>
+  <div class="field">
+    <%= f.label :Opis %><br />
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.label :is_weeknd %><br />
+    <%= f.check_box :is_weeknd %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

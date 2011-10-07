@@ -2,8 +2,8 @@
 class Seance < ActiveRecord::Base
 	belongs_to :cinema_film
 	belongs_to :room
-	belongs_to :discounts_sort
-	belongs_to :seances_type
+	belongs_to :discount_sort
+	belongs_to :seance_type
 	
 	has_many :tickets
 	

@@ -5,7 +5,11 @@ class UsersController < ApplicationController
   
   layout :get_users_layout  
   
+<<<<<<< HEAD
   before_filter :auth_exept_show, :except => ["show", "index", "edit", "update", "new", "create"]
+=======
+  before_filter :auth_exept_show, :except => ["show", "index", "edit", "new", "update"]
+>>>>>>> c7931e645e477686e1bde8ac14b8c2fe9cd825a8
   
   def index
     @users = User.all

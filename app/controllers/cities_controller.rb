@@ -3,7 +3,7 @@ class CitiesController < ApplicationController
 	
 	layout 'admin'
 
-  before_filter :auth_exept_show, :except => ["show", "index", "edit", "update"]
+  before_filter :auth_exept_show, :except => ["show", "index", "edit" , "new", "update"]
   
   # GET /cities
   # GET /cities.xml	

@@ -2,18 +2,18 @@
 var textRequest;
 var miasto;
 
-$("document").ready(initAll);
+$j("document").ready(initAll);
 
 function initAll() {
 	// events
 	setInterval("events()", 2000);
 	setInterval("banners()", 4000);
 	// zaopatrz linki z class=miasto w onclick z ajaxem
-	$("a.miasto, area.miasto").each(
+	$j("a.miasto, area.miasto").each(
         function() {
-	        $(this).click(
+	        $j(this).click(
 	            function() {
-	            	if($(this)[0].tagName=="A") miasto = ($(this).html()).toUpperCase();
+	            	if($j(this)[0].tagName=="A") miasto = ($j(this).html()).toUpperCase();
 		            return makeRequest(pre_wyswietl_opis_kina, "/daneMiast.xml", "GET");
 		            //od zwróconej wartości (true/false) będzie zależało czy przeglądarka otworzy href w linku (true), czy zignoruje href (false)
 		           }
@@ -26,15 +26,15 @@ function initAll() {
 
 var tmpValue;
 function szybkaRezerwacja(){
-var theDiv = $("#bookOnLine")[0];
+var theDiv = $j("#bookOnLine")[0];
 
 	//przygotuj 'layout'
 	theDiv.innerHTML += 
-	"<br/>Wybierz kino:<br/><select id='bo_cinema_sel' onclick='tmpValue=this.value' onchange='if(this.value!=\"-1\"){ $(\"#ajaxWaitInner\").show(); makeRequest(createOptionsForFilms, \"../../public/ajax/\"+this.value+\".xml?nr=1\", \"GET\");} else {this.value=tmpValue; return false;}'><option value='-1'>Wybierz Kino</option></select><br/>" +
+	"<br/>Wybierz kino:<br/><select id='bo_cinema_sel' onclick='tmpValue=this.value' onchange='if(this.value!=\"-1\"){ $j(\"#ajaxWaitInner\").show(); makeRequest(createOptionsForFilms, \"../../public/ajax/\"+this.value+\".xml?nr=1\", \"GET\");} else {this.value=tmpValue; return false;}'><option value='-1'>Wybierz Kino</option></select><br/>" +
 	
-	"<br/><span id='span_bo_film_sel'>Wybierz film:<br/><select id='bo_film_sel' onclick='tmpValue=this.value' onchange='if(this.value!=\"-1\"){ $(\"#ajaxWaitInner\").show(); makeRequest(createOptionsForDays, \"../../public/ajax/\"+this.value+\".xml?nr=2\", \"GET\");} else {this.value=tmpValue; return false;}'><option value='-1'>Wybierz Film</option></select></span><br/>" +
+	"<br/><span id='span_bo_film_sel'>Wybierz film:<br/><select id='bo_film_sel' onclick='tmpValue=this.value' onchange='if(this.value!=\"-1\"){ $j(\"#ajaxWaitInner\").show(); makeRequest(createOptionsForDays, \"../../public/ajax/\"+this.value+\".xml?nr=2\", \"GET\");} else {this.value=tmpValue; return false;}'><option value='-1'>Wybierz Film</option></select></span><br/>" +
 	
-	"<br/>Wybierz Dzień:<br/><select id='bo_day_sel' style='visibility:hidden' onclick='tmpValue=this.value' onchange='if(this.value!=\"-1\"){ $(\"#ajaxWaitInner\").show(); makeRequest(createOptionsForHours, \"../../public/ajax/\"+document.getElementById(\"bo_film_sel\").value+\".xml?nr=2&date_from=\"+this.value, \"GET\");} else {this.value=tmpValue; return false;}'><option value='-1'>Wybierz Dzień</option></select><br/>" +
+	"<br/>Wybierz Dzień:<br/><select id='bo_day_sel' style='visibility:hidden' onclick='tmpValue=this.value' onchange='if(this.value!=\"-1\"){ $j(\"#ajaxWaitInner\").show(); makeRequest(createOptionsForHours, \"../../public/ajax/\"+document.getElementById(\"bo_film_sel\").value+\".xml?nr=2&date_from=\"+this.value, \"GET\");} else {this.value=tmpValue; return false;}'><option value='-1'>Wybierz Dzień</option></select><br/>" +
 	
 	"<br/>Wybierz godzinę:<br/><select id='bo_hour_sel' style='visibility:hidden' onclick='tmpValue=this.value' onchange='if(this.value!=\"-1\"){set_button()} else {this.value=tmpValue; return false;}'><option value='-1'>Wybierz Godzinę</option></select><br/><span id=AJAXerror></span>"+
 	
@@ -67,14 +67,14 @@ function createOptions(xmlObj, firstTag, secondTag, thirdTag, selectId)
 				txt = txt[0]+":"+txt[1];
 			}
 			id = x[i].getElementsByTagName(thirdTag)[0].firstChild.nodeValue;
-			if(firstTag=="cinema") document.getElementById("cinemas").options[i+1] = new Option(txt, id, $.cookie("cinema_id")==id);
+			if(firstTag=="cinema") document.getElementById("cinemas").options[i+1] = new Option(txt, id, $j.cookie("cinema_id")==id);
 			document.getElementById(selectId).options[i+1] = new Option(txt, id);
 			document.getElementById(selectId).style.visibility = "visible";
 		}
 	} else
 			document.getElementById("AJAXerror").innerHTML = "Przykro nam, nie znaleziono wyników dla podanego wyszukania."
 			
-	$("#ajaxWaitInner").hide();
+	$j("#ajaxWaitInner").hide();
 }
 
 function createOptionsForHours(ifcase, xmlObj){
@@ -142,7 +142,7 @@ function konwertuj_XML_do_Opisu(outXML) {
 
 function wyswietl_opis_kina(outMsg) {
     document.getElementById("opis_kina").innerHTML = "&nbsp;"+outMsg;
-    $("#opis_kina").hide().show("fast");
+    $j("#opis_kina").hide().show("fast");
 }
 
         
@@ -151,20 +151,20 @@ function wyswietl_opis_kina(outMsg) {
 ////////////////////// Standalone function for cool picture efect
 
 function events() {
-   var cur = $("#events div.current");
+   var cur = $j("#events div.current");
    var next = cur.next();
    if (next.length == 0)
-        next = $("#events div:first");
+        next = $j("#events div:first");
         
    cur.removeClass().addClass("previous");
    next.addClass("current").css({opacity: 0.0});
    next.animate({opacity:1.0}, 1000, function(){cur.removeClass("previous");});
 }
 function banners() {
-   var cur = $("#banners div.current");
+   var cur = $j("#banners div.current");
    var next = cur.next();
    if (next.length == 0)
-        next = $("#banners div:first");
+        next = $j("#banners div:first");
         
    cur.removeClass().addClass("previous");
    next.addClass("current").css({opacity: 0.0});

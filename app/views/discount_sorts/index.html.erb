@@ -1,0 +1,27 @@
+<h1>Listing discount_sorts</h1>
+
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Description</th>
+    <th>Is weekend</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @discount_sorts.each do |discount_sort| %>
+  <tr>
+    <td><%= discount_sort.id %></td>
+    <td><%= discount_sort.description %></td>
+    <td><%= discount_sort.is_weekend %></td>
+    <td><%= link_to 'Show', discount_sort %></td>
+    <td><%= link_to 'Edit', edit_discount_sort_path(discount_sort) %></td>
+    <td><%= link_to 'Destroy', discount_sort, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Discount sort', new_discount_sort_path %>

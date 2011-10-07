@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Id:</b>
+  <%= @discount_sort.id %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @discount_sort.description %>
+</p>
+
+<p>
+  <b>Is weeknd:</b>
+  <%= @discount_sort.is_weekend %>
+</p>
+
+
+<%= link_to 'Edit', edit_discount_sort_path(@discount_sort) %> |
+<%= link_to 'Back', discount_sorts_path %>

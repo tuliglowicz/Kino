@@ -1,0 +1,45 @@
+<%= form_for(@ticket_sort_price) do |f| %>
+  <% if @ticket_sort_price.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@ticket_sort_price.errors.count, "error") %> prohibited this ticket_sort_price from being saved:</h2>
+
+      <ul>
+      <% @ticket_sort_price.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :id %><br />
+    <%= f.text_field :id %>
+  </div>
+  <div class="field">
+    <%= f.label :cinema_id %><br />
+    <%= f.text_field :cinema_id %>
+  </div>
+  <div class="field">
+    <%= f.label :seance_type_id %><br />
+    <%= f.text_field :seance_type_id %>
+  </div>
+  <div class="field">
+    <%= f.label :ticket_type_id %><br />
+    <%= f.text_field :ticket_type_id %>
+  </div>
+  <div class="field">
+    <%= f.label :price %><br />
+    <%= f.text_field :price %>
+  </div>
+  <div class="field">
+    <%= f.label :discount_sort_id %><br />
+    <%= f.text_field :discount_sort_id %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -5,10 +5,10 @@ class TicketsTypesController < ApplicationController
   
    layout 'admin'
   
-  #before_filter :auth,  :except => ["show", "index", "edit", "update"]
+  before_filter :auth,  :except => ["show", "index", "edit", "new", "update"]
   
   def index
-    @tickets_types = TicketsType.all
+    @tickets_types = TicketsType.find(10)
 
     respond_to do |format|
       format.html # index.html.erb

@@ -4,7 +4,7 @@ class Cinema < ActiveRecord::Base
 	has_many :workers
 	has_many :cinema_films
 	has_many :rooms
-	has_many :tickets_sorts_prices
+	has_many :ticket_sort_prices
 	
 	default_scope order('city_id, id')
 	

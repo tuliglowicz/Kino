@@ -2,9 +2,9 @@ Kino::Application.routes.draw do
 	
   resources :discount_sorts
 
-  resources :tickets_types
+  resources :ticket_types
 
-  resources :seances_types
+  resources :seance_types
 
   resources :users
 
@@ -12,7 +12,7 @@ Kino::Application.routes.draw do
 
   resources :reservations
 
-  resources :tickets_sorts_prices
+  resources :ticket_sort_prices
 
   resources :tickets
   resources :users

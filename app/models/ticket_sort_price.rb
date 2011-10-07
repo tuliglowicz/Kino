@@ -1,11 +1,10 @@
 # encoding: utf-8
-class TicketsSortsPrice < ActiveRecord::Base
+class TicketSortPrice < ActiveRecord::Base
   
-  belongs_to :discounts_sort
+  belongs_to :discount_sort
   belongs_to :cinema
-  belongs_to :seances_type
-  belongs_to :tickets_type
-  has_many :tickets
+  belongs_to :seance_type
+  belongs_to :ticket_type
   
   validates_presence_of :cinema_id, :message => 'Pole cinema_id nie może być puste (Not NULL)'
   validates_presence_of :seance_type_id, :message => 'Pole type_id nie może być puste (Not NULL)'

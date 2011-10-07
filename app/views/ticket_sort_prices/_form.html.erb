@@ -1,10 +1,10 @@
-<%= form_for(@tickets_sorts_price) do |f| %>
-  <% if @tickets_sorts_price.errors.any? %>
+<%= form_for(@ticket_sort_price) do |f| %>
+  <% if @ticket_sort_price.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@tickets_sorts_price.errors.count, "error") %> prohibited this tickets_sorts_price from being saved:</h2>
+      <h2><%= pluralize(@ticket_sort_price.errors.count, "error") %> prohibited this ticket_sort_price from being saved:</h2>
 
       <ul>
-      <% @tickets_sorts_price.errors.full_messages.each do |msg| %>
+      <% @ticket_sort_price.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>

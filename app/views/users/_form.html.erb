@@ -1,3 +1,28 @@
+<!-- AJAX
+<script>
+$(document).ready(function()
+{
+	
+	$("#user_login").blur(function()
+	{
+		$.ajax({
+			
+			url: "http://localhost:3000/users/new",
+			type: "GET",
+			data: "login="+$("#user_login").val(),
+			dataType: "json",
+			success: function(json)
+			{
+				if(json.ok)
+				{
+					$("#user_login").css("backgroundColor","lime")
+				}
+			}
+		})
+	})
+	
+});  
+</script> -->
 <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
@@ -10,40 +35,29 @@
       </ul>
     </div>
   <% end %>
-
+  
   <div class="field">
-    <%= f.label :id %><br />
-    <%= f.text_field :id %>
-  </div>
-  <div class="field">
-    <%= f.label :login %><br />
+    <%= f.label "Login:" %><br />
     <%= f.text_field :login %>
   </div>
   <div class="field">
-    <%= f.label :hashed_password %><br />
-    <%= f.text_field :hashed_password %>
+    <%= f.label "Hasło:" %><br />
+    <%= f.password_field :hashed_password %>
   </div>
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label "Powtórz hasło:"  %><br />
+    <%= f.password_field :password_confirmation %>
+  </div>
+  <div class="field">
+    <%= f.label "Email:" %><br />
     <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name %>
-  </div>
-  <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name %>
-  </div>
-  <div class="field">
-    <%= f.label :phone %><br />
+  </div class="field">
+    <%= f.label "Telefon:" %><br />
     <%= f.text_field :phone %>
   </div>
-  <div class="field">
-    <%= f.label :about %><br />
-    <%= f.text_field :about %>
-  </div>
+  <br/>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Utwórz konto"%>
   </div>
+  
 <% end %>

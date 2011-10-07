@@ -3,10 +3,9 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.xml
   
-  layout 'admin'
-
+  layout :get_users_layout  
   
-  before_filter :auth_exept_show, :except => ["show", "index", "edit", "update"]
+  before_filter :auth_exept_show, :except => ["show", "index", "edit", "update", "new", "create"]
   
   def index
     @users = User.all
@@ -31,6 +30,10 @@ class UsersController < ApplicationController
   # GET /users/new
   # GET /users/new.xml
   def new
+   if request.xhr?
+     @ok = true
+     render :json => @ok
+   end
     @user = User.new
 
     respond_to do |format|
@@ -47,23 +50,46 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.xml
   def create
-    @user = User.new(params[:user])
-    
-    # confirmation email sending
-        UserMailer.registration_confirmation(@user).deliver       
+    logger = Logger.new("log/users.log")
 
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to(@user, :notice => 'User was successfully created.') }
-        #format.xml  { render :xml => @user, :status => :created, :location => @user }
+    if are_passwords_equal(params[:user][:hashed_password], params[:user][:password_confirmation])
+      logger.debug "hasla identyczne"
+      
+      if is_login_available(params[:user][:login])
         
-        # confirmation email sending
-        UserMailer.registration_confirmation(@user).deliver        
+        if is_email_available(params[:user][:email])
+          @user = User.new(params[:user])
+          @user.hashed_password = Auth.hash_password(@user.hashed_password)
+          
+          respond_to do |format|
+            if @user.save
+              format.html { redirect_to("/", :notice => 'Konto utworzone.') }
+              #format.xml  { render :xml => @user, :status => :created, :location => @user }
+              
+              # confirmation email sending
+              UserMailer.registration_confirmation(@user).deliver        
+            else
+              format.html { render :action => "new" }
+              format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
+            end
+          end
+        else 
+          logger.debug "\temail zajęty" 
+          redirect_to("/users/new", :notice => 'Email już zajęty.')
+        end
+        
       else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
+        logger.debug "\tlogin zajęty"        
+        redirect_to("/users/new", :notice => 'Login już zajęty.')
       end
-    end
+      
+    else    
+      logger.debug "hasla rozne"
+      logger.debug params[:hashed_password].to_s
+      logger.debug params[:password_confirmation].to_s
+      
+      redirect_to("/users/new", :notice => 'Hasła różne od siebie.')
+    end    
   end
 
   # PUT /users/1
@@ -95,6 +121,15 @@ class UsersController < ApplicationController
   end
   
   private #===============================
+  
+  def get_users_layout   
+    if action_name == "new"
+      "application"
+    else
+      "admin"
+    end
+  end
+  
   def auth_exept_show
     if session[:worker] == nil 
         flash[:notice] = "Please log in, first!"
@@ -110,5 +145,17 @@ class UsersController < ApplicationController
       end
     end
   end
-  
+ 
+ def are_passwords_equal(password, confirmation)
+   password.eql?(confirmation)
+ end
+ 
+ def is_login_available(login)
+   User.where(:login => login).first.nil?
+ end
+ 
+ def is_email_available(email)
+   User.where(:email => email).first.nil?
+ end
+ 
 end

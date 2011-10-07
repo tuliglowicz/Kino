@@ -3,9 +3,9 @@
 one:
   id: 
   description: MyString
-  is_weekend: false
+  is_weeknd: false
 
 two:
   id: 
   description: MyString
-  is_weekend: false
+  is_weeknd: false

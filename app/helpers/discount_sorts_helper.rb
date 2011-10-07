@@ -1,0 +1,2 @@
+module DiscountSortsHelper
+end

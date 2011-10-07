@@ -1,5 +1,7 @@
 Kino::Application.routes.draw do
 	
+  resources :discount_sorts
+
   resources :tickets_types
 
   resources :seances_types
@@ -9,8 +11,6 @@ Kino::Application.routes.draw do
   resources :ticket_types
 
   resources :reservations
-
-  resources :discounts_sorts
 
   resources :tickets_sorts_prices
 

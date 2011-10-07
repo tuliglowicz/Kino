@@ -3,7 +3,7 @@ class CinemaFilmsController < ApplicationController
 	
 	layout 'admin'
 	
-	before_filter :auth, :except => ["show", "index", "edit", "update",  "ajax"]
+	before_filter :auth, :except => ["show", "index", "edit", "update" , "new" ,  "ajax"]
 	
   # GET /cinema_films
   # GET /cinema_films.xml

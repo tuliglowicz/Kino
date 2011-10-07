@@ -4,7 +4,7 @@ class CategoriesController < ApplicationController
 	layout 'admin'
 	
 	#before_filter :auth_access => 0
-	before_filter :auth_exept_show, :except => ["show", "index", "edit", "update"]
+	before_filter :auth_exept_show, :except => ["show", "index", "edit", "update", "new"]
 	
 	
   # GET /categories

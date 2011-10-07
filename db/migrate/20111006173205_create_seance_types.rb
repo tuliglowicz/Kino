@@ -1,6 +1,6 @@
-class CreateSeancesTypes < ActiveRecord::Migration
+class CreateSeanceTypes < ActiveRecord::Migration
   def self.up
-    create_table :seances_types do |t|
+    create_table :seance_types do |t|
       t.int :id
       t.string :name
 
@@ -9,6 +9,6 @@ class CreateSeancesTypes < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :seances_types
+    drop_table :seance_types
   end
 end

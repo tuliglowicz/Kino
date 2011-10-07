@@ -1,7 +1,7 @@
-<h1>Lisa kategorii</h1>
-<% if session[:isGA] -%>
+<h1>Lista kategorii</h1>
+<%# if session[:isGA] -%>
 <%= link_to 'Dodaj', new_category_path %><br><br>
-<% end -%>
+<%# end -%>
 <table>
   <tr>
     <th>Id</th>
@@ -14,10 +14,11 @@
     <td><%= category.id %></td>
     <td><%= category.name %></td>
     <td>
-    	<% if session[:isGA] -%>
+    	<%# if session[:isGA] -%>
+    	<%= link_to 'Pokaż', category %>
     	<%= link_to 'Edytuj', edit_category_path(category) %>
     	<%= link_to 'Usuń', category, :confirm => 'Czy na pewno chcesz usunąć ten rekord?', :method => :delete %></td>
-    	<% end -%>
+    	<%# end -%>
     	
     </td>
   </tr>

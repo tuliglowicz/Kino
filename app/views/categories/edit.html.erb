@@ -1,5 +1,10 @@
 <h1>Edytuj kategorię</h1>
 
-<%= render 'form' %>
 
-<%= link_to 'Wróć', categories_path %>
+<% if @category -%>
+	<%= render 'form' %>
+	<%= link_to 'Pokaż', @category %> |
+	<%= link_to 'Wróć', categories_path %>
+<% else -%>
+<p>Nie masz uprawnień, aby edytować ten rekord</p>
+<% end -%>

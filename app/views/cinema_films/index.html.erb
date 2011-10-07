@@ -17,10 +17,10 @@
     <td><%= cinema_film.date_from %></td>
     <td><%= link_to 'Pokaż', cinema_film %>
     	
-    	<% if (session[:isGA] or session[:worker] and session[:worker].cinema_id == cinema_film.cinema_id) and Date.today - cinema_film.date_from < 31-%>
+    	<%# if (session[:isGA] or session[:worker] and session[:worker].cinema_id == cinema_film.cinema_id) and Date.today - cinema_film.date_from < 31-%>
 	    	<%= link_to 'Edytuj', edit_cinema_film_path(cinema_film) %>
 	    	<%= link_to 'Usuń', cinema_film_path(cinema_film), :confirm => 'Czy na pewno chcesz usunąć ten rekord?', :method => :delete %></td>
-	    <% end -%>
+	    #<%# end -%>
   </tr>
 <% end %>
 </table>

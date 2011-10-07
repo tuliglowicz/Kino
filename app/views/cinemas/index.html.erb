@@ -20,10 +20,11 @@
     <td><%= cinema.phone %></td>
     <td>
     	<%= link_to 'Pokaż', cinema %>
-    	<% if session[:isGA] or (session[:worker].cinema_id == cinema.id) -%>
+    	<%# if session[:isGA] or (session[:worker].cinema_id == cinema.id) -%>
 	    	<%= link_to 'Edytuj', edit_cinema_path(cinema) %>
-	    	<%= link_to 'Usuń', cinema, :confirm => 'Czy na pewno chcesz usunąć ten rekord?', :method => :delete  if session[:isGA] %>	    
-    	<% end -%>
+	    	<%= link_to 'Usuń', cinema, :confirm => 'Czy na pewno chcesz usunąć ten rekord?', :method => :delete #if session[:isGA] 
+	    	%>	    
+    	<%# end -%>
     </td>
   </tr>
 <% end %>

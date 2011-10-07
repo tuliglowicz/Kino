@@ -1,7 +1,7 @@
 <h1>Lista miast</h1>
-<% if session[:isGA] -%>
+<%# if session[:isGA] -%>
 <%= link_to 'Dodaj', new_city_path %><br><br>
-<% end -%>
+<%# end -%>
 <table>
   <tr>
     <th>Id</th>
@@ -14,10 +14,11 @@
     <td><%= city.id %></td>
     <td><%= city.name %></td>
     <td>
-    	<% if session[:isGA] -%>
+    	<% #if session[:isGA] -%>
+    	<%= link_to 'Pokaż', city %>
     	<%= link_to 'Edytuj', edit_city_path(city) %>
     	<%= link_to 'Usuń', city_path(city), :confirm => 'Czy na pewno chcesz usunąć ten rekord?', :method => :delete %></td>
-    	<% end -%>
+    	<%# end -%>
     </td>
   </tr>
 <% end %>

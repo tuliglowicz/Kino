@@ -5,7 +5,7 @@ class TicketsTypesController < ApplicationController
   
    layout 'admin'
   
-  before_filter :auth,  :except => ["show", "index", "edit", "update"]
+  #before_filter :auth,  :except => ["show", "index", "edit", "update"]
   
   def index
     @tickets_types = TicketsType.all

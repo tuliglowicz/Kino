@@ -1,10 +1,10 @@
-<%= form_for(@seances_type) do |f| %>
-  <% if @seances_type.errors.any? %>
+<%= form_for(@seance_type) do |f| %>
+  <% if @seance_type.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@seances_type.errors.count, "error") %> prohibited this seances_type from being saved:</h2>
+      <h2><%= pluralize(@seance_type.errors.count, "error") %> prohibited this seance_type from being saved:</h2>
 
       <ul>
-      <% @seances_type.errors.full_messages.each do |msg| %>
+      <% @seance_type.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>

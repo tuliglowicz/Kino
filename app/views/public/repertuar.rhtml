@@ -1,62 +1,84 @@
-<% if cookies[:cinema_id] %>
-	Kino: <SPAN class="title"><%= @cinema.name %><br/>
-		Dzisiaj i przyszly tydzien:
-		<% 	i=0
-			date = Date.today -%>
-		<%	7.times do -%> | 
-			<% if i == @date_foreward -%>
-				<b><%= date.strftime("%d-%m") %></b>
-			<% else -%>
-				<%= link_to(date.strftime("%d-%m"), {:controller => "public", :action => "repertuar", :id => i}, :class=>"repertuarTime") %>
-			<% end -%>
-			
-			<% date = date.tomorrow 
-				i = i+1	-%>
-		<% end -%> &nbsp;| 
+<% content_for :title do %>
+	Repertuar
+<% end %>
 
-	<% if @films and @films.size > 0 -%>
-		<table align=center border=1>
-		
-		<% i=0 -%>
-		<% for film in @films do-%>
-		<tr>
-			<td width=450px>
-			<%= film.title + "(" + film.year.to_s + ")" %> &nbsp; 
-			<%= link_to("Trailer", {}, :target => "_blank", :href => film.trailer, :class=>"movieTitle") if film.trailer%>
-			<%= image_tag("film_posters"+film.poster, :size => "75x110", :align => "left") %><br/>
-			<strong>Kategoria:</strong> <%= film.category.name %><br/>
-			<strong>Rezyser:</strong> <%= film.director %><br/>
-			<strong>Czas trwania:</strong> <%= film.length %><br/>
-			<strong>Opis:</strong><br/> <%= film.description %> 
-			</td>
-			<td>
-				<% if @s -%>
-					Kup bilet na godz.:<br/>
-					<% for seance in @s do-%>
-					
-						<% if seance.cinema_film.film_id == film.id -%>
-							<% time = seance.time_from.strftime("%H:%M") %>
-							
-							<% if @date_foreward == 0 and seance.time_from.seconds_since_midnight > Time.now.seconds_since_midnight+1800 or not @date_foreward == 0-%>
-								<%= link_to( time , {:controller => "public", :action => "zakup", :id => seance.id}, :class =>"futureSeance") %> &nbsp;
-							<% else -%>
-								<span style='color:silver' class="pastSeance"><%= time %></span> &nbsp;
+	<% if cookies[:cinema_id] %>
+		Kino: <SPAN class="title"><%= @cinema.name if @cinema %><br/>
+			Dzisiaj i przyszly tydzien:
+			<% 	i=0
+				date = Date.today -%>
+			<%	7.times do -%> | 
+				<% if i == @date_foreward -%>
+					<b><%= date.strftime("%d-%m") %></b>
+				<% else -%>
+					<%= link_to(date.strftime("%d-%m"), {:controller => "public", :action => "repertuar", :id => i}, :class=>"repertuarTime") %>
+				<% end -%>
+				
+				<% date = date.tomorrow 
+					i = i+1	-%>
+			<% end -%> &nbsp;| 
+	
+		<% if @films and @films.size > 0 -%>
+			<table align=center border=1>
+			
+			<% i=0 -%>
+			<% for film in @films do-%>
+			<tr>
+				<td width=450px>
+				<%= film.title + "(" + film.year.to_s + ")" %> &nbsp; 
+				<%= link_to("Trailer", {}, :target => "_blank", :href => film.trailer, :class=>"movieTitle") if film.trailer%>
+				<%= image_tag("film_posters"+film.poster, :size => "75x110", :align => "left") %><br/>
+				<strong>Kategoria:</strong> <%= film.category.name %><br/>
+				<strong>Rezyser:</strong> <%= film.director %><br/>
+				<strong>Czas trwania:</strong> <%= film.length %><br/>
+				<strong>Opis:</strong><br/> <%= film.description %> 
+				</td>
+				<td>
+					<% if @s -%>
+						Kup bilet na godz.:<br/>
+						<% for seance in @s do-%>
+						
+							<% if seance.cinema_film.film_id == film.id -%>
+								<% time = seance.time_from.strftime("%H:%M") %>
+								
+								<% if @date_foreward == 0 and seance.time_from.seconds_since_midnight > Time.now.seconds_since_midnight+1800 or not @date_foreward == 0-%>
+									<%= link_to( time , {:controller => "public", :action => "zakup", :id => seance.id}, :class =>"futureSeance") %> &nbsp;
+								<% else -%>
+									<span style='color:silver' class="pastSeance"><%= time %></span> &nbsp;
+								<% end -%>
+								
 							<% end -%>
-							
 						<% end -%>
 					<% end -%>
-				<% end -%>
-			</td>
-		</tr>	
+				</td>
+			</tr>	
+			<% end -%>
+			</table>
+		<% else -%>	
+		<br/><br/>
+		W wybranym przez Ciebie kinie nie sa grane zadne filmy tego dnia.
 		<% end -%>
-		</table>
+		
 	<% else -%>	
-	<br/><br/>W wybranym przez Ciebie kinie nie sa grane zadne filmy tego dnia.
+	<br/><br/>Wybierz interesujace Cie kino z listy powyzej.
 	<% end -%>
 	
-<% else -%>	
-<br/><br/>Wybierz interesujace Cie kino z listy powyzej.
-<% end -%>
-
- <%# debug(@films) %>
-<%# debug(@s) %>
+	<%# unless params[:ajax] -%>
+	<script>
+	//alert($j.cookie('cinema_id'))
+	$j("a.repertuarTime").click(function(){
+					var page = $j.ajax({
+								url: this.href,
+							   type: "GET",
+							   data: "ajax=true&cookie="+$j.cookie('cinema_id'),
+							   dataType : 'html',
+							   success: function (recievedHTML){
+							   	//alert(recievedHTML)
+							   	$j("#loadTarget").hide().html(recievedHTML).show("slow");
+							   }
+						  });
+			return false;
+	})
+	</script>
+	<%# end -%>
+	

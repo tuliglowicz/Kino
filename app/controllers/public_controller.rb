@@ -22,29 +22,33 @@ class PublicController < ApplicationController
 		@cinemas = Cinema.all
 	end
 	
-	def repertuar
+		def repertuar
 		@title = "Repertuar"
 		
-		if cookies[:cinema_id]
+		
+		cinema_id = request.xhr? ? params[:cinema_id] : cookies[:cinema_id]
+			
+		
+		if cinema_id 
 				
 			@date_foreward = params[:id].to_i ||= 0		
 			if @date_foreward > 6 or @date_foreward <0
 				@date_foreward = 0
 			end
 
-			if cookies[:cinema_id] and Cinema.where(:id => cookies[:cinema_id]).size == 1
+			if cinema_id and Cinema.where(:id => cinema_id).size == 1
 
-			@cinema = Cinema.find(cookies[:cinema_id])
-			#@films = Film.where(:id => CinemaFilm.find(:all, :select => "film_id AS id", :conditions => "( date_untill IS Not NULL or date_untill > date(now())  + integer '"+@date_foreward.to_s+"' ) and cinema_id = "+cookies[:cinema_id].to_s+" AND date_from < date(now()) + integer '"+@date_foreward.to_s+"'"))
+			@cinema = Cinema.find(cinema_id)
 				
 				sqlQuery = "SELECT *
 							FROM seances
 							Where cinema_film_id IN
 							(select id AS cinema_film_id
 								from cinema_films
-								where cinema_id = "+cookies[:cinema_id].to_s+"
+								where cinema_id = "+cinema_id.to_s+"
 								)
-								AND date_from = date(now()) + integer '"+@date_foreward.to_s+"'"
+								AND date_from = date(now()) + integer '"+@date_foreward.to_s+"'
+								order by time_from"
 
 
 				@s = Seance.find_by_sql(sqlQuery)
@@ -54,7 +58,7 @@ class PublicController < ApplicationController
 							WHERE id IN
 								(SELECT film_id AS id
 		 						FROM cinema_films
-		 						WHERE  cinema_id = "+cookies[:cinema_id].to_s+" AND id IN
+		 						WHERE  cinema_id = "+cinema_id.to_s+" AND id IN
 			 						(SELECT cinema_film_id AS id
 			  						FROM seances
 			  						Where date_from = date(now()) + integer '"+@date_foreward.to_s+"'
@@ -69,6 +73,7 @@ class PublicController < ApplicationController
 			end
 		end
 		
+		render :layout => false if request.xhr?
 	end
 		
 	def register

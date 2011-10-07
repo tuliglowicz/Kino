@@ -3,7 +3,7 @@ class TicketsSortsPrice < ActiveRecord::Base
   
   belongs_to :discounts_sort
   belongs_to :cinema
-  belongs_to :seamces_type
+  belongs_to :seances_type
   belongs_to :tickets_type
   has_many :tickets
   

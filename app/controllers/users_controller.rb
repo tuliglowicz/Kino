@@ -5,11 +5,7 @@ class UsersController < ApplicationController
   
   layout :get_users_layout  
   
-<<<<<<< HEAD
   before_filter :auth_exept_show, :except => ["show", "index", "edit", "update", "new", "create"]
-=======
-  before_filter :auth_exept_show, :except => ["show", "index", "edit", "new", "update"]
->>>>>>> c7931e645e477686e1bde8ac14b8c2fe9cd825a8
   
   def index
     @users = User.all
@@ -55,6 +51,13 @@ class UsersController < ApplicationController
   # POST /users.xml
   def create
     logger = Logger.new("log/users.log")
+    @login = params[:user][:login]
+    @email = params[:user][:email]
+    @phone = params[:user][:phone]    
+  
+    logger.debug @login
+    logger.debug @email
+    logger.debug @phone
 
     if are_passwords_equal(params[:user][:hashed_password], params[:user][:password_confirmation])
       logger.debug "hasla identyczne"

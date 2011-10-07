@@ -38,7 +38,7 @@ $(document).ready(function()
   
   <div class="field">
     <%= f.label "Login:" %><br />
-    <%= f.text_field :login %>
+    <%= f.text_field :login, :value => @login.to_s %>
   </div>
   <div class="field">
     <%= f.label "Hasło:" %><br />
@@ -50,10 +50,10 @@ $(document).ready(function()
   </div>
   <div class="field">
     <%= f.label "Email:" %><br />
-    <%= f.text_field :email %>
+    <%= f.text_field :email, :value => @email %>
   </div class="field">
     <%= f.label "Telefon:" %><br />
-    <%= f.text_field :phone %>
+    <%= f.text_field :phone, :value => @phone %>
   </div>
   <br/>
   <div class="actions">

@@ -38,13 +38,14 @@ $(document).ready(function()
 
 
 <form align="left" class="form" id="new_user",  action="/users/create", method="post">
+	<br/>
 	<% if @user.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+      <h2 style="">Nie można było utworzyć konta:</h2>
 
       <ul>
       <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+        <li style="color: red"><%= msg %></li>
       <% end %>
       </ul>
     </div>
@@ -52,7 +53,7 @@ $(document).ready(function()
   <table style="border: 0px">
   	<tr>
   		<td class="label"><label for="user_login">Login:</label></td>
-  		<td><input type="text" id="user_login" name="user[login]" class="validate[required] text-input" /></td>
+  		<td><input type="text" value="<%= @user.login %>" id="user_login" name="user[login]" class="validate[required] text-input" /></td>
   		<td></td>
   	</tr>
   	
@@ -61,7 +62,7 @@ $(document).ready(function()
   	<tr>
   		<td class="label"><label for="user_password">Hasło:</label></td>
   		<td><input id="user_hashed_password" name="user[hashed_password]" class="validate[required] text-input" type="password" /></td>
-  	
+  		<td></td>
   	
   	</tr>
   		
@@ -69,7 +70,7 @@ $(document).ready(function()
   		
   	<tr>
   		<td class="label"><label for="user_password_confirmation">Powtórz hasło:</label></td>
-  		<td><input id="user_password_confirmation" name="user[password_confirmation]" class="validate[required] text-input" type="password" /></td>
+  		<td><input id="user_hashed_password_confirmation" name="user[hashed_password_confirmation]" class="validate[required] text-input" type="password" /></td>
   		<td></td>
   	</tr>
   	
@@ -77,7 +78,7 @@ $(document).ready(function()
   	
   	<tr>
   		<td class="label"><label for="user_email">Email:</label></td>
-  		<td><input type="text" id="user_email" name="user[email]" class="validate[required,custom[email]] text-input" type="email" /></td>	
+  		<td><input type="text" value="<%= @user.email %>" id="user_email" name="user[email]" class="validate[required,custom[email]] text-input" type="email" /></td>	
   		<td></td>
   	</tr>
   	
@@ -85,7 +86,7 @@ $(document).ready(function()
   	
   	<tr>
   		<td class="label"><label for="user_phone">Telefon:</label></td>
-  		<td><input type="text" id="user_phone" name="user[phone]" class="validate[required] text-input" type="text" />  </td>	
+  		<td><input type="text" value="<%= @user.phone %>" id="user_phone" name="user[phone]" class="validate[required] text-input" type="text" />  </td>	
   		<td></td>
   	</tr> 
   		

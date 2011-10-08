@@ -35,7 +35,7 @@ class UsersController < ApplicationController
      render :json => @ok
    end
     @user = User.new
-    
+   
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @user }
@@ -51,54 +51,22 @@ class UsersController < ApplicationController
   # POST /users.xml
   def create
     logger = Logger.new("log/users.log")
-    @last_login = params[:user][:login]
-    @last_phone = params[:user][:phone]
-    @last_email = params[:user][:email]
-       
-    if are_passwords_equal(params[:user][:hashed_password], params[:user][:password_confirmation])
-      logger.debug "hasla identyczne"
-      
-      if is_login_available(params[:user][:login])
-        logger.debug "login dostepny"
+    @user = User.new(params[:user])
+    
+    respond_to do |format|       
+      if @user.save
+         # confirmation email sending
+         UserMailer.registration_confirmation(@user).deliver     
+         logger.debug "uzytkownik zapisany, mail wyslany"  
         
-        if is_email_available(params[:user][:email])
-          logger.debug "email dostepny"
-          
-          @user = User.new(params[:user])          
-          @user.hashed_password = Auth.hash_password(@user.hashed_password)
-          
-          respond_to do |format|
-            if @user.save
-              format.html { redirect_to("/", :notice => 'Konto utworzone.') }
-              #format.xml  { render :xml => @user, :status => :created, :location => @user }
-              
-              # confirmation email sending
-              UserMailer.registration_confirmation(@user).deliver     
-              logger.debug "uzytkownik zapisany, mail wyslany"   
-            else
-              format.html { render :action => "new" }
-              format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
-            end
-          end
-        else 
-          logger.debug "\temail zajęty" 
-          redirect_to("/users/new", :notice => 'Email już zajęty.')
-          #render :action => "new", :notice => "Email już zajęty."
-        end        
+         format.html { redirect_to("/", :notice => 'Konto utworzone.') }
+         format.xml  { render :xml => @user, :status => :created, :location => @user }               
+                
       else
-        logger.debug "\tlogin zajęty"        
-        redirect_to("/users/new", :notice => 'Login już zajęty.')
-        #render :action => "new", :notice => "Login zajęty"
-      end
-      
-    else    
-      logger.debug "hasla rozne"
-      logger.debug params[:hashed_password].to_s
-      logger.debug params[:password_confirmation].to_s
-      
-      #render :action => "new", :notice => "Hasła różne od siebie"
-      redirect_to("/users/new", :notice => 'Hasła różne od siebie.')
-    end    
+         format.html { render :action => "new" }
+         format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
+      end         
+    end  
   end
 
   # PUT /users/1
@@ -132,7 +100,7 @@ class UsersController < ApplicationController
   private #===============================
   
   def get_users_layout   
-    if action_name == "new"
+    if action_name == "new" or action_name == "create"
       "application"
     else
       "admin"
@@ -156,7 +124,11 @@ class UsersController < ApplicationController
   end
  
  def are_passwords_equal(password, confirmation)
-   password.eql?(confirmation)
+   if password == "" or confirmation == ""
+     false
+   else
+    password.eql?(confirmation)
+   end
  end
  
  def is_login_available(login)

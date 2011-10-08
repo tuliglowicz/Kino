@@ -68,7 +68,7 @@
 	<script>
 	//alert($j.cookie('cinema_id'))
 	$j("a.repertuarTime").click(function(){
-					$j("#loadTarget").hide("fast");
+					$j("#loadTarget").animate({"opacity": "0"}, 250);
 					$j("#preloader_podluzny").show();
 					var page = $j.ajax({
 								url: this.href,
@@ -77,11 +77,13 @@
 							   dataType : 'html',
 							   success: function (recievedHTML){
 							   	//alert(recievedHTML)
-							   		$j("#loadTarget").hide().html(recievedHTML).show("slow");
-							   		$j("#preloader_podluzny").hide()
+							   		$j("#loadTarget").html(recievedHTML).animate({"opacity": "1"}, 250);
+							   		$j("#preloader_podluzny").hide();
 						  		},
 						  		error: function(){
-						  			window.location.href = this.href;
+						  			$j("#loadTarget").animate({"opacity": "1"}, 250, alert("Wystąpił problem z połączeniem.");
+						  			
+						  			//window.location.href = this.href;
 						  		}
 						   
 						  });

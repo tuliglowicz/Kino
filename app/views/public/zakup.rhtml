@@ -105,7 +105,7 @@
     <%= hidden_field_tag('ticket[how_much]', '') %>
 </form>
 
-    <div id="disc_sel" style="position:absolute;display:none;"><%= select_tag('ticket[discount_id]', options_for_select([['wybierz rodzaj biletu', '-1']] + @discounts.collect{|r| [r.description, r.id]}), :id => "theSel", :onchange => "changed(this)") %></div>
+    <div id="disc_sel" style="position:absolute;display:none;"><%= select_tag('ticket[discount_id]', options_for_select([['wybierz rodzaj biletu', '-1']] + @discounts.collect{|r| [r.name, r.id]}), :id => "theSel", :onchange => "changed(this)") %></div>
 
 <% else -%>
 	Wybierz seans przy pomocy narzedzia po lewej.

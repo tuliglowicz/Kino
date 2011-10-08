@@ -2,6 +2,7 @@
 	Repertuar
 <% end %>
 
+<div id="loadTarget">
 	<% if cookies[:cinema_id] %>
 		Kino: <SPAN class="title"><%= @cinema.name if @cinema %><br/>
 			Dzisiaj i przyszly tydzien:
@@ -67,6 +68,7 @@
 	<script>
 	//alert($j.cookie('cinema_id'))
 	$j("a.repertuarTime").click(function(){
+					$j("#loadTarget").hide("fast");
 					var page = $j.ajax({
 								url: this.href,
 							   type: "GET",
@@ -75,10 +77,14 @@
 							   success: function (recievedHTML){
 							   	//alert(recievedHTML)
 							   	$j("#loadTarget").hide().html(recievedHTML).show("slow");
-							   }
+						  		},
+						  		error: function(){
+						  			window.location.href = this.href
+						  		}
+						   
 						  });
 			return false;
 	})
 	</script>
 	<%# end -%>
-	
+</div>

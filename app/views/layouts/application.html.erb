@@ -150,10 +150,14 @@ body {background: #000 url('/images/pic/body_bg.jpg') repeat-x 0 0;}
 		<a class="next active" href="#"></a>
 	</div>- UZREditor -->
 	
-	<table class="Ww2" style="height:400px; overflow: auto; text-align: right;"><tr><td>
+	<table class="Ww2" align="center" valign="middle" style="height:400px; overflow: auto; text-align: right;"><tr><td align="right" valign="middle">
 		<span style='color:green'><%= flash[:notice] if flash[:notice]%></span><br>
+		<center id="preloader_podluzny" style="display:none;">
+			Ładowanie...<br/>
+			<img id="" src="/images/pic/loader.gif">
+		</center>
 		<%= yield %>
-	</div>
+	</table>
 
 
 	<div id="footer">
@@ -170,11 +174,9 @@ body {background: #000 url('/images/pic/body_bg.jpg') repeat-x 0 0;}
 	      <li><a href="" rel="nofollow">Prywatność</a></li>
 	      <li><a href="" >Wszystkie artykuły</a></li>
 	      <li><a href="" >Licencje</a></li>
-	      
-	      
 	    </ul>
 	  </div>
 	 </div>
-</table>
+
 </body>
 </html>

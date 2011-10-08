@@ -23,8 +23,22 @@ $(document).ready(function()
 	
 });  
 </script> -->
-<%= form_for(@user) do |f| %>
-  <% if @user.errors.any? %>
+<script src="/javascripts/jquery.validationEngine-pl.js" type="text/javascript" charset="utf-8"></script>
+
+<script src="/javascripts/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
+
+<script>
+	$j(document).ready(function(){
+    // binds form submission and fields to the validation engine
+    $j("#new_user").validationEngine();
+  });
+</script>
+
+<LINK REL=StyleSheet HREF="/stylesheets/new_user.css" TYPE="text/css" MEDIA=screen>
+
+
+<form align="left" class="form" id="new_user",  action="/users/create", method="post">
+	<% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
@@ -35,29 +49,49 @@ $(document).ready(function()
       </ul>
     </div>
   <% end %>
-  
-  <div class="field">
-    <%= f.label "Login:" %><br />
-    <%= f.text_field :login, :value => @login.to_s %>
-  </div>
-  <div class="field">
-    <%= f.label "Hasło:" %><br />
-    <%= f.password_field :hashed_password %>
-  </div>
-  <div class="field">
-    <%= f.label "Powtórz hasło:"  %><br />
-    <%= f.password_field :password_confirmation %>
-  </div>
-  <div class="field">
-    <%= f.label "Email:" %><br />
-    <%= f.text_field :email, :value => @email %>
-  </div class="field">
-    <%= f.label "Telefon:" %><br />
-    <%= f.text_field :phone, :value => @phone %>
-  </div>
-  <br/>
-  <div class="actions">
-    <%= f.submit "Utwórz konto"%>
-  </div>
-  
-<% end %>
+  <table style="border: 0px">
+  	<tr>
+  		<td class="label"><label for="user_login">Login:</label></td>
+  		<td><input type="text" id="user_login" name="user[login]" class="validate[required] text-input" /></td>
+  		<td></td>
+  	</tr>
+  	
+  	<br/>
+  	
+  	<tr>
+  		<td class="label"><label for="user_password">Hasło:</label></td>
+  		<td><input id="user_hashed_password" name="user[hashed_password]" class="validate[required] text-input" type="password" /></td>
+  		<td></td>
+  	
+  	</tr>
+  		
+  	<br/>
+  		
+  	<tr>
+  		<td class="label"><label for="user_password_confirmation">Powtórz hasło:</label></td>
+  		<td><input id="user_password_confirmation" name="user[password_confirmation]" class="validate[required] text-input" type="password" /></td>
+  		<td></td>
+  	</tr>
+  	
+  	<br />
+  	
+  	<tr>
+  		<td class="label"><label for="user_email">Email:</label></td>
+  		<td><input type="text" id="user_email" name="user[email]" class="validate[required,custom[email]] text-input" type="email" /></td>	
+  		<td></td>
+  	</tr>
+  	
+  	<br/>
+  	
+  	<tr>
+  		<td class="label"><label for="user_phone">Telefon:</label></td>
+  		<td><input type="text" id="user_phone" name="user[phone]" class="validate[required] text-input" type="text" />  </td>	
+  		<td></td>
+  	</tr> 
+  		
+  </table>
+ <br />
+ 
+ <button type="submit" style="width: 110px">Załóż konto</button> 
+	
+</form>

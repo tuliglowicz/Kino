@@ -5,6 +5,7 @@ class City < ActiveRecord::Base
 	
 	default_scope order('name')
 
-	validates_presence_of :name, :message => 'nie może być pusty (Not NULL)'
-	validates_length_of :name, :maximum => 25, :message => 'Pole name musi mieć co najwyżej 25 znaków'
+	validates_presence_of :name, :message => 'Nazwa musi być podana.'
+	validates_presence_of :address, :message => "Adres musi być podany."
+	validates_presence_of :phone, :message => "Telefon musi być podany."
 end

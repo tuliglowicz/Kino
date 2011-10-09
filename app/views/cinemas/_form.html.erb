@@ -1,4 +1,28 @@
-<%= form_for(@cinema) do |f| %>
+<!-- CSS nd JS-->
+<script src="/javascripts/jquery.validationEngine-pl.js" type="text/javascript" charset="utf-8"></script>
+
+<script src="/javascripts/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
+
+<script>
+	jQuery(document).ready(function(){
+    // binds form submission and fields to the validation engine
+    jQuery('#cinema_name').focus();
+    
+    jQuery("#new_cinema").validationEngine('attach', {bindMethod:"live"});
+    
+    jQuery("#cinema_city_id").live('click', handleOnContextMenu)
+    
+    function handleOnContextMenu(event)
+    {
+    	
+    }
+  });
+</script>
+
+<LINK REL=StyleSheet HREF="/stylesheets/cinemas/cinemas_form.css" TYPE="text/css" MEDIA=screen>
+<LINK REL=stylesheet HREF="/stylesheets/validationEngine.jquery.css" TYPE="text/css" MEDIA=screen>
+
+<br/>
   <% if @cinema.errors.any? %>
     <div id="error_explanation">
       <h2>Zaszły następujące nieprawidłowości:</h2>
@@ -11,31 +35,45 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :city_id %><br />
-    <% if @cities -%>
-    <%= select_tag('cinema[city_id]', options_for_select([['Wybierz miasto', '']] + @cities.collect{|city| [city.name, city.id]}, @cinema.city_id)) if @cities %>
-    <% else -%>
-    <%= f.text_field :city_id %>
-    <% end -%>
-  </div>
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :address %><br />
-    <%= f.text_field :address %>
-  </div>
-  <div class="field">
-    <%= f.label :phone %><br />
-    <%= f.text_field :phone %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
-
-<script>
-	$("document").ready(function(){$('#cinema_name').focus();});
-</script>
+ <div id="h_container">   
+    <div id="form-container">
+	<form align="left" class="new_cinema" id="new_cinema" method="post" action="/cinemas/create">
+		<table >
+			<tr>
+				<td class="label"><label for="">Miasto:</label></td>
+				<td><select style="width: 200px" class="validate[required]" id="cinema_city_id" name="cinema[city_id]">
+					<option value="">Wybierz miasto</option>
+					<% @cities.each { |city| %>
+						<option 
+						<% if @cinema.city_id
+						 	if city.name.to_s.eql?(City.find(@cinema.city_id).name.to_s)%> 
+							selected 
+						 <% end 
+						end %> value="<%= city.id %>"><%= city.name %></option>
+					<%}%>
+				</select></td>
+			</tr>
+						
+			<tr>
+				<td class="label"><label for="cinema_name">Nazwa:</label></td>
+				<td class="input"><textarea style="width: 195px"  style="width: 200px" 
+					type="text" id="cinema_name" name="cinema[name]" class="validate[required] text-input"><%= @cinema.name %></textarea></td>
+			</tr>
+			
+			<tr>
+				<td class="label"><label for="cinema_address">Adres:</label></td>
+				<td class="input"><textarea style="width: 195px" 
+					id="cinema_address" name="cinema[address]" class="validate[required] text-input"><%= @cinema.address %></textarea></td>
+			</tr>			
+			
+			<tr>
+				<td class="label"><label for="">Telefon:</label></td>
+				<td class="input"><input value="<%= @cinema.phone %>" style="width: 200px" type="text" id="cinema_phone" name="cinema[phone]" class="validate[required] text-input"/></td>
+			</tr>
+						
+		</table>	
+		<br />
+		<button type="submit">Utwórz kino</button>
+	</form>
+</div>
+</div>

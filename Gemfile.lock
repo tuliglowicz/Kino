@@ -64,6 +64,7 @@ GEM
     treetop (1.4.9)
       polyglot (>= 0.3.1)
     tzinfo (0.3.26)
+    will_paginate (3.0.2)
 
 PLATFORMS
   ruby
@@ -73,3 +74,4 @@ DEPENDENCIES
   actionmailer
   pg
   rails (= 3.0.7)
+  will_paginate

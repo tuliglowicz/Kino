@@ -78,13 +78,17 @@ class PrivateController < ApplicationController
 		session[:isGA] = nil
 		
 		if logged_in_user			
+		  logger.debug 'Zalogowano'
 			flash[:notice] = "Logged in!"
 			if logged_in_user.class.name == "Worker"
 				session[:worker] = logged_in_user
-				session[:isGA] = (logged_in_user.status_id==0)
+				session[:isGA] = (Status.find(logged_in_user.status_id).name.to_s.eql?('administrator'))
+				logger.debug "zalogowany jako worker"
+				logger.debug Status.find(logged_in_user.status_id).name.to_s
 				redirect_to(:action => "panel")
 			else
 				session[:user] = logged_in_user
+				logger.debug 'zalogowany jako user'
 				redirect_to(:controller => "public", :action => "index") # do poprawy później
 			end
 			session[:cinema_id] = 1
@@ -95,6 +99,8 @@ class PrivateController < ApplicationController
 	end
 
 	def logout
+	  logger.debug '##################private_controller.logout########################'
+	  logger.debug 'Wylogowano'
 		session[:user] = nil
 		session[:worker] = nil
 		session[:isGA] = nil

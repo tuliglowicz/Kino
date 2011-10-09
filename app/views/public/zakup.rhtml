@@ -7,19 +7,19 @@
 	2. Posiadasz zbyt mało środków na koncie.
 	<% end -%>
 	<br/><br/>
-	<a href="#" onclick="$('#errorTable').fadeOut('fast');">Zamknij to okno</a>
+	<a href="#" onclick="$j('#errorTable').fadeOut('fast');">Zamknij to okno</a>
 	</td></tr></table><br/>
 <% else if @error == false and @accepted_payment == true -%>
 	<table class='allCorrectTable' id='errorTable' align=center><tr><td align='center'>
 	1. Miejsca, które zamówiłeś zostały poprawnie zarezerwowane!
 	<br/><br/>
-	<a href="#" onclick="$('#errorTable').fadeOut('fast');">Zamknij to okno</a>
+	<a href="#" onclick="$j('#errorTable').fadeOut('fast');">Zamknij to okno</a>
 	</td></tr></table>
 <% else if @accepted_payment == false-%>	
 <table class='problemTable' id='errorTable' align=center><tr><td align='center'>
 	1. Posiadasz zbyt mało środków na koncie.
 	<br/><br/>
-	<a href="#" onclick="$('#errorTable').fadeOut('fast');">Zamknij to okno</a>
+	<a href="#" onclick="$j('#errorTable').fadeOut('fast');">Zamknij to okno</a>
 	</td></tr></table>
 <% end end end -%>
 <br/>
@@ -66,7 +66,7 @@
 		
     </table>
     <br>
-    <em onclick="$('#opis').toggle('slow');" style="cursor:pointer"><u> Wyświetl opis</u></em>:<br>
+    <em onclick="$j('#opis').toggle('slow');" style="cursor:pointer"><u> Wyświetl opis</u></em>:<br>
     <span id=opis style='display:none'>
     kolor <font color=red>czerwony</font> oznacza, że dane siedzenie jest już <u>zajęte</u>.<br>
     kolor <font color=lime>zielony</font> oznacza, że dane siedzenie jest <u>wolne</u>.<br>
@@ -138,10 +138,8 @@ function send_my_data(){
 				var seatId = new Array(5);	//przechowuje idSeatów
 				var discId = new Array(5);	//przechowuje idDiscount
 				var count = 0;
-				$(".seat").each(
-					function(){						
-						$(this).click(
-							function(evt){
+				$j("#theSel").addClass("ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only");
+				$j(".seat").click(function(evt){
 								
 								substr = evt.currentTarget.id.substring(4)
 								for(var i=0; i<5; i++){
@@ -156,7 +154,7 @@ function send_my_data(){
 										
 										count--;
 										if(count <= 0){
-											$("#kup_center").fadeOut("fast");
+											$j("#kup_center").fadeOut("fast");
 										}
 										
 										//print_tabs();
@@ -195,10 +193,9 @@ function send_my_data(){
 										tmp = new Array(3);
 									}
 								}
-							}
-						)
-					}
-				)
+							});
+						
+
 				function changed(sel)
 				{
 					if(tmpId < 0 || count > 4) return false;
@@ -212,13 +209,10 @@ function send_my_data(){
 						document.getElementById(tmp[0]).innerHTML = tmp[1];
 						count++;
 						
-						
-						//print_tabs();
 						print_tickets();
 						
-						if(count==1) $("#kup_center").show("slow");
+						if(count==1) $j("#kup_center").show("slow");
 											
-						
 						//czyszczenie
 						tmpId = -1;
 						tmp = new Array(3);
@@ -234,7 +228,7 @@ function send_my_data(){
 					for(var i=0; i<5; i++)
 						if(seatId[i])
 						{
-							$('#t'+i).hide();
+							$j('#t'+i).hide();
 							
 							var col = seatId[i]%maxCols;
 							var row = chars[(seatId[i] - col) / maxCols];
@@ -244,7 +238,7 @@ function send_my_data(){
 							
 							document.getElementById('t'+i).innerHTML = " &nbsp; "+nr+". &nbsp; Miejsce: "+row+col+", <em>"+typ+"</em>, cena: "+cena+" zł<br/>";
 							
-							$('#t'+i).show("slow");
+							$j('#t'+i).show("slow");
 							total += cena;
 							nr++;	
 						}

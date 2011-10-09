@@ -10,6 +10,7 @@ $j("document").ready(initAll);
 
 function initAll() {
 	// events
+	/*
 	setInterval("events()", 2000);
 	setInterval("banners()", 4000);
 	// zaopatrz linki z class=miasto w onclick z ajaxem
@@ -26,6 +27,7 @@ function initAll() {
     );
     
     szybkaRezerwacja();
+    */
 }
 
 var tmpValue;

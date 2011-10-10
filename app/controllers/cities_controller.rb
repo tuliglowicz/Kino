@@ -3,7 +3,7 @@ class CitiesController < ApplicationController
 	
 	layout 'admin'
 
-  before_filter :auth_exept_show, :except => ["show", "index", "edit" , "new", "update"]
+  before_filter :auth_is_global_admin
   
   # GET /cities
   # GET /cities.xml	
@@ -45,11 +45,17 @@ class CitiesController < ApplicationController
   # POST /cities
   # POST /cities.xml
   def create
-    @city = City.new(params[:city])
-
+    
+    params.each{       
+      |c| puts logger.debug c
+      puts '#########################################################################'
+    }
+    @city = City.new
+    @city.name = params[:city][:name]
+    
     respond_to do |format|
       if @city.save
-        format.html { redirect_to(@city, :notice => 'City was successfully created.') }
+        format.html { redirect_to(cities_path, :notice => 'Miasto dodane.') }
         format.xml  { render :xml => @city, :status => :created, :location => @city }
       else
         format.html { render :action => "new" }
@@ -86,6 +92,14 @@ class CitiesController < ApplicationController
   end
 
 	private #===============================
+	def auth_is_global_admin
+	  if session[:worker] && Status.find(session[:worker].status_id).to_s.eql?('administrator')
+			true
+		else
+			false
+		end
+	end
+	
 	def auth_exept_show
 		if session[:worker] == nil 
 				flash[:notice] = "Please log in, first!"

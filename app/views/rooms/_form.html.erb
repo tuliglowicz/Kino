@@ -13,7 +13,7 @@
 
 
   <div class="field">
-    <%= f.label :cinema_id %><br />
+    <%= f.label :Kino %><br />
     <% if @cinemas -%>
     <%= select_tag('room[cinema_id]', options_for_select([['Wybierz kino', '']] + @cinemas.collect{|c| [c.name, c.id]}, @room.cinema_id)) %>
     <% else -%>
@@ -21,11 +21,11 @@
     <% end -%>
   </div>
 	<div class="field">
-    <%= f.label :number %><br />
+    <%= f.label :"Numer sali" %><br />
     <%= f.text_field :number %>
   </div>
   <div class="field">
-    <%= f.label :size %><br />
+    <%= f.label :"Liczba miejsc" %><br />
     <%= f.text_field :size %>
   </div>
   <div class="actions">

@@ -91,19 +91,11 @@ class RoomsController < ApplicationController
 
 	private #===============================
 	def auth
-		if session[:worker] == nil 
-				flash[:notice] = "Please log in, first!"
-				redirect_to(:controller => "public", :action => "index")
-				return false
-			else if session[:worker].status_id > 0
-				flash[:notice] = "Nie masz wymaganych uprawnień!"
-				if request.referer == "/"
-					redirect_to("/403.html")
-				else
-					redirect_to(request.referer)
-				end
-			end
-		end
-	end
+    if session[:worker] == nil 
+        flash[:notice] = "Please log in, first!"
+        redirect_to(:controller => "public", :action => "index")
+        return false
+    end
+  end 
 	
 end

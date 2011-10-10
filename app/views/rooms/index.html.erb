@@ -12,13 +12,15 @@
 
 <% @rooms.each do |room| %>
   <tr>
-    <td><%= room.id %></td>
+    
     <td><%= room.cinema.name if room.cinema %></td>
     <td><%= room.number %></td>
     <td><%= room.size %></td>
     <td><%= link_to 'Pokaż', room %>
     	<%= link_to 'Edytuj', edit_room_path(room) %>
-    	<%= link_to 'Usuń', room, :confirm => 'Czy na pewno chcesz usunąć ten rekord?', :method => :delete %></td>
+    	<%= link_to 'Usuń', room, :confirm => 'Czy na pewno chcesz usunąć ten rekord?', :method => :delete %>
+    	<%= link_to 'Dodaj siedzenie', new_seat_path %>
+    	</td>
   </tr>
 <% end %>
 </table>

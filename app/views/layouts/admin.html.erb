@@ -18,15 +18,18 @@
 
 </br>
 
-<table align=center width="90%" bgcolor=silver cellspacing=0 cellpadding=0 style='border-width: 1px 1px 1px 1px;border-color: #DDDDDD #DDDDDD #DDDDDD #DDDDDD;border-style: solid solid solid solid;	 background-color:white'>
+<table align=center width="90%" bgcolor=silver cellspacing=0 cellpadding=0 style='border-width: 1px 1px 1px 1px;border-color: #DDDDDD #DDDDDD #DDDDDD #DDDDDD;border-style: solid solid solid solid;	 background-color:#383838 '>
 <tr><td>
 
 
 <table width=100%><tr><td>
 <BR>
 
-<h1 style='color:#0079ff;font-size:28'><I> &nbsp; &nbsp;
-	<%= (session[:worker].first_name + " " + session[:worker].last_name + " - " + session[:worker].cinema.name + " - " + session[:worker].status_id.to_s) if session[:worker] %></I></H1>
+<h1 style='color:#FF00FF;font-size:30'><I> &nbsp; &nbsp;
+<%= (session[:worker].cinema.name ) if session[:worker] %></I></H1>
+
+<h2 style='color:#0079ff;font-size:28'><I> &nbsp; &nbsp;
+	<%= (session[:worker].first_name + " " + session[:worker].last_name + " - " + session[:worker].status.name) if session[:worker] %></I></H2>
 </TD>
 <td></TD>
 </Table>
@@ -39,7 +42,7 @@
 <td width=1%>&nbsp;</TD>
 
 <td width=15% valign=top>
-<B style='font-size:14'>Menu:</B><BR>
+<B style='color:#FFFFFF;font-size:14' >Menu:</B><BR>
 <%# MENU MENU MENU MENU -%>
 <ul>
 	

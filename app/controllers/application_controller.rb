@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   	def auth_access
 		if not session[:worker] #or session[:worker].status_id > status_wymagany
 			flash[:notice] = "Please log in, first!"
-			redirect_to(:controller => "public", :action => "index") and return false
+			redirect_to(:controller => "public", :action => "login") and return false
 		end
 	end
 	def auth_access_user

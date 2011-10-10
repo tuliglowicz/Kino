@@ -4,6 +4,7 @@ class WorkersController < ApplicationController
 	
 	layout 'admin'
 	
+	before_filter :auth_access
 	before_filter :auth, :except => ["show", "index", "edit", "new", "update"]
 		
   # GET /workers
@@ -39,15 +40,10 @@ class WorkersController < ApplicationController
   # GET /workers/new
   # GET /workers/new.xml
   def new
-  	if session[:isGA]
-	  	@statuses = Status.all
-	  	@cinemas = Cinema.all
-    else
-    	@cinemas = Cinema.find(:all, :conditions => "id = "+session[:worker].cinema_id.to_s)
-    	@statuses = Status.find(:all, :conditions => "id > 0")
-	end
-	
-	    @worker = Worker.new
+  	
+	  @statuses = Status.all
+	  @cinemas = Cinema.all 
+	  @worker = Worker.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -71,37 +67,26 @@ class WorkersController < ApplicationController
   # POST /workers.xml
   def create  	
 	    @worker = Worker.new(params[:worker])
-	    
-  	if session[:isGA]
-	  	@statuses = Status.all
-	  	@cinemas = Cinema.all
-    else
-		if params[:worker][:cinema_id] == session[:worker].cinema_id.to_s
-			@cinemas = Cinema.find(:all, :conditions => "id = " + session[:worker].cinema_id.to_s)
-			@statuses = Status.find(:all, :conditions => "id > 0")
-		else
-			@worker = nil
-		end
-	end
+	    @worker.hashed_password = @worker.login.to_s + '_' + @worker.first_name.to_s
 
-	if @worker
-	    respond_to do |format|
-	      if @worker.save
-	        format.html { redirect_to(@worker, :notice => 'Pomyślnie dodano nowego pracownika.') }
-	        format.xml  { render :xml => @worker, :status => :created, :location => @worker }
-	      else
-	        format.html { render :action => "new" }
-	        format.xml  { render :xml => @worker.errors, :status => :unprocessable_entity }
-	      end
-	    end
-    else
-    	    	
+      @cinemas = Cinema.all
+      @statuses = Status.all
+  	  if @worker
+  	    respond_to do |format|
+  	      if @worker.save
+  	        format.html { redirect_to(@worker, :notice => 'Pomyślnie dodano nowego pracownika.') }
+  	        format.xml  { render :xml => @worker, :status => :created, :location => @worker }
+  	      else
+  	        format.html { render :action => "new" }
+  	        format.xml  { render :xml => @worker.errors, :status => :unprocessable_entity }
+  	      end
+  	    end
+      else    	    	
 				if request.referer == "/"
 					redirect_to("/403.html")
 				else
 					redirect_to(request.referer, :notice => "Nie masz wymaganych uprawnień!")
-				end  	 
-	
+				end  	 	
     end
   end
 
@@ -168,6 +153,17 @@ class WorkersController < ApplicationController
 				end  	 
 	
 	end
+  end
+  
+  def login_availability
+    puts "sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss"
+    login = params[:login]
+    
+    if Worker.where(:login => login).first
+      "NO"
+    else
+      "OK"
+    end
   end
 
 	private #===============================

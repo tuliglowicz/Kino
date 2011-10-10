@@ -1,14 +1,14 @@
 <h1>Lista pracowników</h1>
 <%= link_to 'Dodaj', new_worker_path %><br><br>
 
-<% if @workers -%>
+<% if @workers  
+	worker_number=0%>
 	<table>
 	  <tr>
-	    <th>Id</th>
-	    <th>Nazwa Kina</th>
+	  	<td>Nr</td>
+	    <th>Kino</th>
 	    <th>Status</th>
 	    <th>Login</th>
-	    <th>Hasło</th>
 	    <th>Imie</th>
 	    <th>Nazwisko</th>
 	    <th>Telefon</th>
@@ -17,11 +17,11 @@
 	  </tr>
 	<% @workers.each do |worker| %>
 	  <tr>
-	    <td><%= worker.id %></td>
+	  	<td><%= worker_number %></td>
+	  	<% worker_number = worker_number + 1%>
 	    <td><%= worker.cinema.name if worker.cinema %></td>
 	    <td><%= worker.status.name if worker.status %></td>
 	    <td><%= worker.login %></td>
-	    <td><%= "*Hidden*" if worker.hashed_password %></td>
 	    <td><%= worker.first_name %></td>
 	    <td><%= worker.last_name %></td>
 	    <td><%= worker.phone %></td>

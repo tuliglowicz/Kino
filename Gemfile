@@ -7,6 +7,7 @@ gem 'rails', '3.0.7'
 
 gem 'pg'
 gem 'actionmailer'
+gem 'will_paginate'
 
 # Use unicorn as the web server
 # gem 'unicorn'

@@ -1,49 +1,98 @@
-<%= form_for(@user) do |f| %>
-  <% if @user.errors.any? %>
+<!-- AJAX
+<script>
+$(document).ready(function()
+{
+	
+	$("#user_login").blur(function()
+	{
+		$.ajax({
+			
+			url: "http://localhost:3000/users/new",
+			type: "GET",
+			data: "login="+$("#user_login").val(),
+			dataType: "json",
+			success: function(json)
+			{
+				if(json.ok)
+				{
+					$("#user_login").css("backgroundColor","lime")
+				}
+			}
+		})
+	})
+	
+});  
+</script> -->
+<script src="/javascripts/jquery.validationEngine-pl.js" type="text/javascript" charset="utf-8"></script>
+
+<script src="/javascripts/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
+
+<script>
+	$j(document).ready(function(){
+    // binds form submission and fields to the validation engine
+    $j("#new_user").validationEngine();
+  });
+</script>
+
+<LINK REL=StyleSheet HREF="/stylesheets/new_user.css" TYPE="text/css" MEDIA=screen>
+
+
+<form align="left" class="form" id="new_user",  action="/users/create", method="post">
+	<br/>
+	<% if @user.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+      <h2 style="">Nie można było utworzyć konta:</h2>
 
       <ul>
       <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+        <li style="color: red"><%= msg %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :id %><br />
-    <%= f.text_field :id %>
-  </div>
-  <div class="field">
-    <%= f.label :login %><br />
-    <%= f.text_field :login %>
-  </div>
-  <div class="field">
-    <%= f.label :hashed_password %><br />
-    <%= f.text_field :hashed_password %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name %>
-  </div>
-  <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name %>
-  </div>
-  <div class="field">
-    <%= f.label :phone %><br />
-    <%= f.text_field :phone %>
-  </div>
-  <div class="field">
-    <%= f.label :about %><br />
-    <%= f.text_field :about %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+  <table style="border: 0px">
+  	<tr>
+  		<td class="label"><label for="user_login">Login:</label></td>
+  		<td><input type="text" value="<%= @user.login %>" id="user_login" name="user[login]" class="validate[required] text-input" /></td>
+  		<td></td>
+  	</tr>
+  	
+  	<br/>
+  	
+  	<tr>
+  		<td class="label"><label for="user_password">Hasło:</label></td>
+  		<td><input id="user_hashed_password" name="user[hashed_password]" class="validate[required] text-input" type="password" /></td>
+  		<td></td>
+  	
+  	</tr>
+  		
+  	<br/>
+  		
+  	<tr>
+  		<td class="label"><label for="user_password_confirmation">Powtórz hasło:</label></td>
+  		<td><input id="user_hashed_password_confirmation" name="user[hashed_password_confirmation]" class="validate[required] text-input" type="password" /></td>
+  		<td></td>
+  	</tr>
+  	
+  	<br />
+  	
+  	<tr>
+  		<td class="label"><label for="user_email">Email:</label></td>
+  		<td><input type="text" value="<%= @user.email %>" id="user_email" name="user[email]" class="validate[required,custom[email]] text-input" type="email" /></td>	
+  		<td></td>
+  	</tr>
+  	
+  	<br/>
+  	
+  	<tr>
+  		<td class="label"><label for="user_phone">Telefon:</label></td>
+  		<td><input type="text" value="<%= @user.phone %>" id="user_phone" name="user[phone]" class="validate[required] text-input" type="text" />  </td>	
+  		<td></td>
+  	</tr> 
+  		
+  </table>
+ <br />
+ 
+ <button type="submit" style="width: 110px">Załóż konto</button> 
+	
+</form>

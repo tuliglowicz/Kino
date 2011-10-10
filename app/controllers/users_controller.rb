@@ -3,10 +3,9 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.xml
   
-  layout 'admin'
-
+  layout :get_users_layout  
   
-  before_filter :auth_exept_show, :except => ["show", "index", "edit", "new", "update"]
+  before_filter :auth_exept_show, :except => ["show", "index", "edit", "update", "new", "create"]
   
   def index
     @users = User.all
@@ -31,8 +30,12 @@ class UsersController < ApplicationController
   # GET /users/new
   # GET /users/new.xml
   def new
+   if request.xhr?
+     @ok = true
+     render :json => @ok
+   end
     @user = User.new
-
+   
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @user }
@@ -47,23 +50,23 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.xml
   def create
+    logger = Logger.new("log/users.log")
     @user = User.new(params[:user])
     
-    # confirmation email sending
-        UserMailer.registration_confirmation(@user).deliver       
-
-    respond_to do |format|
+    respond_to do |format|       
       if @user.save
-        format.html { redirect_to(@user, :notice => 'User was successfully created.') }
-        #format.xml  { render :xml => @user, :status => :created, :location => @user }
+         # confirmation email sending
+         UserMailer.registration_confirmation(@user).deliver     
+         logger.debug "uzytkownik zapisany, mail wyslany"  
         
-        # confirmation email sending
-        UserMailer.registration_confirmation(@user).deliver        
+         format.html { redirect_to("/", :notice => 'Konto utworzone.') }
+         format.xml  { render :xml => @user, :status => :created, :location => @user }               
+                
       else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
-      end
-    end
+         format.html { render :action => "new" }
+         format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
+      end         
+    end  
   end
 
   # PUT /users/1
@@ -95,6 +98,15 @@ class UsersController < ApplicationController
   end
   
   private #===============================
+  
+  def get_users_layout   
+    if action_name == "new" or action_name == "create"
+      "application"
+    else
+      "admin"
+    end
+  end
+  
   def auth_exept_show
     if session[:worker] == nil 
         flash[:notice] = "Please log in, first!"
@@ -110,5 +122,21 @@ class UsersController < ApplicationController
       end
     end
   end
-  
+ 
+ def are_passwords_equal(password, confirmation)
+   if password == "" or confirmation == ""
+     false
+   else
+    password.eql?(confirmation)
+   end
+ end
+ 
+ def is_login_available(login)
+   User.where(:login => login).first.nil?
+ end
+ 
+ def is_email_available(email)
+   User.where(:email => email).first.nil?
+ end
+ 
 end

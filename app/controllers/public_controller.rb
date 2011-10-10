@@ -9,7 +9,6 @@ class PublicController < ApplicationController
 	end
 	
 	def login
-		render :layout => false
 	end
 	
 	def register
@@ -22,22 +21,19 @@ class PublicController < ApplicationController
 		@cinemas = Cinema.all
 	end
 	
-		def repertuar
-		@title = "Repertuar"
-		
-		
+	def repertuar
+		@title = "Repertuar"		
 		cinema_id = request.xhr? ? params[:cinema_id] : cookies[:cinema_id]
 			
-		
 		if cinema_id 
 				
 			@date_foreward = params[:id].to_i ||= 0		
 			if @date_foreward > 6 or @date_foreward <0
 				@date_foreward = 0
 			end
-
+	
 			if cinema_id and Cinema.where(:id => cinema_id).size == 1
-
+	
 			@cinema = Cinema.find(cinema_id)
 				
 				sqlQuery = "SELECT *
@@ -49,8 +45,8 @@ class PublicController < ApplicationController
 								)
 								AND date_from = date(now()) + integer '"+@date_foreward.to_s+"'
 								order by time_from"
-
-
+	
+	
 				@s = Seance.find_by_sql(sqlQuery)
 				
 				sqlQuery2 = "SELECT *
@@ -179,7 +175,7 @@ class PublicController < ApplicationController
 			@reserved_seats = @tmp
 			
 			@price_id = 3
-			@discounts = Discount.all
+			@discounts = TicketType.all
 			
 			@seat_rows = Seat.find_by_sql("SELECT distinct row FROM seats ORDER BY row ASC")
 			@seat_collumn = Seat.find_by_sql("SELECT distinct collumn FROM seats ORDER BY collumn ASC")

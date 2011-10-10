@@ -3,7 +3,7 @@ class CinemasController < ApplicationController
 	
 	layout 'admin'
 
-	before_filter :auth_exept_show, :except => ["show", "index", "edit" , "new", "update"]
+	before_filter :auth_exept_show, :except => ["show", "create"]
 	
   # GET /cinemas
   # GET /cinemas.xml
@@ -57,12 +57,13 @@ class CinemasController < ApplicationController
   # POST /cinemas
   # POST /cinemas.xml
   def create
-	@cities = City.find(:all)
     @cinema = Cinema.new(params[:cinema])
-
+    logger.debug 'CREATE CINEMA'
+    @cities = City.all
+    
     respond_to do |format|
       if @cinema.save
-        format.html { redirect_to(@cinema, :notice => 'Cinema was successfully created.') }
+        format.html { redirect_to(@cinema, :notice => 'Utworzono kino o następujących danych:') }
         format.xml  { render :xml => @cinema, :status => :created, :location => @cinema }
       else
         format.html { render :action => "new" }
@@ -118,15 +119,20 @@ class CinemasController < ApplicationController
 
 	private #===============================
 	def auth_exept_show
+	 
 		if session[:worker] == nil 
+		    logger.debug "session[:worker] = nil"
 				flash[:notice] = "Please log in, first!"
-				redirect_to(:controller => "public", :action => "index")
+				redirect_to(:controller => "public", :action => "login")
 				return false
-			else if session[:worker].status_id > 0
-				flash[:notice] = "Nie masz wymaganych uprawnień!"
+			else 
+			  if !Status.find(session[:worker].status_id).name.to_s.eql?('administrator')
+			    logger.debug Status.find(session[:worker].status_id).name.to_s
+				  flash[:notice] = "Nie masz wymaganych uprawnień!"
 				if request.referer == "/"
 					redirect_to("/403.html")
 				else
+				  logger.debug 'request.referer != /'
 					redirect_to(request.referer)
 				end
 			end

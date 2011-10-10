@@ -1,3 +1,51 @@
+<!-- CSS and JS imports -->
+<script src="/javascripts/jquery.validationEngine-pl.js" type="text/javascript" charset="utf-8"></script>
+<script src="/javascripts/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
+
+<LINK REL=StyleSheet HREF="/stylesheets/workers/new_worker.css" TYPE="text/css" MEDIA=screen>
+	
+<!-- EO CSS and JS imports -->
+
+<!-- JS code -->
+<script>
+	jQuery(document).ready(function(){
+    	// binds form submission and fields to the validation engine
+	    jQuery("#new_worker").validationEngine();
+	    
+	    jQuery("#worker_login").focusout(function()
+	    { 
+	    	var login = jQuery("#worker_login").val();
+	    	if (login.length > 3) 
+	    	{
+	    		jQuery("#worker_email").val(login + "@cinematoholix.pl");
+	    	}; 
+	    	
+	    	$.ajax({
+	    		type: "POST",
+	    		url: "http://localhost:3000/private/workers/login_availability",
+	    		data: "login=" + login,
+	    		success: function(message)
+	    		{
+	    			alert('success');
+	    			jQuery("#status").show('fast');
+	    			if (message == "OK") 
+	    			{
+	    				jQuery("#login_status").css("font-color: lime;");
+	    				jQuery("#login_status").val("Login dostępny");
+	    			}
+	    			else
+	    			{
+	    				jQuery("#login_status").css("font-color: red;");
+	    				jQuery("#login_status").val("Login niedostępny");
+	    			}
+	    		};
+	    	});
+	    });
+  });
+</script>
+
+<!-- EO JS code -->
+
 <%= form_for(@worker) do |f| %>
   <% if @worker.errors.any? %>
     <div id="error_explanation">
@@ -12,48 +60,58 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :cinema_id %><br />
-    <% if @cinemas.size > 1-%>
-      <%= select_tag('worker[cinema_id]', options_for_select([['Wybierz kino', '']] + @cinemas.collect{|c| [c.name, c.id]}, @worker.cinema_id)) %>
-    <% else if -%>
-      <%= select_tag('worker[cinema_id]', options_for_select(@cinemas.collect{|c| [c.name, c.id]}, @worker.cinema_id)) %>
-    <% else -%>
-    <%= f.text_field :cinema_id %>
-    <% end end -%>
+  	<select class="validate[required]; select" id="worker_cinema_id" name="worker[cinema_id]">
+ 		<option value="">Wybierz kino</option>
+					<% @cinemas.each { |cinema| %>
+						<option 
+						<% if @worker.cinema_id
+						 	if cinema.name.to_s.eql?(Cinema.find(@worker.cinema_id).name.to_s)%> 
+							selected 
+						 <% end 
+						end %> value="<%= cinema.id %>"><%= cinema.name %></option>
+					<%}%>
+  	</select>   
   </div>
   <div class="field">
-    <%= f.label :status_id %><br />
-    <% if @statuses -%>
-    <%= select_tag('worker[status_id]', options_for_select([['Wybierz status', '']] + @statuses.collect{|s| [s.name, s.id]}, @worker.status_id)) %>
-    <% else -%>
-    <%= f.text_field :status_id %>
-    <% end -%>
+   	<select class='validate[required]; select' id="worker_status_id" name="worker[status_id]">
+   		<option value="">Wybierz status</option>
+					<% @statuses.each { |status| %>
+						<option 
+						<% if @worker.status_id
+						 	if status.name.to_s.eql?(Status.find(@worker.status_id).name.to_s)%> 
+							selected 
+						 <% end 
+						end %> value="<%= status.id %>"><%= status.name %></option>
+					<%}%>
+   	</select>
   </div>
   <div class="field">
-    <%= f.label :login %><br />
-    <%= f.text_field :login %>
+    <%= f.label 'Login' %><br />
+    <%= f.text_field :login, :class => 'validate[required]; input' %>
+  </div>
+  <div id="status" class="availability">
+  	<label id="login_status"></label>
   </div>
   <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password %>
+    <%= f.password_field :hashed_password, :class => 'validate[required]; input', :style => 'display:none', :value => 'hidden' %>
   </div>
   <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name %>
+    <%= f.label 'Imię' %><br />
+    <%= f.text_field :first_name, :class => 'validate[required]; input' %>
   </div>
   <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name %>
+    <%= f.label 'Nazwisko' %><br />
+    <%= f.text_field :last_name, :class => 'validate[required]; input' %>
   </div>
   <div class="field">
-    <%= f.label :phone %><br />
-    <%= f.text_field :phone %>
+    <%= f.label 'Telefon' %><br />
+    <%= f.text_field :phone, :class => 'validate[required,custom[phone]]; input' %>
   </div>
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
+    <%= f.label 'Email' %><br />
+    <%= f.text_field :email, :class => 'validate[required,custom[email]]; input' %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Dodaj'%>
   </div>
 <% end %>

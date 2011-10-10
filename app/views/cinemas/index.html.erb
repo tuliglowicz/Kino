@@ -1,35 +1,44 @@
+<!-- CSS and JS -->
+
+<LINK REL=StyleSheet HREF="/stylesheets/cinemas/cinemas.css" TYPE="text/css" MEDIA=screen>
+
 <h1>Lista kin</h1>
-<%= (link_to 'Dodaj', new_cinema_path) if session[:isGA] %><br><br>
-
-<table>
-  <tr>
-    <th>Id</th>
-    <th>Miasto</th>
-    <th>Nazwa</th>
-    <th>Adres</th>
-    <th>Tel.</th>
-    <th></th>
-  </tr>
-
-<% @cinemas.each do |cinema| %>
-  <tr>
-    <td><%= cinema.id %></td>
-    <td><%= cinema.city.name %></td>
-    <td align="center"><%= cinema.name %></td>
-    <td><%= cinema.address %></td>
-    <td><%= cinema.phone %></td>
-    <td>
-    	<%= link_to 'Pokaż', cinema %>
-    	<%# if session[:isGA] or (session[:worker].cinema_id == cinema.id) -%>
-	    	<%= link_to 'Edytuj', edit_cinema_path(cinema) %>
-	    	<%= link_to 'Usuń', cinema, :confirm => 'Czy na pewno chcesz usunąć ten rekord?', :method => :delete #if session[:isGA] 
-	    	%>	    
-    	<%# end -%>
-    </td>
-  </tr>
-<% end %>
-</table>
-
 <br />
+<%= (link_to 'Dodaj nowe kino', new_cinema_path) %><br><br>
 
-<%= (link_to 'Dodaj', new_cinema_path) if session[:isGA] %>
+<% if @cinemas.count == 0%>
+
+	<p class="no_cinemas"> Nie dodano jeszcze żadnego kina. </p>
+
+<% else %>
+
+	<table>
+	  <tr>  
+	    <th class="city">Miasto</th>
+	    <th class="name">Nazwa</th>
+	    <th class="address">Adres</th>
+	    <th class="phone">Tel.</th>
+	    <th></th>
+	  </tr>
+	  
+	<% @cinemas.each do |cinema| %>
+	  <tr>    
+	    <td><%= cinema.city.name %></td>
+	    <td ><%= cinema.name %></td>
+	    <td><%= cinema.address %></td>
+	    <td><%= cinema.phone %></td>
+	    <td>
+	    	<%= link_to 'Pokaż', cinema %>
+	    	<%# if session[:isGA] or (session[:worker].cinema_id == cinema.id) -%>
+		    	<%= link_to 'Edytuj', edit_cinema_path(cinema) %>
+		    	<%= link_to 'Usuń', cinema, :confirm => 'Czy na pewno chcesz usunąć ten rekord?', :method => :delete #if session[:isGA] 
+		    	%>	    
+	    	<%# end -%>
+	    </td>
+	  </tr>
+	<% end %>
+	</table>
+<% end%>
+	
+
+	

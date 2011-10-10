@@ -1,5 +1,12 @@
 Kino::Application.routes.draw do
 	
+	
+	#Cities
+	match '/private/cities' => 'cities#index', :as => 'cities'
+	
+	# Workers
+	match "/private/workers/login_availability" => "workers#login_availability"
+	
   resources :discount_sorts
 
   resources :ticket_types

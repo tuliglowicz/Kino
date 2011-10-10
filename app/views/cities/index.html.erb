@@ -1,17 +1,44 @@
+<!-- CSS and JS imports -->
+	<LINK REL=StyleSheet HREF="/stylesheets/cities/cities.css" TYPE="text/css" MEDIA=screen>
+	
+	<script src="/javascripts/jquery.validationEngine-pl.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/javascripts/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
+<!-- EO  CSS and JS imports -->
+
+<!-- JS code -->
+<script>
+	jQuery(document).ready(function()
+	{
+		jQuery('#new_city_a').bind('click', function(event)
+		{
+			jQuery('div:hidden').show('fast');
+		});
+	});
+</script>
+<!-- EO JS code-->
+
 <h1>Lista miast</h1>
-<%# if session[:isGA] -%>
-<%= link_to 'Dodaj', new_city_path %><br><br>
-<%# end -%>
+<a id="new_city_a" >Dodaj nowe miasto</a>
+
+<div class="new_city">
+	
+	<form id="new_city_form" action="/cities/create" method="post">
+		<label for="new_city">Nazwa miasta:</label>
+		<input type="text" id="city_name" name="city[name]" />
+		
+		<button type="submit">Dodaj</button>
+	</form>
+	
+</div>
+
 <table>
   <tr>
-    <th>Id</th>
     <th>Nazwa</th>
     <th></th>
   </tr>
 
 <% @cities.each do |city| %>
   <tr>
-    <td><%= city.id %></td>
     <td><%= city.name %></td>
     <td>
     	<% #if session[:isGA] -%>
@@ -23,8 +50,3 @@
   </tr>
 <% end %>
 </table>
-
-<br />
-<% #if session[:isGA] -%>
-<%= link_to 'Dodaj', new_city_path %><br><br>
-<%# end -%>

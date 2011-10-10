@@ -2,6 +2,7 @@
 	Repertuar
 <% end %>
 
+<div id="loadTarget">
 	<% if cookies[:cinema_id] %>
 		Kino: <SPAN class="title"><%= @cinema.name if @cinema %><br/>
 			Dzisiaj i przyszly tydzien:
@@ -67,18 +68,27 @@
 	<script>
 	//alert($j.cookie('cinema_id'))
 	$j("a.repertuarTime").click(function(){
+					$j("#loadTarget").animate({"opacity": "0"}, 250);
+					$j("#preloader_podluzny").show();
 					var page = $j.ajax({
 								url: this.href,
 							   type: "GET",
-							   data: "ajax=true&cinema_id="+$j.cookie('cinema_id'),
+							   data: "cinema_id="+$j.cookie('cinema_id'),
 							   dataType : 'html',
 							   success: function (recievedHTML){
 							   	//alert(recievedHTML)
-							   	$j("#loadTarget").hide().html(recievedHTML).show("slow");
-							   }
+							   		$j("#loadTarget").html(recievedHTML).animate({"opacity": "1"}, 250);
+							   		$j("#preloader_podluzny").hide();
+						  		},
+						  		error: function(){
+						  			$j("#loadTarget").animate({"opacity": "1"}, 250, alert("Wystąpił problem z połączeniem."));
+						  			
+						  			//window.location.href = this.href;
+						  		}
+						   
 						  });
 			return false;
 	})
 	</script>
 	<%# end -%>
-	
+</div>

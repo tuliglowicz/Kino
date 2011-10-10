@@ -2,78 +2,181 @@
 <html>
 <head>
 <META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8"/>
+<meta charset="UTF-8">
+<meta name="ROBOTS" content="NOARCHIVE">
+<meta name="GOOGLEBOT" content="NOARCHIVE">
+<meta name="Description" content="Cinematoholix - Kino na miarę Twoich oczekiwań!">
+<meta name="Keywords" content="kino, filmy, bilety, multiplex">
+
 <%= stylesheet_link_tag :all %>
 
 <%= javascript_include_tag "jquery-1.6.2.min.js" %>
 <%= javascript_include_tag "jquery-ui-1.8.16.custom.min.js" %>
 <%= javascript_include_tag "jquery.tooltip.pack.js" %>
 <%= javascript_include_tag "jquery.cookie.js" %>
-<script>$j = jQuery.noConflict();</script>
+<script> $j = jQuery.noConflict(); </script>
 <%= javascript_include_tag :defaults %>
 <%= javascript_include_tag "jscript.js" %>
 <%= csrf_meta_tag %>
-<title><%= yield(:title) && yield(:title) != "" ? yield(:title) : "Interplex- Kino na miarę Twoich oczekiwań" %></title>
+<title><%= yield(:title) && yield(:title) != "" ? yield(:title) : "Cinematoholix- Kino na miarę Twoich oczekiwań" %></title>
 </head>
 
 <BODY LEFTMARGIN="0" bgcolor="gray" RIGHTMARGIN="0" TOPMARGIN="0" BOTTOMMARGIN="0" MARGINWIDTH="0" MARGINHEIGHT="0">
 
-<!-- Gorny Pasek -->
+<!--
+<link rel="shortcut icon" href="...../favicon.ico">
+http://www.metamorphozis.com/free_templates/free_css_templates/metamorph_circles/preview.php
+-->
+<style>
+body, div, ul, ol, li, h1, h2, h3, h4, h5, h6, form, fieldset, input, textarea, p {
+    margin: 0;
+    padding: 0;
+}
+ol, ul { list-style: none; }
+a, a { color: #146cb4; text-decoration: none; }
+a:hover { color: #000; background: #dedede; text-decoration: none; }
+body { background: #fff; color: #333; font: normal 12px/16px Arial,sans-serif; }
+body { color: #c9c9c9; font-family: Arial, sans-serif;}
+a, a:visited { color: #8dbde5; }
+a:hover { background: none; text-decoration: none; color: #c9dde7;}
+a:focus { outline: 0; }
 
-<br><center><div id="logo">Zaloguj | Rejestracja &nbsp;</div></center>
+.Ww1, .Ww2, #navH, #content, #navtop_wrap, #navbot_wrap, #footer { width: 940px; margin: 0 auto; padding: 0 0; }
 
-<center><div id="gornyPasek" class=coolBorder>
+/* winieta */
+#sWlbg { width: 960px; margin: 0 auto;}
+#sWlbg .Ww2 { position: relative; margin: 10px auto 5px; padding: -20px; }
+#sWlbg .Ww2 .Wimg3 { position: relative; z-index: 2; margin: 15px 0 0; margin-left:0 !important;}
+#sWlbg .Ww2 .Whtm { position: absolute; top: 0; left: 0; width: 100%; }
+#sWlbg .Wseohtm { position: absolute; top: 0; right: 0; z-index: 2; width: 100%; }
+#sWlbg #banP71 { position: absolute; right: 0; top: 0; z-index: 1; }
+#sWlbg #banP71 a:hover { background: none; }
+#sWlbg .Wseohtm h1 { font-style: normal; font-weight: normal;font-size: 14px; border-left: 1px solid #777; padding: 0 0 0 15px; height: 41px; line-height: 41px; position: absolute; white-space: nowrap; left: 260px; top: 25px; }
 
-<ul>
-    <li><a href="/public/index"><span>Home</span></a></li>
-    <li><a href="/public/zakup"><span>Kup Bilet</span></a></li>
-    <li><a href="/public/repertuar"><span>Repertuar</span></a></li>
-    <li><a href="/public/zapowiedzi"><span>Zapowiedzi</span></a></li>
-    <li><a href="/public/ceny"><span>Ceny i Promocje</span></a></li>
-    <li><a href="/public/kontakt"><span>Kontakt</span></a></li>
-</ul>
-Interesujące mnie kino:
-<select id="cinemas" onclick='tmpValue=this.value' onchange="if(this.value!='-1'){ 
-	$j.cookie('cinema_id', this.value, { expires: 7 });
-	location.reload(); } else {this.value=tmpValue; return false;}"><option value='-1'>Wybierz Kino</option></select>
-</DIV></center>
-<script>
 
-document.getElementById("cinemas").value = $j.cookie("cinema_id")
-//javascript:alert(document.cookie);
-</script>
-<!-- EOF Gorny Pasek -->
+body {background: #000 url('/images/pic/body_bg.jpg') repeat-x 0 0;}
+#page {background: url('/images/pic/page_bg.jpg') no-repeat 105px 0;}
+.path_114725 #page { background: #000 url('/images/pic/tapeta_kinoplex.jpg') no-repeat center top }
 
-<!-- BANER -->
-<center>
-<div id="banner"> 
-</div>
-</center>
-<!-- EOF BANER -->
+/* nawigacja */
+#navH { position: relative; z-index: 201;}
+#navH .p0 { height: 35px; background: url('/images/pic/navh_bg.png') no-repeat 0 0; overflow: display; zoom: 1; }
+#navH .p0 li { float: left; display: inline; height: 35px; background: url('/images/pic/nav_tab.png') no-repeat 0 0; font: bold 14px Arial, sans-serif; line-height: 34px; position: relative;}
+#navH .p0 li a { color: #fff; display: block; height:42px; text-align: center; padding: 0 14px; }
+#navH .p0 li a:hover {color: #c9dde7; background: url('/images/pic/flash_active_bg2.png') no-repeat center bottom; text-decoration: none;}
+#navH .p0 li.active a{ background: url('/images/pic/flash_active_bg2.png') no-repeat center bottom;}
+#navH .p0 li.afterActive { background: none; }
+#navH .p0 #e1 {width: 17px; padding: 0 10px; background: none;}
+#navH .p0 #e1 a {background: url("/images/pic/kinoplex_sprite3.png") no-repeat scroll 0 0 transparent;; background-position: -320px -186px; text-indent:-9999px; height:35px; display:block; width: 17px;}
+#navH .p0 #e1:hover a {background-position: -320px -211px;}
 
-<!-- Cialo Strony -->
-<table width="900px" height="100%" align="center" bgcolor="" cellpadding="0px" cellspacing="0px" border=1 bordercolor=orange>
-	<tr>
-		<td width="270px" align="center" valign="top">
-		
-		<div id="ajaxWait">
-			<div id="bookOnLine" style='z-inxed:2'>Przed wyborem seansu zaloguj sie, aby skozystac z atrakcyjnych promocji.<br/></div>
-			
-			<div id="ajaxWaitInner" class=ajaxWaitInner>
-				<noscript> <h2>Włącz JavaScript!</h2> </noscript>
-				<table style='width:100%;height:100%'><tr><td><img src="/images/pic/loader.gif" alt=""></td></tr></table>
-			</div>
+#navH .p0 .p1 {display: none; position: absolute; top:34px; left:0; background: #1a2429; width: 300px; padding-bottom: 5px;}
+#navH .p0 li:hover .p1{display:block;}
+#navH .p0 .p1 li {float: left;display: block; background: none; font: normal 14px/14px Arial,serif; height: auto; padding:0; width: 100px;}
+#navH .p0 .p1 li:hover a {color: #80b2dc; background: none;}
+#navH .p0 .p1 li a {color: #fff; padding: 5px 14px; text-align: left; height: auto;}
+#navH .p0 .p1 li.active a {color: #80b2dc;}
+#navH .p0 li.active .p1 a {background: none;}
+#navH .p0 .moje { float: right; }
+
+
+/* footer */
+#footer .ft_top {border-top: 1px solid #222; border-bottom: 1px solid #222;}
+#footer .ft_top .c1 {display:none;}
+#footer ul li {float: left;background: url('/images/pic/footerSpacer.gif') center left no-repeat;padding-left: 8px;margin-left: 8px;}
+#footer .ft_bot {font-size: 11px;}
+#footer .ft_bot a {color: #fff;}
+#footer .ft_bot .c0, #footer .ft_bot .c0 a {color: #fff;}
+#footer .ft_bot .c0 .copy, #footer .ft_bot .c0 .copy a {color: #999;}
+#footer .ft_bot .c0 a:hover, #footer .ft_bot .c1 a:hover {color: #c9dde7;}
+#footer .ft_bot .c0 .copy a:hover{color: #999;}
+</style>
+
+</head>
+
+<body id="pagetype_index" class="path_109533 path_vod">
+     
+<div id="page" class="layout_uniwersalny">
+	<div class="Ww2" style="text-align: right;">
+		<a href="/public/login">Login</a> | <a href="/public/register">Rejestracja</a>
+	</div>      
+	<div id="sWlbg" style="paddting-top: -20px;">
+		<div class="Ww2">
+			<map name="winieta"><area coords="0,0,142,39" shape="rect" href="http://kinoplex.gazeta.pl/vod/0,0.html"></map>
+			<img class="Wimg3" src="/images/pic/tlo.png" alt="" usemap="#winieta" height="60" width="234" />
+			<div class="Wseohtm"><h1>Kino na miarę Twoich oczekiwań!</h1></div>
 		</div>
-		</td>
+	</div>
+  
 
-		<td valign=top id="loadTarget">
-			<span style='color:green'><%= flash[:notice] if flash[:notice]%></span>
-			<%= yield %>
-		</td>
-	</tr>
-</table>
+	<div id="navH">
+		<ul class="p0">
+			<li id="e1" class=" ">
+				<a href="/" title="Strona Główna">Home</a>
+			</li>
+			<li id="e2" class=" ">
+				<a href="/public/repertuar" title="Wszystkie Filmy ">Repertuar</a>
+				<ul class="p1">
+					</li>
+					<li id="e2_3" class=" ">
+						<a href="#" title="Dramat ">Opcja 1</a>
+					</li>
+					<li id="e2_4" class=" ">
+						<a href="#" title="Horror ">Opcja 2</a>
+					</li>
+				</ul>
+			</li>
+			<li id="e3" class=" ">
+				<a href="/public/zakup" title="Zakup / Rezerwacja">Zakup / Rezerwacja</a>
+			</li>
+			<li id="e4" class=" ">
+				<a href="/public/zapowiedzi" title="Zapowiedzi ">Zapowiedzi</a>
+			</li>
+			<li id="e5" class=" ">
+				<a href="/public/ceny" title="Ceny i Promocje ">Ceny i Promocje</a>
+			</li>
+			<li id="e6" class=" ">
+				<a href="/public/kontakt" title="Kontakt ">Kontakt</a>
+			</li>
+			<li id="e9" class=" moje">
+				<a href="/public/repertuar" title="Moje filmy ">Moje filmy</a>
+			</li>
+		</ul>
+	</div>
+	
+	<!--
+	<div class="mod mod_uzr_kinoplex1 dynamic">
+		<a class="prev active" href="#"></a>
+		<a class="next active" href="#"></a>
+	</div>- UZREditor -->
+	
+	<table class="Ww2" align="center" valign="middle" style="height:400px; overflow: auto; text-align: right;"><tr><td align="right" valign="middle">
+		<span style='color:green'><%= flash[:notice] if flash[:notice]%></span><br>
+		<center id="preloader_podluzny" style="display:none;">
+			Ładowanie...<br/>
+			<img id="" src="/images/pic/loader.gif">
+		</center>
+		<%= yield %>
+	</table>
 
 
-<!-- EOF Cialo Strony -->
+	<div id="footer">
+		<hr align="center" width="100%" color="#333" size="1">
+	  <div class="ft_bot">
+	
+	    <ul class="c0">
+	      <li class="copy">
+	      	<a href="#"  rel="nofollow">Copyright</a> &copy; <a href="http://www.agora.pl/" rel="nofollow">CINEMATOHOLIX SA</a>
+	      </li>
+	      <li class="f"><a href="http://www.gazeta.pl/onas/" rel="nofollow">O nas</a></li>
+	      <li><a href="" rel="nofollow">Staże u nas</a></li>
+	      <li><a href="" rel="nofollow">Reklama</a></li>
+	      <li><a href="" rel="nofollow">Prywatność</a></li>
+	      <li><a href="" >Wszystkie artykuły</a></li>
+	      <li><a href="" >Licencje</a></li>
+	    </ul>
+	  </div>
+	 </div>
 
 </body>
 </html>

@@ -20,6 +20,13 @@ class Auth
 		return self.hash_password(password || "") == "e8703350e199e95139d1c91500a5f2895f5302fa"
 	end
 
-
+	def self.has_access?(worker_id, table_name)
+		puts "dzialam"
+		worker = Worker.find(:first, :conditions => ["id = ?", worker_id])
+		status = Status.find(:first, :conditions => ["id = ?", worker.status_id])
+		privilige = Privilige.find(:first, :conditions => ["id = ?", status.privilige_id])
+		answer = privilige.send(table_name)
+		return answer==true 
+	end	
 	
 end

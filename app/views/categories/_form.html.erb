@@ -37,15 +37,24 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :"Nazwa kategori" %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="actions">
-    <%= f.submit "Zapisz"%>
-  </div>
+  
 <% end %>
 
-<script>
-	$("document").ready(function(){$('#category_name').focus();});
-</script>
+ <div id="h_container">   
+    <div id="form-container">
+<form align="left" class="new_category" id="new_category" method="post" action="/categories/create">
+		<table >
+						
+			<tr>
+				<td class="label"><label for="category_name">Nazwa kategorii:</label></td>
+				<td class="input"><textarea style="width: 195px"  style="width: 200px" 
+					type="text" id="category_name" name="category[name]" class="validate[required] text-input"><%= @category.name %></textarea></td>
+			</tr>
+						
+		</table>	
+		<br />
+		<button type="submit">Zapisz</button>
+	</form>
+
+</div>
+</div>

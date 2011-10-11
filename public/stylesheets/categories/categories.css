@@ -1,18 +1,7 @@
 .new_category {
 	display: none;
 }
-th.city {
+th.name {
 	width: 120px;
 }
 
-th.name {
-	width: 150px;
-}
-
-th.phone {
-	width: 75px;
-}
-
-th.address {
-	width: 150px;
-}

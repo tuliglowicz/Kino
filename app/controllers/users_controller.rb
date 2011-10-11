@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   
   layout :get_users_layout  
   
-  before_filter :auth_exept_show, :except => ["show", "index", "edit", "update", "new", "create"]
+  #before_filter :auth_exept_show, :except => ["show", "index", "edit", "update", "new", "create", "is_login_available"]
   
   def index
     @users = User.all
@@ -97,6 +97,24 @@ class UsersController < ApplicationController
     end
   end
   
+  def login_availability
+    login = params[:login]
+    
+    @tmp 
+    
+    if User.where(:login => login).first
+      @tmp = "NO"
+    else
+      @tmp = "OK"
+    end
+    
+    render :text => @tmp
+  end
+
+  def is_login_available(login)
+    User.where(:login => login).first.nil?
+ end
+  
   private #===============================
   
   def get_users_layout   
@@ -131,9 +149,7 @@ class UsersController < ApplicationController
    end
  end
  
- def is_login_available(login)
-   User.where(:login => login).first.nil?
- end
+ 
  
  def is_email_available(email)
    User.where(:email => email).first.nil?

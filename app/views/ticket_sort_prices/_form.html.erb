@@ -1,3 +1,19 @@
+<!-- CSS/JS imports -->
+<script src="/javascripts/jquery.validationEngine-pl.js" type="text/javascript" charset="utf-8"></script>
+<script src="/javascripts/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
+
+<LINK REL=StyleSheet HREF="/stylesheets/ticket_sort_prices/form.css" TYPE="text/css" MEDIA=screen>
+<!-- EO CSS/JS imports -->
+
+<!-- JS code -->
+<script>
+	jQuery(document).ready(function()
+	{
+		jQuery("#new_ticket_sort_price").validationEngine('attach', { validationEventTrigger: 'submit'});
+	});
+</script>
+<!-- EO JS code -->
+
 <%= form_for(@ticket_sort_price) do |f| %>
   <% if @ticket_sort_price.errors.any? %>
     <div id="error_explanation">
@@ -12,34 +28,67 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :id %><br />
-    <%= f.text_field :id %>
+  	<select class="validate[required]; select" id="ticket_sort_price_cinema_id" name="ticket_sort_price[cinema_id]">
+ 		<option value="">Wybierz kino</option>
+					<% @cinemas.each { |cinema| %>
+						<option 
+						<% if @ticket_sort_price.cinema_id
+						 	if cinema.name.to_s.eql?(Cinema.find(@ticket_sort_price.cinema_id).name.to_s)%> 
+							selected 
+						 <% end 
+						end %> value="<%= cinema.id %>"><%= cinema.name %></option>
+					<%}%>
+  	</select>   
   </div>
   <div class="field">
-    <%= f.label :cinema_id %><br />
-    <%= f.text_field :cinema_id %>
+  	<select class="validate[required]; select" id="ticket_sort_price_seance_type_id" name="ticket_sort_price[seance_type_id]">
+ 		<option value="">Wybierz typ seansu</option>
+					<% @seance_types.each { |seance_type| %>
+						<option 
+						<% if @ticket_sort_price.seance_type_id
+						 	if ticket_type.name.to_s.eql?(SeanceType.find(@ticket_sort_price.seance_type_id).name.to_s)%> 
+							selected 
+						 <% end 
+						end %> value="<%= seance_type.id %>"><%= seance_type.name %></option>
+					<%}%>
+  	</select>   
+  </div>
+ <div class="field">
+  	<select class="validate[required]; select" id="ticket_sort_price_ticket_type_id" name="ticket_sort_price[ticket_type_id]">
+ 		<option value="">Wybierz rodzaj biletu</option>
+					<% @ticket_types.each { |ticket_type| %>
+						<option 
+						<% if @ticket_sort_price.ticket_type_id
+						 	if ticket_type.name.to_s.eql?(TicketType.find(@ticket_sort_price.ticket_type_id).name.to_s)%> 
+							selected 
+						 <% end 
+						end %> value="<%= ticket_type.id %>"><%= ticket_type.name %></option>
+					<%}%>
+  	</select>   
   </div>
   <div class="field">
-    <%= f.label :seance_type_id %><br />
-    <%= f.text_field :seance_type_id %>
+  	<select class="validate[required]; select" id="ticket_sort_price_discount_sort_id" name="ticket_sort_price[discount_sort_id]">
+ 		<option value="">Wybierz rodzaj zniżki</option>
+					<% @discount_sorts.each { |discount_sort| %>
+						<option 
+						<% if @ticket_sort_price.discount_sort_id
+						 	if discount_sort.description.to_s.eql?(DiscountSort.find(@ticket_sort_price.discount_sort_id).description.to_s)%> 
+							selected 
+						 <% end 
+						end %> value="<%= discount_sort.id %>"><%= discount_sort.description %></option>
+					<%}%>
+  	</select>   
   </div>
   <div class="field">
-    <%= f.label :ticket_type_id %><br />
-    <%= f.text_field :ticket_type_id %>
+    <%= f.label 'Cena' %><br />
+    <%= f.text_field :price, :class => "validate[required]; input", :type => 'number'%>
   </div>
+  
   <div class="field">
-    <%= f.label :price %><br />
-    <%= f.text_field :price %>
-  </div>
-  <div class="field">
-    <%= f.label :discount_sort_id %><br />
-    <%= f.text_field :discount_sort_id %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_field :description %>
+    <%= f.label 'Opis' %><br />
+    <%= f.text_field :description, :class => "validate[required]; input" %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Dodaj"%>
   </div>
 <% end %>

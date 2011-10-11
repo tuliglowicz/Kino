@@ -1,28 +1,37 @@
-# encoding: UTF-8
-<h1>Listing ticket_sort_prices</h1>
+<!-- CSS/JS imports -->
+
+<!-- EO CSS/JS imports -->
+
+<!-- JS code -->
+
+<!-- EO JS code -->
+<h3>Rodzaje bieltów(<%= link_to 'Dodaj nowy rodzaj cen biletu', new_ticket_sort_price_path %>)</h3>
 
 <table>
   <tr>
-    <th>Id</th>
-    <th>Cinema</th>
-    <th>Seance type</th>
-    <th>Ticket type</th>
-    <th>Price</th>
-    <th>Discount sort</th>
-    <th>Description</th>
+  	<th>Nr</th>
+    <th>Kino</th>
+    <th>Seans</th>
+    <th>Bilet</th>
+    <th>Cena</th>
+    <th>Rodzaj zniżki</th>
+    <th>Opis</th>
     <th></th>
     <th></th>
     <th></th>
   </tr>
+ 
+<% @ticket_number = 1%>
 
 <% @ticket_sort_prices.each do |ticket_sort_price| %>
   <tr>
-    <td><%= ticket_sort_price.id %></td>
-    <td><%= ticket_sort_price.cinema_id %></td>
-    <td><%= ticket_sort_price.seance_type_id %></td>
-    <td><%= ticket_sort_price.ticket_type_id %></td>
+  	<td><%= @ticket_number %></td>
+  	<% @ticket_number = @ticket_number + 1%>
+    <td><%= Cinema.find(ticket_sort_price.cinema_id).name %></td>
+    <td><%= SeanceType.find(ticket_sort_price.seance_type_id).name %></td>
+    <td><%= TicketType.find(ticket_sort_price.ticket_type_id).name %></td>
     <td><%= ticket_sort_price.price %></td>
-    <td><%= ticket_sort_price.discount_sort_id %></td>
+    <td><%= DiscountSort.find(ticket_sort_price.discount_sort_id).description %></td>
     <td><%= ticket_sort_price.description %></td>
     <td><%= link_to 'Show', ticket_sort_price %></td>
     <td><%= link_to 'Edit', edit_ticket_sort_price_path(ticket_sort_price) %></td>
@@ -32,5 +41,3 @@
 </table>
 
 <br />
-
-<%= link_to 'Nowy rodzaj cen biletu', new_ticket_sort_price_path %>

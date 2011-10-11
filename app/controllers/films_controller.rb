@@ -4,7 +4,7 @@ class FilmsController < ApplicationController
 	layout 'admin'
 	
 	#before_filter :auth_access
-	before_filter :auth_exept_show, :except => ["show", "index", "edit", "new", "update"]
+	before_filter :auth, :except => ["show", "index", "edit", "new", "update"]
 	
 	
   # GET /films(.xml)
@@ -88,20 +88,12 @@ class FilmsController < ApplicationController
 
 	private #===============================
 	
-	def auth_exept_show
-		if session[:worker] == nil 
-				flash[:notice] = "Please log in, first!"
-				redirect_to(:controller => "public", :action => "index")
-				return false
-			else if session[:worker].status_id > 0
-				flash[:notice] = "Nie masz wymaganych uprawnień!"
-				if request.referer == "/"
-					redirect_to("/403.html")
-				else
-					redirect_to(request.referer)
-				end
-			end
-		end
-	end
+	def auth
+    if session[:worker] == nil && session[:worker] != 2 
+        flash[:notice] = "Please log in, first!"
+        redirect_to(:controller => "public", :action => "index")
+        return false
+    end
+  end
 	
 end

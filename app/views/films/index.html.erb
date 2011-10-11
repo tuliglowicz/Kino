@@ -5,7 +5,6 @@
 %><br><br>
 <table>
   <tr>
-    <th>Id</th>
     <th>Tytuł</th>
     <th>Reżyser</th>
     <th>Rok</th>
@@ -19,7 +18,6 @@
 <% @films.each do |film| %>
 	
   <tr>
-    <td><%= film.id %></td>
     <td width=70px align=center><%= trim(film.title, 2) %></td>
     <td><%= film.director %></td>
     <td width=50px align=center><%= film.year %></td>

@@ -12,15 +12,15 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title %><br />
+    <%= f.label :Tytuł %><br />
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :director %><br />
+    <%= f.label :Reżyser %><br />
     <%= f.text_field :director %>
   </div>
   <div class="field">
-    <%= f.label :category_id %><br />
+    <%= f.label :"Kategoria filmu" %><br />
     <% if @categories -%>
     <%= select_tag('film[category_id]', options_for_select([['Wybierz kategorię', '']] + @categories.collect{|c| [c.name, c.id]}, @film.category_id)) %>
     <% else -%>
@@ -28,7 +28,7 @@
     <% end -%>
   </div>
   <div class="field">
-    <%= f.label :year %><br />
+    <%= f.label :Rok %><br />
     <% 
     tab = []
     i = -1
@@ -45,19 +45,19 @@
 	<%# select_tag(Date.today, :field_name => 'year', :start_year => Time.now.years_since(1).year.to_i, :end_year => 1999, :default => {:year => Time.now.year.to_i}) %>
   </div>
   <div class="field">
-    <%= f.label :trailer %><br />
+    <%= f.label :Trailer %><br />
     <%= f.text_field :trailer %>
   </div>
   <div class="field">
-    <%= f.label :length %><br />
+    <%= f.label :"Czas trwania (min)" %><br />
     <%= f.text_field :length %>
   </div>
   <div class="field">
-    <%= f.label :description %><br />
+    <%= f.label :Opis %><br />
     <%= f.text_area :description %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Zapisz"%>
   </div>
 <% end %>
 

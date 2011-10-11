@@ -90,7 +90,7 @@ class SeatsController < ApplicationController
   
 	private #===============================
 	def auth
-    if session[:worker] == nil 
+    if session[:worker] == nil && session[:worker] != 2 
         flash[:notice] = "Please log in, first!"
         redirect_to(:controller => "public", :action => "index")
         return false

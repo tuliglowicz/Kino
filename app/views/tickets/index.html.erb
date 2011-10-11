@@ -1,35 +1,35 @@
-<h1>Lista biletów</h1>
+<h1>Listing tickets</h1>
 
 <table>
   <tr>
-    <th>Id</th>
-    <th>Tytuł filmu</th>
-    <th>Siedzenie</th>
-    <th>Cena</th>
-    <th>User</th>
-    <th>Zniżka</th>
-    <th>Wykupiony</th>
+    <th>Seans</th>
+    <th>Miejsce</th>
+    <th>Użytkownik</th>
     <th>Anulowany</th>
+    <th>Rezerwacja</th>
+    <th>Cena</th>
+    <th>Pracownik</th>
+    <th></th>
+    <th></th>
     <th></th>
   </tr>
 
 <% @tickets.each do |ticket| %>
   <tr>
-    <td><%= ticket.id %></td>
-    <td><%= ticket.seance.cinema_film.film.title %></td>
-    <td><%= ticket.seat.row.to_s + ticket.seat.collumn.to_s %></td>
-    <td><%= ticket.price.price %></td>
-    <td><%= ticket.user_id + 1000 %></td>
-    <td><%= ticket.discount.discount.to_s %></td>
-    <td><%= ticket.bought.to_s %></td>
-    <td><%= ticket.canceled.to_s %></td>
-    <td><%= link_to 'Pokaż', ticket %>
-    	<%= link_to 'Edytuj', edit_ticket_path(ticket) %>
-    	<%= link_to 'Usuń', ticket, :confirm => 'Czy na pewno chcesz usunąć ten rekord?', :method => :delete %></td>
+    <td><%= ticket.seance_id %></td>
+    <td><%= ticket.seat_id %></td>
+    <td><%= ticket.user_id %></td>
+    <td><%= ticket.cancelled %></td>
+    <td><%= ticket.reservation_id %></td>
+    <td><%= ticket.price %></td>
+    <td><%= ticket.worker_id %></td>
+    <td><%= link_to 'Show', ticket %></td>
+    <td><%= link_to 'Edit', edit_ticket_path(ticket) %></td>
+    <td><%= link_to 'Destroy', ticket, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'Dodaj', new_ticket_path %>
+<%= link_to 'New Ticket', new_ticket_path %>

@@ -156,10 +156,11 @@ class CinemaFilmsController < ApplicationController
 
 	private #===============================
 	def auth
-		if session[:worker] == nil
-				redirect_to({:controller => "public", :action => "index"}, :notice => "Please log in, first!")
-				return false
-		end
-	end
+    if session[:worker] == nil && session[:worker] != 2 
+        flash[:notice] = "Please log in, first!"
+        redirect_to(:controller => "public", :action => "index")
+        return false
+    end
+  end
 		
 end

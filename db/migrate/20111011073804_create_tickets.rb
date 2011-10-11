@@ -5,11 +5,10 @@ class CreateTickets < ActiveRecord::Migration
       t.int, :seance_id
       t.int, :seat_id
       t.int, :user_id
-      t.float, :price
-      t.int, :user_id
-      t.int, :reservation_id
       t.boolean, :cancelled
-      t.int :ticket_sort_price_id
+      t.int, :reservation_id
+      t.float, :price
+      t.int :worker_id
 
       t.timestamps
     end

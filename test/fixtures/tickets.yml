@@ -4,18 +4,18 @@ one:
   id: 
   seance_id: 
   seat_id: 
-  price_id: 
   user_id: 
-  discount_id: 
-  bought: 
-  canceled: false
+  cancelled: 
+  reservation_id: 
+  price: 
+  worker_id: 
 
 two:
   id: 
   seance_id: 
   seat_id: 
-  price_id: 
   user_id: 
-  discount_id: 
-  bought: 
-  canceled: false
+  cancelled: 
+  reservation_id: 
+  price: 
+  worker_id: 

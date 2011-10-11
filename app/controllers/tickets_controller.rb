@@ -1,95 +1,30 @@
-# encoding: utf-8
 class TicketsController < ApplicationController
-	
-	layout 'admin'
-
-	before_filter :auth, :except => ["show", "index", "edit", "new", "update"]
-	
-
   # GET /tickets
   # GET /tickets.xml
   def index
-  	if session[:isGA]
-    	@tickets = Ticket.all
-		else if session[:worker]
-				@tickets = Ticket.where(:seat_id => Seat.where(:room_id => (Room.where(:cinema_id => session[:worker].cinema_id))))
-			else if session[:user]
-				@tickets = Ticket.where(:user_id => session[:user].id)
-			end
-		end
-	end
+    @tickets = Ticket.all
 
-	if @tickets
-	    respond_to do |format|
-	      format.html # index.html.erb
-	      format.xml  { render :xml => @tickets }
-	    end
-    else    	
-				if request.referer == "/"
-					redirect_to("/403.html")
-				else
-					redirect_to(request.referer, :notice => "Nie masz wymaganych uprawnień!")
-				end
-	end
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @tickets }
+    end
   end
 
   # GET /tickets/1
   # GET /tickets/1.xml
   def show
-  	if session[:isGA]
-    	@ticket = Ticket.find(params[:id])
-		else if session[:worker]
-			@tickets = Ticket.where(:id => params[:id], :seat_id => Seat.where(:room_id => (Room.where(:cinema_id => session[:worker].cinema_id))))
-			else if session[:user]
-				@tickets = Ticket.where(:id => params[:id], :user_id => session[:user].id)
-			end
-		end
-	end
-	
-	if @tickets
-	    respond_to do |format|
-	      format.html # show.html.erb
-	      format.xml  { render :xml => @ticket }
-	    end
-    else    	
-				if request.referer == "/"
-					redirect_to("/403.html")
-				else
-					redirect_to(request.referer, :notice => "Nie masz wymaganych uprawnień!")
-				end  	 
-	end
+    @ticket = Ticket.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @ticket }
+    end
   end
 
   # GET /tickets/new
   # GET /tickets/new.xml
   def new
-  	#	@seances, @user, @price, @discount
-  	
-  	if not session[:cinema_id] and ( not session[:worker] or session[:isGA])
-  		flash[:notice] = "Wybierz Kino"
-		redirect_to(:controller => "public", :action => "index")
-  		return false
-  	end  	
-  	if session[:isGA]
-  		@seances = Seance.where(:room_id => Room.where(:cinema_id => session[:cinema_id]))
-  		@pices = Price.all
-  		@discounts = Discount.all
-  		@users = User.all
-  		else if session[:worker]
-  			@seances = Seance.where(:room_id => Room.where(:cinema_id => session[:worker].cinema_id))
-	  		@pices = Price.all
-	  		@discounts = Discount.all
-	  		@users = User.all
-  			else if session[:user]
-	  			@seances = Seance.where(:room_id => Room.where(:cinema_id => session[:cinema_id]))
-		  		@pices = Price.all
-		  		@discounts = Discount.all
-		  		@users = session[:user]
-	  		end
-  		end
-    end    
-    
-    	@ticket = Ticket.new
+    @ticket = Ticket.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -145,15 +80,4 @@ class TicketsController < ApplicationController
       format.xml  { head :ok }
     end
   end
-
-
-	private #===============================
-	def auth
-		if not session[:user] and not session[:worker]
-				flash[:notice] = "Please log in, first!"
-				redirect_to(:controller => "public", :action => "index")
-				return false
-		end
-	end
-	
 end

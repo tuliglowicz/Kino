@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :cinema_id %><br />
+    <%= f.label :Kino %><br />
     <% if @cinemas.size > 1-%>
       <%= select_tag('cinema_film[cinema_id]', options_for_select([['Wybierz kino', '']] + @cinemas.collect{|c| [c.name, c.id]}, @cinema_film.cinema_id)) %>
     <% else if -%>
@@ -22,7 +22,7 @@
     <% end end-%>
   </div>
   <div class="field">
-    <%= f.label :film_id %><br />
+    <%= f.label :Film %><br />
         <% if @films -%>
     <%= select_tag('cinema_film[film_id]', options_for_select([['Wybierz film', '']] + @films.collect{|f| [f.title, f.id]}, @cinema_film.film_id)) %>
     <% else -%>
@@ -30,14 +30,14 @@
     <% end -%>
   </div>
   <div class="field">
-    <%= f.label :date_from %><br />
+    <%= f.label :"Data premiery" %><br />
     <%= f.text_field :date_from, :class => "datePick" %>(format: rrrr-mm-dd)
   </div>
     <div class="field">
-    <%= f.label :date_untill %><br />
+    <%= f.label :"Data zakończenia"  %><br />
     <%= f.text_field :date_untill, :class => "datePick" %>(format: rrrr-mm-dd)
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Zapisz"%>
   </div>
 <% end %>

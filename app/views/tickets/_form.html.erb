@@ -1,7 +1,7 @@
 <%= form_for(@ticket) do |f| %>
   <% if @ticket.errors.any? %>
     <div id="error_explanation">
-      <h2>Zaszły następujące nieprawidłowości:</h2>
+      <h2><%= pluralize(@ticket.errors.count, "error") %> prohibited this ticket from being saved:</h2>
 
       <ul>
       <% @ticket.errors.full_messages.each do |msg| %>
@@ -12,36 +12,38 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :seance_id %><br />
+    <%= f.label :id %><br />
+    <%= f.text_field :id %>
+  </div>
+  <div class="field">
+    <%= f.label :Seans %><br />
     <%= f.text_field :seance_id %>
   </div>
   <div class="field">
-    <%= f.label :seat_id %><br />
+    <%= f.label :Miejsce %><br />
     <%= f.text_field :seat_id %>
   </div>
   <div class="field">
-    <%= f.label :price_id %><br />
-    <%= f.text_field :price_id %>
-  </div>
-  <div class="field">
-    <%= f.label :user_id %><br />
+    <%= f.label :Użytkownk%><br />
     <%= f.text_field :user_id %>
   </div>
   <div class="field">
-    <%= f.label :discount_id %><br />
-    <%= f.text_field :discount_id %>
+    <%= f.label :Anulowany %><br />
+    <%= f.text_field :cancelled %>
   </div>
   <div class="field">
-    <%= f.label :bought %><br />
-    <%= f.check_box :bought %>
+    <%= f.label :Rezerwacja %><br />
+    <%= f.text_field :reservation_id %>
   </div>
-  <% if @edit  #jeśli tworzymy nowy bilet to domyślnie to pole jest false, dopiero przy edycji możemy je zmienić-%>
   <div class="field">
-    <%= f.label :canceled %><br />
-    <%= f.check_box :canceled %>
+    <%= f.label :Cena %><br />
+    <%= f.text_field :price %>
   </div>
-  <% end -%>
+  <div class="field">
+    <%= f.label :Pracownik %><br />
+    <%= f.text_field :worker_id %>
+  </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Zapisz"%>
   </div>
 <% end %>

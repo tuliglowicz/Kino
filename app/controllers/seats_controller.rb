@@ -27,13 +27,14 @@ class SeatsController < ApplicationController
     end
   end
 
-  # GET /seats/new
-  # GET /seats/new.xml
-  def new
+  # GET /seats/new1
+  # GET /seats/new1.xml
+  def new1
     @seat = Seat.new
+    @seat.room = Room.find(params[:id])
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html # new1.html.erb
       format.xml  { render :xml => @seat }
     end
   end

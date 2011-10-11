@@ -25,8 +25,13 @@ Kino::Application.routes.draw do
   resources :users
   resources :discounts
   resources :prices
-  resources :seats
+  resources :seats do
+        member do
+      get "new1"
+    end
+  end
   resources :rooms
+
   resources :cinema_films
   resources :workers
   resources :films

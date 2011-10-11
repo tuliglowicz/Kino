@@ -14,7 +14,7 @@
   
   <div class="field">
     <%= f.label :"Id Sali" %><br />
-    <%= f.text_field :room_id , :value => 10 %>
+    <%= f.text_field :room_id , :value => @seat.room.id %>
   </div>
   <div class="field">
     <%= f.label :Rząd %><br />
@@ -25,6 +25,6 @@
     <%= f.text_field :collumn %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Dodaj"%>
   </div>
 <% end %>

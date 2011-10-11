@@ -2,7 +2,7 @@
 
 <table>
   <tr>
-    <th>Id</th>
+    
     <th>Kino</th>
     <th>Sala</th>
     <th>Rząd</th>
@@ -12,7 +12,7 @@
 
 <% @seats.each do |seat| %>
   <tr>
-    <td align="center"><%= seat.id %></td>
+    
     <td><%= seat.room.cinema.name %></td>
     <td align="center"><%= seat.room.number %></td>
     <td align="center"><%= seat.row %></td>

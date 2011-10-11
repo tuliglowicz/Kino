@@ -43,7 +43,8 @@ class RoomsController < ApplicationController
   	@cinemas = Cinema.find(:all)
   	@room = Room.find(params[:id])
   end
-
+  
+  
   # POST /rooms
   # POST /rooms.xml
   def create

@@ -6,8 +6,6 @@
     <th>Login</th>
     <th>Hashed password</th>
     <th>Email</th>
-    <th>First name</th>
-    <th>Last name</th>
     <th>Phone</th>
     <th>About</th>
     <th></th>
@@ -21,9 +19,7 @@
     <td><%= user.login %></td>
     <td><%= user.hashed_password %></td>
     <td><%= user.email %></td>
-    <td><%= user.first_name %></td>
-    <td><%= user.last_name %></td>
-    <td><%= user.phone %></td>
+   	<td><%= user.phone %></td>
     <td><%= user.about %></td>
     <td><%= link_to 'Show', user %></td>
     <td><%= link_to 'Edit', edit_user_path(user) %></td>

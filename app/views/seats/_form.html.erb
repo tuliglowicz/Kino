@@ -11,20 +11,17 @@
     </div>
   <% end %>
 
+  
   <div class="field">
-    <%= f.label :id %><br />
-    <%= f.text_field :id %>
+    <%= f.label :"Id Sali" %><br />
+    <%= f.text_field :room_id , :value => 10 %>
   </div>
   <div class="field">
-    <%= f.label :room_id %><br />
-    <%= f.text_field :room_id %>
-  </div>
-  <div class="field">
-    <%= f.label :row %><br />
+    <%= f.label :Rząd %><br />
     <%= f.text_field :row %>
   </div>
   <div class="field">
-    <%= f.label :collumn %><br />
+    <%= f.label :Kolumna %><br />
     <%= f.text_field :collumn %>
   </div>
   <div class="actions">

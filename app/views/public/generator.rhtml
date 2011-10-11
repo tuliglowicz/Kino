@@ -84,7 +84,7 @@ function submitParams(){
 	var w = $j("#room_width_inp").val().match("[1-9]{1}[0-9]{0,1}");
 	var h = $j("#room_height_inp").val().match("[1-9]{1}[0-9]{0,1}");
 
-	if(w && h){
+	if(w && h && w > 0 && w <= 35 && h > 0 && h <= 24){
 		$j(this).dialog("close");
 		drawFullRectangle(w, h);
 	}

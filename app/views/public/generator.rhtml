@@ -1,0 +1,107 @@
+<div id="giveMeParams_width_height" align="left">
+	<form>
+		Wpisz wartości:<br>
+		liczba kolumn: <input type="text" id="room_width_inp"> (0 &lt; x &lt; 35)<br/>
+		liczba rzędów: <input type="text" id="room_height_inp"> (0 &lt; x &lt; 24)
+	</form>
+</div>
+
+<table align=center bgcolor="white" border=0px cellpadding=0px cellspacing=5px style="padding-bottom:25px" id="theTable">
+</table>
+<center>
+	<button id="XMLgen">Generuj XML</button>
+<center>
+
+<style>
+.seat.deselected {
+	opacity: 0.15;
+	color: black;
+}
+</style>
+<script>
+$j(".seat").live("click", seat_clicked);
+
+var width_of_seat_rect;
+var height_of_seat_rect;
+
+function seat_clicked(){
+	$j(this).toggleClass("deselected");
+}
+function drawFullRectangle(w, h){
+	width_of_seat_rect = w;
+	height_of_seat_rect = h;
+	
+	$j("#theTable").append("<tr><td colspan=3 align=center style='padding-bottom:20px; color: gray;'><b>"+
+	"1. Przed wyborem miejsc <u>zaloguj się</u>, aby nie stracić przywilejów!<br>"+
+	"2. Możesz zamówić maksymalnie 5 biletów.<br>"+
+	"3. W calu zamówienia wiekszej liczby biletów skontaktuj się z nami telefonicznie. Dla grup zorganizowanych przewidziane są zniżki. </b></td></tr>"+
+	"<tr><td colspan=3 align=center style='padding-bottom:20px; color: gray;'><b> - E K R A N - </b></td></tr>");
+	
+	var reserved = new Array();
+	
+	var chars = new Array('A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','R','S','T','U','W','X','Y','Z');
+	var maxRows = h;
+	var maxCols = w;
+	var wypełniacz, html;
+	
+	for(var i=0; i<h; i++)
+	{ 
+		html = ""
+		html+="<tr align=centera valign='middle'><td width='10px' style='color:#666' align='right' valign='middle'>"+chars[i]+"</td><td align='center' valign='middle' width='"+(25*maxCols)+"px'>";
+		
+		for(var j=1; j<=maxCols; j++) {
+			wypełniacz = "";
+			if(j<10) wypełniacz = "&nbsp;";
+			html+="<div id='"+chars[i]+""+j+"' class='seat' align=center valign='middle'>"+j+"</div>";
+		}
+		html += "</td><td width='10px' valign='middle'>"+chars[i]+"</td></tr>";
+			
+		$j("#theTable").append(html);
+	}
+}
+		
+// ----------------------------------------------------------------------------------------------------------
+
+$j("#giveMeParams_width_height").dialog({
+	autoOpen: false,
+	closeOnEscape: true,
+	modal: true,
+	draggable: false,
+	closeText: 'hide',
+	width: 350
+}).find("input").button().parent().parent().parent().css("opacity", "0").animate({"opacity": "1"}, 1250)
+	
+	$j("#giveMeParams_width_height").dialog("option", "title", "Opcje dla: "+name)
+		.dialog("option", "buttons", [{text: "OK", click: submitParams},{text: "Cancel", click: function() {
+				$j(this).dialog("close"); 
+				}}])
+		.dialog( "open" );
+		
+		$j("div.ui-dialog-buttonset button").css("font-size", "12px");
+		
+//clicked ok indialog button...
+function submitParams(){
+	var w = $j("#room_width_inp").val().match("[1-9]{1}[0-9]{0,1}");
+	var h = $j("#room_height_inp").val().match("[1-9]{1}[0-9]{0,1}");
+
+	if(w && h){
+		$j(this).dialog("close");
+		drawFullRectangle(w, h);
+	}
+	else
+		alert("sprawdź, czy dobrze wypełniłeś pola");
+}
+
+$j("#XMLgen").click(function(){
+	var xml = "<room><width>"+width_of_seat_rect+"</width><heght>"+height_of_seat_rect+"</height><deletedSeats>"
+	
+	$j(".seat.deselected").each(function(){
+		xml+="<seat>"+this.id+"</seat>"
+	});
+	
+	xml+="</deletedSeats></room>"
+	alert(xml);
+});
+
+$j("button, input[type=submit]").button();
+</script>

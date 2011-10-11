@@ -11,6 +11,9 @@ class PublicController < ApplicationController
 	def login
 	end
 	
+	def generator
+	end
+	
 	def register
 	end
 

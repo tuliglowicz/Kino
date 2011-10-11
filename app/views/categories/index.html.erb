@@ -1,7 +1,38 @@
+<!-- CSS and JS imports -->
+	<LINK REL=StyleSheet HREF="/stylesheets/categories/categories.css" TYPE="text/css" MEDIA=screen>
+	
+	<script src="/javascripts/jquery.validationEngine-pl.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/javascripts/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
+<!-- EO  CSS and JS imports -->
+
+
+<script>
+	jQuery(document).ready(function()
+	{
+		jQuery('#new_category_a').bind('click', function(event)
+		{
+			jQuery('div:hidden').show('fast');
+		});
+	});
+</script>
+
 <h1>Lista kategorii</h1>
 <%# if session[:isGA] -%>
 <%= link_to 'Dodaj', new_category_path %><br><br>
 <%# end -%>
+
+<a id="new_category_a" >Dodaj nowe miasto</a>
+
+<div class="new_category">
+	
+	<form id="new_category_form" action="/categories/create" method="post">
+		<label for="new_category">Nazwa kategorii:</label>
+		<input type="text" id="category_name" name="category[name]" />
+		<button type="submit">Zapisz</button>
+	</form>
+	
+</div>
+
 <table>
   <tr>
     

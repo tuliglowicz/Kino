@@ -1,3 +1,29 @@
+<script src="/javascripts/jquery.validationEngine-pl.js" type="text/javascript" charset="utf-8"></script>
+
+<script src="/javascripts/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
+
+<script>
+	jQuery(document).ready(function(){
+    // binds form submission and fields to the validation engine
+    jQuery('#category_name').focus();
+    
+    jQuery("#new_category").validationEngine('attach', {bindMethod:"live"});
+    
+    jQuery("#cinema_city_id").live('click', handleOnContextMenu)
+    
+    function handleOnContextMenu(event)
+    {
+    	
+    }
+  });
+</script>
+
+<LINK REL=StyleSheet HREF="/stylesheets/categories/categories_form.css" TYPE="text/css" MEDIA=screen>
+<LINK REL=stylesheet HREF="/stylesheets/validationEngine.jquery.css" TYPE="text/css" MEDIA=screen>
+
+
+
+
 <%= form_for(@category) do |f| %>
   <% if @category.errors.any? %>
     <div id="error_explanation">
@@ -19,6 +45,7 @@
     <%= f.submit "Zapisz"%>
   </div>
 <% end %>
+
 <script>
-$("document").ready(function(){$('#category_name').focus();});
+	$("document").ready(function(){$('#category_name').focus();});
 </script>

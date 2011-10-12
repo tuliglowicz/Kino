@@ -1,17 +1,90 @@
-<h1>Listing seances_types</h1>
+<!-- CSS and JS imports -->
+	<LINK REL=StyleSheet HREF="/stylesheets/seance_types/seance_types.css" TYPE="text/css" MEDIA=screen>
+	
+	<script src="/javascripts/jquery.validationEngine-pl.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/javascripts/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
+<!-- EO  CSS and JS imports -->
+
+<!-- JS code -->
+<script>
+	jQuery(document).ready(function()
+	{
+		jQuery('#new_seance_type').validationEngine('attach', { validationEventTrigger: 'submit'});
+		
+		jQuery('#new_seance_type_a').bind('click', function(event)
+		{
+			jQuery('#new_seance_type_div').show('fast');			
+			jQuery("#seance_type_name").focus();
+		});		
+	});
+</script>
+<!-- 
+		Działa - ale powoduje zakończenie sesji usera, więcej info via google.com; 
+			Do konsultacji. 12.10.2011 - Damian
+		
+		jQuery("#seance_type_name").blur(function()
+    	{
+	    	var name = jQuery("#seance_type_name").val();
+	    	
+	    	if(name.length > 0)
+	    	{
+	    		var name_availability = jQuery.ajax({
+	    			type: "POST",
+		    		url: "http://localhost:3000/seance_types/name_availability",
+		    		data: "name=" + name,
+		    		
+		    		success: function(message)
+		    		{	    		
+		    			jQuery("#name_status").show('fast');
+		    			if (message == 'OK') 
+		    			{				
+		    				jQuery("#name_status").css("color", "lime");
+		    				jQuery("#name_status").text("Rodzaj seansu wcześniej nie dodany");
+		    				jQuery("#seance_type_submit").removeAttr('disabled');
+		    			}
+		    			else
+		    			{
+		    					    				
+		    				jQuery("#name_status").css("color", "red");
+		    				jQuery("#name_status").text("Rodzaj seansu wcześniej już dodany.");
+		    				jQuery("#seance_type_submit").attr('disabled', '');
+		    			}
+		    		},
+		    		error: function()
+		    		{
+		    			alert('Sprawdzenie dostępności nie powiodło się.');		    			
+		    		}
+	    		});
+	    	}
+	    	else
+	    	{
+	    		jQuery("#name_status").hide('fast');
+	    	}
+	   	}); -->
+<!-- EO JS code-->
+
+<h3>Rodzaje seansów</h3>
+<a id="new_seance_type_a">Dodaj nowy rodzaj seansu</a>
+
+<br />
+<div id="new_seance_type_div" style="display: none">	
+	<%= render 'form'%>	
+</div>
+<br />
 
 <table>
   <tr>
-    <th>Id</th>
-    <th>Name</th>
+    <th>Nr</th>
+    <th>Nazwa</th>
     <th></th>
     <th></th>
     <th></th>
   </tr>
-
+<% @seance_type_number = 1%>
 <% @seance_types.each do |seance_type| %>
   <tr>
-    <td><%= seance_type.id %></td>
+    <td><%= @seance_type_number %></td>
+    <% @seance_type_number = @seance_type_number + 1%>
     <td><%= seance_type.name %></td>
     <td><%= link_to 'Show', seance_type %></td>
     <td><%= link_to 'Edit', edit_seance_type_path(seance_type) %></td>
@@ -19,7 +92,3 @@
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New Seances type', new_seance_type_path %>

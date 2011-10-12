@@ -12,6 +12,9 @@ Kino::Application.routes.draw do
 	# Users
 	match "/users/login_availability" => "users#login_availability"
 	
+	# SeanceTypes
+	match "/seance_types/name_availability" => "seance_types#name_availability"
+	
   resources :discount_sorts
 
   resources :ticket_types

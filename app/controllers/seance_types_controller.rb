@@ -5,10 +5,11 @@ class SeanceTypesController < ApplicationController
   
   layout 'admin'
   
-  before_filter :auth,  :except => ["show", "index", "edit", "new", "update"]
+  #before_filter :auth,  :except => ["show", "index", "edit", "new", "update", 'create']
   
   def index
     @seance_types = SeanceType.all
+    @seance_type = SeanceType.new
 
     respond_to do |format|
       format.html # index.html.erb
@@ -46,17 +47,18 @@ class SeanceTypesController < ApplicationController
   # POST /seance_types
   # POST /seance_types.xml
   def create
-    @seance_type = SeanceType.new(params[:seance_type])
-
+    @seance_type = SeanceType.new(params[:seance_type])    
+    
     respond_to do |format|
-      if @seance_type.save
-        format.html { redirect_to(@seance_type, :notice => 'Seances type was successfully created.') }
-        format.xml  { render :xml => @seance_type, :status => :created, :location => @seance_type }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @seance_type.errors, :status => :unprocessable_entity }
-      end
+        if @seance_type.save
+          format.html { redirect_to(@seance_type, :notice => 'Pomyślnie dodano rodzaj seansu.') }
+          format.xml  { render :xml => @seance_type, :status => :created, :location => @seance_type }
+        else
+          format.html { render :action => "new" }
+          format.xml  { render :xml => @seance_type.errors, :status => :unprocessable_entity }
+        end
     end
+    
   end
 
   # PUT /seance_types/1
@@ -85,6 +87,17 @@ class SeanceTypesController < ApplicationController
       format.html { redirect_to(seance_types_url) }
       format.xml  { head :ok }
     end
+  end
+  
+  def name_availability
+    @response 
+      if SeanceType.where(:name => params[:name]).first.nil? 
+        @response = 'OK'
+        render :text => @response
+      else
+        @response = 'NO'
+        render :text => @response
+      end
   end
   
   private #===============================

@@ -1,6 +1,21 @@
-<h1>Edycja typów seansu</h1>
+<!-- CSS and JS imports -->
+	<LINK REL=StyleSheet HREF="/stylesheets/seance_types/new_seance.css" TYPE="text/css" MEDIA=screen>
+	
+	<script src="/javascripts/jquery.validationEngine-pl.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/javascripts/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
+<!-- EO  CSS and JS imports -->
 
+<!-- JS code -->
+<script>
+	jQuery(document).ready(function()
+	{
+		jQuery('#new_seance_type').validationEngine('attach', { validationEventTrigger: 'submit'});		
+	});
+</script>
+
+<h3>Edytuj rodzaj seansu</h3>
+<br />
 <%= render 'form' %>
-
+<br />
 <%= link_to 'Show', @seance_type %> |
 <%= link_to 'Back', seance_types_path %>

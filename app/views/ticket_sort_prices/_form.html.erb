@@ -46,7 +46,7 @@
 					<% @seance_types.each { |seance_type| %>
 						<option 
 						<% if @ticket_sort_price.seance_type_id
-						 	if ticket_type.name.to_s.eql?(SeanceType.find(@ticket_sort_price.seance_type_id).name.to_s)%> 
+						 	if seance_type.name.to_s.eql?(SeanceType.find(@ticket_sort_price.seance_type_id).name.to_s)%> 
 							selected 
 						 <% end 
 						end %> value="<%= seance_type.id %>"><%= seance_type.name %></option>

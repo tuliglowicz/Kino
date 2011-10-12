@@ -1,37 +1,30 @@
-<p id="notice"><%= notice %></p>
-
 <p>
-  <b>Id:</b>
-  <%= @ticket_sort_price.id %>
+  <b>Kino:</b>
+  <%= Cinema.find(@ticket_sort_price.cinema_id).name %>
 </p>
 
 <p>
-  <b>Cinema:</b>
-  <%= @ticket_sort_price.cinema_id %>
+  <b>Typ seansu:</b>
+  <%= SeanceType.find(@ticket_sort_price.seance_type_id).name %>
 </p>
 
 <p>
-  <b>Seance type:</b>
-  <%= @ticket_sort_price.seance_type_id %>
+  <b>Rodzaj biletu:</b>
+  <%= TicketType.find(@ticket_sort_price.ticket_type_id).name %>
 </p>
 
 <p>
-  <b>Ticket type:</b>
-  <%= @ticket_sort_price.ticket_type_id %>
-</p>
-
-<p>
-  <b>Price:</b>
+  <b>Cena:</b>
   <%= @ticket_sort_price.price %>
 </p>
 
 <p>
-  <b>Discount sort:</b>
-  <%= @ticket_sort_price.discount_sort_id %>
+  <b>Rodzaj zniżki:</b>
+  <%= DiscountSort.find(@ticket_sort_price.discount_sort_id).description %>
 </p>
 
 <p>
-  <b>Description:</b>
+  <b>Opis:</b>
   <%= @ticket_sort_price.description %>
 </p>
 

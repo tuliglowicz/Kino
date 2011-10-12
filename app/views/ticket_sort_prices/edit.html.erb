@@ -1,4 +1,11 @@
-<h1>Edycja rodzaju ceny biletu</h1>
+<script>
+	jQuery(document).ready(function()
+	{
+		jQuery("#edit_ticket_sort_price_<%=@ticket_sort_price.id%>").validationEngine('attach', { validationEventTrigger: 'submit'});
+	});
+</script>
+
+<h3>Edycja rodzaju ceny biletu</h3>
 
 <%= render 'form' %>
 

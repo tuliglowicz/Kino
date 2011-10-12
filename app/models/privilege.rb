@@ -1,5 +1,5 @@
 # encoding: utf-8
-class Privilige < ActiveRecord::Base
+class Privilege < ActiveRecord::Base
 	
 	has_many :statuses
 

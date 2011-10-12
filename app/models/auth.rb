@@ -24,8 +24,8 @@ class Auth
 		puts "dzialam"
 		worker = Worker.find(:first, :conditions => ["id = ?", worker_id])
 		status = Status.find(:first, :conditions => ["id = ?", worker.status_id])
-		privilige = Privilige.find(:first, :conditions => ["id = ?", status.privilige_id])
-		answer = privilige.send(table_name)
+		privilege = Privilege.find(:first, :conditions => ["id = ?", status.privilege_id])
+		answer = privilege.send(table_name)
 		return answer==true 
 	end	
 	

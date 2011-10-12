@@ -9,7 +9,7 @@
 <script>
 	jQuery(document).ready(function()
 	{
-		jQuery('#new_seance_type').validationEngine('attach', { validationEventTrigger: 'submit'});		
+		jQuery('#edit_seance_type_<%= @seance_type.id%>').validationEngine('attach', { validationEventTrigger: 'submit'});		
 	});
 </script>
 

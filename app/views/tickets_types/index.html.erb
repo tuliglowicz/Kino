@@ -1,17 +1,46 @@
-<h1>Listing tickets_types</h1>
+<!-- CSS and JS imports -->
+	<LINK REL=StyleSheet HREF="/stylesheets/ticket_types/ticket_types.css" TYPE="text/css" MEDIA=screen>
+	
+	<script src="/javascripts/jquery.validationEngine-pl.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/javascripts/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
+<!-- EO  CSS and JS imports -->
+
+<!-- JS code -->
+<script>
+	jQuery(document).ready(function()
+	{
+		jQuery('#new_ticket_type').validationEngine('attach', { validationEventTrigger: 'submit'});
+		
+		jQuery('#new_ticket_type_a').bind('click', function(event)
+		{
+			jQuery('#new_ticket_type_div').show('fast');			
+			jQuery("#ticket_type_name").focus();
+		});		
+	});
+</script>
+
+<h3>Lista rodzaji biletów</h3>
+<a id="new_ticket_type_a">Dodaj nowy rodzaj biletu</a>
+
+<br />
+<div id="new_ticket_type_div" style="display: none">	
+	<%= render 'form'%>	
+</div>
+<br />
 
 <table>
   <tr>
-    <th>Id</th>
-    <th>Name</th>
+     <th>Nr</th>
+    <th>Nazwa</th>
     <th></th>
     <th></th>
     <th></th>
   </tr>
-
-<% @tickets_types.each do |tickets_type| %>
+<% @ticket_type_number = 1%>
+<% @ticket_types.each do |ticket_type| %>
   <tr>
-    <td><%= tickets_type.id %></td>
+    <td><%= @ticket_type_number %></td>
+    <% @ticket_type_number = @ticket_type_number + 1%>
     <td><%= tickets_type.name %></td>
     <td><%= link_to 'Show', tickets_type %></td>
     <td><%= link_to 'Edit', edit_tickets_type_path(tickets_type) %></td>
@@ -19,7 +48,3 @@
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New Tickets type', new_tickets_type_path %>

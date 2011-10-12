@@ -1,5 +1,20 @@
-<h1>Editing tickets_type</h1>
+<!-- CSS and JS imports -->
+	<LINK REL=StyleSheet HREF="/stylesheets/ticket_types/new_ticket_type.css" TYPE="text/css" MEDIA=screen>
+	
+	<script src="/javascripts/jquery.validationEngine-pl.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/javascripts/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
+<!-- EO  CSS and JS imports -->
 
+<!-- JS code -->
+<script>
+	jQuery(document).ready(function()
+	{
+		jQuery('#new_ticket_type').validationEngine('attach', { validationEventTrigger: 'submit'});		
+	});
+</script>
+
+<h3>Edytuj rodzaj biletu</h3>
+<br />
 <%= render 'form' %>
 
 <%= link_to 'Show', @tickets_type %> |

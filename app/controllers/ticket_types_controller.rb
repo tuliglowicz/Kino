@@ -6,11 +6,12 @@ class TicketTypesController < ApplicationController
   layout 'admin'
 
   
-  before_filter :auth_exept_show, :except => ["show", "index", "edit", "new", "update"]
+  before_filter :auth_exept_show, :except => ["show", "index", "edit", "new", "update", 'create']
   
   def index
     @ticket_types = TicketType.all
-
+    @ticket_type = TicketType.new
+    
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @ticket_types }
@@ -49,9 +50,10 @@ class TicketTypesController < ApplicationController
   def create
     @ticket_type = TicketType.new(params[:ticket_type])
 
+    sqlQuery = 'INSERT INTO ticket_types (name) VALUES (' + '\'' + params[:ticket_type][:name].to_s + '\')'
     respond_to do |format|
-      if @ticket_type.save
-        format.html { redirect_to(@ticket_type, :notice => 'Ticket type was successfully created.') }
+      if ActiveRecord::Base.connection.execute(sqlQuery)
+        format.html { redirect_to(@ticket_type, :notice => 'Bilet dodano.') }
         format.xml  { render :xml => @ticket_type, :status => :created, :location => @ticket_type }
       else
         format.html { render :action => "new" }
@@ -64,10 +66,11 @@ class TicketTypesController < ApplicationController
   # PUT /ticket_types/1.xml
   def update
     @ticket_type = TicketType.find(params[:id])
+    sqlQuery = 'UPDATE ticket_types SET name = ' + '\'' + params[:ticket_type][:name].to_s + '\' WHERE id = ' + params[:id].to_s
 
     respond_to do |format|
-      if @ticket_type.update_attributes(params[:ticket_type])
-        format.html { redirect_to(@ticket_type, :notice => 'Ticket type was successfully updated.') }
+      if ActiveRecord::Base.connection.execute(sqlQuery)
+        format.html { redirect_to(@ticket_type, :notice => 'Zaktualizowano rodzaj biletu') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

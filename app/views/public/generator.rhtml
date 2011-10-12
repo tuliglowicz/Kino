@@ -10,6 +10,7 @@
 </table>
 <center>
 	<button id="XMLgen">Generuj XML</button>
+	<div id="placeForGeneratedXML"></div>
 <center>
 
 <style>
@@ -93,14 +94,14 @@ function submitParams(){
 }
 
 $j("#XMLgen").click(function(){
-	var xml = "<room><width>"+width_of_seat_rect+"</width><heght>"+height_of_seat_rect+"</height><deletedSeats>"
+	var xml = "<room><width>"+width_of_seat_rect+"</width><height>"+height_of_seat_rect+"</height><deletedSeats>"
 	
 	$j(".seat.deselected").each(function(){
 		xml+="<seat>"+this.id+"</seat>"
 	});
 	
 	xml+="</deletedSeats></room>"
-	alert(xml);
+	$j("#placeForGeneratedXML").text(xml);
 });
 
 $j("button, input[type=submit]").button();

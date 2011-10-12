@@ -1,18 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Id:</b>
-  <%= @discount_sort.id %>
-</p>
-
-<p>
-  <b>Description:</b>
+  <b>Opis:</b>
   <%= @discount_sort.description %>
 </p>
 
 <p>
-  <b>Is weeknd:</b>
-  <%= @discount_sort.is_weekend %>
+  <b>Weekend/Święto?</b>
+  <%= @discount_sort.is_weekend == true ? 'tak' : 'nie' %>
 </p>
 
 

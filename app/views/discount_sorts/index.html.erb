@@ -1,20 +1,51 @@
-<h1>Listing discount_sorts</h1>
+<!-- CSS and JS imports -->
+	<LINK REL=StyleSheet HREF="/stylesheets/discounts/discounts.css" TYPE="text/css" MEDIA=screen>
+	
+	<script src="/javascripts/jquery.validationEngine-pl.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/javascripts/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
+<!-- EO  CSS and JS imports -->
 
+<!-- JS code -->
+<script>
+	jQuery(document).ready(function()
+	{
+		jQuery('#new_discount_sort').validationEngine('attach', { validationEventTrigger: 'submit'});
+		
+		jQuery('#new_discount_a').bind('click', function(event)
+		{
+			jQuery('#new_discount_div').show('fast');			
+			jQuery("#discount_sort_description").focus();
+		});
+	});
+</script>
+<!-- EO JS code-->
+
+<h3>Zniżki</h3>
+<a  id="new_discount_a">Dodaj nową zniżkę </a>
+<br />
+<div id="new_discount_div" style="display: none">
+	
+	<%= render 'form'%>	
+</div>
+<br />
 <table>
-  <tr>
-    <th>Id</th>
-    <th>Description</th>
-    <th>Is weekend</th>
+  <tr> 
+  	<th>Nr</th>  
+    <th>Opis</th>
+    <th>Weekend/Święto?</th>
     <th></th>
     <th></th>
     <th></th>
   </tr>
+  
+  <% @discount_number = 1%>
 
 <% @discount_sorts.each do |discount_sort| %>
   <tr>
-    <td><%= discount_sort.id %></td>
+    <td><%= @discount_number %></td>
+    <% @discount_number = @discount_number + 1%>
     <td><%= discount_sort.description %></td>
-    <td><%= discount_sort.is_weekend %></td>
+    <td><%= discount_sort.is_weekend == true ? 'tak' : 'nie' %></td>
     <td><%= link_to 'Show', discount_sort %></td>
     <td><%= link_to 'Edit', edit_discount_sort_path(discount_sort) %></td>
     <td><%= link_to 'Destroy', discount_sort, :confirm => 'Are you sure?', :method => :delete %></td>
@@ -23,5 +54,3 @@
 </table>
 
 <br />
-
-<%= link_to 'New Discount sort', new_discount_sort_path %>

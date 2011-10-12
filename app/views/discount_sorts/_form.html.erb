@@ -12,18 +12,14 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :id %><br />
-    <%= f.text_field :id %>
+    <%= f.label 'Opis' %><br />
+    <%= f.text_field :description, :class => 'validate[required]' %>
   </div>
   <div class="field">
-    <%= f.label :Opis %><br />
-    <%= f.text_field :description %>
-  </div>
-  <div class="field">
-    <%= f.label :is_weekend %><br />
+    <%= f.label 'Czy stawka świąteczna?' %>
     <%= f.check_box :is_weekend %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Dodaj' %>
   </div>
 <% end %>

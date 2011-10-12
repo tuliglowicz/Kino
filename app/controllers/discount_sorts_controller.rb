@@ -5,10 +5,11 @@ class DiscountSortsController < ApplicationController
   
   layout 'admin'
 
-  before_filter :auth_exept_show, :except => ["show", "index", "edit", "new", "update"]
+  before_filter :auth_exept_show, :except => ["show", "index", "edit", "new", "update", 'create']
   
   def index
     @discount_sorts = DiscountSort.all
+    @discount_sort = DiscountSort.new
 
     respond_to do |format|
       format.html # index.html.erb

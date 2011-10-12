@@ -9,7 +9,8 @@ class CitiesController < ApplicationController
   # GET /cities.xml	
   def index
     @cities = City.all
-
+  
+    @city = City.new
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @cities }
@@ -45,11 +46,6 @@ class CitiesController < ApplicationController
   # POST /cities
   # POST /cities.xml
   def create
-    
-    params.each{       
-      |c| puts logger.debug c
-      puts '#########################################################################'
-    }
     @city = City.new
     @city.name = params[:city][:name]
     

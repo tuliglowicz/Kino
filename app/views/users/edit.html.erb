@@ -1,6 +1,60 @@
-<h1>Editing user</h1>
+<!-- CSS/JS imports -->
+<script src="/javascripts/jquery.validationEngine-pl.js" type="text/javascript" charset="utf-8"></script>
+<script src="/javascripts/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
+
+<LINK REL=StyleSheet HREF="/stylesheets/new_user.css" TYPE="text/css" MEDIA=screen>
+<!-- EO CSS/JS imports -->
+
+<!-- JS code -->
+<script>
+	jQuery(document).ready(function(){
+    // binds form submission and fields to the validation engine
+    jQuery("#edit_user_<%= @user.id %>").validationEngine('attach', { validationEventTrigger: 'submit'});
+    
+    jQuery("#user_login").blur(function()
+    {
+    	var login = jQuery("#user_login").val();
+    	
+    	if(login.length > 3)
+    	{
+    		var login_availability = jQuery.ajax({
+    			type: "POST",
+	    		url: "http://localhost:3000/users/login_availability",
+	    		data: "login=" + login,
+	    		
+	    		success: function(message)
+	    		{	    		
+	    			jQuery("#login_status").show('fast');
+	    			if (message == 'OK') 
+	    			{				
+	    				jQuery("#login_status").css("color", "lime");
+	    				jQuery("#login_status").text("Login dostępny");
+	    			}
+	    			else
+	    			{	    				
+	    				jQuery("#login_status").css("color", "red");
+	    				jQuery("#login_status").text("Login niedostępny");
+	    			}
+	    		},
+	    		error: function()
+	    		{
+	    			alert('Sprawdzenie dostępności nie powiodło się.');
+	    		}
+    		});
+    	}
+    	else
+    	{
+    		jQuery("#login_status").hide('fast');
+    	}
+    	
+    });
+ }); 
+</script>
+<!-- EO JS code -->
+<h3>Edytuj</h3>
 
 <%= render 'form' %>
+<br />
 
 <%= link_to 'Show', @user %> |
 <%= link_to 'Back', users_path %>

@@ -1,26 +1,27 @@
-<h1>Listing users</h1>
+<h3>Lista użytkowników serwisu</h3>
 
+<%= link_to 'Dodaj użytkownika', new_user_path %>
+<br />
+<br />
 <table>
   <tr>
-    <th>Id</th>
-    <th>Login</th>
-    <th>Hashed password</th>
+    <th>Nr</th>
+    <th>Login</th>    
     <th>Email</th>
-    <th>Phone</th>
-    <th>About</th>
+    <th>Telefon</th>    
     <th></th>
     <th></th>
     <th></th>
   </tr>
+<% @user_number = 1%>
 
 <% @users.each do |user| %>
   <tr>
-    <td><%= user.id %></td>
-    <td><%= user.login %></td>
-    <td><%= user.hashed_password %></td>
+    <td><%= @user_number %></td>
+    <% @user_number = @user_number + 1%>
+    <td><%= user.login %></td>    
     <td><%= user.email %></td>
-   	<td><%= user.phone %></td>
-    <td><%= user.about %></td>
+   	<td><%= user.phone %></td>   
     <td><%= link_to 'Show', user %></td>
     <td><%= link_to 'Edit', edit_user_path(user) %></td>
     <td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>
@@ -30,4 +31,3 @@
 
 <br />
 
-<%= link_to 'New User', new_user_path %>

@@ -2,6 +2,7 @@
 class Room < ActiveRecord::Base
 
 	belongs_to :cinema
+	belongs_to :roomview
 	has_many :seats
 	has_many :seances
 	

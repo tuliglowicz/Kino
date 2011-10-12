@@ -1,7 +1,7 @@
 # encoding: utf-8
 class Status < ActiveRecord::Base
 	has_many :workers
-	belongs_to :priviliges
+	belongs_to :privilege
 	
 	default_scope order('name')
 	

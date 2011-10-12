@@ -11,6 +11,7 @@
 	jQuery(document).ready(function(){
     // binds form submission and fields to the validation engine
     jQuery("#new_worker").validationEngine('attach', { validationEventTrigger: 'submit'});
+    jQuery("#edit_worker_<%= @worker.id %>").validationEngine('attach', { validationEventTrigger: 'submit'});
     
     jQuery("#worker_login").blur(function()
     {

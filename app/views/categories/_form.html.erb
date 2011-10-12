@@ -1,3 +1,29 @@
+<script src="/javascripts/jquery.validationEngine-pl.js" type="text/javascript" charset="utf-8"></script>
+
+<script src="/javascripts/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
+
+<script>
+	jQuery(document).ready(function(){
+    // binds form submission and fields to the validation engine
+    jQuery('#category_name').focus();
+    
+    jQuery("#new_category").validationEngine('attach', {bindMethod:"live"});
+    
+    jQuery("#cinema_city_id").live('click', handleOnContextMenu)
+    
+    function handleOnContextMenu(event)
+    {
+    	
+    }
+  });
+</script>
+
+<LINK REL=StyleSheet HREF="/stylesheets/categories/categories_form.css" TYPE="text/css" MEDIA=screen>
+<LINK REL=stylesheet HREF="/stylesheets/validationEngine.jquery.css" TYPE="text/css" MEDIA=screen>
+
+
+
+
 <%= form_for(@category) do |f| %>
   <% if @category.errors.any? %>
     <div id="error_explanation">
@@ -11,14 +37,24 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :"Nazwa kategori" %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="actions">
-    <%= f.submit "Zapisz"%>
-  </div>
+  
 <% end %>
-<script>
-$("document").ready(function(){$('#category_name').focus();});
-</script>
+
+ <div id="h_container">   
+    <div id="form-container">
+<form align="left" class="new_category" id="new_category" method="post" action="/categories/create">
+		<table >
+						
+			<tr>
+				<td class="label"><label for="category_name">Nazwa kategorii:</label></td>
+				<td class="input"><textarea style="width: 195px"  style="width: 200px" 
+					type="text" id="category_name" name="category[name]" class="validate[required] text-input"><%= @category.name %></textarea></td>
+			</tr>
+						
+		</table>	
+		<br />
+		<button type="submit">Zapisz</button>
+	</form>
+
+</div>
+</div>

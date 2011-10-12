@@ -6,11 +6,11 @@ class TicketSortPricesController < ApplicationController
   layout 'admin'
 
   
-  before_filter :auth_exept_show, :except => ["show", "index", "edit", "update", "new"]
+  #before_filter :auth_exept_show, :except => ["show", "index", "edit", "update", "new"]
   
   def index
     @ticket_sort_prices = TicketSortPrice.all
-
+    
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @ticket_sort_prices }
@@ -21,6 +21,10 @@ class TicketSortPricesController < ApplicationController
   # GET /ticket_sort_prices/1.xml
   def show
     @ticket_sort_price = TicketSortPrice.find(params[:id])
+    @cinemas = Cinema.all
+    @seance_types = SeanceType.all
+    @ticket_types = TicketType.all
+    @discount_sorts = DiscountSort.all
 
     respond_to do |format|
       format.html # show.html.erb
@@ -32,6 +36,10 @@ class TicketSortPricesController < ApplicationController
   # GET /ticket_sort_prices/new.xml
   def new
     @ticket_sort_price = TicketSortPrice.new
+    @cinemas = Cinema.all
+    @seance_types = SeanceType.all
+    @ticket_types = TicketType.all
+    @discount_sorts = DiscountSort.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -42,6 +50,10 @@ class TicketSortPricesController < ApplicationController
   # GET /ticket_sort_prices/1/edit
   def edit
     @ticket_sort_price = TicketSortPrice.find(params[:id])
+    @cinemas = Cinema.all
+    @seance_types = SeanceType.all
+    @ticket_types = TicketType.all
+    @discount_sorts = DiscountSort.all
   end
 
   # POST /ticket_sort_prices
@@ -49,6 +61,12 @@ class TicketSortPricesController < ApplicationController
   def create
     @ticket_sort_price = TicketSortPrice.new(params[:ticket_sort_price])
 
+    puts "###################################"
+    
+  
+    @ticket_sort_price.price = BigDecimal.new(params[:ticket_sort_price][:price])
+    puts @ticket_sort_price.price
+    
     respond_to do |format|
       if @ticket_sort_price.save
         format.html { redirect_to(@ticket_sort_price, :notice => 'Tickets sorts price was successfully created.') }

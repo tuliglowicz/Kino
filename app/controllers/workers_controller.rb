@@ -4,8 +4,8 @@ class WorkersController < ApplicationController
 	
 	layout 'admin'
 	
-	before_filter :auth_access
-	before_filter :auth, :except => ["show", "index", "edit", "new", "update"]
+	before_filter :auth_access, :except => ["login_availability"]
+	before_filter :auth, :except => ["show", "index", "edit", "new", "update", "login_availability"]
 		
   # GET /workers
   # GET /workers.xml
@@ -156,14 +156,17 @@ class WorkersController < ApplicationController
   end
   
   def login_availability
-    puts "sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss"
     login = params[:login]
     
+    @tmp 
+    
     if Worker.where(:login => login).first
-      "NO"
+      @tmp = "NO"
     else
-      "OK"
+      @tmp = "OK"
     end
+    
+    render :text => @tmp
   end
 
 	private #===============================

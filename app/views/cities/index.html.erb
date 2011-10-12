@@ -11,7 +11,8 @@
 	{
 		jQuery('#new_city_a').bind('click', function(event)
 		{
-			jQuery('div:hidden').show('fast');
+			jQuery('#new_city_div').show('fast');			
+			jQuery("#city_name").focus();
 		});
 	});
 </script>
@@ -20,12 +21,15 @@
 <h1>Lista miast</h1>
 <a id="new_city_a" >Dodaj nowe miasto</a>
 
-<div class="new_city">
+<div class="new_city" id="new_city_div" >
+
+<form id="new_city_form" action="/cities/create" method="post">
 	
-	<form id="new_city_form" action="/cities/create" method="post">
+	<div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" /></div>
+			
 		<label for="new_city">Nazwa miasta:</label>
 		<input type="text" id="city_name" name="city[name]" />
-		
+
 		<button type="submit">Dodaj</button>
 	</form>
 	

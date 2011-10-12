@@ -1,41 +1,56 @@
-<!-- AJAX
-<script>
-$(document).ready(function()
-{
-	
-	$("#user_login").blur(function()
-	{
-		$.ajax({
-			
-			url: "http://localhost:3000/users/new",
-			type: "GET",
-			data: "login="+$("#user_login").val(),
-			dataType: "json",
-			success: function(json)
-			{
-				if(json.ok)
-				{
-					$("#user_login").css("backgroundColor","lime")
-				}
-			}
-		})
-	})
-	
-});  
-</script> -->
-<script src="/javascripts/jquery.validationEngine-pl.js" type="text/javascript" charset="utf-8"></script>
-
-<script src="/javascripts/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
-
+<!-- JS Code -->
 <script>
 	$j(document).ready(function(){
     // binds form submission and fields to the validation engine
-    $j("#new_user").validationEngine();
-  });
+    $j("#new_user").validationEngine('attach', { validationEventTrigger: 'submit'});
+    
+    $j("#user_login").blur(function()
+    {
+    	var login = $j("#user_login").val();
+    	
+    	if(login.length > 3)
+    	{
+    		var login_availability = $j.ajax({
+    			type: "POST",
+	    		url: "http://localhost:3000/users/login_availability",
+	    		data: "login=" + login,
+	    		
+	    		success: function(message)
+	    		{	    		
+	    			$j("#login_status").show('fast');
+	    			if (message == 'OK') 
+	    			{				
+	    				$j("#login_status").css("color", "lime");
+	    				$j("#login_status").text("Login dostępny");
+	    			}
+	    			else
+	    			{	    				
+	    				$j("#login_status").css("color", "red");
+	    				$j("#login_status").text("Login niedostępny");
+	    			}
+	    		},
+	    		error: function()
+	    		{
+	    			alert('Sprawdzenie dostępności nie powiodło się.');
+	    		}
+    		});
+    	}
+    	else
+    	{
+    		$j("#login_status").hide('fast');
+    	}
+    	
+    });
+ }); 
 </script>
+<!-- EO JS code -->
+
+<!-- CSS/JS imports -->
+<script src="/javascripts/jquery.validationEngine-pl.js" type="text/javascript" charset="utf-8"></script>
+<script src="/javascripts/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
 
 <LINK REL=StyleSheet HREF="/stylesheets/new_user.css" TYPE="text/css" MEDIA=screen>
-
+<!-- CSS/JS code -->
 
 <form align="left" class="form" id="new_user",  action="/users/create", method="post">
 	<br/>
@@ -52,9 +67,9 @@ $(document).ready(function()
   <% end %>
   <table style="border: 0px">
   	<tr>
-  		<td class="label"><label for="user_login">Login:</label></td>
-  		<td><input type="text" value="<%= @user.login %>" id="user_login" name="user[login]" class="validate[required] text-input" /></td>
-  		<td></td>
+  		<td class="label"><label id="t">Login:</label></td>
+  		<td><input type="text"  id="user_login" name="user[login]" class="validate[required] text-input" /></td>
+  		<td><label id="login_status" for="user_login" style="display: none" ></label></td>
   	</tr>
   	
   	<br/>
@@ -78,7 +93,7 @@ $(document).ready(function()
   	
   	<tr>
   		<td class="label"><label for="user_email">Email:</label></td>
-  		<td><input type="text" value="<%= @user.email %>" id="user_email" name="user[email]" class="validate[required,custom[email]] text-input" type="email" /></td>	
+  		<td><input type="text" id="user_email" name="user[email]" class="validate[required,custom[email]] text-input" type="email" /></td>	
   		<td></td>
   	</tr>
   	
@@ -86,7 +101,7 @@ $(document).ready(function()
   	
   	<tr>
   		<td class="label"><label for="user_phone">Telefon:</label></td>
-  		<td><input type="text" value="<%= @user.phone %>" id="user_phone" name="user[phone]" class="validate[required] text-input" type="text" />  </td>	
+  		<td><input type="text" id="user_phone" name="user[phone]" class="validate[required] text-input" type="text" />  </td>	
   		<td></td>
   	</tr> 
   		

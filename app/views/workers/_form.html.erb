@@ -9,39 +9,47 @@
 <!-- JS code -->
 <script>
 	jQuery(document).ready(function(){
-    	// binds form submission and fields to the validation engine
-	    jQuery("#new_worker").validationEngine();
-	    
-	    jQuery("#worker_login").focusout(function()
-	    { 
-	    	var login = jQuery("#worker_login").val();
-	    	if (login.length > 3) 
-	    	{
-	    		jQuery("#worker_email").val(login + "@cinematoholix.pl");
-	    	}; 
-	    	
-	    	$.ajax({
-	    		type: "POST",
+    // binds form submission and fields to the validation engine
+    jQuery("#new_worker").validationEngine('attach', { validationEventTrigger: 'submit'});
+    
+    jQuery("#worker_login").blur(function()
+    {
+    	var login = jQuery("#worker_login").val();
+    	
+    	if(login.length > 3)
+    	{
+    		var login_availability = jQuery.ajax({
+    			type: "POST",
 	    		url: "http://localhost:3000/private/workers/login_availability",
 	    		data: "login=" + login,
+	    		
 	    		success: function(message)
-	    		{
-	    			alert('success');
-	    			jQuery("#status").show('fast');
-	    			if (message == "OK") 
-	    			{
-	    				jQuery("#login_status").css("font-color: lime;");
-	    				jQuery("#login_status").val("Login dostępny");
+	    		{	    		
+	    			jQuery("#login_status").show('fast');
+	    			if (message == 'OK') 
+	    			{				
+	    				jQuery("#login_status").css("color", "lime");
+	    				jQuery("#login_status").text("Login dostępny");
 	    			}
 	    			else
-	    			{
-	    				jQuery("#login_status").css("font-color: red;");
-	    				jQuery("#login_status").val("Login niedostępny");
+	    			{	    				
+	    				jQuery("#login_status").css("color", "red");
+	    				jQuery("#login_status").text("Login niedostępny");
 	    			}
-	    		};
-	    	});
-	    });
-  });
+	    		},
+	    		error: function()
+	    		{
+	    			alert('Sprawdzenie dostępności nie powiodło się.');
+	    		}
+    		});
+    	}
+    	else
+    	{
+    		jQuery("#login_status").hide('fast');
+    	}
+    	
+    });
+ }); 
 </script>
 
 <!-- EO JS code -->
@@ -88,10 +96,8 @@
   <div class="field">
     <%= f.label 'Login' %><br />
     <%= f.text_field :login, :class => 'validate[required]; input' %>
-  </div>
-  <div id="status" class="availability">
-  	<label id="login_status"></label>
-  </div>
+    <label id="login_status" style="display: none"></label>
+  </div>  
   <div class="field">
     <%= f.password_field :hashed_password, :class => 'validate[required]; input', :style => 'display:none', :value => 'hidden' %>
   </div>

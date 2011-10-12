@@ -59,16 +59,21 @@ class TicketSortPricesController < ApplicationController
   # POST /ticket_sort_prices
   # POST /ticket_sort_prices.xml
   def create
-    @ticket_sort_price = TicketSortPrice.new(params[:ticket_sort_price])
-
-    puts "###################################"
+    @ticket_sort_price = TicketSortPrice.new(params[:ticket_sort_price]) 
     
-  
-    @ticket_sort_price.price = BigDecimal.new(params[:ticket_sort_price][:price])
-    puts @ticket_sort_price.price
+    cinema_id = @ticket_sort_price.cinema_id
+    seance_type_id = @ticket_sort_price.seance_type_id
+    ticket_type_id = @ticket_sort_price.ticket_type_id
+    discount_sort_id = @ticket_sort_price.discount_sort_id
+    description = @ticket_sort_price.description
+    price = @ticket_sort_price.price.to_s
+    price.gsub!('.', ',')
+   
+   sqlQuery = 'INSERT INTO ticket_sort_prices (cinema_id, seance_type_id, ticket_type_id, price, discount_sort_id, description) 
+        VALUES(' + cinema_id.to_s + ',' + seance_type_id.to_s + ',' + ticket_type_id.to_s + ',' + '\'' + price + '\',' + discount_sort_id.to_s + ',' + '\'' + description + '\');'
     
     respond_to do |format|
-      if @ticket_sort_price.save
+      if ActiveRecord::Base.connection.execute(sqlQuery) #@ticket_sort_price.save
         format.html { redirect_to(@ticket_sort_price, :notice => 'Tickets sorts price was successfully created.') }
         format.xml  { render :xml => @ticket_sort_price, :status => :created, :location => @ticket_sort_price }
       else
@@ -121,6 +126,13 @@ class TicketSortPricesController < ApplicationController
         end
       end
     end
+  end
+  
+  def get_price_in_postgres_format(price)
+    fractional = price.modulo(1)
+    decimal = price.to_int
+    
+    decimal.to_s + fractional.to_s
   end
   
 end

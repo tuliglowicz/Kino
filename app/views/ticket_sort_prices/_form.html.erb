@@ -81,7 +81,7 @@
   </div>
   <div class="field">
     <%= f.label 'Cena' %><br />
-    <%= f.text_field :price, :class => "validate[required]; input", :type => 'number'%>
+    <%= f.text_field :price, :class => "validate[required]; input", :type => 'number', :min => 0, :step => 0.1%>
   </div>
   
   <div class="field">

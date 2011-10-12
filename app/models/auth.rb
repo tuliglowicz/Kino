@@ -25,7 +25,13 @@ class Auth
 		worker = Worker.find(:first, :conditions => ["id = ?", worker_id])
 		status = Status.find(:first, :conditions => ["id = ?", worker.status_id])
 		privilege = Privilege.find(:first, :conditions => ["id = ?", status.privilege_id])
-		answer = privilege.send(table_name)
+		
+		if table_name=="statuses"
+			answer = privilege.statusez
+		else
+			answer = privilege.send(table_name)
+		end
+			
 		return answer==true 
 	end	
 	

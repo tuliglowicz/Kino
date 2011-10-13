@@ -1,8 +1,14 @@
 <h1>Lista filmów </h1>
 
+<br />
+<%= (link_to 'Dodaj nowy film', new_film_path) %><br><br>
 
-<%= link_to 'Dodaj', new_film_path #if session[:isGA] 
-%><br><br>
+<% if @films.count == 0%>
+
+	<p class="no_films"> Nie dodano jeszcze żadnego filmu. </p>
+
+<% else %>
+<br><br>
 <table>
   <tr>
     <th>Tytuł</th>
@@ -34,7 +40,7 @@
   </tr>
 <% end %>
 </table>
-
+<% end%>
+	
 <br />
 
-<%= link_to 'Dodaj', new_film_path if session[:isGA] %>

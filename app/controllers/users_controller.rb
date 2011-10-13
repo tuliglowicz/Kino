@@ -102,7 +102,7 @@ class UsersController < ApplicationController
     
     @tmp 
     
-    if User.where(:login => login).first
+    if User.where(:login => login).first || Worker.where(:login => login).first
       @tmp = "NO"
     else
       @tmp = "OK"

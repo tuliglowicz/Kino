@@ -1,56 +1,28 @@
 <% if session[:worker] -%>
-	<% if Auth.has_access?(session[:worker].id, "categories") -%>
-		<li><%= link_to("Kategorie Filmów", {:controller => "categories" })%></li>
-	<% end %>
-	<% if Auth.has_access?(session[:worker].id, "cinema_films") -%>
-		<li><%= link_to("Filmy w Kinach", {:controller => "cinema_films" })%></li>
-	<% end %>
-	<% if Auth.has_access?(session[:worker].id, "cinemas") -%>
-		<li><%= link_to("Kina", {:controller => "cinemas" })%></li>
-	<% end %>
-	<% if Auth.has_access?(session[:worker].id, "cities") -%>
-		<li><%= link_to("Miasta", {:controller => "cities" })%></li>
-	<% end %>
-	<% if Auth.has_access?(session[:worker].id, "discount_sorts") -%>
-		<li><%= link_to("Rodzaje zniżek", {:controller => "discount_sorts" })%></li>
-	<% end %>
-	<% if Auth.has_access?(session[:worker].id, "films") -%>
-		<li><%= link_to("Filmy", {:controller => "films" })%></li>
-	<% end %>
-	<% if Auth.has_access?(session[:worker].id, "reservations") -%>
-		<li><%= link_to("Rezerwacje", {:controller => "reservations" })%></li>
-	<% end %>
-	<% if Auth.has_access?(session[:worker].id, "rooms") -%>
-		<li><%= link_to("Sale Filmowe", {:controller => "rooms" })%></li>
-	<% end %>
-	<% if Auth.has_access?(session[:worker].id, "seances") -%>
-		<li><%= link_to("Seanse", {:controller => "seances" })%></li>
-	<% end %>
-	<% if Auth.has_access?(session[:worker].id, "seance_types") -%>
-		<li><%= link_to("Rodzaje seansów", {:controller => "seance_types" })%></li>
-	<% end %>
-	<% if Auth.has_access?(session[:worker].id, "seats") -%>
-		<li><%= link_to("Siedzenia", {:controller => "seats" })%></li>
-	<% end %>
-	<%#do weryfikacji %>
-	<% if Auth.has_access?(session[:worker].id, "statuses") -%>
-		<li><%= link_to("Statusy Pracowników", {:controller => "statuses" })%></li>
-	<% end %>
-	<% if Auth.has_access?(session[:worker].id, "tickets") -%>
-		<li><%= link_to("Bilety", {:controller => "tickets" })%></li>
-	<% end %>
-	<% if Auth.has_access?(session[:worker].id, "ticket_sort_prices") -%>
-		<li><%= link_to("Rodzaje cen biletów", {:controller => "ticket_sort_prices" })%></li>
-	<% end %>
-	<% if Auth.has_access?(session[:worker].id, "ticket_types") -%>
-		<li><%= link_to("Rodzaje biletów", {:controller => "ticket_types" })%></li>
-	<% end %>
-	<% if Auth.has_access?(session[:worker].id, "users") -%>
-		<li><%= link_to("Użytkownicy", {:controller => "users" })%></li>
-	<% end %>
-	<% if Auth.has_access?(session[:worker].id, "workers") -%>
-		<li><%= link_to("Pracownicy", {:controller => "workers" })%></li>
-	<% end %>
+	<li><%= link_to("Kategorie Filmów", {:controller => "categories" })%></li>
+	
+	<li><%= link_to("Filmy w Kinach", {:controller => "cinema_films" })%></li>
+	
+	<li><%= link_to("Kina", {:controller => "cinemas" })%></li>
+	
+	<li><%= link_to("Miasta", {:controller => "cities" })%></li>
+	
+	<li><%= link_to("Rodzaje zniżek", {:controller => "discount_sorts" })%></li>
+	
+	<li><%= link_to("Filmy", {:controller => "films" })%></li>
+	
+	<li><%= link_to("Rezerwacje", {:controller => "reservations" })%></li>
+	<li><%= link_to("Sale Filmowe", {:controller => "rooms" })%></li>
+	<li><%= link_to("Seanse", {:controller => "seances" })%></li>
+	<li><%= link_to("Rodzaje seansów", {:controller => "seance_types" })%></li>
+	<li><%= link_to("Siedzenia", {:controller => "seats" })%></li>
+	<li><%= link_to("Statusy Pracowników", {:controller => "statuses" })%></li>
+	<li><%= link_to("Bilety", {:controller => "tickets" })%></li>
+	<li><%= link_to("Rodzaje cen biletów", {:controller => "ticket_sort_prices" })%></li>
+	<li><%= link_to("Rodzaje biletów", {:controller => "ticket_types" })%></li>
+	<li><%= link_to("Użytkownicy", {:controller => "users" })%></li>
+	<li><%= link_to("Pracownicy", {:controller => "workers" })%></li>
+	
 	
 <% end %>
 <br/><br/>

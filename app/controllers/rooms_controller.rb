@@ -44,11 +44,6 @@ class RoomsController < ApplicationController
   	@room = Room.find(params[:id])
   end
   
-  def myfun
-    @room = Room.find(params[:id])
-    
-    render(:text => 'hello') 
-  end
   # POST /rooms
   # POST /rooms.xml
   def create

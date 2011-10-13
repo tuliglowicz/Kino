@@ -7,7 +7,7 @@ class CreateTickets < ActiveRecord::Migration
       t.int, :user_id
       t.boolean, :cancelled
       t.int, :reservation_id
-      t.float, :price
+      t.bigdecimal, :price
       t.int :worker_id
 
       t.timestamps

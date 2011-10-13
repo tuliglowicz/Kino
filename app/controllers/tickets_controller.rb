@@ -81,4 +81,11 @@ class TicketsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  def get_price_in_postgres_format(price)
+    fractional = price.modulo(1)
+    decimal = price.to_int
+    
+    decimal.to_s + fractional.to_s
+  end
 end

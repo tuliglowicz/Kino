@@ -16,11 +16,19 @@
  
   <div class="field">
     <%= f.label :Seans %><br />
+    	<% if @seances -%>
+    <%= select_tag('ticket[seance_id]', options_for_select([['Wybierz seans', '']] + @seances.collect{|r| [r.cinema_film_id, r.id]}, @ticket.seance_id)) %>
+    <% else -%>
     <%= f.text_field :seance_id %>
+    <% end -%>
   </div>
   <div class="field">
     <%= f.label :Miejsce %><br />
+    	<% if @seats -%>
+    <%= select_tag('ticket[seat_id]', options_for_select([['Wybierz siedzenie', '']] + @seats.collect{|r| [r.room_id, r.id]}, @ticket.seat_id)) %>
+    <% else -%>
     <%= f.text_field :seat_id %>
+    <% end -%>
   </div>
   <div class="field">
     <%= f.label :Użytkownk%><br />

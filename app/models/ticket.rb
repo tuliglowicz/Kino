@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Ticket < ActiveRecord::Base
   belongs_to :seance
   belongs_to :seat

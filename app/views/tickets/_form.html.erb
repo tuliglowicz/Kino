@@ -1,4 +1,6 @@
-<%= form_for(@ticket) do |f| %>
+
+<%= javascript_include_tag 'jquery', 'rails', 'rails.validations' %> 
+<%= form_for @ticket, :validate => true do |f| %>
   <% if @ticket.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@ticket.errors.count, "error") %> prohibited this ticket from being saved:</h2>
@@ -11,10 +13,7 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :id %><br />
-    <%= f.text_field :id %>
-  </div>
+ 
   <div class="field">
     <%= f.label :Seans %><br />
     <%= f.text_field :seance_id %>

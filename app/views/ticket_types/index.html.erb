@@ -42,9 +42,9 @@
     <td><%= @ticket_type_number %></td>
     <% @ticket_type_number = @ticket_type_number + 1%>
     <td><%= ticket_type.name %></td>
-    <td><%= link_to 'Show', ticket_type %></td>
-    <td><%= link_to 'Edit', edit_ticket_type_path(ticket_type) %></td>
-    <td><%= link_to 'Destroy', ticket_type, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Pokaż', ticket_type %></td>
+    <td><%= link_to 'Edytuj', edit_ticket_type_path(ticket_type) %></td>
+    <td><%= link_to 'Usuń', ticket_type, :confirm => 'Czy jesteś pewien by usunąć rodzaj biletu?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

@@ -11,15 +11,14 @@
 
 <% @reservations.each do |reservation| %>
   <tr>
-    <td><%= reservation.id %></td>
     <td><%= reservation.date %></td>
-    <td><%= link_to 'Show', reservation %></td>
-    <td><%= link_to 'Edit', edit_reservation_path(reservation) %></td>
-    <td><%= link_to 'Destroy', reservation, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Pokaż', reservation %></td>
+    <td><%= link_to 'Edytuj', edit_reservation_path(reservation) %></td>
+    <td><%= link_to 'Usuń', reservation, :confirm => 'Czy jesteś pewien?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Reservation', new_reservation_path %>
+<%= link_to 'Nowa Rezerwacja', new_reservation_path %>

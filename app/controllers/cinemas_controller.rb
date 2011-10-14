@@ -81,7 +81,7 @@ class CinemasController < ApplicationController
 		
 	    respond_to do |format|
 	      if @cinema.update_attributes(params[:cinema])
-	        format.html { redirect_to(@cinema, :notice => 'Cinema was successfully updated.') }
+	        format.html { redirect_to(@cinema, :notice => 'Kino zostało pomyślnie zaktualizowane.') }
 	        format.xml  { head :ok }
 	      else
 	        format.html { render :action => "edit" }

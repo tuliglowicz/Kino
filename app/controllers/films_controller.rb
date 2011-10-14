@@ -51,7 +51,7 @@ class FilmsController < ApplicationController
 
     respond_to do |format|
       if @film.save
-        format.html { redirect_to(@film, :notice => 'Film was successfully created.') }
+        format.html { redirect_to(@film, :notice => 'Film został pomyślnie dodany.') }
         format.xml  { render :xml => @film, :status => :created, :location => @film }
       else
         format.html { render :action => "new" }
@@ -66,7 +66,7 @@ class FilmsController < ApplicationController
 	@film = Film.find(params[:id])
     respond_to do |format|
       if @film.update_attributes(params[:film])
-        format.html { redirect_to(@film, :notice => 'Film was successfully updated.') }
+        format.html { redirect_to(@film, :notice => 'Film wzostał pomyślnie zaktualizowany') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

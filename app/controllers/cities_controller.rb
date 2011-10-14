@@ -66,7 +66,7 @@ class CitiesController < ApplicationController
 	@city = City.find(params[:id])
     respond_to do |format|
       if @city.update_attributes(params[:city])
-        format.html { redirect_to(@city, :notice => 'City was successfully updated.') }
+        format.html { redirect_to(@city, :notice => 'Miasto zostało pomyślnie zaktualizowane.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

@@ -3,11 +3,19 @@
 one:
   id: 
   cinema_film_id: 
-  date_from: 
-  time_from: 2011-05-02 05:01:54
+  room_id: 
+  date_from: 2011-10-13
+  time_from: 2011-10-13 21:00:18
+  checked: false
+  seance_type_id: 
+  discount_sort_id: 
 
 two:
   id: 
   cinema_film_id: 
-  date_from: 
-  time_from: 2011-05-02 05:01:54
+  room_id: 
+  date_from: 2011-10-13
+  time_from: 2011-10-13 21:00:18
+  checked: false
+  seance_type_id: 
+  discount_sort_id: 

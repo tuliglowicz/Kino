@@ -15,7 +15,7 @@
 </p>
 
 <p>
-  <b>Sala:</b>
+  <b>Numwer sali:</b>
   <%= @seance.room.number if @seance.room %>
 </p>
 
@@ -27,6 +27,18 @@
 <p>
   <b>Godzina:</b>
   <%= @seance.time_from %>
+</p>
+<p>
+  <b>Sprawdzony:</b>
+  <%= @seance.checked %>
+</p>
+<p>
+  <b>Typ seansu:</b>
+  <%= @seance.seance_type.name %>
+</p>
+<p>
+  <b>Zniżka:</b>
+  <%= @seance.discount_sort_id %>
 </p>
 
 

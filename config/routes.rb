@@ -1,6 +1,8 @@
 Kino::Application.routes.draw do
 	
 	
+  resources :seances
+
   resources :tickets
 
 	#Cities

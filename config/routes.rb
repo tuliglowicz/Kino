@@ -1,9 +1,4 @@
 Kino::Application.routes.draw do
-	
-	
-  resources :seances
-
-  resources :tickets
 
 	#Cities
 	match '/private/cities' => 'cities#index', :as => 'cities'
@@ -16,32 +11,21 @@ Kino::Application.routes.draw do
 	
 	# SeanceTypes
 	match "/seance_types/name_availability" => "seance_types#name_availability"
-	
+
+  resources :seances
+  resources :tickets
   resources :discount_sorts
-
   resources :ticket_types
-
   resources :seance_types
-
   resources :users
-
   resources :ticket_types
-
   resources :reservations
-
   resources :ticket_sort_prices
-
   resources :tickets
   resources :users
   resources :discounts
-  resources :prices
-  resources :seats do
-        member do
-      get "new1"
-    end
-  end
+  resources :prices  
   resources :rooms
-
   resources :cinema_films
   resources :workers
   resources :films
@@ -50,7 +34,12 @@ Kino::Application.routes.draw do
   resources :cinemas
   resources :statuses
   resources :seances
-
+  resources :seats do
+        member do
+  	    	get "new1"
+    	end
+  end
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -100,7 +89,8 @@ Kino::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-   root :to => "public#index"
+   #root :to => "public#index"
+   match "/" => "public#index"
 
   # See how all your routes lay out with "rake routes"
 

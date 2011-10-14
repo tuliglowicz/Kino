@@ -89,12 +89,12 @@ class PrivateController < ApplicationController
 			else
 				session[:user] = logged_in_user
 				logger.debug 'zalogowany jako user'
-				redirect_to(:controller => "public", :action => "index") # do poprawy później
+				redirect_to(:controller => "public", :action => "login") # do poprawy później
 			end
 			session[:cinema_id] = 1
 		else
 			flash[:notice] = "Błędny login i/albo hasło!"
-			redirect_to(:controller => "public", :action => "index") # jak wrócić do strony sprzed próby logowania ? bez history.go(-1)
+			redirect_to(:controller => "public", :action => "login") # jak wrócić do strony sprzed próby logowania ? bez history.go(-1)
 		end
 	end
 

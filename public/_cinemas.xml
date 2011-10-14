@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cinemas type="array">
+  <cinema>
+    <address>ul. F. Chopina 22</address>
+    <name>Elbląg</name>
+    <created-at type="datetime" nil="true"/>
+    <updated-at type="datetime" nil="true"/>
+    <id type="integer">1</id>
+    <phone type="integer">64829405</phone>
+    <city-id type="integer">1</city-id>
+  </cinema>
+  <cinema>
+    <address>ul. F. Dzierżyńskiego 45</address>
+    <name>Częstochowa</name>
+    <created-at type="datetime" nil="true"/>
+    <updated-at type="datetime" nil="true"/>
+    <id type="integer">2</id>
+    <phone type="integer">875847849</phone>
+    <city-id type="integer">2</city-id>
+  </cinema>
+  <cinema>
+    <address>ul. Armii Czerwonej 98</address>
+    <name>Kraków Nowa Huta</name>
+    <created-at type="datetime" nil="true"/>
+    <updated-at type="datetime" nil="true"/>
+    <id type="integer">3</id>
+    <phone type="integer">38493843</phone>
+    <city-id type="integer">3</city-id>
+  </cinema>
+  <cinema>
+    <address>ul. Bursztynowa 15</address>
+    <name>Sopot</name>
+    <created-at type="datetime" nil="true"/>
+    <updated-at type="datetime" nil="true"/>
+    <id type="integer">4</id>
+    <phone type="integer">84848753</phone>
+    <city-id type="integer">4</city-id>
+  </cinema>
+  <cinema>
+    <address>ul. K. Marksa 13</address>
+    <name>Warszawa Targówek</name>
+    <created-at type="datetime" nil="true"/>
+    <updated-at type="datetime" nil="true"/>
+    <id type="integer">5</id>
+    <phone type="integer">894589485</phone>
+    <city-id type="integer">5</city-id>
+  </cinema>
+  <cinema>
+    <address>ul. Pstrowskiego 20</address>
+    <name>Wrocław Renoma</name>
+    <created-at type="datetime" nil="true"/>
+    <updated-at type="datetime" nil="true"/>
+    <id type="integer">6</id>
+    <phone type="integer">438478349</phone>
+    <city-id type="integer">6</city-id>
+  </cinema>
+</cinemas>

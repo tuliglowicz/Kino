@@ -98,11 +98,11 @@ body {background: #000 url('/images/pic/body_bg.jpg') repeat-x 0 0;}
      
 <div id="page" class="layout_uniwersalny">
 	<div class="Ww2" style="text-align: right;">
-		<a href="/public/login">Login</a> | <a href="/public/register">Rejestracja</a>
+		<a href="/public/login">Login</a> | <a href="<%= new_user_path %>">Rejestracja</a>
 	</div>      
 	<div id="sWlbg" style="paddting-top: -20px;">
 		<div class="Ww2">
-			<map name="winieta"><area coords="0,0,142,39" shape="rect" href="http://kinoplex.gazeta.pl/vod/0,0.html"></map>
+			<map name="winieta"><area coords="0,0,142,39" shape="rect" href="/public/index"></map>
 			<img class="Wimg3" src="/images/pic/tlo.png" alt="" usemap="#winieta" height="60" width="234" />
 			<div class="Wseohtm"><h1>Kino na miarę Twoich oczekiwań!</h1></div>
 		</div>
@@ -112,7 +112,7 @@ body {background: #000 url('/images/pic/body_bg.jpg') repeat-x 0 0;}
 	<div id="navH">
 		<ul class="p0">
 			<li id="e1" class=" ">
-				<a href="/" title="Strona Główna">Home</a>
+				<a href="/public/index" title="Strona Główna">Home</a>
 			</li>
 			<li id="e2" class=" ">
 				<a href="/public/repertuar" title="Wszystkie Filmy ">Repertuar</a>
@@ -150,7 +150,7 @@ body {background: #000 url('/images/pic/body_bg.jpg') repeat-x 0 0;}
 		<a class="next active" href="#"></a>
 	</div>- UZREditor -->
 	
-	<table class="Ww2" align="center" valign="middle" style="height:400px; overflow: auto; text-align: right;"><tr><td align="right" valign="middle">
+	<table class="Ww2" align="center" valign="middle" style="height:400px; overflow: auto; text-align: right;"><tr><td align="right" valign="top">
 		<span style='color:green'><%= flash[:notice] if flash[:notice]%></span><br>
 		<center id="preloader_podluzny" style="display:none;">
 			Ładowanie...<br/>
@@ -168,7 +168,7 @@ body {background: #000 url('/images/pic/body_bg.jpg') repeat-x 0 0;}
 	      <li class="copy">
 	      	<a href="#"  rel="nofollow">Copyright</a> &copy; <a href="#" rel="nofollow">CINEMATOHOLIX SA</a>
 	      </li>
-	      <li class="f"><a href="http://www.gazeta.pl/onas/" rel="nofollow">O nas</a></li>
+	      <li class="f"><a href="#" rel="nofollow">O nas</a></li>
 	      <li><a href="" rel="nofollow">Staże u nas</a></li>
 	      <li><a href="" rel="nofollow">Reklama</a></li>
 	      <li><a href="" rel="nofollow">Prywatność</a></li>
@@ -177,6 +177,103 @@ body {background: #000 url('/images/pic/body_bg.jpg') repeat-x 0 0;}
 	    </ul>
 	  </div>
 	 </div>
+
+<xml id="cinemas_xml" style='display:none'>
+	<cinemas type="array">
+	  <cinema>
+	    <address>ul. F. Chopina 22</address>
+	    <name>Elbląg</name>
+	    <created-at type="datetime" nil="true"/>
+	    <updated-at type="datetime" nil="true"/>
+	    <id type="integer">1</id>
+	    <phone type="integer">64829405</phone>
+	    <city-id type="integer">1</city-id>
+	  </cinema>
+	  <cinema>
+	    <address>ul. F. Dzierżyńskiego 45</address>
+	    <name>Częstochowa</name>
+	    <created-at type="datetime" nil="true"/>
+	    <updated-at type="datetime" nil="true"/>
+	    <id type="integer">2</id>
+	    <phone type="integer">875847849</phone>
+	    <city-id type="integer">2</city-id>
+	  </cinema>
+	  <cinema>
+	    <address>ul. Armii Czerwonej 98</address>
+	    <name>Kraków Nowa Huta</name>
+	    <created-at type="datetime" nil="true"/>
+	    <updated-at type="datetime" nil="true"/>
+	    <id type="integer">3</id>
+	    <phone type="integer">38493843</phone>
+	    <city-id type="integer">3</city-id>
+	  </cinema>
+	  <cinema>
+	    <address>ul. Bursztynowa 15</address>
+	    <name>Sopot</name>
+	    <created-at type="datetime" nil="true"/>
+	    <updated-at type="datetime" nil="true"/>
+	    <id type="integer">4</id>
+	    <phone type="integer">84848753</phone>
+	    <city-id type="integer">4</city-id>
+	  </cinema>
+	  <cinema>
+	    <address>ul. K. Marksa 13</address>
+	    <name>Warszawa Targówek</name>
+	    <created-at type="datetime" nil="true"/>
+	    <updated-at type="datetime" nil="true"/>
+	    <id type="integer">5</id>
+	    <phone type="integer">894589485</phone>
+	    <city-id type="integer">5</city-id>
+	  </cinema>
+	  <cinema>
+	    <address>ul. Pstrowskiego 20</address>
+	    <name>Wrocław Renoma</name>
+	    <created-at type="datetime" nil="true"/>
+	    <updated-at type="datetime" nil="true"/>
+	    <id type="integer">6</id>
+	    <phone type="integer">438478349</phone>
+	    <city-id type="integer">6</city-id>
+	  </cinema>
+	</cinemas>
+</xml>
+
+<div id="giveMeCinemaId" align="left">
+</div>
+
+<script>
+function submitParams(){}
+
+$j("#cinemas_xml").find("cinema").each(function(){
+	var link = "<a href='"+document.location+"' class='repertuarTime' onClick=$j.cookie('cinema_id','"+$j(this).find("id").text()+"',{expires:7});$j('#giveMeCinemaId').dialog('close'); style='cursor:pointer'>"+$j(this).find("name").text()+"</a>"
+	$j("#giveMeCinemaId")[0].innerHTML += link+" | "
+})
+
+//javascript:alert(document.cookie);
+
+$j("#giveMeCinemaId").dialog({
+	autoOpen: false,
+	closeOnEscape: true,
+	modal: true,
+	draggable: false,
+	closeText: 'hide',
+	width: 350
+}).find("input").button().parent().parent().parent().css("opacity", "0").animate({"opacity": "1"}, 1250)
+
+
+if(!$j.cookie('cinema_id')){
+		$j("#giveMeParams_width_height").dialog("option", "title", "Opcje dla: "+name)
+		.dialog("option", "buttons", [{text: "OK", click: submitParams},{text: "Cancel", click: function() {
+				$j(this).dialog("close"); 
+				}}])
+		.dialog( "open" );
+		
+		$j("div.ui-dialog-buttonset button").css("font-size", "12px");
+}
+
+function askForCinema(){
+	$j("#giveMeCinemaId").dialog("open");
+}
+</script>
 
 </body>
 </html>

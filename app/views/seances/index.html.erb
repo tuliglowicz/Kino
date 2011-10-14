@@ -1,16 +1,19 @@
+
 <h1>Lista seansów</h1>
 <%= link_to 'Dodaj', new_seance_path %><br><br>
 
 <% if @seances -%>
 	<table>
 	  <tr>
-	    <th>Id</th>
 	    <th>Tytuł Filmu</th>
 	    <th>Nazwa Kina</th>
 	    <th>Sala</th>
 	    <th>Data</th>
 	    <th>Godzina</th>
-	    <th></th>
+	    <th>Sprawdzony</th>
+	    <th>Typ seansu</th>
+	    <th>Zniżka</th>
+	   <th></th>
 	  </tr>
 	
 	
@@ -22,6 +25,10 @@
 	    <td align="center"><%= seance.room.number if seance.room %>
 	    <td><%= seance.date_from %></td>
 	    <td align="center"><%= seance.time_from.strftime("%H:%M") %></td>
+	    <td align="center"><%= seance.checked %></td>
+	    <td align="center"><%= seance.seance_type.name %></td>
+	    <td align="center"><%= #seance.discount_sort.ticket_sort_price.price if seance.discount_sort and seance.discount_sort.ticket_sort_price 
+	    %></td>
 	    <td><%= link_to 'Pokaż', seance %>
 	    	<%= link_to 'Edytuj', edit_seance_path(seance) %>
 	    	<%= link_to 'Usuń', seance, :confirm => 'Czy na pewno chcesz usunąć ten rekord?', :method => :delete %></td>

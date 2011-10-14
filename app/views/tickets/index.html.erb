@@ -27,7 +27,7 @@
 
 <% @tickets.each do |ticket| %>
   <tr>
-    <td><%= ticket.seance_id %></td>
+    <td align="center"><%= ticket.seance.cinema_film_id if ticket.seance %></td>
     <td><%= ticket.seat_id %></td>
     <td><%= ticket.user_id %></td>
     <td><%= ticket.cancelled %></td>

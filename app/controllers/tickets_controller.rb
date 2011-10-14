@@ -2,6 +2,8 @@
 class TicketsController < ApplicationController
   # GET /tickets
   # GET /tickets.xml
+  layout 'admin'
+  
   def index
     @tickets = Ticket.all
 

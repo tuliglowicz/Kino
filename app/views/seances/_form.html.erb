@@ -1,4 +1,5 @@
-<%= form_for(@seance) do |f| %>
+<%= javascript_include_tag 'jquery', 'rails', 'rails.validations' %> 
+<%= form_for @seance, :validate => true do |f| %>
   <% if @seance.errors.any? %>
     <div id="error_explanation">
       <h2>Zaszły następujące nieprawidłowości:</h2>
@@ -14,7 +15,7 @@
 
 
   <div class="field">
-    <%= f.label :cinema_film_id %><br />
+    <%= f.label :"Film w kinie" %><br />
     <% if @cf -%>
     <%= select_tag('seance[cinema_film_id]', options_for_select([['Wybierz kino/film', '']] + @cf.collect{|c| [c.cinema.name + " / " + c.film.title, c.id]}, @seance.cinema_film_id)) %>
     <% else -%>
@@ -22,7 +23,7 @@
     <% end -%>
   </div>
     <div class="field">
-    <%= f.label :room_id %><br />
+    <%= f.label :"Numer sali" %><br />
     <% if @rooms -%>
     <%= select_tag('seance[room_id]', options_for_select([['Wybierz salę', '']] + @rooms.collect{|r| [r.number, r.id]}, @seance.room_id)) %>
     <% else -%>
@@ -30,14 +31,31 @@
     <% end -%>
   </div>
   <div class="field">
-    <%= f.label :date_from %><br />
+    <%= f.label :"Data seansu" %><br />
     <%= f.text_field :date_from, :class => "datePick" %>(format: rrrr-mm-dd)
   </div>
   <div class="field">
-    <%= f.label :time_from %><br />
+    <%= f.label :"Godzina seansu" %><br />
     <%= f.time_select :time_from,  :minute_step => 5 %>
   </div>
+  <div class="field">
+    <%= f.label :Sprawdzony %><br />
+    <%= f.check_box :checked %>
+  </div>
+  <div class="field">
+  	<%= f.label :"Typ seansu" %><br />
+    <% if @seance_types -%>
+    <%= select_tag('seance[seance_type_id]', options_for_select([['Wybierz kino/film', '']] + @seance_types.collect{|c| [c.ticket_sort_price.price , c.id]}, @seance.seance_type_id)) %>
+    <% else -%>
+    <%= f.text_field :cinema_film_id %>
+    <% end -%>
+    
+  </div>
+  <div class="field">
+    <%= f.label :Zniżka %><br />
+    <%= f.text_field :discount_sort_id %>
+  </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Dodaj seans"%>
   </div>
 <% end %>

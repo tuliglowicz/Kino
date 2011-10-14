@@ -1,4 +1,6 @@
-<%= form_for(@film) do |f| %>
+<%= javascript_include_tag 'jquery', 'rails', 'rails.validations' %> 
+
+<%= form_for @film, :validate => true do |f| %>
   <% if @film.errors.any? %>
     <div id="error_explanation">
       <h2>Zaszły następujące nieprawidłowości:</h2>

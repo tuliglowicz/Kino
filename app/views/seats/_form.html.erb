@@ -1,4 +1,6 @@
-<%= form_for(@seat) do |f| %>
+<%= javascript_include_tag 'jquery', 'rails', 'rails.validations' %> 
+
+<%= form_for @seat, :validate => true do |f| %>
   <% if @seat.errors.any? %>
     <div id="error_explanation">
       <h2>Zaszły następujące nieprawidłowości:</h2>
@@ -11,11 +13,12 @@
     </div>
   <% end %>
 
-  
   <div class="field">
     <%= f.label :"Id Sali" %><br />
     <%= f.text_field :room_id , :value => @seat.room.id %>
+    
   </div>
+  
   <div class="field">
     <%= f.label :Rząd %><br />
     <%= f.text_field :row %>

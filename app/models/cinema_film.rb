@@ -8,7 +8,7 @@ class CinemaFilm < ActiveRecord::Base
 	
 	default_scope order('date_from DESC')
 	
-	validates_presence_of :cinema_id, :message => ' Pole cinema_id nie może być puste (Not NULL). '
-	validates_presence_of :film_id, :message => ' Pole film_id nie może być puste (Not NULL). '
-	validates_presence_of :date_from, :message => ' Pole date_from nie może być puste (Not NULL). '
+	validates_presence_of :cinema_id, :message => ' Pole Kino nie może być puste. '
+	validates_presence_of :film_id, :message => ' Pole Film nie może być puste. '
+	validates_presence_of :date_from, :message => ' Pole "Data premiery" nie może być puste. '
 end

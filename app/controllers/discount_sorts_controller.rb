@@ -51,7 +51,7 @@ class DiscountSortsController < ApplicationController
 
     respond_to do |format|
       if @discount_sort.save
-        format.html { redirect_to(@discount_sort, :notice => 'Discount sort was successfully created.') }
+        format.html { redirect_to(@discount_sort, :notice => 'Rodzaj zniżek został pomyślnie dodany.') }
         format.xml  { render :xml => @discount_sort, :status => :created, :location => @discount_sort }
       else
         format.html { render :action => "new" }
@@ -67,7 +67,7 @@ class DiscountSortsController < ApplicationController
 
     respond_to do |format|
       if @discount_sort.update_attributes(params[:discount_sort])
-        format.html { redirect_to(@discount_sort, :notice => 'Discount sort was successfully updated.') }
+        format.html { redirect_to(@discount_sort, :notice => 'Rodzaj zniżek został pomyślnie zaktualizowany') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

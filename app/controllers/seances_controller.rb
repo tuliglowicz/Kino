@@ -89,7 +89,7 @@ class SeancesController < ApplicationController
   if @seance
       respond_to do |format|
         if @seance.save
-          format.html { redirect_to(@seance, :notice => 'Seance was successfully created.') }
+          format.html { redirect_to(@seance, :notice => 'Seans został pomyślnie dodany.') }
           format.xml  { render :xml => @seance, :status => :created, :location => @seance }
         else
           format.html { render :action => "new" }
@@ -129,7 +129,7 @@ class SeancesController < ApplicationController
   if @seance    
       respond_to do |format|
         if @seance.update_attributes(params[:seance])
-          format.html { redirect_to(@seance, :notice => 'Seance was successfully updated.') }
+          format.html { redirect_to(@seance, :notice => 'Seans został pomyślnie zaktualizowany') }
           format.xml  { head :ok }
         else
           format.html { render :action => "edit" }

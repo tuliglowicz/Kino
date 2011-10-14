@@ -51,7 +51,7 @@ class SeatsController < ApplicationController
 
     respond_to do |format|
       if @seat.save
-        format.html { redirect_to(@seat, :notice => 'Seat was successfully created.') }
+        format.html { redirect_to(@seat, :notice => 'Miejsce zostało dodane.') }
         format.xml  { render :xml => @seat, :status => :created, :location => @seat }
       else
         format.html { render :action => "new" }
@@ -67,7 +67,7 @@ class SeatsController < ApplicationController
 
     respond_to do |format|
       if @seat.update_attributes(params[:seat])
-        format.html { redirect_to(@seat, :notice => 'Seat was successfully updated.') }
+        format.html { redirect_to(@seat, :notice => 'Miejsce zostało zaktualizowanne.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

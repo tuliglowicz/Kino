@@ -83,7 +83,7 @@ class CinemaFilmsController < ApplicationController
 		if @cinema_film
 			respond_to do |format|
 		      if @cinema_film.save
-		        format.html { redirect_to(@cinema_film, :notice => 'Cinema film was successfully created.') }
+		        format.html { redirect_to(@cinema_film, :notice => 'Film w kinie został pomyślnie dodany..') }
 		        format.xml  { render :xml => @cinema_film, :status => :created, :location => @cinema_film }
 		      else
 		        format.html { render :action => "new" }
@@ -114,7 +114,7 @@ class CinemaFilmsController < ApplicationController
 	if @cinema_film
 	    respond_to do |format|
 	      if @cinema_film.update_attributes(params[:cinema_film])
-	        format.html { redirect_to(@cinema_film, :notice => 'Cinema film was successfully updated.') }
+	        format.html { redirect_to(@cinema_film, :notice => 'Film w kinie został pomyślnie zaktualizowany.') }
 	        format.xml  { head :ok }
 	      else
 	        format.html { render :action => "edit" }

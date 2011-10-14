@@ -68,7 +68,7 @@ class SeanceTypesController < ApplicationController
 
     respond_to do |format|
       if @seance_type.update_attributes(params[:seance_type])
-        format.html { redirect_to(@seance_type, :notice => 'Seances type was successfully updated.') }
+        format.html { redirect_to(@seance_type, :notice => 'Rodzaj seansu został pomyślnie zaktualizowany.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

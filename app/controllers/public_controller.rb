@@ -12,13 +12,17 @@ class PublicController < ApplicationController
 	end
 	
 	def generator
+		if params[:xml]
+			
+		end
+		
 	end
 	
 	def register
 	end
 
 	def index
-		redirect_to "/public/index?id=1" unless params[:id]
+		redirect_to "/public/index", :notice => " " unless flash[:notice]
 	end
 	
 	def kina

@@ -6,8 +6,6 @@ table {font-size:12;}
 
 IMG {border:0;}
 
-a, a:visited {font-size:12; border:0;text-decoration:underline;}
-a:hover {color:red;}
 
 .stopka, a.stopka,a.stopka:active, a.stopka:visited { font-size:10; text-decoration:underline;}
 a.stopka:hover{ font-size:10; text-decoration:none; color:black}

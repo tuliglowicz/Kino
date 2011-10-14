@@ -36,11 +36,13 @@ class SeancesController < ApplicationController
     if session[:isGA]
       @cf = CinemaFilm.find(:all, :order => 'cinema_id ASC')
       @rooms = Room.where(:cinema_id => session[:worker].cinema_id) #wybierz kino!
+      
     else      
       @cf = CinemaFilm.find(:all, :order => 'cinema_id ASC', :conditions => "cinema_id = "+session[:worker].cinema_id.to_s)
       @rooms = Room.where(:cinema_id => session[:worker].cinema_id)
-  end
-  
+      
+    end
+    #@seance_types = SeanceType.find(:all)
     @seance = Seance.new
 
     respond_to do |format|
@@ -73,10 +75,12 @@ class SeancesController < ApplicationController
     if session[:isGA]
       @cf = CinemaFilm.find(:all, :order => 'cinema_id ASC')
       @rooms = Room.find(:all)
+      #@seance_types = SeanceType.find(:all)
     else
     if params[:seance].cinema_film.cinema.cinema_id == session[:worker].cinema_id
       @cf = CinemaFilm.find(:all, :order => 'cinema_id ASC', :conditions => "cinema_id = " + session[:worker].cinema_id.to_s)
         @rooms = Room.find(:all, :conditions => "cinema_id = " + session[:worker].cinema_id.to_s)
+        #@seance_types = SeanceType.find(:all)
     else
       @seance = nil
     end

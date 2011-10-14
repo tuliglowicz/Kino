@@ -3,8 +3,12 @@
 <% end %>
 
 <div id="loadTarget">
-	<% if cookies[:cinema_id] %>
-		Kino: <SPAN class="title"><%= @cinema.name if @cinema %><br/>
+	<% unless true %>
+		<script>
+			askForCinema();
+		</script>
+	<% else -%>	
+		Kino: <SPAN class="title"><%= @cinema.name if @cinema %></span> &nbsp; &nbsp; <a onClick="askForCinema()" style='cursor:pointer;'>zmień kino</a><br/>
 			Dzisiaj i przyszly tydzien:
 			<% 	i=0
 				date = Date.today -%>
@@ -19,13 +23,16 @@
 					i = i+1	-%>
 			<% end -%> &nbsp;| 
 	
-		<% if @films and @films.size > 0 -%>
+		<% unless @films and @films.size > 0 -%>
+			<br/><br/>
+			W wybranym przez Ciebie kinie nie sa grane zadne filmy tego dnia.
+		<% else -%>	
 			<table align=center border=1>
 			
 			<% i=0 -%>
 			<% for film in @films do-%>
 			<tr>
-				<td width=450px>
+				<td width="450px" valign="top">
 				<%= film.title + "(" + film.year.to_s + ")" %> &nbsp; 
 				<%= link_to("Trailer", {}, :target => "_blank", :href => film.trailer, :class=>"movieTitle") if film.trailer%>
 				<%= image_tag("film_posters"+film.poster, :size => "75x110", :align => "left") %><br/>
@@ -34,7 +41,7 @@
 				<strong>Czas trwania:</strong> <%= film.length %><br/>
 				<strong>Opis:</strong><br/> <%= film.description %> 
 				</td>
-				<td>
+				<td valign="top">
 					<% if @s -%>
 						Kup bilet na godz.:<br/>
 						<% for seance in @s do-%>
@@ -55,22 +62,18 @@
 			</tr>	
 			<% end -%>
 			</table>
-		<% else -%>	
-		<br/><br/>
-		W wybranym przez Ciebie kinie nie sa grane zadne filmy tego dnia.
 		<% end -%>
-		
-	<% else -%>	
-	<br/><br/>Wybierz interesujace Cie kino z listy powyzej.
 	<% end -%>
 	
 	<%# unless params[:ajax] -%>
 	<script>
 	//alert($j.cookie('cinema_id'))
-	$j("a.repertuarTime").click(function(){
+	
+	
+	$j("a.repertuarTime").live('click', function(){
 					$j("#loadTarget").animate({"opacity": "0"}, 250);
 					$j("#preloader_podluzny").show();
-					var page = $j.ajax({
+					page = $j.ajax({
 								url: this.href,
 							   type: "GET",
 							   data: "cinema_id="+$j.cookie('cinema_id'),

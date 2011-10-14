@@ -18,6 +18,7 @@ class PublicController < ApplicationController
 	end
 
 	def index
+		redirect_to "/public/index?" unless params
 	end
 	
 	def kina

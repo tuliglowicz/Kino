@@ -244,11 +244,12 @@ body {background: #000 url('/images/pic/body_bg.jpg') repeat-x 0 0;}
 function submitParams(){}
 
 $j("#cinemas_xml").find("cinema").each(function(){
-	var link = "<a href='"+document.location+"' class='repertuarTime' onClick=$j.cookie('cinema_id','"+$j(this).find("id").text()+"',{expires:7});$j('#giveMeCinemaId').dialog('close'); style='cursor:pointer'>"+$j(this).find("name").text()+"</a>"
+	var link = "<a href='"+document.location+"' class='repertuarTime' onClick=$j.cookie('cinema_id','"+$j(this).find("id").text()+"',{expires:7});$j('#giveMeCinemaId').dialog('close'); style='cursor:pointer;color:#063780;'>"+$j(this).find("name").text()+"</a>"
 	$j("#giveMeCinemaId")[0].innerHTML += link+" | "
 })
 
-//javascript:alert(document.cookie);
+//alert(document.cookie);
+//alert($j.cookie('cinema_id'));
 
 $j("#giveMeCinemaId").dialog({
 	autoOpen: false,
@@ -256,19 +257,10 @@ $j("#giveMeCinemaId").dialog({
 	modal: true,
 	draggable: false,
 	closeText: 'hide',
-	width: 350
+	width: 350,
+	title: "Wybierz swoje kino"
 }).find("input").button().parent().parent().parent().css("opacity", "0").animate({"opacity": "1"}, 1250)
 
-
-if(!$j.cookie('cinema_id')){
-		$j("#giveMeParams_width_height").dialog("option", "title", "Opcje dla: "+name)
-		.dialog("option", "buttons", [{text: "OK", click: submitParams},{text: "Cancel", click: function() {
-				$j(this).dialog("close"); 
-				}}])
-		.dialog( "open" );
-		
-		$j("div.ui-dialog-buttonset button").css("font-size", "12px");
-}
 
 function askForCinema(){
 	$j("#giveMeCinemaId").dialog("open");

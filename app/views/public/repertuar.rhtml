@@ -3,12 +3,12 @@
 <% end %>
 
 <div id="loadTarget">
-	<% unless true %>
+		Kino: <SPAN class="title"><%= @cinema.name if @cinema %></span> &nbsp; &nbsp; <a onClick="askForCinema()" style='cursor:pointer;'>zmień kino</a><br/>
+		<% unless cookies[:cinema_id] %>
 		<script>
 			askForCinema();
 		</script>
-	<% else -%>	
-		Kino: <SPAN class="title"><%= @cinema.name if @cinema %></span> &nbsp; &nbsp; <a onClick="askForCinema()" style='cursor:pointer;'>zmień kino</a><br/>
+		<% else -%>	
 			Dzisiaj i przyszly tydzien:
 			<% 	i=0
 				date = Date.today -%>
@@ -22,7 +22,7 @@
 				<% date = date.tomorrow 
 					i = i+1	-%>
 			<% end -%> &nbsp;| 
-	
+		
 		<% unless @films and @films.size > 0 -%>
 			<br/><br/>
 			W wybranym przez Ciebie kinie nie sa grane zadne filmy tego dnia.

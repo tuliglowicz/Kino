@@ -32,7 +32,7 @@ class SeatsController < ApplicationController
   def new1
     @seat = Seat.new
     @seat.room = Room.find(params[:id])
-
+    
     respond_to do |format|
       format.html # new1.html.erb
       format.xml  { render :xml => @seat }

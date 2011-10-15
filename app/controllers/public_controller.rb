@@ -13,6 +13,8 @@ class PublicController < ApplicationController
 	
 	def generator
 		if params[:xml]
+			# dodaj je jakos do bazy
+			xml = params[:xml]
 			
 		end
 		
@@ -21,8 +23,11 @@ class PublicController < ApplicationController
 	def register
 	end
 
+	def preindex
+		redirect_to "/public/index"
+	end
+	
 	def index
-		redirect_to "/public/index", :notice => " " unless flash[:notice]
 	end
 	
 	def kina

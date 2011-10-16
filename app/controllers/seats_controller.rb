@@ -8,8 +8,8 @@ class SeatsController < ApplicationController
   # GET /seats
   # GET /seats.xml
   def index
-    @seats = Seat.all
-
+    #@seats = Seat.all
+    @seats = Seat.paginate( :page => params[:page], :per_page => 15)
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @seats }

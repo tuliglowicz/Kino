@@ -39,6 +39,5 @@
 
 </table>
 
-<br />
-
-<%= link_to 'Dodaj', new_worker_path %>
+<br></br>
+<%= will_paginate @workers,  { :previous_label => 'Wstecz', :next_label => 'Dalej' } %>

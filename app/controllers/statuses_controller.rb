@@ -9,8 +9,8 @@ class StatusesController < ApplicationController
   # GET /statuses
   # GET /statuses.xml  	
   def index
-    @statuses = Status.all
-
+    #@statuses = Status.all
+    @statuses = Status.paginate( :page => params[:page], :per_page => 15)
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @statuses }

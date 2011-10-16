@@ -8,8 +8,8 @@ class UsersController < ApplicationController
   #before_filter :auth_exept_show, :except => ["show", "index", "edit", "update", "new", "create", "is_login_available"]
   
   def index
-    @users = User.all
-
+    #@users = User.all
+    @users = User.paginate( :page => params[:page], :per_page => 12)
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @users }

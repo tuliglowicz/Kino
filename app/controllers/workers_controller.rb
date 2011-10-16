@@ -12,9 +12,11 @@ class WorkersController < ApplicationController
   # GET /workers.xml
   def index
   	if session[:isGA]
-  		@workers = Worker.all
+  		#@workers = Worker.all
+  		@workers = Worker.paginate( :page => params[:page], :per_page => 12)
 	else
-    	@workers = Worker.where(:cinema_id => session[:worker].cinema_id)
+    	#@workers = Worker.where(:cinema_id => session[:worker].cinema_id)
+    	@workers = Worker.paginate(:conditions => ["cinema_id = ?","#{session[:worker].cinema_id}"], :page => params[:page], :per_page => 12)
 	end
 	
     respond_to do |format|

@@ -5,8 +5,8 @@ class TicketsController < ApplicationController
   layout 'admin'
   
   def index
-    @tickets = Ticket.all
-
+    #@tickets = Ticket.all
+    @tickets = Ticket.paginate( :page => params[:page], :per_page => 7)
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @tickets }

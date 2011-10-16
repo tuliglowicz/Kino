@@ -4,6 +4,7 @@ class WorkersController < ApplicationController
 	
 	layout 'admin'
 	
+	protect_from_forgery :except => "login_availability"
 	before_filter :auth_access, :except => ["login_availability"]
 	before_filter :auth, :except => ["show", "index", "edit", "new", "update", "login_availability"]
 		

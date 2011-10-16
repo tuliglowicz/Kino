@@ -4,7 +4,8 @@ class SeanceTypesController < ApplicationController
   # GET /seance_types.xml
   
   layout 'admin'
-  
+    
+  protect_from_forgery :except => "name_availability"
   #before_filter :auth,  :except => ["show", "index", "edit", "new", "update", 'create']
   
   def index

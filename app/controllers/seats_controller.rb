@@ -54,7 +54,7 @@ class SeatsController < ApplicationController
         format.html { redirect_to(@seat, :notice => 'Miejsce zostało dodane.') }
         format.xml  { render :xml => @seat, :status => :created, :location => @seat }
       else
-        format.html { render :action => "new" }
+        format.html { render :action => "new1" }
         format.xml  { render :xml => @seat.errors, :status => :unprocessable_entity }
       end
     end

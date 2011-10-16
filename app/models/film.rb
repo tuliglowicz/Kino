@@ -15,5 +15,4 @@ class Film < ActiveRecord::Base
 	validates_length_of :poster, :maximum => 50, :message => 'Pole Poster zawierąć mniej niż 50 znaków'
 	validates_numericality_of :year, :only_integer => true, :greater_than => 1999, :less_than_or_equal_to => Time.now.year + 1, :message => " Pole Rok musi być liczbą między 1999, a " + (Time.now.year + 1).to_s
 	
-	
 end

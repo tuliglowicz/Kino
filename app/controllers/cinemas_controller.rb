@@ -9,7 +9,7 @@ class CinemasController < ApplicationController
   # GET /cinemas.xml
   def index
   	@cinemas = Cinema.find(:all, :order => "city_id")
-
+    
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @cinemas }

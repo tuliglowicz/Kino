@@ -13,8 +13,10 @@ class CinemaFilmsController < ApplicationController
   	
   	@cinema_films = CinemaFilm.all
   	
+  	
   	if session[:worker] and session[:worker].status_id > 0
-  		@cinema_films = CinemaFilm.where(:cinema_id => session[:worker].cinema_id)
+  		#@cinema_films = CinemaFilm.where(:cinema_id => session[:worker].cinema_id)
+  		@cinema_films = CinemaFilm.paginate(:conditions => ["cinema_id = ?","#{session[:worker].cinema_id}"], :page => params[:page], :per_page => 10)
   	end
 
     respond_to do |format|

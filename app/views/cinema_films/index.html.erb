@@ -1,7 +1,8 @@
 <h1>Lista filmów w danych kinach</h1>
 
 <%= link_to 'Dodaj', new_cinema_film_path %>
-<br><br>
+<br></br>
+
 <table>
   <tr>
     <th>Nazwa Kina</th>
@@ -21,11 +22,10 @@
     	<%# if (session[:isGA] or session[:worker] and session[:worker].cinema_id == cinema_film.cinema_id) and Date.today - cinema_film.date_from < 31-%>
 	    	<%= link_to 'Edytuj', edit_cinema_film_path(cinema_film) %>
 	    	<%= link_to 'Usuń', cinema_film_path(cinema_film), :confirm => 'Czy na pewno chcesz usunąć ten rekord?', :method => :delete %></td>
-	    #<%# end -%>
+	    <%# end -%>
   </tr>
 <% end %>
 </table>
 
-<br />
-
-<%= link_to 'Dodaj', new_cinema_film_path %>
+<br></br>
+<%= will_paginate @cinema_films,  { :previous_label => 'Wstecz', :next_label => 'Dalej' } %>

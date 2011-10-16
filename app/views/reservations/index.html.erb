@@ -21,3 +21,7 @@
 <br />
 
 <%= link_to 'Nowa Rezerwacja', new_reservation_path %>
+
+<br></br>
+<%= will_paginate @reservations,  { :previous_label => 'Wstecz', :next_label => 'Dalej' } %>
+

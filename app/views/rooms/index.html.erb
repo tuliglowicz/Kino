@@ -26,5 +26,5 @@
 </table>
 
 <br />
-
-<%= link_to 'Dodaj', new_room_path %>
+<br></br>
+<%= will_paginate @rooms,  { :previous_label => 'Wstecz', :next_label => 'Dalej' } %>

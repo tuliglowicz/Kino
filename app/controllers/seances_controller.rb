@@ -11,9 +11,14 @@ class SeancesController < ApplicationController
     if session[:isGA]
       @seances = Seance.all
   else
-    @seances = Seance.where(:cinema_film_id =>(CinemaFilm.where(:cinema_id => ( Cinema.where(:id => session[:worker].cinema_id)))))
+      @seances = Seance.where(:cinema_film_id =>(CinemaFilm.where(:cinema_id => ( Cinema.where(:id => session[:worker].cinema_id)))))
   end
-
+  
+  
+  if Seance.
+  else  
+  end  
+     
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @seances }

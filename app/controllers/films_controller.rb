@@ -6,11 +6,12 @@ class FilmsController < ApplicationController
 	#before_filter :auth_access
 	before_filter :auth, :except => ["show", "index", "edit", "new", "update"]
 	
-	
   # GET /films(.xml)
   def index
-    @films = Film.all
-
+    
+    #@films = Film.all
+    @films = Film.paginate( :page => params[:page], :per_page => 5)
+    
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @films }

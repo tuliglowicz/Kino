@@ -19,7 +19,6 @@
 	
 	<% @seances.each do |seance| %>
 	  <tr>
-	    <td><%= seance.id %></td>
 	    <td align="center"><%= seance.cinema_film.film.title if seance.cinema_film and seance.cinema_film.film %></td>
 	    <td align="center"><%= seance.cinema_film.cinema.name if seance.cinema_film and seance.cinema_film.cinema %></td>
 	    <td align="center"><%= seance.room.number if seance.room %>

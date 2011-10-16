@@ -8,8 +8,8 @@ class CitiesController < ApplicationController
   # GET /cities
   # GET /cities.xml	
   def index
-    @cities = City.all
-  
+    #@cities = City.all
+    @cities = City.paginate( :page => params[:page], :per_page => 4)
     @city = City.new
     respond_to do |format|
       format.html # index.html.erb

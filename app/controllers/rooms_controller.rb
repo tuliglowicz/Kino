@@ -10,6 +10,11 @@ class RoomsController < ApplicationController
   def index
     @rooms = Room.all
 
+    if session[:worker] and session[:worker].status_id > 0
+      @rooms = Room.paginate(:conditions => ["cinema_id = ?","#{session[:worker].cinema_id}"], :page => params[:page], :per_page => 10)
+    end
+
+
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @rooms }

@@ -8,8 +8,8 @@ class ReservationsController < ApplicationController
   before_filter :auth_exept_show, :except => ["show", "index", "edit", "new", "update"]
   
   def index
-    @reservations = Reservation.all
-
+    #@reservations = Reservation.all
+    @reservations = Reservation.paginate( :page => params[:page], :per_page => 7)
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @reservations }

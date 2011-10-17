@@ -28,7 +28,11 @@ class TicketsController < ApplicationController
   # GET /tickets/new.xml
   def new
     @ticket = Ticket.new
-
+    @seances = Seance.find(:all)
+    @cinemas = Cinema.find(:all)
+    @cinema_films = CinemaFilm.find(:all)
+    @films = Film.find(:all)
+    @seats = Seat.find(:all)
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @ticket }

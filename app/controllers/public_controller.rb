@@ -307,11 +307,50 @@ class PublicController < ApplicationController
 	
 	# run whenever payment operation finished successfully
 	def payment_ok
+	  url = URI.parse 'https://secure.przelewy24.pl/transakcja.php'
 	  
+	  request = Net::HTTP::Post.new
+	  request.set_form_data(get_data_to_verify, '&')
+	  
+	  http = Net::HTTP.new(url.host, url.port)
+	  http.use_ssl=true
+	  
+	  response = http.start { |http| http.request(request)}
+	  
+	  case response
+	   when Net::HTTPSuccess, Net::HTTPRedirection
+      results = res.body.split("\r\n")
+
+      # payment confirmed, ticket's paid flag may be set to true
+      if results[1] == "TRUE" 
+        tickets = Ticket.where(:reservation_id => params[:p24_session_id])
+        tickets.each { |ticket|
+          ticket.update_attribute(:paid, true)
+        }
+        
+        redirect_to '/', :notice => 'Transakcja zakończona pomyślnie.'
+      else
+        
+        redirect_to "/", :notice => "Błąd przy potwierdzeniu."
+      end
+      
+      else
+        redirect_to "/", :notice => "Błąd podczas nawiązywania połączenia"      
+	  end
+ 
 	end
 	
 	# run whenerver any error encountered while payment process is being executed
 	def payment_error
-	  
+	  redirect_to "/", :notice => "Nie zapłacono za bilet"	  
+	end
+	
+	def get_data_to_verify
+		 {
+      'p24_session_id' => params[:p24_session_id],
+      'p24_order_id' => params[:p24_order_id],
+      'p24_id_sprzedawcy' => '13132',
+      'p24_kwota' => params[:p24_kwota]
+    }
 	end
 end

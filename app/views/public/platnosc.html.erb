@@ -1,0 +1,26 @@
+
+<!-- dane wysylane do serwisu przelewy24 -->
+<form action="https://secure.przelewy24.pl/index.php" method="post">
+	<input id="p24_session_id" name="p24_session_id" value="<%= @reservation.id%>"/>
+	<input id="p24_id_sprzedawcy" name="p24_id_sprzedawcy" value="13132" />
+	<input id="p24_kwota" name="p24_kwota" value="<%= @payment%>" />
+	<input id="p24_klient" name="p24_klient" value="<%= @customer_full_name %>" />
+	<input id="p24_adres" name="p24_adres" value="<%= @customer_address %>" />
+	<input id="p24_kod" name="p24_kod" value="12-123" />
+	<input id="p24_miasto" name="p24_miasto" value="<%= @city %>"/>
+	<input id="p24_kraj" name="p24_kraj" value="PL" />
+	<input id="p24_email" name="p24_email" value="<%= @customer_email %>" />
+	<input id="p24_return_url_ok" name="p24_return_url_ok" value="<%= ToDo %>" />
+	<input id="p24_return_url_error" name="p24_return_url_error" value="<%= ToDo %>" />
+	
+	<input id="p24_opis" name="p24_opis" value="<%= @description %>" />
+	<input id="p24_language" name="p24_language" value="pl" />
+	<input id="p24_crc" name="p24_crc" value="<%= @crc_hash %>" />
+	
+	<button type="submit" name="submit_send" value="Zapłać"></button>	
+
+</form>
+
+<form action="/" method="get">
+	<button type="submit" value="Wróć na stronę główną"></button>
+</form>

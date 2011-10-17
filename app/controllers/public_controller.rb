@@ -273,5 +273,45 @@ class PublicController < ApplicationController
 	      format.xml  { render :xml => @testing[0].about }
 	    end
 	end
-
+	
+	def payment
+		
+		# ToDo process incoming data
+		
+		@reservation = Reservation.new
+		@reservation.date = Time.now
+		
+		if @reservation.save
+ 			
+			# user is currently logged in, his data f.i. name is read from database
+			if session[:user]
+				
+				@customer_full_name = session[:user].first_name.to_s + session[:user].last_name.to_s
+			  @customer_email = session[:user].email 
+			else
+				
+				@customer_full_name = 'full_name'
+				@customer_email = 'email'
+			end
+			
+			@payment = get_payment()
+      @customer_address = 'not_important '
+      @city = 'not_important'
+      @description = 'Test_OK'
+			@crc_hash = Digest::MD5.hexidigest 'ToDo_update_hash_creating_statement_when_all_indispensable_data_is_collected'
+			else
+			  redirect_to "/"
+		end
+		
+	end
+	
+	# run whenever payment operation finished successfully
+	def payment_ok
+	  
+	end
+	
+	# run whenerver any error encountered while payment process is being executed
+	def payment_error
+	  
+	end
 end

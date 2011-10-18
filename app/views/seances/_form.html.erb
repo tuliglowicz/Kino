@@ -45,7 +45,7 @@
   <div class="field">
   	<%= f.label :"Typ seansu" %><br />
     <% if @seance_types -%>
-    <%= select_tag('seance[seance_type_id]', options_for_select([['Wybierz kino/film', '']] + @seance_types.collect{|c| [c.ticket_sort_price.price , c.id]}, @seance.seance_type_id)) %>
+    <%= select_tag('seance[seance_type_id]', options_for_select([['Wybierz typ seansu', '']] + @seance_types.collect{|c| [c.name , c.id]}, @seance.seance_type_id)) %>
     <% else -%>
     <%= f.text_field :cinema_film_id %>
     <% end -%>
@@ -53,7 +53,12 @@
   </div>
   <div class="field">
     <%= f.label :Zniżka %><br />
+    <% if @discount_sorts -%>
+    <%= select_tag('seance[discount_sort_id]', options_for_select([['Wybierz typ zniżek', '']] + @discount_sorts.collect{|c| [c.description , c.id]}, @seance.discount_sort_id)) %>
+    <% else -%>
     <%= f.text_field :discount_sort_id %>
+    <% end -%>
+    
   </div>
   <div class="actions">
     <%= f.submit "Dodaj seans"%>

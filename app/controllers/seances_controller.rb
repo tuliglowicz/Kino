@@ -8,6 +8,17 @@ class SeancesController < ApplicationController
   # GET /seances
   # GET /seances.xml
   def index
+    
+  Seance.find_each do |seance|
+     if seance.date_from == Date.current && seance.time_from <= Time.now 
+       then
+       #logger.debug { "CHECKEDCHECKED.........................................CHECKEDCHECKED" }
+       seance.checked = true
+       seance.save
+       
+     end
+  end  
+    
     if session[:isGA]
       @seances = Seance.all
   else
@@ -15,10 +26,7 @@ class SeancesController < ApplicationController
   end
   
   
-  if Seance.
-  else  
-  end  
-     
+  
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @seances }
@@ -47,7 +55,8 @@ class SeancesController < ApplicationController
       @rooms = Room.where(:cinema_id => session[:worker].cinema_id)
       
     end
-    #@seance_types = SeanceType.find(:all)
+    @seance_types = SeanceType.find(:all)
+    @discount_sorts = DiscountSort.find(:all)
     @seance = Seance.new
 
     respond_to do |format|

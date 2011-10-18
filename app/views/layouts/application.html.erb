@@ -126,9 +126,11 @@ body {background: #000 url('/images/pic/body_bg.jpg') repeat-x 0 0;}
 					</li>
 				</ul>
 			</li>
+			<!--
 			<li id="e3" class=" ">
 				<a href="/public/zakup" title="Zakup / Rezerwacja">Zakup / Rezerwacja</a>
 			</li>
+			-->
 			<li id="e4" class=" ">
 				<a href="/public/zapowiedzi" title="Zapowiedzi ">Zapowiedzi</a>
 			</li>
@@ -237,11 +239,11 @@ body {background: #000 url('/images/pic/body_bg.jpg') repeat-x 0 0;}
 	</cinemas>
 </xml>
 
-<div id="giveMeCinemaId" align="left">
-</div>
 
 <script>
 function submitParams(){}
+
+$j('<div id="giveMeCinemaId" align="left"></div>').appendTo("body");
 
 $j("#cinemas_xml").find("cinema").each(function(){
 	var link = "<a href='"+document.location+"' class='repertuarTime' onClick=$j.cookie('cinema_id','"+$j(this).find("id").text()+"',{expires:7});$j('#giveMeCinemaId').dialog('close'); style='cursor:pointer;color:#063780;'>"+$j(this).find("name").text()+"</a>"

@@ -38,6 +38,7 @@
 
 <% end -%>
 
+<br></br>	 
+	<%= will_paginate @seances,  { :previous_label => 'Wstecz', :next_label => 'Dalej' } %>
+	
 <br />
-
-<%= link_to 'Dodaj', new_seance_path %>

@@ -21,8 +21,10 @@ class SeancesController < ApplicationController
     
     if session[:isGA]
       @seances = Seance.all
+      @seances = Seance.paginate( :page => params[:page], :per_page => 10)
   else
       @seances = Seance.where(:cinema_film_id =>(CinemaFilm.where(:cinema_id => ( Cinema.where(:id => session[:worker].cinema_id)))))
+      @seances = Seance.paginate( :page => params[:page], :per_page => 10)
   end
   
   

@@ -1,6 +1,15 @@
-<%= javascript_include_tag 'jquery', 'rails', 'rails.validations' %> 
+<script src="/javascripts/jquery.validationEngine-pl.js" type="text/javascript" charset="utf-8"></script>
+<script src="/javascripts/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
 
-<%= form_for @film, :validate => true do |f| %>
+<script>
+	jQuery(document).ready(function(){	
+		jQuery('#new_film').validationEngine('attach', { validationEventTrigger: 'submit'});
+	});
+</script>
+
+
+
+<%= form_for(@film) do |f| %>
   <% if @film.errors.any? %>
     <div id="error_explanation">
       <h2>Zaszły następujące nieprawidłowości:</h2>
@@ -15,11 +24,11 @@
 
   <div class="field">
     <%= f.label :Tytuł %><br />
-    <%= f.text_field :title %>
+    <%= f.text_field :title, :class => 'validate[required,maxSize[100]]', :size=>45 %>
   </div>
   <div class="field">
     <%= f.label :Reżyser %><br />
-    <%= f.text_field :director %>
+    <%= f.text_field :director, :class => 'validate[required,maxSize[50]]', :size=>45 %>
   </div>
   <div class="field">
     <%= f.label :"Kategoria filmu" %><br />
@@ -43,26 +52,26 @@
      	
      	 -%>
      	
-    <%= select_tag('film[year]', options_for_select( tab, Time.now.year.to_i)) %>
+    <%= select_tag('film[year]', options_for_select( tab, Time.now.year.to_i), :class => 'validate[required]') %>
 	<%# select_tag(Date.today, :field_name => 'year', :start_year => Time.now.years_since(1).year.to_i, :end_year => 1999, :default => {:year => Time.now.year.to_i}) %>
   </div>
   <div class="field">
     <%= f.label :Trailer %><br />
-    <%= f.text_field :trailer %>
+    <%= f.text_field :trailer, :class => 'validate[maxSize[75]]', :size=>45 %>
   </div>
   <div class="field">
     <%= f.label :"Czas trwania (min)" %><br />
-    <%= f.text_field :length %>
+    <%= f.text_field :length, :size=>45 %>
   </div>
   <div class="field">
     <%= f.label :Opis %><br />
-    <%= f.text_area :description %>
+    <%= f.text_area :description, :size=>45 %>
+  </div>
+  <div class="field">
+    <%= f.label :Plakat %><br />
+    <%= f.text_area :poster, :class => 'validate[maxSize[50]]', :width => 10, :cols=>40, :rows=>1 %>
   </div>
   <div class="actions">
     <%= f.submit "Zapisz"%>
   </div>
 <% end %>
-
-<script>
-	$("document").ready(function(){$('#film_title').focus();});
-</script>

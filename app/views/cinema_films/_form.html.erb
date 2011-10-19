@@ -1,3 +1,12 @@
+<script src="/javascripts/jquery.validationEngine-pl.js" type="text/javascript" charset="utf-8"></script>
+<script src="/javascripts/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
+
+<script>
+	jQuery(document).ready(function(){	
+		jQuery('#new_cinema_film').validationEngine('attach', { validationEventTrigger: 'submit'});
+	});
+</script>
+
 
 <%= form_for(@cinema_film) do |f| %>
   <% if @cinema_film.errors.any? %>
@@ -15,28 +24,28 @@
   <div class="field">
     <%= f.label :Kino %><br />
     <% if @cinemas.size > 1-%>
-      <%= select_tag('cinema_film[cinema_id]', options_for_select([['Wybierz kino', '']] + @cinemas.collect{|c| [c.name, c.id]}, @cinema_film.cinema_id)) %>
+      <%= select_tag('cinema_film[cinema_id]', options_for_select([['Wybierz kino', '']] + @cinemas.collect{|c| [c.name, c.id]}, @cinema_film.cinema_id), :class => 'validate[required]') %>
     <% else if -%>
-      <%= select_tag('cinema_film[cinema_id]', options_for_select(@cinemas.collect{|c| [c.name, c.id]}, @cinema_film.cinema_id)) %>
+      <%= select_tag('cinema_film[cinema_id]', options_for_select(@cinemas.collect{|c| [c.name, c.id]}, @cinema_film.cinema_id), :class => 'validate[required]') %>
     <% else -%>
-    <%= f.text_field :cinema_id %>
+    <%= f.text_field :cinema_id, :class => 'validate[required]' %>
     <% end end-%>
   </div>
   <div class="field">
     <%= f.label :Film %><br />
         <% if @films -%>
-    <%= select_tag('cinema_film[film_id]', options_for_select([['Wybierz film', '']] + @films.collect{|f| [f.title, f.id]}, @cinema_film.film_id)) %>
+    <%= select_tag('cinema_film[film_id]', options_for_select([['Wybierz film', '']] + @films.collect{|f| [f.title, f.id]}, @cinema_film.film_id), :class => 'validate[required]') %>
     <% else -%>
-    <%= f.text_field :film_id %>
+    <%= f.text_field :film_id, :class => 'validate[required]' %>
     <% end -%>
   </div>
   <div class="field">
     <%= f.label :"Data premiery" %><br />
-    <%= f.text_field :date_from, :class => "datePick" %>(format: rrrr-mm-dd)
+    <%= f.text_field :date_from, :class => 'datePick validate[required]'%>
   </div>
     <div class="field">
     <%= f.label :"Data zakończenia"  %><br />
-    <%= f.text_field :date_untill, :class => "datePick" %>(format: rrrr-mm-dd)
+    <%= f.text_field :date_untill, :class => "datePick" %>
   </div>
   <div class="actions">
     <%= f.submit "Zapisz"%>

@@ -1,6 +1,37 @@
-<h1>Listing statuses</h1>
+	<LINK REL=StyleSheet HREF="/stylesheets/statuses/statuses.css" TYPE="text/css" MEDIA=screen>
+	
+<script src="/javascripts/jquery.validationEngine-pl.js" type="text/javascript" charset="utf-8"></script>
+<script src="/javascripts/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
+
+
+
+<script>
+	jQuery(document).ready(function()
+	{
+		jQuery('#new_status_a').bind('click', function(event)
+		{
+			jQuery('div:hidden').show('fast');
+			jQuery('#new_status').validationEngine('attach', { validationEventTrigger: 'submit'});
+		});
+	});
+</script>
+
+
+<h1>Statusy pracowników</h1>
 <% if session[:isGA] -%>
-<%= link_to 'Dodaj', new_status_path %><br><br>
+<a id="new_status_a" >Dodaj nową kategorię</a>
+
+<div class="new_status">
+	
+	<form id="new_status_form" action="/statuses/create" method="post">
+		<div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" /></div>
+		<label for="new_status">Status:</label>
+		<input type="text" id="status_name" name="status[name]" />
+		<button type="submit">Zapisz</button>
+	</form>
+	
+</div>
+<br><br>
 <% end -%>
 <table>
   <tr>

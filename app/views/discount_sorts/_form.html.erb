@@ -1,3 +1,12 @@
+<script src="/javascripts/jquery.validationEngine-pl.js" type="text/javascript" charset="utf-8"></script>
+<script src="/javascripts/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
+
+<script>
+	jQuery(document).ready(function(){	
+		jQuery('#new_discount_sort').validationEngine('attach', { validationEventTrigger: 'submit'});
+	});
+</script>
+
 <%= form_for(@discount_sort) do |f| %>
   <% if @discount_sort.errors.any? %>
     <div id="error_explanation">

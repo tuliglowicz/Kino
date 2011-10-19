@@ -1,3 +1,12 @@
+<script src="/javascripts/jquery.validationEngine-pl.js" type="text/javascript" charset="utf-8"></script>
+<script src="/javascripts/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
+
+<script>
+	jQuery(document).ready(function(){	
+		jQuery('#new_room').validationEngine('attach', { validationEventTrigger: 'submit'});
+	});
+</script>
+
 <%= form_for(@room) do |f| %>
   <% if @room.errors.any? %>
     <div id="error_explanation">
@@ -15,24 +24,20 @@
   <div class="field">
     <%= f.label :Kino %><br />
     <% if @cinemas -%>
-    <%= select_tag('room[cinema_id]', options_for_select([['Wybierz kino', '']] + @cinemas.collect{|c| [c.name, c.id]}, @room.cinema_id)) %>
+    <%= select_tag('room[cinema_id]', options_for_select([['Wybierz kino', '']] + @cinemas.collect{|c| [c.name, c.id]}, @room.cinema_id), :class => 'validate[required]') %>
     <% else -%>
-    <%= f.text_field :cinema_id %>
+    <%= f.text_field :cinema_id, :class => 'validate[required]' %>
     <% end -%>
   </div>
 	<div class="field">
     <%= f.label :"Numer sali" %><br />
-    <%= f.text_field :number %>
+    <%= f.text_field :number, :class => 'validate[required,custom[integer]' %>
   </div>
   <div class="field">
     <%= f.label :"Liczba miejsc" %><br />
-    <%= f.text_field :size %>
+    <%= f.text_field :size, :class => 'validate[required,custom[integer]'%>
   </div>
   <div class="actions">
     <%= f.submit 'Zapisz'%>
   </div>
 <% end %>
-
-<script>
-	$("document").ready(function(){$('#room_size').focus();});
-</script>

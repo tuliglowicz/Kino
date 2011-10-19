@@ -1,4 +1,11 @@
-<%= javascript_include_tag 'jquery', 'rails', 'rails.validations' %> 
+<script src="/javascripts/jquery.validationEngine-pl.js" type="text/javascript" charset="utf-8"></script>
+<script src="/javascripts/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
+
+<script>
+	jQuery(document).ready(function(){	
+		jQuery('#new_seat').validationEngine('attach', { validationEventTrigger: 'submit'});
+	});
+</script>
 
 <%= form_for @seat, :validate => true do |f| %>
   <% if @seat.errors.any? %>
@@ -21,11 +28,11 @@
   
   <div class="field">
     <%= f.label :Rząd %><br />
-    <%= f.text_field :row %>
+    <%= f.text_field :row, :class => 'validate[required,maxSize[2],custom[onlyLetterSp]] text-input' %>
   </div>
   <div class="field">
     <%= f.label :Kolumna %><br />
-    <%= f.text_field :collumn %>
+    <%= f.text_field :collumn, :class => 'validate[custom[integer]' %>
   </div>
   <div class="actions">
     <%= f.submit "Dodaj"%>

@@ -1,0 +1,309 @@
+<script>
+	jQuery(document).ready(function()
+	{	
+		var isAddNewPermissionDivShown = false;
+		var isEditPermissionsDivShown = false;
+		var isStatusPermissionsDivShown = false;
+		var current_permission_level = ""	
+		
+		jQuery("#add_new_permission_a").bind('click', function(event)
+		{
+			if (isAddNewPermissionDivShown) 
+			{
+				jQuery("#add_new_permission_div").hide('fast');
+			}
+			else
+			{
+				jQuery("#add_new_permission_div").show('fast');
+			}
+			
+			isAddNewPermissionDivShown = !isAddNewPermissionDivShown;			
+		});
+		
+		jQuery("#new_permission_name").focusout(function()
+		{
+			var name = jQuery("#new_permission_name").val();
+			
+			if (name != "") 
+			{
+				var worker_permissions = jQuery.ajax(
+				{
+	    			type: "POST",
+		    		url: "http://localhost:3000/private/permissions/check_permission_name_availability",
+		    		data: "name=" + name,
+		    		
+		    		success: function(message)
+		    		{	    		
+		    			if (message == 'OK') 
+		    			{
+		    				jQuery("#add_permission_button").removeAttr('disabled');
+		    				jQuery("#new_permission_name_availability_status").css('color', 'lime');
+		    				jQuery("#new_permission_name_availability_status").text('Nazwa wolna');
+		    			}
+		    			else
+		    			{
+		    				jQuery("#add_permission_button").attr('disabled', 'disabled');
+		    				jQuery("#new_permission_name_availability_status").css('color', 'red');
+		    				jQuery("#new_permission_name_availability_status").text('Nazwa niedostępna');
+		    			
+		    			};
+		    		},
+		    		error: function()
+		    		{
+		    			alert('Nie można było sprawdzić czy to pozwolenie o takiej nazwie już istnieje');
+		    		}
+		    	});
+			}
+			else
+			{
+				jQuery("#add_permission_button").attr('disabled', 'disabled');
+			};
+		});
+		
+		jQuery("#edit_permissions_a").bind('click', function(event)
+		{
+			if (isEditPermissionsDivShown)
+			{
+				jQuery("#edit_permissions_div").hide('fast')
+			}
+			else
+			{
+				jQuery("#edit_permissions_div").show('fast');
+			}
+			
+			isEditPermissionsDivShown = !isEditPermissionsDivShown;
+		});		
+		
+		jQuery("#edit_permissions_select").change(function(event)
+		{
+			var permission = jQuery("#edit_permissions_select").val();
+			
+			if (permission != "")
+			{
+				var currentPermissionSettings = jQuery.ajax(
+				{
+					type: "POST",
+		    		url: "http://localhost:3000/private/permissions/get_permission_data",
+		    		data: "name="+permission,
+		    		
+		    		success: function(jsonResponse)
+		    		{		    			    			
+		    			jsonResponse.write_all == true ?  	
+		    				jQuery("#edit_write_all").attr('checked', 'checked') :
+		    				jQuery("#edit_write_all").removeAttr('checked');		
+		    			
+		    			jsonResponse.write_cinema_only == true ? 
+		    				jQuery("#edit_write_cinema_only").attr('checked', 'checked') :
+		    				jQuery("#edit_write_cinema_only").removeAttr('checked');
+		    					    		
+		    			jsonResponse.read_all == true ? 
+		    				jQuery("#edit_read_all").attr('checked', 'checked') :
+		    				jQuery("#edit_read_all").removeAttr('checked');	
+		    				
+		    			jsonResponse.read_cinema_only == true ?
+		    				jQuery("#edit_read_cinema_only").attr('checked', 'checked') :
+		    				jQuery("#edit_read_cinema_only").removeAttr('checked');
+		    					    					    			
+		    			jQuery("#edit_permissions_button").removeAttr('disabled');
+		    		},
+		    		error: function()
+		    		{
+		    			alert('Nie można było odczytać uprawnień');
+		    		}
+				});
+			}
+			else
+			{
+				jQuery("#edit_permission_data_div").hide('fast');
+				jQuery("#edit_permissions_button").attr('disabled','disabled');	
+				
+				jQuery("#edit_write_all").removeAttr('checked');					
+				jQuery("#edit_write_cinema_only").removeAttr('checked');
+				jQuery("#edit_read_all").removeAttr('checked');
+				jQuery("#edit_read_cinema_only").removeAttr('checked');
+			};
+		});
+			
+		jQuery("#status_permissions_a").bind('click', function(event)
+		{
+			if (isStatusPermissionsDivShown)
+			{
+				jQuery("#statuses").show('fast');
+			}
+			else
+			{
+				jQuery("#statuses").hide('fast');
+			}
+			
+			isStatusPermissionsDivShown = !isStatusPermissionsDivShown;
+		});
+			
+		jQuery("#worker_status_name").change(function(event)
+		{
+			var status = jQuery("#worker_status_name").val();
+			
+			if (status != "") 
+			{
+				jQuery("#privileges").show('fast');
+			}
+			else
+			{
+				jQuery("#privileges").hide('fast');
+				jQuery("#permissions").hide('fast');
+				jQuery("#worker_privilege_name").val('');				
+			}
+		});
+		
+		jQuery("#worker_privilege_name").change(function(event)
+		{						
+			var privilege = jQuery("#worker_privilege_name").val();
+			
+			if (privilege != '') 
+			{
+				jQuery("#permissions").show('fast');
+				var status = jQuery("#worker_status_name").val();
+				
+				var worker_permissions = jQuery.ajax(
+				{
+	    			type: "POST",
+		    		url: "http://localhost:3000/private/permissions/get_current_permission",
+		    		data: "status=" + status + "&privilege=" + privilege,
+		    		
+		    		success: function(message)
+		    		{
+		    			current_permission_level = message;
+		    			jQuery("#worker_permission_level").val(message);	   			    			
+		    		},
+		    		error: function()
+		    		{
+		    			alert('Nie można było odczytać uprawnień');
+		    		}
+		    	});
+		    	
+				jQuery("#permissions").show('fast');
+			}
+			else
+			{
+				jQuery("#permissions").hide('fast');			
+			}
+		});
+		
+		jQuery("#worker_permission_level").change(function(event)
+		{
+			var permission = jQuery("#worker_permission_level").val();
+			
+			if (permission != '')
+			{
+				jQuery("#worker_permission_button").removeAttr('disabled');
+			}
+			else
+			{
+				jQuery("#worker_permission_button").attr('disabled', 'disabled');
+			};
+		});
+	});
+</script>
+
+<h4><a id="add_new_permission_a">Dodaj nowy poziom uprawnień</a></h4>
+<div id="add_new_permission_div" style="display: none">
+	<form id="add_new_permission_form" action="/private/permissions/create" method="post" accept-charset="utf-8">
+	  <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" /></div>
+	  <label>Nazwa</label>
+	  <input id="new_permission_name" name="new_permission_name" type="text" required="required"/>
+	  <label id="new_permission_name_availability_status"></label>
+	  <div>
+	 	<div>
+			<label class="permission_label">Zapis wszystkiego</label>
+			<input type="checkbox" id="write_all" name="write_all" class="permission_checkbox"/>			
+		</div>
+		<div>
+			<label class="permission_label">Zapis tylko dla swojego kina</label>
+			<input type="checkbox" id="write_cinema_only" name="write_cinema_only" class="permission_checkbox"/>			
+		</div>
+		<div>
+			<label class="permission_label">Odczyt wszystkiego</label>
+			<input type="checkbox" id="read_all" name="read_all" class="permission_checkbox"/>			
+		</div>
+		<div>
+			<label class="permission_label">Odczyt tylko dla swojego kina</label>
+			<input type="checkbox" id="read_cinema_only" name="read_cinema_only" class="permission_checkbox"/>			
+		</div>
+	  </div>
+		   <p><input type="submit" id="add_permission_button" disabled="disabled" value="Dodaj"/></p>
+	</form>
+</div>
+
+<h4><a id="edit_permissions_a">Sprawdź i edytuj dodane poziomy uprawnień</a></h4>
+<div id="edit_permissions_div" style="display: none">
+	<form id="edit_permissions_form" action="permissions/update" method="post">
+		<div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" /></div>
+		
+			<select id="edit_permissions_select" name="edit_permissions_select" >
+				<option value="">Wybierz poziom uprawnień</option>
+				<% @permissions.each { |permission| %>
+	  			    <option value="<%= permission.name%>"><%= permission.name%></option>
+	  			<%}%>
+	  			
+			</select>
+			<br />
+			<div>
+					<div>
+						<label class="permission_label">Zapis wszystkiego</label>
+						<input type="checkbox" id="edit_write_all" name="edit_write_all" class="permission_checkbox"/>			
+					</div>
+					<div>
+						<label class="permission_label">Zapis tylko dla swojego kina</label>
+						<input type="checkbox" id="edit_write_cinema_only" name="edit_write_cinema_only" class="permission_checkbox"/>			
+					</div>
+					<div>
+						<label class="permission_label">Odczyt wszystkiego</label>
+						<input type="checkbox" id="edit_read_all" name="edit_read_all" class="permission_checkbox"/>			
+					</div>
+					<div>
+						<label class="permission_label">Odczyt tylko dla swojego kina</label>
+						<input type="checkbox" id="edit_read_cinema_only" name="edit_read_cinema_only" class="permission_checkbox"/>			
+					</div>
+			</div>
+		<p>
+			<input type="submit" id="edit_permissions_button" disabled="disabled" value="Zapisz"/>
+		</p>
+		
+	</form>
+</div>
+
+<h4><a id="status_permissions_a">Przeglądaj uprawnienia dla konkretnej grupy pracowników</a></h4>
+
+<form id="permissions_changes" method="post" action="permissions/change_status_privilege_permissions" name="permissions_changes">
+	<div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" /></div>
+	<div id="statuses" style="display: none">
+		<select id="worker_status_name" name="worker_status_name">
+			<option value="">Wybierz rodzaj pracownika</option>
+			<% @statuses.each { |status| %>
+				<option value="<%= status.name %>"><%= status.name %></option>				
+			<%}%>  
+		</select>	
+	</div>	
+	<br />
+	<div id="privileges" style="display: none">
+	  <select id="worker_privilege_name" name="worker_privilege_name">
+	  	<option value="">Wybierz obszar uprawnień</option>
+	  	<% @privileges.each { |privilege| %>
+	  		<option value="<%= privilege['attname']%>"><%= privilege['attname']%></option>
+	  	<%}%>
+	  </select>
+	</div>
+	<br />
+	<div id="permissions" style="display: none">
+		<select id="worker_permission_level" name="worker_permission_level">
+			<option value="">Wybierz poziom uprawnień</option>
+				<% @permissions.each { |permission| %>
+	  			    <option value="<%= permission.name%>"><%= permission.name%></option>
+	  			<%}%>
+		</select>
+		
+		<p>
+			<input id="worker_permission_button" type="submit" value="Zapisz" disabled="disabled" />
+		</p>		
+	</div>
+		
+</form>

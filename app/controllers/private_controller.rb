@@ -2,6 +2,8 @@
 class PrivateController < ApplicationController
 
 	layout 'admin'
+  
+  protect_from_forgery :except => "get_permissions"
 
 	before_filter :auth_access, :except => [:stats,:login, :logout, :send_login, :register]
 	
@@ -107,5 +109,19 @@ class PrivateController < ApplicationController
 		flash[:notice] = "Logged out"
 		redirect_to(:controller => "public", :action => "index")
 	end
-
-end
+  
+  def get_permissions
+    status = params[:status]
+    privilege = params[:privilege]
+    
+    status_privilege_id = Status.where(:name => status).first.privilege_id.to_s
+    
+    query = "SELECT " + privilege + " FROM privileges WHERE id = " + status_privilege_id
+    privilege_permission_id = ActiveRecord::Base.connection.execute(query)[0][privilege]
+    
+    @permission = Permission.where(:id => privilege_permission_id)
+    
+    render :text => @privilege_permission_id
+  end
+ 
+  end

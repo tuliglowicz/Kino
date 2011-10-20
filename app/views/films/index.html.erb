@@ -1,3 +1,8 @@
+<script src="/javascripts/jquery-1.6.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="/javascripts/jyoutube.js" type="text/javascript" charset="utf-8"></script>
+<script src="/javascripts/jyoutube.min.js" type="text/javascript" charset="utf-8"></script>
+
+
 <h1>Lista filmów </h1>
 
 <br />
@@ -16,22 +21,32 @@
     <th>Rok</th>
     <th>Kategoria</th>
     <th>Trailer</th>
-    <th>Czas</th>
+    <th>Czas [min]</th>
     <th>Opis</th>
     <th>Poster</th>
     <th></th>
   </tr>
-
+<% i = 0 %>
 <% @films.each do |film| %>
+
+<script type="text/javascript">
+		
+					$(document).ready(function(){
+						    $('#thumbs<%= i %>').append($('<a href="<%= film.trailer %>"><img src="'+$.jYoutube('<%= film.trailer %>', 'small')+'" /></a>'));
+					});
+</script>
+
 	
   <tr>
-    <td width=70px align=center><%= trim(film.title, 2) %></td>
+  	<td width=70px align=center><%= trim(film.title, 2) %></td>
     <td><%= film.director %></td>
     <td width=50px align=center><%= film.year %></td>
     <td><%= film.category.name if film.category %></td>
-    <td width=150px><% if film.trailer -%><a href="<%= film.trailer %>" target=_blank title="<%= film.trailer %>"><%= film.trailer %></a><% end -%></td>
+    <td id="thumbs<%= i %>" width=150px align="center" >  </td>
+    <% i = i +1 %>
     <td align=center><%= film.length %></td>
     <td><i><%= trim(film.description, 11) %></i></td>
+    <td><img src="/images/film_posters<%= film.poster %>" alt="Tekst alternatywny" width="65" /></td>
     <td width=3%><%= link_to 'Pokaż', film %>
     	<%# if session[:isGA] -%>
     	<%= link_to 'Edytuj', edit_film_path(film) %>
@@ -42,6 +57,7 @@
 <% end %>
 </table>
 <% end%>
+
 <br></br>	 
 	<%= will_paginate @films,  { :previous_label => 'Wstecz', :next_label => 'Dalej' } %>
 	

@@ -48,7 +48,7 @@ class SeatsController < ApplicationController
   # POST /seats.xml
   def create
     @seat = Seat.new(params[:seat])
-
+    
     respond_to do |format|
       if @seat.save
         format.html { redirect_to(@seat, :notice => 'Miejsce zostało dodane.') }

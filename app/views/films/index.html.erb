@@ -46,7 +46,7 @@
     <% i = i +1 %>
     <td align=center><%= film.length %></td>
     <td><i><%= trim(film.description, 11) %></i></td>
-    <td><img src="/images/film_posters<%= film.poster %>" alt="Tekst alternatywny" width="70" /></td>
+    <td><img src="/images/film_posters<%= film.poster %>" alt="Tekst alternatywny" width="65" /></td>
     <td width=3%><%= link_to 'Pokaż', film %>
     	<%# if session[:isGA] -%>
     	<%= link_to 'Edytuj', edit_film_path(film) %>

@@ -18,8 +18,4 @@ class User < ActiveRecord::Base
     validates_uniqueness_of :email, :message => "Email już wybrany."
     validates_confirmation_of :hashed_password, :message => "Hasła nie są identyczne."
     
-    def before_save
-      self.hashed_password = Auth.hash_password(self.hashed_password)
-    end
-    
 end

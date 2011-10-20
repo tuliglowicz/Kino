@@ -23,6 +23,9 @@ Kino::Application.routes.draw do
   match 'private/permissions/get_current_permission' => 'permissions#get_current_permission'
   match 'private/permissions/change_status_privilege_permissions' => 'permissions#change_status_privilege_permissions'
   
+  match 'public/users/remind_password' => 'users#remind_password', :as => 'remind_password'
+  match 'public/login' => 'public#login', :as => 'public_login'
+  
   resources :seances
   resources :tickets
   resources :discount_sorts

@@ -24,15 +24,18 @@
 	<% if Auth.can_read_in_self_cinema?(session[:worker].id, "rooms") -%>
 		<li><%= link_to("Sale Filmowe", {:controller => "rooms" })%></li>
 	<% end %>
+	<% if Auth.can_read_in_self_cinema?(session[:worker].id, "roomviews") -%>
+		<li><%= link_to("Widoki Sal", {:controller => "roomviews" })%></li>
+	<% end %>
 	<% if Auth.can_read_in_self_cinema?(session[:worker].id, "seances") -%>
 		<li><%= link_to("Seanse", {:controller => "seances" })%></li>
 	<% end %>
 	<% if Auth.can_read_in_self_cinema?(session[:worker].id, "seance_types") -%>
 		<li><%= link_to("Rodzaje seansów", {:controller => "seance_types" })%></li>
 	<% end %>
-	<% if Auth.can_read_in_self_cinema?(session[:worker].id, "seats") -%>
-		<li><%= link_to("Siedzenia", {:controller => "seats" })%></li>
-	<% end %>
+	<%# if Auth.can_read_in_self_cinema?(session[:worker].id, "seats") -%>
+		<%#<li> link_to("Siedzenia", {:controller => "seats" })</li>%>
+	<%# end %>
 	<%#do weryfikacji %>
 	<% if Auth.can_read_in_self_cinema?(session[:worker].id, "statuses") -%>
 		<li><%= link_to("Statusy Pracowników", {:controller => "statuses" })%></li>

@@ -105,6 +105,7 @@ class PrivateController < ApplicationController
      
       logged_in_user = Auth.try_to_login(params[:login], params[:password])
       
+      
   end
 
 	def logout

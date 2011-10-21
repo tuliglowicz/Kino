@@ -41,6 +41,7 @@
 					<td rowspan="2" valign="top"><%= image_tag("film_posters"+film.poster, :size => "100x146", :align => "right") %></td>								
 					<td width="320px">
 						<h1 style='line-height:normal'><%= film.title%> &nbsp;</h1><br/>
+						<%= link_to 'Pokaż', :action => "dane_filmu"%>
 						<%= link_to("Trailer", {}, :target => "_blank", :href => film.trailer, :class=>"movieTitle") if film.trailer%>
 					</td>
 					<td width="200px" align="left">

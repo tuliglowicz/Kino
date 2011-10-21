@@ -4,6 +4,7 @@ Kino::Application.routes.draw do
 	# Workers
 	match "/private/workers/login_availability" => "workers#login_availability"
 	
+	
 	# Users
 	match "/users/login_availability" => "users#login_availability"
 	match 'public/users/remind_password' => 'users#remind_password', :as => 'remind_password'

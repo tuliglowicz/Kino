@@ -9,7 +9,10 @@ Kino::Application.routes.draw do
 	
 	# Users
 	match "/users/login_availability" => "users#login_availability"
-	
+
+	match 'public/users/remind_password' => 'users#remind_password', :as => 'remind_password'
+	match 'public/register' => 'users#new', :as => 'register'
+
 	# SeanceTypes
 	match "/seance_types/name_availability" => "seance_types#name_availability"
 

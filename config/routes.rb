@@ -26,6 +26,7 @@ Kino::Application.routes.draw do
   match 'public/users/remind_password' => 'users#remind_password', :as => 'remind_password'
   match 'public/login' => 'public#login', :as => 'public_login'
   
+  resources :roomviews
   resources :seances
   resources :tickets
   resources :discount_sorts

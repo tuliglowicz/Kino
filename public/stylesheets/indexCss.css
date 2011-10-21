@@ -45,7 +45,7 @@ width:900px;
 #gornyPasek a:hover span {
 	background-position:100% -42px;
 	}
-div#banner { width:900px; height:150px; background-color:grey; }
+div#banner { width:900px; height:150px; background-color#333333; }
 
 #bannerRotator { width:900px; height:150px; padding:0px;  }
 #bannerRotator ul li img{ max-width:900px; max-height:150px; }
@@ -94,7 +94,7 @@ width:630px;
 }
 
 #mapaTable {
-	width:630;
+	width:630px;
 	height:100%;
 	background:orange;
 	border-collapse: collapse;	

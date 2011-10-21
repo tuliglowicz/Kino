@@ -1,13 +1,15 @@
 <table align=center border=1>
 	<th> Cena (zł)</th>
 	<th> Opis </th>
-<% for p in @prices do-%>
+<% #for p in @ticket_sort_pirces do-
+%>
+<% @ticket_sort_prices.each do |ticket_sort_price| %>
 <tr>
 	<td align=right>
-		<%= p.price %>
+		<%= ticket_sort_price.price %>
 	</td>
 	<td align=center>
-		<%= p.description %>
+		<%= ticket_sort_price.description %>
 	</td>
 </tr>	
 <% end -%>
@@ -18,13 +20,15 @@
 <table align=center border=1>
 	<th> Zniżka (%)</th>
 	<th> Opis </th>
-<% for d in @discounts do-%>
+<% #for d in @discount_sorts do-
+%>
+<% @discount_sorts.each do |discount_sort| %>
 <tr>
 	<td align=right>
-		<%= d.discount.to_i %>
+		<%= discount_sort.is_weekend %>
 	</td>
 	<td align=center>
-		<%= d.description %>
+		<%= discount_sort.description %>
 	</td>
 </tr>	
 <% end -%>

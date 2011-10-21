@@ -24,4 +24,5 @@ class Worker < ActiveRecord::Base
 		self.hashed_password = Auth.hash_password(self.hashed_password)
 	end
 	
+	
 end

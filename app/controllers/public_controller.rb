@@ -109,8 +109,8 @@ class PublicController < ApplicationController
 	end
 	
 	def ceny
-		@prices = Price.all
-		@discounts = Discount.all
+		@ticket_sort_prices = TicketSortPrice.all
+		@discount_sorts = DiscountSort.all
 	end
 	
 	def kontakt

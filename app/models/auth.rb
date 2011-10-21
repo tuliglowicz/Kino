@@ -20,13 +20,8 @@ class Auth
 		return self.hash_password(password || "") == "e8703350e199e95139d1c91500a5f2895f5302fa"
 	end
 
-
-
-
-
-
 	def self.check_permission(worker_id, table_name, permission_name)
-		puts "dzialam"
+
 		worker = Worker.find(:first, :conditions => ["id = ?", worker_id])
 		status = Status.find(:first, :conditions => ["id = ?", worker.status_id])
 		privilege = Privilege.find(:first, :conditions => ["id = ?", status.privilege_id])
@@ -41,7 +36,7 @@ class Auth
 	end
 
 	def self.can_read_all?(worker_id, table_name)
-		check_permission(worker_id, table_name, "can_read_all")
+		check_permission(session[:worker].id, table_name, "can_read_all")
 	end
 	
 	def self.can_read_in_self_cinema?(worker_id, table_name)
@@ -55,6 +50,4 @@ class Auth
 	def self.can_write_in_self_cinema?(worker_id, table_name)
 		check_permission(worker_id, table_name, "can_write_in_self_cinema")
 	end 
-	
-	
 end

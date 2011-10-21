@@ -95,12 +95,15 @@
 		
 		$j(".film_desc_link").toggle(function(){
 			_id = "b"+this.id.substring(1)
-			txt = trim($j("#"+_id).text(), 24)
-			$j("#"+_id).text(txt);
-			
+			txt = rmbr[_id]
+			$j("#"+_id).css("color", "black").text(txt).animate({color: "white"}, 1000);
+			this.innerHTML = "zwiń"
 		}, function(){
-				alert("dwa")
-				})
+			_id = "b"+this.id.substring(1)
+			txt = trim(rmbr[_id], 24)
+			$j("#"+_id).css("color", "black").text(txt).animate({color: "white"}, 600);
+			this.innerHTML = "rozwiń"
+		})
 		
 	//alert($j.cookie('cinema_id'))
 	

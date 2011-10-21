@@ -130,8 +130,8 @@
 	
 	$j("a.movieTitle").css("color","red").click(function(){			
 		var v = this.href.substring(31,42);
-		var topCoord = Math.round((window.screen.width - 560)/2);
-		var leftCoord = Math.round((window.screen.height - 335)/2);
+		var topCoord = Math.round((window.innerHeight - 335)/2);
+		var leftCoord = Math.round((window.innerWidth - 560)/2);
 		//alert(topCoord+":"+leftCoord);
 		
 		$j("#movieTrailer").attr("style", "align:center;position:fixed;top:0px;left:0px;width:100%;height:100%;background-color:black;opacity:0.8;z-index:999;display:block;").html('<embed src="http://www.youtube.com/v/'+v+'?version=3&amp;hl=pl_PL" type="application/x-shockwave-flash" width="560" height="315" allowscriptaccess="always" allowfullscreen="true" style="position:fixed;top:'+topCoord+'px;left:'+leftCoord+'px;"></embed><br><span style="background-color:black;opacity:1;font-size:18px;">Kliknij w tło strony, aby zamknąć film.</style>').click(function(){

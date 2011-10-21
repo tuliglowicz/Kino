@@ -52,7 +52,7 @@ class UsersController < ApplicationController
   def create
     logger = Logger.new("log/users.log")
     @user = User.new(params[:user])
-    
+    user.hashed_password = Auth.hash_password(user.hashed_password)
     respond_to do |format|       
       if @user.save
          # confirmation email sending
@@ -112,13 +112,34 @@ class UsersController < ApplicationController
   end
 
   def is_login_available(login)
-    User.where(:login => login).first.nil?
+    User.where(:login => login).first.nil?    
  end
+ 
+  def remind_password
+    
+    @email = params[:email]
+    user = User.where(:email => @email).first
+    
+    if user
+       @login = user.login
+       
+       @new_password = ActiveSupport::SecureRandom.hex(4)
+       user.hashed_password = Auth.hash_password(@new_password)
+       if user.save
+         UserMailer.remind_password(@login, @email, @new_password).deliver   
+         redirect_to public_login_path, :notice => 'Zmieniono hasło - sprawdź email'
+       else
+        redirect_to public_login_path, :notice => 'Nie udało się zmienić hasła - spróbuj wykonać operację ponownie'
+       end
+    else
+      redirect_to public_login_path, :notice => 'Brak konta o takim emailu'       
+    end    
+  end
   
   private #===============================
   
   def get_users_layout   
-    if action_name == "new" or action_name == "create"
+    if action_name == "new" or action_name == "create" or action_name == 'remind_password'
       "application"
     else
       "admin"

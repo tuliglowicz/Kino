@@ -1,3 +1,31 @@
+<!-- CSS and JS imports -->
+<script src="/javascripts/jquery.validationEngine-pl.js" type="text/javascript" charset="utf-8"></script>
+<script src="/javascripts/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
+<!-- EO CSS and JS imports -->
+
+<script>
+	jQuery(document).ready(function()
+	{
+		var isRemindPasswordDivShown = false;
+		
+		jQuery("#remind_password_form").validationEngine('attach', { validationEventTrigger: 'submit'});
+	
+		jQuery("#remind_password_a").bind('click', function(event)
+		{
+			if (isRemindPasswordDivShown) 
+			{
+				jQuery("#remind_password_div").hide('fast');
+			}
+			else
+			{
+				jQuery("#remind_password_div").show('fast');
+			};
+			
+			isRemindPasswordDivShown = !isRemindPasswordDivShown;
+		});
+	});
+</script>
+
 <% content_for :title do -%>
 	Logowanie
 <% end -%>
@@ -12,5 +40,16 @@
 			<% end %>
 		</div>
 	  </center>
+	  
+	  <br />
+	  <h4><a id="remind_password_a">Zapomniałeś hasła?(kliknij)</a></h4>
+	  <div id="remind_password_div" style="display: none">
+	  	<form id="remind_password_form" method="post" action="<%= remind_password_path %> "/>
+	  		<label>Podaj email</label>
+	  		<input type="text" id="email" name="email" class="validate[required]"/>
+	  		<br />
+	  		<input type="submit" value="Wyślij" />	  		
+	  	</form>
+	  </div>	  
 </body>
 </html>

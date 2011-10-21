@@ -7,37 +7,45 @@
 	<body>
 		<%film=@film %>
 		<table width=800 align=center border=0>
-			<tr>			
-				<td valign="top" width=250 rowspan="2">
+			<tr>				
+				<td valign="top" width=300 rowspan="3">
 					<%= image_tag("film_posters"+film.poster, :align => "left") %>
-				</td>								
-				<td valign="top" width="350px" align="right">
-					<h1 style='line-height:normal'><%= film.title%> &nbsp;</h1><br/>				
+				</td>			
+				<td colspan="2"><h1 style='line-height:normal'><%= film.title%> &nbsp;</h1><br/></td>
+			</tr>
+			<tr>
+									
+				<td valign="top" width="200px" align="left">
+									
 					<strong>Kategoria:</strong> <%= film.category.name %><br/>
 					<strong>Rezyseria:</strong> <%= film.director %><br/>
 					<strong>Rok produkcji:</strong> <%= film.year %><br/>
-					<strong>Czas trwania:</strong> <%= film.length %><br/>
-					<%d=film.date_from.strftime("%d.%m.%C%y")%>
-					<strong>W naszym kinie od:</strong> <%= d %><br/>								 						
+					<strong>Czas trwania:</strong> <%= film.length %><br/>			
 				</td>
-				<td valign="center" align="right" width=200>
+				<td valign="top" align="left" width=200>
+					<%d=film.date_from.strftime("%d.%m.%C%y")%>
+					<strong>W kinie od:</strong> <%= d %><br/>	
 					kategoria wiekowa: +12 <br/>
 					3d<br/>
 					rodzaj widowiska<br/>
 				</td>
+			</tr>
+			
 			<tr>
-				<td colspan="2" align="right">					
-				
+		
+				<td colspan="2" align="left">					
+					<br/>
 					<%link = film.trailer[31,42];%>
 					<%source="http://www.youtube.com/v/"+link+"?version=3&amp;hl=pl_PL"%>
 					<% @kodzik=
-						"<object ><param name=\"movie\" value=\""+film.trailer+"\"><param name=\"allowFullScreen\" value=\"true\"><param name=\"allowScriptAccess\" value=\"always\"><embed src=\""+source.to_s+"\" type=\"application/x-shockwave-flash\" allowfullscreen=\"true\" allowScriptAccess=\"always\" height=\"240\"> </object>"
+						"<object ><param name=\"movie\" value=\""+film.trailer+"\"><param name=\"allowFullScreen\" value=\"true\"><param name=\"allowScriptAccess\" value=\"always\"><embed src=\""+source.to_s+"\" type=\"application/x-shockwave-flash\" allowfullscreen=\"true\" allowScriptAccess=\"always\" height=\"260\" width=\"400\"> </object>"
 					%>
 				<%= @kodzik.html_safe %>
 				</td>
-			</tr>									
+			</tr>
+									
 			<tr>
-				<td colspan="3" align="justify">
+				<td colspan="4" align="justify">
 					<br/>Opis:<br/>	<br/>				
 					<%= film.description %>
 				</td>

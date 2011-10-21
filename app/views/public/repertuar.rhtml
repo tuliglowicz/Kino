@@ -38,9 +38,13 @@
 				<hr width="750" align=center size=1 style='color:silver'><br/>
 				<table width=750 align=center border=0>
 				<tr>			
-					<td rowspan="2" valign="top"><%= image_tag("film_posters"+film.poster, :size => "100x146", :align => "right") %></td>								
+					<td rowspan="2" valign="top">
+						<%= link_to image_tag("film_posters"+film.poster, :size => "100x146", :align => "right"), :action => "dane_filmu", :id => film.id.to_s %>
+					</td>								
 					<td width="320px">
-						<h1 style='line-height:normal'><%= film.title%> &nbsp;</h1><br/>
+						
+						<h2 style='line-height:normal'> <%= link_to film.title.to_s, :action => "dane_filmu", :id => film.id.to_s %> &nbsp; </h2>
+						<br/>
 						<%= link_to 'Pokaż', :action => "dane_filmu", :id => film.id.to_s %>
 						<%= link_to("Trailer", {}, :target => "_blank", :href => film.trailer, :class=>"movieTitle") if film.trailer%>
 					</td>
@@ -51,7 +55,7 @@
 					</td>
 					
 					
-					<td width="200px" valign="center" rowspan="2">
+					<td width="200px" valign="top" rowspan="2">
 						<% if @s -%>
 							Kup bilet na godz.:<br/>
 							<% for seance in @s do-%>							
@@ -95,12 +99,15 @@
 		
 		$j(".film_desc_link").toggle(function(){
 			_id = "b"+this.id.substring(1)
-			txt = trim($j("#"+_id).text(), 24)
-			$j("#"+_id).text(txt);
-			
+			txt = rmbr[_id]
+			$j("#"+_id).css("color", "black").text(txt).animate({color: "white"}, 1000);
+			this.innerHTML = "zwiń"
 		}, function(){
-				alert("dwa")
-				})
+			_id = "b"+this.id.substring(1)
+			txt = trim(rmbr[_id], 24)
+			$j("#"+_id).css("color", "black").text(txt).animate({color: "white"}, 600);
+			this.innerHTML = "rozwiń"
+		})
 		
 	//alert($j.cookie('cinema_id'))
 	
@@ -130,8 +137,8 @@
 	
 	$j("a.movieTitle").css("color","red").click(function(){			
 		var v = this.href.substring(31,42);
-		var topCoord = Math.round((window.screen.width - 560)/2);
-		var leftCoord = Math.round((window.screen.height - 335)/2);
+		var topCoord = Math.round((window.innerHeight - 335)/2);
+		var leftCoord = Math.round((window.innerWidth - 560)/2);
 		//alert(topCoord+":"+leftCoord);
 		
 		$j("#movieTrailer").attr("style", "align:center;position:fixed;top:0px;left:0px;width:100%;height:100%;background-color:black;opacity:0.8;z-index:999;display:block;").html('<embed src="http://www.youtube.com/v/'+v+'?version=3&amp;hl=pl_PL" type="application/x-shockwave-flash" width="560" height="315" allowscriptaccess="always" allowfullscreen="true" style="position:fixed;top:'+topCoord+'px;left:'+leftCoord+'px;"></embed><br><span style="background-color:black;opacity:1;font-size:18px;">Kliknij w tło strony, aby zamknąć film.</style>').click(function(){

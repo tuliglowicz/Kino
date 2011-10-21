@@ -1,38 +1,43 @@
 Kino::Application.routes.draw do
 
-#Ścieżki utworzone ręcznie
+	#Cities
+	match '/private/cities' => 'cities#index', :as => 'cities'
+	
 	# Workers
 	match "/private/workers/login_availability" => "workers#login_availability"
+	match 'private/logout' => 'private#logut', :as => 'worker_logout'
 	
 	# Users
 	match "/users/login_availability" => "users#login_availability"
+
 	match 'public/users/remind_password' => 'users#remind_password', :as => 'remind_password'
-	
+	match 'public/register' => 'users#new', :as => 'register'
+
 	# SeanceTypes
-	match "/seance_types/name_availability" => "seance_types#name_availability"  
-  
-  # Permissions
-  match 'private/get_permissions' => "private#get_permissions", :as => 'get_permissions'
+	match "/seance_types/name_availability" => "seance_types#name_availability"
+
+  match '/private/privileges' => "private#permissions"
+  match 'private/get_permissions' => "private#get_permissions"
   match 'private/permissions/create' => "permissions#create", :as => 'add_new_permission'
   match 'private/permissions/check_permission_name_availability' => "permissions#check_permission_name_availability"
   match 'private/permissions' => "permissions#index", :as => 'permissions'
   match 'private/permissions/get_permission_data' => 'permissions#get_permission_data'
   
   match 'private/permissions/update' => 'permissions#update', :as => 'permission_update'
-  match 'private/permissions/get_current_permission' => 'permissions#get_current_permission', :as => 'get_currrent_permission'
+  match 'private/permissions/get_current_permission' => 'permissions#get_current_permission'
   match 'private/permissions/change_status_privilege_permissions' => 'permissions#change_status_privilege_permissions', :as => 'change_status_privilege_permissions'
-    
+  
+  match 'public/users/remind_password' => 'users#remind_password', :as => 'remind_password'
   match 'public/login' => 'public#login', :as => 'public_login'
- 
-
-  scope 'private' do
+  
+ scope 'private' do
       resources :workers, :cinemas, :seances, :tickets, :discount_sorts, :ticket_types,
         :seance_types, :users, :reservations, :ticket_sort_prices, :discounts, :rooms, :cinema_films,
-        :films, :cities, :categories, :statuses, :seats
+        :films, :cities, :categories, :statuses, :roomviews
   end
 
   resources :users
-    
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

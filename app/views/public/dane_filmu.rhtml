@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<title>Untitled Document</title>
+	</head>
+	<body>
+		<%film=@film %>
+		<table width=800 align=center border=0>
+			<tr>			
+				<td valign="top" width=250 rowspan="2">
+					<%= image_tag("film_posters"+film.poster, :align => "left") %>
+				</td>								
+				<td valign="top" width="350px" align="right">
+					<h1 style='line-height:normal'><%= film.title%> &nbsp;</h1><br/>				
+					<strong>Kategoria:</strong> <%= film.category.name %><br/>
+					<strong>Rezyseria:</strong> <%= film.director %><br/>
+					<strong>Rok produkcji:</strong> <%= film.year %><br/>
+					<strong>Czas trwania:</strong> <%= film.length %><br/>
+					<%d=film.date_from.strftime("%d.%m.%C%y")%>
+					<strong>W naszym kinie od:</strong> <%= d %><br/>								 						
+				</td>
+				<td valign="center" align="right" width=200>
+					kategoria wiekowa: +12 <br/>
+					3d<br/>
+					rodzaj widowiska<br/>
+				</td>
+			<tr>
+				<td colspan="2" align="right">					
+				
+					<%link = film.trailer[31,42];%>
+					<%source="http://www.youtube.com/v/"+link+"?version=3&amp;hl=pl_PL"%>
+					<% @kodzik=
+						"<object ><param name=\"movie\" value=\""+film.trailer+"\"><param name=\"allowFullScreen\" value=\"true\"><param name=\"allowScriptAccess\" value=\"always\"><embed src=\""+source.to_s+"\" type=\"application/x-shockwave-flash\" allowfullscreen=\"true\" allowScriptAccess=\"always\" height=\"240\"> </object>"
+					%>
+				<%= @kodzik.html_safe %>
+				</td>
+			</tr>									
+			<tr>
+				<td colspan="3" align="justify">
+					<br/>Opis:<br/>	<br/>				
+					<%= film.description %>
+				</td>
+			</tr>			
+		</table>
+
+	</body>
+</html>

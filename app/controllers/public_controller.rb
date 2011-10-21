@@ -34,6 +34,9 @@ class PublicController < ApplicationController
 		@cinemas = Cinema.all
 	end
 	
+	def dane_filmu
+		 @film=Film.find(params[:id])
+	end
 	def repertuar
 		@title = "Repertuar"		
 		cinema_id = request.xhr? ? params[:cinema_id] : cookies[:cinema_id]

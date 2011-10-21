@@ -1,8 +1,6 @@
 Kino::Application.routes.draw do
 
-	#Cities
-	match '/private/cities' => 'cities#index', :as => 'cities'
-	
+#Ścieżki utworzone ręcznie
 	# Workers
 	match "/private/workers/login_availability" => "workers#login_availability"
 	
@@ -11,8 +9,7 @@ Kino::Application.routes.draw do
 	match 'public/users/remind_password' => 'users#remind_password', :as => 'remind_password'
 	
 	# SeanceTypes
-	match "/seance_types/name_availability" => "seance_types#name_availability"
-  
+	match "/seance_types/name_availability" => "seance_types#name_availability"  
   
   # Permissions
   match 'private/get_permissions' => "private#get_permissions", :as => 'get_permissions'
@@ -26,35 +23,16 @@ Kino::Application.routes.draw do
   match 'private/permissions/change_status_privilege_permissions' => 'permissions#change_status_privilege_permissions', :as => 'change_status_privilege_permissions'
     
   match 'public/login' => 'public#login', :as => 'public_login'
-  
-  resources :seances
-  resources :tickets
-  resources :discount_sorts
-  resources :ticket_types
-  resources :seance_types
-  resources :users
-  resources :ticket_types
-  resources :reservations
-  resources :ticket_sort_prices
-  resources :tickets
-  resources :users
-  resources :discounts
-  resources :prices  
-  resources :rooms
-  resources :cinema_films
-  resources :workers
-  resources :films
-  resources :cities
-  resources :categories
-  resources :cinemas
-  resources :statuses
-  resources :seances
-  resources :seats do
-        member do
-  	    	get "new1"
-    	end
+ 
+
+  scope 'private' do
+      resources :workers, :cinemas, :seances, :tickets, :discount_sorts, :ticket_types,
+        :seance_types, :users, :reservations, :ticket_sort_prices, :discounts, :rooms, :cinema_films,
+        :films, :cities, :categories, :statuses, :seats
   end
-  
+
+  resources :users
+    
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

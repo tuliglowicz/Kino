@@ -6,6 +6,7 @@ Kino::Application.routes.draw do
 	# Workers
 	match "/private/workers/login_availability" => "workers#login_availability"
 	
+	
 	# Users
 	match "/users/login_availability" => "users#login_availability"
 	

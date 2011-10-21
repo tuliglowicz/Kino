@@ -6,10 +6,16 @@
 
   <%= stylesheet_link_tag :all %> 
   <%= javascript_include_tag "jquery-1.6.2.min.js" %>
-  <%= javascript_include_tag :defaults %>  
-  <%= javascript_include_tag "calendar.js" %>
+  <%= javascript_include_tag "jquery-ui-1.8.16.custom.min.js" %>
+	<%= javascript_include_tag "rep_helper.js" %>
+	<%= javascript_include_tag "jquery.tooltip.pack.js" %>
+	<%= javascript_include_tag "jquery.cookie.js" %>
+	<script> $j = jQuery.noConflict(); </script>
+	<%= javascript_include_tag :defaults %>
+	<%= javascript_include_tag "jscript.js" %>
   <%= csrf_meta_tag %>
   <title><%= @title || "Cinema" %></title>
+  
 
 </head>
 
@@ -61,7 +67,7 @@
 </TD>
 <td width=1%>&nbsp;</TD>
 
-<td valign=top width=1px background="../images/pic/border.gif" style=' width:1px;font-size:1'></TD>
+<td valign=top width=1px background="../../images/pic/border.gif" style=' width:1px;font-size:1'></TD>
 <td width="3%">&nbsp;</td>
 <td valign=top>
 	<span style='color:green'><%= flash[:notice] %></span><br/>

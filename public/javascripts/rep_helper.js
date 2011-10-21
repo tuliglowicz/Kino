@@ -15,7 +15,10 @@ function trim(txt, length){
 	if(text.length > length)
 		txt += "...";
 	
-	return txt;
+	res = {};
+	res.t = txt;
+	res.len = text.length;
+	return res;
 }
 
 

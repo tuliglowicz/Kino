@@ -2,8 +2,6 @@
 class PricesController < ApplicationController
 	
 	layout 'admin'
-	layout 'admin'
-
 
 	before_filter :auth, :except => ["show", "index", "edit", "new", "update"]
 	

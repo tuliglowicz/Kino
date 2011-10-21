@@ -1,0 +1,123 @@
+<style>
+.seat.deselected {
+	opacity: 0.15;
+	color: black;
+}
+</style>
+<div id="giveMeParams_width_height" align="left" syle='float:left;'>
+		Wpisz wartości:<br>
+		liczba kolumn: <input type="text" id="room_width_inp"> (0 &lt; x &lt; 35)<br/>
+		liczba rzędów: <input type="text" id="room_height_inp"> (0 &lt; x &lt; 24)
+</div>
+<br>
+<button onClick="submitParams()">Generuj widok do obróbki</button>
+<hr>
+<%= form_for(@roomview) do |f| %>
+  <% if @roomview.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@roomview.errors.count, "error") %> prohibited this roomview from being saved:</h2>
+
+      <ul>
+      <% @roomview.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field" style='display:none'>
+    <%= f.label :id %><br />
+    <%= f.text_field :id %>
+  </div>
+  <div class="field">
+    <%= f.label 'NAZWA' %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+  	
+    <%= hidden_field_tag :view %>
+    <%# f.text_field :view %>
+  </div>
+  
+<table align=center bgcolor="white" border=0px cellpadding=0px cellspacing=5px style="padding-bottom:25px" id="theTable">
+</table>
+<center>
+	<button id="XMLgen">Generuj XML</button>
+	<div id="placeForGeneratedXML"></div>
+<center>
+	  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+
+
+
+
+
+
+<script>
+$j(".seat").live("click", seat_clicked);
+
+var width_of_seat_rect;
+var height_of_seat_rect;
+
+function seat_clicked(){
+	$j(this).toggleClass("deselected");
+}
+function drawFullRectangle(w, h){
+	width_of_seat_rect = w;
+	height_of_seat_rect = h;
+	
+	var reserved = new Array();
+	
+	var chars = new Array('A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','R','S','T','U','W','X','Y','Z');
+	var maxRows = h;
+	var maxCols = w;
+	var wypełniacz, html;
+	
+	for(var i=0; i<h; i++)
+	{ 
+		html = ""
+		html+="<tr align=centera valign='middle'><td width='10px' style='color:#666' align='right' valign='middle'>"+chars[i]+"</td><td align='center' valign='middle' width='"+(25*maxCols)+"px'>";
+		
+		for(var j=1; j<=maxCols; j++) {
+			wypełniacz = "";
+			if(j<10) wypełniacz = "&nbsp;";
+			html+="<div id='"+chars[i]+""+j+"' class='seat' align=center valign='middle'>"+j+"</div>";
+		}
+		html += "</td><td width='10px' valign='middle'>"+chars[i]+"</td></tr>";
+			
+		$j("#theTable").append(html);
+	}
+}
+		
+// ----------------------------------------------------------------------------------------------------------
+		
+//clicked ok indialog button...
+function submitParams(){
+	var w = $j("#room_width_inp").val().match("[1-9]{1}[0-9]{0,1}");
+	var h = $j("#room_height_inp").val().match("[1-9]{1}[0-9]{0,1}");
+
+	if(w && h && w > 0 && w <= 35 && h > 0 && h <= 24){
+		$j(this).dialog("close");
+		drawFullRectangle(w, h);
+	}
+	else
+		alert("sprawdź, czy dobrze wypełniłeś pola");
+}
+
+$j("#XMLgen").click(function(){
+	var xml = "<room><width>"+width_of_seat_rect+"</width><height>"+height_of_seat_rect+"</height><deletedSeats>"
+	
+	$j(".seat.deselected").each(function(){
+		xml+="<seat>"+this.id+"</seat>"
+	});
+	
+	xml+="</deletedSeats></room>"
+	$j("#placeForGeneratedXML").text(xml);
+});
+
+$j("button, input[type=submit]").button();
+</script>

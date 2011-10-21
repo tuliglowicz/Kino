@@ -1,6 +1,13 @@
+<script src="/javascripts/jquery.validationEngine-pl.js" type="text/javascript" charset="utf-8"></script>
+<script src="/javascripts/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
 
-<%= javascript_include_tag 'jquery', 'rails', 'rails.validations' %> 
-<%= form_for @ticket, :validate => true do |f| %>
+<script>
+	jQuery(document).ready(function(){	
+		jQuery('#new_ticket').validationEngine('attach', { validationEventTrigger: 'submit'});
+	});
+</script>
+
+<%= form_for(@ticket) do |f| %>
   <% if @ticket.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@ticket.errors.count, "error") %> prohibited this ticket from being saved:</h2>
@@ -17,9 +24,9 @@
   <div class="field">
     <%= f.label :Seans %><br />
     	<% if @seances -%>
-    <%= select_tag('ticket[seance_id]', options_for_select([['Wybierz seans', '']] + @seances.collect{|r| [r.cinema_film_id, r.id]}, @ticket.seance_id)) %>
+    <%= select_tag('ticket[seance_id]', options_for_select([['Wybierz seans', '']] + @seances.collect{|r| [r.cinema_film_id, r.id]}, @ticket.seance_id), :class => 'validate[required]') %>
     <% else -%>
-    <%= f.text_field :seance_id %>
+    <%= f.text_field :seance_id, :class => 'validate[required]' %>
     <% end -%>
   </div>
   
@@ -28,15 +35,15 @@
   <div class="field">
     <%= f.label :Miejsce %><br />
     	<% if @seats -%>
-    <%= select_tag('ticket[seat_id]', options_for_select([['Wybierz siedzenie', '']] + @seats.collect{|r| [r.room_id, r.id]}, @ticket.seat_id)) %>
+    <%= select_tag('ticket[seat_id]', options_for_select([['Wybierz siedzenie', '']] + @seats.collect{|r| [r.room_id, r.id]}, @ticket.seat_id), :class => 'validate[required]') %>
     <% else -%>
-    <%= f.text_field :seat_id %>
+    <%= f.text_field :seat_id, :class => 'validate[required]' %>
     <% end -%>
   </div>
   
   <div class="field">
     <%= f.label :Użytkownk%><br />
-    <%= f.text_field :user_id %>
+    <%= f.text_field :user_id, :class => 'validate[required]' %>
   </div>
   <div class="field">
     <%= f.label :Anulowany %><br />
@@ -44,7 +51,7 @@
   </div>
   <div class="field">
     <%= f.label :Rezerwacja %><br />
-    <%= f.text_field :reservation_id %>
+    <%= f.text_field :reservation_id, :class => 'validate[required]' %>
   </div>
   <div class="field">
     <%= f.label :Cena %><br />
@@ -52,7 +59,7 @@
   </div>
   <div class="field">
     <%= f.label :Pracownik %><br />
-    <%= f.text_field :worker_id %>
+    <%= f.text_field :worker_id, :class => 'validate[required]' %>
   </div>
   <div class="actions">
     <%= f.submit "Zapisz"%>

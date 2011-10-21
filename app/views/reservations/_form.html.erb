@@ -1,3 +1,12 @@
+<script src="/javascripts/jquery.validationEngine-pl.js" type="text/javascript" charset="utf-8"></script>
+<script src="/javascripts/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
+
+<script>
+	jQuery(document).ready(function(){	
+		jQuery('#new_reservation').validationEngine('attach', { validationEventTrigger: 'submit'});
+	});
+</script>
+
 <%= form_for(@reservation) do |f| %>
   <% if @reservation.errors.any? %>
     <div id="error_explanation">
@@ -14,7 +23,7 @@
   
   <div class="field">
     <%= f.label :Data %><br />
-    <%= f.date_select :date %>
+    <%= f.date_select :date, :class => 'validate[required]' %>
   </div>
   <div class="actions">
     <%= f.submit "Zapisz"%>

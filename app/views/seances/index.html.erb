@@ -24,10 +24,8 @@
 	    <td align="center"><%= seance.room.number if seance.room %>
 	    <td><%= seance.date_from %></td>
 	    <td align="center"><%= seance.time_from.strftime("%H:%M") %></td>
-	    <td align="center"><%= check_box_tag seance.checked  %></td>
 	    <td align="center"><%= seance.seance_type.name %></td>
-	    <td align="center"><%= #seance.discount_sort.ticket_sort_price.price if seance.discount_sort and seance.discount_sort.ticket_sort_price 
-	    %></td>
+	    <td align="center"><%= seance.discount_sort.description %></td>
 	    <td><%= link_to 'Pokaż', seance %>
 	    	<%= link_to 'Edytuj', edit_seance_path(seance) %>
 	    	<%= link_to 'Usuń', seance, :confirm => 'Czy na pewno chcesz usunąć ten rekord?', :method => :delete %></td>
@@ -40,6 +38,7 @@
 
 <% end -%>
 
+<br></br>	 
+	<%= will_paginate @seances,  { :previous_label => 'Wstecz', :next_label => 'Dalej' } %>
+	
 <br />
-
-<%= link_to 'Dodaj', new_seance_path %>

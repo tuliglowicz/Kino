@@ -6,7 +6,7 @@ class CreateTicketsSortsPrices < ActiveRecord::Migration
       t.int :cinema_id
       t.int :seance_type_id
       t.int :ticket_type_id
-      t.bigdecimal :price
+      #t.bigdecimal :price
       t.int :discount_sort_id
       t.string :description
 

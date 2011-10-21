@@ -46,9 +46,9 @@
     <% @discount_number = @discount_number + 1%>
     <td><%= discount_sort.description %></td>
     <td><%= discount_sort.is_weekend == true ? 'tak' : 'nie' %></td>
-    <td><%= link_to 'Show', discount_sort %></td>
-    <td><%= link_to 'Edit', edit_discount_sort_path(discount_sort) %></td>
-    <td><%= link_to 'Destroy', discount_sort, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Pokaż', discount_sort %></td>
+    <td><%= link_to 'Edytuj', edit_discount_sort_path(discount_sort) %></td>
+    <td><%= link_to 'Usuń', discount_sort, :confirm => 'Czy jesteś pewien?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

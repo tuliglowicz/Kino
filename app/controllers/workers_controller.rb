@@ -34,7 +34,7 @@ class WorkersController < ApplicationController
   		@worker = Worker.find(params[:id])
 	else
     	@worker = Worker.where(:id => params[:id], :cinema_id => session[:worker].cinema_id)[0]
-	end
+  end
 
     respond_to do |format|
       format.html # show.html.erb
@@ -174,19 +174,9 @@ class WorkersController < ApplicationController
     render :text => @tmp
   end
   
-  def get_workers_layout   
-    if action_name == "login"
-      "loginWork"
-    else
-      "admin"
-    end
-  end
   
-  def login
-     
-      logged_in_user = Auth.try_to_login(params[:login], params[:password])
-      
-  end
+  
+  
 
 	private #===============================
 	def auth

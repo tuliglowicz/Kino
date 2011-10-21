@@ -1,7 +1,8 @@
 # encoding: utf-8
 class PrivateController < ApplicationController
 
-	layout 'admin'
+	layout :get_workers_layout 
+  
   
   protect_from_forgery :except => "get_permissions"
 
@@ -99,6 +100,12 @@ class PrivateController < ApplicationController
 			redirect_to(:controller => "public", :action => "login") # jak wrócić do strony sprzed próby logowania ? bez history.go(-1)
 		end
 	end
+	
+	def login
+     
+      logged_in_user = Auth.try_to_login(params[:login], params[:password])
+      
+  end
 
 	def logout
 	  logger.debug '##################private_controller.logout########################'
@@ -122,6 +129,14 @@ class PrivateController < ApplicationController
     @permission = Permission.where(:id => privilege_permission_id)
     
     render :text => @privilege_permission_id
+  end
+  
+  def get_workers_layout   
+    if action_name == "login"
+      "loginWork"
+    else
+      "admin"
+    end
   end
  
   end

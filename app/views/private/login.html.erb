@@ -2,7 +2,7 @@
 <body>
 	<center>
 		<div>
-			<%= form_tag(:controller => 'workers', :action => 'login', :method => "get") do %>
+			<%= form_tag(:controller => 'private', :action => 'login', :method => "get") do %>
 				<%= label_tag(:login, "Login:") %><%= text_field_tag(:login) %><br/>
 				<%= label_tag(:password, "Hasło:") %><%= password_field_tag(:password) %><br/>
 				<%= submit_tag("Login") %>

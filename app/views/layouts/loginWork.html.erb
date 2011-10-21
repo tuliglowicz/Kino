@@ -3,72 +3,35 @@
 <head>
 <META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8"/>
 
-<title><%= yield(:title) && yield(:title) != "" ? yield(:title) : "Cinematoholix- Kino na miarę Twoich oczekiwań" %></title>
+<title>"Cinematoholix- Kino na miarę Twoich oczekiwań"</title>
 </head>
 
-<BODY LEFTMARGIN="0" bgcolor="gray" RIGHTMARGIN="0" TOPMARGIN="0" BOTTOMMARGIN="0" MARGINWIDTH="0" MARGINHEIGHT="0">
 
 
 <style>
 
-body {background: #000 url('/images/pic/body_bg.jpg') repeat-x 0 0;}
-#page {background: url('/images/pic/page_bg.jpg') no-repeat 105px 0;}
-.path_114725 #page { background: #000 url('/images/pic/tapeta_kinoplex.jpg') no-repeat center top }
-
+#sWlbg {background: url('/images/pic/page_bg.jpg') no-repeat 0px 0; background-size: 100% 100% ;  }
 
 </style>
 
 </head>
 
-<body id="pagetype_index" class="path_109533 path_vod">
+
      
-<div id="page" class="layout_uniwersalny">
-	<div class="Ww2" style="text-align: right;">
-		<a href="/public/login">Login</a> | <a href="<%= new_user_path %>">Rejestracja</a>
-	</div>      
-	<div id="sWlbg" style="paddting-top: -20px;">
-		<div class="Ww2">
-			<map name="winieta"><area coords="0,0,142,39" shape="rect" href="/public/index"></map>
-			<img class="Wimg3" src="/images/pic/tlo.png" alt="" usemap="#winieta" height="60" width="234" />
-			<div class="Wseohtm"><h1>Kino na miarę Twoich oczekiwań!</h1></div>
+<div id="sWlbg" >
+		<div class="Ww2" align="center" >
+			<img class="Wimg3" src="/images/pic/tlo.png" alt="" height="100" width="294" />
+					<table class="Ww2" align="center" valign="middle" style="height:400px; overflow: auto; text-align: right;"><tr><td align="right" valign="top">
+						<span style='color:green'><%= flash[:notice] if flash[:notice]%></span><br>
+							
+							<%= yield %>
+					
+					</table>
 		</div>
 	</div>
-  
 
 	
-		</ul>
-	</div>
-	
-	
-	
-	<table class="Ww2" align="center" valign="middle" style="height:400px; overflow: auto; text-align: right;"><tr><td align="right" valign="top">
-		<span style='color:green'><%= flash[:notice] if flash[:notice]%></span><br>
-		<center id="preloader_podluzny" style="display:none;">
-			Ładowanie...<br/>
-			<img id="" src="/images/pic/loader.gif">
-		</center>
-		<%= yield %>
-	</table>
 
 
-	<div id="footer">
-		<hr align="center" width="100%" color="#333" size="1">
-	  <div class="ft_bot">
-	
-	    <ul class="c0">
-	      <li class="copy">
-	      	<a href="#"  rel="nofollow">Copyright</a> &copy; <a href="#" rel="nofollow">CINEMATOHOLIX SA</a>
-	      </li>
-	      <li class="f"><a href="#" rel="nofollow">O nas</a></li>
-	      <li><a href="" rel="nofollow">Staże u nas</a></li>
-	      <li><a href="" rel="nofollow">Reklama</a></li>
-	      <li><a href="" rel="nofollow">Prywatność</a></li>
-	      <li><a href="" >Wszystkie artykuły</a></li>
-	      <li><a href="" >Licencje</a></li>
-	    </ul>
-	  </div>
-	 </div>
 
-
-</body>
 </html>

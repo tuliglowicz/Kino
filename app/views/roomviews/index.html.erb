@@ -4,8 +4,9 @@
 
 <table>
   <tr>
+    <th>Id</th>
     <th>Name</th>
-    <th></th>
+    <th>View</th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,8 +14,9 @@
 
 <% @roomviews.each do |roomview| %>
   <tr>
+    <td><%= roomview.id %></td>
     <td><%= roomview.name %></td>
-    <td width="100px"></td>
+    <td><%= roomview.view %></td>
     <td><%= link_to 'Pokaż', roomview %></td>
     <td><%= link_to 'Edytuj', edit_roomview_path(roomview) %></td>
     <td><%= link_to 'Usuń', roomview, :confirm => 'Czy na pewno chcesz usunąć podany wiersz?', :method => :delete %></td>

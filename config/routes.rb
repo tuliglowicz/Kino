@@ -5,7 +5,7 @@ Kino::Application.routes.draw do
 	
 	# Workers
 	match "/private/workers/login_availability" => "workers#login_availability"
-	match 'private/logout' => 'private#logut', :as => 'worker_logout'
+	match 'private/logout' => 'private#logout', :as => 'worker_logout'
 	
 	# Users
 	match "/users/login_availability" => "users#login_availability"

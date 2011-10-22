@@ -1,20 +1,72 @@
+<style>
+.seat.deselected {
+	opacity: 0.15;
+	color: black;
+}
+</style>
+
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Id:</b>
-  <%= @roomview.id %>
-</p>
+<h1>Widok Sali: <%= @roomview.name %></h1>
 
-<p>
-  <b>Name:</b>
-  <%= @roomview.name %>
-</p>
-
-<p>
+<p style="display:none;">
   <b>View:</b>
-  <%= @roomview.view %>
+  <span id="xmlSpan"><%= @roomview.view %></span>
 </p>
-
+<table align="center" bgcolor="white" border=0px cellpadding=0px cellspacing=5px style="padding-bottom:25px" id="theTable">
+	
+</table>
 
 <%= link_to 'Edit', edit_roomview_path(@roomview) %> |
 <%= link_to 'Back', roomviews_path %>
+
+<script>
+
+$j(document).ready(function(){
+	xml = $j($j("#xmlSpan").text());
+	
+	h = xml.find("height").text();
+	w = xml.find("width").text();
+	
+	if(drawFullRectangle(w, h)){
+		delS = xml.find("deletedSeats seat").each(function(){
+			thisID = this.innerHTML;
+			//alert(thisID)
+			$j("#"+thisID).addClass("deselected")
+		})	
+	}
+})
+
+function drawFullRectangle(w, h){
+	width_of_seat_rect = w;
+	height_of_seat_rect = h;
+	
+	var reserved = new Array();
+	
+	var chars = new Array('A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','R','S','T','U','W','X','Y','Z');
+	var maxRows = h;
+	var maxCols = w;
+	var wypełniacz, html;
+	
+	$j("#theTable").html("<tr><td></td><td align=center><b>- E K R A N -</b><br/><br/><br/></td><td></td></tr> ")
+	
+	for(var i=0; i<h; i++)
+	{
+		html = ""
+		html+="<tr align=centera valign='middle'><td width='10px' align='right' valign='middle'>"+chars[i]+"</td><td align='center' valign='middle' width='"+(25*maxCols)+"px'>";
+		
+		for(var j=1; j<=maxCols; j++) {
+			wypełniacz = "";
+			if(j<10) wypełniacz = "&nbsp;";
+			html+="<div id='"+chars[i]+""+j+"' class='seat' align=center valign='middle' style='cursor:default;'>"+j+"</div>";
+		}
+		html += "</td><td width='10px' valign='middle'>"+chars[i]+"</td></tr>";
+			
+		$j("#theTable").append(html);
+	}
+	
+	return true;
+};
+
+
+</script>

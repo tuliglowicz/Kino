@@ -4,14 +4,7 @@
 	color: black;
 }
 </style>
-<div id="giveMeParams_width_height" align="left" syle='float:left;'>
-		Wpisz wartości:<br>
-		liczba kolumn: <input type="text" id="room_width_inp"> (0 &lt; x &lt; 35)<br/>
-		liczba rzędów: <input type="text" id="room_height_inp"> (0 &lt; x &lt; 24)
-</div>
-<br>
-<button onClick="submitParams()">Generuj widok do obróbki</button>
-<hr>
+
 <%= form_for(@roomview) do |f| %>
   <% if @roomview.errors.any? %>
     <div id="error_explanation">
@@ -30,21 +23,29 @@
     <%= f.text_field :id %>
   </div>
   <div class="field">
-    <%= f.label 'NAZWA' %><br />
+    <b><%= f.label 'NAZWA' %></b><br />
     <%= f.text_field :name %>
   </div>
   <div class="field">
   	
-    <%= hidden_field_tag :view %>
-    <%# f.text_field :view %>
+    <%# hidden_field_tag :view %>
+    <%= f.text_field :view, :style => "display: none;" %>
   </div>
+  
+<hr>
+  
+<div id="giveMeParams_width_height" align="left" syle='float:left;'>
+		<strong>Zbuduj widok:</strong><br>
+		liczba kolumn: <input type="text" id="room_width_inp"> (0 &lt; x &lt; 35)<br/>
+		liczba rzędów: <input type="text" id="room_height_inp"> (0 &lt; x &lt; 24)
+</div>
+<br>
+<button onClick="submitParams();return false;">Generuj widok do obróbki</button>
+
+
   
 <table align=center bgcolor="white" border=0px cellpadding=0px cellspacing=5px style="padding-bottom:25px" id="theTable">
 </table>
-<center>
-	<button id="XMLgen">Generuj XML</button>
-	<div id="placeForGeneratedXML"></div>
-<center>
 	  
   <div class="actions">
     <%= f.submit %>
@@ -52,12 +53,26 @@
 <% end %>
 
 
-
-
-
-
-
 <script>
+
+$j(document).ready(function(){
+	xml = $j($j("#roomview_view").val());
+	
+	h = xml.find("height").text();
+	w = xml.find("width").text();
+	
+	$j("#room_width_inp").val(w);
+	$j("#room_height_inp").val(h);
+	
+	if(drawFullRectangle(w, h)){
+		delS = xml.find("deletedSeats seat").each(function(){
+			thisID = this.innerHTML;
+			$j("#"+thisID).addClass("deselected")
+		})	
+	}
+})
+
+
 $j(".seat").live("click", seat_clicked);
 
 var width_of_seat_rect;
@@ -77,10 +92,12 @@ function drawFullRectangle(w, h){
 	var maxCols = w;
 	var wypełniacz, html;
 	
+	$j("#theTable").html("")
+	
 	for(var i=0; i<h; i++)
-	{ 
+	{
 		html = ""
-		html+="<tr align=centera valign='middle'><td width='10px' style='color:#666' align='right' valign='middle'>"+chars[i]+"</td><td align='center' valign='middle' width='"+(25*maxCols)+"px'>";
+		html+="<tr align=centera valign='middle'><td width='10px' align='right' valign='middle'>"+chars[i]+"</td><td align='center' valign='middle' width='"+(25*maxCols)+"px'>";
 		
 		for(var j=1; j<=maxCols; j++) {
 			wypełniacz = "";
@@ -91,6 +108,8 @@ function drawFullRectangle(w, h){
 			
 		$j("#theTable").append(html);
 	}
+	
+	return true;
 }
 		
 // ----------------------------------------------------------------------------------------------------------
@@ -99,16 +118,22 @@ function drawFullRectangle(w, h){
 function submitParams(){
 	var w = $j("#room_width_inp").val().match("[1-9]{1}[0-9]{0,1}");
 	var h = $j("#room_height_inp").val().match("[1-9]{1}[0-9]{0,1}");
+	
+	$j("#room_width_inp").val(w);
+	$j("#room_height_inp").val(h)
 
-	if(w && h && w > 0 && w <= 35 && h > 0 && h <= 24){
+	if(w && h && w > 0 && w < 35 && h > 0 && h <= 24){
 		$j(this).dialog("close");
 		drawFullRectangle(w, h);
 	}
-	else
-		alert("sprawdź, czy dobrze wypełniłeś pola");
+	else {
+		alert("Sprawdź, czy dobrze wypełniłeś pola");
+	}		
+	
+	return false;
 }
 
-$j("#XMLgen").click(function(){
+$j("#roomview_submit").click(function(){
 	var xml = "<room><width>"+width_of_seat_rect+"</width><height>"+height_of_seat_rect+"</height><deletedSeats>"
 	
 	$j(".seat.deselected").each(function(){
@@ -116,8 +141,10 @@ $j("#XMLgen").click(function(){
 	});
 	
 	xml+="</deletedSeats></room>"
-	$j("#placeForGeneratedXML").text(xml);
+	$j("#roomview_view").css("width","550px").val(xml);
+	
+	return true;
 });
 
-$j("button, input[type=submit]").button();
+$j("input, button").button();
 </script>

@@ -2,8 +2,7 @@
 class CinemasController < ApplicationController
 	
 	layout 'admin'
-
-	#before_filter :auth_exept_show, :except => ["show", "create"]
+	
 	before_filter :can_read, :only => ['index', 'show']
 	before_filter :can_write, :except => ['index', 'show']
 	

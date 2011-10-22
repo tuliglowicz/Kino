@@ -40,7 +40,7 @@
 		liczba rzędów: <input type="text" id="room_height_inp"> (0 &lt; x &lt; 24)
 </div>
 <br>
-<button onClick="submitParams();return false;">Generuj widok do obróbki</button>
+<button onClick="submitParams();return false;">Generuj widok do obróbki</button><%= f.submit %>
 
 
   
@@ -55,6 +55,7 @@
 
 <script>
 
+var delS;
 $j(document).ready(function(){
 	xml = $j($j("#roomview_view").val());
 	
@@ -65,10 +66,11 @@ $j(document).ready(function(){
 	$j("#room_height_inp").val(h);
 	
 	if(drawFullRectangle(w, h)){
-		delS = xml.find("deletedSeats seat").each(function(){
+		delS = xml.find("deletedSeats seat")
+		delS.each(function(){
 			thisID = this.innerHTML;
 			$j("#"+thisID).addClass("deselected")
-		})	
+		})
 	}
 })
 
@@ -92,7 +94,7 @@ function drawFullRectangle(w, h){
 	var maxCols = w;
 	var wypełniacz, html;
 	
-	$j("#theTable").html("")
+	$j("#theTable").html("<tr><td></td><td align=center><br/><b>- E K R A N -</b><br/><br/><br/></td><td></td></tr> ")
 	
 	for(var i=0; i<h; i++)
 	{
@@ -124,7 +126,12 @@ function submitParams(){
 
 	if(w && h && w > 0 && w < 35 && h > 0 && h <= 24){
 		$j(this).dialog("close");
-		drawFullRectangle(w, h);
+		if(drawFullRectangle(w, h) && delS != undefined){
+			delS.each(function(){
+			thisID = this.innerHTML;
+			$j("#"+thisID).addClass("deselected")
+		})	
+		}
 	}
 	else {
 		alert("Sprawdź, czy dobrze wypełniłeś pola");

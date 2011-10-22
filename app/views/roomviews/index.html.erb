@@ -1,8 +1,11 @@
+<style>
+.odd {background-color: #f0f0f0;}
+</style>
 <h1>Lista Widoków Sal</h1>
 
 <%# link_to 'Dodaj nowy widok', new_roomview_path %><br/><br/>
 
-<table>
+<table id="listaRekordow" cellspacing=0 cellpadding=5px>
   <tr>
     <th>Id</th>
     <th>Name</th>
@@ -27,3 +30,7 @@
 <br />
 
 <%= link_to 'Dodaj nowy widok', new_roomview_path %>
+
+<script>
+$j("#listaRekordow").find('tr:odd').addClass("odd")
+</script>

@@ -2,14 +2,13 @@
 
 class WorkersController < ApplicationController
 	
-	layout :get_workers_layout 
+	layout 'admin' 
 	
-	protect_from_forgery :except => "login_availability"
-	before_filter :auth_access, :except => ["login_availability"]
-	before_filter :auth, :except => ["show", "index", "edit", "new", "update", "login_availability"]
-		
-		
-		
+	protect_from_forgery :except => "login_availability"	
+	before_filter :is_worker, :except => ['login_availability']
+  before_filter :can_read, :only => ['index', 'show']
+  before_filter :can_write, :except => ['index', 'show','login_availability']
+	
   # GET /workers
   # GET /workers.xml
   def index
@@ -174,17 +173,22 @@ class WorkersController < ApplicationController
     render :text => @tmp
   end
   
-  
-  
-  
-
 	private #===============================
-	def auth
-		if session[:worker] == nil 
-				flash[:notice] = "Please log in, first!"
-				redirect_to(:controller => "public", :action => "index")
-				return false
-		end
-	end  
+	
+	def is_worker
+    redirect_to private_login_path unless session[:worker]
+  end  
+  
+  def can_read
+     redirect_to private_path, :notice => 'Brak uprawnień do wykonania akcji!' unless Auth.can_read_in_self_cinema?(session[:worker].id, get_table_name) or Auth.can_read_all?(session[:worker].id, get_table_name)
+  end
+
+  def can_write
+     redirect_to private_path, :notice => 'Brak uprawnień do wykonania akcji!' unless Auth.can_write_in_self_cinema?(session[:worker].id, get_table_name) or Auth.can_write_all?(session[:worker].id, get_table_name)
+  end 
+ 
+  def get_table_name
+    'workers'
+  end
 	
 end

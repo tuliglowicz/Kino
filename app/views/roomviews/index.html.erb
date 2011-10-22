@@ -1,0 +1,27 @@
+<h1>Listing roomviews</h1>
+
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>View</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @roomviews.each do |roomview| %>
+  <tr>
+    <td><%= roomview.id %></td>
+    <td><%= roomview.name %></td>
+    <td><%= roomview.view %></td>
+    <td><%= link_to 'Show', roomview %></td>
+    <td><%= link_to 'Edit', edit_roomview_path(roomview) %></td>
+    <td><%= link_to 'Destroy', roomview, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Roomview', new_roomview_path %>

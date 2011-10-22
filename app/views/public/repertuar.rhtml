@@ -41,14 +41,14 @@
 					<td rowspan="2" valign="top">
 						<%= link_to image_tag("film_posters"+film.poster, :size => "100x146", :align => "right"), :action => "dane_filmu", :id => film.id.to_s %>
 					</td>								
-					<td width="320px">
+					<td width="320px" valign="top">
 						
 						<h2 style='line-height:normal'> <%= link_to film.title.to_s, :action => "dane_filmu", :id => film.id.to_s %> &nbsp; </h2>
 						<br/>
 						<%= link_to 'Pokaż', :action => "dane_filmu", :id => film.id.to_s %>
 						<%= link_to("Trailer", {}, :target => "_blank", :href => film.trailer, :class=>"movieTitle") if film.trailer%>
 					</td>
-					<td width="200px" align="left">
+					<td width="200px" align="left" valign="top">
 						<strong>Kategoria:</strong> <%= film.category.name %><br/>
 						<strong>Rezyser:</strong> <%= film.director %><br/>
 						<strong>Czas trwania:</strong> <%= film.length %><br/>							 						
@@ -93,8 +93,12 @@
 		
 		$j(".film_desc").each(function(){
 			rmbr[this.id] = $j(this).text();
-			txt = trim($j(this).text(), 24)
-			$j(this).text(txt);
+			trim_res = trim($j(this).text(), 24);
+			if(trim_res.len <= 24){
+				_id = "a"+this.id.substring(1)
+				document.getElementById(_id).innerHTML = "";
+			}
+			$j(this).text(trim_res.t);
 		});		
 		
 		$j(".film_desc_link").toggle(function(){
@@ -104,7 +108,7 @@
 			this.innerHTML = "zwiń"
 		}, function(){
 			_id = "b"+this.id.substring(1)
-			txt = trim(rmbr[_id], 24)
+			txt = trim(rmbr[_id], 24).t
 			$j("#"+_id).css("color", "black").text(txt).animate({color: "white"}, 600);
 			this.innerHTML = "rozwiń"
 		})
@@ -158,3 +162,4 @@
 </div>
 
 <div id="movieTrailer"></div>
+<br/><br/><br/>

@@ -30,6 +30,9 @@ Kino::Application.routes.draw do
   match 'public/users/remind_password' => 'users#remind_password', :as => 'remind_password'
   match 'public/login' => 'public#login', :as => 'public_login'
   
+  # Private
+  match 'private/panel' => 'private#panel', :as => 'private'
+  
  scope 'private' do
       resources :workers, :cinemas, :seances, :tickets, :discount_sorts, :ticket_types,
         :seance_types, :users, :reservations, :ticket_sort_prices, :discounts, :rooms, :cinema_films,

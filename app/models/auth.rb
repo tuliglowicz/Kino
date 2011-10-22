@@ -22,6 +22,12 @@ class Auth
 
 	def self.check_permission(worker_id, table_name, permission_name)
 
+    #logger = Logger.new("log/perm.log")
+    #logger.debug Time.now.to_s
+    #logger.debug 'id => ' + worker_id.to_s
+    #logger.debug 'table_name => ' + table_name.to_s
+    #logger.debug 'permission_name => ' + permission_name.to_s
+    
 		worker = Worker.find(:first, :conditions => ["id = ?", worker_id])
 		status = Status.find(:first, :conditions => ["id = ?", worker.status_id])
 		privilege = Privilege.find(:first, :conditions => ["id = ?", status.privilege_id])
@@ -31,12 +37,14 @@ class Auth
 		else
 			permission = Permission.find(:first,:conditions => ["id = ?", privilege.send(table_name)])
 		end
+		
+		#logger.debug "status =>" + permission.send(permission_name).to_s
 			
 		return permission.send(permission_name)
 	end
 
 	def self.can_read_all?(worker_id, table_name)
-		check_permission(session[:worker].id, table_name, "can_read_all")
+		check_permission(worker_id, table_name, "can_read_all")
 	end
 	
 	def self.can_read_in_self_cinema?(worker_id, table_name)

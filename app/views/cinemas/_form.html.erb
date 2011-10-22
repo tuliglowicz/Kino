@@ -8,7 +8,7 @@
     // binds form submission and fields to the validation engine
     jQuery('#cinema_name').focus();
     
-    jQuery("#new_cinema").validationEngine('attach', {bindMethod:"live"});
+    jQuery("#cinema_form").validationEngine('attach', {bindMethod:"live"});
     
     jQuery("#cinema_city_id").live('click', handleOnContextMenu)
     
@@ -37,7 +37,7 @@
 
  <div id="h_container">   
     <div id="form-container">
-	<form align="left" class="new_cinema" id="new_cinema" method="post" action="/cinemas/create">
+	<% form_for @cinema, :html => {:id => 'cinema_form'}  do |f|%>
 		<table >
 			<tr>
 				<td class="label"><label for="">Miasto:</label></td>
@@ -73,7 +73,7 @@
 						
 		</table>	
 		<br />
-		<button type="submit">Utwórz kino</button>
-	</form>
+		<button type="submit">Zapisz</button>
+	<% end %>
 </div>
 </div>

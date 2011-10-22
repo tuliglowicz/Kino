@@ -3,6 +3,7 @@ class CitiesController < ApplicationController
 	
 	layout 'admin'
 
+  protect_from_forgery
   before_filter :is_worker
   before_filter :can_read, :only => ['index', 'show']
   before_filter :can_write, :except => ['index', 'show']

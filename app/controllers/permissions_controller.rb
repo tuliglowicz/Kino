@@ -2,7 +2,9 @@
 class PermissionsController < ApplicationController
   
   layout 'admin'
-
+  
+  protect_from_forgery :except => ["check_permission_name_availability", "get_permission_data", "get_current_permission"]
+  before_filter :is_worker, :except => ["check_permission_name_availability", "get_permission_data", "get_current_permission"]
   before_filter :can_read, :only => ['index', 'show']
   before_filter :can_write, :except => ['index', 'show', "check_permission_name_availability", "get_permission_data", "get_current_permission"]  
     
@@ -105,6 +107,10 @@ class PermissionsController < ApplicationController
   end
   
   private #===============================
+  
+  def is_worker
+    redirect_to private_login_path unless session[:worker]
+  end  
     
   def can_read
      redirect_to private_path, :notice => 'Brak uprawnień do wykonania akcji!' unless Auth.can_read_in_self_cinema?(session[:worker].id, get_table_name) or Auth.can_read_all?(session[:worker].id, get_table_name)

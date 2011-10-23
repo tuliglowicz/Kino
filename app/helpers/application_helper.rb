@@ -1,6 +1,6 @@
 # encoding: utf-8
 module ApplicationHelper
-
+  
 	def trim(txt, length)
 		text = txt.split(" ")
 		txt = ""

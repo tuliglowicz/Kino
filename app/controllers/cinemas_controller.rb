@@ -10,8 +10,15 @@ class CinemasController < ApplicationController
   # GET /cinemas
   # GET /cinemas.xml
   def index
-  	@cinemas = Cinema.find(:all, :order => "city_id")
-    @cinemas = Cinema.paginate( :page => params[:page], :per_page => 5)
+    
+    if Auth.is_admin_logged(session[:worker])
+      @cinemas = Cinema.find(:all, :order => "city_id")
+    else
+      @cinemas = Cinema.paginate(:page => params[:page], 
+                                  :per_page => 5, 
+                                  :conditions => ['id = ?', session[:worker].cinema_id])     
+    end
+    
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @cinemas }
@@ -21,12 +28,12 @@ class CinemasController < ApplicationController
   # GET /cinemas/1
   # GET /cinemas/1.xml
   def show
-  	@cinema = Cinema.find(params[:id])
-	
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @cinema }
-    end
+      Auth.is_admin_logged(session[:worker]) == true ? @cinema = Cinema.find(params[:id]) :  @cinema = Cinema.find(session[:worker].cinema_id)
+      	
+      respond_to do |format|
+        format.html # show.html.erb
+        format.xml  { render :xml => @cinema }
+      end    
   end
 
   # GET /cinemas/new
@@ -43,9 +50,9 @@ class CinemasController < ApplicationController
 
   # GET /cinemas/1/edit
   
-  def edit  	
-	  @cinema = Cinema.where(:id => params[:id], :id => session[:worker].cinema_id)[0]
-		@cities = City.where(:id => @cinema.city_id)    
+  def edit  
+    Auth.is_admin_logged(session[:worker]) == true ?	@cinema = Cinema.where(:id => params[:id]).first : @cinema = Cinema.where(:id => session[:worker].cinema_id).first
+	  @cities = City.where(:id => @cinema.city_id)    
   end
 
   # POST /cinemas

@@ -105,7 +105,19 @@ class PrivateController < ApplicationController
      
       logged_in_user = Auth.try_to_login(params[:login], params[:password])
       
-      
+      session[:worker] = nil  #       i tego można być zalogowanym jednocześnie jako worker i user
+      session[:isGA] = nil
+    
+      if logged_in_user     
+          logger.debug 'Zalogowano'
+          flash[:notice] = "Logged in!"
+        
+          session[:worker] = logged_in_user
+          session[:isGA] = (Status.find(logged_in_user.status_id).name.to_s.eql?('administrator'))
+          logger.debug "zalogowany jako worker"
+          logger.debug Status.find(logged_in_user.status_id).name.to_s
+          redirect_to(:action => "panel")
+      end
   end
 
 	def logout

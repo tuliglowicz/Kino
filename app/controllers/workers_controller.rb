@@ -2,7 +2,7 @@
 
 class WorkersController < ApplicationController
 	
-	layout :get_workers_layout 
+	layout 'admin' 
 	
 	protect_from_forgery :except => "login_availability"
 	before_filter :auth_access, :except => ["login_availability"]

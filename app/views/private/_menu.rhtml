@@ -1,4 +1,4 @@
-<% if session[:worker] -%>
+<% if session[:worker]-%>
 	<% worker_id = session[:worker].id %>
 	<% if Auth.can_read_in_self_cinema?(worker_id, "categories") -%>
 		<li><%= link_to("Kategorie Filmów", {:controller => "categories" })%></li>
@@ -55,12 +55,16 @@
 	<% if Auth.can_read_in_self_cinema?(worker_id, "workers") -%>
 		<li><%= link_to("Pracownicy", {:controller => "workers" })%></li>
 	<% end %>
-	<% if Auth.can_read_in_self_cinema?(worker_id, "permissions") -%>
+	<%# if Auth.can_read_in_self_cinema?(worker_id, "permissions") -%>
 		<li><%= link_to("Uprawnienia", {:controller => "permissions" })%></li>
-	<% end %>
+	<%# end %>
+
 	
 	
 <% end %>
 <br/><br/>
 
-<li> <%= link_to("Wyloguj", {:controller => "private", :action => "logout" }, :id => 'logout')%></li>
+
+
+<li> <%= link_to("Wyloguj", {:controller => 'private', :action => 'logout' }, :id => 'logout')%></li>
+

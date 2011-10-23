@@ -3,25 +3,22 @@
 class WorkersController < ApplicationController
 	
 	layout 'admin' 
-<<<<<<< HEAD
-=======
-	
+
 	protect_from_forgery :except => "login_availability"	
 	before_filter :is_worker, :except => ['login_availability']
   before_filter :can_read, :only => ['index', 'show']
   before_filter :can_write, :except => ['index', 'show','login_availability']
->>>>>>> 4f8c120e8d8b9531c5301a6a9542736bd0f7c631
-	
+
   # GET /workers
   # GET /workers.xml
   def index
-  	if session[:isGA]
+  	if Auth.is_admin_logged(session[:worker])
   		@workers = Worker.all
   		@workers = Worker.paginate( :page => params[:page], :per_page => 12)
-	else
+	 else
     	@workers = Worker.where(:cinema_id => session[:worker].cinema_id)
     	@workers = Worker.paginate(:conditions => ["cinema_id = ?","#{session[:worker].cinema_id}"], :page => params[:page], :per_page => 12)
-	end
+	 end
 	
     respond_to do |format|
       format.html # index.html.erb
@@ -32,11 +29,11 @@ class WorkersController < ApplicationController
   # GET /workers/1
   # GET /workers/1.xml
   def show
-  	if session[:isGA]
-  		@worker = Worker.find(params[:id])
-	else
-    	@worker = Worker.where(:id => params[:id], :cinema_id => session[:worker].cinema_id)[0]
-  end
+    if Auth.is_admin_logged(session[:worker])
+    		@worker = Worker.find(params[:id])
+  	else
+      	@worker = Worker.where(:id => params[:id], :cinema_id => session[:worker].cinema_id)[0]
+    end
 
     respond_to do |format|
       format.html # show.html.erb
@@ -60,12 +57,12 @@ class WorkersController < ApplicationController
 
   # GET /workers/1/edit
   def edit
-  	if session[:isGA]
+  	if Auth.is_admin_logged(session[:worker])
 	  	@statuses = Status.all
 	  	@cinemas = Cinema.all
     else
     	@cinemas = Cinema.find(:all, :conditions => "id = "+session[:worker].cinema_id.to_s)
-    	@statuses = Status.find(:all, :conditions => "id > 0")
+    	@statuses = Status.find(:all, :conditions => 'name != \'administrator\'')
 	end	
     	@worker = Worker.where(:id => params[:id], :cinema_id => session[:worker].cinema_id)[0]
   end
@@ -99,17 +96,16 @@ class WorkersController < ApplicationController
 
   # PUT /workers/1
   # PUT /workers/1.xml
-  def update
-  	
+  def update  	
 		@worker = Worker.find(params[:id])
 		
-  	if session[:isGA]
+  if Auth.is_admin_logged(session[:worker])
 		@statuses = Status.find(:all)
 		@cinemas = Cinema.find(:all)
 	else
 		if params[:worker][:cinema_id] == session[:worker].cinema_id.to_s
 			@cinemas = Cinema.find(:all, :conditions => "id = " + session[:worker].cinema_id.to_s)
-			@statuses = Status.find(:all, :conditions => "id > 0")
+			@statuses = Status.find(:all, :conditions => 'name != \'administrator\'')
 		else
 			@worker = nil
 		end

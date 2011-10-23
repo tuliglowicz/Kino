@@ -1,6 +1,6 @@
 # encoding: utf-8
 class Status < ActiveRecord::Base
-	has_many :workers
+	has_many :workers, :dependent => :delete_all
 	belongs_to :privilege
 	
 	default_scope order('name')

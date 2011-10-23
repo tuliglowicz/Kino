@@ -1,4 +1,21 @@
-<%= form_for(@city) do |f| %>
+<!-- CSS and JS imports -->
+	<LINK REL=StyleSheet HREF="/stylesheets/cities/cities.css" TYPE="text/css" MEDIA=screen>
+	
+	<script src="/javascripts/jquery.validationEngine-pl.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/javascripts/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
+<!-- EO  CSS and JS imports -->
+
+<!-- JS code -->
+<script>
+	jQuery(document).ready(function()
+	{
+		jQuery("#city_form").validationEngine('attach', {bindMethod:"live"});
+		jQuery("#city_name").focus();
+	});
+</script>
+<!-- EO JS code-->
+
+<%= form_for(@city, :html => {:id => 'city_form'}) do |f| %>
   <% if @city.errors.any? %>
     <div id="error_explanation">
       <h2>Zaszły następujące nieprawidłowości:</h2>
@@ -13,12 +30,9 @@
 
   <div class="field">
     <%= f.label 'Nazwa:'%><br />
-    <%= f.text_field :name %>
+    <%= f.text_field :name, :class => 'validate[required]' %>
   </div>
   <div class="actions">
     <%= f.submit  'Dodaj'%>
   </div>
 <% end %>
-<script>
-	$("document").ready(function(){$('#city_name').focus();});
-</script>

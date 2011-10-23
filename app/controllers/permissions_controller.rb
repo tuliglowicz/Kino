@@ -4,6 +4,9 @@ class PermissionsController < ApplicationController
   layout 'admin'
   
   protect_from_forgery :except => ["check_permission_name_availability", "get_permission_data", "get_current_permission"]
+  before_filter :is_worker, :except => ["check_permission_name_availability", "get_permission_data", "get_current_permission"]
+  before_filter :can_read, :only => ['index', 'show']
+  before_filter :can_write, :except => ['index', 'show', "check_permission_name_availability", "get_permission_data", "get_current_permission"]  
     
   def index
     @statuses = Status.find(:all, :conditions => ['name != \'administrator\''])
@@ -90,10 +93,6 @@ class PermissionsController < ApplicationController
     status = params[:worker_status_name]
     privilege = params[:worker_privilege_name]
     
-    puts "$$$$$$$$$$$$$$$$$$$$$$$$$"
-    puts status
-    puts privilege
-    
     privilege_id = Status.where(:name => status).first.privilege_id
     new_permission_id = Permission.where(:name => params[:worker_permission_level]).first.id
     
@@ -105,6 +104,24 @@ class PermissionsController < ApplicationController
       redirect_to permissions_path, :notice => 'Nie udało się zaktualizować'
     end
     
+  end
+  
+  private #===============================
+  
+  def is_worker
+    redirect_to private_login_path unless session[:worker]
+  end  
+    
+  def can_read
+     redirect_to private_path, :notice => 'Brak uprawnień do wykonania akcji!' unless Auth.can_read_in_self_cinema?(session[:worker].id, get_table_name) or Auth.can_read_all?(session[:worker].id, get_table_name)
+  end
+
+  def can_write
+     redirect_to private_path, :notice => 'Brak uprawnień do wykonania akcji!' unless Auth.can_write_in_self_cinema?(session[:worker].id, get_table_name) or Auth.can_write_all?(session[:worker].id, get_table_name)
+  end 
+ 
+  def get_table_name
+    'permissions'
   end
   
 end

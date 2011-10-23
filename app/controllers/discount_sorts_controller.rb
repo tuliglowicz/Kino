@@ -5,7 +5,10 @@ class DiscountSortsController < ApplicationController
   
   layout 'admin'
 
-  before_filter :auth_exept_show, :except => ["show", "index", "edit", "new", "update", 'create']
+  protect_from_forgery
+  before_filter :is_worker
+  before_filter :can_read, :only => ['index', 'show']
+  before_filter :can_write, :except => ['index', 'show']
   
   def index
     @discount_sorts = DiscountSort.all
@@ -88,21 +91,22 @@ class DiscountSortsController < ApplicationController
     end
   end
   
+  private #---------------------------------------------
   
-  def auth_exept_show
-    if session[:worker] == nil 
-        flash[:notice] = "Please log in, first!"
-        redirect_to(:controller => "public", :action => "index")
-        return false
-      else if session[:worker].status_id > 0
-        flash[:notice] = "Nie masz wymaganych uprawnień!"
-        if request.referer == "/"
-          redirect_to("/403.html")
-        else
-          redirect_to(request.referer)
-        end
-      end
-    end
+  def is_worker
+    redirect_to private_login_path unless session[:worker]
+  end  
+  
+  def can_read
+     redirect_to private_path, :notice => 'Brak uprawnień do wykonania akcji!' unless Auth.can_read_in_self_cinema?(session[:worker].id, get_table_name) or Auth.can_read_all?(session[:worker].id, get_table_name)
+  end
+
+  def can_write
+     redirect_to private_path, :notice => 'Brak uprawnień do wykonania akcji!' unless Auth.can_write_in_self_cinema?(session[:worker].id, get_table_name) or Auth.can_write_all?(session[:worker].id, get_table_name)
+  end 
+ 
+  def get_table_name
+    'discount_sorts'
   end
   
 end

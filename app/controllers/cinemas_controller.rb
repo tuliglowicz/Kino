@@ -2,8 +2,10 @@
 class CinemasController < ApplicationController
 	
 	layout 'admin'
-
-	before_filter :auth_exept_show, :except => ["show", "create"]
+	
+	before_filter :is_worker
+	before_filter :can_read, :only => ['index', 'show']
+	before_filter :can_write, :except => ['index', 'show']
 	
   # GET /cinemas
   # GET /cinemas.xml
@@ -30,8 +32,8 @@ class CinemasController < ApplicationController
   # GET /cinemas/new
   # GET /cinemas/new.xml
   def new
-	@cities = City.find(:all)
-	@cinema = Cinema.new
+  	@cities = City.find(:all)
+  	@cinema = Cinema.new
     
     respond_to do |format|
       format.html # new.html.erb
@@ -41,24 +43,15 @@ class CinemasController < ApplicationController
 
   # GET /cinemas/1/edit
   
-  def edit
-  	if session[:isGA] || (params[:id] == session[:worker].cinema_id.to_s)
-	  	@cinema = Cinema.where(:id => params[:id], :id => session[:worker].cinema_id)[0]
-		@cities = City.where(:id => @cinema.city_id)
-    else
-    			if request.referer == "/"
-					redirect_to("/403.html")
-				else
-					redirect_to(request.referer, :notice => "Nie masz wymaganych uprawnień!")
-				end
-	end
+  def edit  	
+	  @cinema = Cinema.where(:id => params[:id], :id => session[:worker].cinema_id)[0]
+		@cities = City.where(:id => @cinema.city_id)    
   end
 
   # POST /cinemas
   # POST /cinemas.xml
   def create
-    @cinema = Cinema.new(params[:cinema])
-    logger.debug 'CREATE CINEMA'
+    @cinema = Cinema.new(params[:cinema])    
     @cities = City.all
     
     respond_to do |format|
@@ -74,33 +67,24 @@ class CinemasController < ApplicationController
 
   # PUT /cinemas/1
   # PUT /cinemas/1.xml
-  def update
-  	if session[:isGA] || (params[:id] == session[:worker].cinema_id.to_s)
-	  	@cinema = Cinema.find(params[:id])
+  def update  	
+	  @cinema = Cinema.find(params[:id])
 		@cities = City.find(:all)
 		
-	    respond_to do |format|
-	      if @cinema.update_attributes(params[:cinema])
-	        format.html { redirect_to(@cinema, :notice => 'Kino zostało pomyślnie zaktualizowane.') }
-	        format.xml  { head :ok }
-	      else
-	        format.html { render :action => "edit" }
-	        format.xml  { render :xml => @cinema.errors, :status => :unprocessable_entity }
-	      end
+	  respond_to do |format|
+	    if @cinema.update_attributes(params[:cinema])
+	      format.html { redirect_to(@cinema, :notice => 'Kino zostało pomyślnie zaktualizowane.') }
+	      format.xml  { head :ok }
+	    else
+	      format.html { render :action => "edit" }
+	      format.xml  { render :xml => @cinema.errors, :status => :unprocessable_entity }
 	    end
-    else
-    			if request.referer == "/"
-					redirect_to("/403.html")
-				else
-					redirect_to(request.referer, :notice => "Nie masz wymaganych uprawnień!")
-				end
-	end
+	  end    
   end
 
   # DELETE /cinemas/1
   # DELETE /cinemas/1.xml
-  def destroy
-  	if session[:isGA] || (params[:id] == session[:worker].cinema_id.to_s)
+  def destroy  	
 	  	@cinema = Cinema.find(params[:id])  	
 	    @cinema.destroy
 	
@@ -108,35 +92,24 @@ class CinemasController < ApplicationController
 	      format.html { redirect_to(cinemas_url) }
 	      format.xml  { head :ok }
 	    end
-	else
-    			if request.referer == "/"
-					redirect_to("/403.html")
-				else
-					redirect_to(request.referer, :notice => "Nie masz wymaganych uprawnień!")
-				end
-	end	    
+    
   end
 
 	private #===============================
-	def auth_exept_show
-	 
-		if session[:worker] == nil 
-		    logger.debug "session[:worker] = nil"
-				flash[:notice] = "Please log in, first!"
-				redirect_to(:controller => "public", :action => "login")
-				return false
-			else 
-			  if !Status.find(session[:worker].status_id).name.to_s.eql?('administrator')
-			    logger.debug Status.find(session[:worker].status_id).name.to_s
-				  flash[:notice] = "Nie masz wymaganych uprawnień!"
-				if request.referer == "/"
-					redirect_to("/403.html")
-				else
-				  logger.debug 'request.referer != /'
-					redirect_to(request.referer)
-				end
-			end
-		end
-	end
 	
+	def is_worker
+    redirect_to private_login_path unless session[:worker]
+  end  	
+		
+	def can_read
+	   redirect_to private_path, :notice => 'Brak uprawnień do wykonania akcji!' unless Auth.can_read_in_self_cinema?(session[:worker].id, get_table_name) or Auth.can_read_all?(session[:worker].id, get_table_name)
+	end
+
+  def can_write
+     redirect_to private_path, :notice => 'Brak uprawnień do wykonania akcji!' unless Auth.can_write_in_self_cinema?(session[:worker].id, get_table_name) or Auth.can_write_all?(session[:worker].id, get_table_name)
+  end	
+ 
+  def get_table_name
+    'cinemas'
+  end
 end

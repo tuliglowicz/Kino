@@ -1,7 +1,7 @@
 # encoding: utf-8
 class City < ActiveRecord::Base
 
-	has_many :cinemas
+	has_many :cinemas, :dependent => :delete_all
 	
 	default_scope order('name')
 

@@ -1,10 +1,10 @@
 # encoding: utf-8
 class Cinema < ActiveRecord::Base
 	belongs_to :city
-	has_many :workers
-	has_many :cinema_films
-	has_many :rooms
-	has_many :ticket_sort_prices
+	has_many :workers, :dependent => :delete_all
+	has_many :cinema_films, :dependent => :delete_all
+	has_many :rooms, :dependent => :delete_all
+	has_many :ticket_sort_prices, :dependent => :delete_all
 	
 	default_scope order('city_id, id')
 	

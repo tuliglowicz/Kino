@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
     
     attr_accessor :hashed_password, :hashed_password_confirmation
   
-    has_many :tickets
+    has_many :tickets, :dependent => :delete_all
   
     validates_presence_of :login, :message => 'Musisz podać login'
     validates_presence_of :email, :message => 'Musisz podać email'

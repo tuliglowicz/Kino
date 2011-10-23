@@ -3,7 +3,7 @@
 class Worker < ActiveRecord::Base	
 	belongs_to :status
 	belongs_to :cinema
-	has_many :tickets
+	has_many :tickets, :dependent => :delete_all
 	
 	default_scope order('cinema_id, last_name, first_name')
 	

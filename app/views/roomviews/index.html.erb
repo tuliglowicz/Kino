@@ -1,6 +1,11 @@
-<h1>Listing roomviews</h1>
+<style>
+.odd {background-color: #f0f0f0;}
+</style>
+<h1>Lista Widoków Sal</h1>
 
-<table>
+<%# link_to 'Dodaj nowy widok', new_roomview_path %><br/><br/>
+
+<table id="listaRekordow" cellspacing=0 cellpadding=5px>
   <tr>
     <th>Id</th>
     <th>Name</th>
@@ -15,13 +20,17 @@
     <td><%= roomview.id %></td>
     <td><%= roomview.name %></td>
     <td><%= roomview.view %></td>
-    <td><%= link_to 'Show', roomview %></td>
-    <td><%= link_to 'Edit', edit_roomview_path(roomview) %></td>
-    <td><%= link_to 'Destroy', roomview, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Pokaż', roomview %></td>
+    <td><%= link_to 'Edytuj', edit_roomview_path(roomview) %></td>
+    <td><%= link_to 'Usuń', roomview, :confirm => 'Czy na pewno chcesz usunąć podany wiersz?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Roomview', new_roomview_path %>
+<%= link_to 'Dodaj nowy widok', new_roomview_path %>
+
+<script>
+$j("#listaRekordow").find('tr:odd').addClass("odd")
+</script>

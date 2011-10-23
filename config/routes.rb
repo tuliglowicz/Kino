@@ -5,7 +5,7 @@ Kino::Application.routes.draw do
 	
 	# Workers
 	match "/private/workers/login_availability" => "workers#login_availability"
-	match 'private/logout' => 'private#logut', :as => 'worker_logout'
+	match 'private/logout' => 'private#logout', :as => 'worker_logout'
 	
 	# Users
 	match "/users/login_availability" => "users#login_availability"
@@ -30,7 +30,11 @@ Kino::Application.routes.draw do
   match 'public/users/remind_password' => 'users#remind_password', :as => 'remind_password'
   match 'public/login' => 'public#login', :as => 'public_login'
   
- scope 'private' do
+  # Private
+  match 'private/panel' => 'private#panel', :as => 'private'
+  match 'private/login' => 'private#login', :as => 'private_login'
+  
+  scope 'private' do
       resources :workers, :cinemas, :seances, :tickets, :discount_sorts, :ticket_types,
         :seance_types, :users, :reservations, :ticket_sort_prices, :discounts, :rooms, :cinema_films,
         :films, :cities, :categories, :statuses, :roomviews

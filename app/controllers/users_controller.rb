@@ -4,9 +4,11 @@ class UsersController < ApplicationController
   # GET /users.xml
   
   layout :get_users_layout  
-  
-  #before_filter :auth_exept_show, :except => ["show", "index", "edit", "update", "new", "create", "is_login_available"]
-  
+      
+  before_filter :is_worker, :except => ['remind_password', 'is_login_available', 'login_availability', 'create', 'new']
+  before_filter :can_read, :only => ['index', 'show']
+  before_filter :can_write, :except => ['index', 'show','remind_password', 'is_login_available', 'login_availability','new', 'create']
+     
   def index
     #@users = User.all
     @users = User.paginate( :page => params[:page], :per_page => 12)
@@ -30,10 +32,7 @@ class UsersController < ApplicationController
   # GET /users/new
   # GET /users/new.xml
   def new
-   if request.xhr?
-     @ok = true
-     render :json => @ok
-   end
+
     @user = User.new
    
     respond_to do |format|
@@ -116,7 +115,7 @@ class UsersController < ApplicationController
 
   def is_login_available(login)
     User.where(:login => login).first.nil?    
- end
+  end
  
   def remind_password
     
@@ -148,22 +147,6 @@ class UsersController < ApplicationController
       "admin"
     end
   end
-  
-  def auth_exept_show
-    if session[:worker] == nil 
-        flash[:notice] = "Please log in, first!"
-        redirect_to(:controller => "public", :action => "index")
-        return false
-      else if session[:worker].status_id > 0
-        flash[:notice] = "Nie masz wymaganych uprawnień!"
-        if request.referer == "/"
-          redirect_to("/403.html")
-        else
-          redirect_to(request.referer)
-        end
-      end
-    end
-  end
  
  def are_passwords_equal(password, confirmation)
    if password == "" or confirmation == ""
@@ -171,12 +154,26 @@ class UsersController < ApplicationController
    else
     password.eql?(confirmation)
    end
- end
- 
- 
+ end 
  
  def is_email_available(email)
    User.where(:email => email).first.nil?
  end
+ 
+ def is_worker
+    redirect_to private_login_path unless session[:worker]
+  end  
+  
+  def can_read
+     redirect_to private_path, :notice => 'Brak uprawnień do wykonania akcji!' unless Auth.can_read_in_self_cinema?(session[:worker].id, get_table_name) or Auth.can_read_all?(session[:worker].id, get_table_name)
+  end
+
+  def can_write
+     redirect_to private_path, :notice => 'Brak uprawnień do wykonania akcji!' unless Auth.can_write_in_self_cinema?(session[:worker].id, get_table_name) or Auth.can_write_all?(session[:worker].id, get_table_name)
+  end 
+ 
+  def get_table_name
+    'users'
+  end
  
 end

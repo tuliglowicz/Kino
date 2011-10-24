@@ -4,12 +4,40 @@ class PublicController < ApplicationController
 	
 	before_filter :auth_access_user, :only => [:panel]
 	
+	
+	
 	def panel
 		render :layout => 'admin'
 	end
 	
 	def login
+  	  logged_in_user = Auth.try_to_login(params[:login], params[:password])
+    
+    session[:user] = nil  # bez tego
+    
+    if logged_in_user     
+      logger.debug 'Zalogowano'
+      flash[:notice] = "Zalogowany jako użytkownik!"
+      
+      session[:user] = logged_in_user
+      logger.debug 'Zalogowany jako użytkownik'
+      redirect_to(:controller => "public", :action => "login") # do poprawy później
+        
+      session[:cinema_id] = 1
+    else
+      #flash[:notice] = "Błędny login i/albo hasło!"
+      #redirect_to(:controller => "public", :action => "login") # jak wrócić do strony sprzed próby logowania ? bez history.go(-1)
+    end
 	end
+	
+	def logout
+    logger.debug '##################private_controller.logout########################'
+    logger.debug 'Wylogowano'
+    session[:user] = nil
+    
+    flash[:notice] = "Użytkownik wylogowany"
+    redirect_to(:controller => "public", :action => "login")
+  end
 	
 	def generator
 		if params[:xml]
@@ -356,4 +384,7 @@ class PublicController < ApplicationController
       'p24_kwota' => params[:p24_kwota]
     }
 	end
+	
+	
+	
 end

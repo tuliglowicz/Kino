@@ -104,30 +104,32 @@ class PrivateController < ApplicationController
 	def login
      
       logged_in_user = Auth.try_to_login(params[:login], params[:password])
-      
-      session[:worker] = nil  #       i tego można być zalogowanym jednocześnie jako worker i user
-      session[:isGA] = nil
-    
-      if logged_in_user     
-          logger.debug 'Zalogowano'
-          flash[:notice] = "Logged in!"
         
-          session[:worker] = logged_in_user
-          session[:isGA] = (Status.find(logged_in_user.status_id).name.to_s.eql?('administrator'))
-          logger.debug "zalogowany jako worker"
-          logger.debug Status.find(logged_in_user.status_id).name.to_s
-          redirect_to(:action => "panel")
+      session[:worker] = nil  
+      session[:isGA] = nil
+      
+      if logged_in_user     
+            logger.debug 'Zalogowano'
+            flash[:notice] = "Pracownik został zalogowany!"
+            session[:worker] = logged_in_user
+            session[:isGA] = (Status.find(logged_in_user.status_id).name.to_s.eql?('administrator'))
+            logger.debug "Zalogowany jako pracownik"
+            logger.debug Status.find(logged_in_user.status_id).name.to_s
+            redirect_to(:action => "panel")
+      
+      else
+            #flash[:notice] = "Błędny login i/albo hasło!"
+            #redirect_to(:controller => "private", :action => "login", :method => "get") 
       end
   end
 
 	def logout
 	  logger.debug '##################private_controller.logout########################'
 	  logger.debug 'Wylogowano'
-		session[:user] = nil
 		session[:worker] = nil
 		session[:isGA] = nil
 		flash[:notice] = "Logged out"
-		redirect_to(:controller => "public", :action => "index")
+		redirect_to(:controller => "private", :action => "login")
 	end
   
   def get_permissions

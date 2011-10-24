@@ -4,19 +4,13 @@
 <script src="/javascripts/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
 
 <script>
-	jQuery(document).ready(function(){
-    // binds form submission and fields to the validation engine
-    jQuery('#cinema_name').focus();
-    
-    jQuery("#cinema_form").validationEngine('attach', {bindMethod:"live"});
-    
-    jQuery("#cinema_city_id").live('click', handleOnContextMenu)
-    
-    function handleOnContextMenu(event)
-    {
-    	
-    }
-  });
+	jQuery(document).ready(function()
+	{    
+	    jQuery('#cinema_name').focus();    
+	    jQuery("#cinema_form").validationEngine('attach', {bindMethod:"live"});    
+	    jQuery("#cinema_city_id").live('click', handleOnContextMenu)
+ 
+  	});
 </script>
 
 <LINK REL=StyleSheet HREF="/stylesheets/cinemas/cinemas_form.css" TYPE="text/css" MEDIA=screen>

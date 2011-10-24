@@ -3,6 +3,10 @@ require 'digest/sha1'
 
 class Auth
 	
+	def self.is_admin_logged(worker)
+    Status.where(:id => worker.status_id).first.name.to_s.eql?('administrator')
+  end
+	
 	def self.hash_password(password)
 		Digest::SHA1.hexdigest(password)
 	end	

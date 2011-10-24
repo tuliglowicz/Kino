@@ -4,11 +4,19 @@ class WorkersController < ApplicationController
 	
 	layout 'admin' 
 
+<<<<<<< HEAD
+	
+=======
+>>>>>>> 6a2fa26fa83ad9ef15e45df28912e6bd46461b43
 	protect_from_forgery :except => "login_availability"	
 	before_filter :is_worker, :except => ['login_availability']
   before_filter :can_read, :only => ['index', 'show']
   before_filter :can_write, :except => ['index', 'show','login_availability']
 
+<<<<<<< HEAD
+	
+=======
+>>>>>>> 6a2fa26fa83ad9ef15e45df28912e6bd46461b43
   # GET /workers
   # GET /workers.xml
   def index

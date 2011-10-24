@@ -1,6 +1,6 @@
 Kino::Application.routes.draw do
 
-	#Cities
+  #Cities
 	match '/private/cities' => 'cities#index', :as => 'cities'
 	
 	# Workers

@@ -12,7 +12,7 @@ class CinemasController < ApplicationController
   def index
     
     if Auth.is_admin_logged(session[:worker])
-      @cinemas = Cinema.find(:all, :order => "city_id")
+      @cinemas = Cinema.paginate(:page => params[:page], :per_page => 5)
     else
       @cinemas = Cinema.paginate(:page => params[:page], 
                                   :per_page => 5, 

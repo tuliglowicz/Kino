@@ -3,7 +3,6 @@ class SeatsController < ApplicationController
 	
 	layout 'admin'
 	
-	before_filter :auth,  :except => ["show", "index", "edit", "new", "update"]
 	
   # GET /seats
   # GET /seats.xml
@@ -27,14 +26,14 @@ class SeatsController < ApplicationController
     end
   end
 
-  # GET /seats/new1
-  # GET /seats/new1.xml
-  def new1
+  # GET /seats/new
+  # GET /seats/new.xml
+  def new
     @seat = Seat.new
     @seat.room = Room.find(params[:id])
     
     respond_to do |format|
-      format.html # new1.html.erb
+      format.html # new.html.erb
       format.xml  { render :xml => @seat }
     end
   end
@@ -54,7 +53,7 @@ class SeatsController < ApplicationController
         format.html { redirect_to(@seat, :notice => 'Miejsce zostało dodane.') }
         format.xml  { render :xml => @seat, :status => :created, :location => @seat }
       else
-        format.html { render :action => "new1" }
+        format.html { render :action => "new" }
         format.xml  { render :xml => @seat.errors, :status => :unprocessable_entity }
       end
     end
@@ -88,14 +87,7 @@ class SeatsController < ApplicationController
     end
   end
   
-	private #===============================
-	def auth
-    if session[:worker] == nil && session[:worker] != 2 
-        flash[:notice] = "Please log in, first!"
-        redirect_to(:controller => "public", :action => "index")
-        return false
-    end
-  end 
+	
 	
   
 end

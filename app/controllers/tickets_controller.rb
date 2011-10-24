@@ -6,7 +6,14 @@ class TicketsController < ApplicationController
   
   def index
     #@tickets = Ticket.all
-    @tickets = Ticket.paginate( :page => params[:page], :per_page => 7)
+    
+    if Auth.is_admin_logged(session[:worker])
+      @tickets = Ticket.paginate( :page => params[:page], :per_page => 7)
+    else
+      @tickets = Ticket.paginate(:conditions => ["cinema_id = ?","#{session[:worker].cinema_id}"], :page => params[:page], :per_page => 7)  
+    end
+    
+    
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @tickets }
@@ -51,7 +58,7 @@ class TicketsController < ApplicationController
 
     respond_to do |format|
       if @ticket.save
-        format.html { redirect_to(@ticket, :notice => 'Ticket was successfully created.') }
+        format.html { redirect_to(@ticket, :notice => 'Bilet został pomyślnie utworzony.') }
         format.xml  { render :xml => @ticket, :status => :created, :location => @ticket }
       else
         format.html { render :action => "new" }
@@ -67,7 +74,7 @@ class TicketsController < ApplicationController
 
     respond_to do |format|
       if @ticket.update_attributes(params[:ticket])
-        format.html { redirect_to(@ticket, :notice => 'Ticket was successfully updated.') }
+        format.html { redirect_to(@ticket, :notice => 'Bilet został pomyślnie zaktualizowany.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

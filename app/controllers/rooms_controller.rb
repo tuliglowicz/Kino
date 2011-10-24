@@ -3,14 +3,18 @@ class RoomsController < ApplicationController
 	
 	layout 'admin'
 	
-	before_filter :auth, :except => ["show", "index", "edit", "new", "update"]
+	before_filter :is_worker
+  before_filter :can_read, :only => ['index', 'show']
+  before_filter :can_write, :except => ['index', 'show']
 
   # GET /rooms
   # GET /rooms.xml
   def index
     @rooms = Room.all
 
-    if session[:worker] and session[:worker].status_id > 0
+    if Auth.is_admin_logged(session[:worker])
+      @rooms = Room.paginate(:page => params[:page], :per_page => 10) 
+    else  
       @rooms = Room.paginate(:conditions => ["cinema_id = ?","#{session[:worker].cinema_id}"], :page => params[:page], :per_page => 10)
     end
 
@@ -95,12 +99,21 @@ class RoomsController < ApplicationController
   end
 
 	private #===============================
-	def auth
-    if session[:worker] == nil && session[:worker] != 2 
-        flash[:notice] = "Please log in, first!"
-        redirect_to(:controller => "public", :action => "index")
-        return false
-    end
+  
+  def is_worker
+    redirect_to private_login_path unless session[:worker]
+  end   
+    
+  def can_read
+     redirect_to private_path, :notice => 'Brak uprawnień do wykonania akcji!' unless Auth.can_read_in_self_cinema?(session[:worker].id, get_table_name) or Auth.can_read_all?(session[:worker].id, get_table_name)
+  end
+
+  def can_write
+     redirect_to private_path, :notice => 'Brak uprawnień do wykonania akcji!' unless Auth.can_write_in_self_cinema?(session[:worker].id, get_table_name) or Auth.can_write_all?(session[:worker].id, get_table_name)
   end 
+ 
+  def get_table_name
+    'rooms'
+  end
 	
 end

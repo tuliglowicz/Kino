@@ -3,7 +3,9 @@ class CinemaFilmsController < ApplicationController
 	
 	layout 'admin'
 	
-	before_filter :auth, :except => ["show", "index", "edit", "update" , "new" ,  "ajax"]
+	before_filter :is_worker
+  before_filter :can_read, :only => ['index', 'show']
+  before_filter :can_write, :except => ['index', 'show']
 	
   # GET /cinema_films
   # GET /cinema_films.xml
@@ -11,13 +13,14 @@ class CinemaFilmsController < ApplicationController
   	
   	#render :layout => 'application'
   	
-  	@cinema_films = CinemaFilm.all
   	
   	
-  	if session[:worker] and session[:worker].status_id > 0
-  		#@cinema_films = CinemaFilm.where(:cinema_id => session[:worker].cinema_id)
-  		@cinema_films = CinemaFilm.paginate(:conditions => ["cinema_id = ?","#{session[:worker].cinema_id}"], :page => params[:page], :per_page => 10)
-  	end
+  	
+  	if Auth.is_admin_logged(session[:worker])
+  	       @cinema_films = CinemaFilm.paginate(:page => params[:page], :per_page => 10) 
+    else
+  	       @cinema_films = CinemaFilm.paginate(:conditions => ["cinema_id = ?","#{session[:worker].cinema_id}"], :page => params[:page], :per_page => 10)
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -157,12 +160,21 @@ class CinemaFilmsController < ApplicationController
   end
 
 	private #===============================
-	def auth
-    if session[:worker] == nil && session[:worker] != 2 
-        flash[:notice] = "Please log in, first!"
-        redirect_to(:controller => "public", :action => "index")
-        return false
-    end
+  
+  def is_worker
+    redirect_to private_login_path unless session[:worker]
+  end   
+    
+  def can_read
+     redirect_to private_path, :notice => 'Brak uprawnień do wykonania akcji!' unless Auth.can_read_in_self_cinema?(session[:worker].id, get_table_name) or Auth.can_read_all?(session[:worker].id, get_table_name)
+  end
+
+  def can_write
+     redirect_to private_path, :notice => 'Brak uprawnień do wykonania akcji!' unless Auth.can_write_in_self_cinema?(session[:worker].id, get_table_name) or Auth.can_write_all?(session[:worker].id, get_table_name)
+  end 
+ 
+  def get_table_name
+    'cinema_films'
   end
 		
 end

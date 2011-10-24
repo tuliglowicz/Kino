@@ -99,7 +99,12 @@ body {background: #000 url('/images/pic/body_bg.jpg') repeat-x 0 0;}
      
 <div id="page" class="layout_uniwersalny">
 	<div class="Ww2" style="text-align: right;">
-		<a href="/public/login">Login</a> | <a href="<%= register_path %>">Rejestracja</a>
+		<% if (session[:worker] != nil) or  (session[:user]!=nil) %>
+	
+		<%= link_to 'Moje konto', :action => "profile", :id => session[:user].id.to_s %> | <a href="/public/logout">Wyloguj</a>
+		<% else %>		
+		<a href="/public/login">Logowanie</a> | <a href="<%= register_path %>">Rejestracja</a>
+		<% end %>
 	</div>      
 	<div id="sWlbg" style="paddting-top: -20px;">
 		<div class="Ww2">

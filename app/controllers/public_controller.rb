@@ -33,8 +33,26 @@ class PublicController < ApplicationController
 	def kina
 		@cinemas = Cinema.all
 	end
+
+  def logout
+    logger.debug '##################public_controller.logout########################'
+    logger.debug 'Wylogowano'
+    session[:user] = nil
+    session[:worker] = nil
+    session[:isGA] = nil
+    flash[:notice] = "Logged out"
+    redirect_to(:controller => "public", :action => "index")
+  end
 	
-	def dane_filmu
+	def profile
+	  @user=User.find(params[:id])
+	  if @user.id!=session[:user].id
+      redirect_to(:controller => "public", :action => "index")
+    end
+	  
+	end
+	
+  def dane_filmu
 		 @film=Film.find(params[:id])
 	end
 	def repertuar

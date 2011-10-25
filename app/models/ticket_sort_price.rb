@@ -1,6 +1,7 @@
 # encoding: utf-8
 class TicketSortPrice < ActiveRecord::Base
   
+  has_many :tickets
   belongs_to :discount_sort
   belongs_to :cinema
   belongs_to :seance_type

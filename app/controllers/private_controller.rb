@@ -118,15 +118,13 @@ class PrivateController < ApplicationController
             redirect_to(:action => "panel")
       
       else
-            #flash[:notice] = "Błędny login i/albo hasło!"
+            flash[:notice] = "Błędny login i/albo hasło!"
             #redirect_to(:controller => "private", :action => "login", :method => "get") 
       end
   end
 
 	def logout
-	  logger.debug '##################private_controller.logout########################'
-	  logger.debug 'Wylogowano'
-		session[:worker] = nil
+	  session[:worker] = nil
 		session[:isGA] = nil
 		flash[:notice] = "Użytkownik wylogowany!"
 		redirect_to(:controller => "private", :action => "login")

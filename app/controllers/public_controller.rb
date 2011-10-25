@@ -33,7 +33,6 @@ class PublicController < ApplicationController
 	
 	def logout
     session[:user] = nil
-    
     flash[:notice] = "Użytkownik wylogowany"
      #flash[:notice] = "Użytkownik wylogowany+#{session[:user]}"
     redirect_to(:controller => "public", :action => "login")

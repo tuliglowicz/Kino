@@ -33,9 +33,9 @@ class PublicController < ApplicationController
 	
 	def logout
     session[:user] = nil
-    flash[:notice] = "Użytkownik wylogowany"
+    flash[:notice] = "Użytkownik został wylogowany"
      #flash[:notice] = "Użytkownik wylogowany+#{session[:user]}"
-    redirect_to(:controller => "public", :action => "login")
+    redirect_to(:controller => "public", :action => "index")
   end
 	
 	def generator
@@ -61,16 +61,6 @@ class PublicController < ApplicationController
 		@cinemas = Cinema.all
 	end
 
-  def logout
-    logger.debug '##################public_controller.logout########################'
-    logger.debug 'Wylogowano'
-    session[:user] = nil
-    session[:worker] = nil
-    session[:isGA] = nil
-    flash[:notice] = "Logged out"
-    redirect_to(:controller => "public", :action => "index")
-  end
-	
 	def profile
 	  @user=User.find(params[:id])
 	  if @user.id!=session[:user].id

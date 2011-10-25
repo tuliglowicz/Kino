@@ -10,6 +10,7 @@ Kino::Application.routes.draw do
   match 'public/register' => 'users#new', :as => 'register'
   match 'public/logout' => 'public#logout', :as => 'user_logout'  
   match 'public/login' => 'public#login', :as => 'public_login'
+  match 'public/ceny' => 'public#ceny', :as => 'prices'
   
   #Cities
 	match '/private/cities' => 'cities#index', :as => 'cities'

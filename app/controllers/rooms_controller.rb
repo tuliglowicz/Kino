@@ -18,7 +18,6 @@ class RoomsController < ApplicationController
       @rooms = Room.paginate(:conditions => ["cinema_id = ?","#{session[:worker].cinema_id}"], :page => params[:page], :per_page => 10)
     end
 
-
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @rooms }
@@ -51,6 +50,7 @@ class RoomsController < ApplicationController
   def edit
   	@cinemas = Cinema.find(:all)
   	@room = Room.find(params[:id])
+  	@roomviews = Roomview.find(:all)
   end
   
   # POST /rooms

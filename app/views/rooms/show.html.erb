@@ -12,7 +12,10 @@
   <b>Numer sali:</b>
   <%= @room.number %>
 </p>
-
+<p>
+  <b>Widok Sali:</b>
+  <%= @room.roomview.name if @room.roomview %> <%= link_to 'Pokaż widok Sali', @room.roomview, :target => "_blank" %>
+</p>
 <p>
   <b>Liczba miejsc:</b>
   <%= @room.size %>

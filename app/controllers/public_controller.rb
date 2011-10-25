@@ -9,8 +9,7 @@ class PublicController < ApplicationController
 	def panel
 		render :layout => 'admin'
 	end
-	
-<<<<<<< HEAD
+
 	def login	  
 	  if params[:login] and  params[:password]
 			logged_in_user = Auth.try_to_login(params[:login], params[:password])
@@ -35,6 +34,7 @@ class PublicController < ApplicationController
 			# can happen whenever user visits page firt time. 
 			# it's added to avoid unexpected comments to the user.
 		end  	
+  end
 	
 	def logout
     session[:user] = nil

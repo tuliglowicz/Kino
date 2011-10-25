@@ -72,34 +72,6 @@ class PrivateController < ApplicationController
 		end
 	end
 	
-	def send_login
-		logged_in_user = Auth.try_to_login(params[:login], params[:password])
-		
-		session[:user] = nil	# bez tego
-		session[:worker] = nil	# 	 		i tego można być zalogowanym jednocześnie jako worker i user
-		session[:isGA] = nil
-		
-		if logged_in_user			
-		  logger.debug 'Zalogowano'
-			flash[:notice] = "Logged in!"
-			if logged_in_user.class.name == "Worker"
-				session[:worker] = logged_in_user
-				session[:isGA] = (Status.find(logged_in_user.status_id).name.to_s.eql?('administrator'))
-				logger.debug "zalogowany jako worker"
-				logger.debug Status.find(logged_in_user.status_id).name.to_s
-				redirect_to(:action => "panel")
-			else
-				session[:user] = logged_in_user
-				logger.debug 'zalogowany jako user'
-				redirect_to(:controller => "public", :action => "login") # do poprawy później
-			end
-			session[:cinema_id] = 1
-		else
-			flash[:notice] = "Błędny login i/albo hasło!"
-			redirect_to(:controller => "public", :action => "login") # jak wrócić do strony sprzed próby logowania ? bez history.go(-1)
-		end
-	end
-	
 	def login
      
      if params[:login] &&  params[:password]
@@ -108,22 +80,18 @@ class PrivateController < ApplicationController
 	      session[:worker] = nil  
 	      session[:isGA] = nil
 	      
-	      if logged_in_user 
-	            logger.debug 'Zalogowano'
+	      if logged_in_user && (logged_in_user.kind_of? Worker)
 	            flash[:notice] = "Pracownik został zalogowany!"
 	            session[:worker] = logged_in_user
 	            session[:isGA] = (Status.find(logged_in_user.status_id).name.to_s.eql?('administrator'))
-	            logger.debug "Zalogowany jako pracownik"
-	            logger.debug Status.find(logged_in_user.status_id).name.to_s
 	            redirect_to(:action => "panel")
 	      
 	      else
 	            flash[:notice] = "Błędny login i/albo hasło!"
-	            #redirect_to(:controller => "private", :action => "login", :method => "get") 
 	      end
-      else
+     else
 	      flash[:notice] = "Wpisz login i hasło."
-      end
+     end
   end
 
 	def logout

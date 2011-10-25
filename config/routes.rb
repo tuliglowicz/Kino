@@ -1,5 +1,7 @@
 Kino::Application.routes.draw do
 
+  
+
   #Cities
 	match '/private/cities' => 'cities#index', :as => 'cities'
 	
@@ -12,6 +14,8 @@ Kino::Application.routes.draw do
 
 	match 'public/users/remind_password' => 'users#remind_password', :as => 'remind_password'
 	match 'public/register' => 'users#new', :as => 'register'
+	#ja
+	match 'public/logout' => 'public#logout', :as => 'user_logout'
 
 	# SeanceTypes
 	match "/seance_types/name_availability" => "seance_types#name_availability"

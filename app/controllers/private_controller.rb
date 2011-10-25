@@ -128,7 +128,7 @@ class PrivateController < ApplicationController
 	  logger.debug 'Wylogowano'
 		session[:worker] = nil
 		session[:isGA] = nil
-		flash[:notice] = "Logged out"
+		flash[:notice] = "Użytkownik wylogowany!"
 		redirect_to(:controller => "private", :action => "login")
 	end
   

@@ -18,30 +18,24 @@ class PublicController < ApplicationController
     if logged_in_user     
       logger.debug 'Zalogowano'
       #flash[:notice] = "Zalogowany1!+#{logged_in_user.class.name}"
-      flash[:notice] = 'Zalogowany!'
       if logged_in_user.kind_of? User
         session[:user] = logged_in_user
         #flash[:notice] = "Zalogowany2 jako+#{session[:user].class.name}"
         flash[:notice] = 'Zalogowany jako użytkownik!'
         logger.debug 'Zalogowany jako użytkownik'
-        redirect_to(:controller => "public", :action => "index") # do poprawy później
-      elsif logged_in_user.kind_of? Worker
-        flash[:notice] = 'Zaloguj się jako użytkownik!'
-        redirect_to(:controller => "public", :action => "login")
+        redirect_to(:controller => "public", :action => "index") 
       end
       session[:cinema_id] = 1
     else
-      #flash[:notice] = "Błędny login i/albo hasło!"
-      #redirect_to(:controller => "public", :action => "login") # jak wrócić do strony sprzed próby logowania ? bez history.go(-1)
+      flash[:notice] = "Błędny login i/albo hasło!"
     end
 	end
 	
 	def logout
-    logger.debug '##################private_controller.logout########################'
-    logger.debug 'Wylogowano'
     session[:user] = nil
     
     flash[:notice] = "Użytkownik wylogowany"
+     #flash[:notice] = "Użytkownik wylogowany+#{session[:user]}"
     redirect_to(:controller => "public", :action => "login")
   end
 	

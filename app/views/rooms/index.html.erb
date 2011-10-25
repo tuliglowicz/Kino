@@ -1,12 +1,12 @@
 <h1>Lista sal</h1>
 <%= link_to 'Dodaj', new_room_path %><br><br>
 
-<table>
+<table id="listaRekordow" cellspacing=0 cellpadding=5px>
   <tr>
-    
     <th>Nazwa kina</th>
     <th>Numer sali</th>
     <th>Liczba miejsc</th>
+    <th>Nazwa Widoku</th>
     <th></th>
   </tr>
 
@@ -16,10 +16,12 @@
     <td><%= room.cinema.name if room.cinema %></td>
     <td><%= room.number %></td>
     <td><%= room.size %></td>
-    <td><%= link_to 'Pokaż', room %>
-    	<%= link_to 'Edytuj', edit_room_path(room) %>
-    	<%= link_to 'Usuń', room, :confirm => 'Czy na pewno chcesz usunąć ten rekord?', :method => :delete %>
-    	<%= link_to 'Dodaj siedzenie', new1_seat_path(room) %>
+    <td><%= room.roomview.name if room.roomview %></td>
+    <td><%= link_to 'Pokaż', room %> | 
+    	<%= link_to 'Edytuj', edit_room_path(room) %> | 
+    	<%= link_to 'Usuń', room, :confirm => 'Czy na pewno chcesz usunąć ten rekord?', :method => :delete %> | 
+    	<%= link_to 'Dodaj siedzenie', new1_seat_path(room) %> | 
+    	<%= link_to 'Pokaż widok Sali', room.roomview, :target => "_blank" %>
     	</td>
   </tr>
 <% end %>
@@ -28,3 +30,5 @@
 <br />
 <br></br>
 <%= will_paginate @rooms,  { :previous_label => 'Wstecz', :next_label => 'Dalej' } %>
+
+<%# debug(@rooms) %>

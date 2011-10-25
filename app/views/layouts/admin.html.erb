@@ -15,6 +15,9 @@
 	<%= javascript_include_tag "jscript.js" %>
   <%= csrf_meta_tag %>
   <title><%= @title || "Cinema" %></title>
+  <script>
+  	$j(document).ready(function(){$j("#listaRekordow").find('tr:odd').addClass("odd")});
+  </script>
   
 
 </head>

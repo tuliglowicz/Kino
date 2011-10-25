@@ -29,7 +29,7 @@
   <div class="field">
   	
     <%# hidden_field_tag :view %>
-    <%= f.text_field :view, :style => "display: none;" %>
+    <%= f.text_field :view, :style => "display:none"%>
   </div>
   
 <hr>
@@ -40,7 +40,7 @@
 		liczba rzędów: <input type="text" id="room_height_inp"> (0 &lt; x &lt; 24)
 </div>
 <br>
-<button onClick="submitParams();return false;">Generuj widok do obróbki</button><%= f.submit %>
+<button onClick="submitParams();return false;">Generuj widok do obróbki</button><input class="roomview_submit" class="ui-button ui-widget ui-state-default ui-corner-all" type="submit" value="Create Roomview" name="commit" role="button" aria-disabled="false">
 
 
   
@@ -48,7 +48,7 @@
 </table>
 	  
   <div class="actions">
-    <%= f.submit %>
+    <input class="roomview_submit" class="ui-button ui-widget ui-state-default ui-corner-all" type="submit" value="Create Roomview" name="commit" role="button" aria-disabled="false">
   </div>
 <% end %>
 
@@ -140,17 +140,22 @@ function submitParams(){
 	return false;
 }
 
-$j("#roomview_submit").click(function(){
-	var xml = "<room><width>"+width_of_seat_rect+"</width><height>"+height_of_seat_rect+"</height><deletedSeats>"
-	
-	$j(".seat.deselected").each(function(){
-		xml+="<seat>"+this.id+"</seat>"
-	});
-	
-	xml+="</deletedSeats></room>"
-	$j("#roomview_view").css("width","550px").val(xml);
-	
-	return true;
+$j(".roomview_submit").click(function(){	
+		var xml = "<room><width>"+width_of_seat_rect+"</width><height>"+height_of_seat_rect+"</height><deletedSeats>"
+		
+		$j(".seat.deselected").each(function(){
+			xml+="<seat>"+this.id+"</seat>"
+		});
+		
+		xml+="</deletedSeats></room>"
+	if(xml.length > 74){
+		$j("#roomview_view").css("width","550px").val(xml);		
+		
+		return true;
+	} else {
+		alert("Musisz zbudować widok sali.")
+		return false;
+	}
 });
 
 $j("input, button").button();

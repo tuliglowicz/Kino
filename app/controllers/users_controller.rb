@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   
   layout :get_users_layout  
       
-  before_filter :is_worker, :except => ['remind_password', 'is_login_available', 'login_availability', 'create', 'new', 'edit', 'update']
+  before_filter :is_worker_or_user, :except => ['remind_password', 'is_login_available', 'login_availability', 'create', 'new', 'edit', 'update']
   before_filter :can_read, :only => ['index', 'show']
   before_filter :can_write, :except => ['index', 'show','remind_password', 'is_login_available', 'login_availability','new', 'create', 'edit', 'update']
      
@@ -78,8 +78,15 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        format.html { redirect_to(@user, :notice => 'User was successfully updated.') }
-        format.xml  { head :ok }
+        if session[:worker] || session[:gadmin]
+          format.html { redirect_to(@user, :notice => 'User was successfully updated.') }
+          format.xml  { head :ok }
+        else
+          format.html { redirect_to(:controller=> "public",:action=> "profile", :id=>session[:user].id.to_s ) }
+          format.xml  { head :ok }
+          flash[:notice]= 'Zmieniono dane'
+        end
+          
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
@@ -163,12 +170,16 @@ class UsersController < ApplicationController
    User.where(:email => email).first.nil?
  end
  
- def is_worker
+ def is_worker_or_user
+   if !session[:user]
     redirect_to private_login_path unless session[:worker]
+   end
   end  
   
   def can_read
+    if session[:worker]
      redirect_to private_path, :notice => 'Brak uprawnień do wykonania akcji!' unless Auth.can_read_in_self_cinema?(session[:worker].id, get_table_name) or Auth.can_read_all?(session[:worker].id, get_table_name)
+    end
   end
 
   def can_write

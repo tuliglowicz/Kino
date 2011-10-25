@@ -14,72 +14,29 @@
 			padding:5px;
 			text-align:center;
 			background: #8DBDE5;
-			border:solid 1px #c3c3c3;	
+			border:solid 1px #c3c3c3;
 		}
-		div.form{margin:10px;}
+		div.form{
+			margin:10px;
+		}
 
 		</style>
 	</head>
 	<body>
 		
-	<script>
-		jQuery(document).ready(function(){
-	    // binds form submission and fields to the validation engine
-	    jQuery("#new_user").validationEngine('attach', { validationEventTrigger: 'submit'});
-	    jQuery("#edit_user_<%= @user.id %>").validationEngine('attach', { validationEventTrigger: 'submit'});
-	    
-	    jQuery("#user_login").blur(function(){
-	    	var login = jQuery("#user_login").val();
-	    	if(login.length > 3){
-	    		var login_availability = jQuery.ajax({
-	    			type: "POST",
-		    		url: "http://localhost:3000/private/users/login_availability",
-		    		data: "login=" + login,
-		    		
-		    		success: function(message)
-		    		{	    		
-		    			jQuery("#login_status").show('fast');
-		    			if (message == 'OK') 
-		    			{				
-		    				jQuery("#login_status").css("color", "lime");
-		    				jQuery("#login_status").text("Login dostępny");
-		    			}
-		    			else
-		    			{	    				
-		    				jQuery("#login_status").css("color", "red");
-		    				jQuery("#login_status").text("Login niedostępny");
-		    			}
-		    		},
-		    		error: function()
-		    		{
-		    			alert('Sprawdzenie dostępności nie powiodło się.');
-		    		}
-	    		});
-	    	}
-	    	else
-	    	{
-	    		jQuery("#login_status").hide('fast');
-	    	}
-	    	
-	    });
-	 }); 
-	 function x(){
-	 	document.writeln("dzialam");
-	 	$j(document).ready(function(){
-    			$(".form").slideToggle("slow");
-  		});
-	}
-	</script>
-
-
-		
 		<div style="float:left;">
 			<p>Witaj, <%= user.login %>!</p>
 		</div>
-		<br /><br />
+		
+		<br/><br/>
+		
 		<div class="btn" onclick="$j('.form').slideToggle('slow');">
 			edytuj swoje dane
+		</div><br /><br />
+		<div class="btn" onclick="$j('.pwd').slideToggle('slow');">
+			zmień hasło
 		</div>
+		
 		<div class="form" style="float:right;" hidden="true">
 			<%= form_for(@user) do |u| %>
 			  <% if @user.errors.any? %>
@@ -94,29 +51,59 @@
 			  <% end %>
 			
 			  <div class="field">
-			    <%= u.label :login %><br />
+			    <span style="float: left"><%= u.label :login %></span><br />
 			    <%= u.text_field :login, :class => 'validate[required,maxSize[100]]', :size=>45 %>
 			  </div>
 			  <div class="field">
-			    <%= u.label :email%><br />
+			    <span style="float: left"><%= u.label :email%></span><br />
 			    <%= u.text_field :email, :class => 'validate[required,maxSize[50]]', :size=>45 %>
 			  </div>
 	
 			  <div class="field">
-			    <%= u.label :"telefon" %><br />
+			    <span style="float: left"><%= u.label :"telefon" %></span><br />
 			    <%= u.text_field :phone, :size=>45 %>
 			  </div>
-			  
-			  <div class="field">
-			    <%= u.label :"hasło"%><br />
-			    <%= u.text_field :hashed_password, :class => 'validate[required,maxSize[50]]', :size=>45 %>
-			  </div>			  
+			  			  
 	
 			  <div class="actions">
 			    <%= u.submit "Zapisz"%>
 			  </div>
 			<% end %>
-		</div>	
+		</div>
+		
+		
+		
+		<div class="pwd" style="float:right;" hidden=true>
+			<%= form_for(@user) do |us| %>
+			  <% if @user.errors.any? %>
+			    <div id="error_explanation">
+			      <h2>Zaszły następujące nieprawidłowości:</h2>
+			      <ul>
+			      <% @user.errors.full_messages.each do |msg| %>
+			        <li><%= msg %></li>
+			      <% end %>
+			      </ul>
+			    </div>
+			  <% end %>
+					  
+
+			  
+			  
+			  
+			<label for="user_password">Hasło:</label>
+	  		<input id="user_hashed_password" name="user[hashed_password]" class="validate[required] text-input" type="password" />
+ 			<br />
+		  	<label for="user_password_confirmation">Powtórz hasło:</label>
+		  	<input id="user_hashed_password_confirmation" name="user[hashed_password_confirmation]" class="validate[required] text-input" type="password" />
+		  
+			<br />  
+			  			  
+	
+			  <div class="actions">
+			    <%= us.submit "Zapisz"%>
+			  </div>
+			<% end %>
+		</div>			
 		
 		<% link_to 'edytuj', :controller => "users", :action => "edit", :id => user.id.to_s %>
 	</body>

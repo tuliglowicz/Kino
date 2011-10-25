@@ -5,17 +5,18 @@
 
 <title>"Cinematoholix- Kino na miarę Twoich oczekiwań"</title>
 </head>
-<BODY LEFTMARGIN="0" bgcolor="gray" RIGHTMARGIN="0" TOPMARGIN="0" BOTTOMMARGIN="0" MARGINWIDTH="0" MARGINHEIGHT="0">
+<BODY LEFTMARGIN="0" bgcolor="black" RIGHTMARGIN="0" TOPMARGIN="0" BOTTOMMARGIN="0" MARGINWIDTH="0" MARGINHEIGHT="0">
 
 <style>
 
-#page {background: url('/images/pic/page_bg.jpg') no-repeat 0px 0; background-size: cover ;  }
+body {background: #000 url('/images/pic/body_bg.jpg') repeat-x 0 0;}
+#page {background: url('/images/pic/page_bg.jpg') no-repeat 105px 0;}
 
 </style>
     
 <div id="page" >
 		<div class="Ww2" align="center" >
-			<img class="Wimg3" src="/images/pic/tlo.png" alt="" height="100" width="294" />
+			<img class="Wimg3" src="/images/pic/tlo.png" alt="" />
 					<table class="Ww2" align="center" valign="middle" style="height:400px; overflow: auto; text-align: right;"><tr><td align="right" valign="top">
 						<span style='color:green'><%= flash[:notice] if flash[:notice]%></span><br>
 							
@@ -24,9 +25,4 @@
 					</table>
 		</div>
 </div>
-
-	
-
-
-
 </html>

@@ -11,7 +11,7 @@ class PrivateController < ApplicationController
 	def panel
 	end
 
-	def stats		
+	def stats
 	    if Auth.try_to_login_stats(params[:password])
 	    				  					
 				sqlQuery = case 
@@ -71,7 +71,6 @@ class PrivateController < ApplicationController
 			render :text => ""
 		end
 	end
-
 	
 	def send_login
 		logged_in_user = Auth.try_to_login(params[:login], params[:password])
@@ -103,23 +102,27 @@ class PrivateController < ApplicationController
 	
 	def login
      
-      logged_in_user = Auth.try_to_login(params[:login], params[:password])
-        
-      session[:worker] = nil  
-      session[:isGA] = nil
-      
-      if logged_in_user     
-            logger.debug 'Zalogowano'
-            flash[:notice] = "Pracownik został zalogowany!"
-            session[:worker] = logged_in_user
-            session[:isGA] = (Status.find(logged_in_user.status_id).name.to_s.eql?('administrator'))
-            logger.debug "Zalogowany jako pracownik"
-            logger.debug Status.find(logged_in_user.status_id).name.to_s
-            redirect_to(:action => "panel")
-      
+     if params[:login] &&  params[:password]
+	      logged_in_user = Auth.try_to_login(params[:login], params[:password])
+	        
+	      session[:worker] = nil  
+	      session[:isGA] = nil
+	      
+	      if logged_in_user 
+	            logger.debug 'Zalogowano'
+	            flash[:notice] = "Pracownik został zalogowany!"
+	            session[:worker] = logged_in_user
+	            session[:isGA] = (Status.find(logged_in_user.status_id).name.to_s.eql?('administrator'))
+	            logger.debug "Zalogowany jako pracownik"
+	            logger.debug Status.find(logged_in_user.status_id).name.to_s
+	            redirect_to(:action => "panel")
+	      
+	      else
+	            flash[:notice] = "Błędny login i/albo hasło!"
+	            #redirect_to(:controller => "private", :action => "login", :method => "get") 
+	      end
       else
-            flash[:notice] = "Błędny login i/albo hasło!"
-            #redirect_to(:controller => "private", :action => "login", :method => "get") 
+	      flash[:notice] = "Wpisz login i hasło."
       end
   end
 

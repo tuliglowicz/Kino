@@ -29,10 +29,16 @@
     <%= f.text_field :cinema_id, :class => 'validate[required]' %>
     <% end -%>
   </div>
-	<div class="field">
+  <div class="field">
     <%= f.label :"Numer sali" %><br />
     <%= f.text_field :number, :class => 'validate[required,custom[integer]' %>
   </div>
+  <%= f.label :Kino %><br />
+    <% if @roomviews -%>
+    <%= select_tag('room[roomview_id]', options_for_select([['Wybierz widok', '']] + @roomviews.collect{|c| [c.name, c.id]}, @room.cinema_id), :class => 'validate[required]') %>
+    <% else -%>
+    <%= f.text_field :cinema_id, :class => 'validate[required]' %>
+    <% end -%>
   <div class="field">
     <%= f.label :"Liczba miejsc" %><br />
     <%= f.text_field :size, :class => 'validate[required,custom[integer]'%>

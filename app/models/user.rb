@@ -1,7 +1,7 @@
 # encoding: utf-8
 class User < ActiveRecord::Base
     
-    attr_accessor :hashed_password, :hashed_password_confirmation
+    attr_accessor :hashed_password_confirmation
   
     has_many :tickets, :dependent => :delete_all
   

@@ -19,7 +19,7 @@
     <td><%= link_to 'Pokaż', room %>
     	<%= link_to 'Edytuj', edit_room_path(room) %>
     	<%= link_to 'Usuń', room, :confirm => 'Czy na pewno chcesz usunąć ten rekord?', :method => :delete %>
-    	<%= link_to 'Dodaj siedzenie', '/seats/new' %>
+    	<%= link_to 'Dodaj siedzenie', new1_seat_path(room) %>
     	</td>
   </tr>
 <% end %>

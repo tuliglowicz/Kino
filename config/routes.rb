@@ -12,6 +12,7 @@ Kino::Application.routes.draw do
   match 'public/login' => 'public#login', :as => 'public_login'
   match 'public/ceny' => 'public#ceny', :as => 'prices'
   match 'public/profil' => 'public#profile', :as => 'profile'
+  match 'public/dane_filmu' => 'public#dane_filmu', :as => 'film_data'
   
   #Cities
 	match '/private/cities' => 'cities#index', :as => 'cities'

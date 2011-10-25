@@ -10,25 +10,30 @@ class PublicController < ApplicationController
 		render :layout => 'admin'
 	end
 	
-	def login
-  	logged_in_user = Auth.try_to_login(params[:login], params[:password])
+	def login	  
+	  if params[:login] and  params[:password]
+			logged_in_user = Auth.try_to_login(params[:login], params[:password])
     
-    session[:user] = nil  # bez tego
+      session[:user] = nil  # bez tego
     
-    if logged_in_user     
-      logger.debug 'Zalogowano'
-      #flash[:notice] = "Zalogowany1!+#{logged_in_user.class.name}"
-      if logged_in_user.kind_of? User
-        session[:user] = logged_in_user
-        #flash[:notice] = "Zalogowany2 jako+#{session[:user].class.name}"
-        flash[:notice] = 'Zalogowany jako użytkownik!'
-        logger.debug 'Zalogowany jako użytkownik'
-        redirect_to(:controller => "public", :action => "index") 
+      if logged_in_user     
+        logger.debug 'Zalogowano'
+        #flash[:notice] = "Zalogowany1!+#{logged_in_user.class.name}"
+        if logged_in_user.kind_of? User
+          session[:user] = logged_in_user
+          #flash[:notice] = "Zalogowany2 jako+#{session[:user].class.name}"
+          flash[:notice] = 'Zalogowany jako użytkownik!'
+          logger.debug 'Zalogowany jako użytkownik'
+          redirect_to(:controller => "public", :action => "index") 
+        end
+        session[:cinema_id] = 1
+      else
+        flash[:notice] = "Błędny login i/albo hasło!"
       end
-      session[:cinema_id] = 1
-    else
-      flash[:notice] = "Błędny login i/albo hasło!"
-    end
+		else
+			# can happen whenever user visits page firt time. 
+			# it's added to avoid unexpected comments to the user.
+		end  	
 	end
 	
 	def logout

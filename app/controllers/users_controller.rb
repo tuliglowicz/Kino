@@ -5,9 +5,9 @@ class UsersController < ApplicationController
   
   layout :get_users_layout  
       
-  before_filter :is_worker, :except => ['remind_password', 'is_login_available', 'login_availability', 'create', 'new']
+  before_filter :is_worker, :except => ['remind_password', 'is_login_available', 'login_availability', 'create', 'new', 'edit', 'update']
   before_filter :can_read, :only => ['index', 'show']
-  before_filter :can_write, :except => ['index', 'show','remind_password', 'is_login_available', 'login_availability','new', 'create']
+  before_filter :can_write, :except => ['index', 'show','remind_password', 'is_login_available', 'login_availability','new', 'create', 'edit', 'update']
      
   def index
     #@users = User.all
@@ -141,7 +141,10 @@ class UsersController < ApplicationController
   private #===============================
   
   def get_users_layout   
-    if action_name == "new" or action_name == "create" or action_name == 'remind_password'
+    if action_name == "new" or 
+      action_name == "create" or 
+      action_name == 'remind_password' or 
+      action_name == 'edit'
       "application"
     else
       "admin"
@@ -169,7 +172,10 @@ class UsersController < ApplicationController
   end
 
   def can_write
-     redirect_to private_path, :notice => 'Brak uprawnień do wykonania akcji!' unless Auth.can_write_in_self_cinema?(session[:worker].id, get_table_name) or Auth.can_write_all?(session[:worker].id, get_table_name)
+     if session[:worker]
+      redirect_to private_path, :notice => 'Brak uprawnień do wykonania akcji!' unless  Auth.can_write_in_self_cinema?(session[:worker].id, get_table_name) or Auth.can_write_all?(session[:worker].id, get_table_name)     
+      
+     end
   end 
  
   def get_table_name

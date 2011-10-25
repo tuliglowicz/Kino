@@ -15,6 +15,7 @@ Kino::Application.routes.draw do
 	match 'public/users/remind_password' => 'users#remind_password', :as => 'remind_password'
 	match 'public/register' => 'users#new', :as => 'register'
 	
+	match 'public/do' => 'users#do', :as => 'my_settings'
 	# poprawka do zatwierdzenia przez grupę
 	match 'public/logout' => 'public#logout', :as => 'user_logout'
 	resources :seats do

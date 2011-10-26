@@ -99,11 +99,15 @@ body {background: #000 url('/images/pic/body_bg.jpg') repeat-x 0 0;}
      
 <div id="page" class="layout_uniwersalny">
 	<div class="Ww2" style="text-align: right;">
-		<% if (session[:worker] != nil) or  (session[:user]!=nil) %>
+		<% if(session[:user]) %>
 	
 		<%= link_to 'Moje konto', :action => "profile", :id => session[:user].id.to_s %> ( <a href="<%= user_logout_path %>">Wyloguj</a> )
-		<% else %>		
-		<a href="/public/login">Logowanie</a> | <a href="<%= register_path %>">Rejestracja</a>
+		<% else %>	
+			<% if session[:worker] %>				
+				<%= link_to 'Panel pracowniczy', private_path %>
+			<% else %>
+				<a href="/public/login">Logowanie</a> | <a href="<%= register_path %>">Rejestracja</a>
+			<% end %>
 		<% end %>
 	</div>      
 	<div id="sWlbg" style="paddting-top: -20px;">
@@ -118,25 +122,25 @@ body {background: #000 url('/images/pic/body_bg.jpg') repeat-x 0 0;}
 	<div id="navH">
 		<ul class="p0">
 			<li id="e1" class=" ">
-				<a href="/public/index" title="Strona Główna">Home</a>
+				<a href=<%= public_path %> title="Strona Główna">Home</a>
 			</li>
 			<li id="e2" class=" ">
-				<a href="/public/repertuar" title="Wszystkie Filmy ">Repertuar</a>
+				<a href=<%= repertoire_path %>  title="Wszystkie Filmy ">Repertuar</a>
 			</li>
 			<li id="e3" class=" ">
-				<a href="/public/zakup" title="Zakup / Rezerwacja">Zakup / Rezerwacja</a>
+				<a href=<%= purchase_path %>  title="Zakup / Rezerwacja">Zakup / Rezerwacja</a>
 			</li>
 			<li id="e4" class=" ">
-				<a href="/public/zapowiedzi" title="Zapowiedzi ">Zapowiedzi</a>
+				<a href=<%= announcement_path %>  title="Zapowiedzi ">Zapowiedzi</a>
 			</li>
 			<li id="e5" class=" ">
-				<a href="/public/ceny" title="Ceny i Promocje ">Ceny i Promocje</a>
+				<a href=<%= prices_path %> title="Ceny i Promocje ">Ceny i Promocje</a>
 			</li>
 			<li id="e6" class=" ">
-				<a href="/public/kontakt" title="Kontakt ">Kontakt</a>
+				<a href=<%= contact_path %>  title="Kontakt ">Kontakt</a>
 			</li>
 			<li id="e9" class=" moje">
-				<a href="/public/repertuar" title="Moje filmy ">Moje filmy</a>
+				<a href="/public/repertuar" title="Moje filmy ">???Moje filmy???</a>
 			</li>
 		</ul>
 	</div>

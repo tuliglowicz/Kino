@@ -1,5 +1,19 @@
 Kino::Application.routes.draw do
 
+  # Public zone
+  match 'public/index' => 'public#index', :as => 'public'
+  match 'public/kontakt' => 'public#kontakt', :as => 'contact'
+  match 'public/zapowiedzi' => 'public#zapowiedzi', :as => 'announcement'
+  match 'public/zakup' => 'public#zakup', :as => 'purchase'
+  match 'public/repertuar' => 'public#repertuar', :as => 'repertoire'
+  match 'public/users/remind_password' => 'users#remind_password', :as => 'remind_password'
+  match 'public/register' => 'users#new', :as => 'register'
+  match 'public/logout' => 'public#logout', :as => 'user_logout'  
+  match 'public/login' => 'public#login', :as => 'public_login'
+  match 'public/ceny' => 'public#ceny', :as => 'prices'
+  match 'public/profil' => 'public#profile', :as => 'profile'
+  match 'public/dane_filmu' => 'public#dane_filmu', :as => 'film_data'
+  
   #Cities
 	match '/private/cities' => 'cities#index', :as => 'cities'
 	
@@ -9,12 +23,10 @@ Kino::Application.routes.draw do
 	
 	# Users
 	match "/users/login_availability" => "users#login_availability"
-
-	match 'public/users/remind_password' => 'users#remind_password', :as => 'remind_password'
-	match 'public/register' => 'users#new', :as => 'register'
 	
+	match 'public/do' => 'users#do', :as => 'my_settings'
 	# poprawka do zatwierdzenia przez grupę
-	match 'public/logout' => 'public#logout', :as => 'user_logout'
+	
 	resources :seats do
         member do
           get "new1"
@@ -35,8 +47,6 @@ Kino::Application.routes.draw do
   match 'private/permissions/get_current_permission' => 'permissions#get_current_permission'
   match 'private/permissions/change_status_privilege_permissions' => 'permissions#change_status_privilege_permissions', :as => 'change_status_privilege_permissions'
   
-  match 'public/users/remind_password' => 'users#remind_password', :as => 'remind_password'
-  match 'public/login' => 'public#login', :as => 'public_login'
   
   # Private
   match 'private/panel' => 'private#panel', :as => 'private'
@@ -106,5 +116,5 @@ Kino::Application.routes.draw do
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
-   match ':controller(/:action(/:id(.:format)))'
+   #match ':controller(/:action(/:id(.:format)))'
 end

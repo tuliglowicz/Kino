@@ -26,7 +26,7 @@
 
 <div class="new_city" id="new_city_div" >
 
-<form id="new_city_form" action="/cities/create" method="post">
+<form id="new_city_form" action=<%= create_city_path %> method="post">
 	
 	<div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" /></div>
 			

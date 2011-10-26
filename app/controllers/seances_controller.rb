@@ -68,18 +68,19 @@ class SeancesController < ApplicationController
   end
 
   # GET /seances/1/edit
-  def edit    
-    
-    if Auth.is_admin_logged(session[:worker])
-      @cf = CinemaFilm.find(:all, :order => 'cinema_id ASC')
-      @rooms = Room.where(:cinema_id => session[:worker].cinema_id) #wybierz kino!
-      @seance = Seance.find(params[:id])
-    else      
-      @cf = CinemaFilm.find(:all, :order => 'cinema_id ASC', :conditions => "cinema_id = "+session[:worker].cinema_id.to_s)
-      @rooms = Room.where(:cinema_id => session[:worker].cinema_id)
-      @seance = Seance.where(:id => params[:id], :cinema_film_id =>(CinemaFilm.where(:cinema_id => ( Cinema.where(:id => session[:worker].cinema_id)))))[0]
-  end
-  
+  def edit
+		if Auth.is_admin_logged(session[:worker])
+			#KINO MUSI BYĆ W CIASTKU!!!
+		  @f = CinemaFilm.find(:all, :order => 'cinema_id ASC')
+		  @rooms = Room.where(:cinema_id => session[:worker].cinema_id) #wybierz kino!
+		  @seance = Seance.find(params[:id])
+		else      
+		  @f = Film.find(:all, :order => 'title ASC', :conditions => "id IN (Select film_id from cinema_films where cinema_id ="+session[:worker].cinema.id.to_s+")")
+		  @rooms = Room.where(:cinema_id => session[:worker].cinema_id)
+		  @seance = Seance.where(:id => params[:id], :cinema_film_id =>(CinemaFilm.where(:cinema_id => ( Cinema.where(:id => session[:worker].cinema_id)))))[0]
+		end
+		@seance_types = SeanceType.find(:all)
+		@discount_sorts = DiscountSort.find(:all)
   end
 
   # POST /seances

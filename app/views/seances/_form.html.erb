@@ -7,8 +7,6 @@
 	});
 </script>
 
-
-
 <%= javascript_include_tag 'jquery', 'rails', 'rails.validations' %> 
 <%= form_for @seance, :validate => true do |f| %>
   <% if @seance.errors.any? %>
@@ -23,12 +21,10 @@
     </div>
   <% end %>
 
-
-
   <div class="field">
     <%= f.label :"Film w kinie" %><br />
     <% if @f -%>
-    <%= select_tag('seance[cinema_film_id]', options_for_select([['Wybierz kino/film', '']] + @f.collect{|c| [c.cinema.name + " / " + c.film.title, c.id]}, @seance.cinema_film_id), :class => 'validate[required]') %>
+    <%= select_tag('seance[cinema_film_id]', options_for_select([['Wybierz film', '']] + @f.collect{|c| [c.title, c.id]}, @seance.cinema_film_id), :class => 'validate[required]') %>
     <% else -%>
     <%= f.text_field :cinema_film_id, :class => 'validate[required,custom[integer]' %>
     <% end -%>
@@ -75,3 +71,6 @@
     <%= f.submit "Dodaj seans"%>
   </div>
 <% end %>
+<script>
+$j("#seance_date_from").datepicker();
+</script>

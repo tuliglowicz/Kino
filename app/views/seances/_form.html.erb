@@ -39,7 +39,7 @@
   </div>
   <div class="field">
     <%= f.label :"Data seansu" %><br />
-    <%= f.text_field :date_from, :class => "datePick" %>(format: rrrr-mm-dd)
+    <%= f.text_field :date_from, :class => "datePick" %>
   </div>
   <div class="field">
     <%= f.label :"Godzina seansu" %><br />
@@ -72,5 +72,15 @@
   </div>
 <% end %>
 <script>
-$j("#seance_date_from").datepicker();
+$j("#seance_date_from").datepicker({
+	dateFormat: "yy-mm-dd",
+	minDate: -1,
+	regional: "pl",
+	showAnim: "drop",
+	showOtherMonths: true,
+	selectOtherMonths: true,
+	showOn: "button",
+	buttonImage: "/images/pic/calendar.gif",
+	buttonImageOnly: true
+});
 </script>

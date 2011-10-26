@@ -8,34 +8,31 @@ class SeancesController < ApplicationController
   before_filter :can_write, :except => ['index', 'show']
   #before_filter :auth,  :except => ["show", "index", "edit", "new", "update"]
 
-  # GET /seances
-  # GET /seances.xml
-  def index
-    
-  Seance.find_each do |seance|
-     if seance.date_from == Date.current && seance.time_from <= Time.now 
-       then
-       #logger.debug { "CHECKEDCHECKED.........................................CHECKEDCHECKED" }
-       seance.checked = true
-       seance.save
-       
-     end
-  end  
-    
-  if Auth.is_admin_logged(session[:worker])
-      @seances = Seance.all
-      @seances = Seance.paginate( :page => params[:page], :per_page => 10)
-  else
-      @seances = Seance.where(:cinema_film_id =>(CinemaFilm.where(:cinema_id => ( Cinema.where(:id => session[:worker].cinema_id)))))
-      @seances = Seance.paginate( :page => params[:page], :per_page => 10)
-  end
-  
-  
-  
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @seances }
-    end
+	# GET /seances
+	# GET /seances.xml
+	def index
+		# wyjebać gdzieś indziej
+		# co to kurwa tu w ogóle robi?
+		#Seance.find_each do |seance|
+		#if seance.date_from == Date.current && seance.time_from <= Time.now then
+			#logger.debug { "CHECKEDCHECKED.........................................CHECKEDCHECKED" }
+		#	seance.checked = true
+		#	seance.save
+		#	end
+		#end  
+	
+		if Auth.is_admin_logged(session[:worker])
+			#@seances = Seance.all
+			@seances = Seance.paginate( :page => params[:page], :per_page => 10)
+		else
+			#@seances = Seance.where(:cinema_film_id =>(CinemaFilm.where(:cinema_id => ( Cinema.where(:id => session[:worker].cinema_id)))))
+			#@seances = Seance.paginate( :page => params[:page], :per_page => 10)
+		end
+		
+		respond_to do |format|
+			format.html # index.html.erb
+			format.xml  { render :xml => @seances }
+		end
   end
 
   # GET /seances/1

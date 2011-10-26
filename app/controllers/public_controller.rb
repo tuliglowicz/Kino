@@ -1,9 +1,7 @@
 # encoding: utf-8
 class PublicController < ApplicationController
 	
-	
 	before_filter :auth_access_user, :only => [:panel]
-	
 	
 	
 	def panel
@@ -61,17 +59,20 @@ class PublicController < ApplicationController
 		@cinemas = Cinema.all
 	end
 
-	def profile
+	def profile #WTF?- optymalizacja
+		
 	  @user=User.find(params[:id])
 	  if @user.id!=session[:user].id
       redirect_to(:controller => "public", :action => "index")
+      
     end
 	  
 	end
 	
-  def dane_filmu
+  	def dane_filmu
 		 @film=Film.find(params[:id])
 	end
+
 	def repertuar
 		@title = "Repertuar"		
 		cinema_id = request.xhr? ? params[:cinema_id] : cookies[:cinema_id]
@@ -198,15 +199,11 @@ class PublicController < ApplicationController
 	    end	    		
 	end
 	
-	def zakup  
-		    require 'net/http'
-  
-		if params[:id] and Seance.where(:id => params[:id]).size == 1 and Seance.where(:id => params[:id])[0].cinema_film
+	def zakup
+		if params[:id] && cookies[:cinema_id]
 			@seance = Seance.where(:id => params[:id])[0]
-			@film_title = Seance.where(:id => params[:id])[0].cinema_film			
 			
-			sqlQuery=
-			"SELECT s.id
+			sqlQuery="SELECT s.row, s.column
 			FROM seats s
 			WHERE id IN
 				(SELECT seat_id AS id
@@ -216,93 +213,21 @@ class PublicController < ApplicationController
 				  FROM seances
 				  WHERE id = "+params[:id]+"
 				 )
-				)"
+				);"
 			@reserved_seats = Seat.find_by_sql(sqlQuery) #Seat.where(:id => Ticket.where(:seance_id => @seance))
 			
-			@tmp = []
+			tmp = []
 			for rs in @reserved_seats
-				@tmp << rs.id
+				tmp << rs.row+rs.column.to_s
 			end
-			@reserved_seats = @tmp
+			@reserved_seats = tmp
 			
 			@price_id = 3
 			@discounts = TicketType.all
-			
-			@seat_rows = Seat.find_by_sql("SELECT distinct row FROM seats ORDER BY row ASC")
-			@seat_collumn = Seat.find_by_sql("SELECT distinct collumn FROM seats ORDER BY collumn ASC")
-		else
-			# ???
-		end
-		
-		if params[:ticket]
-			#@posted_data = params[:ticket]
-			@seance_id = params[:ticket][:seance_id] if params[:ticket][:seance_id]
-			#@price_id = params[:ticket][:price_id] if params[:ticket][:price_id]
-			@how_much = params[:ticket][:how_much] if params[:ticket][:how_much]
-	
-			@disc_tab = []
-			@disc_tab << params[:ticket][:disc0_id] if params[:ticket][:disc0_id] != ""	
-			@disc_tab << params[:ticket][:disc1_id] if params[:ticket][:disc1_id] != ""	
-			@disc_tab << params[:ticket][:disc2_id] if params[:ticket][:disc2_id] != ""	
-			@disc_tab << params[:ticket][:disc3_id] if params[:ticket][:disc3_id] != ""	
-			@disc_tab << params[:ticket][:disc4_id] if params[:ticket][:disc4_id] != ""	
-			
-			@seat_tab = []
-			@seat_tab << params[:ticket][:seat0_id] if params[:ticket][:seat0_id] != ""	
-			@seat_tab << params[:ticket][:seat1_id] if params[:ticket][:seat1_id] != ""	
-			@seat_tab << params[:ticket][:seat2_id] if params[:ticket][:seat2_id] != ""	
-			@seat_tab << params[:ticket][:seat3_id] if params[:ticket][:seat3_id] != ""	
-			@seat_tab << params[:ticket][:seat4_id] if params[:ticket][:seat4_id] != ""	
-			
-			if session[:user]
-				@user = session[:user].id
-			else
-				@user = nil
-			end
-			
-			#REST REST REST REST REST REST REST REST REST REST REST REST REST REST REST REST REST REST REST REST REST REST REST REST
-			  uri = URI.parse( 'http://localhost:3001/payments/isOk' ); params = { :price => @how_much}
-			  http = Net::HTTP.new(uri.host, uri.port) 
-			  request = Net::HTTP::Get.new(uri.path) 
-			  request.set_form_data( params )
-			
-			  response = http.request(request)
-			
-				#@response = response
-			
-			  puts "Code: #{response.code}" 
-			  puts "Message: #{response.message}"
-			  puts "Body:\n #{response.body}"
-			  @accepted_payment = Hash.from_xml( response.body )['result']['accepted']
-			  
-			  
-			@error = false
-			for seat_t in @seat_tab
-				for seat_r in @reserved_seats
-					if seat_t.to_s == seat_r.to_s
-						@error = true
-						break
-					end
-				end
-			end
-			
-			if not @error and @accepted_payment
-				
-				# mam pewność, że jeśli @seat_tab[i] != nil to @disc_tab[i] również != nil
-				hash_set = {'seance_id' => @seance_id.to_i, 'price_id' => @price_id.to_i, 'user_id' => @user.to_i, 'bought' => false, 'cancelled' => false }
-				for num in (0..4)
-					if @seat_tab[num] and @seat_tab[num] != ""
-						hash_set['seat_id'] = @seat_tab[num].to_i
-						hash_set['discount_id'] = @disc_tab[num].to_i
-						@ticket = Ticket.new(hash_set)
-						@ticket.save
-						@reserved_seats << @seat_tab[num]
-					end
-				end				
-			end
 		end
 	end
-  
+		
+	# dalej testujesz, czy można skasować?
 	def test
 		@testing = User.find_by_sql("SELECT * from users where id = 6")
 		

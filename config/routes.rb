@@ -48,7 +48,7 @@ Kino::Application.routes.draw do
   match 'private/permissions/change_status_privilege_permissions' => 'permissions#change_status_privilege_permissions', :as => 'change_status_privilege_permissions'
   match 'private/cities/create' => 'cities#create', :as => 'create_city'
   match 'private/categories/create' => 'categories#create', :as => 'create_category'
-  
+  match 'private/statuses/create' => 'statuses#create', :as => 'create_status'
   # Private
   match 'private/panel' => 'private#panel', :as => 'private'
   match 'private/login' => 'private#login', :as => 'private_login'

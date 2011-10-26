@@ -33,9 +33,9 @@
     <%= f.label :"Numer sali" %><br />
     <%= f.text_field :number, :class => 'validate[required,custom[integer]' %>
   </div>
-  <%= f.label :Kino %><br />
+  <%= f.label :Widok %><br />
     <% if @roomviews -%>
-    <%= select_tag('room[roomview_id]', options_for_select([['Wybierz widok', '']] + @roomviews.collect{|c| [c.name, c.id]}, @room.cinema_id), :class => 'validate[required]') %>
+    <%= select_tag('room[roomview_id]', options_for_select([['Wybierz widok', '']] + @roomviews.collect{|c| [c.name, c.id]}, @room.roomview_id), :class => 'validate[required]') %> <%= link_to 'Pokaż widok Sali', @room.roomview,:id => "widok_link", :target => "_blank" %>
     <% else -%>
     <%= f.text_field :cinema_id, :class => 'validate[required]' %>
     <% end -%>
@@ -47,3 +47,19 @@
     <%= f.submit 'Zapisz'%>
   </div>
 <% end %>
+<%# debug(@room.roomview_id) %>
+<script>
+$j("#widok_link").css("color","red").click(function(){
+	link = "<%= roomview_path(@room.roomview) %>";
+	roomview_id = $j("#room_roomview_id").val();
+	if(roomview_id != "" && link != ""){
+		this.href = link.substring(0, link.lastIndexOf('/')+1)+roomview_id;
+		
+		return true;
+	}
+	else {
+		alert("Wybierz widok z listy!");
+	}		
+	return false;
+})
+</script>

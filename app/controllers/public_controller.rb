@@ -80,18 +80,16 @@ class PublicController < ApplicationController
 
 	def repertuar
 		@title = "Repertuar"		
-		cinema_id = request.xhr? ? params[:cinema_id] : cookies[:cinema_id]
+		cinema_id = cookies[:cinema_id]
 			
-		if cinema_id 
-				
-			@date_foreward = params[:id].to_i ||= 0		
-			if @date_foreward > 6 or @date_foreward <0
-				@date_foreward = 0
-			end
-	
-			if cinema_id and Cinema.where(:id => cinema_id).size == 1
-	
+		if cinema_id
 			@cinema = Cinema.find(cinema_id)
+			if @cinema
+				
+				@date_foreward = params[:id].to_i ||= 0		
+				if @date_foreward > 6 or @date_foreward <0
+					@date_foreward = 0
+				end			
 				
 				sqlQuery = "SELECT *
 							FROM seances

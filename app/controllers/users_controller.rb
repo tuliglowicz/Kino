@@ -77,20 +77,28 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     respond_to do |format|
-      if @user.update_attributes(params[:user])
-        if session[:worker] || session[:gadmin]
-          format.html { redirect_to(@user, :notice => 'User was successfully updated.') }
-          format.xml  { head :ok }
-        else
-          format.html { redirect_to(:controller=> "public",:action=> "profile", :id=>session[:user].id.to_s ) }
-          format.xml  { head :ok }
-          flash[:notice]= 'Zmieniono dane'
-        end
-          
+      if params[:user][:hashed_password].to_s != params[:user][:hashed_password_confirmation].to_s
+        #format.html {redirect_to(:controller=> "public",:action=> "profile", :id=>session[:user].id.to_s)}
+        format.html {redirect_to :back }
+        flash[:notice]= 'Podane hasła są różne'
       else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
-      end
+        if params[:user][:hashed_password].length<40
+          params[:user][:hashed_password]= Auth.hash_password(params[:user][:hashed_password])
+        end
+        if @user.update_attributes(params[:user])
+          if session[:worker] || session[:gadmin]
+            format.html { redirect_to(@user, :notice => 'User was successfully updated.') }
+            format.xml  { head :ok }
+          else
+            format.html { redirect_to(:controller=> "public",:action=> "profile", :id=>session[:user].id.to_s ) }
+            format.xml  { head :ok }
+            flash[:notice]= 'Zmieniono dane'
+          end         
+        else
+          format.html { render :action => "edit" }
+          format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
+        end
+      end  
     end
   end
 

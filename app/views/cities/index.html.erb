@@ -26,11 +26,11 @@
 
 <div class="new_city" id="new_city_div" >
 
-<form id="new_city_form" action="/cities/create" method="post">
+<form id="new_city_form" action=<%= create_city_path %> method="post">
 	
 	<div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" /></div>
 			
-		<label for="new_city">Nazwa miasta:</label>
+		<label for="new_city">Nazwa miasta</label>
 		<input type="text" id="city_name" name="city[name]" class="validate[required]"/>
 
 		<button type="submit">Dodaj</button>
@@ -40,24 +40,22 @@
 <br/>
 <table id="listaRekordow" cellspacing=0 cellpadding=5px>
   <tr>
+  	<th>Nr</th>
     <th>Nazwa</th>
     <th></th>
   </tr>
 
+<% @i = 1%>
 <% @cities.each do |city| %>
   <tr>
+  	<td><%= @i %></td>
+  	<% @i += 1%>
     <td><%= city.name %></td>
-    <td>
-    	<% #if session[:isGA] -%>
-    	<%= link_to 'Pokaż', city %>
-    	<%= link_to 'Edytuj', edit_city_path(city) %>
-    	<%= link_to 'Usuń', city_path(city), :confirm => 'Czy na pewno chcesz usunąć ten rekord?', :method => :delete %></td>
-    	<%# end -%>
+    <td>     	
+    	<%= link_to 'Edytuj', edit_city_path(city) %>      	
     </td>
   </tr>
 <% end %>
 
 </table>
 <br></br>
-<%= will_paginate @cities,  { :previous_label => 'Wstecz', :next_label => 'Dalej' } %>
-

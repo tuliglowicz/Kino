@@ -1,8 +1,7 @@
-	<LINK REL=StyleSheet HREF="/stylesheets/statuses/statuses.css" TYPE="text/css" MEDIA=screen>
+<LINK REL=StyleSheet HREF="/stylesheets/statuses/statuses.css" TYPE="text/css" MEDIA=screen>
 	
 <script src="/javascripts/jquery.validationEngine-pl.js" type="text/javascript" charset="utf-8"></script>
 <script src="/javascripts/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
-
 
 
 <script>
@@ -10,50 +9,41 @@
 	{
 		jQuery('#new_status_a').bind('click', function(event)
 		{
-			jQuery('div:hidden').show('fast');
-			jQuery('#new_status').validationEngine('attach', { validationEventTrigger: 'submit'});
+			jQuery('#new_status_form').validationEngine('attach', { validationEventTrigger: 'submit'});
+			jQuery('div:hidden').show('fast');			
 		});
 	});
 </script>
 
 
 <h1>Statusy pracowników</h1>
-<% if session[:isGA] -%>
-<a id="new_status_a" >Dodaj nową kategorię</a>
+
+<a id="new_status_a" >Dodaj nowy status</a>
 
 <div class="new_status">
-	
-	<form id="new_status_form" action="/statuses/create" method="post">
+	<br />
+	<form id="new_status_form" action=<%= create_status_path %> method="post">
 		<div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" /></div>
-		<label for="new_status">Status:</label>
-		<input type="text" id="status_name" name="status[name]" />
+		<label for="new_status">Status</label>
+		<input type="text" id="status_name" name="status[name]" class="validate[required]" />
 		<button type="submit">Zapisz</button>
 	</form>
 	
-</div>
-<br><br>
-<% end -%>
+</div><br>
+
 <table id="listaRekordow" cellspacing=0 cellpadding=5px>
   <tr>
-    <th>Id</th>
+    <th>Nr</th>
     <th>Nazwa</th>
     <th></th>
   </tr>
-
+<% @i = 1%>
 <% @statuses.each do |status| %>
   <tr>
-    <td><%= status.id %></td>
+    <td><%= @i %></td> <% @i += 1%>
     <td><%= status.name %></td>
     <td>
-        <% if session[:isGA] -%>
-    		<%= link_to 'Edytuj', edit_status_path(status) %>
-    		<%= link_to 'Usuń', status, :confirm => 'Czy na pewno chcesz usunąć ten rekord?', :method => :delete %></td>
-    	<% end -%>
+    	<%= link_to 'Edytuj', edit_status_path(status) %>
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<br></br>
-<%= will_paginate @cinema_films,  { :previous_label => 'Wstecz', :next_label => 'Dalej' } %>

@@ -3,14 +3,17 @@ class StatusesController < ApplicationController
 	
 	layout 'admin'
 
-	
-	before_filter :auth_exept_show, :except => ["show", "index", "edit", "new", "update"]
-	
+	protect_from_forgery
+  before_filter :is_worker
+  before_filter :can_read, :only => ['index', 'show']
+  before_filter :can_write, :except => ['index', 'show']
+  
   # GET /statuses
   # GET /statuses.xml  	
   def index
-    #@statuses = Status.all
-    @statuses = Status.paginate( :page => params[:page], :per_page => 15)
+    
+    @statuses = Status.all
+   
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @statuses }
@@ -47,9 +50,8 @@ class StatusesController < ApplicationController
   # POST /statuses
   # POST /statuses.xml
   def create
-  	@status = Status.find(params[:id])
+  	
     @status = Status.new(params[:status])
-
     respond_to do |format|
       if @status.save
         format.html { redirect_to(@status, :notice => 'Status was successfully created.') }
@@ -89,20 +91,21 @@ class StatusesController < ApplicationController
   end
 
 	private #===============================
-	def auth_exept_show
-		if session[:worker] == nil 
-				flash[:notice] = "Please log in, first!"
-				redirect_to(:controller => "public", :action => "index")
-				return false
-			else if session[:worker].status_id > 0
-				flash[:notice] = "Nie masz wymaganych uprawnień!"
-				if request.referer == "/"
-					redirect_to("/403.html")
-				else
-					redirect_to(request.referer)
-				end
-			end
-		end
-	end
+	
+	def is_worker
+    redirect_to private_login_path unless session[:worker]
+  end  
+  
+  def can_read
+     redirect_to private_path, :notice => 'Brak uprawnień do wykonania akcji!' unless Auth.can_read_in_self_cinema?(session[:worker].id, get_table_name) or Auth.can_read_all?(session[:worker].id, get_table_name)
+  end
+
+  def can_write
+     redirect_to private_path, :notice => 'Brak uprawnień do wykonania akcji!' unless Auth.can_write_in_self_cinema?(session[:worker].id, get_table_name) or Auth.can_write_all?(session[:worker].id, get_table_name)
+  end 
+ 
+  def get_table_name
+    'statuses'
+  end
 
 end

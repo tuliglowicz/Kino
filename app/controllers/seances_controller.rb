@@ -1,64 +1,61 @@
 # encoding: UTF-8
 class SeancesController < ApplicationController
-  
-  layout 'admin'
-  
-  before_filter :is_worker
-  before_filter :can_read, :only => ['index', 'show']
-  before_filter :can_write, :except => ['index', 'show']
-  #before_filter :auth,  :except => ["show", "index", "edit", "new", "update"]
 
-  # GET /seances
-  # GET /seances.xml
-  def index
-    
-  Seance.find_each do |seance|
-     if seance.date_from == Date.current && seance.time_from <= Time.now 
-       then
-       #logger.debug { "CHECKEDCHECKED.........................................CHECKEDCHECKED" }
-       seance.checked = true
-       seance.save
-       
-     end
-  end  
-    
-  if Auth.is_admin_logged(session[:worker])
-      @seances = Seance.all
-      @seances = Seance.paginate( :page => params[:page], :per_page => 10)
-  else
-      @seances = Seance.where(:cinema_film_id =>(CinemaFilm.where(:cinema_id => ( Cinema.where(:id => session[:worker].cinema_id)))))
-      @seances = Seance.paginate( :page => params[:page], :per_page => 10)
-  end
-  
-  
-  
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @seances }
-    end
-  end
+	layout 'admin'
+	
+	before_filter :is_worker
+	before_filter :can_read, :only => ['index', 'show']
+	before_filter :can_write, :except => ['index', 'show']
+	#before_filter :auth,  :except => ["show", "index", "edit", "new", "update"]
 
-  # GET /seances/1
-  # GET /seances/1.xml
-  def show
-    @seance = Seance.find(params[:id])
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @seance }
-    end
-  end
+	def index
+		# wyjebać gdzieś indziej
+		# co to kurwa tu w ogóle robi?
+		#Seance.find_each do |seance|
+		#if seance.date_from == Date.current && seance.time_from <= Time.now then
+			#logger.debug { "CHECKEDCHECKED.........................................CHECKEDCHECKED" }
+		#	seance.checked = true
+		#	seance.save
+		#	end
+		#end
+		
+		per_page = (params[:per_page] && params[:per_page].to_i >= 10 && params[:per_page].to_i <= 100) ? params[:per_page] : 10;
+	
+		if Auth.is_admin_logged(session[:worker])
+			#@m = session[:worker]
+			@seances = Seance.paginate(:page => params[:page], :per_page => per_page)
+		else
+			@seances = Seance.where("cinema_film_id IN (Select id from cinema_films where cinema_id ="+session[:worker].cinema.id.to_s+")").paginate( :page => params[:page], :per_page => per_page)			
+		end
+		
+		respond_to do |format|
+			format.html # index.html.erb
+			format.xml  { render :xml => @seances }
+		end
+	end
+
+	# GET /seances/1
+	# GET /seances/1.xml
+	def show
+		@seance = Seance.find(params[:id])
+		respond_to do |format|
+			format.html # show.html.erb
+			format.xml  { render :xml => @seance }
+		end
+	end
 
   # GET /seances/new
   # GET /seances/new.xml
   def new
-    if session[:isGA]
-      @cf = CinemaFilm.find(:all, :order => 'cinema_id ASC')
-      @rooms = Room.where(:cinema_id => session[:worker].cinema_id) #wybierz kino!
-      
+    if Auth.is_admin_logged(session[:worker])
+    	#KINO MUSI BYĆ W CIASTKU!!!
+      @f = CinemaFilm.find(:all, :order => 'cinema_id ASC')
+      @rooms = Room.where(:cinema_id => cookies[:cinema_id])      
     else      
-      @cf = CinemaFilm.find(:all, :order => 'cinema_id ASC', :conditions => "cinema_id = "+session[:worker].cinema_id.to_s)
-      @rooms = Room.where(:cinema_id => session[:worker].cinema_id)
+      #@cf = CinemaFilm.find(:all, :order => 'cinema_id ASC', :conditions => "cinema_id = "+session[:worker].cinema_id.to_s)
       
+      @f = Film.find(:all, :order => 'title ASC', :conditions => "id IN (Select film_id from cinema_films where cinema_id ="+session[:worker].cinema.id.to_s+")")
+      @rooms = Room.where(:cinema_id => session[:worker].cinema_id)      
     end
     @seance_types = SeanceType.find(:all)
     @discount_sorts = DiscountSort.find(:all)
@@ -71,39 +68,38 @@ class SeancesController < ApplicationController
   end
 
   # GET /seances/1/edit
-  def edit    
-    
-    if session[:isGA]
-      @cf = CinemaFilm.find(:all, :order => 'cinema_id ASC')
-      @rooms = Room.where(:cinema_id => session[:worker].cinema_id) #wybierz kino!
-      @seance = Seance.find(params[:id])
-    else      
-      @cf = CinemaFilm.find(:all, :order => 'cinema_id ASC', :conditions => "cinema_id = "+session[:worker].cinema_id.to_s)
-      @rooms = Room.where(:cinema_id => session[:worker].cinema_id)
-      @seance = Seance.where(:id => params[:id], :cinema_film_id =>(CinemaFilm.where(:cinema_id => ( Cinema.where(:id => session[:worker].cinema_id)))))[0]
-  end
-  
+  def edit
+		if Auth.is_admin_logged(session[:worker])
+			#KINO MUSI BYĆ W CIASTKU!!!
+		  @f = CinemaFilm.find(:all, :order => 'cinema_id ASC')
+		  @rooms = Room.where(:cinema_id => session[:worker].cinema_id) #wybierz kino!
+		  @seance = Seance.find(params[:id])
+		else      
+		  @f = Film.find(:all, :order => 'title ASC', :conditions => "id IN (Select film_id from cinema_films where cinema_id ="+session[:worker].cinema.id.to_s+")")
+		  @rooms = Room.where(:cinema_id => session[:worker].cinema_id)
+		  @seance = Seance.where(:id => params[:id], :cinema_film_id =>(CinemaFilm.where(:cinema_id => ( Cinema.where(:id => session[:worker].cinema_id)))))[0]
+		end
+		@seance_types = SeanceType.find(:all)
+		@discount_sorts = DiscountSort.find(:all)
   end
 
   # POST /seances
   # POST /seances.xml
   def create
-    
     @seance = Seance.new(params[:seance])
       
-    if session[:isGA]
+    if Auth.is_admin_logged(session[:worker])
       @cf = CinemaFilm.find(:all, :order => 'cinema_id ASC')
       @rooms = Room.find(:all)
       #@seance_types = SeanceType.find(:all)
-    else
-    if params[:seance].cinema_film.cinema.cinema_id == session[:worker].cinema_id
-      @cf = CinemaFilm.find(:all, :order => 'cinema_id ASC', :conditions => "cinema_id = " + session[:worker].cinema_id.to_s)
-        @rooms = Room.find(:all, :conditions => "cinema_id = " + session[:worker].cinema_id.to_s)
-        #@seance_types = SeanceType.find(:all)
+    else if params[:seance].cinema_film.cinema.cinema_id == session[:worker].cinema_id
+		@cf = CinemaFilm.find(:all, :order => 'cinema_id ASC', :conditions => "cinema_id = " + session[:worker].cinema_id.to_s)
+		@rooms = Room.find(:all, :conditions => "cinema_id = " + session[:worker].cinema_id.to_s)
+		#@seance_types = SeanceType.find(:all)
     else
       @seance = nil
     end
-  end 
+  end
 
   if @seance
       respond_to do |format|
@@ -126,7 +122,7 @@ class SeancesController < ApplicationController
     
     @seance = Seance.find(params[:id])
     
-    if session[:isGA]
+    if Auth.is_admin_logged(session[:worker])
       @cf = CinemaFilm.find(:all, :order => 'cinema_id ASC')
       @rooms = Room.find(:all)
   else
@@ -164,10 +160,9 @@ class SeancesController < ApplicationController
     end
   end
 
-  # DELETE /seances/1
-  # DELETE /seances/1.xml
+  # 
   def destroy
-    if session[:isGA]
+    if Auth.is_admin_logged(session[:worker])
       @seance = Seance.find(params[:id])
     else
       @seance = Seance.where(:id => params[:id], :cinema_film_id =>(CinemaFilm.where(:cinema_id => ( Cinema.where(:id => session[:worker].cinema_id)))))[0]
@@ -175,18 +170,18 @@ class SeancesController < ApplicationController
     end
     
     if @seance
-      @seance.destroy
-      
-      respond_to do |format|
-        format.html { redirect_to(seances_url) }
-        format.xml  { head :ok }
-      end
-  else
-          if request.referer == "/"
-          redirect_to("/403.html")
-        else
-          redirect_to(request.referer, :notice => "Nie masz wymaganych uprawnień!")
-        end
+		@seance.destroy
+		
+		respond_to do |format|
+		format.html { redirect_to(seances_url) }
+		format.xml  { head :ok }
+		end
+  	else
+	    if request.referer == "/"
+		  redirect_to("/403.html")
+		else
+		  redirect_to(request.referer, :notice => "Nie masz wymaganych uprawnień!")
+		end
     end
   end
   

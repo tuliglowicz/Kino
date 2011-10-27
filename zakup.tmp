@@ -1,42 +1,147 @@
-<% if @error == true -%>
+//==================================controler
+
+def zakup  
+		    require 'net/http'
+  
+		if params[:id] and Seance.where(:id => params[:id]).size == 1 and Seance.where(:id => params[:id])[0].cinema_film
+			@seance = Seance.where(:id => params[:id])[0]		
+			
+			sqlQuery=
+			"SELECT s.row, s.column
+			FROM seats s
+			WHERE id IN
+				(SELECT seat_id AS id
+				 FROM tickets
+				 WHERE NOT cancelled AND seance_id IN
+				 (SELECT id AS seance_id
+				  FROM seances
+				  WHERE id = "+params[:id]+"
+				 )
+				);"
+			@reserved_seats = Seat.find_by_sql(sqlQuery) #Seat.where(:id => Ticket.where(:seance_id => @seance))
+			
+			tmp = []
+			for rs in @reserved_seats
+				tmp << rs.row+rs.column.to_s
+			end
+			@reserved_seats = tmp
+			
+			@price_id = 3
+			@discounts = TicketType.all
+			
+			
+		else
+			# ???
+		end
+		
+		if params[:ticket]
+			#@posted_data = params[:ticket]
+			@seance_id = params[:ticket][:seance_id] if params[:ticket][:seance_id]
+			#@price_id = params[:ticket][:price_id] if params[:ticket][:price_id]
+			@how_much = params[:ticket][:how_much] if params[:ticket][:how_much]
+	
+			@disc_tab = []
+			@disc_tab << params[:ticket][:disc0_id] if params[:ticket][:disc0_id] != ""	
+			@disc_tab << params[:ticket][:disc1_id] if params[:ticket][:disc1_id] != ""	
+			@disc_tab << params[:ticket][:disc2_id] if params[:ticket][:disc2_id] != ""	
+			@disc_tab << params[:ticket][:disc3_id] if params[:ticket][:disc3_id] != ""	
+			@disc_tab << params[:ticket][:disc4_id] if params[:ticket][:disc4_id] != ""	
+			
+			@seat_tab = []
+			@seat_tab << params[:ticket][:seat0_id] if params[:ticket][:seat0_id] != ""	
+			@seat_tab << params[:ticket][:seat1_id] if params[:ticket][:seat1_id] != ""	
+			@seat_tab << params[:ticket][:seat2_id] if params[:ticket][:seat2_id] != ""	
+			@seat_tab << params[:ticket][:seat3_id] if params[:ticket][:seat3_id] != ""	
+			@seat_tab << params[:ticket][:seat4_id] if params[:ticket][:seat4_id] != ""	
+			
+			if session[:user]
+				@user = session[:user].id
+			else
+				@user = nil
+			end
+			
+			#REST REST REST REST REST REST REST REST REST REST REST REST REST REST REST REST REST REST REST REST REST REST REST REST
+			  uri = URI.parse( 'http://localhost:3001/payments/isOk' ); params = { :price => @how_much}
+			  http = Net::HTTP.new(uri.host, uri.port) 
+			  request = Net::HTTP::Get.new(uri.path) 
+			  request.set_form_data( params )
+			
+			  response = http.request(request)
+			
+				#@response = response
+			
+			  puts "Code: #{response.code}" 
+			  puts "Message: #{response.message}"
+			  puts "Body:\n #{response.body}"
+			  @accepted_payment = Hash.from_xml( response.body )['result']['accepted']
+			  
+			  
+			@error = false
+			for seat_t in @seat_tab
+				for seat_r in @reserved_seats
+					if seat_t.to_s == seat_r.to_s
+						@error = true
+						break
+					end
+				end
+			end
+			
+			if not @error and @accepted_payment
+				
+				# mam pewnoœæ, ¿e jeœli @seat_tab[i] != nil to @disc_tab[i] równie¿ != nil
+				hash_set = {'seance_id' => @seance_id.to_i, 'price_id' => @price_id.to_i, 'user_id' => @user.to_i, 'bought' => false, 'cancelled' => false }
+				for num in (0..4)
+					if @seat_tab[num] and @seat_tab[num] != ""
+						hash_set['seat_id'] = @seat_tab[num].to_i
+						hash_set['discount_id'] = @disc_tab[num].to_i
+						@ticket = Ticket.new(hash_set)
+						@ticket.save
+						@reserved_seats << @seat_tab[num]
+					end
+				end				
+			end
+		end
+	end
+  
+  //================================================== widok
+  
+  <% if @error == true -%>
 	<table class='problemTable' id='errorTable' align=center><tr><td align='center'>
-	1. Miejsca, ktÃ³re zamÃ³wiÅ‚eÅ› zostaÅ‚y zarezerwowane chwilÄ™ przed TobÄ… i nie sÄ… juÅ¼ dostepne.<br/>
-	ProszÄ™ wybierz inne miejsca. Za utrudnienia przepraszamy.
+	1. Miejsca, które zamówi³eœ zosta³y zarezerwowane chwilê przed Tob¹ i nie s¹ ju¿ dostepne.<br/>
+	Proszê wybierz inne miejsca. Za utrudnienia przepraszamy.
 	<% if @accepted_payment == false -%>
 	<br/>
-	2. Posiadasz zbyt maÅ‚o Å›rodkÃ³w na koncie.
+	2. Posiadasz zbyt ma³o œrodków na koncie.
 	<% end -%>
 	<br/><br/>
 	<a href="#" onclick="$j('#errorTable').fadeOut('fast');">Zamknij to okno</a>
 	</td></tr></table><br/>
 <% else if @error == false and @accepted_payment == true -%>
 	<table class='allCorrectTable' id='errorTable' align=center><tr><td align='center'>
-	1. Miejsca, ktÃ³re zamÃ³wiÅ‚eÅ› zostaÅ‚y poprawnie zarezerwowane!
+	1. Miejsca, które zamówi³eœ zosta³y poprawnie zarezerwowane!
 	<br/><br/>
 	<a href="#" onclick="$j('#errorTable').fadeOut('fast');">Zamknij to okno</a>
 	</td></tr></table>
 <% else if @accepted_payment == false-%>	
 <table class='problemTable' id='errorTable' align=center><tr><td align='center'>
-	1. Posiadasz zbyt maÅ‚o Å›rodkÃ³w na koncie.
+	1. Posiadasz zbyt ma³o œrodków na koncie.
 	<br/><br/>
 	<a href="#" onclick="$j('#errorTable').fadeOut('fast');">Zamknij to okno</a>
 	</td></tr></table>
 <% end end end -%>
 <br/>
-<%= debug(@seance) %>
-<%= debug(@pid) %>
-<%= debug(@cid) %>
 <% if @seance -%>
 	Kino: <%= @seance.cinema_film.cinema.name %><br/>
-	TytuÅ‚: <%= @seance.cinema_film.film.title %><br/>
+	Tytu³: <%= @seance.cinema_film.film.title %><br/>
 	Data: <%= @seance.date_from %><br/>
 	Godzina: <%= @seance.time_from.strftime("%H:%M") %><br/>
         
-    <table align=center border=0px cellpadding=0px cellspacing=5px style="padding-bottom:25px;background-color:white;color:black;">
+    <table align=center border=0px cellpadding=0px cellspacing=5px style="padding-bottom:25px">
     	
     	<tr><td colspan=3 align=center style="padding-bottom:20px; color: gray;"><b>
-    		1. MoÅ¼esz zamÃ³wiÄ‡ maksymalnie 5 biletÃ³w.<br>
-    		2. W calu zamÃ³wienia wiekszej liczby biletÃ³w skontaktuj siÄ™ z nami telefonicznie. Dla grup zorganizowanych przewidziane sÄ… zniÅ¼ki. </b></td></tr>
+    		1. Przed wyborem miejsc <u>zaloguj siê</u>, aby nie straciæ przywilejów!<br>
+    		2. Mo¿esz zamówiæ maksymalnie 5 biletów.<br>
+    		3. W calu zamówienia wiekszej liczby biletów skontaktuj siê z nami telefonicznie. Dla grup zorganizowanych przewidziane s¹ zni¿ki. </b></td></tr>
     	<tr><td colspan=3 align=center style="padding-bottom:20px; color: gray;"><b> - E K R A N - </b></td></tr>
 
 		<script>
@@ -47,8 +152,6 @@
 				<% i+=1 -%>
 			<% end -%>			
 		
-		alert(reserved[0])
-		
 			var chars = new Array('A','B','C','D','E','F','G','H');
 			var maxCols = 19;
 
@@ -57,8 +160,8 @@
 				document.write("<tr align=centera valign='middle'><td width='10px' align='right' valign='middle'>"+chars[i]+"</td><td align='center' valign='middle' width='"+(25*maxCols)+"px'>")
 				for(j=1; j<=maxCols; j++)
 				{
-					var wypeÅ‚niacz = ""
-					if(j<10) wypeÅ‚niacz = "&nbsp;"
+					var wype³niacz = ""
+					if(j<10) wype³niacz = "&nbsp;"
 					document.write("<div id='seat"+(i*maxCols+j)+"' class='seat' align=center valign='middle'>"+j+"</div>")
 				}
 				document.write("</td><td width='10px' valign='middle'>"+chars[i]+"</td></tr>")
@@ -69,26 +172,25 @@
 		</script>
 		
     </table>
-    
     <br>
-    <em onclick="$j('#opis').toggle('slow');" style="cursor:pointer"><u> WyÅ›wietl opis</u></em>:<br>
+    <em onclick="$j('#opis').toggle('slow');" style="cursor:pointer"><u> Wyœwietl opis</u></em>:<br>
     <span id=opis style='display:none'>
-    kolor <font color=red>czerwony</font> oznacza, Å¼e dane siedzenie jest juÅ¼ <u>zajÄ™te</u>.<br>
-    kolor <font color=lime>zielony</font> oznacza, Å¼e dane siedzenie jest <u>wolne</u>.<br>
-    kolor <font color=orange>pomajaÅ„czowy</font> reprezentuje siedzenia wybrane przez Ciebie.<br>Aby zrezygnowaÄ‡ z tego siedzeniia kliknij w nie.</span>
+    kolor <font color=red>czerwony</font> oznacza, ¿e dane siedzenie jest ju¿ <u>zajête</u>.<br>
+    kolor <font color=lime>zielony</font> oznacza, ¿e dane siedzenie jest <u>wolne</u>.<br>
+    kolor <font color=orange>pomajañczowy</font> reprezentuje siedzenia wybrane przez Ciebie.<br>Aby zrezygnowaæ z tego siedzeniia kliknij w nie.</span>
     
     <br><br><br>
     
-    &nbsp; Lista zamÃ³wionych biletÃ³w:
+    &nbsp; Lista zamówionych biletów:
     <hr width=90%>
     <span id="t0" ><font color="gray" align=right>&nbsp; -- lista pusta --</font></span>
     <span id="t1"> </span>
     <span id="t2"> </span>
     <span id="t3"> </span>
     <span id="t4"> </span>
-    <p align='right' id="tcena" style='font-weight:bold'>Suma: 0 zÅ‚</p>
+    <p align='right' id="tcena" style='font-weight:bold'>Suma: 0 z³</p>
     <center style='padding-bottom:10px; display:none;' id="kup_center">
-    	<input type="button" id="kup" value="Kliknij, aby potwierdziÄ‡ zamÃ³wienie" onclick="send_my_data();">
+    	<input type="button" id="kup" value="Kliknij, aby potwierdziæ zamówienie" onclick="send_my_data();">
     </center>
 
 <%= form_tag('/public/zakup/'+@seance.id.to_s, :method => 'post', :id => "theForm")%>
@@ -139,8 +241,8 @@ function send_my_data(){
 }
 
 				var tmpId = -1;
-				var tmp = new Array(3); //przechowuje poprzedni klikniÄ™ty kwadracik
-				var seatId = new Array(5);	//przechowuje idSeatÃ³w
+				var tmp = new Array(3); //przechowuje poprzedni klikniêty kwadracik
+				var seatId = new Array(5);	//przechowuje idSeatów
 				var discId = new Array(5);	//przechowuje idDiscount
 				var count = 0;
 				$j("#theSel").addClass("ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only");
@@ -168,7 +270,7 @@ function send_my_data(){
 										return false;
 									}
 								}
-								if(count > 4) alert("Maksymalnie moÅ¼esz zamÃ³wiÄ‡ 5 biletÃ³w.")
+								if(count > 4) alert("Maksymalnie mo¿esz zamówiæ 5 biletów.")
 								else 
 								{
 									if(tmp[0] != null)
@@ -241,7 +343,7 @@ function send_my_data(){
 							var cena = Math.floor( (discId[i]==2 ? 24*0.8 : 24) );
 							
 							
-							document.getElementById('t'+i).innerHTML = " &nbsp; "+nr+". &nbsp; Miejsce: "+row+col+", <em>"+typ+"</em>, cena: "+cena+" zÅ‚<br/>";
+							document.getElementById('t'+i).innerHTML = " &nbsp; "+nr+". &nbsp; Miejsce: "+row+col+", <em>"+typ+"</em>, cena: "+cena+" z³<br/>";
 							
 							$j('#t'+i).show("slow");
 							total += cena;
@@ -251,7 +353,7 @@ function send_my_data(){
 						{
 							document.getElementById('t'+i).innerHTML = "";
 						}
-						document.getElementById('tcena').innerHTML = "Suma: "+total+" zÅ‚"
+						document.getElementById('tcena').innerHTML = "Suma: "+total+" z³"
 				}
 								
 				function isInside(tab, val)
@@ -264,10 +366,9 @@ function send_my_data(){
 				}
 				
 				
-	document.getElementById("theSel").remove(document.getElementById("theSel").length-1) //usÃ³wa opcjÄ™ zniÅ¼ki dla 10 osÃ³b...
+	document.getElementById("theSel").remove(document.getElementById("theSel").length-1) //usówa opcjê zni¿ki dla 10 osób...
 </script>
 <!--
-
 <%# debug(@posted_data) %>
 <%# debug(@seance_id) %>
 <%# debug(@price_id) %>

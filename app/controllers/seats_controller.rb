@@ -3,12 +3,19 @@ class SeatsController < ApplicationController
 	
 	layout 'admin'
 	
-	
+	before_filter :is_worker
+  before_filter :can_read, :only => ['index', 'show']
+  before_filter :can_write, :except => ['index', 'show']
   # GET /seats
   # GET /seats.xml
   def index
     #@seats = Seat.all
-    @seats = Seat.paginate( :page => params[:page], :per_page => 15)
+    #@seats = Seat.paginate( :page => params[:page], :per_page => 15)
+    if Auth.is_admin_logged(session[:worker])
+           @seats = Seat.paginate(:page => params[:page], :per_page => 15) 
+    else
+           @seats = Seat.paginate(:conditions => ["cinema_id = ?","#{session[:worker].cinema_id}"], :page => params[:page], :per_page => 15)
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @seats }
@@ -87,7 +94,23 @@ class SeatsController < ApplicationController
     end
   end
   
-	
+	private #===============================
+  
+  def is_worker
+    redirect_to private_login_path unless session[:worker]
+  end   
+    
+  def can_read
+     redirect_to private_path, :notice => 'Brak uprawnień do wykonania akcji!' unless Auth.can_read_in_self_cinema?(session[:worker].id, get_table_name) or Auth.can_read_all?(session[:worker].id, get_table_name)
+  end
+
+  def can_write
+     redirect_to private_path, :notice => 'Brak uprawnień do wykonania akcji!' unless Auth.can_write_in_self_cinema?(session[:worker].id, get_table_name) or Auth.can_write_all?(session[:worker].id, get_table_name)
+  end 
+ 
+  def get_table_name
+    'seats'
+  end
 	
   
 end

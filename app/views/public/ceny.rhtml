@@ -1,35 +1,83 @@
-<table align=center border=1>
-	<th> Cena (zł)</th>
-	<th> Opis </th>
-<% #for p in @ticket_sort_pirces do-
-%>
-<% @ticket_sort_prices.each do |ticket_sort_price| %>
-<tr>
-	<td align=right>
-		<%= ticket_sort_price.price %>
-	</td>
-	<td align=center>
-		<%= ticket_sort_price.description %>
-	</td>
-</tr>	
-<% end -%>
-</table>
 
-<br/>
+<% if @areSeances%>
+<br>
+</br>
+<div align="center" style=" color:#8DBDE5; font-size:15px; font-family:"Arial" ;">
+	Cennik biletów na dostępne seanse w kinie:<div style=" color:#FFFFFF;" ><%= @cinema.name%></div>
+</div>	
+<br>
+</br>
 
-<table align=center border=1>
-	<th> Zniżka (%)</th>
-	<th> Opis </th>
-<% #for d in @discount_sorts do-
-%>
-<% @discount_sorts.each do |discount_sort| %>
-<tr>
-	<td align=right>
-		<%= discount_sort.is_weekend %>
-	</td>
-	<td align=center>
-		<%= discount_sort.description %>
-	</td>
-</tr>	
+
+<% @seanceTypes.each do |seanceType| %>
+		       
+	<% sqlQ= "SELECT * FROM ticket_types Where ticket_types.id IN (SELECT ticket_type_id AS ticket_type_id FROM ticket_sort_prices Where seance_type_id = ("+seanceType.id.to_s+") ) " %>  
+	<% @ticketTypes =  TicketType.find_by_sql(sqlQ) %> 
+	<% sqlQ2 = "SELECT * FROM discount_sorts Where discount_sorts.id IN (SELECT discount_sort_id AS discount_sort_id FROM ticket_sort_prices Where seance_type_id = ("+seanceType.id.to_s+") ) " %>  
+	<% @discountSorts =  DiscountSort.find_by_sql(sqlQ2) %>
+				<table width=650 align=center border=0 bordercolor="green">
+					<tr valign="top">
+					      <td>
+					      	<table  width="170px" align="top" border=2  style=" border: thick solid grey; border-radius: 1.5em   " > 
+					      		<tr>
+					      			
+					      			<td height="70px" valign="middle" align="middle" style=" color:#8DBDE5; font-size:15px; font-family:Arial; font-weight:bold;  " >
+					      				<div style=" color:#FFFFFF ; font-size:12px; font-family:Arial; ">Seans</div> <%= seanceType.name.to_s %>
+					      			</td>	
+					      			
+					      		</tr>
+					      		<tr>
+					      		</tr>
+					      	</table>
+					      </td>
+					      <td>
+					      	<table width=500 align=center border=0 bordercolor="yellow">
+				      	  		<tr>
+				      	  			<td height="70px" valign="bottom" align="center"> 
+				      	  				<div style=" color:#FFFFFF ; font-size:12px; font-family:Arial; ">Typ biletu</div> 
+				      	  			</td>
+				      	  			<% @discountSorts.each do |discountSort| %>
+				      	  			<td valign="bottom" align="middle" style=" color:#D2691E ; font-size:15px; font-family:Arial; font-weight:bold;  "> 
+					      	  			<%= discountSort.description.to_s %>
+					      	  		</td>
+					      	  		<% end -%>
+				      	  		</tr>
+				      	  			<% @ticketTypes.each do |ticketType| %>
+									<tr>
+										<td align="middle" style=" color:#8DBDE5; font-size:15px; font-family:Arial; font-weight:bold;  ">
+											<%= ticketType.name %>
+										</td>
+										<% @discountSorts.each do |discountSort| %>
+										<td align="center" valign="middle">
+											<% sqlQ3 = "SELECT * FROM ticket_sort_prices WHERE ticket_sort_prices.ticket_type_id = "+ticketType.id.to_s+" AND ticket_sort_prices.discount_sort_id = "+discountSort.id.to_s+" AND (ticket_sort_prices.seance_type_id = "+seanceType.id.to_s+")  " %>
+											<%if TicketSortPrice.find_by_sql(sqlQ3).empty? %>
+												brak
+											<%else%>
+												<%= TicketSortPrice.find_by_sql(sqlQ3).first.price %>zł
+											<%end%>
+										</td>
+										<% end -%>
+									</tr>
+									<% end -%>
+							</table>
+						  </td>
+				    </tr>
+				</table>
+				<table valign="middle" align="center" border="1" width="680" cellspacing="0" cellpadding="0">
+					<tr><td height="1" bgcolor="#000000"></td></tr>
+				</table>
 <% end -%>
-</table>
+<% else %>
+	<div align="middle" style=" color:#8DBDE5; font-size:15px; font-family:Arial; font-weight:bold;  ">
+		Uwaga użytkowniku! 
+		<br>
+		Brak seansów w wybranym kinie.
+		</br>
+		<div style=" color:#FFFFFF ; font-size:10px; font-family:Arial;   ">
+		Kino można zmienić w zakładce <%= link_to 'Moje filmy', {:controller => "public", :action => "repertuar"} %>. 
+		</div>
+	</div> 
+<% end -%>
+
+
+

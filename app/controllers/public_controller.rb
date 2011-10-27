@@ -65,11 +65,10 @@ class PublicController < ApplicationController
 	end
 
 	def profile #WTF?- optymalizacja
-		
-	  @user=User.find(params[:id])
-	  if @user.id!=session[:user].id
-      redirect_to(:controller => "public", :action => "index")
-      
+		if session[:user]==nil
+		  redirect_to(:controller => "public", :action => "index")
+		else
+	    @user=session[:user]     
     end
 	  
 	end

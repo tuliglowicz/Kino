@@ -82,8 +82,10 @@ class UsersController < ApplicationController
         format.html {redirect_to :back }
         flash[:notice]= 'Podane hasła są różne'
       else
-        if params[:user][:hashed_password].length<40
-          params[:user][:hashed_password]= Auth.hash_password(params[:user][:hashed_password])
+        if params[:user][:hashed_password]!=nil
+          if params[:user][:hashed_password].length<40
+            params[:user][:hashed_password]= Auth.hash_password(params[:user][:hashed_password])
+          end
         end
         if @user.update_attributes(params[:user])
           if session[:worker] || session[:gadmin]

@@ -24,13 +24,14 @@
 
 <br />
 <div id="new_ticket_type_div" style="display: none">	
+	<br />
 	<%= render 'form'%>	
 </div>
 <br />
 
 <table id="listaRekordow" cellspacing=0 cellpadding=5px>
   <tr>
-     <th>Nr</th>
+    <th>Nr</th>
     <th>Nazwa</th>
     <th></th>
     <th></th>
@@ -40,11 +41,9 @@
 <% @ticket_types.each do |ticket_type| %>
   <tr>
     <td><%= @ticket_type_number %></td>
-    <% @ticket_type_number = @ticket_type_number + 1%>
-    <td><%= ticket_type.name %></td>
-    <td><%= link_to 'Pokaż', ticket_type %></td>
+    <% @ticket_type_number += 1%>
+    <td><%= ticket_type.name %></td>   
     <td><%= link_to 'Edytuj', edit_ticket_type_path(ticket_type) %></td>
-    <td><%= link_to 'Usuń', ticket_type, :confirm => 'Czy jesteś pewien by usunąć rodzaj biletu?', :method => :delete %></td>
-  </tr>
+    </tr>
 <% end %>
 </table>

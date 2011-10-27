@@ -12,6 +12,7 @@ Kino::Application.routes.draw do
   match 'public/login' => 'public#login', :as => 'public_login'
   match 'public/ceny' => 'public#ceny', :as => 'prices'
   match 'public/profil' => 'public#profile', :as => 'profile'
+  match 'public/dane_filmu' => 'public#dane_filmu', :as => 'film_data'
   
   #Cities
 	match '/private/cities' => 'cities#index', :as => 'cities'
@@ -23,6 +24,7 @@ Kino::Application.routes.draw do
 	# Users
 	match "/users/login_availability" => "users#login_availability"
 	
+	match 'public/do' => 'users#do', :as => 'my_settings'
 	# poprawka do zatwierdzenia przez grupę
 	
 	resources :seats do
@@ -44,11 +46,13 @@ Kino::Application.routes.draw do
   match 'private/permissions/update' => 'permissions#update', :as => 'permission_update'
   match 'private/permissions/get_current_permission' => 'permissions#get_current_permission'
   match 'private/permissions/change_status_privilege_permissions' => 'permissions#change_status_privilege_permissions', :as => 'change_status_privilege_permissions'
-  
-  
+  match 'private/cities/create' => 'cities#create', :as => 'create_city'
+  match 'private/categories/create' => 'categories#create', :as => 'create_category'
+  match 'private/statuses/create' => 'statuses#create', :as => 'create_status'
   # Private
   match 'private/panel' => 'private#panel', :as => 'private'
   match 'private/login' => 'private#login', :as => 'private_login'
+  
   
   scope 'private' do
       resources :workers, :cinemas, :seances, :tickets, :discount_sorts, :ticket_types,

@@ -7,8 +7,6 @@
 	});
 </script>
 
-
-
 <%= javascript_include_tag 'jquery', 'rails', 'rails.validations' %> 
 <%= form_for @seance, :validate => true do |f| %>
   <% if @seance.errors.any? %>
@@ -23,12 +21,10 @@
     </div>
   <% end %>
 
-
-
   <div class="field">
     <%= f.label :"Film w kinie" %><br />
-    <% if @cf -%>
-    <%= select_tag('seance[cinema_film_id]', options_for_select([['Wybierz kino/film', '']] + @cf.collect{|c| [c.cinema.name + " / " + c.film.title, c.id]}, @seance.cinema_film_id), :class => 'validate[required]') %>
+    <% if @f -%>
+    <%= select_tag('seance[cinema_film_id]', options_for_select([['Wybierz film', '']] + @f.collect{|c| [c.title, c.id]}, @seance.cinema_film_id), :class => 'validate[required]') %>
     <% else -%>
     <%= f.text_field :cinema_film_id, :class => 'validate[required,custom[integer]' %>
     <% end -%>
@@ -43,7 +39,7 @@
   </div>
   <div class="field">
     <%= f.label :"Data seansu" %><br />
-    <%= f.text_field :date_from, :class => "datePick" %>(format: rrrr-mm-dd)
+    <%= f.text_field :date_from, :class => "datePick" %>
   </div>
   <div class="field">
     <%= f.label :"Godzina seansu" %><br />
@@ -75,3 +71,16 @@
     <%= f.submit "Dodaj seans"%>
   </div>
 <% end %>
+<script>
+$j("#seance_date_from").datepicker({
+	dateFormat: "yy-mm-dd",
+	minDate: -1,
+	regional: "pl",
+	showAnim: "drop",
+	showOtherMonths: true,
+	selectOtherMonths: true,
+	showOn: "button",
+	buttonImage: "/images/pic/calendar.gif",
+	buttonImageOnly: true
+});
+</script>

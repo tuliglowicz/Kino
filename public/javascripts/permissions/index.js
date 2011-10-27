@@ -127,11 +127,11 @@ jQuery(document).ready(function()
 		{
 			if (isStatusPermissionsDivShown)
 			{
-				jQuery("#statuses").show('fast');
+				jQuery("#statuses").hide('fast');
 			}
 			else
 			{
-				jQuery("#statuses").hide('fast');
+				jQuery("#statuses").show('fast');				
 			}
 			
 			isStatusPermissionsDivShown = !isStatusPermissionsDivShown;

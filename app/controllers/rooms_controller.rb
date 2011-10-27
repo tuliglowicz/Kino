@@ -15,7 +15,7 @@ class RoomsController < ApplicationController
     if Auth.is_admin_logged(session[:worker])
       @rooms = Room.paginate(:page => params[:page], :per_page => 10) 
     else  
-      @rooms = Room.paginate(:conditions => ["cinema_id = ?","#{session[:worker].cinema_id}"], :page => params[:page], :per_page => 10)
+      @rooms = Room.where("cinema_id = "+session[:worker].cinema_id.to_s).paginate(:page => params[:page], :per_page => 10)
     end
 
     respond_to do |format|
@@ -39,6 +39,7 @@ class RoomsController < ApplicationController
   def new
   	@cinemas = Cinema.find(:all)
     @room = Room.new
+    @roomviews = Roomview.find(:all)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -58,6 +59,7 @@ class RoomsController < ApplicationController
   def create
   	@cinemas = Cinema.find(:all)
     @room = Room.new(params[:room])
+    @roomviews = Roomview.find(:all)
 
     respond_to do |format|
       if @room.save
@@ -75,6 +77,8 @@ class RoomsController < ApplicationController
   def update
   	@cinemas = Cinema.find(:all)
 	@room = Room.find(params[:id])
+	@roomviews = Roomview.find(:all)
+	
     respond_to do |format|
       if @room.update_attributes(params[:room])
         format.html { redirect_to(@room, :notice => 'Sala została pomyślnie zaktualizowana.') }

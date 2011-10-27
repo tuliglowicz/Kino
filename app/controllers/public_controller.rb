@@ -1,41 +1,44 @@
 # encoding: utf-8
 class PublicController < ApplicationController
 	
-	
 	before_filter :auth_access_user, :only => [:panel]
-	
 	
 	
 	def panel
 		render :layout => 'admin'
 	end
-	
-	def login
-	  if params[:login] &&  params[:password]
-        	logged_in_user = Auth.try_to_login(params[:login], params[:password])
-          
-          session[:user] = nil  # bez tego
-          
-          if logged_in_user     
-              if logged_in_user.kind_of? User
-                session[:user] = logged_in_user
-                flash[:notice] = 'Zalogowany jako użytkownik!'
-                redirect_to(:controller => "public", :action => "index") 
-              end
-              session[:cinema_id] = 1
-          else
-              flash[:notice] = "Błędny login i/albo hasło!"
-          end
-    else
-      flash[:notice] = "Wpisz login i hasło."     
-    end     
-	end
+
+	def login	  
+	  if params[:login] and  params[:password]
+			logged_in_user = Auth.try_to_login(params[:login], params[:password])
+    
+      session[:user] = nil  # bez tego
+    
+      if logged_in_user     
+        logger.debug 'Zalogowano'
+        #flash[:notice] = "Zalogowany1!+#{logged_in_user.class.name}"
+        if logged_in_user.kind_of? User
+          session[:user] = logged_in_user
+          #flash[:notice] = "Zalogowany2 jako+#{session[:user].class.name}"
+          flash[:notice] = 'Zalogowany jako użytkownik!'
+          logger.debug 'Zalogowany jako użytkownik'
+          redirect_to(:controller => "public", :action => "index") 
+        end
+        session[:cinema_id] = 1
+      else
+        flash[:notice] = "Błędny login i/albo hasło!"
+      end
+		else
+			# can happen whenever user visits page firt time. 
+			# it's added to avoid unexpected comments to the user.
+		end  	
+  end
 	
 	def logout
     session[:user] = nil
-    flash[:notice] = "Użytkownik został wylogowany"
+    flash[:notice] = "Użytkownik wylogowany"
      #flash[:notice] = "Użytkownik wylogowany+#{session[:user]}"
-    redirect_to(:controller => "public", :action => "index")
+    redirect_to(:controller => "public", :action => "login")
   end
 	
 	def generator
@@ -61,31 +64,31 @@ class PublicController < ApplicationController
 		@cinemas = Cinema.all
 	end
 
-	def profile
-	  @user=User.find(params[:id])
-	  if @user.id!=session[:user].id
-      redirect_to(:controller => "public", :action => "index")
+	def profile #WTF?- optymalizacja
+		if session[:user]==nil
+		  redirect_to(:controller => "public", :action => "index")
+		else
+	    @user=session[:user]     
     end
 	  
 	end
 	
-  def dane_filmu
+  	def dane_filmu
 		 @film=Film.find(params[:id])
 	end
+
 	def repertuar
 		@title = "Repertuar"		
-		cinema_id = request.xhr? ? params[:cinema_id] : cookies[:cinema_id]
+		cinema_id = cookies[:cinema_id]
 			
-		if cinema_id 
-				
-			@date_foreward = params[:id].to_i ||= 0		
-			if @date_foreward > 6 or @date_foreward <0
-				@date_foreward = 0
-			end
-	
-			if cinema_id and Cinema.where(:id => cinema_id).size == 1
-	
+		if cinema_id
 			@cinema = Cinema.find(cinema_id)
+			if @cinema
+				
+				@date_foreward = params[:id].to_i ||= 0		
+				if @date_foreward > 6 or @date_foreward <0
+					@date_foreward = 0
+				end			
 				
 				sqlQuery = "SELECT *
 							FROM seances
@@ -225,15 +228,11 @@ class PublicController < ApplicationController
 	    end	    		
 	end
 	
-	def zakup  
-		    require 'net/http'
-  
-		if params[:id] and Seance.where(:id => params[:id]).size == 1 and Seance.where(:id => params[:id])[0].cinema_film
+	def zakup
+		if params[:id] && cookies[:cinema_id]
 			@seance = Seance.where(:id => params[:id])[0]
-			@film_title = Seance.where(:id => params[:id])[0].cinema_film			
 			
-			sqlQuery=
-			"SELECT s.id
+			sqlQuery="SELECT s.row, s.column
 			FROM seats s
 			WHERE id IN
 				(SELECT seat_id AS id
@@ -243,93 +242,21 @@ class PublicController < ApplicationController
 				  FROM seances
 				  WHERE id = "+params[:id]+"
 				 )
-				)"
+				);"
 			@reserved_seats = Seat.find_by_sql(sqlQuery) #Seat.where(:id => Ticket.where(:seance_id => @seance))
 			
-			@tmp = []
+			tmp = []
 			for rs in @reserved_seats
-				@tmp << rs.id
+				tmp << rs.row+rs.column.to_s
 			end
-			@reserved_seats = @tmp
+			@reserved_seats = tmp
 			
 			@price_id = 3
 			@discounts = TicketType.all
-			
-			@seat_rows = Seat.find_by_sql("SELECT distinct row FROM seats ORDER BY row ASC")
-			@seat_collumn = Seat.find_by_sql("SELECT distinct collumn FROM seats ORDER BY collumn ASC")
-		else
-			# ???
-		end
-		
-		if params[:ticket]
-			#@posted_data = params[:ticket]
-			@seance_id = params[:ticket][:seance_id] if params[:ticket][:seance_id]
-			#@price_id = params[:ticket][:price_id] if params[:ticket][:price_id]
-			@how_much = params[:ticket][:how_much] if params[:ticket][:how_much]
-	
-			@disc_tab = []
-			@disc_tab << params[:ticket][:disc0_id] if params[:ticket][:disc0_id] != ""	
-			@disc_tab << params[:ticket][:disc1_id] if params[:ticket][:disc1_id] != ""	
-			@disc_tab << params[:ticket][:disc2_id] if params[:ticket][:disc2_id] != ""	
-			@disc_tab << params[:ticket][:disc3_id] if params[:ticket][:disc3_id] != ""	
-			@disc_tab << params[:ticket][:disc4_id] if params[:ticket][:disc4_id] != ""	
-			
-			@seat_tab = []
-			@seat_tab << params[:ticket][:seat0_id] if params[:ticket][:seat0_id] != ""	
-			@seat_tab << params[:ticket][:seat1_id] if params[:ticket][:seat1_id] != ""	
-			@seat_tab << params[:ticket][:seat2_id] if params[:ticket][:seat2_id] != ""	
-			@seat_tab << params[:ticket][:seat3_id] if params[:ticket][:seat3_id] != ""	
-			@seat_tab << params[:ticket][:seat4_id] if params[:ticket][:seat4_id] != ""	
-			
-			if session[:user]
-				@user = session[:user].id
-			else
-				@user = nil
-			end
-			
-			#REST REST REST REST REST REST REST REST REST REST REST REST REST REST REST REST REST REST REST REST REST REST REST REST
-			  uri = URI.parse( 'http://localhost:3001/payments/isOk' ); params = { :price => @how_much}
-			  http = Net::HTTP.new(uri.host, uri.port) 
-			  request = Net::HTTP::Get.new(uri.path) 
-			  request.set_form_data( params )
-			
-			  response = http.request(request)
-			
-				#@response = response
-			
-			  puts "Code: #{response.code}" 
-			  puts "Message: #{response.message}"
-			  puts "Body:\n #{response.body}"
-			  @accepted_payment = Hash.from_xml( response.body )['result']['accepted']
-			  
-			  
-			@error = false
-			for seat_t in @seat_tab
-				for seat_r in @reserved_seats
-					if seat_t.to_s == seat_r.to_s
-						@error = true
-						break
-					end
-				end
-			end
-			
-			if not @error and @accepted_payment
-				
-				# mam pewność, że jeśli @seat_tab[i] != nil to @disc_tab[i] również != nil
-				hash_set = {'seance_id' => @seance_id.to_i, 'price_id' => @price_id.to_i, 'user_id' => @user.to_i, 'bought' => false, 'cancelled' => false }
-				for num in (0..4)
-					if @seat_tab[num] and @seat_tab[num] != ""
-						hash_set['seat_id'] = @seat_tab[num].to_i
-						hash_set['discount_id'] = @disc_tab[num].to_i
-						@ticket = Ticket.new(hash_set)
-						@ticket.save
-						@reserved_seats << @seat_tab[num]
-					end
-				end				
-			end
 		end
 	end
-  
+		
+	# dalej testujesz, czy można skasować?
 	def test
 		@testing = User.find_by_sql("SELECT * from users where id = 6")
 		

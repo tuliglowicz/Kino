@@ -21,10 +21,10 @@
 <!-- EO JS code-->
 
 <h3>Zniżki</h3>
-<a  id="new_discount_a">Dodaj nową zniżkę </a>
+<a  id="new_discount_a">Dodaj nową zniżkę</a>
 <br />
 <div id="new_discount_div" style="display: none">
-	
+	<br />
 	<%= render 'form'%>	
 </div>
 <br />
@@ -43,13 +43,11 @@
 <% @discount_sorts.each do |discount_sort| %>
   <tr>
     <td><%= @discount_number %></td>
-    <% @discount_number = @discount_number + 1%>
-    <td><%= discount_sort.description %></td>
-    <td><%= discount_sort.is_weekend == true ? 'tak' : 'nie' %></td>
-    <td><%= link_to 'Pokaż', discount_sort %></td>
-    <td><%= link_to 'Edytuj', edit_discount_sort_path(discount_sort) %></td>
-    <td><%= link_to 'Usuń', discount_sort, :confirm => 'Czy jesteś pewien?', :method => :delete %></td>
-  </tr>
+	    <% @discount_number += 1%>
+	    <td><%= discount_sort.description %></td>
+	    <td><%= discount_sort.is_weekend == true ? 'tak' : 'nie' %></td>
+	    <td><%= link_to 'Edytuj', edit_discount_sort_path(discount_sort) %></td>
+    </tr>
 <% end %>
 </table>
 

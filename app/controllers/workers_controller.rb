@@ -13,7 +13,7 @@ class WorkersController < ApplicationController
   # GET /workers.xml
   def index
   	if Auth.is_admin_logged(session[:worker])
-  		@workers = Worker.all
+  		#@workers = Worker.all
   		@workers = Worker.paginate( :page => params[:page], :per_page => 12)
 	 else
     	@workers = Worker.where(:cinema_id => session[:worker].cinema_id)

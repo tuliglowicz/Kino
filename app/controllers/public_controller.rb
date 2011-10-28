@@ -203,7 +203,7 @@ class PublicController < ApplicationController
 	end
 	
 	def zakup
-		if params[:id] && cookies[:cinema_id]
+		if params[:id] && params[:id].length > 0 && cookies[:cinema_id]
 			@seance = Seance.where(:id => params[:id])[0]
 			
 			sqlQuery="SELECT s.row, s.column
@@ -225,7 +225,6 @@ class PublicController < ApplicationController
 			end
 			@reserved_seats = tmp
 			
-			@price_id = 3
 			@discounts = TicketType.all
 		end
 	end

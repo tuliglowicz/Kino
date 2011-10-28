@@ -34,7 +34,7 @@
   <div class="field">
     <%= f.label :Film %><br />
         <% if @films -%>
-    <%= select_tag('cinema_film[film_id]', options_for_select([['Wybierz film', '']] + @films.collect{|f| [f.title, f.id]}, @cinema_film.film_id), :class => 'validate[required]') %>
+    <%= select_tag('cinema_film[film_id]', options_for_select([['Wybierz film', '']] + @films.collect{|film| [film.title, film.id]}, @cinema_film.film_id), :class => 'validate[required]') %>
     <% else -%>
     <%= f.text_field :film_id, :class => 'validate[required]' %>
     <% end -%>
@@ -44,7 +44,7 @@
     <%= f.text_field :date_from, :class => 'datePick validate[required]'%>
   </div>
     <div class="field">
-    <%= f.label :"Data zakończenia"  %><br />
+    <%= f.label :"Data zakończenia" %><br />
     <%= f.text_field :date_untill, :class => "datePick" %>
   </div>
   <div class="actions">

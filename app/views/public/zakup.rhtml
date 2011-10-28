@@ -1,280 +1,115 @@
-<% if @error == true -%>
-	<table class='problemTable' id='errorTable' align=center><tr><td align='center'>
-	1. Miejsca, które zamówiłeś zostały zarezerwowane chwilę przed Tobą i nie są już dostepne.<br/>
-	Proszę wybierz inne miejsca. Za utrudnienia przepraszamy.
-	<% if @accepted_payment == false -%>
-	<br/>
-	2. Posiadasz zbyt mało środków na koncie.
-	<% end -%>
-	<br/><br/>
-	<a href="#" onclick="$j('#errorTable').fadeOut('fast');">Zamknij to okno</a>
-	</td></tr></table><br/>
-<% else if @error == false and @accepted_payment == true -%>
-	<table class='allCorrectTable' id='errorTable' align=center><tr><td align='center'>
-	1. Miejsca, które zamówiłeś zostały poprawnie zarezerwowane!
-	<br/><br/>
-	<a href="#" onclick="$j('#errorTable').fadeOut('fast');">Zamknij to okno</a>
-	</td></tr></table>
-<% else if @accepted_payment == false-%>	
-<table class='problemTable' id='errorTable' align=center><tr><td align='center'>
-	1. Posiadasz zbyt mało środków na koncie.
-	<br/><br/>
-	<a href="#" onclick="$j('#errorTable').fadeOut('fast');">Zamknij to okno</a>
-	</td></tr></table>
-<% end end end -%>
-<br/>
-<%= debug(@seance) %>
-<%= debug(@pid) %>
-<%= debug(@cid) %>
-<% if @seance -%>
+<style>
+	.seat.deselected {
+	opacity: 0;
+}
+</style>
+
+<% unless @seance || @discounts -%>
+	Wybierz seans przy pomocy narzedzia po lewej.
+<% else -%>
+	<div id="disc_sel" style="position:absolute;display:block;"><%= select_tag('ticket[discount_id]', options_for_select([['wybierz rodzaj biletu', '-1']] + @discounts.collect{|r| [r.name, r.id]}), :id => "theSel", :onchange => "changed(this)") if @discounts%></div>
+	<table class='problemTable' id='errorTable' align=center> </table>
+	<div id="tmp" style='display:none'></div>
+
 	Kino: <%= @seance.cinema_film.cinema.name %><br/>
 	Tytuł: <%= @seance.cinema_film.film.title %><br/>
 	Data: <%= @seance.date_from %><br/>
 	Godzina: <%= @seance.time_from.strftime("%H:%M") %><br/>
         
-    <table align=center border=0px cellpadding=0px cellspacing=5px style="padding-bottom:25px;background-color:white;color:black;">
-    	
-    	<tr><td colspan=3 align=center style="padding-bottom:20px; color: gray;"><b>
-    		1. Możesz zamówić maksymalnie 5 biletów.<br>
-    		2. W calu zamówienia wiekszej liczby biletów skontaktuj się z nami telefonicznie. Dla grup zorganizowanych przewidziane są zniżki. </b></td></tr>
-    	<tr><td colspan=3 align=center style="padding-bottom:20px; color: gray;"><b> - E K R A N - </b></td></tr>
-
-		<script>
-			var reserved = new Array();
-			<% i=0 -%>
-			<% for s in @reserved_seats -%>
-				reserved[<%= i %>]= <%= s -%>;
-				<% i+=1 -%>
-			<% end -%>			
-		
-		alert(reserved[0])
-		
-			var chars = new Array('A','B','C','D','E','F','G','H');
-			var maxCols = 19;
-
-			for(i=0; i<chars.length; i++)
-			{
-				document.write("<tr align=centera valign='middle'><td width='10px' align='right' valign='middle'>"+chars[i]+"</td><td align='center' valign='middle' width='"+(25*maxCols)+"px'>")
-				for(j=1; j<=maxCols; j++)
-				{
-					var wypełniacz = ""
-					if(j<10) wypełniacz = "&nbsp;"
-					document.write("<div id='seat"+(i*maxCols+j)+"' class='seat' align=center valign='middle'>"+j+"</div>")
-				}
-				document.write("</td><td width='10px' valign='middle'>"+chars[i]+"</td></tr>")
-			}
-			
-			for(i=0; i<reserved.length; i++)
-				document.getElementById("seat"+reserved[i]).className = "seatResrved";
-		</script>
-		
+	<table align=center bgcolor="white" border=0px cellpadding=0px cellspacing=5px style="padding-bottom:25px" id="theTable">
     </table>
-    
-    <br>
-    <em onclick="$j('#opis').toggle('slow');" style="cursor:pointer"><u> Wyświetl opis</u></em>:<br>
-    <span id=opis style='display:none'>
-    kolor <font color=red>czerwony</font> oznacza, że dane siedzenie jest już <u>zajęte</u>.<br>
-    kolor <font color=lime>zielony</font> oznacza, że dane siedzenie jest <u>wolne</u>.<br>
-    kolor <font color=orange>pomajańczowy</font> reprezentuje siedzenia wybrane przez Ciebie.<br>Aby zrezygnować z tego siedzeniia kliknij w nie.</span>
-    
-    <br><br><br>
-    
-    &nbsp; Lista zamówionych biletów:
-    <hr width=90%>
-    <span id="t0" ><font color="gray" align=right>&nbsp; -- lista pusta --</font></span>
-    <span id="t1"> </span>
-    <span id="t2"> </span>
-    <span id="t3"> </span>
-    <span id="t4"> </span>
-    <p align='right' id="tcena" style='font-weight:bold'>Suma: 0 zł</p>
-    <center style='padding-bottom:10px; display:none;' id="kup_center">
-    	<input type="button" id="kup" value="Kliknij, aby potwierdzić zamówienie" onclick="send_my_data();">
-    </center>
-
-<%= form_tag('/public/zakup/'+@seance.id.to_s, :method => 'post', :id => "theForm")%>
-    <%= hidden_field_tag('ticket[seance_id]', @seance.id) %>
-    <%= hidden_field_tag('ticket[price_id]', @price_id) %>
-    
-    <%= hidden_field_tag('ticket[disc0_id]', '') %>
-    <%= hidden_field_tag('ticket[disc1_id]', '') %>
-    <%= hidden_field_tag('ticket[disc2_id]', '') %>
-    <%= hidden_field_tag('ticket[disc3_id]', '') %>
-    <%= hidden_field_tag('ticket[disc4_id]', '') %>
-    
-    <%= hidden_field_tag('ticket[seat0_id]', '') %>
-    <%= hidden_field_tag('ticket[seat1_id]', '') %>
-    <%= hidden_field_tag('ticket[seat2_id]', '') %>
-    <%= hidden_field_tag('ticket[seat3_id]', '') %>
-    <%= hidden_field_tag('ticket[seat4_id]', '') %>
-    
-    <%= hidden_field_tag('ticket[how_much]', '') %>
-</form>
-
-    <div id="disc_sel" style="position:absolute;display:none;"><%= select_tag('ticket[discount_id]', options_for_select([['wybierz rodzaj biletu', '-1']] + @discounts.collect{|r| [r.name, r.id]}), :id => "theSel", :onchange => "changed(this)") %></div>
-
-<% else -%>
-	Wybierz seans przy pomocy narzedzia po lewej.
-<% end -%>
+        
 <script>
-
-function send_my_data(){
-	var price = 0;
+	// bo ruby jakoś dziwnie to formatuje ta linijka.
+	$j("#tmp").html("<%= @seance.room.roomview.view %>")
+	var xml = $j($j("#tmp").text());
 	
-	for(var i=0; i<5; i++)
-		if(seatId[i])
-		{
-			document.getElementById("ticket_seat"+i+"_id").value = seatId[i];
-			document.getElementById("ticket_disc"+i+"_id").value = discId[i];
-			price += Math.floor( (discId[i]==2 ? 24*0.8 : 24) );
-		}
-		else
-		{
-			document.getElementById("ticket_seat"+i+"_id").value = "";
-			document.getElementById("ticket_disc"+i+"_id").value = "";
-		}
+	var delS;
+	$j(document).ready(function(){					
+		h = xml.find("height").text();
+		w = xml.find("width").text();
 
-	document.getElementById("ticket_how_much").value = price;
+		if(drawFullRectangle(w, h)){
+			delS = xml.find("deletedSeats seat")
+			delS.each(function(){
+				//alert("thisID")
+				thisID = this.innerHTML;
+
+				$j("#"+thisID).addClass("deselected").css("cursor", "default").live('click',function(){
+
+					$(this).toggleClass("selected");
+				});
+			})
+		}
+	});
 	
-	document.getElementById("theForm").submit();
-}
+	function drawFullRectangle(w, h){
+		width_of_seat_rect = w;
+		height_of_seat_rect = h;
+		
+		var reserved = new Array();
+		
+		var chars = new Array('A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','R','S','T','U','W','X','Y','Z');
+		var maxRows = h;
+		var maxCols = w;
+		var wypełniacz, html;
+		
+		$j("#theTable").html("<tr><td colspan=3 align=center style='padding-bottom:20px; color: gray;'><b>1. Możesz zamówić maksymalnie 5 biletów.<br>2. W calu zamówienia wiekszej liczby biletów skontaktuj się z nami telefonicznie. Dla grup zorganizowanych przewidziane są zniżki. </b></td></tr><tr><td></td><td align=center><br/><b>- E K R A N -</b><br/><br/><br/></td><td></td></tr> ")
+		
+		for(var i=0; i<h; i++)
+		{
+			html = ""
+			html+="<tr align=centera valign='middle'><td width='10px' align='right' valign='middle'>"+chars[i]+"</td><td align='center' valign='middle' width='"+(25*maxCols)+"px'>";
+			
+			for(var j=1; j<=maxCols; j++) {
+				wypełniacz = "";
+				if(j<10) wypełniacz = "&nbsp;";
+				html+="<div id='"+chars[i]+""+j+"' class='seat' align=center valign='middle'>"+j+"</div>";
+			}
+			html += "</td><td width='10px' valign='middle'>"+chars[i]+"</td></tr>";
+				
+			$j("#theTable").append(html);
+		}	
+		return true;
+	}
+	
+	var inform_count=0;
+	function komunikat(tresc, nr_typu){
+		// nr_typu - propozycja
+		// 0-informacja (domyślnie)
+		// 1-uwaga (aka warning)
+		// 2-komunikat błędu
+		if(tresc != undefined && nr_typu != undefined){
+			switch(nr_typu){
+				case 1:
+				className = "uwaga"
+				title = "Uwaga!"
+				//inne przypisania
+				break;
+				case 2 :
+				className = "błąd"
+				title = "Błąd!"
+				//inne przypisania
+				break;
+				default :
+				case 0 : 
+				className = "informacja"
+				title = "Informacja!"
+				//inne przypisania
+				break;
+			}
 
-				var tmpId = -1;
-				var tmp = new Array(3); //przechowuje poprzedni kliknięty kwadracik
-				var seatId = new Array(5);	//przechowuje idSeatów
-				var discId = new Array(5);	//przechowuje idDiscount
-				var count = 0;
-				$j("#theSel").addClass("ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only");
-				$j(".seat").click(function(evt){
-								
-								substr = evt.currentTarget.id.substring(4)
-								for(var i=0; i<5; i++){
-									if(seatId[i] && seatId[i] == substr)
-									{
-										innerhtml = substr % maxCols
-										evt.currentTarget.innerHTML = (innerhtml < 10 ? " "+innerhtml : innerhtml);
-										document.getElementById(evt.currentTarget.id).className = "seat"
-										
-										seatId[i] = null;
-										discId[i] = null;
-										
-										count--;
-										if(count <= 0){
-											$j("#kup_center").fadeOut("fast");
-										}
-										
-										//print_tabs();
-										print_tickets();
-										
-										return false;
-									}
-								}
-								if(count > 4) alert("Maksymalnie możesz zamówić 5 biletów.")
-								else 
-								{
-									if(tmp[0] != null)
-									{
-										document.getElementById(tmp[0]).innerHTML = tmp[1];
-										document.getElementById(tmp[0]).className = "seat";
-									}
-									
-									if(tmp[0] != evt.currentTarget.id)
-									{
-										tmp[0] = evt.currentTarget.id;			// 0 - id
-										tmp[1] = evt.currentTarget.innerHTML;	// 1 - innerHTML
-										tmp[2] = "#559955";						// 2- color
-										
-										evt.currentTarget.innerHTML = "X";
-										document.getElementById("disc_sel").style.left = (evt.pageX+10)+"px";
-										document.getElementById("disc_sel").style.top = (evt.pageY+5)+"px";
-										document.getElementById("disc_sel").style.display = "block";
-										document.getElementById(evt.currentTarget.id).className = "seatSelected"
-										tmpId = evt.currentTarget.id.substring(4);
-									}
-									else
-									{
-										//skasuj 'aktywny'
-										document.getElementById("disc_sel").style.display = "none";
-										tmpId = -1;
-										tmp = new Array(3);
-									}
-								}
-							});
-						
+			var topCoord = Math.round((window.innerHeight - 335)/2);
+			var leftCoord = Math.round((window.innerWidth - 560)/2);
 
-				function changed(sel)
-				{
-					if(tmpId < 0 || count > 4) return false;
-					else
-					{
-						var i=-1;
-						while(seatId[++i]);
-						
-						seatId[i] = tmpId;
-						discId[i] = sel.value;
-						document.getElementById(tmp[0]).innerHTML = tmp[1];
-						count++;
-						
-						print_tickets();
-						
-						if(count==1) $j("#kup_center").show("slow");
-											
-						//czyszczenie
-						tmpId = -1;
-						tmp = new Array(3);
-						sel.value = '-1';
-						document.getElementById("disc_sel").style.display = "none";
-					}
-				}
+			// jakieś style zewnętrzne opisujące
+			//przypisanie className z definicja klasy w css
+			$j("<div id='cloud' style='z-index:9999;width:20%;border:1px solid black;border-radius:5px;height:100px;position:absolute;top:-200px;left:89%;background-color:white;color:black;'><div style='width:100%;text-align:left;background-color:#000;color:white;'>&nbsp;"+title+"<div style='float:right;'><a onClick=$j('#cloud').animate({top:'-200px'},500,function(){$j(this).remove()})> &nbsp;x&nbsp; </a></div></div><br/></br><b>&nbsp;"+tresc+"</b></div>").appendTo("body").animate({top: "50px"}, 500).draggable().css("cursor", "move");
 				
-				function print_tickets()
-				{
-					var nr = 1;
-					var total = 0;
-					for(var i=0; i<5; i++)
-						if(seatId[i])
-						{
-							$j('#t'+i).hide();
-							
-							var col = seatId[i]%maxCols;
-							var row = chars[(seatId[i] - col) / maxCols];
-							var typ = document.getElementById("theSel").options[discId[i]].text;
-							var cena = Math.floor( (discId[i]==2 ? 24*0.8 : 24) );
-							
-							
-							document.getElementById('t'+i).innerHTML = " &nbsp; "+nr+". &nbsp; Miejsce: "+row+col+", <em>"+typ+"</em>, cena: "+cena+" zł<br/>";
-							
-							$j('#t'+i).show("slow");
-							total += cena;
-							nr++;	
-						}
-						else
-						{
-							document.getElementById('t'+i).innerHTML = "";
-						}
-						document.getElementById('tcena').innerHTML = "Suma: "+total+" zł"
-				}
-								
-				function isInside(tab, val)
-				{
-					for(i=0; i<tab.length; i++)
-						if(tab[i] == val)
-							return true;
-						
-					return false;
-				}
-				
-				
-	document.getElementById("theSel").remove(document.getElementById("theSel").length-1) //usówa opcję zniżki dla 10 osób...
+		inform_count++;
+		}
+	}
+	
+	komunikat("tresc", 1)
 </script>
-<!--
-
-<%# debug(@posted_data) %>
-<%# debug(@seance_id) %>
-<%# debug(@price_id) %>
-<%# debug(@how_much) %>
-<%# debug(@seat_tab) %>
-<%# debug(@disc_tab) %>
-
-<%# debug(@error) %>
-<%# debug(@reserved_seats) %>
--->
+<% end -%>

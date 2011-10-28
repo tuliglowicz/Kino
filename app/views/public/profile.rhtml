@@ -24,6 +24,8 @@
 	</head>
 	<body>
 		
+
+
 		<div style="float:left;">
 			<p>Witaj, <%= user.login %>!</p>
 		</div>
@@ -64,15 +66,13 @@
 			    <%= u.text_field :phone, :size=>45 %>
 			  </div>
 			  			  
-	
 			  <div class="actions">
 			    <%= u.submit "Zapisz"%>
 			  </div>
 			<% end %>
 		</div>
-		
-		
-		
+
+
 		<div class="pwd" style="float:right;" hidden=true>
 			<%= form_for(@user) do |us| %>
 			  <% if @user.errors.any? %>
@@ -84,26 +84,26 @@
 			      <% end %>
 			      </ul>
 			    </div>
-			  <% end %>
-					  
-
+			  <% end %>		  
 			  
+			  <div class="field">
+			    <span style="float: left"><%= us.label :"hasło" %></span><br />
+			    <%= us.password_field :hashed_password, :size=>45, :value=> "" %>
+			  </div>
 			  
-			  
-			<label for="user_password">Hasło:</label>
-	  		<input id="user_hashed_password" name="user[hashed_password]" class="validate[required] text-input" type="password" />
- 			<br />
-		  	<label for="user_password_confirmation">Powtórz hasło:</label>
-		  	<input id="user_hashed_password_confirmation" name="user[hashed_password_confirmation]" class="validate[required] text-input" type="password" />
-		  
-			<br />  
-			  			  
-	
+			  <div class="field">
+			    <span style="float: left"><%= us.label :"potwierdź hasło" %></span><br />
+			    <%= us.password_field :hashed_password_confirmation, :size=>45 %>
+			  </div>	  
+				  	
 			  <div class="actions">
 			    <%= us.submit "Zapisz"%>
 			  </div>
 			<% end %>
 		</div>			
+		
+		
+		
 		
 		<% link_to 'edytuj', :controller => "users", :action => "edit", :id => user.id.to_s %>
 	</body>

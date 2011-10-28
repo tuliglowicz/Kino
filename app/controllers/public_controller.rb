@@ -65,11 +65,11 @@ class PublicController < ApplicationController
 	end
 
 	def profile #WTF?- optymalizacja
-		
-	  @user=User.find(params[:id])
-	  if @user.id!=session[:user].id
+		#if session[:user]==nil
+    if session[:user] 
+		  @user=session[:user]
+		else
       redirect_to(:controller => "public", :action => "index")
-      
     end
 	  
 	end
@@ -151,8 +151,35 @@ class PublicController < ApplicationController
 	end
 	
 	def ceny
-		@ticket_sort_prices = TicketSortPrice.all
-		@discount_sorts = DiscountSort.all
+		cinema_id = request.xhr? ? params[:cinema_id] : cookies[:cinema_id]
+    
+    mySeanceID = 1 # zmiena przechowywująca wyświetlane kino w pętli
+    
+    sqlQuery = "SELECT *
+      FROM ticket_sort_prices
+      Where cinema_id = #{cinema_id}
+        "  
+            
+    
+    sqlQuery2 = "SELECT *
+    FROM seance_types
+    Where seance_types.id IN
+    (SELECT seance_type_id AS seance_type_id
+    FROM ticket_sort_prices
+    Where cinema_id = #{cinema_id}
+    )
+    "
+    
+    @cinema = Cinema.find(cinema_id)
+   
+    @ticket_sort_prices = TicketSortPrice.find_by_sql(sqlQuery)
+    if SeanceType.find_by_sql(sqlQuery2).empty?
+        @areSeances = false
+    else
+        @areSeances = true
+        @seanceTypes = SeanceType.find_by_sql(sqlQuery2)
+    end
+    
 	end
 	
 	def kontakt

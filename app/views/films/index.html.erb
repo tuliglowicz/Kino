@@ -16,6 +16,7 @@
 <br><br>
 <table id="listaRekordow" cellspacing=0 cellpadding=5px>
   <tr>
+  	<th>Nr</th>
     <th>Tytuł</th>
     <th>Reżyser</th>
     <th>Rok</th>
@@ -27,6 +28,7 @@
     <th></th>
   </tr>
 <% i = 0 %>
+<% j = 0 %>
 <% @films.each do |film| %>
 
 <script type="text/javascript">
@@ -38,6 +40,7 @@
 
 	
   <tr>
+  	<td><%= j=j+1 %></td>
   	<td width=70px align=center><%= trim(film.title, 2) %></td>
     <td><%= film.director %></td>
     <td width=50px align=center><%= film.year %></td>

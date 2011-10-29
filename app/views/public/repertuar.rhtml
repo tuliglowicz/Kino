@@ -208,6 +208,7 @@
 		$j(".cloud").animate({top: "-="+(lastYOffset - window.pageYOffset)}, { duration: 500, easing: "easeOutBounce"});
 		lastYOffset = window.pageYOffset;
 	}
+	var time_tmp = 0;
 	function hideCloud(cloud_id, bot){
 		cloud_count--;
 		var topOfDeletedCloud = $j('#cloud'+cloud_id).css("top");
@@ -215,9 +216,12 @@
 			$j(this).remove()
 			$j('.cloud').each(function(){
 				//alert("tu")
-				if($j(this).css("top") < topOfDeletedCloud)
-					$j(this).animate({top: "+="+padding},{duration:Math.random()*1000,easing:'easeOutBounce'});
-			})			
+				if($j(this).css("top") < topOfDeletedCloud){
+					time_tmp += Math.random()*500
+					$j(this).animate({top: "+="+padding},{duration: time_tmp,easing:'easeOutBounce'});
+				}
+			})
+			time_tmp = 0;
 		})
 	}
 	
@@ -227,6 +231,8 @@
 	// /* test działania
 	komunikat('tresc1', 2)
 	komunikat('tresc2', 1)
+	komunikat('tresc2', 1)
+	komunikat("tresc3", 0)
 	komunikat("tresc3", 0)
 	// */
 	//--=========================================================================== KONIEC CHMUREK DLA KOMUNIKATOW flash[:notice]

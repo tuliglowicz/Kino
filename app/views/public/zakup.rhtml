@@ -73,43 +73,5 @@
 		return true;
 	}
 	
-	var inform_count=0;
-	function komunikat(tresc, nr_typu){
-		// nr_typu - propozycja
-		// 0-informacja (domyślnie)
-		// 1-uwaga (aka warning)
-		// 2-komunikat błędu
-		if(tresc != undefined && nr_typu != undefined){
-			switch(nr_typu){
-				case 1:
-				className = "uwaga"
-				title = "Uwaga!"
-				//inne przypisania
-				break;
-				case 2 :
-				className = "błąd"
-				title = "Błąd!"
-				//inne przypisania
-				break;
-				default :
-				case 0 : 
-				className = "informacja"
-				title = "Informacja!"
-				//inne przypisania
-				break;
-			}
-
-			var topCoord = Math.round((window.innerHeight - 335)/2);
-			var leftCoord = Math.round((window.innerWidth - 560)/2);
-
-			// jakieś style zewnętrzne opisujące
-			//przypisanie className z definicja klasy w css
-			$j("<div id='cloud' style='z-index:9999;width:20%;border:1px solid black;border-radius:5px;height:100px;position:absolute;top:-200px;left:89%;background-color:white;color:black;'><div style='width:100%;text-align:left;background-color:#000;color:white;'>&nbsp;"+title+"<div style='float:right;'><a onClick=$j('#cloud').animate({top:'-200px'},500,function(){$j(this).remove()})> &nbsp;x&nbsp; </a></div></div><br/></br><b>&nbsp;"+tresc+"</b></div>").appendTo("body").animate({top: "50px"}, 500).draggable().css("cursor", "move");
-				
-		inform_count++;
-		}
-	}
-	
-	komunikat("tresc", 1)
 </script>
 <% end -%>

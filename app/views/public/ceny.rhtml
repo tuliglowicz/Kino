@@ -7,8 +7,7 @@
 </div>	
 <br>
 </br>
-
-
+<hr align=center color="grey" width="670" style=" color:#8DBDE5;"size="1px"/>
 <% @seanceTypes.each do |seanceType| %>
 		       
 	<% sqlQ= "SELECT * FROM ticket_types Where ticket_types.id IN (SELECT ticket_type_id AS ticket_type_id FROM ticket_sort_prices Where seance_type_id = ("+seanceType.id.to_s+") ) " %>  
@@ -17,34 +16,30 @@
 	<% @discountSorts =  DiscountSort.find_by_sql(sqlQ2) %>
 				<table width=650 align=center border=0 bordercolor="green">
 					<tr valign="top">
-					      <td>
-					      	<table  width="170px" align="top" border=2  style=" border: thick solid grey; border-radius: 1.5em   " > 
+					      <td valign="top">
+					      	<table  width="200px" align="bottom" border=0 bordercolor="white"  > 
 					      		<tr>
-					      			
-					      			<td height="70px" valign="middle" align="middle" style=" color:#8DBDE5; font-size:15px; font-family:Arial; font-weight:bold;  " >
-					      				<div style=" color:#FFFFFF ; font-size:12px; font-family:Arial; ">Seans</div> <%= seanceType.name.to_s %>
+					      			<td height="30px" valign="middle" align="middle" >
+					      				<div style=" color:#FFFFFF ; font-size:12px; font-family:Arial; white-space:nowrap "><font size="2px" style=" color:#C9C9C9 ; font-size:15px; font-family:Arial; font-weight:bold;  "> <%= seanceType.name.to_s %></font></div>
 					      			</td>	
-					      			
-					      		</tr>
-					      		<tr>
 					      		</tr>
 					      	</table>
 					      </td>
 					      <td>
-					      	<table width=500 align=center border=0 bordercolor="yellow">
+					      	<table width=500 align=center border=0 bordercolor="yellow" cellspacing="10">
 				      	  		<tr>
-				      	  			<td height="70px" valign="bottom" align="center"> 
-				      	  				<div style=" color:#FFFFFF ; font-size:12px; font-family:Arial; ">Typ biletu</div> 
+				      	  			<td height="40px" valign="bottom" align="center"> 
+				      	  				<div style=" color:#999999 ; font-size:15px; font-family:Arial; "></div> 
 				      	  			</td>
 				      	  			<% @discountSorts.each do |discountSort| %>
-				      	  			<td valign="bottom" align="middle" style=" color:#D2691E ; font-size:15px; font-family:Arial; font-weight:bold;  "> 
+				      	  			<td valign="bottom" align="middle" style=" color:#FFFFFF ; font-size:15px; font-family:Arial; font-weight:bold;  "> 
 					      	  			<%= discountSort.description.to_s %>
 					      	  		</td>
 					      	  		<% end -%>
 				      	  		</tr>
 				      	  			<% @ticketTypes.each do |ticketType| %>
 									<tr>
-										<td align="middle" style=" color:#8DBDE5; font-size:15px; font-family:Arial; font-weight:bold;  ">
+										<td align="middle" style=" color:#FFFFFF ; font-size:15px; font-family:Arial; font-weight:bold;  ">
 											<%= ticketType.name %>
 										</td>
 										<% @discountSorts.each do |discountSort| %>
@@ -53,7 +48,7 @@
 											<%if TicketSortPrice.find_by_sql(sqlQ3).empty? %>
 												brak
 											<%else%>
-												<%= TicketSortPrice.find_by_sql(sqlQ3).first.price %>zł
+												<div style=" color:#8DBDE5 ; font-size:20px; font-family:Arial; font-weight:bold; white-space:nowrap "><%= TicketSortPrice.find_by_sql(sqlQ3).first.price %><font size="2px"> zł</font></div>
 											<%end%>
 										</td>
 										<% end -%>
@@ -63,9 +58,8 @@
 						  </td>
 				    </tr>
 				</table>
-				<table valign="middle" align="center" border="1" width="680" cellspacing="0" cellpadding="0">
-					<tr><td height="1" bgcolor="#000000"></td></tr>
-				</table>
+				<hr color="grey" width="670" style=" color:#8DBDE5;"size="1px"/>
+				
 <% end -%>
 <% else %>
 	<div align="middle" style=" color:#8DBDE5; font-size:15px; font-family:Arial; font-weight:bold;  ">

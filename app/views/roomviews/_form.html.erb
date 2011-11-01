@@ -36,7 +36,7 @@
   
 <div id="giveMeParams_width_height" align="left" syle='float:left;'>
 		<strong>Zbuduj widok:</strong><br>
-		liczba kolumn: <input type="text" id="room_width_inp"> (0 &lt; x &lt; 35)<br/>
+		liczba kolumn: <input type="text" id="room_width_inp"> (0 &lt; x &lt; 30)<br/>
 		liczba rzędów: <input type="text" id="room_height_inp"> (0 &lt; x &lt; 24)
 </div>
 <br>
@@ -113,7 +113,7 @@ function drawFullRectangle(w, h){
 	
 	return true;
 }
-		
+
 // ----------------------------------------------------------------------------------------------------------
 		
 //clicked ok indialog button...
@@ -124,7 +124,7 @@ function submitParams(){
 	$j("#room_width_inp").val(w);
 	$j("#room_height_inp").val(h)
 
-	if(w && h && w > 0 && w < 35 && h > 0 && h <= 24){
+	if(w && h && w > 0 && w <= 30 && h > 0 && h <= 24){
 		$j(this).dialog("close");
 		if(drawFullRectangle(w, h) && delS != undefined){
 			delS.each(function(){

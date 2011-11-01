@@ -1,7 +1,6 @@
 # encoding: utf-8
 class Ticket < ActiveRecord::Base
   belongs_to :seance
-  belongs_to :seat
   belongs_to :reservation
   belongs_to :user
   belongs_to :worker

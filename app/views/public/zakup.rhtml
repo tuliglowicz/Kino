@@ -37,8 +37,8 @@
 	.seat.selected {
 		background-image:url('/images/pic/seat3.jpg');
 	}
-	.seat.resrved {
-		background-image:url('/images/pic/seat2.jpg');
+	.seat.reserved {
+		background-image:url('/images/pic/seat5.jpg');
 	}
 	.seat.bought {
 		background-image:url('/images/pic/seat2.jpg');
@@ -102,6 +102,7 @@
 		</tr>
 		<% end -%>
 	</table>
+	
 	<table bgcolor="" border="0px" align="center">
 			<td align="right">
 				<img src="/images/pic/arrow_prev.png" id="prevStep" style='cursor:pointer'>
@@ -135,9 +136,18 @@
 					<div id="lista_filmow">
 						<br/><br/>
 						1.2 Wybór filmu. &nbsp; <span class="opis">Zaznacz interesujące Cię filmy i naciśnij przycisk poniżej.</span><br/>
+						<% t = Time.new; i = 0; -%>
 						<% @cinema.cinema_films.each { |cf| -%>
-						<h3><%= link_to cf.film.title, "/public/zakup?cf_id="+cf.id.to_s, :id => "cf_link"+cf.id.to_s, :class => "speed_film" %></h3>
+							<% f = cf.film -%>
+							<% d = f.date_from %>
+							<% if Time.local(d.year, d.month, d.day) < t -%>
+								<%  i = i+1 %>
+								<h3><%= link_to cf.film.title, "/public/zakup?cf_id="+cf.id.to_s, :id => "cf_link"+cf.id.to_s, :class => "speed_film" %></h3>
+							<% end -%>
 						<% } -%><br/>
+						<% if i == 0 -%>
+							W bierzącym okresie nie są grane żadne filmy w tym kinie. <a onClick="askForCinema()" style='cursor:pointer;'>zmień kino</a><br/>
+						<% end -%>
 					</div>
 				<br/>
 					<button id="switcher">Przejdź do listy seansów wybranych filmów.</button>
@@ -203,6 +213,10 @@
 								last = sDate.lastIndexOf(" ");
 								var time_now = sDate.substring(last+1, last+6);
 								var notToday = false;
+								if(json.length==0)
+									html += "Film nie jest grany w najbliższym tygodniu.</td></tr></table>"
+								else
+								{
 								for(var i=0; i<json.length; i++){
 									date_from = json[i].seance.date_from
 									time_from = json[i].seance.time_from.substring(11, 16) //CAN CAUSE PROBLEMS -!!!
@@ -218,6 +232,7 @@
 										html += "<a href='"+href.substring(0, href.indexOf("?")+1)+"id="+seance_id+"' >"+time_from+"</a> | "
 									else
 										html += time_from + " | "
+									}
 								}
 								html += "</td></tr></table>"
 								
@@ -282,7 +297,7 @@
 						<script>
 						var typy = new Array();
 						
-						<% if -%>
+						<% if @discounts-%>
 							<% @discounts.each { |d| %>
 									typy.push("<%=d.name%>")
 							<% } -%>
@@ -315,6 +330,9 @@
 											$j("#typy_biletow_inner").html("");
 											return false;
 										}
+									}
+									else if(stepContener[stepCounter+1] == "dane"){
+										
 									}
 									$j("#"+stepContener[stepCounter]+"_step").animate({color: "white"}, 1250);
 									$j("#"+stepContener[stepCounter]).animate({opacity: 0}, 1250).hide();
@@ -362,9 +380,20 @@ $j("#seans").css("opacity", "1").show();
 	
 $j("button").addClass("ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only");
 
-<% if @seance || @discounts -%>
-		var ticket_counter = 0;
-		
+<% if @seance && @discounts -%>
+
+		var bought = new Array();
+		var reserved = new Array();
+		<% @reserved_seats.each { |rs| -%>
+			<%# rs.seat+";" %>
+			<% if rs.bought -%>
+				//alert("<%= rs.seat %>")
+				bought.push("<%= rs.seat %>")
+			<% else -%>
+				reserved.push("<%= rs.seat %>")
+			<% end -%>
+		<% } -%>
+		var ticket_counter = 0;		
 		var delS;
 		$j(document).ready(function(){
 
@@ -374,7 +403,7 @@ $j("button").addClass("ui-button ui-widget ui-state-default ui-corner-all ui-but
 			
 			h = xml.find("height").text();
 			w = xml.find("width").text();
-	
+			
 			if(drawFullRectangle(w, h))
 			{
 				delS = xml.find("deletedSeats seat")
@@ -396,9 +425,15 @@ $j("button").addClass("ui-button ui-widget ui-state-default ui-corner-all ui-but
 							if(ticket_counter == 5) $j("#ticket_count").css("color", "red")
 							else $j("#ticket_count").css("color", "lime")
 				});
+				for(i=0; i<bought.length; i++){
+					//alert(bought[i]);
+					$j("#"+bought[i]).addClass("bought").css("cursor", "default");
+				}
+				for(i=0; i<reserved.length; i++){
+					//alert(reserved[i]);
+					$j("#"+reserved[i]).addClass("reserved").css("cursor", "default");
+				}
 			}
-			
-
 				
 			$j("#nextStep").click(nextStep);
 			$j("#prevStep").click(prevStep);

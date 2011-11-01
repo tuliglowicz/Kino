@@ -228,27 +228,8 @@ class PublicController < ApplicationController
 			@cinema = Cinema.find(cookies[:cinema_id])
 						
 			if params[:id] && params[:id].length > 0
-				@seance = Seance.where(:id => params[:id])[0]
-				
-				sqlQuery="SELECT s.row, s.column
-				FROM seats s
-				WHERE id IN
-					(SELECT seat_id AS id
-					 FROM tickets
-					 WHERE NOT cancelled AND seance_id IN
-					 (SELECT id AS seance_id
-					  FROM seances
-					  WHERE id = "+params[:id]+"
-					 )
-					);"
-				@reserved_seats = Seat.find_by_sql(sqlQuery) #Seat.where(:id => Ticket.where(:seance_id => @seance))
-				
-				tmp = []
-				for rs in @reserved_seats
-					tmp << rs.row+rs.column.to_s
-				end
-				@reserved_seats = tmp
-				
+				@seance = Seance.where("id = "+params[:id]+" AND date_from < date(now()) + integer '7' AND date_from >= date(now())")[0]
+				@reserved_seats = Ticket.find(:all, :select => "seat, bought", :conditions => "seance_id = "+ params[:id] +" AND NOT cancelled")				
 				@discounts = TicketType.all
 			end
 		end
@@ -278,7 +259,7 @@ class PublicController < ApplicationController
 			if session[:user]
 				
 				@customer_full_name = session[:user].first_name.to_s + session[:user].last_name.to_s
-			  @customer_email = session[:user].email 
+			  	@customer_email = session[:user].email 
 			else
 				
 				@customer_full_name = 'full_name'

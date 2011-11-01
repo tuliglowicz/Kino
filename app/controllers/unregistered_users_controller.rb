@@ -26,10 +26,14 @@ class UnregisteredUsersController < ApplicationController
   def new
     @unregistered_user = UnregisteredUser.new
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @unregistered_user }
-    end
+	if request.xhr?
+		render :layout => false
+	else
+		respond_to do |format|
+		  format.html # new.html.erb
+		  format.xml  { render :xml => @unregistered_user }
+		end
+	end
   end
 
   # GET /unregistered_users/1/edit

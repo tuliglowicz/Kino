@@ -1,6 +1,9 @@
 # encoding: utf-8
 class PublicController < ApplicationController
 	
+		require 'rexml/document'
+		include REXML
+	
 	before_filter :auth_access_user, :only => [:panel]
 			
 	def preindex
@@ -52,26 +55,30 @@ class PublicController < ApplicationController
 	end
 	
 
-	def login	  
+	def login
 		if params[:login] and  params[:password]
-			logged_in_user = Auth.try_to_login(params[:login], params[:password])
-			
 			session[:user] = nil
+			logged_in_user = Auth.try_to_login(params[:login], params[:password])
 			
 			if logged_in_user && (logged_in_user.kind_of? User)
 				session[:user] = logged_in_user
 				flash[:notice] = 'Zalogowany jako użytkownik!'
-				
-				render :json => answer if request.xhr?
-				redirect_to(:controller => "public", :action => "index") 
+				result = logged_in_user
 			else
+				result = false
 				flash[:notice] = "Błędny login i/albo hasło!"
-				render :json => false if request.xhr?
 			end
 		else
-			# can happen whenever user visits page firt time. 
-			# it's added to avoid unexpected comments to the user.
-		end  	
+			result = false
+		end
+		
+		if request.xhr?
+			if params[:login] and params[:password]
+				render :json => result
+			else
+				render :layout => false
+			end
+		end
 	end
 	
 	def logout
@@ -128,11 +135,6 @@ class PublicController < ApplicationController
 		end
 		
 		render :layout => false if request.xhr?
-	end
-		
-	def register
-		@title = "Zarejestruj sie!"
-		@user = User.new
 	end
 	
 	def zapowiedzi
@@ -230,6 +232,7 @@ class PublicController < ApplicationController
 	end
 	
 	def speedBooking
+		
 		if request.xhr? && params[:cf_id] && params[:cf_id].length > 0 && cookies[:cinema_id]
 			seances = Seance.find(:all, :conditions => "cinema_film_id =" + params[:cf_id]+" AND date_from < date(now()) + integer '7' AND date_from >= date(now())", :order => "date_from, time_from")
 			
@@ -239,6 +242,30 @@ class PublicController < ApplicationController
 				resp = session[:user] == nil
 				render :json => resp;
 			end
+		end
+		if request.xhr? && params[:xml]
+			root = Document.new(params[:xml]).root
+			
+			root.each { |xticket|
+				t = Ticket.new
+				
+				t.user_id = xticket.elements["user_id"].text
+				t.seat = xticket.elements["seat"].text
+				t.ticket_type_id = xticket.elements["type"].text
+				t.price = xticket.elements["price"].text.to_i
+				t.seance_id = xticket.elements["seance_id"].text
+				t.reservation_id = nil
+				belongsToUnregisteredUser = false
+				t.cancelled = false
+				t.bought = false
+				t.worker_id = 1
+				
+				#puts t
+				puts t.save
+				#unregistered_user_id
+			}
+			
+			render :json => true
 		end
 	end
 	

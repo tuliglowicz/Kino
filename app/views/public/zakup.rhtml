@@ -89,7 +89,7 @@
 				5. Dokonaj zapłaty lub zakończ.
 			</td>
 		</tr>
-		<% if @seance -%>
+	<% if @seance -%>
 		<tr>
 			<td colspan="5" id="dane_zbiorcze" valign="top" align="right">
 				<br/>
@@ -100,7 +100,7 @@
 				Typ Seansu: <b style='color:white'><%= @seance.seance_type.name%></b>
 			</td>
 		</tr>
-		<% end -%>
+	<% end -%>
 	</table>
 	
 	<table bgcolor="" border="0px" align="center">
@@ -317,7 +317,7 @@
 											c++;
 											tmp = c+". Miejsce: "+this.id+", typ: ";
 											for(var i = 0; i<typy.length; i++)
-												tmp += "<a id=typ"+this.id+i+" class='typ_biletu"+this.id+"'>"+typy[i]+"</a> | "
+												tmp += "<a id=typ"+this.id+i+" class='typ_biletu"+this.id+"' style='cursor: pointer;'>"+typy[i]+"</a> | "
 											
 											$j("#typy_biletow_inner").append(tmp+"<br/>");
 										})
@@ -332,6 +332,9 @@
 										}
 									}
 									else if(stepContener[stepCounter+1] == "dane"){
+										
+									}
+									else if(stepContener[stepCounter+1] == "decyzja"){
 										
 									}
 									$j("#"+stepContener[stepCounter]+"_step").animate({color: "white"}, 1250);
@@ -385,7 +388,6 @@ $j("button").addClass("ui-button ui-widget ui-state-default ui-corner-all ui-but
 		var bought = new Array();
 		var reserved = new Array();
 		<% @reserved_seats.each { |rs| -%>
-			<%# rs.seat+";" %>
 			<% if rs.bought -%>
 				//alert("<%= rs.seat %>")
 				bought.push("<%= rs.seat %>")
@@ -395,6 +397,7 @@ $j("button").addClass("ui-button ui-widget ui-state-default ui-corner-all ui-but
 		<% } -%>
 		var ticket_counter = 0;		
 		var delS;
+		
 		$j(document).ready(function(){
 
 			// bo ruby jakoś dziwnie to formatuje.

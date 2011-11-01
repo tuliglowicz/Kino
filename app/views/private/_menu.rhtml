@@ -1,65 +1,105 @@
-<ul class="aMenu">
+<style>
+	li.header.aMenu {
+		color: black;
+		cursor: pointer;
+		background: url("/images/pic/nav_tab.png") silver repeat-x bottom;
+		border-radius: 0px 0px 5px 0px;
+	}
+</style>
 <% if session[:worker]-%>
-
+<ul class="aMenu">
 	<% worker_id = session[:worker].id %>
-	<% if Auth.can_read_in_self_cinema?(worker_id, "categories") -%>
-		<li><%= link_to("Kategorie Filmów", {:controller => "categories" }, :class=>"aMenu")%></li>
-	<% end %>
-	<% if Auth.can_read_in_self_cinema?(worker_id, "cinema_films") -%>
-		<li><%= link_to("Filmy w Kinach", {:controller => "cinema_films" }, :class=>"aMenu")%></li>
-	<% end %>
-	<% if Auth.can_read_in_self_cinema?(worker_id, "cinemas") -%>
-		<li><%= link_to("Kina", {:controller => "cinemas" }, :class=>"aMenu")%></li>
-	<% end %>
-	<% if Auth.can_read_in_self_cinema?(worker_id, "cities") -%>
-		<li><%= link_to("Miasta", {:controller => "cities" }, :class=>"aMenu")%></li>
-	<% end %>
-	<% if Auth.can_read_in_self_cinema?(worker_id, "discount_sorts") -%>
-		<li><%= link_to("Rodzaje zniżek", {:controller => "discount_sorts" }, :class=>"aMenu")%></li>
-	<% end %>
-	<% if Auth.can_read_in_self_cinema?(worker_id, "films") -%>
-		<li><%= link_to("Filmy", {:controller => "films" }, :class=>"aMenu")%></li>
-	<% end %>
-	<% if Auth.can_read_in_self_cinema?(worker_id, "reservations") -%>
-		<li><%= link_to("Rezerwacje", {:controller => "reservations" }, :class=>"aMenu")%></li>
-	<% end %>
-	<% if Auth.can_read_in_self_cinema?(worker_id, "rooms") -%>
-		<li><%= link_to("Sale Filmowe", {:controller => "rooms" }, :class=>"aMenu")%></li>
-	<% end %>
-	<% if Auth.can_read_in_self_cinema?(worker_id, "roomviews") -%>
-		<li><%= link_to("Widoki Sal", {:controller => "roomviews" }, :class=>"aMenu")%></li>
-	<% end %>
-	<% if Auth.can_read_in_self_cinema?(worker_id, "seances") -%>
-		<li><%= link_to("Seanse", {:controller => "seances" }, :class=>"aMenu")%></li>
-	<% end %>
-	<% if Auth.can_read_in_self_cinema?(worker_id, "seance_types") -%>
-		<li><%= link_to("Rodzaje seansów", {:controller => "seance_types" }, :class=>"aMenu")%></li>
-	<% end %>
-		
-	<% if Auth.can_read_in_self_cinema?(worker_id, "statuses") -%>
-		<li><%= link_to("Statusy Pracowników", {:controller => "statuses" }, :class=>"aMenu")%></li>
-	<% end %>
-	<% if Auth.can_read_in_self_cinema?(worker_id, "tickets") -%>
-		<li><%= link_to("Bilety", {:controller => "tickets" }, :class=>"aMenu")%></li>
-	<% end %>
-	<% if Auth.can_read_in_self_cinema?(worker_id, "ticket_sort_prices") -%>
-		<li><%= link_to("Rodzaje cen biletów", {:controller => "ticket_sort_prices" }, :class=>"aMenu")%></li>
-	<% end %>
-	<% if Auth.can_read_in_self_cinema?(worker_id, "ticket_types") -%>
-		<li><%= link_to("Rodzaje biletów", {:controller => "ticket_types" }, :class=>"aMenu")%></li>
-	<% end %>
-	<% if Auth.can_read_in_self_cinema?(worker_id, "users") -%>
-		<li><%= link_to("Użytkownicy", {:controller => "users" }, :class=>"aMenu")%></li>
-	<% end %>
-	<% if Auth.can_read_in_self_cinema?(worker_id, "workers") -%>
-		<li><%= link_to("Pracownicy", {:controller => "workers" }, :class=>"aMenu")%></li>
-	<% end %>
-	<% if Auth.can_read_in_self_cinema?(worker_id, "permissions") -%>
-		<li><%= link_to("Uprawnienia", {:controller => "permissions" }, :class=>"aMenu")%></li>
-	<% end %>
-<% end %>
+	
+	<li class="header aMenu"><strong>Bilety i rezerwacje</strong></li>
+	<div>
+		<% if Auth.can_read_in_self_cinema?(worker_id, "tickets") -%>
+			<%= link_to("Bilety", {:controller => "tickets" }, :class=>"aMenu")%>
+		<% end %>
+		<% if Auth.can_read_in_self_cinema?(worker_id, "reservations") -%>
+			<%= link_to("Rezerwacje", {:controller => "reservations" }, :class=>"aMenu")%>
+		<% end %>
+	</div><br>
+	
+	<li class="header aMenu"><strong>Filmy i seanse</strong></li>
+	<div>
+		<% if Auth.can_read_in_self_cinema?(worker_id, "films") -%>
+			<%= link_to("Filmy", {:controller => "films" }, :class=>"aMenu")%>
+		<% end %>
+		<% if Auth.can_read_in_self_cinema?(worker_id, "seances") -%>
+			<%= link_to("Seanse", {:controller => "seances" }, :class=>"aMenu")%>
+		<% end %>
+		<% if Auth.can_read_in_self_cinema?(worker_id, "cinema_films") -%>
+			<%= link_to("Filmy w Kinach", {:controller => "cinema_films" }, :class=>"aMenu")%>
+		<% end %>
+	</div><br>
+	
+	<li class="header aMenu"><strong>Pracownicy i Użytkownicy</strong></li>
+	<div>
+		<% if Auth.can_read_in_self_cinema?(worker_id, "users") -%>
+			<li><%= link_to("Użytkownicy", {:controller => "users" }, :class=>"aMenu")%></li>
+		<% end %>
+			
+		<% if Auth.can_read_in_self_cinema?(worker_id, "workers") -%>
+			<li><%= link_to("Pracownicy", {:controller => "workers" }, :class=>"aMenu")%></li>
+		<% end %>
+		<% if Auth.can_read_in_self_cinema?(worker_id, "permissions") -%>
+			<li><%= link_to("Uprawnienia", {:controller => "permissions" }, :class=>"aMenu")%></li>
+		<% end %>
+	</div><br>
+	
+	<li class="header aMenu"><strong>Żadko edytowane</strong></li>
+	<div>
+		<% if Auth.can_read_in_self_cinema?(worker_id, "categories") -%>
+			<%= link_to("Kategorie Filmów", {:controller => "categories" }, :class=>"aMenu")%>
+		<% end %>
+		<% if Auth.can_read_in_self_cinema?(worker_id, "cinemas") -%>
+			<%= link_to("Kina", {:controller => "cinemas" }, :class=>"aMenu")%>
+		<% end %>
+		<% if Auth.can_read_in_self_cinema?(worker_id, "cities") -%>
+			<%= link_to("Miasta", {:controller => "cities" }, :class=>"aMenu")%>
+		<% end %>
+		<% if Auth.can_read_in_self_cinema?(worker_id, "discount_sorts") -%>
+			<%= link_to("Rodzaje zniżek", {:controller => "discount_sorts" }, :class=>"aMenu")%>
+		<% end %>
+		<% if Auth.can_read_in_self_cinema?(worker_id, "rooms") -%>
+			<%= link_to("Sale Filmowe", {:controller => "rooms" }, :class=>"aMenu")%>
+		<% end %>
+		<% if Auth.can_read_in_self_cinema?(worker_id, "roomviews") -%>
+			<%= link_to("Widoki Sal", {:controller => "roomviews" }, :class=>"aMenu")%>
+		<% end %>
+		<% if Auth.can_read_in_self_cinema?(worker_id, "seance_types") -%>
+			<%= link_to("Rodzaje seansów", {:controller => "seance_types" }, :class=>"aMenu")%>
+		<% end %>
+		<% if Auth.can_read_in_self_cinema?(worker_id, "statuses") -%>
+			<%= link_to("Statusy Pracowników", {:controller => "statuses" }, :class=>"aMenu")%>
+		<% end %>
+		<% if Auth.can_read_in_self_cinema?(worker_id, "ticket_sort_prices") -%>
+			<%= link_to("Rodzaje cen biletów", {:controller => "ticket_sort_prices" }, :class=>"aMenu")%>
+		<% end %>
+		<% if Auth.can_read_in_self_cinema?(worker_id, "ticket_types") -%>
+			<%= link_to("Rodzaje biletów", {:controller => "ticket_types" }, :class=>"aMenu")%>
+		<% end %>
+	</div><br>
 </ul>
+<% end %>
 <br/><br/>
 
-
-
+<script>
+	$j(document).ready(function(){		
+		$j('ul .header').css("list-style-image", "url('/images/pic/spindown-open.gif')").toggle(fn1, fn2);
+		$j('ul .header').click(function(){
+			$j(this).next().toggle('fast');
+			return false;
+		});
+		
+		$j('ul .header:eq(3)').next().hide();
+	});
+	
+	function fn1(evt){
+		$j(this).css("list-style-image","url('/images/pic/spindown-closed.gif')");
+	}
+	function fn2(evt){
+		$j(this).css("list-style-image","url('/images/pic/spindown-open.gif')");
+	}
+	
+</script>

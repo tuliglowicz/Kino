@@ -1,0 +1,470 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+
+		<% user=@user %>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<title>Untitled Document</title>
+		
+		<style type="text/css"> 
+
+			ul.profile_menu, ul.profile_menu, li.profile_menu{
+				display: block;
+				list-style: none;
+				margin: 0;
+				padding: 0;
+			}
+		
+			ul.profile_menu{
+				float: left;
+				width:100%;
+				background:none;
+				padding: 1px 0 1px 1px;
+
+				
+			}
+			
+
+			 li.profile_menu span.profile_menu{
+			 	width:20%;
+				border-left: 1px solid #fff;
+				float: left;
+				margin:0px;
+				padding:5px;
+				text-align:center;
+				font-weight:bold;
+			}
+			
+			 ul.profile_menu,  ul.profile_menu{
+				text-decoration: none;
+				display: block;
+
+				background: none;
+				color: #fff;
+
+				
+
+			}
+			
+			ul.profile_menu span:hover {
+				color:#8DBDE5;
+				
+				cursor:pointer;
+			}
+			span#link_to_film a:hover {
+				color:#EE4242;
+			}
+			span#link_to_film a {
+				color:#146CB4;
+				font-weight: bold;
+			}
+			
+			
+			div.btn{
+				float:left;
+				color: #000000;
+
+				padding:5px;
+				text-align:center;
+				background: #8DBDE5;
+				border:solid 1px #c3c3c3;
+				cursor:pointer;
+				position:fixed;
+				top:35%;
+				left:45%;
+				margin:10px;				
+			}
+			div.form{
+			
+
+			}
+			
+			#tickety{
+				width:80%;
+				border-collapse:collapse;
+
+			}
+			
+			#tickety table, #tickety td, #tickety th{
+				border:1px solid #EE4242;
+				font-size:1em;
+				padding:3px 7px 2px 7px;
+				background-color:#CCCCCC;
+				color:black;				
+			}
+			#tickety th{
+				background-color:#2D2D2D;
+				color:white;
+			}
+			#tickety tr.alt td{		
+				background-color:white;
+			}
+
+
+		
+		</style>
+		<script>
+			var current=0;
+			
+			function showRes(){
+				if(current!=1){
+					document.getElementById('curr').style.color='#EE4242';
+					document.getElementById('pri').style.color='white';
+					document.getElementById('his').style.color='white';
+					document.getElementById('edi').style.color='white';
+					$j('.divki').hide();
+					$j('.currentTickets').slideToggle('slow');
+					current=1;
+				}
+			}
+			function printTickets(){
+				if(current!=2){
+					document.getElementById('curr').style.color='white';
+					document.getElementById('pri').style.color='#EE4242';
+					document.getElementById('his').style.color='white';
+					document.getElementById('edi').style.color='white';
+					$j('.divki').hide();
+					$j('.printTickets').slideToggle('slow');
+					current=2;
+				}
+			}
+			
+			function showHistory(){
+				if(current!=3){
+					document.getElementById('curr').style.color='white';
+					document.getElementById('pri').style.color='white';
+					document.getElementById('his').style.color='#EE4242';
+					document.getElementById('edi').style.color='white';
+					$j('.divki').hide();
+					$j('.History').slideToggle('slow');
+					current=3;
+				}
+			}			
+			
+			function showEdit(){
+				if(current!=4){
+					document.getElementById('curr').style.color='white';
+					document.getElementById('pri').style.color='white';
+					document.getElementById('his').style.color='white';
+					document.getElementById('edi').style.color='#EE4242';					
+					$j('.divki').hide();
+					//$j('.form').slideToggle('slow');
+					//$j('.pwd').slideToggle('slow');
+					$j('.formsy').slideToggle('slow');
+					current=4;
+				}
+			}
+			
+		</script>
+		
+	</head>
+	<body>
+		<div style="float:inherit; margin-left: 10%">
+			<ul class="profile_menu" >
+				<li class="profile_menu"><span class="profile_menu" id="curr" onclick="showRes();">Bieżące rezerwacje</span></li>
+				<li class="profile_menu"><span class="profile_menu" id="pri" onclick="printTickets();">Drukowanie biletów</span></li>
+				<li class="profile_menu"><span class="profile_menu" id="his" onclick="showHistory();">Historia</span></li>							
+				<li class="profile_menu"><span class="profile_menu" id="edi" onclick="showEdit();">Edytuj konto</span></li>
+			</ul>
+		</div>
+		<br /><br />
+
+		<div style="float:left;" hidden=true>
+			<p>Witaj, <%= user.login %>!</p>
+		</div>
+		
+
+		
+
+		<div class="formsy divki" hidden=true>
+			<br />
+			<div class="form" style="float:inherit;"  >
+				<%= form_for(@user) do |u| %>
+				  <% if @user.errors.any? %>
+				    <div id="error_explanation">
+				      <h2>Zaszły następujące nieprawidłowości:</h2>
+				      <ul>
+				      <% @user.errors.full_messages.each do |msg| %>
+				        <li><%= msg %></li>
+				      <% end %>
+				      </ul>
+				    </div>
+				  <% end %>
+				
+				<table>
+					<tr>
+						<td><span style="float:left"><%= u.label :login %></span></td>
+						<td><%= u.text_field :login, :class => 'validate[required,maxSize[100]]', :size=>45 %></td>
+					</tr>
+					<tr>
+						<td><span style="float: left"><%= u.label 'Imię' %></span></td>
+						<td><%= u.text_field :first_name, :class => 'validate[required,maxSize[20]]', :size=>45 %></td>
+					</tr>
+					<tr>
+						<td><span style="float: left; padding-right: 13px"><%= u.label 'Nazwisko' %></span></td>
+						<td><%= u.text_field :last_name, :class => 'validate[required,maxSize[100]]', :size=>45 %></td>
+					</tr>
+					<tr>
+						<td> <span style="float: left"><%= u.label :email%></span></td>
+						<td><%= u.text_field :email, :class => 'validate[required,maxSize[50]]', :size=>45 %></td>
+					</tr>
+					<tr>
+						<td><span style="float:left"><%= u.label :"telefon" %></span></td>
+						<td><%= u.text_field :phone, :size=>45 %></td>
+					</tr>
+					<tr>
+						<td/>
+						<td>				  
+							<div class="actions" style="float:right"><%= u.submit "Zapisz"%></div>
+						</td>
+					</tr>
+				</table>			  			  
+				<% end %>
+			</div>
+	<br />
+			<div class="pwd" style="float:inherit;">
+				<%= form_for(@user) do |us| %>
+				  <% if @user.errors.any? %>
+				    <div id="error_explanation">
+				      <h2>Zaszły następujące nieprawidłowości:</h2>
+				      <ul>
+				      <% @user.errors.full_messages.each do |msg| %>
+				        <li><%= msg %></li>
+				      <% end %>
+				      </ul>
+				    </div>
+				  <% end %>		  
+				  
+				<table>
+					<tr>
+						<td><span style="float: left"><%= us.label :"hasło" %></span></td>
+						<td><%= us.password_field :hashed_password, :size=>45, :value=> "" %></td>
+					</tr>
+					<tr>
+						<td> <span style="float: left"><%= us.label :"potwierdź hasło" %></span></td>
+						<td> <%= us.password_field :hashed_password_confirmation, :size=>45 %></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>
+						  	<div class="actions" style="float:right">
+						    	<%= us.submit "Zapisz"%>
+						  	</div>							
+						</td>
+					</tr>					
+				</table>
+			
+				<% end %>
+			</div>	
+		</div>	
+		
+		<div class="currentTickets divki" hidden=true>
+			<%#currentReserv=@tickets.reservation.id%>
+				<br />
+				<table id="tickety">
+						<tr>
+							<th>tytuł</th>
+							<th>kino</th>
+							<th>termin</th>
+							<th>siedzenie</th>
+							<th>bilet</th>
+							<th>cena</th>
+						</tr>
+					<% i=1 %>	
+					<% for ticket in @tickets do-%>
+						<% time = ticket.seance.time_from %>
+						<% date = ticket.seance.date_from%>						
+						<% if ticket.cancelled!=true && ticket.bought!=true%>
+						<tr <%=  if i%2==1 then "class=alt" end %> >
+							<td><%= ticket.seance.cinema_film.film.title %></td>
+							<td><%= ticket.seance.cinema_film.cinema.name %></td>
+							<td><%= date.strftime("%d.%m.%Y") + time.strftime(" %H:%M") %></td>
+							<td><%= ticket.seat%></td>
+							<td><%= ticket.ticket_type.name %></td>
+							<td><%= ticket.price.to_s %></td>
+							<td style="background:none; border: none;">
+								<%= link_to( 'zrezygnuj', { :action=>"delete_ticket", :id=>ticket.id.to_s} ) %>
+							</td>
+							<% i=i+1 %>
+						<% end %>
+					<% end %>
+			
+				</table>
+				<br />
+				<table style="width: 25%; ">
+					<tr>
+						<td style="font-weight: bold;">suma: </td>
+						<td >
+							<%= link_to( 'zapłać', { :action=>"profile", :id=>user.id} ) %>
+						</td>
+					</tr>
+				</table>
+		</div>
+		
+		
+		<div class="divki printTickets" hidden=true>
+
+			<br>
+			</br>
+			<div align="center" style=" color:#8DBDE5; font-size:15px; font-family:"Arial" ;">
+				Bilety dostępne do druku
+				<br>
+				</br>
+				<div style=" color:#FFFFFF;" >Wybierz bilet, który chcesz wygenerować</div>
+			</div>	
+			<br>
+			</br>
+			<% @tickets.each do |v| %>
+				<% time = v.seance.time_from %>
+				<% date = v.seance.date_from%>				
+				<% if v.bought==true && ((time> Time.now && date==DateTime.now) || date>DateTime.now) %>
+			<table width=1000 height=136 align=center border="0" bordercolor="red" style="color:#000000; "  >
+				<tr>
+					<td >
+						<table width=900 height=33 align=center valign=middle border=0 bordercolor="red" background="/images/pic/pasekG.jpg" >
+						</table>	
+					</td>
+				</tr>	
+				<tr>
+					<td>	
+							<table width=900 height=70 align=center valign=middle border=0 bordercolor="yellow" style="background-color:white; border-spacing: 2mm ">
+							<tr align=center style=" font-weight: bold; font-style: normal;"  >
+									<td>Nr biletu</td>
+									<td>Kino</td>
+									<td>Film</td>
+									<td>Data seansu</td>
+									<td>Godzina seansu</td>
+									<td>Sala</td>
+									<td>Siedzenie</td>
+									<td>Cena</td>
+									<td>Typ biletu</td>
+							</tr>
+							<tr align=center>
+									<!-- numer rezerwacji					       -->
+									  <td>
+								      	<%= v.reservation_id.to_s %>
+								      </td>
+								      
+								      <% sqlQ= "SELECT * FROM seances Where seances.id = ("+ v.seance_id.to_s+") " %>  
+									  <% @seances =  Seance.find_by_sql(sqlQ) %>
+									
+								      <td> 	
+								      	<%= v.seance.cinema_film.cinema.name.to_s %>
+								      </td>	
+										
+										<!-- 	nazwa filmu	 -->
+								      <td> 	
+								      	
+								      	<%= v.seance.cinema_film.film.title.to_s %>
+								      </td>
+								      	
+								      	<!-- 	data i time seansu	 -->
+								      <td> 	
+								      	<%= @seances.first.date_from %>
+								      </td>
+								      
+								      <td>
+								      	<%= @seances.first.time_from.strftime("%H:%M") %>
+								      </td>	
+								      
+								      	
+
+								      	<%= "?" %>
+								      </td>
+								      <td>
+								      	<%= v.seat.to_s %> 
+								      </td>
+						
+										<!-- 	imie i nazwisko klienta				       -->
+								      <% sqlQ= "SELECT * FROM users Where users.id = ("+ v.user_id.to_s+") " %>  
+									  <% @users =  User.find_by_sql(sqlQ) %>
+								      <td>
+								      	<%= @users.first.first_name.to_s %>
+								      	<%= @users.first.last_name.to_s %>
+								      </td>
+										
+									
+								      
+								      	<!-- cena					       -->
+								      <td>
+								      	<%= v.price.to_s %>
+								      </td>
+								      
+								      	<!-- 	typ biletu	 -->
+								      <% sqlQ = "SELECT * FROM ticket_types Where ticket_types.id = ("+ v.ticket_type_id.to_s+") " %>  
+									  <% @ticketTypes =  TicketType.find_by_sql(sqlQ) %>
+								      <td>
+								      	<%= @ticketTypes.first.name %>
+								      </td>
+								      
+								      <td>
+<<<<<<< HEAD
+								      		<table width=64 height=56 align=center valign=middle border=0 bordercolor="blue" background="/images/pic/free-printer.png" >
+<!-- 								      			<a href="ticket.pdf.prawn">Drukuj</a></table> -->
+								      		<a href="/private/tickets/<%=v.id%>.pdf">Drukuj</a></table>
+								      		<p><%#= link_to "Printable Receipt (PDF)", ticket_path(@ticket, format: "pdf") %></p>
+=======
+								      		<table valign=middle border=0 bordercolor="blue">
+								      		</table>	
+>>>>>>> bec281c256a9d400be174a494a28a7cd0da921bb
+								      </td>	
+							</tr>		
+							</table>
+					</td>
+				</tr>
+				<tr>
+					<td >
+						<table width=900 height=33 align=center valign=middle border=0 bordercolor="blue" background="/images/pic/pasekD.jpg" >
+						</table>	
+					</td>
+				</tr>
+			</table>
+			<table width=64 height=56 align=center valign=middle border=0 bordercolor="blue" background="/images/pic/free-printer.png" ></table>
+			<br>
+			</br>
+			<% end %>
+			<% end %>    			
+								
+						
+		</div>
+		
+				<div class="divki History" hidden=true>
+				<br />
+				<table id="tickety">
+						<tr>
+							<th>tytuł</th>
+							<th>kino</th>
+							<th>termin</th>
+							<th>bilet</th>
+							<th>cena</th>
+							
+		
+						</tr>
+					<% i=1 %>	
+					<% for ticket in @tickets do-%>
+						<% time = ticket.seance.time_from %>
+						<% date = ticket.seance.date_from%>							
+						<% if ticket.bought==true && ((time< Time.now && date==DateTime.now) || date<DateTime.now) %>
+						<tr <%=  if i%2==1 then "class=alt" end %> >
+							<td>
+								<span id="link_to_film">
+								<%=link_to(ticket.seance.cinema_film.film.title.to_s, {:action=>"dane_filmu", :id=>ticket.seance.cinema_film.film.id }) %>
+								</span>
+							</td>
+							<td><%= ticket.seance.cinema_film.cinema.name %></td>
+							<td><%= date.strftime("%d.%m.%Y") + time.strftime(" %H:%M") %></td>
+							<td><%= ticket.ticket_type.name %></td>
+							<td><%= ticket.price.to_s %></td>
+
+							<% i=i+1 %>
+						<% end %>
+					<% end %>
+			
+				</table>
+
+		</div>
+		<script>
+			showRes();
+		</script>
+	</body>
+</html>

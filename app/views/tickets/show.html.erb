@@ -43,3 +43,4 @@
 
 <%= link_to 'Edytuj', edit_ticket_path(@ticket) %> |
 <%= link_to 'Wróć', tickets_path %>
+<p><%= link_to "Printable Receipt (PDF)", ticket_path(@ticket, format: "pdf") %></p>

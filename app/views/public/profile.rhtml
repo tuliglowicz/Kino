@@ -17,17 +17,17 @@
 		
 			ul.profile_menu{
 				float: left;
-				width:90%;
+				width:100%;
 				background:none;
 				padding: 1px 0 1px 1px;
 
-				float: inherit;
+				
 			}
 			
 
 			 li.profile_menu span.profile_menu{
 			 	width:20%;
-				border: 1px solid #fff;
+				border-left: 1px solid #fff;
 				float: left;
 				margin:0px;
 				padding:5px;
@@ -80,20 +80,20 @@
 			}
 			
 			#tickety{
-				width:100%;
+				width:80%;
 				border-collapse:collapse;
 
 			}
 			
 			#tickety table, #tickety td, #tickety th{
-				border:1px solid #8DBDE5;
+				border:1px solid #EE4242;
 				font-size:1em;
 				padding:3px 7px 2px 7px;
 				background-color:#CCCCCC;
 				color:black;				
 			}
 			#tickety th{
-				background-color:black;
+				background-color:#2D2D2D;
 				color:white;
 			}
 			#tickety tr.alt td{		
@@ -159,9 +159,8 @@
 		
 	</head>
 	<body>
-
-		<div style="float:inherit">
-			<ul class="profile_menu">
+		<div style="float:inherit; margin-left: 10%">
+			<ul class="profile_menu" >
 				<li class="profile_menu"><span class="profile_menu" id="curr" onclick="showRes();">Bieżące rezerwacje</span></li>
 				<li class="profile_menu"><span class="profile_menu" id="pri" onclick="printTickets();">Drukowanie biletów</span></li>
 				<li class="profile_menu"><span class="profile_menu" id="his" onclick="showHistory();">Historia</span></li>							
@@ -222,7 +221,7 @@
 				</table>			  			  
 				<% end %>
 			</div>
-	
+	<br />
 			<div class="pwd" style="float:inherit;">
 				<%= form_for(@user) do |us| %>
 				  <% if @user.errors.any? %>
@@ -267,8 +266,7 @@
 							<th>tytuł</th>
 							<th>kino</th>
 							<th>termin</th>
-							<th>rząd</th>
-							<th>kolumna</th>
+							<th>siedzenie</th>
 							<th>bilet</th>
 							<th>cena</th>
 						</tr>
@@ -281,8 +279,7 @@
 							<td><%= ticket.seance.cinema_film.film.title %></td>
 							<td><%= ticket.seance.cinema_film.cinema.name %></td>
 							<td><%= date.strftime("%d.%m.%Y") + time.strftime(" %H:%M") %></td>
-							<td><%= ticket.seat.row %></td>
-							<td><%= ticket.seat.column %></td>
+							<td><%= ticket.seat%></td>
 							<td><%= ticket.ticket_type.name %></td>
 							<td><%= ticket.price.to_s %></td>
 							<td style="background:none; border: none;">
@@ -322,7 +319,7 @@
 				<% date = v.seance.date_from%>				
 				
 				<% if v.bought==true && ((time> Time.now && date==DateTime.now) || date>DateTime.now) %>
-			<table width=100% height=136 align=center border="0" bordercolor="red" style="color:#000000; "  >
+			<table width=100% height=136 align=center border="0" bordercolor="red" style="color:#000000; border-collapse:collapse;"  >
 				<tr>
 					<td >
 						<table width=900 height=33 align=center valign=middle border=0 bordercolor="red" background="/images/pic/pasekG.jpg" >
@@ -331,84 +328,60 @@
 				</tr>	
 				<tr>
 					<td>	
-							<table width=900 height=70 align=center valign=middle border=0 bordercolor="yellow" style="background-color:white; border-spacing: 2mm ">
-							<tr align=center style=" font-weight: bold; font-style: normal;"  >
+							<table width=900 height=70 align=center valign=middle border=0 bordercolor="yellow" style="background-color:white; border-spacing: 2mm; border-collapse:collapse; ">
+							<tr align=center style=" font-weight: bold; font-style: normal; background-color:#C3C3C3; "  >
 									<td>Nr biletu</td>
 									<td>Kino</td>
 									<td>Film</td>
 									<td>Data seansu</td>
 									<td>Godzina seansu</td>
 									<td>Sala</td>
-									<td>Rząd</td>
 									<td>Miejsce</td>
 									<td>Cena</td>
 									<td>Typ biletu</td>
-									<td>Zniżka</td>
+									<td></td>
 							</tr>
 							<tr align=center>
-									<!-- numer rezerwacji					       -->
+									  <!-- numer rezerwacji					       -->
 									  <td>
-								      	<%= v.reservation_id.to_s %>
+								      	<%= v.ticket_number %>
 								      </td>
-								      
-								      <% sqlQ= "SELECT * FROM seances Where seances.id = ("+ v.seance_id.to_s+") " %>  
-									  <% @seances =  Seance.find_by_sql(sqlQ) %>
-									
+									  <!-- kino								       -->
 								      <td> 	
-								      	<%= v.seance.cinema_film.cinema.name.to_s %>
+								      	<%= v.seance.cinema_film.cinema.name %>
 								      </td>	
-										
-										<!-- 	nazwa filmu	 -->
+									  <!-- film	 -->
 								      <td> 	
-								      	
-								      	<%= v.seance.cinema_film.film.title.to_s %>
+								      	<%= v.seance.cinema_film.film.title %>
 								      </td>
-								      	
-								      	<!-- 	data i time seansu	 -->
+								      <!-- 	data i	 -->
 								      <td> 	
-								      	<%= @seances.first.date_from %>
+								      	<%= v.seance.date_from %>
 								      </td>
-								      
+									  <!--  godzina rozpoczęcia	   -->
 								      <td>
-								      	<%= @seances.first.time_from.strftime("%H:%M") %>
+								      	<%= v.seance.time_from.strftime("%H:%M") %>
 								      </td>	
-								      
-								      <% sqlQ= "SELECT * FROM seats Where seats.id = ("+ v.seat_id.to_s+") " %>  
-									  <% @seats =  Seat.find_by_sql(sqlQ) %>
-								      	
-								      	<!-- 	numer pokoju, rząd i kolumna siedzenia	 -->
-								      <% var1 = @seats.first.room_id.to_s %>
+									  <!-- sala								       -->
 								      <td>
-								      	<%= var2 = Room.find(var1).number.to_s %>
+								      	<%= v.seance.room.number %>
 								      </td>
+									  <!-- miejsce 			       -->
 								      <td>
-								      	<%= @seats.first.row.to_s %> 
-								      </td>
-								      <td>
-								      	<%= @seats.first.column.to_s %>
+								      	<%= v.seat.to_s %>
 								      </td>	
-								      
-									
-								      	<!-- cena					       -->
+								      <!-- cena					       -->
 								      <td>
-								      	<%= v.price.to_s %>
+								      	<%= v.price %> zł
 								      </td>
-								      
-								      	<!-- 	typ biletu	 -->
-								      <% sqlQ = "SELECT * FROM ticket_types Where ticket_types.id = ("+ v.ticket_type_id.to_s+") " %>  
-									  <% @ticketTypes =  TicketType.find_by_sql(sqlQ) %>
+								      <!-- 	typ biletu	 -->
 								      <td>
-								      	<%= @ticketTypes.first.name %>
+								      	<%= v.ticket_type.name %>
 								      </td>
-								      
-								      	<!-- 	typ zniżki	 -->
-								      <% sqlQ = "SELECT * FROM discount_sorts Where discount_sorts.id = ("+ @seances.first.discount_sort_id.to_s+") " %>  
-									  <% @discountSorts =  DiscountSort.find_by_sql(sqlQ) %>
-								      <td> 	
-								      	<%= @discountSorts.first.description.to_s %>
-								      </td>
-								      <td>
-								      		<table width=64 height=56 align=center valign=middle border=0 bordercolor="blue" background="/images/pic/free-printer.png" ></table>	
+								      <td bgcolor="#C3C3C3">
+								      		<table width=64 height=56 align=center valign=middle border=0 bordercolor="blue" background="/images/pic/free-printer.png" >
+												<a href="/private/tickets/<%=v.id%>.pdf"><font style="color:#CC0000 ">Drukuj</font></a>
+											</table>
 								      </td>	
 							</tr>		
 							</table>
@@ -425,8 +398,7 @@
 			<br>
 			</br>
 			<% end %>
-			<% end %>    			
-								
+			<% end %>
 						
 		</div>
 		

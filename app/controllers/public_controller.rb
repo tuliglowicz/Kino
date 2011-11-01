@@ -2,8 +2,7 @@
 class PublicController < ApplicationController
 	
 	before_filter :auth_access_user, :only => [:panel]
-	
-	
+			
 	def preindex
 		redirect_to "/public/index"
 	end
@@ -180,15 +179,14 @@ class PublicController < ApplicationController
 		"
 		
 		@cinema = Cinema.find(cinema_id)
-		
 		@ticket_sort_prices = TicketSortPrice.find_by_sql(sqlQuery)
-		
+		@querytask = SeanceType.find_by_sql(sqlQuery2)
 		# optymalizacja, Piotr!
-		if SeanceType.find_by_sql(sqlQuery2).empty?
+		if @querytask.empty?
 			@areSeances = false
 		else
 			@areSeances = true
-			@seanceTypes = SeanceType.find_by_sql(sqlQuery2)
+			@seanceTypes = @querytask
 		end
 	end
 	
@@ -257,6 +255,9 @@ class PublicController < ApplicationController
 						
 			if params[:id] && params[:id].length > 0
 				@seance = Seance.where("id = "+params[:id]+" AND date_from < date(now()) + integer '7' AND date_from >= date(now())")[0]
+				
+				SeanceVerifier.verify_status_state_and_cancel_tickets(@seance)				
+				
 				@reserved_seats = Ticket.find(:all, :select => "seat, bought", :conditions => "seance_id = "+ params[:id] +" AND NOT cancelled")				
 				@discounts = TicketType.all
 			end

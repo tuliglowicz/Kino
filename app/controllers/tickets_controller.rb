@@ -2,6 +2,8 @@
 class TicketsController < ApplicationController
   # GET /tickets
   # GET /tickets.xml
+  require "prawn"
+  require 'prawn/layout'
   layout 'admin'
   
   def index
@@ -24,10 +26,15 @@ class TicketsController < ApplicationController
   # GET /tickets/1.xml
   def show
     @ticket = Ticket.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @ticket }
+      format.pdf do
+        pdf = TicketPdf.new(@ticket, view_context)
+        send_data pdf.render, filename: "ticket_#{@ticket.id}.pdf",
+                              type: "application/pdf",
+                              disposition: "inline"
+      end
     end
   end
 

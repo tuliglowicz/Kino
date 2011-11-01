@@ -17,7 +17,8 @@ class TicketPdf < Prawn::Document
   
   def order_number
     text "------------------------------------------------------------", size: 25, style: :bold
-    file = "#{Prawn::BASEDIR}/data/images/cinematoholix.png" # do tego folderu trzeba wrzucić plik cinematoholix, który dodałem w public/images/pic
+    #zakomentowane zeby przetestowac na heroku
+    file = "public/images/pic/cinematoholix.png" # do tego folderu trzeba wrzucić plik cinematoholix, który dodałem w public/images/pic
     #image file, :at => [20,650], :background => file
     image file, :background => file, :position => :left,   :vposition => "20"
     move_down 20

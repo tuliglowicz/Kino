@@ -1,7 +1,7 @@
 <div align="left">
 <form  action="https://secure.przelewy24.pl/index.php" method="post">
 	<label>session_id</label>
-	<input id="p24_session_id" name="p24_session_id" value="<%= @reservation.id%>"/><br />
+	<input id="p24_session_id" name="p24_session_id" value="1" <br /> <!--  zakomentowane tylko dla testow na heroku, bo zakonczenie rezerwacji jeszcze nie zakonczone#@reservation.id%>"/><br /> -->
 	<label>id_sprzedawcy</label>
 	<input id="p24_id_sprzedawcy" name="p24_id_sprzedawcy" value="13132" /><br />
 	<label>kwota_w_groszach</label>

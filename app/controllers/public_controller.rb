@@ -318,8 +318,8 @@ class PublicController < ApplicationController
 			@payment = (payment == 0 ? 10 : payment)
       @customer_address = 'not_important '
       @city = 'not_important'
-      @description = 'TEST_OK'
-			@crc_hash = Digest::MD5.hexdigest(@reservation.id.to_s + "|13132|" + @payment.to_s + "|a20c0ee19ecc09ac")
+      @description = 'TEST_OK'          # @reservation.id.to_s ma byc ponizej - zmienione tylko dla testow bo rezerwacja jeszcze nie zakonczona
+			@crc_hash = Digest::MD5.hexdigest(1.to_s + "|13132|" + @payment.to_s + "|a20c0ee19ecc09ac")
 		else
 			redirect_to "/"
 		end
@@ -356,23 +356,23 @@ class PublicController < ApplicationController
         
         if tickets
           if tickets[0].belongsToUnregisteredUser
-              user = UnregisteredUser.find(ticket.unregistered_user_id)
+              user = UnregisteredUser.find(tickets[0].unregistered_user_id)
             else
-              user = User.find(ticket.user_id)
+              user = User.find(tickets[0].user_id)
           end
           
           tickets.each { |ticket|
             ticket.update_attribute(:bought, true)
           }
         else
-           logger.warn 'Nie znaleziono żadnych biletow'   
+           logger.warn 'Nie znaleziono żadnych biletow '   
         end
         
         logger.warn 'Po aktualizacji biletów a przed wysyłką maila.'
         
         # ToDo wysylka maila z pdfami 
         if user 
-          UserMailer.send_bought_tickets(user.first_name, user.last_name, user.email, get_tickets()).deliver
+          UserMailer.send_bought_tickets(user.first_name, user.last_name, user.email, tickets).deliver
         else
           logger.warn 'Nie znaleziono uzytkownika'
         end

@@ -10,7 +10,6 @@ class CreatePrivileges < ActiveRecord::Migration
       t.integer :films
       t.integer :rooms
       t.integer :reservations
-      t.integer :seats
       t.integer :seance_types
       t.integer :statusez
       t.integer :seances

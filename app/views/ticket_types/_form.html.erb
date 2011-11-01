@@ -11,10 +11,18 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label 'Nazwa' %>
-    <%= f.text_field :name, :class => 'validate[required]' %>
-  </div>
+	<table>
+		<tr>
+			<th> <%= f.label 'Nazwa' %></th>
+			<td> <%= f.text_field :name, :class => 'validate[required]' %></td>
+		</tr>
+		
+		<tr>
+			<th> <%= f.label 'Opis' %></th>
+			<td> <%= f.text_area :description, :class => 'validate[required]' %></td>
+		</tr>
+	</table>  
+  <br />
   <div class="actions">
     <%= f.submit 'Zapisz' %>
   </div>

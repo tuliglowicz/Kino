@@ -5,6 +5,7 @@ class CreateRooms < ActiveRecord::Migration
       t.integer :cinema_id
       t.integer :number
       t.integer :size
+      t.integer :roomview_id
 
       t.timestamps
     end

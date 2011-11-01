@@ -1,5 +1,5 @@
 Kino::Application.routes.draw do
-
+  
   # Public zone
   match 'public/index' => 'public#index', :as => 'public'
   match 'public/kontakt' => 'public#kontakt', :as => 'contact'
@@ -14,11 +14,15 @@ Kino::Application.routes.draw do
   match 'public/profil' => 'public#profile', :as => 'profile'
   match 'public/dane_filmu' => 'public#dane_filmu', :as => 'film_data'
   match 'public/speedBooking' => 'public#speedBooking', :as => 'SB'
+  match 'public/delete_ticket' => 'public#delete_ticket'
   
-    # Payment
-    match 'public/finalizuj' => 'public#payment', :as => 'finalize'
-    match 'public/payment_ok' => 'public#payment_ok', :as => 'payment_ok'
-    match 'public/payment_error' => 'public#payment_error', :as => 'payment_error'
+  # PrintTicket
+  match 'public/printTicket' => 'public#printTicket', :as => 'print_ticket'
+    
+  # Payment
+  match 'public/finalizuj' => 'public#payment', :as => 'finalize'
+  match 'public/payment_ok' => 'public#payment_ok', :as => 'payment_ok'
+  match 'public/payment_error' => 'public#payment_error', :as => 'payment_error'
   
   #Cities
 	match '/private/cities' => 'cities#index', :as => 'cities'

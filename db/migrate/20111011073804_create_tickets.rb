@@ -10,6 +10,8 @@ class CreateTickets < ActiveRecord::Migration
       t.decimal :price
       t.integer :worker_id
       t.integer :ticket_type_id
+      t.integer :unregistered_user_id
+      t.boolean :belongsToUnregisteredUser
       
       t.timestamps
     end

@@ -7,8 +7,7 @@ class CreateTicketSortPrices < ActiveRecord::Migration
       t.integer :ticket_type_id
       t.decimal :price
       t.integer :discount_sort_id
-      t.string :description
-
+      
       t.timestamps
     end
   end

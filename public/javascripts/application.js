@@ -54,7 +54,7 @@ function centeredMovie(){
 	var leftCoord = Math.round((window.innerWidth - 560)/2);
 	//alert(topCoord+":"+leftCoord);
 	
-	$j("#movieTrailer").attr("style", "text-align:right;position:fixed;top:0px;left:0px;width:100%;height:100%;background-color:black;opacity:0.8;z-index:999;display:block;").html('<embed src="http://www.youtube.com/v/'+v+'?version=3&amp;hl=pl_PL" type="application/x-shockwave-flash" width="560" height="315" allowscriptaccess="always" allowfullscreen="true" style="position:fixed;top:'+topCoord+'px;left:'+leftCoord+'px;"></embed><br><span style="background-color:black;opacity:1;font-size:18px;text-align:right">Kliknij w tło strony, aby zamknąć film.</style>').click(function(){
+	$j("#movieTrailer").attr("style", "text-align:right;position:fixed;top:0px;left:0px;width:100%;height:100%;background-color:black;opacity:0.8;z-index:999;display:block;").html('<embed src="http://www.youtube.com/v/'+v+'?version=3&amp;hl=pl_PL" type="application/x-shockwave-flash" width="560" height="315" allowscriptaccess="always" allowfullscreen="true" style="position:fixed;top:'+topCoord+'px;left:'+leftCoord+'px;"></embed><br><span style="background-color:black;opacity:1;font-size:18px;text-align:right;font-weight:bold;">Kliknij w tło strony, aby zamknąć film.</style>').click(function(){
 		$j("#movieTrailer").css("display","none");return false;
 		});
 	

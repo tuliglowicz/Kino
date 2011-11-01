@@ -21,7 +21,7 @@ body, div, ul, ol, li, h1, h2, h3, h4, h5, h6, form, fieldset, input, textarea, 
     padding: 0;
 }
 ol, ul { list-style: none; }
-a, a { color: #146cb4; text-decoration: none; }
+a { color: #146cb4; text-decoration: none; }
 a:hover { color: #000; background: #dedede; text-decoration: none; }
 body { background: #fff; color: #333; font: normal 12px/16px Arial,sans-serif; }
 body { color: #c9c9c9; font-family: Arial, sans-serif;}

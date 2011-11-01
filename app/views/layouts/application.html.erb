@@ -31,7 +31,7 @@ http://www.metamorphozis.com/free_templates/free_css_templates/metamorph_circles
      
 <div id="page" class="layout_uniwersalny">
 	<div class="Ww2" style="text-align: right;">
-		<% if(session[:user]) %>	
+		<% if session[:user] %>	
 		<% #Po co jest tutaj :id => session[:user].id.to_s ? do skasowania -%>
 		<% #Jedno jest link_to, a drugie "<a href=>"...  -%>
 		<%= link_to 'Moje konto', :action => "profile", :id => session[:user].id.to_s %> ( <a href="<%= user_logout_path %>">Wyloguj</a> )

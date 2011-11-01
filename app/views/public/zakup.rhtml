@@ -66,8 +66,8 @@
 		*/
 		display: none;
 	}
-	
 </style>
+
 	<table class='problemTable' id='errorTable' align=center> </table>
 	<div id="tmp" style='display:none'></div>
 
@@ -107,7 +107,7 @@
 			<td align="right">
 				<img src="/images/pic/arrow_prev.png" id="prevStep" style='cursor:pointer'>
 			</td>
-			<td colspan="3" id="opis" align="center" style='color:white'>			
+			<td colspan="3" id="opis" align="center" valign="top" style='color:white'>			
 				<div id="seans" class="krok_zakup_center">
 					<h2>1. Wybierz seans.</h2><br/>
 					<!-- kino -->
@@ -296,10 +296,12 @@
 						</div>
 						<script>
 						var typy = new Array();
+						var ceny = new Array();
 						
-						<% if @discounts-%>
-							<% @discounts.each { |d| %>
-									typy.push("<%=d.name%>")
+						<% if @prices-%>
+							<% @prices.each { |p| %>
+									typy.push("<%=p.ticket_type.name%>");
+									ceny["<%=p.ticket_type.name%>"] = <%= p.price %> ;
 							<% } -%>
 						<% end -%>
 						
@@ -307,6 +309,24 @@
 								$j("."+this.className).removeClass("type_selected");
 								$j(this).addClass("type_selected");
 							})
+						</script>
+				</div>
+				<div id="dane" class="krok_zakup_center">
+					<h2>3. Podaj swoje dane</h2><br/>
+						<span class="opis">
+							Zarejestruj się w naszym serwisie, jeśli chcesz kozystać ze zniżek i promocji.
+						</span>
+						<br/>
+						<div id="zaloguj">
+						</div>
+				</div>
+				<div id="decyzja" class="krok_zakup_center">
+					<h2>5. Zestawienie</h2><br/>
+					<span class="opis"> </span>
+					<br/>
+					<div id="zestawienie">
+					</div>
+					<script>
 							function nextStep(){
 								if(stepCounter<stepContener.length-1){
 									if(stepContener[stepCounter+1] == "typy_biletow"){
@@ -319,7 +339,7 @@
 											for(var i = 0; i<typy.length; i++)
 												tmp += "<a id=typ"+this.id+i+" class='typ_biletu"+this.id+"' style='cursor: pointer;'>"+typy[i]+"</a> | "
 											
-											$j("#typy_biletow_inner").append(tmp+"<br/>");
+											$j("#typy_biletow_inner").append(tmp+" <br/>");
 										})
 										
 										if(c == 0){
@@ -332,7 +352,33 @@
 										}
 									}
 									else if(stepContener[stepCounter+1] == "dane"){
+										var i, condition = false;
+										$j(".seat.selected").each(function(){
+											i=0
+											$j('a[class*="'+this.id+'"][class*="type_selected"]').each(function(){
+												i++;
+											});
+											if(i!=1){
+												condition = true;
+												return;
+											}
+										});
 										
+										if(condition){
+											alert("Zaznacz typ dla każdego biletu!");
+											return false;
+										} else {
+											if(<%= not session[:user].nil? %>){
+												$j("#"+stepContener[stepCounter]+"_step").animate({color: "white"}, 1250);
+												$j("#"+stepContener[stepCounter]).animate({opacity: 0}, 1250).hide();
+												stepCounter++;
+												nextStep();
+												return;
+											}
+											else {
+												
+											}
+										}
 									}
 									else if(stepContener[stepCounter+1] == "decyzja"){
 										
@@ -355,14 +401,6 @@
 								}
 							}
 						</script>
-				</div>
-				<div id="dane" class="krok_zakup_center">
-						<b>Podaj dane:</b>
-						<table align="center" bgcolor="white" border="0px" cellpadding="0px" cellspacing="5px" style="border-radius:25px;padding-bottom:25px;color:black;" id="typy_biletow_table"></table>
-				</div>
-				<div id="decyzja" class="krok_zakup_center">
-						<b>Dokonaj zapłaty teraz lub zakończ i zapłać potem.</b>
-						<table align="center" bgcolor="white" border="0px" cellpadding="0px" cellspacing="5px" style="border-radius:25px;padding-bottom:25px;color:black;" id="typy_biletow_table"></table>
 				</div>			
 			</td>
 			<td align="left">
@@ -383,8 +421,7 @@ $j("#seans").css("opacity", "1").show();
 	
 $j("button").addClass("ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only");
 
-<% if @seance && @discounts -%>
-
+<% if @seance && @prices -%>
 		var bought = new Array();
 		var reserved = new Array();
 		<% @reserved_seats.each { |rs| -%>

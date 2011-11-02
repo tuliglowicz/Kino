@@ -3,6 +3,7 @@
 
 <table id="listaRekordow" cellspacing=0 cellpadding=5px>
   <tr>
+  	<th>Nr</th>
     <th>Nazwa kina</th>
     <th>Numer sali</th>
     <th>Liczba miejsc</th>
@@ -12,7 +13,7 @@
 
 <% @rooms.each do |room| %>
   <tr>
-    
+    <td><%= room.ordinal_number %></td>
     <td><%= room.cinema.name if room.cinema %></td>
     <td><%= room.number %></td>
     <td><%= room.size %></td>

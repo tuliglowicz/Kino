@@ -11,10 +11,9 @@
     <th>Data premiery</th>
     <th></th>
   </tr>
-<% i=0 %>
 <% @cinema_films.each do |cinema_film| %>
   <tr>
-    <td><%= i=i+1 %></td>
+    <td><%= cinema_film.ordinal_number %></td>
     <td align="center"><%= cinema_film.cinema.name if cinema_film.cinema %></td>
     <td><%= trim(cinema_film.film.title, 2) if cinema_film.film %></td>
     <td><%= cinema_film.date_from %></td>

@@ -3,7 +3,7 @@
 <% end %>
 	
 
-<div id="loadTarget">
+<div id="loadTarget" align="right" width="750px" style="width:750px;">
 		Kino: 
 		<SPAN class="title">
 			<%= @cinema.name if @cinema %>
@@ -35,8 +35,8 @@
 			
 				<% i=0 -%>
 				<% for film in @films do-%>
-				<hr width="750" align=center size=1 style='color:silver'><br/>
-				<table width=750 align=center border=0>
+				<hr width="750px" align=center size=1 style='color:silver'><br/>
+				<table width="750px" align="center" border="0px">
 				<tr>			
 					<td rowspan="2" valign="top">
 						<%= link_to image_tag("film_posters"+film.poster, :size => "100x146", :align => "right"), :action => "dane_filmu", :id => film.id.to_s %>
@@ -144,7 +144,7 @@
 		var leftCoord = Math.round((window.innerWidth - 560)/2);
 		//alert(topCoord+":"+leftCoord);
 		
-		$j("#movieTrailer").attr("style", "align:center;position:fixed;top:0px;left:0px;width:100%;height:100%;background-color:black;opacity:0.8;z-index:999;display:block;").html('<embed src="http://www.youtube.com/v/'+v+'?version=3&amp;hl=pl_PL" type="application/x-shockwave-flash" width="560" height="315" allowscriptaccess="always" allowfullscreen="true" style="position:fixed;top:'+topCoord+'px;left:'+leftCoord+'px;"></embed><br><span style="background-color:black;opacity:1;font-size:18px;">Kliknij w tło strony, aby zamknąć film.</style>').click(function(){
+		$j("#movieTrailer").attr("style", "text-align:right;position:fixed;top:0px;left:0px;width:100%;height:100%;background-color:black;opacity:0.8;z-index:999;display:block;").html('<embed src="http://www.youtube.com/v/'+v+'?version=3&amp;hl=pl_PL" type="application/x-shockwave-flash" width="560" height="315" allowscriptaccess="always" allowfullscreen="true" style="position:fixed;top:'+topCoord+'px;left:'+leftCoord+'px;"></embed><br><span style="background-color:black;opacity:1;font-size:18px;text-align:right">Kliknij w tło strony, aby zamknąć film.</style>').click(function(){
 			$j("#movieTrailer").css("display","none");return false;
 			});
 		
@@ -173,10 +173,10 @@
 	var padding = height+5;	//liczba px między górnymi krawędziami chmurek
 	var radius = 5; //miara zaokrąglenia rogów
 	function komunikat(tresc, nr_typu){
-		
+
 		cloud_count++;
 		cloud_id++;
-		
+
 		if(tresc != undefined && nr_typu != undefined){
 			switch(nr_typu){
 				case 1:	className = "blad";		title = "Błąd!";	//inne przypisania;
@@ -187,7 +187,7 @@
 				className = "informacja"; title = "Informacja!";	//inne przypisania;
 				break;
 			}
-			
+
 			var bot = window.innerHeight + document.body.scrollTop
 			var leftPercent = 100 - (width*100 / window.innerWidth) -1;
 
@@ -237,5 +237,5 @@
 	komunikat("tresc3", 0)
 	komunikat("tresc3", 0)
 	// */
-	//--=========================================================================== KONIEC CHMUREK DLA KOMUNIKATOW flash[:notice]
+//--=========================================================================== KONIEC CHMUREK DLA KOMUNIKATOW flash[:notice]
 </script>

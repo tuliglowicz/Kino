@@ -1,7 +1,32 @@
 <style>
 	.seat.deselected {
-	opacity: 0;
-}
+		opacity: 0;
+	}	
+	.seat {
+		cursor:pointer;
+		font-size:12px;
+		background-color:;
+		color:white;
+		padding-top:5px;
+		vertical-align:middle;
+		text-align:center;
+		background-image:url('/images/pic/seat4.jpg');
+		background-repeat:no-repeat;
+		background-position:center top;
+		width:25px;
+		height:20px;
+		float:left;
+	}
+	.seat.selected {
+		background-image:url('/images/pic/seat3.jpg');
+	}
+	.seat.resrved {
+		background-image:url('/images/pic/seat2.jpg');
+	}
+	.seat.bought {
+		background-image:url('/images/pic/seat2.jpg');
+	}
+
 </style>
 
 <% unless @seance || @discounts -%>
@@ -10,16 +35,70 @@
 	<div id="disc_sel" style="position:absolute;display:block;"><%= select_tag('ticket[discount_id]', options_for_select([['wybierz rodzaj biletu', '-1']] + @discounts.collect{|r| [r.name, r.id]}), :id => "theSel", :onchange => "changed(this)") if @discounts%></div>
 	<table class='problemTable' id='errorTable' align=center> </table>
 	<div id="tmp" style='display:none'></div>
-
+<p align=right>
 	Kino: <%= @seance.cinema_film.cinema.name %><br/>
 	Tytuł: <%= @seance.cinema_film.film.title %><br/>
 	Data: <%= @seance.date_from %><br/>
 	Godzina: <%= @seance.time_from.strftime("%H:%M") %><br/>
-        
-	<table align=center bgcolor="white" border=0px cellpadding=0px cellspacing=5px style="padding-bottom:25px" id="theTable">
-    </table>
+</p>
+<table width="940px" bgcolor="" border="0px" bordercolor="purple" align="center">
+	<tr valign=top height="20px">
+		<td align="center" id="seans_step">
+			1. Wybierz Seans
+		</td>
+		<td align="center" id="siedzenia_step">
+			2. Wybierz siedzenia
+		</td>
+		<td align="center" id="typy_biletow_step">
+			3. Określ typy biletów.
+		</td>
+		<td align="center" id="dane_step">
+			4. Podaj swoje dane
+		</td>
+		<td align="center" id="decyzja_step">
+			5. Dokonaj zapłaty lub zakończ.
+		</td>
+	</tr>
+</table>
+<table bgcolor="" border="0px" bordercolor="purple" align="center">
+		<td align="right">
+			<img src="/images/pic/arrow_prev.png" id="prevStep" style='cursor:pointer'>
+		</td>
+		<td colspan="3" id="opis" align="center" style='color:white'>			
+			<div id="seans" class="krok_zakup_center">
+					<b>Wybierz seans.</b>
+					<table align="center" bgcolor="white" border="0px" cellpadding="0px" cellspacing="5px" style="border-radius:25px;padding-bottom:25px;color:black;" id="typy_biletow_table"></table>
+			</div>
+			<div id="siedzenia" class="krok_zakup_center">
+					<b>1. Możesz zamówić maksymalnie 5 biletów.<br/>
+						2. W calu zamówienia wiekszej liczby biletów skontaktuj się z nami telefonicznie. <br/><br/>
+						 Pozostało <span id='ticket_count' style='color:lime;'>5</span> / 5 rezerwacji na ten seans.<br>
+					</b>
+					<table align="center" bgcolor="white" border="0px" cellpadding="0px" cellspacing="5px" style="border-radius:25px;padding-bottom:25px;color:black;" id="sidzenia_table"></table>
+			</div>
+			<div id="typy_biletow" class="krok_zakup_center">
+					<b>Określ typy biletów.</b>
+					<table align="center" bgcolor="white" border="0px" cellpadding="0px" cellspacing="5px" style="border-radius:25px;padding-bottom:25px;color:black;" id="typy_biletow_table"></table>
+			</div>
+			<div id="dane" class="krok_zakup_center">
+					<b>Podaj dane:</b>
+					<table align="center" bgcolor="white" border="0px" cellpadding="0px" cellspacing="5px" style="border-radius:25px;padding-bottom:25px;color:black;" id="typy_biletow_table"></table>
+			</div>
+			<div id="decyzja" class="krok_zakup_center">
+					<b>Dokonaj zapłaty teraz lub zakończ i zapłać potem.</b>
+					<table align="center" bgcolor="white" border="0px" cellpadding="0px" cellspacing="5px" style="border-radius:25px;padding-bottom:25px;color:black;" id="typy_biletow_table"></table>
+			</div>			
+		</td>
+		<td align="left">
+			<img src="/images/pic/arrow_next.png" id="nextStep" style='cursor:pointer'>
+		</td>
+	</tr>
+</table>
+
+	<!--  -->
         
 <script>
+	var ticket_counter = 0;
 	// bo ruby jakoś dziwnie to formatuje ta linijka.
 	$j("#tmp").html("<%= @seance.room.roomview.view %>")
 	var xml = $j($j("#tmp").text());
@@ -29,20 +108,60 @@
 		h = xml.find("height").text();
 		w = xml.find("width").text();
 
-		if(drawFullRectangle(w, h)){
+		if(drawFullRectangle(w, h))
+		{
 			delS = xml.find("deletedSeats seat")
 			delS.each(function(){
 				//alert("thisID")
 				thisID = this.innerHTML;
-
-				$j("#"+thisID).addClass("deselected").css("cursor", "default").live('click',function(){
-
-					$(this).toggleClass("selected");
-				});
+				$j("#"+thisID).addClass("deselected").css("cursor", "default");
 			})
+			$j(".seat:not(.deselected):not(.reserved):not(.bought)").live('click',function(){
+						$j(this).toggleClass("selected");
+
+						ticket_counter += this.className == "seat selected" ? 1 : -1;
+						if(ticket_counter > 5){
+							$j(this).toggleClass("selected");
+							ticket_counter = 5;
+						}
+						
+						$j("#ticket_count").text(5-ticket_counter);
+						if(ticket_counter == 5) $j("#ticket_count").css("color", "red")
+						else $j("#ticket_count").css("color", "lime")
+			});
 		}
+		
+		for(i=0; i<stepContener.length; i++)
+			$j("#"+stepContener[i]).css("opacity", "0").hide();
+			
+		$j("#seans").css("opacity", "1").show();
+			
+		$j("#nextStep").click(nextStep);
+		$j("#prevStep").click(prevStep);
+		
+		$j(".krok_zakup_center").css("width", $j("#siedzenia").css("width"));
 	});
 	
+	var stepContener = new Array("seans", "siedzenia", "typy_biletow", "dane", "decyzja");
+	var stepCounter = 0;
+	function nextStep(){
+		if(stepCounter<stepContener.length-1){
+			$j("#"+stepContener[stepCounter]+"_step").animate({color: "white"}, 1250);
+			$j("#"+stepContener[stepCounter]).animate({opacity: 0}, 1250).hide();
+			stepCounter++;
+			$j("#"+stepContener[stepCounter]+"_step").animate({color: "red"}, 1250);
+			$j("#"+stepContener[stepCounter]).animate({opacity: 1}, 1250).show();
+		}
+	}
+	function prevStep(){
+		if(stepCounter>0){
+			$j("#"+stepContener[stepCounter]+"_step").animate({color: "white"}, 1250);
+			$j("#"+stepContener[stepCounter]).animate({opacity: 0}, 1250).hide();
+			stepCounter--;
+			$j("#"+stepContener[stepCounter]+"_step").animate({color: "red"}, 1250);
+			$j("#"+stepContener[stepCounter]).animate({opacity: 1}, 1250).show();
+		}
+	}
 	function drawFullRectangle(w, h){
 		width_of_seat_rect = w;
 		height_of_seat_rect = h;
@@ -54,7 +173,7 @@
 		var maxCols = w;
 		var wypełniacz, html;
 		
-		$j("#theTable").html("<tr><td colspan=3 align=center style='padding-bottom:20px; color: gray;'><b>1. Możesz zamówić maksymalnie 5 biletów.<br>2. W calu zamówienia wiekszej liczby biletów skontaktuj się z nami telefonicznie. Dla grup zorganizowanych przewidziane są zniżki. </b></td></tr><tr><td></td><td align=center><br/><b>- E K R A N -</b><br/><br/><br/></td><td></td></tr> ")
+		$j("#sidzenia_table").html("<tr><td></td><td align='center'><br/><b>- E K R A N -</b><br/><br/><br/></td><td></td></tr>")
 		
 		for(var i=0; i<h; i++)
 		{
@@ -68,10 +187,36 @@
 			}
 			html += "</td><td width='10px' valign='middle'>"+chars[i]+"</td></tr>";
 				
-			$j("#theTable").append(html);
+			$j("#sidzenia_table").append(html);
 		}	
 		return true;
 	}
 	
 </script>
 <% end -%>
+<div style='text-align:left;'>
+<%# debug(@cinema.cinema_films) %>
+<br><br>
+
+
+<!-- kino -->
+KINO: <%= @cinema.name %> &nbsp; &nbsp; <a onClick="askForCinema()" style='cursor:pointer;'>zmień kino</a><br/><br/>
+
+<!-- filmy -->
+<% @cinema.cinema_films.each { |cf| -%>
+<h3><%= link_to cf.film.title, "/public/zakup?film_id="+cf.film.id.to_s+"&cf_id="+cf.id.to_s, :class => "speed_film" %></h3>
+<% } -%><br/>
+
+<!-- daty -->
+<% 7.times { |i| %>
+<%= (Time.new + 3600*24*i).strftime("%Y-%m-%d") %><br/>
+<% } %><br/>
+
+<!-- godziny -->
+<% if @seances -%>
+	<% @seances.each { |s| -%>
+	<%= link_to s.time_from, "/public/zakup?id="+s.id.to_s, :class => "speed_seance" %><br/>
+	<% } -%>
+<% end -%>
+
+</div>

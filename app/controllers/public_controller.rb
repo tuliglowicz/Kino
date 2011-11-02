@@ -4,55 +4,6 @@ class PublicController < ApplicationController
 	before_filter :auth_access_user, :only => [:panel]
 	
 	
-	def panel
-		render :layout => 'admin'
-	end
-
-	def login	  
-	  if params[:login] and  params[:password]
-			logged_in_user = Auth.try_to_login(params[:login], params[:password])
-    
-      session[:user] = nil  # bez tego
-    
-      if logged_in_user     
-        logger.debug 'Zalogowano'
-        #flash[:notice] = "Zalogowany1!+#{logged_in_user.class.name}"
-        if logged_in_user.kind_of? User
-          session[:user] = logged_in_user
-          #flash[:notice] = "Zalogowany2 jako+#{session[:user].class.name}"
-          flash[:notice] = 'Zalogowany jako użytkownik!'
-          logger.debug 'Zalogowany jako użytkownik'
-          redirect_to(:controller => "public", :action => "index") 
-        end
-        session[:cinema_id] = 1
-      else
-        flash[:notice] = "Błędny login i/albo hasło!"
-      end
-		else
-			# can happen whenever user visits page firt time. 
-			# it's added to avoid unexpected comments to the user.
-		end  	
-  end
-	
-	def logout
-    session[:user] = nil
-    flash[:notice] = "Użytkownik wylogowany"
-     #flash[:notice] = "Użytkownik wylogowany+#{session[:user]}"
-    redirect_to(:controller => "public", :action => "login")
-  end
-	
-	def generator
-		if params[:xml]
-			# dodaj je jakos do bazy
-			xml = params[:xml]
-			
-		end
-		
-	end
-	
-	def register
-	end
-
 	def preindex
 		redirect_to "/public/index"
 	end
@@ -60,22 +11,56 @@ class PublicController < ApplicationController
 	def index
 	end
 	
+	def register
+	end
+	
 	def kina
 		@cinemas = Cinema.all
 	end
 
-	def profile #WTF?- optymalizacja
-		#if session[:user]==nil
-    if session[:user] 
-		  @user=session[:user]
+	def profile
+    	if session[:user]
+			@user=session[:user]
 		else
-      redirect_to(:controller => "public", :action => "index")
-    end
-	  
+			redirect_to(:controller => "public", :action => "index")
+    	end
 	end
-	
+
   	def dane_filmu
 		 @film=Film.find(params[:id])
+	end
+
+	def login	  
+		if params[:login] and  params[:password]
+			logged_in_user = Auth.try_to_login(params[:login], params[:password])
+			
+			session[:user] = nil  # bez tego
+			
+			if logged_in_user     
+				logger.debug 'Zalogowano'
+				#flash[:notice] = "Zalogowany1!+#{logged_in_user.class.name}"
+					if logged_in_user.kind_of? User
+						session[:user] = logged_in_user
+						#flash[:notice] = "Zalogowany2 jako+#{session[:user].class.name}"
+						flash[:notice] = 'Zalogowany jako użytkownik!'
+						logger.debug 'Zalogowany jako użytkownik'
+						redirect_to(:controller => "public", :action => "index") 
+					end
+				session[:cinema_id] = 1
+			else
+				flash[:notice] = "Błędny login i/albo hasło!"
+			end
+		else
+			# can happen whenever user visits page firt time. 
+			# it's added to avoid unexpected comments to the user.
+		end  	
+	end
+	
+	def logout
+		session[:user] = nil
+		flash[:notice] = "Użytkownik wylogowany"
+		 #flash[:notice] = "Użytkownik wylogowany+#{session[:user]}"
+		redirect_to(:controller => "public", :action => "login")
 	end
 
 	def repertuar
@@ -86,7 +71,7 @@ class PublicController < ApplicationController
 			@cinema = Cinema.find(cinema_id)
 			if @cinema
 				
-				@date_foreward = params[:id].to_i ||= 0		
+				@date_foreward = params[:id].to_i ||= 0
 				if @date_foreward > 6 or @date_foreward <0
 					@date_foreward = 0
 				end			
@@ -151,40 +136,38 @@ class PublicController < ApplicationController
 	end
 	
 	def ceny
-		cinema_id = request.xhr? ? params[:cinema_id] : cookies[:cinema_id]
-    
-    mySeanceID = 1 # zmiena przechowywująca wyświetlane kino w pętli
-    
-    sqlQuery = "SELECT *
-      FROM ticket_sort_prices
-      Where cinema_id = #{cinema_id}
-        "  
-            
-    
-    sqlQuery2 = "SELECT *
-    FROM seance_types
-    Where seance_types.id IN
-    (SELECT seance_type_id AS seance_type_id
-    FROM ticket_sort_prices
-    Where cinema_id = #{cinema_id}
-    )
-    "
-    
-    @cinema = Cinema.find(cinema_id)
-   
-    @ticket_sort_prices = TicketSortPrice.find_by_sql(sqlQuery)
-    if SeanceType.find_by_sql(sqlQuery2).empty?
-        @areSeances = false
-    else
-        @areSeances = true
-        @seanceTypes = SeanceType.find_by_sql(sqlQuery2)
-    end
-    
+		cinema_id = cookies[:cinema_id]
+
+		mySeanceID = 1 # zmiena przechowywująca wyświetlane kino w pętli
+		
+		sqlQuery = "SELECT *
+		  FROM ticket_sort_prices
+		  Where cinema_id = #{cinema_id}"
+
+		sqlQuery2 = "SELECT *
+		FROM seance_types
+		Where seance_types.id IN
+		(SELECT seance_type_id AS seance_type_id
+		FROM ticket_sort_prices
+		Where cinema_id = #{cinema_id}
+		)
+		"
+		
+		@cinema = Cinema.find(cinema_id)
+		
+		@ticket_sort_prices = TicketSortPrice.find_by_sql(sqlQuery)
+		
+		# optymalizacja, Piotr!
+		if SeanceType.find_by_sql(sqlQuery2).empty?
+			@areSeances = false
+		else
+			@areSeances = true
+			@seanceTypes = SeanceType.find_by_sql(sqlQuery2)
+		end		
 	end
 	
 	def kontakt
 	end
-	
 	
 	def ajax
 		date = ""
@@ -229,34 +212,45 @@ class PublicController < ApplicationController
 	    end	    		
 	end
 	
+	def speedBooking
+		
+	end
+	
 	def zakup
-		if params[:id] && params[:id].length > 0 && cookies[:cinema_id]
-			@seance = Seance.where(:id => params[:id])[0]
-			
-			sqlQuery="SELECT s.row, s.column
-			FROM seats s
-			WHERE id IN
-				(SELECT seat_id AS id
-				 FROM tickets
-				 WHERE NOT cancelled AND seance_id IN
-				 (SELECT id AS seance_id
-				  FROM seances
-				  WHERE id = "+params[:id]+"
-				 )
-				);"
-			@reserved_seats = Seat.find_by_sql(sqlQuery) #Seat.where(:id => Ticket.where(:seance_id => @seance))
-			
-			tmp = []
-			for rs in @reserved_seats
-				tmp << rs.row+rs.column.to_s
+		if cookies[:cinema_id] && cookies[:cinema_id].length > 0
+			@cinema = Cinema.find(cookies[:cinema_id])
+						
+			if params[:id] && params[:id].length > 0
+				@seance = Seance.where(:id => params[:id])[0]
+				
+				sqlQuery="SELECT s.row, s.column
+				FROM seats s
+				WHERE id IN
+					(SELECT seat_id AS id
+					 FROM tickets
+					 WHERE NOT cancelled AND seance_id IN
+					 (SELECT id AS seance_id
+					  FROM seances
+					  WHERE id = "+params[:id]+"
+					 )
+					);"
+				@reserved_seats = Seat.find_by_sql(sqlQuery) #Seat.where(:id => Ticket.where(:seance_id => @seance))
+				
+				tmp = []
+				for rs in @reserved_seats
+					tmp << rs.row+rs.column.to_s
+				end
+				@reserved_seats = tmp
+				
+				@discounts = TicketType.all
 			end
-			@reserved_seats = tmp
-			
-			@discounts = TicketType.all
+			if params[:cf_id] && params[:cf_id].length > 0
+				@seances = Seance.find(:all, :conditions => "cinema_film_id =" + params[:cf_id]+" AND date_from < date(now()) + integer '6' AND date_from >= date(now())", :order => "date_from, time_from")
+			end
 		end
 	end
 		
-	# dalej testujesz, czy można skasować?
+	# dalej testujesz, czy można tą akcję skasować ?
 	def test
 		@testing = User.find_by_sql("SELECT * from users where id = 6")
 		
@@ -338,14 +332,12 @@ class PublicController < ApplicationController
 	end
 	
 	def get_data_to_verify
-		 {
-      'p24_session_id' => params[:p24_session_id],
-      'p24_order_id' => params[:p24_order_id],
-      'p24_id_sprzedawcy' => '13132',
-      'p24_kwota' => params[:p24_kwota]
-    }
+		{
+			'p24_session_id' => params[:p24_session_id],
+			'p24_order_id' => params[:p24_order_id],
+			'p24_id_sprzedawcy' => '13132',
+			'p24_kwota' => params[:p24_kwota]
+		}
 	end
-	
-	
 	
 end

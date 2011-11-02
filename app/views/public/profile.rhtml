@@ -23,9 +23,6 @@
 		</style>
 	</head>
 	<body>
-		
-
-
 		<div style="float:left;">
 			<p>Witaj, <%= user.login %>!</p>
 		</div>
@@ -72,7 +69,6 @@
 			<% end %>
 		</div>
 
-
 		<div class="pwd" style="float:right;" hidden=true>
 			<%= form_for(@user) do |us| %>
 			  <% if @user.errors.any? %>
@@ -101,9 +97,6 @@
 			  </div>
 			<% end %>
 		</div>			
-		
-		
-		
 		
 		<% link_to 'edytuj', :controller => "users", :action => "edit", :id => user.id.to_s %>
 	</body>

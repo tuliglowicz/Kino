@@ -9,6 +9,7 @@ gem 'pg'
 gem 'actionmailer'
 gem 'will_paginate'
 gem 'client_side_validations'
+gem 'acts_as_ordinalized'
 
 # Use unicorn as the web server
 # gem 'unicorn'

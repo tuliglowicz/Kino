@@ -28,7 +28,7 @@
     <th></th>
   </tr>
 <% i = 0 %>
-<% j = 0 %>
+
 <% @films.each do |film| %>
 
 <script type="text/javascript">
@@ -40,7 +40,7 @@
 
 	
   <tr>
-  	<td><%= j=j+1 %></td>
+  	<td><%= film.ordinal_number %></td>
   	<td width=70px align=center><%= trim(film.title, 2) %></td>
     <td><%= film.director %></td>
     <td width=50px align=center><%= film.year %></td>

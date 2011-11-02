@@ -1,8 +1,7 @@
 <h1>Lista pracowników</h1>
 <%= link_to 'Dodaj', new_worker_path %><br><br>
 
-<% if @workers  
-	worker_number=1%>
+<% if @workers %>
 	<table id="listaRekordow" cellspacing=0 cellpadding=5px>
 	  <tr>
 	  	<td>Nr</td>
@@ -17,9 +16,8 @@
 	  </tr>
 	<% @workers.each do |worker| %>
 	  <tr>
-	  	<td><%= worker_number %></td>
-	  	<% worker_number += 1%>
-	    <td><%= worker.cinema.name if worker.cinema %></td>
+	  	<td><%= worker.ordinal_number %></td>
+	  	<td><%= worker.cinema.name if worker.cinema %></td>
 	    <td><%= worker.status.name if worker.status %></td>
 	    <td><%= worker.login %></td>
 	    <td><%= worker.first_name %></td>

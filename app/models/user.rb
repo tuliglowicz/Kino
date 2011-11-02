@@ -1,6 +1,7 @@
 # encoding: utf-8
+require 'acts_as_ordinalized'
 class User < ActiveRecord::Base
-    
+    acts_as_ordinalized
     attr_accessor :hashed_password_confirmation
   
     has_many :tickets, :dependent => :delete_all

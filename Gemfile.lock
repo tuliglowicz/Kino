@@ -28,6 +28,7 @@ GEM
       activemodel (= 3.0.7)
       activesupport (= 3.0.7)
     activesupport (3.0.7)
+    acts_as_ordinalized (0.2.5)
     arel (2.0.9)
     builder (2.1.2)
     client_side_validations (3.1.0)
@@ -74,6 +75,7 @@ PLATFORMS
 
 DEPENDENCIES
   actionmailer
+  acts_as_ordinalized
   client_side_validations
   pg
   rails (= 3.0.7)

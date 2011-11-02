@@ -21,13 +21,10 @@
     <th></th>
   </tr>
  
-<% @ticket_number = 1%>
-
 <% @ticket_sort_prices.each do |ticket_sort_price| %>
   <tr>
-  	<td><%= @ticket_number %></td>
-  	<% @ticket_number += 1%>
-    <td><%= Cinema.find(ticket_sort_price.cinema_id).name %></td>
+  	<td><%= ticket_sort_price.ordinal_number %></td>
+  	<td><%= Cinema.find(ticket_sort_price.cinema_id).name %></td>
     <td><%= SeanceType.find(ticket_sort_price.seance_type_id).name %></td>
     <td><%= TicketType.find(ticket_sort_price.ticket_type_id).name %></td>
     <td><%= ticket_sort_price.price %></td>

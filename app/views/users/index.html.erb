@@ -13,12 +13,9 @@
     <th></th>
     <th></th>
   </tr>
-<% @user_number = 1%>
-
 <% @users.each do |user| %>
   <tr>
-    <td><%= @user_number %></td>
-    <% @user_number += 1%>
+    <td><%= user.ordinal_number %></td>
     <td><%= user.login %></td>    
     <td><%= user.email %></td>
    	<td><%= user.phone %></td>   

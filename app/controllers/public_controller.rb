@@ -237,10 +237,12 @@ class PublicController < ApplicationController
 			seances = Seance.find(:all, :conditions => "cinema_film_id =" + params[:cf_id]+" AND date_from < date(now()) + integer '7' AND date_from >= date(now())", :order => "date_from, time_from")
 			
 			render :json => seances
+			return;
 		else
 			if request.xhr? && cookies[:cinema_id]
 				resp = session[:user] == nil
 				render :json => resp;
+				return;
 			end
 		end
 		if request.xhr? && params[:xml]
@@ -272,6 +274,10 @@ class PublicController < ApplicationController
 			}
 			
 			render :json => true
+			return;
+		else
+			render :json => false
+			return;
 		end
 	end
 	

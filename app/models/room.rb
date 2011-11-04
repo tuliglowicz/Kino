@@ -1,7 +1,7 @@
 # encoding: utf-8
-#require 'acts_as_ordinalized'
+require 'acts_as_ordinalized'
 class Room < ActiveRecord::Base
-	#acts_as_ordinalized
+	acts_as_ordinalized
 	belongs_to :cinema
 	belongs_to :roomview
 	has_many :seats

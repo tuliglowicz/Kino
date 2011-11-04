@@ -1,7 +1,7 @@
 # encoding: utf-8
-#require 'acts_as_ordinalized'
+require 'acts_as_ordinalized'
 class TicketSortPrice < ActiveRecord::Base
-  #acts_as_ordinalized
+  acts_as_ordinalized
   has_many :tickets
   belongs_to :discount_sort
   belongs_to :cinema

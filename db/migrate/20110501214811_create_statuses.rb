@@ -1,8 +1,9 @@
 class CreateStatuses < ActiveRecord::Migration
   def self.up
     create_table :statuses do |t|
-      t.int, :id
+      
       t.string :name
+      t.integer :privilege_id
 
       t.timestamps
     end

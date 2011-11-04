@@ -1,13 +1,12 @@
-# encoding: UTF-8
-class CreateTicketsSortsPrices < ActiveRecord::Migration
+class CreateTicketSortPrices < ActiveRecord::Migration
   def self.up
     create_table :tickets_sorts_prices do |t|
-      t.int :id
-      t.int :cinema_id
-      t.int :seance_type_id
-      t.int :ticket_type_id
-      #t.bigdecimal :price
-      t.int :discount_sort_id
+     
+      t.integer :cinema_id
+      t.integer :seance_type_id
+      t.integer :ticket_type_id
+      t.decimal :price
+      t.integer :discount_sort_id
       t.string :description
 
       t.timestamps

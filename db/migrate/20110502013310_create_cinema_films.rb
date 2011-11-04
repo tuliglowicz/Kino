@@ -1,9 +1,9 @@
 class CreateCinemaFilms < ActiveRecord::Migration
   def self.up
     create_table :cinema_films do |t|
-      t.int, :id
-      t.int, :cinema_id
-      t.int, :film_id
+     
+      t.integer :cinema_id
+      t.integer :film_id
       t.date :date_from
       t.date :date_untill
 

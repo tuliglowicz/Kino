@@ -1,15 +1,16 @@
 class CreateTickets < ActiveRecord::Migration
   def self.up
     create_table :tickets do |t|
-      t.int, :id
-      t.int, :seance_id
-      t.int, :seat_id
-      t.int, :user_id
-      t.boolean, :cancelled
-      t.int, :reservation_id
-      t.bigdecimal, :price
-      t.int :worker_id
-
+      t.integer :seance_id
+      t.integer :seat_id
+      t.integer :user_id
+      t.boolean :cancelled
+      t.integer :reservation_id
+      t.boolean :bought
+      t.decimal :price
+      t.integer :worker_id
+      t.integer :ticket_type_id
+      
       t.timestamps
     end
   end

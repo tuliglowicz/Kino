@@ -1,10 +1,10 @@
 class CreateSeats < ActiveRecord::Migration
   def self.up
     create_table :seats do |t|
-      t.int, :id
-      t.int, :room_id
-      t.char, :row
-      t.int :collumn
+      
+      t.integer :room_id
+      t.string :row
+      t.integer :collumn
 
       t.timestamps
     end

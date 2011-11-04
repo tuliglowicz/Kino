@@ -3,6 +3,7 @@ class CreateStatuses < ActiveRecord::Migration
     create_table :statuses do |t|
       t.int, :id
       t.string :name
+      t.int :privilege_id
 
       t.timestamps
     end

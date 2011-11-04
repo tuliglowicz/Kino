@@ -8,8 +8,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :first_name
       t.string :last_name
       t.int :phone
-      t.xml :about
-
+     
       t.timestamps
     end
   end

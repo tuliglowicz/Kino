@@ -8,8 +8,9 @@ class CreateFilms < ActiveRecord::Migration
       t.int, :category_id
       t.string, :trailer
       t.int, :length
-      t.string :description
-      t.string :poster
+      t.string, :description
+      t.string, :poster
+      t.date, :date_from
 
       t.timestamps
     end

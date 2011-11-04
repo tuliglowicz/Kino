@@ -5,7 +5,7 @@ class CreateWorkers < ActiveRecord::Migration
       t.int, :cinema_id
       t.int, :status_id
       t.string, :login
-      t.string, :password
+      t.string, :hashed_password
       t.string, :first_name
       t.string, :last_name
       t.int, :phone

@@ -3,7 +3,7 @@ class CreateSeats < ActiveRecord::Migration
     create_table :seats do |t|
       
       t.integer :room_id
-      t.char :row
+      t.string :row
       t.integer :collumn
 
       t.timestamps

@@ -281,18 +281,19 @@ class PublicController < ApplicationController
 			else
 				
 				@customer_full_name = 'full_name'
-				@customer_email = 'email'
+				@customer_email = 'dj.serwisy@gmail.com'
 			end
 			
-			@payment = get_payment()
+			payment = get_payment(params[:amount])
+			
+			@payment = (payment == 0 ? 10 : payment)
       @customer_address = 'not_important '
       @city = 'not_important'
       @description = 'Test_OK'
-			@crc_hash = Digest::MD5.hexidigest 'ToDo_update_hash_creating_statement_when_all_indispensable_data_is_collected'
-			else
-			  redirect_to "/"
+			@crc_hash = Digest::MD5.hexdigest(@reservation.id.to_s + "|13132|" + @payment.to_s + "|a20c0ee19ecc09ac")
+		else
+			redirect_to "/"
 		end
-		
 	end
 	
 	# run whenever payment operation finished successfully
@@ -344,4 +345,14 @@ class PublicController < ApplicationController
 		}
 	end
 	
+private 
+
+  def get_payment(amount)
+    amount_as_array = amount.to_s.split('.')
+    
+    full_price_to_pay = amount_as_array[0].to_i * 100
+    full_price_to_pay += amount_as_array[1].to_i 
+    
+    full_price_to_pay 
+  end
 end

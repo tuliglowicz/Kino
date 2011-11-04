@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   
     validates_presence_of :login, :message => 'Musisz podać login'
     validates_presence_of :email, :message => 'Musisz podać email'
+    validates_presence_of :first_name, :message => 'Musisz podać imię'
+    validates_presence_of :last_name, :message => 'Musisz podać nazwisko'
     validates_length_of :hashed_password, :minimum => 6, :message => "Musisz podać hasło, które ma minimum 6 znaków"
     validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :on => :create, :message => 'nieprawidłowy format'
     validates_length_of :phone, :is => 9, :only_integer => true, :message => 'Numer telefonu składa się z 9 znaków.'

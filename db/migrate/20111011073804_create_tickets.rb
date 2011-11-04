@@ -1,6 +1,6 @@
 class CreateTickets < ActiveRecord::Migration
   def self.up
-    create_table :ticketst.integer :id
+    create_table :tickets do |t|
       t.integer :seance_id
       t.integer :seat_id
       t.integer :user_id

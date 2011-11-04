@@ -1,8 +1,3 @@
-<script src="/javascripts/jquery-1.6.2.min.js" type="text/javascript" charset="utf-8"></script>
-<script src="/javascripts/jyoutube.js" type="text/javascript" charset="utf-8"></script>
-<script src="/javascripts/jyoutube.min.js" type="text/javascript" charset="utf-8"></script>
-
-
 <h1>Lista filmów </h1>
 
 <br />
@@ -32,10 +27,9 @@
 <% @films.each do |film| %>
 
 <script type="text/javascript">
-		
-					$(document).ready(function(){
-						    $('#thumbs<%= i %>').append($('<a href="<%= film.trailer %>"><img src="'+$.jYoutube('<%= film.trailer %>', 'small')+'" /></a>'));
-					});
+$j(document).ready(function(){
+	    $j('#thumbs<%= i %>').append($j('<a href="<%= film.trailer %>" class="youtube_trailer"><img src="'+$j.jYoutube('<%= film.trailer %>', 'small')+'" /></a>'));
+});
 </script>
 
 	
@@ -65,4 +59,3 @@
 	<%= will_paginate @films,  { :previous_label => 'Wstecz', :next_label => 'Dalej' } %>
 	
 <br />
-

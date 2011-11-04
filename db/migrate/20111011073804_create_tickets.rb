@@ -6,6 +6,7 @@ class CreateTickets < ActiveRecord::Migration
       t.integer :user_id
       t.boolean :cancelled
       t.integer :reservation_id
+      t.boolean :bought
       t.decimal :price
       t.integer :worker_id
       t.integer :ticket_type_id

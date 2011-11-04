@@ -1,7 +1,7 @@
 <style>
 	.seat.deselected {
 		opacity: 0;
-	}	
+	}
 	.seat {
 		cursor:pointer;
 		font-size:12px;
@@ -27,16 +27,25 @@
 		background-image:url('/images/pic/seat2.jpg');
 	}
 	.krok_zakup_center {
-		width: 700px;
+		width: 800px;
 		text-align:left;
-		margin-left: 50px;
+		margin-left: 10px;
 	}
-
+	
+	/*
+	#nextStep {
+		position:fixed;
+		top: 350px;
+		left: 90%;
+	}
+	#prevStep {
+		position:fixed;
+		top:350px;
+		left:10%;		
+	}
+	*/
 </style>
 
-<% unless @seance || @discounts -%>
-	Wybierz seans przy pomocy narzedzia po lewej.
-<% else -%>
 	<!--
 	<div id="disc_sel" style="position:absolute;display:block;"><%= select_tag('ticket[discount_id]', options_for_select([['wybierz rodzaj biletu', '-1']] + @discounts.collect{|r| [r.name, r.id]}), :id => "theSel", :onchange => "changed(this)") if @discounts%></div>
 	-->
@@ -71,18 +80,103 @@
 					<br/><br/>
 					<h2>Wybierz seans.</h2><br/>
 					<!-- kino -->
-					KINO: <%= @cinema.name %> &nbsp; &nbsp; <a onClick="askForCinema()" style='cursor:pointer;'>zmień kino</a><br/><br/>
-					
+					KINO: <b><%= @cinema.name %></b> &nbsp; &nbsp; <a onClick="askForCinema()" style='cursor:pointer;'>zmień kino</a><br/><br/>
 					<!-- filmy -->
 					<% @cinema.cinema_films.each { |cf| -%>
-					<h3><%= link_to cf.film.title, "/public/zakup?film_id="+cf.film.id.to_s+"&cf_id="+cf.id.to_s, :class => "speed_film" %></h3>
+					<div id="cf<%= cf.id.to_s %>" style="display:none;">
+						<h3>
+							<%= link_to cf.film.title, "/public/zakup?cf_id="+cf.id.to_s, :class => "speed_film_close" %>
+							<img src="/images/pic/loader_min.gif" id="img_cf<%= cf.id.to_s %>" style="padding-left:5px;display:none;"align="absbottom">							
+						</h3>
+						<div id="cf_inner<%= cf.id.to_s %>" style="display:none;"></div>
+					</div>
 					<% } -%><br/>
+					<hr size='1' color='white'><br>
+					Kliknij w tytuł filmu, aby wyświetlić godziny jego seansów.<br/>
+					<% @cinema.cinema_films.each { |cf| -%>
+					<h3><%= link_to cf.film.title, "/public/zakup?cf_id="+cf.id.to_s, :id => "cf_link"+cf.id.to_s, :class => "speed_film" %></h3>
+					<% } -%><br/>
+					
+					
+					<script>
+					
+					$j(".speed_film_close").live("click", function(){
+						var cf_id = this.href.substring(this.href.lastIndexOf("=")+1);
+						
+						$j("#cf_link"+cf_id).myShow(250);
+						$j("#cf"+cf_id).myHide(250);
+						
+						return false;
+					});
+					$j(".speed_film").live("click", function(){						
+						var cf_id = this.href.substring(this.href.lastIndexOf("=")+1);
+						var href = this.href
+						$j("#cf_link"+cf_id).myHide(250);
+						$j("#cf"+cf_id).myShow(250)
+						$j("#img_cf"+cf_id).css({"opacity": "0", "display": "inline"}).animate({"opacity": "1"}, 250);
+						
+						var tmp_ajax = $j.ajax({
+							url: this.href.replace("zakup", "speedBooking"),
+							type: "GET",
+							dataType : 'json',
+							success: function (json){
+								html = "Kliknij w powyższy tytuł filmu, aby zamknąć wyświetlane godziny.<br/>Kliknij w wybraną godzinę w wybranym dniu, aby przejść do dalsze<table border='0px' cellspacing='0'>"
+								
+								html += "<tr><th></th>"
+								var tmp_date = "";
+								var counter = 0;
+								for(var i in json){
+									if(!$j.isFunction(json[i])){
+										date_from = json[i].seance.date_from
+										if(tmp_date == "" || date_from != tmp_date){
+											tmp_date = json[i].seance.date_from
+											var myDays=["Niedziela","Poniedziałek","Wtorek","Środa","Czwartek","Piątek","Sobota"]
+											var date = new Date();
+											html += "<th style='border-left:1px solid white;'>"+(myDays[(counter+date.getDay())%7])+" "+date_from+"</th>";
+											counter++;
+										}
+									}
+								}
+								html += "</tr><tr valign='top'><td width='1px'>"
+								
+								var date_from, time_from, id
+								for(var i in json)
+									if(!$j.isFunction(json[i])){
+										date_from = json[i].seance.date_from
+										time_from = json[i].seance.time_from.substring(11, 16) //CAN CAUSE PROBLEMS -!!!
+										seance_id = json[i].seance.id
+										
+										if(date_from != tmp_date){
+											html += "</td><td width='250px' style='border-left:1px solid white;'>";
+											tmp_date = date_from;
+										}
+									
+										html += "<a href='"+href.substring(0, href.indexOf("?")+1)+"id="+seance_id+"' >"+time_from+"</a> "
+									}
+								html += "</td></tr></table><br/>"
+								
+								$j("#cf_inner"+cf_id).show().html(html);
+								$j("#img_cf"+cf_id).css("display", "none");
+							},
+							error: function(a,b,c,d,e){
+								p = a
+								for(var i in p)	if(!$j.isFunction(p[i])) alert(i+":"+p[i]);
+								alert(a);
+								alert(b);
+								alert(c);
+							}
+						});
+						
+						
+						return false;
+					})
+					</script>
 					
 					<!-- daty -->
 					<%# 7.times { |i| %>
 					<%#= (Time.new + 3600*24*i).strftime("%Y-%m-%d") %><br/>
 					<%# } %><br/>
-					
+
 					<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 				</div>
 				<div id="siedzenia" class="krok_zakup_center">
@@ -207,6 +301,9 @@
 			}	
 			return true;
 		}
-		
-	</script>
+<% unless @seance || @discounts -%>
+	Wybierz seans przy pomocy narzedzia po lewej.
+<% else -%>
 <% end -%>
+
+</script>

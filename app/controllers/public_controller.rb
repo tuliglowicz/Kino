@@ -27,7 +27,10 @@ class PublicController < ApplicationController
 	end
 
   	def dane_filmu
-		 @film=Film.find(params[:id])
+  		# wymagany jest jakiś mechanizm sprawdzania params[:id], żeby odrzucić bzdurne wartości wpisane z palca do adresu
+  		# sprawdź dla -2: localhost:3000/public/dane_filmu?id=-2
+  		# chyba wszędzie przydałby się bardziej zaawansowany mechanizm do testów params (kilka helperów albo jeden z odpowiednimi parametrami)
+		@film=Film.find(params[:id])
 	end
 
 	def login	  
@@ -163,7 +166,7 @@ class PublicController < ApplicationController
 		else
 			@areSeances = true
 			@seanceTypes = SeanceType.find_by_sql(sqlQuery2)
-		end		
+		end
 	end
 	
 	def kontakt
@@ -213,8 +216,10 @@ class PublicController < ApplicationController
 	end
 	
 	def speedBooking
-		if rexuest.xhr? && params[:cf_id] && params[:cf_id].length > 0 && cookies[:cinema_id]
-			@seances = Seance.find(:all, :conditions => "cinema_film_id =" + params[:cf_id]+" AND date_from < date(now()) + integer '6' AND date_from >= date(now())", :order => "date_from, time_from")
+		if request.xhr? && params[:cf_id] && params[:cf_id].length > 0 && cookies[:cinema_id]
+			seances = Seance.find(:all, :conditions => "cinema_film_id =" + params[:cf_id]+" AND date_from < date(now()) + integer '7' AND date_from >= date(now())", :order => "date_from, time_from")
+			
+			render :json => seances
 		end
 	end
 	

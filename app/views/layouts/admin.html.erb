@@ -4,7 +4,73 @@
 <head>
 <META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8"/>
 
-  <%= stylesheet_link_tag :all %> 
+  <%= stylesheet_link_tag :all %>
+  <style type="text/css">
+	body{
+		background-color:#EEEEEE;
+		background-image: none;
+	}
+	li{
+		padding-bottom: 5px;
+	}
+	
+	.contentData a:link{
+		color:#336699;
+	}
+	.contentData a:visited{
+		color:#336699;
+	}
+	.contentData a:hover,a:active{
+		color:red;
+	}
+	
+	
+	.topMenuData{
+		font-weight:bold;
+		color:#CCCCCC;
+	}
+	
+	.contentData{
+		color:black;
+		margin-left: 30px;
+
+	}
+
+	td.lout{
+		border-collapse: collapse;
+	}
+	td.lout a{
+	   width: 5em;
+	   height:30px;
+	   padding: 13px;
+	   text-decoration: none;
+	}
+	td.lout a:link, td.lout a:visited {
+	   color: #EE4242;
+	   font-weight:bold;
+
+	}
+	td.lout a:hover, td.lout a:active {
+	   color: black;
+	   background-color: #EE4242;
+	}
+
+	
+	.aMenu{
+		font-size: 1.1em;
+		padding-left:5px;
+	}
+	.aMenu a:link,a:visited{
+		display:block;
+		color:#000000;
+	}
+	.aMenu a:hover,a:active, a:checked{	
+		background-color:#80B2DC;
+		color:white;			
+	}	
+
+
+	</style>
   <%= javascript_include_tag "jquery-1.6.2.min.js" %>
   <%= javascript_include_tag "jquery-ui-1.8.16.custom.min.js" %>
 	<%= javascript_include_tag "rep_helper.js" %>
@@ -21,68 +87,60 @@
   
 
 </head>
-
-
-<BODY BGCOLOR="#FFFFFF" background="../images/pic/bgstripe.gif" TEXT="#000000" LEFTMARGIN="0" TOPMARGIN="0" MARGINWIDTH="0" MARGINHEIGHT="0">
-
-</br>
-
-<table align=center width="90%" bgcolor=black cellspacing=0 cellpadding=0 style='border-width: 1px 1px 1px 1px;border-color: #DDDDDD #DDDDDD #DDDDDD #DDDDDD;border-style: solid solid solid solid;	 background-color:#FFFFFF '>
-<tr><td>
-
-
-<table width=100%><tr><td>
-<BR>
-
-<h1 style='color:#FF00FF;font-size:30'><I> &nbsp; &nbsp;
-<%= (session[:worker].cinema.name ) if session[:worker] %></I></H1>
-
-<h2 style='color:#0079ff;font-size:28'><I> &nbsp; &nbsp;
-	<%= (session[:worker].first_name + " " + session[:worker].last_name + " - " + session[:worker].status.name) if session[:worker] %></I></H2>
-</TD>
-<td></TD>
-</Table>
-
-<center><hr size=1 color=a7a7a7 width=100%></center>
-
-<!-- W Ł A ¦ C I W A   C Z Ę ¦ Ć  -->
-<FONT COLOR=#000000">
-<table cellspacing=0 cellpadding=0 width=100% height=496 border=0>
-<tr>
-<td width=1%>&nbsp;</TD>
-
-<td width=15% valign=top>
-<B style='color:#FFFFFF;font-size:14' >Menu:</B><BR>
-<%# MENU MENU MENU MENU -%>
-<ul>
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+	<table align=center width="80%" bgcolor=white border="0px" cellspacing=0 cellpadding=0 background-color:#FFFFFF>
+		<tr style="background-color: #222222">
+			<td width=20%></td>
+			<td width=15% valign="center">
+				<span style="font-size: 1.4em">kino:</span>
+				<span class="topMenuData" style="font-size: 1.4em">
+					<%= (session[:worker].cinema.name ) if session[:worker] %>
+				</span>
+			</td>
+			<td width="30%">
+				pracownik:
+				<span class="topMenuData">
+					<%= (session[:worker].first_name + " " + session[:worker].last_name) if session[:worker] %>
+				</span>
+				<br/>
+				stanowisko:						
+				<span class="topMenuData">
+					<%= (session[:worker].status.name) if session[:worker] %>
+				</span>
+			</td>
+			<td align="right"  class="lout" >
+				<%= link_to("Wyloguj", {:controller => 'private', :action => 'logout'}, :class=>"lout")%>
 	
-<% if session[:worker] -%>
-	<%= render 'private/menu' %>
-<% else if session[:user] -%>
-	<%= render 'public/menu' %>
-<% end end -%>
+			</td>
+		</tr>
+				<!-- <center><hr size=1 color=a7a7a7 width=100%></center>-->
+	
+		<!-- main -->
 
+		<tr>
+			<td valign=top >
+				<br/>
+				<ul>							
+					<% if session[:worker] -%>
+						<%= render 'private/menu' %>
+					<% else if session[:user] -%>
+						<%= render 'public/menu' %>
+					<% end end -%>				
+				</ul>
+		
+			</td>
+			<td valign=top colspan="3" >
+				<span style='color:green'><%= flash[:notice] %></span><br/>
+				<span class="contentData">
 
-<ul>
-<% #= <br><br><hr><br> %>
+					<%= yield %>
+				</span> 
+				
+			<br/><br/><br/>
+			</td>
+		</tr>
 
-
-</TD>
-<td width=1%>&nbsp;</TD>
-
-<td valign=top width=1px background="../../images/pic/border.gif" style=' width:1px;font-size:1'></TD>
-<td width="3%">&nbsp;</td>
-<td valign=top>
-	<span style='color:green'><%= flash[:notice] %></span><br/>
-<%= yield %>
-<br/><br/><br/>
-</TD>
-</TR>
-</TABLE>
-</FONT>
-<!-- E-OF W Ł A ¦ C I W A   C Z Ę ¦ Ć  -->
-<br/><br/><br/>
-</TABLE>
-</BODY>
+	</table>
+</body>
 </HTML>
 <BR>

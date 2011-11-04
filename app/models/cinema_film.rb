@@ -1,7 +1,7 @@
 # encoding: utf-8
-require 'acts_as_ordinalized'
+#require 'acts_as_ordinalized'
 class CinemaFilm < ActiveRecord::Base
-	acts_as_ordinalized
+	#acts_as_ordinalized
 	belongs_to :film
 	belongs_to :cinema
 	

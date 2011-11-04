@@ -213,7 +213,9 @@ class PublicController < ApplicationController
 	end
 	
 	def speedBooking
-		
+		if rexuest.xhr? && params[:cf_id] && params[:cf_id].length > 0 && cookies[:cinema_id]
+			@seances = Seance.find(:all, :conditions => "cinema_film_id =" + params[:cf_id]+" AND date_from < date(now()) + integer '6' AND date_from >= date(now())", :order => "date_from, time_from")
+		end
 	end
 	
 	def zakup
@@ -243,9 +245,6 @@ class PublicController < ApplicationController
 				@reserved_seats = tmp
 				
 				@discounts = TicketType.all
-			end
-			if params[:cf_id] && params[:cf_id].length > 0
-				@seances = Seance.find(:all, :conditions => "cinema_film_id =" + params[:cf_id]+" AND date_from < date(now()) + integer '6' AND date_from >= date(now())", :order => "date_from, time_from")
 			end
 		end
 	end

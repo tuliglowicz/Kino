@@ -1,7 +1,7 @@
 class CreateTicketTypes < ActiveRecord::Migration
   def self.up
     create_table :ticket_types do |t|
-      t.int :id
+     
       t.string :name
 
       t.timestamps

@@ -1,25 +1,25 @@
 class CreatePrivileges < ActiveRecord::Migration
   def self.up
     create_table :privileges do |t|
-      t.int :id
-      t.int :cities
-      t.int :categories
-      t.int :cinemas
-      t.int :cinema_films
-      t.int :discount_sorts
-      t.int :films
-      t.int :rooms
-      t.int :reservations
-      t.int :seats
-      t.int :seance_types
-      t.int :statuses
-      t.int :seances
-      t.int :tickets
-      t.int :ticket_sort_prices
-      t.int :ticket_types
-      t.int :users
-      t.int :workers
-      t.int :permissions
+     
+      t.integer :cities
+      t.integer :categories
+      t.integer :cinemas
+      t.integer :cinema_films
+      t.integer :discount_sorts
+      t.integer :films
+      t.integer :rooms
+      t.integer :reservations
+      t.integer :seats
+      t.integer :seance_types
+      t.integer :statuses
+      t.integer :seances
+      t.integer :tickets
+      t.integer :ticket_sort_prices
+      t.integer :ticket_types
+      t.integer :users
+      t.integer :workers
+      t.integer :permissions
       
       t.timestamps
     end

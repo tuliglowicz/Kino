@@ -3,6 +3,10 @@
 
 if (top.frames.length!=0) top.location=self.document.location;
 
+$j(document).ready(function(){
+	$j("a.youtube_trailer").live("click", centeredMovie);	
+})
+
 jQuery.fn.myHide = function(interval){
 	if(interval == undefined)
 		this.style.display = 'none';
@@ -16,7 +20,6 @@ jQuery.fn.myShow = function(interval){
 		jQuery(this).css("opacity", 0).show().animate({opacity: 1}, interval);
 }
 
-$j("a.youtube_trailer").click(centeredMovie);
 function centeredMovie(){
 	$j("<div id='movieTrailer'></div>").appendTo("body");
 	var v = this.href.substring(31,42);

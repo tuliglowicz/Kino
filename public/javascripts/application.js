@@ -4,18 +4,20 @@
 if (top.frames.length!=0) top.location=self.document.location;
 
 $j(document).ready(function(){
-	$j("a.youtube_trailer").live("click", centeredMovie);	
+	$j("a.youtube_trailer").live("click", centeredMovie);
 })
 
 jQuery.fn.myHide = function(interval){
 	if(interval == undefined)
-		this.style.display = 'none';
+		try {this.style.display = 'none';}
+		catch(e){alert("myHide:"+e);}
 	else
 		jQuery(this).animate({opacity: 0}, interval, function(){ this.style.display = 'none'}).css("opacity", 1)
 }
 jQuery.fn.myShow = function(interval){						
 	if(interval == undefined)
-		this.style.display = 'inherit';
+		try {this.style.display = 'inherit';}
+		catch(e){alert("myShow:"+e);}
 	else
 		jQuery(this).css("opacity", 0).show().animate({opacity: 1}, interval);
 }

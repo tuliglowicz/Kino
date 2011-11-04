@@ -1,35 +1,18 @@
-body { font-size:12px; font-family: Verdana, Arial, sans-serif; }
-INPUT {	border-width: 1px 1px 1px 1px;
-	border-color: #555 #555 #555 #555;
-	border-style: solid solid solid solid;font-family:Verdana, Arial, sans-serif;font-size:12;height:20;}
-table {font-size:12;}
+INPUT {
+	border: 1px solid #555;
+	font-family:Verdana, Arial, sans-serif;
+	font-size:12;
+	height:20;
+}
+table {
+	font-size:12;
+}
 
-.odd {background-color: #e0e0e0;}
+.odd {
+	background-color: #e0e0e0;
+}
 
 IMG {border:0;}
-
-
-.stopka, a.stopka,a.stopka:active, a.stopka:visited { font-size:10; text-decoration:underline;}
-a.stopka:hover{ font-size:10; text-decoration:none; color:black}
-
-.randIMG, a.randIMG,a.randIMG:active, a.randIMG:visited { font-family: Verdana, Arial, sans-serif;font-size:11; text-decoration:none;}
-a.randIMG:hover{ text-decoration:underline; color:black }
-
-.coolBorder {border-width: 1px 1px 1px 1px;border-color: #dddddd #dddddd #dddddd #dddddd;border-style: ridge ridge ridge ridge;}
-
-
-.allCorrectTable {border-width: 1px 1px 1px 1px;border-color: #42ee42 #42ee42 #42ee42 #42ee42;border-style: ridge ridge ridge ridge;background-color:#99ff99;}
-.problemTable {border-width: 1px 1px 1px 1px;border-color: #ee4242 #ee4242 #ee4242 #ee4242;border-style: ridge ridge ridge ridge;background-color:#ff9999;}
-
-
-.seat{cursor:pointer;font-size:12px;background-color:; color:white;padding-top:5px;vertical-align:middle;text-align:center; background-image:url('/images/pic/seat4.jpg');background-repeat:no-repeat;background-position:center top; width:25px; height:20px;float:left;}
-
-.seatSelected{cursor:pointer;font-size:12px;background-color:; color:white;padding-top:5px;vertical-align:middle;text-align:center; background-image:url('/images/pic/seat3.jpg');background-repeat:no-repeat;background-position:center top; width:25px; height:20px;float:left;}
-
-.seatResrved{color:white;font-size:12px;vertical-align:middle;padding-top:5px; width:25px; height:20px; vertical-align:middle;text-align:center;background-color:;background-image:url('/images/pic/seat2.jpg');background-repeat:no-repeat;background-position:center top;float:left;}
-
-.seat
-a.miasto {color:Orange; text-decoration:none;}
 
 body, div, ul, ol, li, h1, h2, h3, h4, h5, h6, form, fieldset, input, textarea, p {
     margin: 0;
@@ -93,27 +76,3 @@ body {background: #000 url('/images/pic/body_bg.jpg') repeat-x 0 0;}
 #footer .ft_bot .c0 .copy, #footer .ft_bot .c0 .copy a {color: #999;}
 #footer .ft_bot .c0 a:hover, #footer .ft_bot .c1 a:hover {color: #c9dde7;}
 #footer .ft_bot .c0 .copy a:hover{color: #999;}
-
-
-#ajaxWait div
-{
-	position: absolute;
-    z-index:3;
-}
-
-#ajaxWaitInner {z-index: 3;background-color: white; opacity: .8; height:298px; padding-top:1px; width:268px; text-align:center; vertical-align:middle;border-width: 1px 1px 1px 1px;border-color: #dddddd #dddddd #dddddd #dddddd;border-style: ridge ridge ridge ridge;}
-
-
-#events div
-{
-    position: absolute;
-    z-index:3;
-}
-#events div.current
-{
-    z-index:2;
-}
-#events div.previous
-{
-    z-index:1;
-}

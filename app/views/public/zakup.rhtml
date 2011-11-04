@@ -1,4 +1,20 @@
 <style>
+	a.selectedMovieTitle {
+		color: red;
+	}
+	.opis {
+		font-size: 10px;
+	}
+	.allCorrectTable {
+		border: 1px ridge #42ee42;
+		background-color:#99ff99;
+	}
+	
+	.problemTable {
+		border: 1px ridge #42ee42;
+		background-color:background-color:#ff9999;
+	}
+
 	.seat.deselected {
 		opacity: 0;
 	}
@@ -32,18 +48,20 @@
 		margin-left: 10px;
 	}
 	
-	/*
+	
 	#nextStep {
 		position:fixed;
 		top: 350px;
 		left: 90%;
+		display: none;
 	}
 	#prevStep {
 		position:fixed;
 		top:350px;
-		left:10%;		
+		left:10%;
+		display: none;
 	}
-	*/
+	
 </style>
 
 	<!--
@@ -78,98 +96,123 @@
 			<td colspan="3" id="opis" align="center" style='color:white'>			
 				<div id="seans" class="krok_zakup_center">
 					<br/><br/>
-					<h2>Wybierz seans.</h2><br/>
+					<h2>1. Wybierz seans.</h2><br/>
 					<!-- kino -->
 					KINO: <b><%= @cinema.name %></b> &nbsp; &nbsp; <a onClick="askForCinema()" style='cursor:pointer;'>zmień kino</a><br/><br/>
 					<!-- filmy -->
-					<% @cinema.cinema_films.each { |cf| -%>
-					<div id="cf<%= cf.id.to_s %>" style="display:none;">
-						<h3>
-							<%= link_to cf.film.title, "/public/zakup?cf_id="+cf.id.to_s, :class => "speed_film_close" %>
-							<img src="/images/pic/loader_min.gif" id="img_cf<%= cf.id.to_s %>" style="padding-left:5px;display:none;"align="absbottom">							
-						</h3>
-						<div id="cf_inner<%= cf.id.to_s %>" style="display:none;"></div>
+					<div id="lista_seansow" style="display:none;">
+						Kliknij w tytuł filmu, aby zamknąć wyświetlane godziny.<br/>Kliknij w wybraną godzinę w wybranym dniu, aby przejść do wyboru siedzeń.<br/>
+						<% @cinema.cinema_films.each { |cf| -%>
+						<div id="cf<%= cf.id.to_s %>" style="display:none;">
+							<h2>
+								<hr size='1' color='white' width="350px"><br/>
+								<%= link_to cf.film.title, "/public/zakup?cf_id="+cf.id.to_s, :class => "speed_film_close" %>
+								<img src="/images/pic/loader_min.gif" id="img_cf<%= cf.id.to_s %>" style="padding-left:5px;display:none;"align="absbottom">							
+							</h2>
+							<div id="cf_inner<%= cf.id.to_s %>" style="display:none;"></div>
+						</div>
+						<% } -%><br/>
 					</div>
-					<% } -%><br/>
-					<hr size='1' color='white'><br>
-					Kliknij w tytuł filmu, aby wyświetlić godziny jego seansów.<br/>
-					<% @cinema.cinema_films.each { |cf| -%>
-					<h3><%= link_to cf.film.title, "/public/zakup?cf_id="+cf.id.to_s, :id => "cf_link"+cf.id.to_s, :class => "speed_film" %></h3>
-					<% } -%><br/>
 					
+					<div id="lista_filmow">
+						<hr size='1' color='white'><br>
+						Kliknij w tytuł filmu, aby wyświetlić godziny jego seansów.<br/>
+						<% @cinema.cinema_films.each { |cf| -%>
+						<h3><%= link_to cf.film.title, "/public/zakup?cf_id="+cf.id.to_s, :id => "cf_link"+cf.id.to_s, :class => "speed_film" %></h3>
+						<% } -%><br/>
+					</div>
+				<br/>
+					<button id="switcher">Przejdź do listy seansów wybranych filmów.</button>
+				
 					
 					<script>
-					
-					$j(".speed_film_close").live("click", function(){
+					$j("#switcher").toggle(function(){
+						var i = 0;
+						$j(".selectedMovieTitle").each(function(){
+							i++;
+							hitemup(this);
+						});
+						$j("#lista_seansow").myShow(250);
+						$j("#lista_filmow").myHide(250);
+						
+						this.innerHTML = "Wróć do wyboru filmów."
+					},
+					function(){
+						$j(".speed_film_close").click();
+						$j("#lista_seansow").myHide(250);
+						$j("#lista_filmow").myShow(250);
+						
+						this.innerHTML = "Przejdź do listy seansów wybranych filmów."						
+					})
+
+					$j(".speed_film_close").live("click", function(is){
 						var cf_id = this.href.substring(this.href.lastIndexOf("=")+1);
 						
-						$j("#cf_link"+cf_id).myShow(250);
+						$j("#cf_link"+cf_id).removeClass("selectedMovieTitle").myShow(250);
 						$j("#cf"+cf_id).myHide(250);
 						
 						return false;
 					});
-					$j(".speed_film").live("click", function(){						
-						var cf_id = this.href.substring(this.href.lastIndexOf("=")+1);
-						var href = this.href
+					$j(".speed_film").live("click", function(){
+						$j(this).toggleClass("selectedMovieTitle");
+						
+						return false;
+					});
+					
+					function hitemup(arg){
+						var href = arg.href
+						var cf_id = href.substring(href.lastIndexOf("=")+1);
+						
 						$j("#cf_link"+cf_id).myHide(250);
 						$j("#cf"+cf_id).myShow(250)
 						$j("#img_cf"+cf_id).css({"opacity": "0", "display": "inline"}).animate({"opacity": "1"}, 250);
 						
 						var tmp_ajax = $j.ajax({
-							url: this.href.replace("zakup", "speedBooking"),
+							url: href.replace("zakup", "speedBooking"),
 							type: "GET",
 							dataType : 'json',
 							success: function (json){
-								html = "Kliknij w powyższy tytuł filmu, aby zamknąć wyświetlane godziny.<br/>Kliknij w wybraną godzinę w wybranym dniu, aby przejść do dalsze<table border='0px' cellspacing='0'>"
+								html = "<table class='terminy' cellspacing=0 callpadding=0 border=0><tr><td>"
 								
-								html += "<tr><th></th>"
 								var tmp_date = "";
 								var counter = 0;
+								var myDays=["Niedziela","Poniedziałek","Wtorek","Środa","Czwartek","Piątek","Sobota"]
+								var wDay = (new Date()).getDay();
 								for(var i in json){
-									if(!$j.isFunction(json[i])){
-										date_from = json[i].seance.date_from
-										if(tmp_date == "" || date_from != tmp_date){
-											tmp_date = json[i].seance.date_from
-											var myDays=["Niedziela","Poniedziałek","Wtorek","Środa","Czwartek","Piątek","Sobota"]
-											var date = new Date();
-											html += "<th style='border-left:1px solid white;'>"+(myDays[(counter+date.getDay())%7])+" "+date_from+"</th>";
-											counter++;
-										}
-									}
-								}
-								html += "</tr><tr valign='top'><td width='1px'>"
-								
-								var date_from, time_from, id
-								for(var i in json)
 									if(!$j.isFunction(json[i])){
 										date_from = json[i].seance.date_from
 										time_from = json[i].seance.time_from.substring(11, 16) //CAN CAUSE PROBLEMS -!!!
 										seance_id = json[i].seance.id
-										
-										if(date_from != tmp_date){
-											html += "</td><td width='250px' style='border-left:1px solid white;'>";
+										if(tmp_date == "" || date_from != tmp_date){
 											tmp_date = date_from;
+											data = date_from.substring(8,10) + "-" + date_from.substring(5,7);
+											html += "</td></tr><tr><td width='150px' valign='top'><b>"+myDays[(counter+wDay)%7]+" "+data+": </b></td><td>"
+											counter++;
 										}
-									
-										html += "<a href='"+href.substring(0, href.indexOf("?")+1)+"id="+seance_id+"' >"+time_from+"</a> "
+										html += "<a href='"+href.substring(0, href.indexOf("?")+1)+"id="+seance_id+"' >"+time_from+"</a> | "
 									}
-								html += "</td></tr></table><br/>"
+								}
+								html += "</td></tr></table>"
 								
-								$j("#cf_inner"+cf_id).show().html(html);
+								$j("#cf_inner"+cf_id).show().html(html+"<br/>");
+								
 								$j("#img_cf"+cf_id).css("display", "none");
 							},
 							error: function(a,b,c,d,e){
+								$j("#img_cf"+cf_id).css("display", "none");
+								$j("#cf_link"+cf_id).myShow(250);
+								$j("#cf"+cf_id).myHide(250);
+								
 								p = a
 								for(var i in p)	if(!$j.isFunction(p[i])) alert(i+":"+p[i]);
 								alert(a);
 								alert(b);
 								alert(c);
 							}
-						});
-						
+						});						
 						
 						return false;
-					})
+					}
 					</script>
 					
 					<!-- daty -->
@@ -306,4 +349,38 @@
 <% else -%>
 <% end -%>
 
+$j("button").addClass("ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only");
+
+/*
+								html += "<table border='0px' cellspacing='0'><tr><th></th>"
+								
+								for(var i in json){
+									if(!$j.isFunction(json[i])){
+										date_from = json[i].seance.date_from
+										if(tmp_date == "" || date_from != tmp_date){
+											tmp_date = json[i].seance.date_from
+											var date = new Date();
+											html += "<th style='border-left:1px solid white;'>"+(myDays[(counter+date.getDay())%7])+" "+date_from+"</th>";
+											counter++;
+										}
+									}
+								}
+								html += "</tr><tr valign='top'><td width='1px'>"
+								
+								var date_from, time_from, id
+								for(var i in json)
+									if(!$j.isFunction(json[i])){
+										date_from = json[i].seance.date_from
+										time_from = json[i].seance.time_from.substring(11, 16) //CAN CAUSE PROBLEMS -!!!
+										seance_id = json[i].seance.id
+										
+										if(date_from != tmp_date){
+											html += "</td><td width='250px' style='border-left:1px solid white;'>";
+											tmp_date = date_from;
+										}
+									
+										html += "<a href='"+href.substring(0, href.indexOf("?")+1)+"id="+seance_id+"' >"+time_from+"</a> "
+									}
+								html += "</td></tr></table><br/>"
+								*/
 </script>

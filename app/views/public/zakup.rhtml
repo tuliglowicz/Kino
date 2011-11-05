@@ -1,6 +1,6 @@
 <div id="ajaxPageLoadTarget">
 <style>
-	a.selectedMovieTitle {
+	a.selectedMovieTitle, a.type_selected {
 		color: red;
 	}
 	.opis {
@@ -273,33 +273,55 @@
 				<div id="typy_biletow" class="krok_zakup_center">
 					<h2>3. Określ typy biletów.</h2><br/>
 						<span class="opis">
-								Poniżej znajduję się lista wybranych siedzeń. Wybierz typy [<br/>
-								Jeśli chcesz zrezygnować z wybranego siedzenia kliknij w nie ponownie.<br/>
-								Możesz zamówić maksymalnie 5 biletów.<br/>
-								W calu zamówienia wiekszej liczby biletów skontaktuj się z nami telefonicznie.<br/>
-								Po zaznaczeniu wszystkich wybranych siedzeń kliknij w strzałkę w prawo, aby przejść do wyboru typu biletów.
+								Wskaż typ wybranych biletów. <br/>
 						</span>
-						<br/><br/>
+						<br/>
 						<div id="typy_biletow_inner">
 							
 						</div>
 						<script>
+						var typy = new Array();
+						
+						<% if -%>
+							<% @discounts.each { |d| %>
+									typy.push("<%=d.name%>")
+							<% } -%>
+						<% end -%>
+						
+							$j("#typy_biletow_inner a").live("click", function() {
+								$j("."+this.className).removeClass("type_selected");
+								$j(this).addClass("type_selected");
+							})
 							function nextStep(){
 								if(stepCounter<stepContener.length-1){
+									if(stepContener[stepCounter+1] == "typy_biletow"){
+										$j("#typy_biletow_inner").html("");
+										var c = 0;
+										var tmp;
+										$j(".seat.selected").each(function(){
+											c++;
+											tmp = c+". Miejsce: "+this.id+", typ: ";
+											for(var i = 0; i<typy.length; i++)
+												tmp += "<a id=typ"+this.id+i+" class='typ_biletu"+this.id+"'>"+typy[i]+"</a> | "
+											
+											$j("#typy_biletow_inner").append(tmp+"<br/>");
+										})
+										
+										if(c == 0){
+											alert("Wybierz najpierw siedzenia!")
+											return false;
+										} else if(c > 5){
+											alert("Bawisz się w hakera? Nic z tego! :D");
+											$j("#typy_biletow_inner").html("");
+											return false;
+										}
+									}
 									$j("#"+stepContener[stepCounter]+"_step").animate({color: "white"}, 1250);
 									$j("#"+stepContener[stepCounter]).animate({opacity: 0}, 1250).hide();
 									stepCounter++;
 									$j("#"+stepContener[stepCounter]+"_step").animate({color: "red"}, 1250);
 									$j("#"+stepContener[stepCounter]).animate({opacity: 1}, 1250).show();
 									
-									if(stepContener[stepCounter] == "typy_biletow"){
-										var c = 0;
-										$j(".seat.selected").each(function(){
-											
-											$j("#typy_biletow_inner").append();
-											c++;	
-										})
-									}
 								}
 							}
 							function prevStep(){

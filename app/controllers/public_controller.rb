@@ -252,6 +252,7 @@ class PublicController < ApplicationController
 				@discounts = TicketType.all
 			end
 		end
+		render :layout => false if request.xhr?
 	end
 		
 	# dalej testujesz, czy można tą akcję skasować ?

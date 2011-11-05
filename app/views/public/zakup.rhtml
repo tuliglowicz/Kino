@@ -1,3 +1,4 @@
+<div id="ajaxPageLoadTarget">
 <style>
 	a.selectedMovieTitle {
 		color: red;
@@ -50,23 +51,23 @@
 	
 	
 	#nextStep {
+		/*
 		position:fixed;
 		top: 350px;
 		left: 90%;
+		*/
 		display: none;
 	}
 	#prevStep {
+		/*
 		position:fixed;
 		top:350px;
 		left:10%;
+		*/
 		display: none;
 	}
 	
 </style>
-
-	<!--
-	<div id="disc_sel" style="position:absolute;display:block;"><%= select_tag('ticket[discount_id]', options_for_select([['wybierz rodzaj biletu', '-1']] + @discounts.collect{|r| [r.name, r.id]}), :id => "theSel", :onchange => "changed(this)") if @discounts%></div>
-	-->
 	<table class='problemTable' id='errorTable' align=center> </table>
 	<div id="tmp" style='display:none'></div>
 
@@ -88,20 +89,37 @@
 				5. Dokonaj zapłaty lub zakończ.
 			</td>
 		</tr>
+		<% if @seance -%>
+		<tr>
+			<td colspan="5" id="dane_zbiorcze" valign="top" align="right">
+				<br/>
+				<h3 style='color:white'> Wybrany seans: </h3>
+				Film: <b style='color:white'><%= @seance.cinema_film.film.title %></b><br/>
+				Termin: <b style='color:white'><%= @seance.date_from.to_s + " " + @seance.time_from.to_s[11, 5] %></b><br/>
+				Kino: <b style='color:white'><%= @seance.cinema_film.cinema.name %></b><br/>
+				Typ Seansu: <b style='color:white'><%= @seance.seance_type.name%></b>
+			</td>
+		</tr>
+		<% end -%>
 	</table>
-	<table bgcolor="" border="0px" bordercolor="purple" align="center">
+	<table bgcolor="" border="0px" align="center">
 			<td align="right">
 				<img src="/images/pic/arrow_prev.png" id="prevStep" style='cursor:pointer'>
 			</td>
 			<td colspan="3" id="opis" align="center" style='color:white'>			
 				<div id="seans" class="krok_zakup_center">
-					<br/><br/>
 					<h2>1. Wybierz seans.</h2><br/>
 					<!-- kino -->
-					KINO: <b><%= @cinema.name %></b> &nbsp; &nbsp; <a onClick="askForCinema()" style='cursor:pointer;'>zmień kino</a><br/><br/>
+					<div id="lista_kin">
+					1.1 Wybór kina: <b><%= @cinema.name %></b> &nbsp; &nbsp; <a onClick="askForCinema()" style='cursor:pointer;'>zmień kino</a><br/><br/></div>
 					<!-- filmy -->
 					<div id="lista_seansow" style="display:none;">
-						Kliknij w tytuł filmu, aby zamknąć wyświetlane godziny.<br/>Kliknij w wybraną godzinę w wybranym dniu, aby przejść do wyboru siedzeń.<br/>
+						1.3 Wybór seansu.<br>
+						<span class="opis">
+							Kliknij w wybraną godzinę w wybranym dniu, aby przejść do wyboru siedzeń.<br/>
+							Kliknij w tytuł filmu, aby zamknąć wyświetlane godziny.<br/>
+							Jeśli chcesz uzyckać więcej informacji o filmie wybierz Repertuar z menu głównego. Stamtąd też możesz wybrać interesującą Cię godzinę.<br/>
+						</span>
 						<% @cinema.cinema_films.each { |cf| -%>
 						<div id="cf<%= cf.id.to_s %>" style="display:none;">
 							<h2>
@@ -115,8 +133,8 @@
 					</div>
 					
 					<div id="lista_filmow">
-						<hr size='1' color='white'><br>
-						Kliknij w tytuł filmu, aby wyświetlić godziny jego seansów.<br/>
+						<br/><br/>
+						1.2 Wybór filmu. &nbsp; <span class="opis">Zaznacz interesujące Cię filmy i naciśnij przycisk poniżej.</span><br/>
 						<% @cinema.cinema_films.each { |cf| -%>
 						<h3><%= link_to cf.film.title, "/public/zakup?cf_id="+cf.id.to_s, :id => "cf_link"+cf.id.to_s, :class => "speed_film" %></h3>
 						<% } -%><br/>
@@ -124,7 +142,6 @@
 				<br/>
 					<button id="switcher">Przejdź do listy seansów wybranych filmów.</button>
 				
-					
 					<script>
 					$j("#switcher").toggle(function(){
 						var i = 0;
@@ -134,6 +151,7 @@
 						});
 						$j("#lista_seansow").myShow(250);
 						$j("#lista_filmow").myHide(250);
+						$j("#lista_kin").myHide(250);
 						
 						this.innerHTML = "Wróć do wyboru filmów."
 					},
@@ -141,11 +159,12 @@
 						$j(".speed_film_close").click();
 						$j("#lista_seansow").myHide(250);
 						$j("#lista_filmow").myShow(250);
+						$j("#lista_kin").myShow(250);
 						
 						this.innerHTML = "Przejdź do listy seansów wybranych filmów."						
 					})
 
-					$j(".speed_film_close").live("click", function(is){
+					$j(".speed_film_close").click(function(is){
 						var cf_id = this.href.substring(this.href.lastIndexOf("=")+1);
 						
 						$j("#cf_link"+cf_id).removeClass("selectedMovieTitle").myShow(250);
@@ -153,7 +172,7 @@
 						
 						return false;
 					});
-					$j(".speed_film").live("click", function(){
+					$j(".speed_film").click(function(){
 						$j(this).toggleClass("selectedMovieTitle");
 						
 						return false;
@@ -174,23 +193,31 @@
 							success: function (json){
 								html = "<table class='terminy' cellspacing=0 callpadding=0 border=0><tr><td>"
 								
-								var tmp_date = "";
+								
+								var tmp_date;
 								var counter = 0;
 								var myDays=["Niedziela","Poniedziałek","Wtorek","Środa","Czwartek","Piątek","Sobota"]
 								var wDay = (new Date()).getDay();
-								for(var i in json){
-									if(!$j.isFunction(json[i])){
-										date_from = json[i].seance.date_from
-										time_from = json[i].seance.time_from.substring(11, 16) //CAN CAUSE PROBLEMS -!!!
-										seance_id = json[i].seance.id
-										if(tmp_date == "" || date_from != tmp_date){
-											tmp_date = date_from;
-											data = date_from.substring(8,10) + "-" + date_from.substring(5,7);
-											html += "</td></tr><tr><td width='150px' valign='top'><b>"+myDays[(counter+wDay)%7]+" "+data+": </b></td><td>"
-											counter++;
-										}
-										html += "<a href='"+href.substring(0, href.indexOf("?")+1)+"id="+seance_id+"' >"+time_from+"</a> | "
+								var notToday = false;
+								sDate = (new Date()).toLocaleString()
+								last = sDate.lastIndexOf(" ");
+								var time_now = sDate.substring(last+1, last+6);
+								var notToday = false;
+								for(var i=0; i<json.length; i++){
+									date_from = json[i].seance.date_from
+									time_from = json[i].seance.time_from.substring(11, 16) //CAN CAUSE PROBLEMS -!!!
+									seance_id = json[i].seance.id
+									if(date_from != tmp_date || i==0){
+										notToday = i > 0;
+										tmp_date = date_from;
+										data = date_from.substring(8,10) + "-" + date_from.substring(5,7);
+										html += "</td></tr><tr><td width='150px' valign='top'><b>"+myDays[(counter+wDay)%7]+" "+data+": </b></td><td>"
+										counter++;
 									}
+									if(notToday || moreThan30MinTo(time_now, time_from))
+										html += "<a href='"+href.substring(0, href.indexOf("?")+1)+"id="+seance_id+"' >"+time_from+"</a> | "
+									else
+										html += time_from + " | "
 								}
 								html += "</td></tr></table>"
 								
@@ -213,25 +240,78 @@
 						
 						return false;
 					}
+					function moreThan30MinTo(time1, time2){
+						//is time1 less than 30 min. to time 2 if both are in the same day
+						var h1 = parseInt(time1);
+						var m1 = parseInt(time1.substring(3));
+						var h2 = parseInt(time2);
+						var m2 = parseInt(time2.substring(3));
+						
+						return (h2*60+m2) - (h1*60+m1) > 30;
+					}
 					</script>
 					
-					<!-- daty -->
-					<%# 7.times { |i| %>
-					<%#= (Time.new + 3600*24*i).strftime("%Y-%m-%d") %><br/>
-					<%# } %><br/>
-
 					<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 				</div>
 				<div id="siedzenia" class="krok_zakup_center">
-						<b>1. Możesz zamówić maksymalnie 5 biletów.<br/>
-							2. W calu zamówienia wiekszej liczby biletów skontaktuj się z nami telefonicznie. <br/><br/>
-							 Pozostało <span id='ticket_count' style='color:lime;'>5</span> / 5 rezerwacji na ten seans.<br>
+					<h2>2. Wybierz siedzenia.</h2><br/>
+					
+						<span class="opis">
+								Zaznacz wybrane miejsca poprzez kliknięcie w nie.<br/>
+								Jeśli chcesz zrezygnować z wybranego siedzenia kliknij w nie ponownie.<br/>
+								Możesz zamówić maksymalnie 5 biletów.<br/>
+								W calu zamówienia wiekszej liczby biletów skontaktuj się z nami telefonicznie.<br/>
+								Po zaznaczeniu wszystkich wybranych siedzeń kliknij w strzałkę w prawo, aby przejść do wyboru typu biletów.
+						</span>
+						<br/><br/>
+							 <center>
+							 	Pozostało <span id='ticket_count' style='color:lime;'>5</span> / 5 rezerwacji na ten seans.<br>
+							 </center>
 						</b>
 						<table align="center" bgcolor="white" border="0px" cellpadding="0px" cellspacing="5px" style="border-radius:25px;padding-bottom:25px;color:black;" id="sidzenia_table"></table>
 				</div>
 				<div id="typy_biletow" class="krok_zakup_center">
-						<b>Określ typy biletów.</b>
-						<table align="center" bgcolor="white" border="0px" cellpadding="0px" cellspacing="5px" style="border-radius:25px;padding-bottom:25px;color:black;" id="typy_biletow_table"></table>
+					<h2>3. Określ typy biletów.</h2><br/>
+						<span class="opis">
+								Poniżej znajduję się lista wybranych siedzeń. Wybierz typy [<br/>
+								Jeśli chcesz zrezygnować z wybranego siedzenia kliknij w nie ponownie.<br/>
+								Możesz zamówić maksymalnie 5 biletów.<br/>
+								W calu zamówienia wiekszej liczby biletów skontaktuj się z nami telefonicznie.<br/>
+								Po zaznaczeniu wszystkich wybranych siedzeń kliknij w strzałkę w prawo, aby przejść do wyboru typu biletów.
+						</span>
+						<br/><br/>
+						<div id="typy_biletow_inner">
+							
+						</div>
+						<script>
+							function nextStep(){
+								if(stepCounter<stepContener.length-1){
+									$j("#"+stepContener[stepCounter]+"_step").animate({color: "white"}, 1250);
+									$j("#"+stepContener[stepCounter]).animate({opacity: 0}, 1250).hide();
+									stepCounter++;
+									$j("#"+stepContener[stepCounter]+"_step").animate({color: "red"}, 1250);
+									$j("#"+stepContener[stepCounter]).animate({opacity: 1}, 1250).show();
+									
+									if(stepContener[stepCounter] == "typy_biletow"){
+										var c = 0;
+										$j(".seat.selected").each(function(){
+											
+											$j("#typy_biletow_inner").append();
+											c++;	
+										})
+									}
+								}
+							}
+							function prevStep(){
+								if(stepCounter>0){
+									$j("#"+stepContener[stepCounter]+"_step").animate({color: "white"}, 1250);
+									$j("#"+stepContener[stepCounter]).animate({opacity: 0}, 1250).hide();
+									stepCounter--;
+									$j("#"+stepContener[stepCounter]+"_step").animate({color: "red"}, 1250);
+									$j("#"+stepContener[stepCounter]).animate({opacity: 1}, 1250).show();
+								}
+							}
+						</script>
 				</div>
 				<div id="dane" class="krok_zakup_center">
 						<b>Podaj dane:</b>
@@ -249,15 +329,27 @@
 	</table>
 	
 		<!--  -->
-	        
+
 	<script>
+	
+var stepContener = new Array("seans", "siedzenia", "typy_biletow", "dane", "decyzja");
+var stepCounter = 0;
+for(i=0; i<stepContener.length; i++)
+	$j("#"+stepContener[i]).css("opacity", "0").hide();
+$j("#seans").css("opacity", "1").show();
+	
+$j("button").addClass("ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only");
+
+<% if @seance || @discounts -%>
 		var ticket_counter = 0;
-		// bo ruby jakoś dziwnie to formatuje ta linijka.
-		$j("#tmp").html("<%= @seance.room.roomview.view %>")
-		var xml = $j($j("#tmp").text());
 		
 		var delS;
-		$j(document).ready(function(){					
+		$j(document).ready(function(){
+
+			// bo ruby jakoś dziwnie to formatuje.
+			$j("#tmp").html("<%= @seance.room.roomview.view %>")
+			var xml = $j($j("#tmp").text());
+			
 			h = xml.find("height").text();
 			w = xml.find("width").text();
 	
@@ -284,37 +376,17 @@
 				});
 			}
 			
-			for(i=0; i<stepContener.length; i++)
-				$j("#"+stepContener[i]).css("opacity", "0").hide();
-				
-			$j("#seans").css("opacity", "1").show();
+
 				
 			$j("#nextStep").click(nextStep);
 			$j("#prevStep").click(prevStep);
 			
 			$j(".krok_zakup_center").css("width", $j("#siedzenia").css("width"));
+			
+			nextStep();
+			$j("#nextStep, #prevStep").css("display", "block")
 		});
 		
-		var stepContener = new Array("seans", "siedzenia", "typy_biletow", "dane", "decyzja");
-		var stepCounter = 0;
-		function nextStep(){
-			if(stepCounter<stepContener.length-1){
-				$j("#"+stepContener[stepCounter]+"_step").animate({color: "white"}, 1250);
-				$j("#"+stepContener[stepCounter]).animate({opacity: 0}, 1250).hide();
-				stepCounter++;
-				$j("#"+stepContener[stepCounter]+"_step").animate({color: "red"}, 1250);
-				$j("#"+stepContener[stepCounter]).animate({opacity: 1}, 1250).show();
-			}
-		}
-		function prevStep(){
-			if(stepCounter>0){
-				$j("#"+stepContener[stepCounter]+"_step").animate({color: "white"}, 1250);
-				$j("#"+stepContener[stepCounter]).animate({opacity: 0}, 1250).hide();
-				stepCounter--;
-				$j("#"+stepContener[stepCounter]+"_step").animate({color: "red"}, 1250);
-				$j("#"+stepContener[stepCounter]).animate({opacity: 1}, 1250).show();
-			}
-		}
 		function drawFullRectangle(w, h){
 			width_of_seat_rect = w;
 			height_of_seat_rect = h;
@@ -344,43 +416,8 @@
 			}	
 			return true;
 		}
-<% unless @seance || @discounts -%>
-	Wybierz seans przy pomocy narzedzia po lewej.
-<% else -%>
+
 <% end -%>
 
-$j("button").addClass("ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only");
-
-/*
-								html += "<table border='0px' cellspacing='0'><tr><th></th>"
-								
-								for(var i in json){
-									if(!$j.isFunction(json[i])){
-										date_from = json[i].seance.date_from
-										if(tmp_date == "" || date_from != tmp_date){
-											tmp_date = json[i].seance.date_from
-											var date = new Date();
-											html += "<th style='border-left:1px solid white;'>"+(myDays[(counter+date.getDay())%7])+" "+date_from+"</th>";
-											counter++;
-										}
-									}
-								}
-								html += "</tr><tr valign='top'><td width='1px'>"
-								
-								var date_from, time_from, id
-								for(var i in json)
-									if(!$j.isFunction(json[i])){
-										date_from = json[i].seance.date_from
-										time_from = json[i].seance.time_from.substring(11, 16) //CAN CAUSE PROBLEMS -!!!
-										seance_id = json[i].seance.id
-										
-										if(date_from != tmp_date){
-											html += "</td><td width='250px' style='border-left:1px solid white;'>";
-											tmp_date = date_from;
-										}
-									
-										html += "<a href='"+href.substring(0, href.indexOf("?")+1)+"id="+seance_id+"' >"+time_from+"</a> "
-									}
-								html += "</td></tr></table><br/>"
-								*/
 </script>
+</div>

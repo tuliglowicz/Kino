@@ -5,7 +5,32 @@ if (top.frames.length!=0) top.location=self.document.location;
 
 $j(document).ready(function(){
 	$j("a.youtube_trailer").live("click", centeredMovie);
+	$j("a.repertuarTime, a.change_cinema").live("click", ajaxPageLoad);
 })
+	
+function ajaxPageLoad(target){
+	$j("#ajaxPageLoadTarget").animate({"opacity": "0"}, 250);
+	$j("#preloader_podluzny").show();
+	page = $j.ajax({
+			url: this.href,
+			type: "GET",
+			dataType : 'html',
+			success: function (recievedHTML){
+					//alert(recievedHTML)
+					$j("#ajaxPageLoadTarget").html(recievedHTML).animate({"opacity": "1"}, 250);
+					$j("#preloader_podluzny").hide();
+					page = null;
+					
+				},
+				error: function(){
+					//alert("error")
+					$j("#ajaxPageLoadTarget").animate({"opacity": "1"}, 250, alert("Wystąpił problem z połączeniem."));
+					$j("#preloader_podluzny").hide();
+					//window.location.href = this.href;
+				}
+		  });
+	return false;
+}
 
 jQuery.fn.myHide = function(interval){
 	if(interval == undefined)
@@ -111,3 +136,81 @@ jQuery.cookie = function (key, value, options) {
     var result, decode = options.raw ? function (s) { return s; } : decodeURIComponent;
     return (result = new RegExp('(?:^|; )' + encodeURIComponent(key) + '=([^;]*)').exec(document.cookie)) ? decode(result[1]) : null;
 };
+
+
+//--=========================================================================== CHMURKI DLA KOMUNIKATOW flash[:notice]
+	var cloud_count = -1;	//zlicza aktualną liczbę wyswietlanych chmurek - pomocnik przy ograniczaniu max liczby chmurek na raz wyświetlanych
+	var cloud_id = -1;	//zapewnia unikatowe id chmurek
+	var yOffset = 150;	//offset od dołu strony
+	var width = 240;	//szerokość chmurek
+	var height = 100;	//szerokość chmurek
+	var padding = height+5;	//liczba px między górnymi krawędziami chmurek
+	var radius = 5; //miara zaokrąglenia rogów
+	function komunikat(tresc, nr_typu){
+
+		cloud_count++;
+		cloud_id++;
+
+		if(tresc != undefined && nr_typu != undefined){
+			switch(nr_typu){
+				case 1:	className = "blad";		title = "Błąd!";	//inne przypisania;
+				break;
+				case 2: className = "ostrzezenie"; title = "Ostrzeżenie!" //inne przypisania;
+				break;
+				default :	case 0 : 
+				className = "informacja"; title = "Informacja!";	//inne przypisania;
+				break;
+			}
+
+			var bot = window.innerHeight + document.body.scrollTop
+			var leftPercent = 100 - (width*100 / window.innerWidth) -1;
+
+			// jakieś style zewnętrzne opisujące
+			// przypisanie className z definicja klasy w css
+			
+			divHTML = "<div class='cloud' id='cloud"+cloud_id+"' style='opacity:.9;z-index:998;width:"+width+"px;border:1px solid black;border-radius:"+radius+"px;height:"+height+"px;position:absolute;top:"+(bot+100)+"px;left:"+leftPercent+"%;background-color:white;color:black;'><div style='width:100%;text-align:left;background-color:#000;color:white;'>&nbsp;"+title+"<div style='float:right;cursor:pointer;'><a onClick=hideCloud('"+cloud_id+"')> &nbsp;x&nbsp; </a></div></div><br/><b>&nbsp;"+tresc+"</b></div>"
+			
+			$j(divHTML).appendTo("body").animate({top: (bot-yOffset-(cloud_count*padding))+"px"}, {duration:500,easing:'easeOutBounce'});
+			
+			
+			//setTimeout('$j("#cloud'+cloud_id+'").remove()', 10000);
+		}
+	}
+	
+	var lastYOffset = window.pageYOffset;
+	function scrollChmurki(){
+		$j(".cloud").stop(true, true);
+		//var easeMethod = (Math.abs(lastYOffset - window.pageYOffset) > 250) ? "easeInCirc" : "easeOutBounce"
+		$j(".cloud").animate({top: "-="+(lastYOffset - window.pageYOffset)}, { duration: 500, easing: "easeOutBounce"});
+		lastYOffset = window.pageYOffset;
+	}
+	var time_tmp = 0;
+	function hideCloud(cloud_id, bot){
+		cloud_count--;
+		var topOfDeletedCloud = $j('#cloud'+cloud_id).css("top");
+		$j('#cloud'+cloud_id).animate({opacity: 0},100,function(){
+			$j(this).remove()
+			$j('.cloud').each(function(){
+				//alert("tu")
+				if($j(this).css("top") < topOfDeletedCloud){
+					time_tmp += Math.random()*500
+					$j(this).animate({top: "+="+padding},{duration: time_tmp,easing:'easeOutBounce'});
+				}
+			})
+			time_tmp = 0;
+		})
+	}
+	
+	window.onscroll = scrollChmurki;
+	
+	
+	/* test działania
+	$j(document).ready(function(){
+		komunikat('tresc1', 2);
+		komunikat('tresc2', 1);
+		komunikat('tresc2', 1);
+		komunikat("tresc3", 0);
+		komunikat("tresc3", 0);
+	});
+	*/
+//--=========================================================================== KONIEC CHMUREK DLA KOMUNIKATOW flash[:notice]

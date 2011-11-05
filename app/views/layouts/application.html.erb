@@ -90,7 +90,7 @@ http://www.metamorphozis.com/free_templates/free_css_templates/metamorph_circles
 			Ładowanie...<br/>
 			<img id="" src="/images/pic/loader.gif">
 		</center>
-		<%= yield %>
+			<%= yield %>
 	</table>
 
 
@@ -176,7 +176,7 @@ http://www.metamorphozis.com/free_templates/free_css_templates/metamorph_circles
 <script>
 
 $j("#cinemas_xml").find("cinema").each(function(){
-	var link = "<a href='"+document.location+"' class='repertuarTime' onClick=$j.cookie('cinema_id','"+$j(this).find("id").text()+"',{expires:7});$j('#giveMeCinemaId').dialog('close'); style='cursor:pointer;color:#063780;'>"+$j(this).find("name").text()+"</a>"
+	var link = "<a href='"+document.location+"' class='change_cinema' onClick=$j.cookie('cinema_id','"+$j(this).find("id").text()+"',{expires:7});$j('#giveMeCinemaId').dialog('close'); style='cursor:pointer;color:#063780;'>"+$j(this).find("name").text()+"</a>"
 	$j("#giveMeCinemaId")[0].innerHTML += link+" | "
 })
 

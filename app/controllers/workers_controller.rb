@@ -16,7 +16,7 @@ class WorkersController < ApplicationController
   		#@workers = Worker.all
   		@workers = Worker.paginate( :page => params[:page], :per_page => 12)
 	 else
-    	@workers = Worker.where(:cinema_id => session[:worker].cinema_id)
+    	#@workers = Worker.where(:cinema_id => session[:worker].cinema_id)
     	@workers = Worker.paginate(:conditions => ["cinema_id = ?","#{session[:worker].cinema_id}"], :page => params[:page], :per_page => 12)
 	 end
 	

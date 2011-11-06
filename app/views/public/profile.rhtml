@@ -53,6 +53,17 @@
 			    <span style="float: left"><%= u.label :login %></span><br />
 			    <%= u.text_field :login, :class => 'validate[required,maxSize[100]]', :size=>45 %>
 			  </div>
+			  
+			  <div class="field">
+			  	<span style="float: left"><%= u.label 'Imię' %></span><br />
+			    <%= u.text_field :first_name, :class => 'validate[required,maxSize[20]]', :size=>45 %>			 
+			  </div>
+			  
+			  <div>
+			  	<span style="float: left"><%= u.label 'Nazwisko' %></span><br />
+			    <%= u.text_field :last_name, :class => 'validate[required,maxSize[100]]', :size=>45 %>
+			  </div>	
+			  		  
 			  <div class="field">
 			    <span style="float: left"><%= u.label :email%></span><br />
 			    <%= u.text_field :email, :class => 'validate[required,maxSize[50]]', :size=>45 %>

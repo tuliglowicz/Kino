@@ -1,7 +1,7 @@
 # encoding: utf-8
 require 'acts_as_ordinalized'
 class Worker < ActiveRecord::Base	
-  acts_as_ordinalized
+	acts_as_ordinalized
 	belongs_to :status
 	belongs_to :cinema
 	has_many :tickets, :dependent => :delete_all

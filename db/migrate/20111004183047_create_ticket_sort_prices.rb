@@ -1,5 +1,4 @@
-# encoding: UTF-8
-class CreateTicketsSortsPrices < ActiveRecord::Migration
+class CreateTicketSortPrices < ActiveRecord::Migration
   def self.up
     create_table :tickets_sorts_prices do |t|
      

@@ -27,7 +27,10 @@ class PublicController < ApplicationController
 	end
 
   	def dane_filmu
-		 @film=Film.find(params[:id])
+  		# wymagany jest jakiś mechanizm sprawdzania params[:id], żeby odrzucić bzdurne wartości wpisane z palca do adresu
+  		# sprawdź dla -2: localhost:3000/public/dane_filmu?id=-2
+  		# chyba wszędzie przydałby się bardziej zaawansowany mechanizm do testów params (kilka helperów albo jeden z odpowiednimi parametrami)
+		@film=Film.find(params[:id])
 	end
 
 	def login	  
@@ -163,7 +166,7 @@ class PublicController < ApplicationController
 		else
 			@areSeances = true
 			@seanceTypes = SeanceType.find_by_sql(sqlQuery2)
-		end		
+		end
 	end
 	
 	def kontakt
@@ -213,7 +216,11 @@ class PublicController < ApplicationController
 	end
 	
 	def speedBooking
-		
+		if request.xhr? && params[:cf_id] && params[:cf_id].length > 0 && cookies[:cinema_id]
+			seances = Seance.find(:all, :conditions => "cinema_film_id =" + params[:cf_id]+" AND date_from < date(now()) + integer '7' AND date_from >= date(now())", :order => "date_from, time_from")
+			
+			render :json => seances
+		end
 	end
 	
 	def zakup
@@ -244,10 +251,8 @@ class PublicController < ApplicationController
 				
 				@discounts = TicketType.all
 			end
-			if params[:cf_id] && params[:cf_id].length > 0
-				@seances = Seance.find(:all, :conditions => "cinema_film_id =" + params[:cf_id]+" AND date_from < date(now()) + integer '6' AND date_from >= date(now())", :order => "date_from, time_from")
-			end
 		end
+		render :layout => false if request.xhr?
 	end
 		
 	# dalej testujesz, czy można tą akcję skasować ?
@@ -277,18 +282,19 @@ class PublicController < ApplicationController
 			else
 				
 				@customer_full_name = 'full_name'
-				@customer_email = 'email'
+				@customer_email = 'dj.serwisy@gmail.com'
 			end
 			
-			@payment = get_payment()
+			payment = get_payment(params[:amount])
+			
+			@payment = (payment == 0 ? 10 : payment)
       @customer_address = 'not_important '
       @city = 'not_important'
       @description = 'Test_OK'
-			@crc_hash = Digest::MD5.hexidigest 'ToDo_update_hash_creating_statement_when_all_indispensable_data_is_collected'
-			else
-			  redirect_to "/"
+			@crc_hash = Digest::MD5.hexdigest(@reservation.id.to_s + "|13132|" + @payment.to_s + "|a20c0ee19ecc09ac")
+		else
+			redirect_to "/"
 		end
-		
 	end
 	
 	# run whenever payment operation finished successfully
@@ -340,4 +346,14 @@ class PublicController < ApplicationController
 		}
 	end
 	
+private 
+
+  def get_payment(amount)
+    amount_as_array = amount.to_s.split('.')
+    
+    full_price_to_pay = amount_as_array[0].to_i * 100
+    full_price_to_pay += amount_as_array[1].to_i 
+    
+    full_price_to_pay 
+  end
 end

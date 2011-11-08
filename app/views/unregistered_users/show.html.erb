@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>First name:</b>
+  <%= @unregistered_user.first_name %>
+</p>
+
+<p>
+  <b>Last name:</b>
+  <%= @unregistered_user.last_name %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @unregistered_user.email %>
+</p>
+
+<p>
+  <b>Phone:</b>
+  <%= @unregistered_user.phone %>
+</p>
+
+
+<%= link_to 'Edit', edit_unregistered_user_path(@unregistered_user) %> |
+<%= link_to 'Back', unregistered_users_path %>

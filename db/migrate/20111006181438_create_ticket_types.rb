@@ -3,6 +3,7 @@ class CreateTicketTypes < ActiveRecord::Migration
     create_table :ticket_types do |t|
      
       t.string :name
+      t.string :description
 
       t.timestamps
     end

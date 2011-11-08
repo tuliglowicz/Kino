@@ -7,18 +7,54 @@
 		<title>Untitled Document</title>
 		
 		<style type="text/css"> 
-		div.btn{
-			float:left;
-			color: #000000;
-			margin:0px;
-			padding:5px;
-			text-align:center;
-			background: #8DBDE5;
-			border:solid 1px #c3c3c3;
-		}
-		div.form{
-			margin:10px;
-		}
+			div.btn{
+				float:left;
+				color: #000000;
+				margin:0px;
+				padding:5px;
+				text-align:center;
+				background: #8DBDE5;
+				border:solid 1px #c3c3c3;
+			}
+			div.form{
+				margin:10px;
+			}
+			#tickety{
+
+				width:100%;
+				border-collapse:collapse;
+			}
+
+			#tickety td{
+				font-size:1em;
+				color: black;
+				padding:3px 7px 2px 7px;
+				background-color: #EEEEFF;
+			}
+			#tickety tr.alt td {
+				color:#000000;
+				background-color:white;
+			
+			}
+			#tickety th{
+				font-size:1.1em;
+				text-align:left;
+				padding-top:5px;
+				padding-bottom:4px;
+				color:#ffffff;
+			}
+			.podsumowanie{
+				font-weight:bold;
+				font-size:1.1em;
+				text-align:left;
+				padding-top:5px;
+				padding-bottom:4px;
+				color:#ffffff;
+				border:1px;
+				width:100%;
+
+			}
+
 
 		</style>
 	</head>
@@ -107,8 +143,41 @@
 			    <%= us.submit "Zapisz"%>
 			  </div>
 			<% end %>
-		</div>			
-		
+		</div>	<br/><br/><br/>
+		<table id="tickety">
+				<tr class="alt">
+					<th>tytuł</th>
+					<th>kino</th>
+					<th>rząd</th>
+					<th>kolumna</th>
+					<th>bilet</th>
+					<th>cena</th>
+				</tr>
+			<% i=1 %>	
+			<% for ticket in @tickets do-%>
+				<% if ticket.cancelled!=true %>
+				<tr <%=  if i%2==0 then "class=alt" end %> >
+					<td><%= ticket.seance.cinema_film.film.title %></td>
+					<td><%= ticket.seance.cinema_film.cinema.name %></td>
+					<td><%= ticket.seat.row %></td>
+					<td><%= ticket.seat.column %></td>
+					<td><%= ticket.ticket_type.name %></td>
+					<td><%= ticket.price.to_s %></td>
+					<td id="del"></td>
+					<% ticket.update_attribute(:cancelled, "true") %>
+				<% i=1+i %>
+				<% end %>
+			<% end %>
+	
+		</table>
+		<br />
+		<table class="podsumowanie">
+			<tr>
+				<td >suma: xxx</td>
+				<td >zapłać</td>
+			</tr>
+		</table>
 		<% link_to 'edytuj', :controller => "users", :action => "edit", :id => user.id.to_s %>
+		
 	</body>
 </html>

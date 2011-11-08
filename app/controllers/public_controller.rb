@@ -20,7 +20,11 @@ class PublicController < ApplicationController
 
 	def profile
     	if session[:user]
-			@user=session[:user]
+			 @user=session[:user]
+			 tickets_sql="Select * From tickets Where user_id="+@user.id.to_s;
+			 @tickets=Ticket.find_by_sql(tickets_sql);
+			 
+			 #@user_reservations=Reservation.find_by_sql();
 		else
 			redirect_to(:controller => "public", :action => "index")
     	end

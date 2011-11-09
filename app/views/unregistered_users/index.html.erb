@@ -1,0 +1,29 @@
+<h1>Listing unregistered_users</h1>
+
+<table>
+  <tr>
+    <th>First name</th>
+    <th>Last name</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @unregistered_users.each do |unregistered_user| %>
+  <tr>
+    <td><%= unregistered_user.first_name %></td>
+    <td><%= unregistered_user.last_name %></td>
+    <td><%= unregistered_user.email %></td>
+    <td><%= unregistered_user.phone %></td>
+    <td><%= link_to 'Show', unregistered_user %></td>
+    <td><%= link_to 'Edit', edit_unregistered_user_path(unregistered_user) %></td>
+    <td><%= link_to 'Destroy', unregistered_user, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Unregistered user', new_unregistered_user_path %>

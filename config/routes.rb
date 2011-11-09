@@ -1,5 +1,5 @@
 Kino::Application.routes.draw do
-
+  
   # Public zone
   match 'public/index' => 'public#index', :as => 'public'
   match 'public/kontakt' => 'public#kontakt', :as => 'contact'

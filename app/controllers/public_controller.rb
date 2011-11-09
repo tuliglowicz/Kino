@@ -20,13 +20,28 @@ class PublicController < ApplicationController
 	
 	
 
+  def printTicket
+      if session[:user]
+         @user=session[:user]
+         sqlQuery = "SELECT * FROM tickets Where tickets.user_id = ("+@user.id.to_s+") "
+         #sqlQuery = "SELECT * FROM tickets Where tickets.user_id = 1 "
+         @myvar = Ticket.find_by_sql(sqlQuery)
+      else
+          redirect_to(:controller => "public", :action => "index")
+      end
+  end
+
 	def profile
     	if session[:user]
+<<<<<<< HEAD
 			 @user=session[:user]
 			 tickets_sql="Select * From tickets Where user_id="+@user.id.to_s;
 			 @tickets=Ticket.find_by_sql(tickets_sql);
 			 
 			 #@user_reservations=Reservation.find_by_sql();
+=======
+			   @user=session[:user]
+>>>>>>> origin/master
 		else
 			redirect_to(:controller => "public", :action => "index")
     	end
@@ -303,7 +318,7 @@ class PublicController < ApplicationController
 			@payment = (payment == 0 ? 10 : payment)
       @customer_address = 'not_important '
       @city = 'not_important'
-      @description = 'Test_OK'
+      @description = 'TEST_OK'
 			@crc_hash = Digest::MD5.hexdigest(@reservation.id.to_s + "|13132|" + @payment.to_s + "|a20c0ee19ecc09ac")
 		else
 			redirect_to "/"

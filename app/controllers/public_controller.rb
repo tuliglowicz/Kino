@@ -17,6 +17,8 @@ class PublicController < ApplicationController
 	def kina
 		@cinemas = Cinema.all
 	end
+	
+	
 
 	def profile
     	if session[:user]
@@ -29,6 +31,12 @@ class PublicController < ApplicationController
 			redirect_to(:controller => "public", :action => "index")
     	end
 	end
+	
+	def delete_ticket
+	  ticket=Ticket.find(params[:id]);
+	  ticket.update_attribute(:cancelled, "true");
+	  redirect_to(:controller => "public", :action => "profile", :id => session[:user].id.to_s);
+	end
 
   	def dane_filmu
   		# wymagany jest jakiś mechanizm sprawdzania params[:id], żeby odrzucić bzdurne wartości wpisane z palca do adresu
@@ -36,6 +44,7 @@ class PublicController < ApplicationController
   		# chyba wszędzie przydałby się bardziej zaawansowany mechanizm do testów params (kilka helperów albo jeden z odpowiednimi parametrami)
 		@film=Film.find(params[:id])
 	end
+	
 
 	def login	  
 		if params[:login] and  params[:password]

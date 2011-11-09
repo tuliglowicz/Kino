@@ -306,39 +306,139 @@
 		
 		
 		<div class="divki printTickets" hidden=true>
-				<br />
-				<table id="tickety">
-						<tr>
-							<th>tytuł</th>
-							<th>kino</th>
-							<th>termin</th>
-							<th>rząd</th>
-							<th>kolumna</th>
-							<th>bilet</th>
-							<th>cena</th>
-						</tr>
-					<% i=1 %>	
-					<% for ticket in @tickets do-%>
-						<% time = ticket.seance.time_from %>
-						<% date = ticket.seance.date_from%>							
-						<% if ticket.bought==true && ((time> Time.now && date==DateTime.now) || date>DateTime.now) %>
-						<tr <%=  if i%2==1 then "class=alt" end %> >
-							<td><%= ticket.seance.cinema_film.film.title %></td>
-							<td><%= ticket.seance.cinema_film.cinema.name %></td>
-							<td><%= date.strftime("%d.%m.%Y") + time.strftime(" %H:%M") %></td>
-							<td><%= ticket.seat.row %></td>
-							<td><%= ticket.seat.column %></td>
-							<td><%= ticket.ticket_type.name %></td>
-							<td><%= ticket.price.to_s %></td>
-							<td style="background:none; border: none;">
-								<%= link_to( 'drukuj', { :action=>"profile", :id=>user.id} ) %>
-							</td>
-							<% i=i+1 %>
-						<% end %>
-					<% end %>
-			
-				</table>
 
+			<br>
+			</br>
+			<div align="center" style=" color:#8DBDE5; font-size:15px; font-family:"Arial" ;">
+				Bilety dostępne do druku
+				<br>
+				</br>
+				<div style=" color:#FFFFFF;" >Wybierz bilet, który chcesz wygenerować</div>
+			</div>	
+			<br>
+			</br>
+			<% @tickets.each do |v| %>
+				<% time = ticket.seance.time_from %>
+				<% date = ticket.seance.date_from%>				
+				<% if v.bought==true && ((time> Time.now && date==DateTime.now) || date>DateTime.now) %>
+			<table width=1000 height=136 align=center border="0" bordercolor="red" style="color:#000000; "  >
+				<tr>
+					<td >
+						<table width=900 height=33 align=center valign=middle border=0 bordercolor="red" background="/images/pic/pasekG.jpg" >
+						</table>	
+					</td>
+				</tr>	
+				<tr>
+					<td>	
+							<table width=900 height=70 align=center valign=middle border=0 bordercolor="yellow" style="background-color:white; border-spacing: 2mm ">
+							<tr align=center style=" font-weight: bold; font-style: normal;"  >
+									<td>Nr biletu</td>
+									<td>Kino</td>
+									<td>Film</td>
+									<td>Data seansu</td>
+									<td>Godzina seansu</td>
+									<td>Sala</td>
+									<td>Rząd</td>
+									<td>Miejsce</td>
+									<td>Imie i nazwisko</td>
+									<td>Cena</td>
+									<td>Typ biletu</td>
+									<td>Zniżka</td>
+							</tr>
+							<tr align=center>
+									<!-- numer rezerwacji					       -->
+									  <td>
+								      	<%= v.reservation_id.to_s %>
+								      </td>
+								      
+								      <% sqlQ= "SELECT * FROM seances Where seances.id = ("+ v.seance_id.to_s+") " %>  
+									  <% @seances =  Seance.find_by_sql(sqlQ) %>
+									
+								      <td> 	
+								      	<%= v.seance.cinema_film.cinema.name.to_s %>
+								      </td>	
+										
+										<!-- 	nazwa filmu	 -->
+								      <td> 	
+								      	
+								      	<%= v.seance.cinema_film.film.title.to_s %>
+								      </td>
+								      	
+								      	<!-- 	data i time seansu	 -->
+								      <td> 	
+								      	<%= @seances.first.date_from %>
+								      </td>
+								      
+								      <td>
+								      	<%= @seances.first.time_from.strftime("%H:%M") %>
+								      </td>	
+								      
+								      <% sqlQ= "SELECT * FROM seats Where seats.id = ("+ v.seat_id.to_s+") " %>  
+									  <% @seats =  Seat.find_by_sql(sqlQ) %>
+								      	
+								      	<!-- 	numer pokoju, rząd i kolumna siedzenia	 -->
+								      <% var1 = @seats.first.room_id.to_s %>
+								      <td>
+								      	<%= var2 = Room.find(var1).number.to_s %>
+								      </td>
+								      <td>
+								      	<%= @seats.first.row.to_s %> 
+								      </td>
+								      <td>
+								      	<%= @seats.first.column.to_s %>
+								      </td>	
+								      
+										
+										<!-- 	imie i nazwisko klienta				       -->
+								      <% sqlQ= "SELECT * FROM users Where users.id = ("+ v.user_id.to_s+") " %>  
+									  <% @users =  User.find_by_sql(sqlQ) %>
+								      <td>
+								      	<%= @users.first.first_name.to_s %>
+								      	<%= @users.first.last_name.to_s %>
+								      </td>
+										
+									
+								      
+								      	<!-- cena					       -->
+								      <td>
+								      	<%= v.price.to_s %>
+								      </td>
+								      
+								      	<!-- 	typ biletu	 -->
+								      <% sqlQ = "SELECT * FROM ticket_types Where ticket_types.id = ("+ v.ticket_type_id.to_s+") " %>  
+									  <% @ticketTypes =  TicketType.find_by_sql(sqlQ) %>
+								      <td>
+								      	<%= @ticketTypes.first.name %>
+								      </td>
+								      
+								      	<!-- 	typ zniżki	 -->
+								      <% sqlQ = "SELECT * FROM discount_sorts Where discount_sorts.id = ("+ @seances.first.discount_sort_id.to_s+") " %>  
+									  <% @discountSorts =  DiscountSort.find_by_sql(sqlQ) %>
+								      <td> 	
+								      	<%= @discountSorts.first.description.to_s %>
+								      </td>
+								      <td>
+								      		<table valign=middle border=0 bordercolor="blue">
+								      		</table>	
+								      </td>	
+							</tr>		
+							</table>
+					</td>
+				</tr>
+				<tr>
+					<td >
+						<table width=900 height=33 align=center valign=middle border=0 bordercolor="blue" background="/images/pic/pasekD.jpg" >
+						</table>	
+					</td>
+				</tr>
+			</table>
+			<table width=64 height=56 align=center valign=middle border=0 bordercolor="blue" background="/images/pic/free-printer.png" ></table>
+			<br>
+			</br>
+			<% end %>
+			<% end %>    			
+								
+						
 		</div>
 		
 				<div class="divki History" hidden=true>

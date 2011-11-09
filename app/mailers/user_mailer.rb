@@ -12,4 +12,16 @@ class UserMailer < ActionMailer::Base
     @new_password = new_password
     mail(:to => email, :subject => 'Cinematoholix.pl przypomnienie hasla')
   end
+  
+  def send_bought_tickets(first_name, last_name, email, tickets)
+    
+    @first_name = first_name
+    @last_name = last_name
+  
+    i = 1
+    tickets.each { |t| attachments['bilet_' + i.to_s +'.pdf'] = t
+      i = i+1  
+    }
+    mail(:to => email, :subject => 'Zakupione bilety w serwisie cinematoholix.pl')
+  end
 end

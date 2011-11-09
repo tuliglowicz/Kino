@@ -2,8 +2,7 @@
 class PublicController < ApplicationController
 	
 	before_filter :auth_access_user, :only => [:panel]
-	
-	
+			
 	def preindex
 		redirect_to "/public/index"
 	end
@@ -251,27 +250,11 @@ class PublicController < ApplicationController
 			@cinema = Cinema.find(cookies[:cinema_id])
 						
 			if params[:id] && params[:id].length > 0
-				@seance = Seance.where(:id => params[:id])[0]
+				@seance = Seance.where("id = "+params[:id]+" AND date_from < date(now()) + integer '7' AND date_from >= date(now())")[0]
 				
-				sqlQuery="SELECT s.row, s.column
-				FROM seats s
-				WHERE id IN
-					(SELECT seat_id AS id
-					 FROM tickets
-					 WHERE NOT cancelled AND seance_id IN
-					 (SELECT id AS seance_id
-					  FROM seances
-					  WHERE id = "+params[:id]+"
-					 )
-					);"
-				@reserved_seats = Seat.find_by_sql(sqlQuery) #Seat.where(:id => Ticket.where(:seance_id => @seance))
+				SeanceVerifier.verify_status_state_and_cancel_tickets(@seance)				
 				
-				tmp = []
-				for rs in @reserved_seats
-					tmp << rs.row+rs.column.to_s
-				end
-				@reserved_seats = tmp
-				
+				@reserved_seats = Ticket.find(:all, :select => "seat, bought", :conditions => "seance_id = "+ params[:id] +" AND NOT cancelled")				
 				@discounts = TicketType.all
 			end
 		end
@@ -301,7 +284,7 @@ class PublicController < ApplicationController
 			if session[:user]
 				
 				@customer_full_name = session[:user].first_name.to_s + session[:user].last_name.to_s
-			  @customer_email = session[:user].email 
+			  	@customer_email = session[:user].email 
 			else
 				
 				@customer_full_name = 'full_name'
@@ -340,20 +323,37 @@ class PublicController < ApplicationController
       if results[1] == "TRUE"         
         logger = Logger.new('log/payment.log')
         logger.warn Time.now.to_s
-        logger.warn 'Sesja_nr = ' + params[:p24_session_id].to_s
+        logger.warn 'Rejestracja_nr = ' + params[:p24_session_id].to_s
         logger.warn 'Kwota = ' + params[:p24_kwota].to_s
-        logger.warn 'Rezerwacja_nr = ' + params[:p24_order_id]
+        logger.warn 'Order_id_od_p24 = ' + params[:p24_order_id]
         
         logger.warn 'Przed aktualizacją biletów.'
         
-        #tickets = Ticket.where(:reservation_id => params[:p24_session_id], :cancelled => false)
-        #tickets.each { |ticket|
-          #ticket.update_attribute(:bought, true)
-        #}
+        user = nil
+        tickets = Ticket.where(:reservation_id => params[:p24_session_id], :cancelled => false)
+        
+        if tickets
+          if tickets[0].belongsToUnregisteredUser
+              user = UnregisteredUser.find(ticket.unregistered_user_id)
+            else
+              user = User.find(ticket.user_id)
+          end
+          
+          tickets.each { |ticket|
+            ticket.update_attribute(:bought, true)
+          }
+        else
+           logger.warn 'Nie znaleziono żadnych biletow'   
+        end
         
         logger.warn 'Po aktualizacji biletów a przed wysyłką maila.'
         
-        # ToDo wysylka maila
+        # ToDo wysylka maila z pdfami 
+        if user 
+          UserMailer.send_bought_tickets(user.first_name, user.last_name, user.email, get_tickets()).deliver
+        else
+          logger.warn 'Nie znaleziono uzytkownika'
+        end
         
         logger.warn 'Mail wyslany. Operacja zakończona pomyślnie'
         redirect_to '/', :notice => 'Bilety zostały zakupione, sprawdź swoją skrzynkę pocztową.'

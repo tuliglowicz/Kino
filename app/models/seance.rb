@@ -8,7 +8,7 @@ class Seance < ActiveRecord::Base
   belongs_to :seance_type
   
   has_many :tickets
-  
+ 
   #default_scope order('cinema_film_id, date_from, time_from' )
 
   validates_presence_of :cinema_film_id, :message => 'Pole cinema_film_id nie może być puste(Not NULL)'

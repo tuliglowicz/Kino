@@ -21,14 +21,14 @@
 				background:none;
 				padding: 1px 0 1px 1px;
 
-				float: left;
+				float: inherit;
 			}
 			
 
 			 li.profile_menu span.profile_menu{
 			 	width:20%;
 				border: 1px solid #fff;
-				float: left;	
+				float: left;
 				margin:0px;
 				padding:5px;
 				text-align:center;
@@ -75,7 +75,7 @@
 				margin:10px;				
 			}
 			div.form{
-				left: 5%;
+			
 
 			}
 			
@@ -148,8 +148,9 @@
 					document.getElementById('his').style.color='white';
 					document.getElementById('edi').style.color='#EE4242';					
 					$j('.divki').hide();
-					$j('.form').slideToggle('slow');
-					$j('.pwd').slideToggle('slow');
+					//$j('.form').slideToggle('slow');
+					//$j('.pwd').slideToggle('slow');
+					$j('.formsy').slideToggle('slow');
 					current=4;
 				}
 			}
@@ -159,7 +160,7 @@
 	</head>
 	<body>
 
-		<div>
+		<div style="float:inherit">
 			<ul class="profile_menu">
 				<li class="profile_menu"><span class="profile_menu" id="curr" onclick="showRes();">Bieżące rezerwacje</span></li>
 				<li class="profile_menu"><span class="profile_menu" id="pri" onclick="printTickets();">Drukowanie biletów</span></li>
@@ -176,8 +177,9 @@
 
 		
 
-		<div>
-			<div class="form divki" style="float:right;" hidden=true >
+		<div class="formsy divki" hidden=true>
+			<br />
+			<div class="form" style="float:inherit;"  >
 				<%= form_for(@user) do |u| %>
 				  <% if @user.errors.any? %>
 				    <div id="error_explanation">
@@ -190,38 +192,38 @@
 				    </div>
 				  <% end %>
 				
-				  <div class="field">
-				    <span style="left: 0%"><%= u.label :login %></span><br />
-				    <%= u.text_field :login, :class => 'validate[required,maxSize[100]]', :size=>45 %>
-				  </div>
-				  
-				  <div class="field">
-				  	<span style="float: left"><%= u.label 'Imię' %></span><br />
-				    <%= u.text_field :first_name, :class => 'validate[required,maxSize[20]]', :size=>45 %>			 
-				  </div>
-				  
-				  <div>
-				  	<span style="float: left"><%= u.label 'Nazwisko' %></span><br />
-				    <%= u.text_field :last_name, :class => 'validate[required,maxSize[100]]', :size=>45 %>
-				  </div>	
-				  		  
-				  <div class="field">
-				    <span style="float: left"><%= u.label :email%></span><br />
-				    <%= u.text_field :email, :class => 'validate[required,maxSize[50]]', :size=>45 %>
-				  </div>
-		
-				  <div class="field">
-				    <span style="float: left"><%= u.label :"telefon" %></span><br />
-				    <%= u.text_field :phone, :size=>45 %>
-				  </div>
-				  			  
-				  <div class="actions">
-				    <%= u.submit "Zapisz"%>
-				  </div>
+				<table>
+					<tr>
+						<td><span style="float:left"><%= u.label :login %></span></td>
+						<td><%= u.text_field :login, :class => 'validate[required,maxSize[100]]', :size=>45 %></td>
+					</tr>
+					<tr>
+						<td><span style="float: left"><%= u.label 'Imię' %></span></td>
+						<td><%= u.text_field :first_name, :class => 'validate[required,maxSize[20]]', :size=>45 %></td>
+					</tr>
+					<tr>
+						<td><span style="float: left; padding-right: 13px"><%= u.label 'Nazwisko' %></span></td>
+						<td><%= u.text_field :last_name, :class => 'validate[required,maxSize[100]]', :size=>45 %></td>
+					</tr>
+					<tr>
+						<td> <span style="float: left"><%= u.label :email%></span></td>
+						<td><%= u.text_field :email, :class => 'validate[required,maxSize[50]]', :size=>45 %></td>
+					</tr>
+					<tr>
+						<td><span style="float:left"><%= u.label :"telefon" %></span></td>
+						<td><%= u.text_field :phone, :size=>45 %></td>
+					</tr>
+					<tr>
+						<td/>
+						<td>				  
+							<div class="actions" style="float:right"><%= u.submit "Zapisz"%></div>
+						</td>
+					</tr>
+				</table>			  			  
 				<% end %>
 			</div>
 	
-			<div class="pwd divki" style="float:right;" hidden=true>
+			<div class="pwd" style="float:inherit;">
 				<%= form_for(@user) do |us| %>
 				  <% if @user.errors.any? %>
 				    <div id="error_explanation">
@@ -234,19 +236,25 @@
 				    </div>
 				  <% end %>		  
 				  
-				  <div class="field">
-				    <span style="float: left"><%= us.label :"hasło" %></span><br />
-				    <%= us.password_field :hashed_password, :size=>45, :value=> "" %>
-				  </div>
-				  
-				  <div class="field">
-				    <span style="float: left"><%= us.label :"potwierdź hasło" %></span><br />
-				    <%= us.password_field :hashed_password_confirmation, :size=>45 %>
-				  </div>	  
-					  	
-				  <div class="actions">
-				    <%= us.submit "Zapisz"%>
-				  </div>
+				<table>
+					<tr>
+						<td><span style="float: left"><%= us.label :"hasło" %></span></td>
+						<td><%= us.password_field :hashed_password, :size=>45, :value=> "" %></td>
+					</tr>
+					<tr>
+						<td> <span style="float: left"><%= us.label :"potwierdź hasło" %></span></td>
+						<td> <%= us.password_field :hashed_password_confirmation, :size=>45 %></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>
+						  	<div class="actions" style="float:right">
+						    	<%= us.submit "Zapisz"%>
+						  	</div>							
+						</td>
+					</tr>					
+				</table>
+			
 				<% end %>
 			</div>	
 		</div>	

@@ -346,14 +346,31 @@ class PublicController < ApplicationController
         
         logger.warn 'Przed aktualizacją biletów.'
         
-        #tickets = Ticket.where(:reservation_id => params[:p24_session_id], :cancelled => false)
-        #tickets.each { |ticket|
-          #ticket.update_attribute(:bought, true)
-        #}
+        user = nil
+        tickets = Ticket.where(:reservation_id => params[:p24_session_id], :cancelled => false)
+        
+        if tickets
+          if tickets[0].belongsToUnregisteredUser
+              user = UnregisteredUser.find(ticket.unregistered_user_id)
+            else
+              user = User.find(ticket.user_id)
+          end
+          
+          tickets.each { |ticket|
+            ticket.update_attribute(:bought, true)
+          }
+        else
+           logger.warn 'Nie znaleziono żadnych biletow'   
+        end
         
         logger.warn 'Po aktualizacji biletów a przed wysyłką maila.'
         
-        # ToDo wysylka maila
+        # ToDo wysylka maila z pdfami 
+        if user 
+          UserMailer.send_bought_tickets(user.first_name, user.last_name, user.email, get_tickets()).deliver
+        else
+          logger.warn 'Nie znaleziono uzytkownika'
+        end
         
         logger.warn 'Mail wyslany. Operacja zakończona pomyślnie'
         redirect_to '/', :notice => 'Bilety zostały zakupione, sprawdź swoją skrzynkę pocztową.'

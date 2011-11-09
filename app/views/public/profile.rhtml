@@ -27,7 +27,8 @@
 
 			 li.profile_menu span.profile_menu{
 			 	width:20%;
-				border: 1px solid #fff;
+				border-left: 1px solid #fff;
+				border-right: 1px solid #fff;
 				float: left;
 				margin:0px;
 				padding:5px;
@@ -104,6 +105,10 @@
 		
 		</style>
 		<script>
+		
+			//jQuery(document).ready(function(){
+				//jQuery("#new_city_form").validationEngine('attach', {bindMethod:"live"});
+			//});
 			var current=0;
 			
 			function showRes(){
@@ -318,8 +323,8 @@
 			<br>
 			</br>
 			<% @tickets.each do |v| %>
-				<% time = ticket.seance.time_from %>
-				<% date = ticket.seance.date_from%>				
+				<% time = v.seance.time_from %>
+				<% date = v.seance.date_from%>				
 				<% if v.bought==true && ((time> Time.now && date==DateTime.now) || date>DateTime.now) %>
 			<table width=1000 height=136 align=center border="0" bordercolor="red" style="color:#000000; "  >
 				<tr>

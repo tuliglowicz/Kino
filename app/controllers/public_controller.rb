@@ -324,7 +324,7 @@ class PublicController < ApplicationController
 	def payment_ok
 	  url = URI.parse 'https://secure.przelewy24.pl/transakcja.php'
 	  
-	  request = Net::HTTP::Post.new
+	  request = Net::HTTP::Post.new(url.path)
 	  request.set_form_data(get_data_to_verify, '&')
 	  
 	  http = Net::HTTP.new(url.host, url.port)
@@ -334,30 +334,44 @@ class PublicController < ApplicationController
 	  
 	  case response
 	   when Net::HTTPSuccess, Net::HTTPRedirection
-      results = res.body.split("\r\n")
+      results = response.body.split("\r\n")
 
       # payment confirmed, ticket's paid flag may be set to true
-      if results[1] == "TRUE" 
-        tickets = Ticket.where(:reservation_id => params[:p24_session_id])
-        tickets.each { |ticket|
-          ticket.update_attribute(:paid, true)
-        }
+      if results[1] == "TRUE"         
+        logger = Logger.new('log/payment.log')
+        logger.warn Time.now.to_s
+        logger.warn 'Sesja_nr = ' + params[:p24_session_id].to_s
+        logger.warn 'Kwota = ' + params[:p24_kwota].to_s
+        logger.warn 'Rezerwacja_nr = ' + params[:p24_order_id]
         
-        redirect_to '/', :notice => 'Transakcja zakończona pomyślnie.'
-      else
+        logger.warn 'Przed aktualizacją biletów.'
         
-        redirect_to "/", :notice => "Błąd przy potwierdzeniu."
-      end
+        #tickets = Ticket.where(:reservation_id => params[:p24_session_id], :cancelled => false)
+        #tickets.each { |ticket|
+          #ticket.update_attribute(:bought, true)
+        #}
+        
+        logger.warn 'Po aktualizacji biletów a przed wysyłką maila.'
+        
+        # ToDo wysylka maila
+        
+        logger.warn 'Mail wyslany. Operacja zakończona pomyślnie'
+        redirect_to '/', :notice => 'Bilety zostały zakupione, sprawdź swoją skrzynkę pocztową.'
+       else        
+        redirect_to "/", :notice => "Błąd przy potwierdzeniu. Rejestracja zakupu nie zapisana. W najbliższym czasie się z Tobą skontaktujemy."
+        # ToDo obsluga tej sytuacji
+       end
       
       else
-        redirect_to "/", :notice => "Błąd podczas nawiązywania połączenia"      
+        redirect_to "/", :notice => "Płatność niezakończona pomyślnie. W najbliższym czasie nasz pracownik nawiąże z Tobą kontak."      
+	      # ToDo obsluga tej sytuacji
 	  end
  
 	end
 	
 	# run whenerver any error encountered while payment process is being executed
 	def payment_error
-	  redirect_to "/", :notice => "Nie zapłacono za bilet"	  
+	  redirect_to "/", :notice => "Nie zapłacono za bilet. Wciąż to możesz zrobić z poziomu swojego konta, lub bezpośrednio w kinie."	  
 	end
 	
 	def get_data_to_verify

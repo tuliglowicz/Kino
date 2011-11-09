@@ -322,7 +322,7 @@
 				<% date = v.seance.date_from%>				
 				
 				<% if v.bought==true && ((time> Time.now && date==DateTime.now) || date>DateTime.now) %>
-			<table width=1000 height=136 align=center border="0" bordercolor="red" style="color:#000000; "  >
+			<table width=100% height=136 align=center border="0" bordercolor="red" style="color:#000000; "  >
 				<tr>
 					<td >
 						<table width=900 height=33 align=center valign=middle border=0 bordercolor="red" background="/images/pic/pasekG.jpg" >
@@ -341,7 +341,6 @@
 									<td>Sala</td>
 									<td>Rząd</td>
 									<td>Miejsce</td>
-									<td>Imie i nazwisko</td>
 									<td>Cena</td>
 									<td>Typ biletu</td>
 									<td>Zniżka</td>
@@ -389,17 +388,7 @@
 								      	<%= @seats.first.column.to_s %>
 								      </td>	
 								      
-										
-										<!-- 	imie i nazwisko klienta				       -->
-								      <% sqlQ= "SELECT * FROM users Where users.id = ("+ v.user_id.to_s+") " %>  
-									  <% @users =  User.find_by_sql(sqlQ) %>
-								      <td>
-								      	<%= @users.first.first_name.to_s %>
-								      	<%= @users.first.last_name.to_s %>
-								      </td>
-										
 									
-								      
 								      	<!-- cena					       -->
 								      <td>
 								      	<%= v.price.to_s %>
@@ -419,8 +408,7 @@
 								      	<%= @discountSorts.first.description.to_s %>
 								      </td>
 								      <td>
-								      		<table valign=middle border=0 bordercolor="blue">
-								      		</table>	
+								      		<table width=64 height=56 align=center valign=middle border=0 bordercolor="blue" background="/images/pic/free-printer.png" ></table>	
 								      </td>	
 							</tr>		
 							</table>
@@ -433,7 +421,7 @@
 					</td>
 				</tr>
 			</table>
-			<table width=64 height=56 align=center valign=middle border=0 bordercolor="blue" background="/images/pic/free-printer.png" ></table>
+			
 			<br>
 			</br>
 			<% end %>

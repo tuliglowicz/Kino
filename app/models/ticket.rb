@@ -1,11 +1,12 @@
 # encoding: utf-8
 class Ticket < ActiveRecord::Base
   belongs_to :seance
-  belongs_to :seat
   belongs_to :reservation
   belongs_to :user
   belongs_to :worker
   belongs_to :ticket_sort_price
+  belongs_to :ticket_type
+
   
   #default_scope order('year DESC, title, category_id')
   

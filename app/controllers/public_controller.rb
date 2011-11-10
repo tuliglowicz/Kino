@@ -1,9 +1,8 @@
 # encoding: utf-8
 class PublicController < ApplicationController
-	require "prawn"
-  before_filter :auth_access_user, :only => [:panel]
 	
-	
+	before_filter :auth_access_user, :only => [:panel]
+			
 	def preindex
 		redirect_to "/public/index"
 	end
@@ -18,21 +17,20 @@ class PublicController < ApplicationController
 		@cinemas = Cinema.all
 	end
 	
-	def ticket
-	  @people = ["Hector", "Jack", "Janet"]
-	end
-	
-	def pdfTest
-    	 @tickets = Ticket.all
-    	 respond_to do |format|
-        format.html # pdfTest.html.erb
-        format.xml  { render :xml => @tickets }
-        format.pdf { render :layout => false  }
-      end
-	end
 	
 
-  def profile
+  def printTicket
+      if session[:user]
+         @user=session[:user]
+         sqlQuery = "SELECT * FROM tickets Where tickets.user_id = ("+@user.id.to_s+") "
+         #sqlQuery = "SELECT * FROM tickets Where tickets.user_id = 1 "
+         @myvar = Ticket.find_by_sql(sqlQuery)
+      else
+          redirect_to(:controller => "public", :action => "index")
+      end
+  end
+
+	def profile
     if session[:user]
 			 @user=session[:user]
 			 tickets_sql="Select * From tickets Where user_id="+@user.id.to_s;
@@ -253,6 +251,9 @@ class PublicController < ApplicationController
 						
 			if params[:id] && params[:id].length > 0
 				@seance = Seance.where("id = "+params[:id]+" AND date_from < date(now()) + integer '7' AND date_from >= date(now())")[0]
+				
+				SeanceVerifier.verify_status_state_and_cancel_tickets(@seance)				
+				
 				@reserved_seats = Ticket.find(:all, :select => "seat, bought", :conditions => "seance_id = "+ params[:id] +" AND NOT cancelled")				
 				@discounts = TicketType.all
 			end

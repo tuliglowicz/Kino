@@ -366,11 +366,9 @@
 								      <td>
 								      	<%= v.seance.room.number %>
 								      </td>
-									  <!-- miejsce 								       -->
+									  <!-- miejsce 			       -->
 								      <td>
-								      	<% s = "" %>
-								      	<% if (v.seat) ? v.seat.to_s : s = "Why empty?"  ; end %>
-								      	<%= s %>
+								      	<%= v.seat.to_s %>
 								      </td>	
 								      <!-- cena					       -->
 								      <td>

@@ -317,8 +317,9 @@
 			<% @tickets.each do |v| %>
 				<% time = v.seance.time_from %>
 				<% date = v.seance.date_from%>				
+				
 				<% if v.bought==true && ((time> Time.now && date==DateTime.now) || date>DateTime.now) %>
-			<table width=1000 height=136 align=center border="0" bordercolor="red" style="color:#000000; "  >
+			<table width=100% height=136 align=center border="0" bordercolor="red" style="color:#000000; "  >
 				<tr>
 					<td >
 						<table width=900 height=33 align=center valign=middle border=0 bordercolor="red" background="/images/pic/pasekG.jpg" >
@@ -335,10 +336,10 @@
 									<td>Data seansu</td>
 									<td>Godzina seansu</td>
 									<td>Sala</td>
-									<td>Siedzenie</td>
+									<td>Rząd</td>
+									<td>Miejsce</td>
 									<td>Cena</td>
 									<td>Typ biletu</td>
-									<td>Zniżka</td>
 							</tr>
 							<tr align=center>
 									<!-- numer rezerwacji					       -->
@@ -367,27 +368,7 @@
 								      <td>
 								      	<%= @seances.first.time_from.strftime("%H:%M") %>
 								      </td>	
-								      
-								     	
-
-								      	<%= "?" %>
-								      </td>
-								      <td>
-								      	<%= v.seat.to_s %> 
-								      </td>
-						
-										<!-- 	imie i nazwisko klienta				       -->
-								      <% sqlQ= "SELECT * FROM users Where users.id = ("+ v.user_id.to_s+") " %>  
-									  <% @users =  User.find_by_sql(sqlQ) %>
-								      <td>
-								      	<%= @users.first.first_name.to_s %>
-								      	<%= @users.first.last_name.to_s %>
-								      </td>
-										
-									
-								      
-									
-								      	<!-- cena					       -->
+								     	<!-- cena					       -->
 								      <td>
 								      	<%= v.price.to_s %>
 								      </td>
@@ -399,15 +380,11 @@
 								      	<%= @ticketTypes.first.name %>
 								      </td>
 								      
-								      	<!-- 	typ zniżki	 -->
-								      <% sqlQ = "SELECT * FROM discount_sorts Where discount_sorts.id = ("+ @seances.first.discount_sort_id.to_s+") " %>  
-									  <% @discountSorts =  DiscountSort.find_by_sql(sqlQ) %>
-								      <td> 	
-								      	<%= @discountSorts.first.description.to_s %>
-								      </td>
 								      <td>
-								      		<table valign=middle border=0 bordercolor="blue">
-								      		</table>	
+								      		<table width=64 height=56 align=center valign=middle border=0 bordercolor="blue" background="/images/pic/free-printer.png" >
+<!-- 								      			<a href="ticket.pdf.prawn">Drukuj</a></table> -->
+								      		<a href="/private/tickets/<%=v.id%>.pdf">Drukuj</a></table>
+								      		<p><%#= link_to "Printable Receipt (PDF)", ticket_path(@ticket, format: "pdf") %></p>
 								      </td>	
 							</tr>		
 							</table>
@@ -420,12 +397,11 @@
 					</td>
 				</tr>
 			</table>
-			<table width=64 height=56 align=center valign=middle border=0 bordercolor="blue" background="/images/pic/free-printer.png" ></table>
+			
 			<br>
 			</br>
 			<% end %>
-			<% end %>    			
-								
+			<% end %>
 						
 		</div>
 		

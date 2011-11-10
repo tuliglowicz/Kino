@@ -179,15 +179,14 @@ class PublicController < ApplicationController
 		"
 		
 		@cinema = Cinema.find(cinema_id)
-		
 		@ticket_sort_prices = TicketSortPrice.find_by_sql(sqlQuery)
-		
+		@querytask = SeanceType.find_by_sql(sqlQuery2)
 		# optymalizacja, Piotr!
-		if SeanceType.find_by_sql(sqlQuery2).empty?
+		if @querytask.empty?
 			@areSeances = false
 		else
 			@areSeances = true
-			@seanceTypes = SeanceType.find_by_sql(sqlQuery2)
+			@seanceTypes = @querytask
 		end
 	end
 	

@@ -10,6 +10,8 @@ gem 'actionmailer'
 gem 'will_paginate'
 gem 'client_side_validations'
 gem 'acts_as_ordinalized'
+gem 'prawn'
+
 
 # Use unicorn as the web server
 # gem 'unicorn'

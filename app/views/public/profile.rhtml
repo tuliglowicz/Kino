@@ -343,7 +343,6 @@
 									<td>Miejsce</td>
 									<td>Cena</td>
 									<td>Typ biletu</td>
-									<td>Zniżka</td>
 							</tr>
 							<tr align=center>
 									<!-- numer rezerwacji					       -->
@@ -401,14 +400,11 @@
 								      	<%= @ticketTypes.first.name %>
 								      </td>
 								      
-								      	<!-- 	typ zniżki	 -->
-								      <% sqlQ = "SELECT * FROM discount_sorts Where discount_sorts.id = ("+ @seances.first.discount_sort_id.to_s+") " %>  
-									  <% @discountSorts =  DiscountSort.find_by_sql(sqlQ) %>
-								      <td> 	
-								      	<%= @discountSorts.first.description.to_s %>
-								      </td>
 								      <td>
-								      		<table width=64 height=56 align=center valign=middle border=0 bordercolor="blue" background="/images/pic/free-printer.png" ></table>	
+								      		<table width=64 height=56 align=center valign=middle border=0 bordercolor="blue" background="/images/pic/free-printer.png" >
+<!-- 								      			<a href="ticket.pdf.prawn">Drukuj</a></table> -->
+								      		<a href="/private/tickets/<%=v.id%>.pdf">Drukuj</a></table>
+								      		<p><%#= link_to "Printable Receipt (PDF)", ticket_path(@ticket, format: "pdf") %></p>
 								      </td>	
 							</tr>		
 							</table>

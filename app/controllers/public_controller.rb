@@ -1,7 +1,7 @@
 # encoding: utf-8
 class PublicController < ApplicationController
-	
-	before_filter :auth_access_user, :only => [:panel]
+	require "prawn"
+  before_filter :auth_access_user, :only => [:panel]
 	
 	
 	def preindex
@@ -18,20 +18,21 @@ class PublicController < ApplicationController
 		@cinemas = Cinema.all
 	end
 	
+	def ticket
+	  @people = ["Hector", "Jack", "Janet"]
+	end
+	
+	def pdfTest
+    	 @tickets = Ticket.all
+    	 respond_to do |format|
+        format.html # pdfTest.html.erb
+        format.xml  { render :xml => @tickets }
+        format.pdf { render :layout => false  }
+      end
+	end
 	
 
-  def printTicket
-      if session[:user]
-         @user=session[:user]
-         sqlQuery = "SELECT * FROM tickets Where tickets.user_id = ("+@user.id.to_s+") "
-         #sqlQuery = "SELECT * FROM tickets Where tickets.user_id = 1 "
-         @myvar = Ticket.find_by_sql(sqlQuery)
-      else
-          redirect_to(:controller => "public", :action => "index")
-      end
-  end
-
-	def profile
+  def profile
     if session[:user]
 			 @user=session[:user]
 			 tickets_sql="Select * From tickets Where user_id="+@user.id.to_s;

@@ -32,8 +32,8 @@ class TicketPdf < Prawn::Document
   def line_ticke_row
     cinema_noletters = @ticket.seance.cinema_film.cinema.name
     cinema_noletters["ą"] = "a"
-    [["Nr biletu", "Kino", "Film", "Data seansu", "Godzina seansu", "Sala", "Rząd", "Miejsce", "Cena", "Typ biletu"]] + 
-    [[@ticket.reservation_id.to_s, cinema_noletters, @ticket.seance.cinema_film.film.title.to_s, @ticket.seance.date_from, @ticket.seance.time_from.strftime("%H:%M"), @ticket.seat.room.number.to_s, @ticket.seat.row.to_s, @ticket.seat.column.to_s, @ticket.price.to_s, @ticket.ticket_type.name.to_s]]
+    [["Nr biletu", "Kino", "Film", "Data seansu", "Godzina seansu", "Sala", "Miejsce", "Cena", "Typ biletu"]] + 
+    [[@ticket.ticket_number, cinema_noletters, @ticket.seance.cinema_film.film.title, @ticket.seance.date_from, @ticket.seance.time_from.strftime("%H:%M"), @ticket.seance.room.number, @ticket.seat.to_s, @ticket.price, @ticket.ticket_type.name]]
   end
   
   def mypicture

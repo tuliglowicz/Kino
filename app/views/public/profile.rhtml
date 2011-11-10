@@ -319,7 +319,7 @@
 				<% date = v.seance.date_from%>				
 				
 				<% if v.bought==true && ((time> Time.now && date==DateTime.now) || date>DateTime.now) %>
-			<table width=100% height=136 align=center border="0" bordercolor="red" style="color:#000000; "  >
+			<table width=100% height=136 align=center border="0" bordercolor="red" style="color:#000000; border-collapse:collapse;"  >
 				<tr>
 					<td >
 						<table width=900 height=33 align=center valign=middle border=0 bordercolor="red" background="/images/pic/pasekG.jpg" >
@@ -328,8 +328,8 @@
 				</tr>	
 				<tr>
 					<td>	
-							<table width=900 height=70 align=center valign=middle border=0 bordercolor="yellow" style="background-color:white; border-spacing: 2mm ">
-							<tr align=center style=" font-weight: bold; font-style: normal;"  >
+							<table width=900 height=70 align=center valign=middle border=0 bordercolor="yellow" style="background-color:white; border-spacing: 2mm; border-collapse:collapse; ">
+							<tr align=center style=" font-weight: bold; font-style: normal; background-color:#C3C3C3; "  >
 									<td>Nr biletu</td>
 									<td>Kino</td>
 									<td>Film</td>
@@ -339,6 +339,7 @@
 									<td>Miejsce</td>
 									<td>Cena</td>
 									<td>Typ biletu</td>
+									<td></td>
 							</tr>
 							<tr align=center>
 									  <!-- numer rezerwacji					       -->
@@ -353,10 +354,11 @@
 								      <td> 	
 								      	<%= v.seance.cinema_film.film.title %>
 								      </td>
-								      <!-- 	data i time seansu	 -->
+								      <!-- 	data i	 -->
 								      <td> 	
 								      	<%= v.seance.date_from %>
 								      </td>
+									  <!--  godzina rozpoczęcia	   -->
 								      <td>
 								      	<%= v.seance.time_from.strftime("%H:%M") %>
 								      </td>	
@@ -366,23 +368,21 @@
 								      </td>
 									  <!-- miejsce 								       -->
 								      <td>
-								      	<% if v.seat.blank? %>
-								      		Dupa
-								      	<% elsif%>
-								      		<%= v.seat.to_s %>
-								      	<%end%>
+								      	<% s = "" %>
+								      	<% if (v.seat) ? v.seat.to_s : s = "Why empty?"  ; end %>
+								      	<%= s %>
 								      </td>	
 								      <!-- cena					       -->
 								      <td>
-								      	<%= v.price %>
+								      	<%= v.price %> zł
 								      </td>
 								      <!-- 	typ biletu	 -->
 								      <td>
 								      	<%= v.ticket_type.name %>
 								      </td>
-								      <td>
+								      <td bgcolor="#C3C3C3">
 								      		<table width=64 height=56 align=center valign=middle border=0 bordercolor="blue" background="/images/pic/free-printer.png" >
-												<a href="/private/tickets/<%=v.id%>.pdf">Drukuj</a>
+												<a href="/private/tickets/<%=v.id%>.pdf"><font style="color:#CC0000 ">Drukuj</font></a>
 											</table>
 								      </td>	
 							</tr>		

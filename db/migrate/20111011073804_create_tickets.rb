@@ -2,7 +2,7 @@ class CreateTickets < ActiveRecord::Migration
   def self.up
     create_table :tickets do |t|
       t.integer :seance_id
-      t.integer :seat_id
+      t.string  :seat
       t.integer :user_id
       t.boolean :cancelled
       t.integer :reservation_id

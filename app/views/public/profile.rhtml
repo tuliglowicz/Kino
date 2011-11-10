@@ -336,55 +336,54 @@
 									<td>Data seansu</td>
 									<td>Godzina seansu</td>
 									<td>Sala</td>
-									<td>Rząd</td>
 									<td>Miejsce</td>
 									<td>Cena</td>
 									<td>Typ biletu</td>
 							</tr>
 							<tr align=center>
-									<!-- numer rezerwacji					       -->
+									  <!-- numer rezerwacji					       -->
 									  <td>
-								      	<%= v.reservation_id.to_s %>
+								      	<%= v.ticket_number %>
 								      </td>
-								      
-								      <% sqlQ= "SELECT * FROM seances Where seances.id = ("+ v.seance_id.to_s+") " %>  
-									  <% @seances =  Seance.find_by_sql(sqlQ) %>
-									
+									  <!-- kino								       -->
 								      <td> 	
-								      	<%= v.seance.cinema_film.cinema.name.to_s %>
+								      	<%= v.seance.cinema_film.cinema.name %>
 								      </td>	
-										
-										<!-- 	nazwa filmu	 -->
+									  <!-- film	 -->
 								      <td> 	
-								      	
-								      	<%= v.seance.cinema_film.film.title.to_s %>
+								      	<%= v.seance.cinema_film.film.title %>
 								      </td>
-								      	
-								      	<!-- 	data i time seansu	 -->
+								      <!-- 	data i time seansu	 -->
 								      <td> 	
-								      	<%= @seances.first.date_from %>
+								      	<%= v.seance.date_from %>
 								      </td>
-								      
 								      <td>
-								      	<%= @seances.first.time_from.strftime("%H:%M") %>
+								      	<%= v.seance.time_from.strftime("%H:%M") %>
 								      </td>	
-								     	<!-- cena					       -->
+									  <!-- sala								       -->
 								      <td>
-								      	<%= v.price.to_s %>
+								      	<%= v.seance.room.number %>
 								      </td>
-								      
-								      	<!-- 	typ biletu	 -->
-								      <% sqlQ = "SELECT * FROM ticket_types Where ticket_types.id = ("+ v.ticket_type_id.to_s+") " %>  
-									  <% @ticketTypes =  TicketType.find_by_sql(sqlQ) %>
+									  <!-- miejsce 								       -->
 								      <td>
-								      	<%= @ticketTypes.first.name %>
+								      	<% if v.seat.blank? %>
+								      		Dupa
+								      	<% elsif%>
+								      		<%= v.seat.to_s %>
+								      	<%end%>
+								      </td>	
+								      <!-- cena					       -->
+								      <td>
+								      	<%= v.price %>
 								      </td>
-								      
+								      <!-- 	typ biletu	 -->
+								      <td>
+								      	<%= v.ticket_type.name %>
+								      </td>
 								      <td>
 								      		<table width=64 height=56 align=center valign=middle border=0 bordercolor="blue" background="/images/pic/free-printer.png" >
-<!-- 								      			<a href="ticket.pdf.prawn">Drukuj</a></table> -->
-								      		<a href="/private/tickets/<%=v.id%>.pdf">Drukuj</a></table>
-								      		<p><%#= link_to "Printable Receipt (PDF)", ticket_path(@ticket, format: "pdf") %></p>
+												<a href="/private/tickets/<%=v.id%>.pdf">Drukuj</a>
+											</table>
 								      </td>	
 							</tr>		
 							</table>

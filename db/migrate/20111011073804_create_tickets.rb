@@ -12,6 +12,7 @@ class CreateTickets < ActiveRecord::Migration
       t.integer :ticket_type_id
       t.integer :unregistered_user_id
       t.boolean :belongsToUnregisteredUser
+      t.integer :ticket_number
       
       t.timestamps
     end

@@ -16,24 +16,31 @@ class TicketPdf < Prawn::Document
   end
   
   def order_number
-    
+    text "------------------------------------------------------------", size: 25, style: :bold
+    file = "#{Prawn::BASEDIR}/data/images/cinematoholix.png" # do tego folderu trzeba wrzucić plik cinematoholix, który dodałem w public/images/pic
+    #image file, :at => [20,650], :background => file
+    image file, :background => file, :position => :left,   :vposition => "20"
+    move_down 20
     text "Bilet dla użytkownika: #{@ticket.user.first_name} #{@ticket.user.last_name}", size: 14, style: :bold
-    
   end
   
   def mytable
-    move_down 50
-    text "------------------------------------------------------------", size: 25, style: :bold
-    table line_ticke_row do
+    #move_down 20
+    
+    table line_ticke_row  do
       row(0).font_style = :bold
       columns(1..2).align = :right
       self.row_colors = ["DDDDDD", "FFFFFF"]
       self.header = true
+      style(row(0), :border_colors => 'FFFFFF')
+      style(row(1), :border_colors => 'FFFFFF')
     end
+    
     text "------------------------------------------------------------", size: 25, style: :bold
   end
   
   def line_ticke_row
+    
     cinema_noletters = @ticket.seance.cinema_film.cinema.name
     #cinema_noletters["ą"] = "a"
     [["Nr biletu", "Kino", "Film", "Data seansu", "Godzina seansu", "Sala", "Miejsce", "Cena", "Typ biletu"]] + 
@@ -41,7 +48,9 @@ class TicketPdf < Prawn::Document
   end
   
   def mypicture
-    stroke_bounds()
+    
+    
+    #stroke_bounds()
     horizontal_line 100, 100, :at => 75 
   end
   

@@ -20,7 +20,7 @@ class UserMailer < ActionMailer::Base
   
     i = 1
     tickets.each do |t|
-      attachments['bilet_' + i.to_s + '.pdf'] = get_pdf
+      attachments['bilet_' + i.to_s + '.pdf'] = TicketPdf.new(t, view_context)
       i = i+1      
     end
     mail(:to => email, :subject => 'Zakupione bilety w serwisie cinematoholix.pl')

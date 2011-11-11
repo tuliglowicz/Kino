@@ -19,9 +19,10 @@ class UserMailer < ActionMailer::Base
     @last_name = last_name
   
     i = 1
-    tickets.each { |t| attachments['bilet_' + i.to_s +'.pdf'] = t
-      i = i+1  
-    }
+    tickets.each do |t|
+      attachments['bilet_' + i.to_s + '.pdf'] = get_pdf
+      i = i+1      
+    end
     mail(:to => email, :subject => 'Zakupione bilety w serwisie cinematoholix.pl')
   end
 end

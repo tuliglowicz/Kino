@@ -20,7 +20,7 @@ class TicketPdf < Prawn::Document
     #zakomentowane zeby przetestowac na heroku
     #file = "#{Prawn::BASEDIR}/data/images/cinematoholix.png" # do tego folderu trzeba wrzucić plik cinematoholix, który dodałem w public/images/pic
     #image file, :at => [20,650], :background => file
-    image file, :background => file, :position => :left,   :vposition => "20"
+    #image file, :background => file, :position => :left,   :vposition => "20"
     move_down 20
     text "Bilet dla użytkownika: #{@ticket.user.first_name} #{@ticket.user.last_name}", size: 14, style: :bold
   end

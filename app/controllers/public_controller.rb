@@ -295,8 +295,8 @@ class PublicController < ApplicationController
 			@payment = (payment == 0 ? 10 : payment)
       @customer_address = 'not_important '
       @city = 'not_important'
-      @description = 'TEST_OK'
-			@crc_hash = Digest::MD5.hexdigest(@reservation.id.to_s + "|13132|" + @payment.to_s + "|a20c0ee19ecc09ac")
+      @description = 'TEST_OK'          # @reservation.id.to_s ma byc ponizej - zmienione tylko dla testow bo rezerwacja jeszcze nie zakonczona
+			@crc_hash = Digest::MD5.hexdigest(1.to_s + "|13132|" + @payment.to_s + "|a20c0ee19ecc09ac")
 		else
 			redirect_to "/"
 		end

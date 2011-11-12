@@ -333,9 +333,9 @@ class PublicController < ApplicationController
         
         if tickets
           if tickets[0].belongsToUnregisteredUser
-              user = UnregisteredUser.find(ticket.unregistered_user_id)
+              user = UnregisteredUser.find(tickets[0].unregistered_user_id)
             else
-              user = User.find(ticket.user_id)
+              user = User.find(tickets[0].user_id)
           end
           
           tickets.each { |ticket|

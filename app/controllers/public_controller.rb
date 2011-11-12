@@ -349,7 +349,7 @@ class PublicController < ApplicationController
         
         # ToDo wysylka maila z pdfami 
         if user 
-          UserMailer.send_bought_tickets(user.first_name, user.last_name, user.email, get_tickets()).deliver
+          UserMailer.send_bought_tickets(user.first_name, user.last_name, user.email, tickets).deliver
         else
           logger.warn 'Nie znaleziono uzytkownika'
         end

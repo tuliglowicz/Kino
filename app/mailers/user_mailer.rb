@@ -23,7 +23,7 @@ class UserMailer < ActionMailer::Base
      # attachments['bilet_' + i.to_s + '.pdf'] = TicketPdf.new(t, view_context)
       #i = i+1      
     #end
-    attachments['dd.pdf'] = TicketPdf.new(tickets, view_context).render
+    attachments['dd.pdf'] = TicketPdf.new(tickets[0], view_context).render
     mail(:to => email, :subject => 'Zakupione bilety w serwisie cinematoholix.pl')
   end
 end

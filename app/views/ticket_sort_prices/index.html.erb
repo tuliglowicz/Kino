@@ -14,8 +14,7 @@
     <th>Seans</th>
     <th>Bilet</th>
     <th>Cena</th>
-    <th>Rodzaj zniżki</th>
-    <th>Opis</th>
+    <th>Rodzaj zniżki</th>   
     <th></th>
     <th></th>
     <th></th>
@@ -28,8 +27,7 @@
     <td><%= SeanceType.find(ticket_sort_price.seance_type_id).name %></td>
     <td><%= TicketType.find(ticket_sort_price.ticket_type_id).name %></td>
     <td><%= ticket_sort_price.price %></td>
-    <td><%= DiscountSort.find(ticket_sort_price.discount_sort_id).description %></td>
-    <td><%= ticket_sort_price.description %></td>
+    <td><%= DiscountSort.find(ticket_sort_price.discount_sort_id).description %></td>    
     <td><%= link_to 'Pokaż', ticket_sort_price %></td>
     <td><%= link_to 'Edytuj', edit_ticket_sort_price_path(ticket_sort_price) %></td>    
   </tr>

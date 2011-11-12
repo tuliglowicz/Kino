@@ -342,7 +342,7 @@ class PublicController < ApplicationController
             ticket.update_attribute(:bought, true)
           }
         else
-           logger.warn 'Nie znaleziono żadnych biletow'   
+           logger.warn 'Nie znaleziono żadnych biletow '   
         end
         
         logger.warn 'Po aktualizacji biletów a przed wysyłką maila.'

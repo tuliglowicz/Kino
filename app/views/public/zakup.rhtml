@@ -1,6 +1,6 @@
 <div id="ajaxPageLoadTarget">
 <style>
-	a.selectedMovieTitle, a.type_selected {
+	a.selectedMovieTitle,a.selectedMovieTitle:hover, a.type_selected,a.type_selected:hover, a.getFormSelected, a.getFormSelected:hover {
 		color: red;
 	}
 	.opis {
@@ -66,8 +66,8 @@
 		*/
 		display: none;
 	}
-	
 </style>
+
 	<table class='problemTable' id='errorTable' align=center> </table>
 	<div id="tmp" style='display:none'></div>
 
@@ -86,10 +86,10 @@
 				4. Podaj swoje dane
 			</td>
 			<td align="center" id="decyzja_step">
-				5. Dokonaj zapłaty lub zakończ.
+				5. Podsumowanie
 			</td>
 		</tr>
-		<% if @seance -%>
+	<% if @seance -%>
 		<tr>
 			<td colspan="5" id="dane_zbiorcze" valign="top" align="right">
 				<br/>
@@ -100,14 +100,14 @@
 				Typ Seansu: <b style='color:white'><%= @seance.seance_type.name%></b>
 			</td>
 		</tr>
-		<% end -%>
+	<% end -%>
 	</table>
 	
 	<table bgcolor="" border="0px" align="center">
 			<td align="right">
 				<img src="/images/pic/arrow_prev.png" id="prevStep" style='cursor:pointer'>
 			</td>
-			<td colspan="3" id="opis" align="center" style='color:white'>			
+			<td colspan="3" id="opis" align="center" valign="top" style='color:white'>			
 				<div id="seans" class="krok_zakup_center">
 					<h2>1. Wybierz seans.</h2><br/>
 					<!-- kino -->
@@ -296,10 +296,12 @@
 						</div>
 						<script>
 						var typy = new Array();
+						var ceny = new Array();
 						
-						<% if @discounts-%>
-							<% @discounts.each { |d| %>
-									typy.push("<%=d.name%>")
+						<% if @prices-%>
+							<% @prices.each { |p| %>
+									typy.push({name: "<%=p.ticket_type.name%>", id: "<%=p.ticket_type.id%>"});
+									ceny["<%=p.ticket_type.name%>"] = <%= p.price %> ;
 							<% } -%>
 						<% end -%>
 						
@@ -307,6 +309,105 @@
 								$j("."+this.className).removeClass("type_selected");
 								$j(this).addClass("type_selected");
 							})
+						</script>
+				</div>
+				<div id="dane" class="krok_zakup_center">
+					<h2>4. Podaj swoje dane</h2><br/>
+					<span class="opis">
+						Jeśli nie masz jeszcze u nas swojego konta zarejestruj się w naszym serwisie, jeśli chcesz kozystać ze zniżek i promocji.
+					</span>
+					<br/>
+					<a href="/public/login" title="Zaloguj" class="getForm">Zaloguj</a> | 
+					<a href="/public/register" title="Zarejestruj" class="getForm">Zarejestruj</a> | 
+					<a href="/unregistered_users/new" title="Wpisz Dane" class="getForm">Wpisz dane</a> 
+					<img src="/images/pic/loader_min.gif" id="form_loader" style="padding-left:5px;display:none;" align="absbottom">
+					<br/><br/><br/>					
+					<div id="formTarget" style="display:none;">
+					</div>
+					<script>
+						$j(".getForm").click(function(){
+							$j(".getForm").removeClass("getFormSelected");
+							$j("#form_loader").myShow(250);
+							$j(this).addClass("getFormSelected")
+							
+							return getForm(this.href);
+						});
+						function getForm(href){
+							page = $j.ajax({
+									url: href,
+									type: "GET",
+									dataType : 'html',
+									success: function (recievedHTML){
+											$j("#formTarget").html(recievedHTML).myShow(250);
+											$j("#form_loader").myHide(250);
+										},
+									error: function(){
+										alert("error przy pobieraniu formularza");
+									}
+								  });
+								  
+							return false;
+						}
+					</script>
+				</div>
+				<div id="decyzja" class="krok_zakup_center">
+					<h2>5. Zestawienie</h2><br/>
+					<span class="opis"> </span>
+					<br/>
+					<div id="user_data">
+						<% if session[:user] -%>
+						<%= "Użytkownik: "+session[:user].first_name+" "+session[:user].last_name %> <br/><br/>
+						<% end -%>
+					</div>
+					<br/>
+					Lista Biletów:<br/>
+					<div id="ticket_list">
+					</div>
+					<button id="plac">Płać on-line i oszczędź 1zł za każdy bilet</button> | 
+					<button id="zakoncz">Zakończ i zapłać on-line później lub przy kasie.</button>
+					<script>
+					// kto
+					// jakie bilety
+					// cena z sumą
+					// button: kup, button: zakończ
+					var xml = "";
+					$j("#plac").click(function(){
+						var tmp_ajax = $j.ajax({
+							url: "/public/speedBooking",
+							data: "xml="+xml,
+							type: "POST",
+							dataType : 'json',
+							success: function (json){
+								if(json != undefined && json){
+									alert("Transakcja przebiegła pomyślnie.\nDziękujemy.");
+								}
+							},
+							error: function(){
+								alert("Coś poszlo nie tak.\nProszę spróbować ponownie za kilka minut.")
+							}
+						});
+					});
+					$j("#zakoncz").click(function(){
+						
+					});
+					<% if session[:user] %>
+						var user_id = "<%= session[:user].id %>";
+					<% else -%>
+						var user_id;
+					<% end -%>
+					
+					function getUserID(){
+						return user_id;
+					}
+					function gotUserData(user_json, isUser){
+						if(isUser != undefined && isUser){
+							user = user_json["user"];
+							user_id = user.id;
+							userDataString = "Użytkownik: "+user.first_name+" "+user.last_name+"<br/><br/>"
+							nextStep();
+							$j("#user_data").html(userDataString).myShow(250);
+						}
+					}
 							function nextStep(){
 								if(stepCounter<stepContener.length-1){
 									if(stepContener[stepCounter+1] == "typy_biletow"){
@@ -317,9 +418,9 @@
 											c++;
 											tmp = c+". Miejsce: "+this.id+", typ: ";
 											for(var i = 0; i<typy.length; i++)
-												tmp += "<a id=typ"+this.id+i+" class='typ_biletu"+this.id+"'>"+typy[i]+"</a> | "
+												tmp += "<a id=typ"+this.id+i+" class='typ_biletu"+this.id+"' style='cursor: pointer;'>"+typy[i].name+"</a> | "
 											
-											$j("#typy_biletow_inner").append(tmp+"<br/>");
+											$j("#typy_biletow_inner").append(tmp+" <br/>");
 										})
 										
 										if(c == 0){
@@ -332,7 +433,64 @@
 										}
 									}
 									else if(stepContener[stepCounter+1] == "dane"){
+										var i, condition = false;
+										$j(".seat.selected").each(function(){
+											i=0
+											$j('a[class*="'+this.id+'"][class*="type_selected"]').each(function(){
+												i++;
+											});
+											if(i!=1){
+												condition = true;
+												return;
+											}
+										});
 										
+										if(condition){
+											alert("Zaznacz typ dla każdego biletu!");
+											return false;
+										} else {
+											if(<%= not session[:user].nil? %>){
+												$j("#"+stepContener[stepCounter]+"_step").animate({color: "white"}, 1250);
+												$j("#"+stepContener[stepCounter]).animate({opacity: 0}, 1250).hide();
+												stepCounter++;
+												nextStep();
+												return;
+											}
+											else {
+												
+											}
+										}
+									}
+									else if(stepContener[stepCounter+1] == "decyzja"){
+										var c = 0, i = 0;
+										var suma = 0;
+										xml ="<tickets>";
+										//<tickets><ticket><user_id></user_id><type></type><price></price><seat></seat></ticket></tickets>
+										$j("#ticket_list").html("");
+										$j(".seat.selected").each(function(){
+											c++;
+											tmp = c+". Miejsce: "+this.id+", typ: ";
+											xml += "<ticket><user_id>"+getUserID()+"</user_id>";
+											$j('a[class*="'+this.id+'"][class*="type_selected"]').each(function(){
+												tmp += this.innerHTML;
+												tmp += ", cena: "+ceny[this.innerHTML]+"zł";
+												
+												var typ_id = 0;
+												for(i=0; i<typy.length; i++)
+													if(typy[i].name == this.innerHTML){
+														typ_id = typy[i].id;
+													}
+												xml += "<type>"+typ_id+"</type><price>"+ceny[this.innerHTML]+"</price>";
+												suma += ceny[this.innerHTML];
+											});
+											xml += "<seat>"+this.id+"</seat><seance_id><% if @seance -%><%= @seance.id %><% end -%></seance_id></ticket>"
+											
+											$j("#ticket_list").append(tmp+"<br/>");
+										});
+										xml+="</tickets>";
+										
+										//alert(xml);
+										$j("#ticket_list").append("Suma: "+suma+"zł<br/><br/>");
 									}
 									$j("#"+stepContener[stepCounter]+"_step").animate({color: "white"}, 1250);
 									$j("#"+stepContener[stepCounter]).animate({opacity: 0}, 1250).hide();
@@ -352,14 +510,6 @@
 								}
 							}
 						</script>
-				</div>
-				<div id="dane" class="krok_zakup_center">
-						<b>Podaj dane:</b>
-						<table align="center" bgcolor="white" border="0px" cellpadding="0px" cellspacing="5px" style="border-radius:25px;padding-bottom:25px;color:black;" id="typy_biletow_table"></table>
-				</div>
-				<div id="decyzja" class="krok_zakup_center">
-						<b>Dokonaj zapłaty teraz lub zakończ i zapłać potem.</b>
-						<table align="center" bgcolor="white" border="0px" cellpadding="0px" cellspacing="5px" style="border-radius:25px;padding-bottom:25px;color:black;" id="typy_biletow_table"></table>
 				</div>			
 			</td>
 			<td align="left">
@@ -380,12 +530,10 @@ $j("#seans").css("opacity", "1").show();
 	
 $j("button").addClass("ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only");
 
-<% if @seance && @discounts -%>
-
+<% if @seance && @prices -%>
 		var bought = new Array();
 		var reserved = new Array();
 		<% @reserved_seats.each { |rs| -%>
-			<%# rs.seat+";" %>
 			<% if rs.bought -%>
 				//alert("<%= rs.seat %>")
 				bought.push("<%= rs.seat %>")
@@ -395,6 +543,7 @@ $j("button").addClass("ui-button ui-widget ui-state-default ui-corner-all ui-but
 		<% } -%>
 		var ticket_counter = 0;		
 		var delS;
+		
 		$j(document).ready(function(){
 
 			// bo ruby jakoś dziwnie to formatuje.

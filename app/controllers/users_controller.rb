@@ -35,10 +35,14 @@ class UsersController < ApplicationController
 
     @user = User.new
    
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @user }
-    end
+	if request.xhr?
+		render :layout => false
+	else
+		respond_to do |format|
+			format.html # new.html.erb
+			format.xml  { render :xml => @user }
+		end
+	end
   end
 
   # GET /users/1/edit

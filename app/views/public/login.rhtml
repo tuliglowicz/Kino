@@ -34,22 +34,46 @@
 	<center>
 		<div>
 			<%= form_tag(:controller => 'public', :action => 'login') do %>
-				<%= label_tag(:login, "Login:") %><%= text_field_tag(:login) %><br/>
-				<%= label_tag(:password, "Hasło:") %><%= password_field_tag(:password) %><br/>
-				<%= submit_tag("Login") %>
+				<%= label_tag(:login, "Login:") %><input id="login" type="text" value="" class="validate[required]" name="login"><br/>
+				<%= label_tag(:password, "Hasło:") %><input id="password" type="password" value="" class="validate[required]" name="password"><br/>
+				<%= submit_tag "Login",  :id => "login_submit" %>
 			<% end %>
 		</div>
 	  </center>
 	  
 	  <br />
 	  <h4><a id="remind_password_a">Zapomniałeś hasła?(kliknij)</a></h4>
-	  <div id="remind_password_div" style="display: none">
+	  <div id="remind_password_div" style="display: none;">
 	  	<form id="remind_password_form" method="post" action="<%= remind_password_path %> "/>
 	  		<label>Podaj email</label>
 	  		<input type="text" id="email" name="email" class="validate[required]"/>
 	  		<br />
-	  		<input type="submit" value="Wyślij" />	  		
+	  		<input type="submit" value="Wyślij" />
 	  	</form>
-	  </div>	  
+	  </div>
+	  
+	  <script>
+		$j("#login_submit").click( function(){
+			var dataString = "login="+$j("#login").val()+"&password="+$j("#password").val();
+			
+			page = $j.ajax({
+							url: "/public/login",
+							type: "POST",
+							data: dataString,
+							dataType : 'json',
+							success: function (result){
+									if(result)
+										gotUserData(result, true);
+									else
+										alert("Podałeś nieprawidłowy login lub hasło!")
+							},
+							error: function(){
+								alert("error przy pobieraniu danych");
+							}
+			});
+			
+			return false;
+		});
+	  </script>
 </body>
 </html>

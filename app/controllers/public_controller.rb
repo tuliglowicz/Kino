@@ -1,6 +1,9 @@
 # encoding: utf-8
 class PublicController < ApplicationController
 	
+		require 'rexml/document'
+		include REXML
+	
 	before_filter :auth_access_user, :only => [:panel]
 			
 	def preindex
@@ -15,9 +18,7 @@ class PublicController < ApplicationController
 	
 	def kina
 		@cinemas = Cinema.all
-	end
-	
-	
+	end	
 
   def printTicket
       if session[:user]
@@ -31,14 +32,13 @@ class PublicController < ApplicationController
   end
 
 	def profile
-    if session[:user]
-			 @user=session[:user]
-			 tickets_sql="Select * From tickets Where user_id="+@user.id.to_s;
-			 @tickets=Ticket.find_by_sql(tickets_sql);
-
+	    if session[:user]
+			@user=session[:user]
+			tickets_sql="Select * From tickets Where user_id="+@user.id.to_s;
+			@tickets=Ticket.find_by_sql(tickets_sql);
 		else
 			redirect_to(:controller => "public", :action => "index")
-    end
+	    end
 	end
 	
 	def delete_ticket
@@ -55,30 +55,30 @@ class PublicController < ApplicationController
 	end
 	
 
-	def login	  
+	def login
 		if params[:login] and  params[:password]
+			session[:user] = nil
 			logged_in_user = Auth.try_to_login(params[:login], params[:password])
 			
-			session[:user] = nil  # bez tego
-			
-			if logged_in_user     
-				logger.debug 'Zalogowano'
-				#flash[:notice] = "Zalogowany1!+#{logged_in_user.class.name}"
-					if logged_in_user.kind_of? User
-						session[:user] = logged_in_user
-						#flash[:notice] = "Zalogowany2 jako+#{session[:user].class.name}"
-						flash[:notice] = 'Zalogowany jako użytkownik!'
-						logger.debug 'Zalogowany jako użytkownik'
-						redirect_to(:controller => "public", :action => "index") 
-					end
-				session[:cinema_id] = 1
+			if logged_in_user && (logged_in_user.kind_of? User)
+				session[:user] = logged_in_user
+				flash[:notice] = 'Zalogowany jako użytkownik!'
+				result = logged_in_user
 			else
+				result = false
 				flash[:notice] = "Błędny login i/albo hasło!"
 			end
 		else
-			# can happen whenever user visits page firt time. 
-			# it's added to avoid unexpected comments to the user.
-		end  	
+			result = false
+		end
+		
+		if request.xhr?
+			if params[:login] and params[:password]
+				render :json => result
+			else
+				render :layout => false
+			end
+		end
 	end
 	
 	def logout
@@ -135,11 +135,6 @@ class PublicController < ApplicationController
 		end
 		
 		render :layout => false if request.xhr?
-	end
-		
-	def register
-		@title = "Zarejestruj sie!"
-		@user = User.new
 	end
 	
 	def zapowiedzi
@@ -237,10 +232,40 @@ class PublicController < ApplicationController
 	end
 	
 	def speedBooking
+		
 		if request.xhr? && params[:cf_id] && params[:cf_id].length > 0 && cookies[:cinema_id]
 			seances = Seance.find(:all, :conditions => "cinema_film_id =" + params[:cf_id]+" AND date_from < date(now()) + integer '7' AND date_from >= date(now())", :order => "date_from, time_from")
 			
 			render :json => seances
+		else
+			if request.xhr? && cookies[:cinema_id]
+				resp = session[:user] == nil
+				render :json => resp;
+			end
+		end
+		if request.xhr? && params[:xml]
+			root = Document.new(params[:xml]).root
+			
+			root.each { |xticket|
+				t = Ticket.new
+				
+				t.user_id = xticket.elements["user_id"].text
+				t.seat = xticket.elements["seat"].text
+				t.ticket_type_id = xticket.elements["type"].text
+				t.price = xticket.elements["price"].text.to_i
+				t.seance_id = xticket.elements["seance_id"].text
+				t.reservation_id = nil
+				belongsToUnregisteredUser = false
+				t.cancelled = false
+				t.bought = false
+				t.worker_id = 1
+				
+				#puts t
+				puts t.save
+				#unregistered_user_id
+			}
+			
+			render :json => true
 		end
 	end
 	
@@ -250,11 +275,9 @@ class PublicController < ApplicationController
 						
 			if params[:id] && params[:id].length > 0
 				@seance = Seance.where("id = "+params[:id]+" AND date_from < date(now()) + integer '7' AND date_from >= date(now())")[0]
-				
-				SeanceVerifier.verify_status_state_and_cancel_tickets(@seance)				
-				
-				@reserved_seats = Ticket.find(:all, :select => "seat, bought", :conditions => "seance_id = "+ params[:id] +" AND NOT cancelled")				
-				@discounts = TicketType.all
+				#SeanceVerifier.verify_status_state_and_cancel_tickets(@seance)
+				@reserved_seats = Ticket.find(:all, :select => "seat, bought", :conditions => "seance_id = "+ params[:id] +" AND NOT cancelled")
+				@prices = TicketSortPrice.where(:cinema_id => cookies[:cinema_id], :seance_type_id => @seance.seance_type_id, :discount_sort_id => @seance.discount_sort_id)
 			end
 		end
 		render :layout => false if request.xhr?

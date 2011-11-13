@@ -16,7 +16,11 @@ IMG {border:0;}
 pre {
 	background-color: #000;
 }
-body, div, ul, ol, li, h1, h2, h3, h4, h5, h6, form, fieldset, input, textarea, p {
+
+html {
+       overflow-y: scroll;
+}
+body,div, ul, ol, li, h1, h2, h3, h4, h5, h6, form, fieldset, input, textarea, p {
     margin: 0;
     padding: 0;
 }

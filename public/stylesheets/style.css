@@ -27,7 +27,7 @@ body { background: #fff; color: #333; font: normal 12px/16px Arial,sans-serif; }
 body { color: #c9c9c9; font-family: Arial, sans-serif;}
 a, a:visited { color: #8dbde5; }
 a:hover { background: none; text-decoration: none; color: #c9dde7;}
-a:focus { outline: 0; }
+a:focus {  background: none; text-decoration: none; color: #c9dde7; outline: 0; }
 
 .Ww1, .Ww2, #navH, #content, #navtop_wrap, #navbot_wrap, #footer { width: 940px; margin: 0 auto; padding: 0 0; }
 
@@ -43,28 +43,33 @@ a:focus { outline: 0; }
 
 
 body {background: #000 url('/images/pic/body_bg.jpg') repeat-x 0 0;}
-#page {background: url('/images/pic/page_bg.jpg') no-repeat 105px 0;}
+
 .path_114725 #page { background: #000 url('/images/pic/tapeta_kinoplex.jpg') no-repeat center top }
 
 /* nawigacja */
-#navH { position: relative; z-index: 201;}
-#navH .p0 { height: 35px; background: url('/images/pic/navh_bg.png') no-repeat 0 0; overflow: display; zoom: 1; }
-#navH .p0 li { float: left; display: inline; height: 35px; background: url('/images/pic/nav_tab.png') no-repeat 0 0; font: bold 14px Arial, sans-serif; line-height: 34px; position: relative;}
-#navH .p0 li a { color: #fff; display: block; height:42px; text-align: center; padding: 0 14px; }
-#navH .p0 li a:hover {color: #c9dde7; background: url('/images/pic/flash_active_bg2.png') no-repeat center bottom; text-decoration: none;}
-#navH .p0 li.active a{ background: url('/images/pic/flash_active_bg2.png') no-repeat center bottom;}
-#navH .p0 li.afterActive { background: none; }
-#navH .p0 #e1 {width: 17px; padding: 0 10px; background: none;}
-#navH .p0 #e1 a {background: url("/images/pic/kinoplex_sprite3.png") no-repeat scroll 0 0 transparent;; background-position: -320px -186px; text-indent:-9999px; height:35px; display:block; width: 17px;}
-#navH .p0 #e1:hover a {background-position: -320px -211px;}
+div#navH{
 
-#navH .p0 .p1 {display: none; position: absolute; top:34px; left:0; background: #1a2429; width: 300px; padding-bottom: 5px;}
-#navH .p0 li:hover .p1{display:block;}
-#navH .p0 .p1 li {float: left;display: block; background: none; font: normal 14px/14px Arial,serif; height: auto; padding:0; width: 100px;}
-#navH .p0 .p1 li:hover a {color: #80b2dc; background: none;}
-#navH .p0 .p1 li a {color: #fff; padding: 5px 14px; text-align: left; height: auto;}
-#navH .p0 .p1 li.active a {color: #80b2dc;}
-#navH .p0 li.active .p1 a {background: none;}
+	
+left:300px;
+	/*display: table-cell; 
+	text-align: center;
+	vertical-align: middle;
+	margin-left:10px;
+	height:50px; */
+	border-radius :10px; 
+	-moz-border-radius:10px; 
+	background-color:tomato;
+}
+
+#navH .p0 { height: 35px; }
+#navH .p0 li { float: left; display: inline; border-left:1px ; font: bold 14px Arial, sans-serif; line-height: 35px; position: relative;}
+#navH .p0 li a { color: #fff; display: block; text-align: center; padding: 0 14px; }
+#navH .p0 li a:hover {  color:#2D2D2D; text-decoration:none; }
+#navH .p0 li.active a{ }
+#navH .p0 li.afterActive { background: none; }
+#navH .p0 #e1{border:none;}
+#navH .p0 #e0{border:none; }
+
 #navH .p0 .moje { float: right; }
 
 

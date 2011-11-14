@@ -4,28 +4,42 @@ class TicketPdf < Prawn::Document
     super(top_margin: 50)
     @ticket = ticket
     @view = view
+    
+    order_number
+    mytable
+    mypicture
+    
+  end
+  
+  def order_number
     font_families.update("arial" => {
                              :bold  => "#{Prawn::BASEDIR}/data/fonts/DejaVuSans.ttf",
                              :italic => "#{Prawn::BASEDIR}/data/fonts/DejaVuSans.ttf",
                              :bold_italic => "#{Prawn::BASEDIR}/data/fonts/DejaVuSans.ttf",
                              :normal => "#{Prawn::BASEDIR}/data/fonts/DejaVuSans.ttf" })
     font "arial"
-    order_number
-    mytable
-    mypicture
-  end
-  
-  def order_number
     text "------------------------------------------------------------", size: 25, style: :bold
     #zakomentowane zeby przetestowac na heroku
     file = "public/images/pic/cinematoholix.png" # do tego folderu trzeba wrzucić plik cinematoholix, który dodałem w public/images/pic
     #image file, :at => [20,650], :background => file
     image file, :background => file, :position => :left,   :vposition => "20"
     move_down 20
+    font_families.update("arial" => {
+                             :bold  => "#{Prawn::BASEDIR}/data/fonts/DejaVuSans.ttf",
+                             :italic => "#{Prawn::BASEDIR}/data/fonts/DejaVuSans.ttf",
+                             :bold_italic => "#{Prawn::BASEDIR}/data/fonts/DejaVuSans.ttf",
+                             :normal => "#{Prawn::BASEDIR}/data/fonts/DejaVuSans.ttf" })
+    font "arial"
     text "Bilet dla użytkownika: #{@ticket.user.first_name} #{@ticket.user.last_name}", size: 14, style: :bold
   end
   
   def mytable
+    font_families.update("arial" => {
+                             :bold  => "#{Prawn::BASEDIR}/data/fonts/DejaVuSans.ttf",
+                             :italic => "#{Prawn::BASEDIR}/data/fonts/DejaVuSans.ttf",
+                             :bold_italic => "#{Prawn::BASEDIR}/data/fonts/DejaVuSans.ttf",
+                             :normal => "#{Prawn::BASEDIR}/data/fonts/DejaVuSans.ttf" })
+    font "arial"
     #move_down 20
     
     table line_ticke_row  do
@@ -37,10 +51,16 @@ class TicketPdf < Prawn::Document
       style(row(1), :border_colors => 'FFFFFF')
     end
     
-    text "------------------------------------------------------------", size: 25, style: :bold
+    
   end
   
   def line_ticke_row
+    font_families.update("arial" => {
+                             :bold  => "#{Prawn::BASEDIR}/data/fonts/DejaVuSans.ttf",
+                             :italic => "#{Prawn::BASEDIR}/data/fonts/DejaVuSans.ttf",
+                             :bold_italic => "#{Prawn::BASEDIR}/data/fonts/DejaVuSans.ttf",
+                             :normal => "#{Prawn::BASEDIR}/data/fonts/DejaVuSans.ttf" })
+    font "arial"
     
     cinema_noletters = @ticket.seance.cinema_film.cinema.name
     #cinema_noletters["ą"] = "a"
@@ -49,10 +69,23 @@ class TicketPdf < Prawn::Document
   end
   
   def mypicture
-    
-    
+    font_families.update("BarcodeFont" => {
+                             :bold  => "#{Prawn::BASEDIR}/data/fonts/BarcodeFont.ttf",
+                             :italic => "#{Prawn::BASEDIR}/data/fonts/BarcodeFont.ttf",
+                             :bold_italic => "#{Prawn::BASEDIR}/data/fonts/BarcodeFont.ttf",
+                             :normal => "#{Prawn::BASEDIR}/data/fonts/BarcodeFont.ttf" })
+    font "BarcodeFont"
+    z= @ticket.id + 10002345
+    text "#{z}" , size: 50, style: :bold , :position => :right
     #stroke_bounds()
     horizontal_line 100, 100, :at => 75 
+    font_families.update("arial" => {
+                             :bold  => "#{Prawn::BASEDIR}/data/fonts/DejaVuSans.ttf",
+                             :italic => "#{Prawn::BASEDIR}/data/fonts/DejaVuSans.ttf",
+                             :bold_italic => "#{Prawn::BASEDIR}/data/fonts/DejaVuSans.ttf",
+                             :normal => "#{Prawn::BASEDIR}/data/fonts/DejaVuSans.ttf" })
+    font "arial"
+    text "------------------------------------------------------------", size: 25, style: :bold
   end
   
 end

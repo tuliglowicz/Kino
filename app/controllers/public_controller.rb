@@ -263,6 +263,12 @@ class PublicController < ApplicationController
 				#puts t
 				puts t.save
 				#unregistered_user_id
+				
+				# Zapisywawnie do bazy z ticket_number'em
+				#query = 'INSERT INTO tickets(user_id, seat, ticket_type_id, price, seance_id, reservation_id, cancelled, bought, worker_id)' +
+				#  'VALUES( ' + xticket.elements["user_id"].text + ',\'' + xticket.elements["seat"].text + '\',' + xticket.elements["type"].text + ',' + xticket.elements["price"].text.to_i.to_s + ',' + xticket.elements["seance_id"].text + 
+			  #  ', null, false, false, 1);' # trzeba dodac odpowiednio spreparowanego workera
+			  #ActiveRecord::Base.connection.execute(query) 
 			}
 			
 			render :json => true

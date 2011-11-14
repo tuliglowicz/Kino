@@ -70,10 +70,10 @@ class TicketPdf < Prawn::Document
   
   def mypicture
     font_families.update("BarcodeFont" => {
-                             :bold  => "#{Prawn::BASEDIR}/data/fonts/BarcodeFont.ttf",
-                             :italic => "#{Prawn::BASEDIR}/data/fonts/BarcodeFont.ttf",
-                             :bold_italic => "#{Prawn::BASEDIR}/data/fonts/BarcodeFont.ttf",
-                             :normal => "#{Prawn::BASEDIR}/data/fonts/BarcodeFont.ttf" })
+                             :bold  => "/app/public/fonts/BarcodeFont.ttf",
+                             :italic => "/app/public/fonts/BarcodeFont.ttf",
+                             :bold_italic => "/app/public/fonts/BarcodeFont.ttf",
+                             :normal => "/app/public/fonts/BarcodeFont.ttf" })
     font "BarcodeFont"
     z= @ticket.id + 10002345
     text "#{z}" , size: 50, style: :bold , :position => :right

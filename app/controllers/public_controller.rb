@@ -4,6 +4,7 @@ class PublicController < ApplicationController
 		require 'rexml/document'
 		include REXML
 	
+	protect_from_forgery :except => ["speedBooking", "login"]
 	before_filter :auth_access_user, :only => [:panel]
 			
 	def preindex

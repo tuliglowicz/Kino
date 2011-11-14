@@ -62,21 +62,30 @@ left:300px;
 	height:50px; */
 	border-radius :10px; 
 	-moz-border-radius:10px; 
-	background-color:tomato;
+	background-color:#E61C66;
 }
 
 #navH .p0 { height: 35px; }
 #navH .p0 li { float: left; display: inline; border-left:1px ; font: bold 14px Arial, sans-serif; line-height: 35px; position: relative;}
-#navH .p0 li a { color: #fff; display: block; text-align: center; padding: 0 14px; }
-#navH .p0 li a:hover {  color:#2D2D2D; text-decoration:none; }
+a.main_menu { color: #fff; display: block; text-align: center; padding: 0 14px; }
+a:hover.main_menu  {  color:#FFD700; text-decoration:none; }
+a.main_menu_selected{color: #FFD700; display: block; text-align: center; padding: 0 14px; }
 #navH .p0 li.active a{ }
 #navH .p0 li.afterActive { background: none; }
 #navH .p0 #e1{border:none;}
 #navH .p0 #e0{border:none; }
 
+#navH .p0 .p1 {display: none; position: absolute; top:34px; left:0; background: #1a2429; width: 300px; padding-bottom: 5px;}
+#navH .p0 li:hover .p1{display:block;}
+#navH .p0 .p1 li {float: left;display: block; background: none; font: normal 14px/14px Arial,serif; height: auto; padding:0; width: 100px;}
+#navH .p0 .p1 li:hover a {color: #80b2dc; background: none;}
+#navH .p0 .p1 li a {color: #fff; padding: 5px 14px; text-align: left; height: auto;}
+#navH .p0 .p1 li.active a {color: #80b2dc;}
+#navH .p0 li.active .p1 a {background: none;}
+
 #navH .p0 .moje { float: right; }
 
-
+.sep_col{color:#FF0066}
 /* footer */
 #footer .ft_top {border-top: 1px solid #222; border-bottom: 1px solid #222;}
 #footer .ft_top .c1 {display:none;}

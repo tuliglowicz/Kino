@@ -5,7 +5,7 @@ class PublicController < ApplicationController
 require "pstore"
 		include REXML
 	
-	protect_from_forgery :except => ["speedBooking", "login"]
+	protect_from_forgery :except => ["speedBooking", "login", "payment_ok", "payment_error"]
 	before_filter :auth_access_user, :only => [:panel]
 			
 	def preindex

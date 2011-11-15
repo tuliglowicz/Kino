@@ -33,21 +33,19 @@ http://www.metamorphozis.com/free_templates/free_css_templates/metamorph_circles
 <body id="pagetype_index" class="path_109533 path_vod">
      
 <div id="page" class="layout_uniwersalny">
-	<div class="Ww2" style="text-align: right;">
+	<div class="Ww2" style="text-align: center;">
 		<% if session[:user] %>	
-		<% #Po co jest tutaj :id => session[:user].id.to_s ? do skasowania -%>
-		<% #Jedno jest link_to, a drugie "<a href=>"...  -%>
-		<%= link_to 'Moje konto', :action => "profile", :id => session[:user].id.to_s %> ( <a href="<%= user_logout_path %>">Wyloguj</a> )
+			<div class='link_logout'><a class='main_menu' href="<%= user_logout_path %>">Wyloguj</a></div>
 		<% else %>	
-			<% if session[:worker] %>				
-				<%= link_to 'Panel pracowniczy', private_path %>
-			<% else %>
-				<a href="/public/login">Logowanie</a> | <a href="<%= register_path %>">Rejestracja</a>
-			<% end %>
+			<div class='link_login'>
+				<a class='main_menu' href="/public/login">Logowanie</a>
+				<hr  align=center size=1 color=#FF0066>
+				<a class='main_menu' href="<%= register_path %>">Rejestracja</a>
+			</div>
 		<% end %>
 	</div>      
-	<div id="sWlbg" style="padding-top: 0px; margin-top:0px;margin-bottom: 0px">
-			<img class="Wimg3" style="margin:0px" src="/images/pic/logo.png" alt="" usemap="#winieta" height="90" width="321" />
+	<div id="sWlbg" style="padding-top: 0px; margin-top:5px;margin-bottom: 0px">
+			<img class="Wimg3" style="margin:0px" src="/images/pic/logo3.png" alt="" usemap="#winieta" height="90"  />
 	</div>
   
 
@@ -74,9 +72,11 @@ http://www.metamorphozis.com/free_templates/free_css_templates/metamorph_circles
 			<li id="e6" class=" ">
 				<a class="main_menu" id='m6' href=<%= contact_path %>  title="Kontakt ">Kontakt</a>
 			</li><li><span class="sep_col">|</span></li>
+			<% if session[:user] %>	
 			<li id="e9" class=" moje">
-				<a class="main_menu" href="/public/repertuar" title="Moje filmy ">???Moje filmy???</a>
+				<a class="main_menu" id='m7' href="/public/profil?id=<%=session[:user].id.to_s%>" title="Moje konto">Moje konto</a>
 			</li>
+			<%end%>
 		</ul>
 	</div>
 	
@@ -201,7 +201,9 @@ function askForCinema(){
 }
 
 var x=location.pathname;
-//alert(x);
+var txt='/public/profil';
+var patt = /profil/i;
+if(x.match(patt)=='profil')x='profil';
 
 switch(x){
 	case '/public/index':
@@ -221,7 +223,10 @@ switch(x){
 	  break;
 	case '/public/kontakt':
 	  document.getElementById('m6').className='main_menu_selected';
-	  break;			  		  
+	  break;
+	case 'profil':
+	  document.getElementById('m7').className='main_menu_selected';
+	  break;	  			  		  
 	default:
 	  break;
 }	

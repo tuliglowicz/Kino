@@ -65,6 +65,34 @@ left:300px;
 	background-color:#E61C66;
 }
 
+div.link_logout{
+	text-align:center;
+	font-weight:bold;
+	margin-top:10px;
+	float:right;
+	width:7%;
+	padding-right:5px;
+	padding-top:5px;
+	padding-bottom:5px;
+	border-radius :5px; 
+	-moz-border-radius:5px; 
+	background-color:#E61C66;
+}
+
+div.link_login{
+	font-weight:bold;
+	margin-top:10px;
+	float:right;
+	width:10%;
+	padding:5px;
+	border-radius :5px; 
+	-moz-border-radius:5px; 
+	background-color:#E61C66;
+}
+
+div.autosize { display: table; width: 1px; }
+div.autosize > div { display: table-cell; }
+
 #navH .p0 { height: 35px; }
 #navH .p0 li { float: left; display: inline; border-left:1px ; font: bold 14px Arial, sans-serif; line-height: 35px; position: relative;}
 a.main_menu { color: #fff; display: block; text-align: center; padding: 0 14px; }

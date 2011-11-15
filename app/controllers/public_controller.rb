@@ -2,9 +2,10 @@
 class PublicController < ApplicationController
 	
 		require 'rexml/document'
+require "pstore"
 		include REXML
 	
-	protect_from_forgery :except => ["speedBooking", "login"]
+	protect_from_forgery :except => ["speedBooking", "login", "payment_ok", "payment_error"]
 	before_filter :auth_access_user, :only => [:panel]
 			
 	def preindex
@@ -337,6 +338,57 @@ class PublicController < ApplicationController
 		else
 			redirect_to "/"
 		end
+	end
+	
+	def purchase_tickets_from_profile
+	  	 
+	  if session[:user]
+	    tickets_numbers = []
+			params.each{ |p|
+			  if p.to_s.include?('buy')
+					tickets_numbers << p[1].to_i					
+				end
+			}			
+			
+			if tickets_numbers.count > 0
+			  @reservation = Reservation.new
+			  @reservation.date = Time.now
+			  @reservation.save
+			  
+			  tickets_numbers.each { |tn|
+			    ticket = Ticket.where(:ticket_number => tn).first 
+			    ticket.user_id = session[:user].id
+			    ticket.reservation_id = @reservation.id			   
+			    ticket.save 
+			  }
+			  
+			  @customer_full_name = session[:user].first_name.to_s + session[:user].last_name.to_s
+        @customer_email = session[:user].email 
+			  
+			  @payment = get_payment(params[:full_price])
+			  
+        @customer_address = 'not_important '
+        @city = 'not_important'
+        @description = 'TEST_OK'          # @reservation.id.to_s ma byc ponizej - zmienione tylko dla testow bo rezerwacja jeszcze nie zakonczona
+        @crc_hash = Digest::MD5.hexdigest(@reservation.id.to_s + "|13132|" + @payment.to_s + "|a20c0ee19ecc09ac")
+        
+        render 'payment'
+			else
+			  redirect_to profile_path
+			end
+		else
+		  redirect_to public_login_path
+		end
+	end
+	
+	def ticket_number_price
+	  
+	  @price = 0.0
+	  if request.xhr? && params[:ticket_number]
+	     @price = Ticket.where(:ticket_number => params[:ticket_number]).first.price
+	  end
+	  
+	  render @price
 	end
 	
 	# run whenever payment operation finished successfully

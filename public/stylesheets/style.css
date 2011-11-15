@@ -62,7 +62,8 @@ left:300px;
 	height:50px; */
 	border-radius :10px; 
 	-moz-border-radius:10px; 
-	background-color:purple;/*#E61C66;*/
+	background-color:#9933CC;
+	box-shadow: 3px 3px 5px #fff inset;	
 }
 
 div.link_logout{
@@ -76,7 +77,8 @@ div.link_logout{
 	padding-bottom:5px;
 	border-radius :5px; 
 	-moz-border-radius:5px; 
-	background-color:purple;/*#E61C66;*/
+	background-color:#9933CC;
+	box-shadow: 3px 3px 5px #fff inset;	
 }
 
 div.link_login{
@@ -87,7 +89,8 @@ div.link_login{
 	padding:5px;
 	border-radius :5px; 
 	-moz-border-radius:5px; 
-	background-color:purple;/*#E61C66;*/
+	background-color:#9933CC;
+	box-shadow: 3px 3px 5px #fff inset;	
 }
 
 
@@ -111,7 +114,7 @@ a.main_menu_selected{color: #FFD700; display: block; text-align: center; padding
 
 #navH .p0 .moje { float: right; }
 
-.sep_col{color:#FF0066}
+.sep_col{color:purple}
 /* footer */
 #footer .ft_top {border-top: 1px solid #222; border-bottom: 1px solid #222;}
 #footer .ft_top .c1 {display:none;}

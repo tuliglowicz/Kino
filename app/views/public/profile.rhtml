@@ -391,7 +391,7 @@
 				<% time = v.seance.time_from %>
 				<% date = v.seance.date_from%>				
 				
-				<% if v.bought==true && ((time> Time.now && date==DateTime.now) || date>DateTime.now) %>
+				<% if v.bought==true && (date>=DateTime.now) %>
 			<table width=100% height=136 align=center border="0" bordercolor="red" style="color:#000000; border-collapse:collapse;"  >
 				<tr>
 					<td >

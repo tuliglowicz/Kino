@@ -23,6 +23,15 @@ class TicketPdf < Prawn::Document
     file = "public/images/pic/cinematoholix.png" # do tego folderu trzeba wrzucić plik cinematoholix, który dodałem w public/images/pic
     #image file, :at => [20,650], :background => file
     image file, :background => file, :position => :left,   :vposition => "20"
+    font_families.update("BarcodeFont" => {
+                             :bold  => "/app/public/fonts/BarcodeFont.ttf",
+                             :italic => "/app/public/fonts/BarcodeFont.ttf",
+                             :bold_italic => "/app/public/fonts/BarcodeFont.ttf",
+                             :normal => "/app/public/fonts/BarcodeFont.ttf" })
+    font "BarcodeFont"
+    z= @ticket.ticket_number + 1000234512342342
+    text "#{z}" , size: 50, style: :bold ,  :align => :right,   :valign => "20"
+    font "arial"
     move_down 20
     font_families.update("arial" => {
                              :bold  => "#{Prawn::BASEDIR}/data/fonts/DejaVuSans.ttf",
@@ -69,14 +78,7 @@ class TicketPdf < Prawn::Document
   end
   
   def mypicture
-    font_families.update("BarcodeFont" => {
-                             :bold  => "/app/public/fonts/BarcodeFont.ttf",
-                             :italic => "/app/public/fonts/BarcodeFont.ttf",
-                             :bold_italic => "/app/public/fonts/BarcodeFont.ttf",
-                             :normal => "/app/public/fonts/BarcodeFont.ttf" })
-    font "BarcodeFont"
-    z= @ticket.id + 10002345
-    text "#{z}" , size: 50, style: :bold , :position => :right
+    
     #stroke_bounds()
     horizontal_line 100, 100, :at => 75 
     font_families.update("arial" => {

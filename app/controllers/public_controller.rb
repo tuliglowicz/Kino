@@ -420,7 +420,7 @@ require "pstore"
         tickets = Ticket.where(:reservation_id => params[:p24_session_id], :cancelled => false)
         
         if tickets
-          if tickets[0].belongsToUnregisteredUser
+          if tickets[0].unregistered_user_id
               user = UnregisteredUser.find(tickets[0].unregistered_user_id)
             else
               user = User.find(tickets[0].user_id)

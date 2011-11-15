@@ -358,7 +358,8 @@ require "pstore"
 			  tickets_numbers.each { |tn|
 			    ticket = Ticket.where(:ticket_number => tn).first 
 			    ticket.user_id = session[:user].id
-			    ticket.reservation_id = @reservation.id			    
+			    ticket.reservation_id = @reservation.id			   
+			    ticket.save 
 			  }
 			  
 			  @customer_full_name = session[:user].first_name.to_s + session[:user].last_name.to_s

@@ -15,6 +15,9 @@ Kino::Application.routes.draw do
   match 'public/dane_filmu' => 'public#dane_filmu', :as => 'film_data'
   match 'public/speedBooking' => 'public#speedBooking', :as => 'SB'
   match 'public/delete_ticket' => 'public#delete_ticket'
+  match 'public/zakup_wybrane_bilety' => 'public#purchase_tickets_from_profile', :as => 'purchase_tickets_from_profile'
+  match 'public/ticket_number_price' => 'public#ticket_number_price', :as => 'ticket_number_price'
+  
   # Payment
   match 'public/finalizuj' => 'public#payment', :as => 'finalize'
   match 'public/payment_ok' => 'public#payment_ok', :as => 'payment_ok'

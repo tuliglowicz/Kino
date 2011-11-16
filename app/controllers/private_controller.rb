@@ -10,6 +10,13 @@ class PrivateController < ApplicationController
 	
 	def panel
 	end
+	
+	
+	def panel_kasjera
+		# wyszukiwarka rezerwacji
+		# tworzenie nowego bitetu
+		# na jaki czas te rezerwacje- na tydzien do przodu
+	end
 
 	def stats
 	    if Auth.try_to_login_stats(params[:password])

@@ -233,53 +233,49 @@ require "pstore"
 	    end	    		
 	end
 	
-	def speedBooking
-		
+	def speedBooking		
 		if request.xhr? && params[:cf_id] && params[:cf_id].length > 0 && cookies[:cinema_id]
 			seances = Seance.find(:all, :conditions => "cinema_film_id =" + params[:cf_id]+" AND date_from < date(now()) + integer '7' AND date_from >= date(now())", :order => "date_from, time_from")
 			
 			render :json => seances
 			return;
-		else
-			if request.xhr? && cookies[:cinema_id]
-				resp = session[:user] == nil
-				render :json => resp;
+			else if request.xhr? && params[:xml]
+				root = Document.new(params[:xml]).root
+				
+				root.each { |xticket|
+					t = Ticket.new
+					
+					t.user_id = xticket.elements["user_id"].text
+					t.seat = xticket.elements["seat"].text
+					t.ticket_type_id = xticket.elements["type"].text
+					t.price = xticket.elements["price"].text.to_i
+					t.seance_id = xticket.elements["seance_id"].text
+					t.reservation_id = nil
+					belongsToUnregisteredUser = false
+					t.cancelled = false
+					t.bought = false
+					t.worker_id = 1
+					t.ticket_number = rand(99999999)
+					
+					#puts t
+					puts t.save
+					#unregistered_user_id
+					
+					# Zapisywawnie do bazy z ticket_number'em
+					#query = 'INSERT INTO tickets(user_id, seat, ticket_type_id, price, seance_id, reservation_id, cancelled, bought, worker_id)' +
+					#  'VALUES( ' + xticket.elements["user_id"].text + ',\'' + xticket.elements["seat"].text + '\',' + xticket.elements["type"].text + ',' + xticket.elements["price"].text.to_i.to_s + ',' + xticket.elements["seance_id"].text + 
+				  #  ', null, false, false, 1);' # trzeba dodac odpowiednio spreparowanego workera
+				  #ActiveRecord::Base.connection.execute(query) 
+				}
+				
+				render :json => true
 				return;
+				else if request.xhr? && cookies[:cinema_id]
+						resp = session[:user] == nil
+						render :json => resp;
+						return;
+				end
 			end
-		end
-		if request.xhr? && params[:xml]
-			root = Document.new(params[:xml]).root
-			
-			root.each { |xticket|
-				t = Ticket.new
-				
-				t.user_id = xticket.elements["user_id"].text
-				t.seat = xticket.elements["seat"].text
-				t.ticket_type_id = xticket.elements["type"].text
-				t.price = xticket.elements["price"].text.to_i
-				t.seance_id = xticket.elements["seance_id"].text
-				t.reservation_id = nil
-				belongsToUnregisteredUser = false
-				t.cancelled = false
-				t.bought = false
-				t.worker_id = 1
-				
-				#puts t
-				puts t.save
-				#unregistered_user_id
-				
-				# Zapisywawnie do bazy z ticket_number'em
-				#query = 'INSERT INTO tickets(user_id, seat, ticket_type_id, price, seance_id, reservation_id, cancelled, bought, worker_id)' +
-				#  'VALUES( ' + xticket.elements["user_id"].text + ',\'' + xticket.elements["seat"].text + '\',' + xticket.elements["type"].text + ',' + xticket.elements["price"].text.to_i.to_s + ',' + xticket.elements["seance_id"].text + 
-			  #  ', null, false, false, 1);' # trzeba dodac odpowiednio spreparowanego workera
-			  #ActiveRecord::Base.connection.execute(query) 
-			}
-			
-			render :json => true
-			return;
-		else
-			render :json => false
-			return;
 		end
 	end
 	

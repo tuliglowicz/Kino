@@ -380,6 +380,8 @@
 							success: function (json){
 								if(json != undefined && json){
 									alert("Transakcja przebiegła pomyślnie.\nDziękujemy.");
+								} else {
+									alert(json)
 								}
 							},
 							error: function(){

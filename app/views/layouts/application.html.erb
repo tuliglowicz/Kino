@@ -35,48 +35,70 @@ http://www.metamorphozis.com/free_templates/free_css_templates/metamorph_circles
 <div id="page" class="layout_uniwersalny">
 	<div class="Ww2" style="text-align: center;">
 		<% if session[:user] %>	
-			<div class='link_logout'><a class='main_menu' href="<%= user_logout_path %>">Wyloguj</a></div>
+			
+			<div class='link_logout bck_color'>
+				<a class='main_menu bck_color' href="<%= user_logout_path %>">Wyloguj (<%= session[:user].login %>)</a>
+			</div>
 		<% else %>	
-			<div class='link_login'>
+			<div class='link_login bck_color'>
 				<a class='main_menu' href="/public/login">Logowanie</a>
-				<hr  align=center size=1 color=#FF0066>
+				<hr  align=center size=1 color=#000>
 				<a class='main_menu' href="<%= register_path %>">Rejestracja</a>
 			</div>
 		<% end %>
 	</div>      
 	<div id="sWlbg" style="padding-top: 0px; margin-top:5px;margin-bottom: 0px">
-			<img class="Wimg3" style="margin:0px" src="/images/pic/logo2.png" alt="" usemap="#winieta" height="90"  />
+			<img class="Wimg3" style="margin:0px" src="/images/pic/logo.png" alt="" usemap="#winieta" height="90"  />
 	</div>
   
 
-	<div id="navH">
+	<div id="navH" class="bck_color">
 		<ul class="p0">
-			<li id="e0" class=" ">
-		&nbsp;&nbsp;&nbsp;
-			</li>
+			<!--<li id="e0" class="">
+				&nbsp;&nbsp; &nbsp;
+			</li>-->
 			<li id="e1" class=" ">
-				<a class="main_menu" id='m1' href=<%= public_path %> title="Strona Główna">Home</a>
-			</li><li><span class="sep_col">|</span></li>
-			<li id="e2" class=" ">
-				<a class="main_menu" id='m2' href=<%= repertoire_path %>  title="Wszystkie Filmy ">Repertuar</a>
-			</li><li><span class="sep_col">|</span></li>
-			<li id="e3" class=" ">
-				<a class="main_menu" id='m3' href=<%= purchase_path %>  title="Zakup / Rezerwacja">Zakup / Rezerwacja</a>
-			</li><li><span class="sep_col">|</span></li>
-			<li id="e4" class=" ">
-				<a class="main_menu" id='m4' href=<%= announcement_path %>  title="Zapowiedzi ">Zapowiedzi</a>
-			</li><li><span class="sep_col">|</span></li>
-			<li id="e5" class=" ">
-				<a class="main_menu" id='m5' href=<%= prices_path %> title="Ceny i Promocje ">Ceny i Promocje</a>
-			</li><li><span class="sep_col">|</span></li>
-			<li id="e6" class=" ">
-				<a class="main_menu" id='m6' href=<%= contact_path %>  title="Kontakt ">Kontakt</a>
-			</li><li><span class="sep_col">|</span></li>
-			<% if session[:user] %>	
-			<li id="e9" class=" moje">
-				<a class="main_menu" id='m7' href="/public/profil?id=<%=session[:user].id.to_s%>" title="Moje konto">Moje konto</a>
+				<div class='menu_el left_rad'>
+					<a class="main_menu" id='m1' href=<%= public_path %> title="Strona Główna">Home</a>
+				</div>
 			</li>
+			<li id="e2" class=" ">
+				<div class='menu_el no_rad'>
+					<a class="main_menu" id='m2' href=<%= repertoire_path %>  title="Wszystkie Filmy ">Repertuar</a>
+				</div>
+			</li>
+			<li id="e3" class=" ">
+				<div class='menu_el no_rad'>
+					<a class="main_menu" id='m3' href=<%= purchase_path %>  title="Zakup / Rezerwacja">Zakup / Rezerwacja</a>
+				</div>
+			</li>
+			<li id="e4" class=" ">
+				<div class='menu_el no_rad'>
+					<a class="main_menu" id='m4' href=<%= announcement_path %>  title="Zapowiedzi ">Zapowiedzi</a>
+				</div>
+			</li>
+			<li id="e5" class=" ">
+				<div class='menu_el no_rad'>
+					<a class="main_menu" id='m5' href=<%= prices_path %> title="Ceny i Promocje ">Ceny i Promocje</a>
+				</div>
+			</li>
+			<li id="e6" class=" ">
+				<div class='menu_el no_rad'>
+					<a class="main_menu" id='m6' href=<%= contact_path %>  title="Kontakt ">Kontakt</a>
+				</div>
+			</li>
+			<!--<li id="e0" class="moje">
+				&nbsp;&nbsp; &nbsp;
+			</li>-->
+			<% if session[:user] %>	
+			<li id="e9" class="moje ">
+				<div class='menu_el right_rad'>
+					<a class="main_menu" id='m7' href="/public/profil?id=<%=session[:user].id.to_s%>" title="Moje konto">Moje konto</a>
+				</div>
+			</li>
+
 			<%end%>
+
 		</ul>
 	</div>
 	
@@ -104,12 +126,7 @@ http://www.metamorphozis.com/free_templates/free_css_templates/metamorph_circles
 	      <li class="copy">
 	      	<a href="#"  rel="nofollow">Copyright</a> &copy; <a href="#" rel="nofollow">CINEMATOHOLIX SA</a>
 	      </li>
-	      <li class="f"><a href="#" rel="nofollow">O nas</a></li>
-	      <li><a href="" rel="nofollow">Staże u nas</a></li>
-	      <li><a href="" rel="nofollow">Reklama</a></li>
-	      <li><a href="" rel="nofollow">Prywatność</a></li>
-	      <li><a href="" >Wszystkie artykuły</a></li>
-	      <li><a href="" >Licencje</a></li>
+	      <li class="f"><a href=<%= contact_path %> rel="nofollow">O nas</a></li>
 	    </ul>
 	  </div>
 	 </div>

@@ -52,18 +52,10 @@ body {background: #000 url('/images/pic/body_bg.jpg') repeat-x 0 0;}
 
 /* nawigacja */
 div#navH{
-
-	
-left:300px;
-	/*display: table-cell; 
-	text-align: center;
-	vertical-align: middle;
-	margin-left:10px;
-	height:50px; */
-	border-radius :10px; 
+	left:300px;
+	border-radius :10px;
 	-moz-border-radius:10px; 
-	background-color:#9933CC;
-	box-shadow: 3px 3px 5px #fff inset;	
+	box-shadow: 1px 3px 15px #80b2dc inset;	
 }
 
 div.link_logout{
@@ -71,15 +63,16 @@ div.link_logout{
 	font-weight:bold;
 	margin-top:10px;
 	float:right;
-	width:7%;
+
 	padding-right:5px;
 	padding-top:5px;
 	padding-bottom:5px;
 	border-radius :5px; 
-	-moz-border-radius:5px; 
-	background-color:#9933CC;
-	box-shadow: 3px 3px 5px #fff inset;	
+	-moz-border-radius:5px; 	
+	box-shadow: 3px 3px 5px #80b2dc inset;
+	
 }
+
 
 div.link_login{
 	font-weight:bold;
@@ -89,16 +82,42 @@ div.link_login{
 	padding:5px;
 	border-radius :5px; 
 	-moz-border-radius:5px; 
-	background-color:#9933CC;
-	box-shadow: 3px 3px 5px #fff inset;	
+	box-shadow: 3px 3px 5px #80b2dc inset;	
+}
+
+div.bck_color{
+	background-color:#1D1D1D;
 }
 
 
+
+div:hover.menu_el{
+	box-shadow: 0px 0px 6px #80b2dc ;		
+}
+
+div.no_rad, div.left_rad{
+	border-right: 1px ridge #1A2429;
+}
+div.right_rad{
+	border-left: 1px ridge #1A2429;
+}
+div:hover.left_rad{
+	border-bottom-left-radius :10px; 
+	-moz-border-bottom-left-radius:10px; 
+	border-top-left-radius :10px; 
+	-moz-border-top-left-radius:10px; 	
+}
+div:hover.right_rad{
+	border-bottom-right-radius :10px; 
+	-moz-border-bottom-right-radius:10px; 
+	border-top-right-radius :10px; 
+	-moz-border-top-right-radius:10px; 	
+}
 #navH .p0 { height: 35px; }
 #navH .p0 li { float: left; display: inline; border-left:1px ; font: bold 14px Arial, sans-serif; line-height: 35px; position: relative;}
 a.main_menu { color: #fff; display: block; text-align: center; padding: 0 14px; }
-a:hover.main_menu  {  color:#FFD700; text-decoration:none; }
-a.main_menu_selected{color: #FFD700; display: block; text-align: center; padding: 0 14px; }
+a:hover.main_menu  {  color:#80b2dc; text-decoration:none; }
+a.main_menu_selected{color: #80b2dc; display: block; text-align: center; padding: 0 14px; }
 #navH .p0 li.active a{ }
 #navH .p0 li.afterActive { background: none; }
 #navH .p0 #e1{border:none;}

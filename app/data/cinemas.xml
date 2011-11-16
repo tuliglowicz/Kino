@@ -1,0 +1,44 @@
+<cinemas>
+  <cinema>
+    <id type='integer'>1</id>
+    <name>Elbląg</name>
+    <phone type='integer'>121212111</phone>
+    <city_id type='integer'>1</city_id>
+    <address>Chopina 22</address>
+  </cinema>
+  <cinema>
+    <id type='integer'>2</id>
+    <name>Częstochowa</name>
+    <phone type='integer'>121212111</phone>
+    <city_id type='integer'>2</city_id>
+    <address>Dzierżyńskiego 1</address>
+  </cinema>
+  <cinema>
+    <id type='integer'>3</id>
+    <name>Nowa Huta</name>
+    <phone type='integer'>121212111</phone>
+    <city_id type='integer'>3</city_id>
+    <address>Marksa 112</address>
+  </cinema>
+  <cinema>
+    <id type='integer'>4</id>
+    <name>Sopot</name>
+    <phone type='integer'>121212111</phone>
+    <city_id type='integer'>4</city_id>
+    <address>Nowy Wspaniały Świat</address>
+  </cinema>
+  <cinema>
+    <id type='integer'>5</id>
+    <name>Warszawa Targówek</name>
+    <phone type='integer'>121212111</phone>
+    <city_id type='integer'>5</city_id>
+    <address>Hallera 12</address>
+  </cinema>
+  <cinema>
+    <id type='integer'>6</id>
+    <name>Wrocław Renoma</name>
+    <phone type='integer'>123456789</phone>
+    <city_id type='integer'>6</city_id>
+    <address>11 Listopada</address>
+  </cinema>
+</cinemas>

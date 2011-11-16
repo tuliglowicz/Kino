@@ -1,6 +1,6 @@
 # encoding: utf-8
 class CinemasController < ApplicationController
-	
+	require 'rexml/document'
 	layout 'admin'
 	
 	before_filter :is_worker
@@ -63,6 +63,12 @@ class CinemasController < ApplicationController
     
     respond_to do |format|
       if @cinema.save
+        
+        # adding new cinema at the end of app/data/cinemas.xml           
+        create_cinemas_xml() unless FileTest.exists?("app/data/cinemas.xml")
+        
+        add_cinema_to_xml()
+        
         format.html { redirect_to(@cinema, :notice => 'Utworzono kino o następujących danych:') }
         format.xml  { render :xml => @cinema, :status => :created, :location => @cinema }
       else
@@ -80,6 +86,9 @@ class CinemasController < ApplicationController
 		
 	  respond_to do |format|
 	    if @cinema.update_attributes(params[:cinema])
+	      
+	      update_cinemas_xml()
+	      
 	      format.html { redirect_to(@cinema, :notice => 'Kino zostało pomyślnie zaktualizowane.') }
 	      format.xml  { head :ok }
 	    else
@@ -118,5 +127,71 @@ class CinemasController < ApplicationController
  
   def get_table_name
     'cinemas'
+  end
+  
+  def create_cinemas_xml
+    File.open('app/data/cinemas.xml', 'w') {|f| 
+      f.write "<cinemas>"      
+      f.write "</cinemas>"
+    }
+  end
+  
+  def add_cinema_to_xml
+        file = File.open('app/data/cinemas.xml')
+        doc = REXML::Document.new(file)
+        file.close
+        root = doc.root
+        cinemas = root.elements['cinemas']
+        cinema = REXML::Element.new('cinema')
+        
+        name = REXML::Element.new('name').add_text(@cinema.name)
+        
+        id = REXML::Element.new('id').add_text(@cinema.id.to_s)
+        id.add_attributes( {"type"=>"integer"} )
+        
+        phone = REXML::Element.new('phone').add_text(@cinema.phone.to_s)
+        phone.add_attributes( {"type"=>"integer"} )
+        
+        city_id = REXML::Element.new('city_id').add_text(@cinema.city_id.to_s)
+        city_id.add_attributes( {"type"=>"integer"} )
+                
+        address = REXML::Element.new('address').add_text(@cinema.address)
+        
+        cinema.add_element id
+        cinema.add_element name
+        cinema.add_element phone
+        cinema.add_element city_id
+        cinema.add_element address
+        
+        root.add_element cinema  
+        
+        save_xml_data(doc)
+  end
+  
+  def update_cinemas_xml()
+    file = File.open('app/data/cinemas.xml')
+        doc = REXML::Document.new(file)
+        file.close
+        logger = Logger.new('log/update.log')
+        doc.elements.each('cinemas/cinema') { |c|          
+          if(c.elements['id'].text == params[:id].to_s)
+            c.elements['name'].text = params[:cinema][:name]
+            c.elements['phone'].text = params[:cinema][:phone]
+            c.elements['address'].text = params[:cinema][:address]
+            c.elements['city_id'].text = params[:cinema][:city_id]
+            
+          end 
+         }
+                 
+        save_xml_data(doc)
+       
+  end
+  
+  def save_xml_data(doc)
+    file = File.open('app/data/cinemas.xml', "w")
+        formatter = REXML::Formatters::Pretty.new
+        formatter.compact = true
+        formatter.write(doc, file)
+        file.close
   end
 end

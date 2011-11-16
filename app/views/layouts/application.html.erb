@@ -133,60 +133,29 @@ http://www.metamorphozis.com/free_templates/free_css_templates/metamorph_circles
 
 <xml id="cinemas_xml" style='display:none'>
 	<cinemas type="array">
-	  <cinema>
-	    <address>ul. F. Chopina 22</address>
-	    <name>Elbląg</name>
-	    <created-at type="datetime" nil="true"/>
-	    <updated-at type="datetime" nil="true"/>
-	    <id type="integer">1</id>
-	    <phone type="integer">64829405</phone>
-	    <city-id type="integer">1</city-id>
-	  </cinema>
-	  <cinema>
-	    <address>ul. F. Dzierżyńskiego 45</address>
-	    <name>Częstochowa</name>
-	    <created-at type="datetime" nil="true"/>
-	    <updated-at type="datetime" nil="true"/>
-	    <id type="integer">2</id>
-	    <phone type="integer">875847849</phone>
-	    <city-id type="integer">2</city-id>
-	  </cinema>
-	  <cinema>
-	    <address>ul. Armii Czerwonej 98</address>
-	    <name>Kraków Nowa Huta</name>
-	    <created-at type="datetime" nil="true"/>
-	    <updated-at type="datetime" nil="true"/>
-	    <id type="integer">3</id>
-	    <phone type="integer">38493843</phone>
-	    <city-id type="integer">3</city-id>
-	  </cinema>
-	  <cinema>
-	    <address>ul. Bursztynowa 15</address>
-	    <name>Sopot</name>
-	    <created-at type="datetime" nil="true"/>
-	    <updated-at type="datetime" nil="true"/>
-	    <id type="integer">4</id>
-	    <phone type="integer">84848753</phone>
-	    <city-id type="integer">4</city-id>
-	  </cinema>
-	  <cinema>
-	    <address>ul. K. Marksa 13</address>
-	    <name>Warszawa Targówek</name>
-	    <created-at type="datetime" nil="true"/>
-	    <updated-at type="datetime" nil="true"/>
-	    <id type="integer">5</id>
-	    <phone type="integer">894589485</phone>
-	    <city-id type="integer">5</city-id>
-	  </cinema>
-	  <cinema>
-	    <address>ul. Pstrowskiego 20</address>
-	    <name>Wrocław Renoma</name>
-	    <created-at type="datetime" nil="true"/>
-	    <updated-at type="datetime" nil="true"/>
-	    <id type="integer">6</id>
-	    <phone type="integer">438478349</phone>
-	    <city-id type="integer">6</city-id>
-	  </cinema>
+		<% if  FileTest.exists?("app/data/cinemas.xml") %>
+			<% cinemas = REXML::Document.new(File.read('app/data/cinemas.xml'))%>
+	  		<% cinemas.elements.each('cinemas/cinema') do |c| %>
+		  		<cinema>
+		  			<id type="integer"><%= c.elements['id'].text %></id>
+				    <address type='string'><%= c.elements['address'].text %></address>
+				    <name><%= c.elements['name'].text %></name>					    
+				    <phone type="integer"><%= c.elements['phone'].text %></phone>
+				    <city_id type="integer"><%= c.elements['city_id'].text %></city_id>
+				</cinema>
+			<% end %>
+		<% else %>
+				<% cinemas = Cinema.all %>
+				<% cinemas.each do |c| %>
+					<cinema>
+						<id type="integer"><%= c.id %></id>
+					    <address type='string'><%= c.address %></address>
+					    <name><%= c.name %></name>
+					    <phone type="integer"><%= c.phone %></phone>
+					    <city_id type="integer"><%= c.city_id %></city_id>
+					</cinema>
+				<% end %>
+	  	<% end %>	  
 	</cinemas>
 </xml>
 

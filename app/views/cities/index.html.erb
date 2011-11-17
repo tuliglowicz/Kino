@@ -15,7 +15,7 @@
 			jQuery("#city_name").focus();
 		});
 		
-		jQuery("#new_city_form").validationEngine('attach', {bindMethod:"live"});
+		jQuery("#new_city_form").validationEngine('attach', { validationEventTrigger: 'submit'});
 	});
 </script>
 <!-- EO JS code-->

@@ -51,3 +51,27 @@
     <%= f.submit "Zapisz"%>
   </div>
 <% end %>
+<script>
+$j("#cinema_film_date_from").datepicker({
+	dateFormat: "yy-mm-dd",
+	minDate: -1,
+	regional: "pl",
+	showAnim: "drop",
+	showOtherMonths: true,
+	selectOtherMonths: true,
+	showOn: "button",
+	buttonImage: "/images/pic/calendar.gif",
+	buttonImageOnly: true
+});
+$j("#cinema_film_date_untill").datepicker({
+	dateFormat: "yy-mm-dd",
+	minDate: -1,
+	regional: "pl",
+	showAnim: "drop",
+	showOtherMonths: true,
+	selectOtherMonths: true,
+	showOn: "button",
+	buttonImage: "/images/pic/calendar.gif",
+	buttonImageOnly: true
+});
+</script>

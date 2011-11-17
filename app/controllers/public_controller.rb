@@ -13,6 +13,7 @@ require "pstore"
 	end
 	
 	def index
+	  @facebook = "http://www.facebook.com/CinematoholixGroupWTW"
 	end
 	
 	def register
@@ -158,7 +159,7 @@ require "pstore"
 	end
 	
 	def ceny
-		cinema_id = cookies[:cinema_id]
+	  cinema_id = cookies[:cinema_id]
 
 		mySeanceID = 1 # zmiena przechowywująca wyświetlane kino w pętli
 		

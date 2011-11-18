@@ -1,7 +1,104 @@
-<%= debug(@ip) if @ip%><br/><br/>
+<div id="ajaxPageLoadTarget" width="750px" style="width:750px;">
+		
+<%= javascript_include_tag "jquery-1.6.2.min.js" %>
+<%= javascript_include_tag "jquery-ui-1.8.16.custom.min.js" %>
+<script> $j = jQuery.noConflict(); </script>
+<%= javascript_include_tag "application.js" %>
+	
+<style>
+a, a:visited, a:active {
+	color: blue;
+	text-decoration: none;
+}
+a.date.selected {
+	color: red;
+}
+pre {
+	display: inline;
+	font-family: arial;
+}
+pre:hover {
+	color: red;
+}
+</style>
 
-<%= debug(@r) if @r%><br/><br/>
+<div id="sprzedarz">
+</div>
 
-<%= debug(@tmp[0]['y']) if @tmp%><br/><br/>
 
-<%= debug(@cf.y) if @cf %><br/><br/>
+
+<div id="rezerwacje">
+<div id="box_akcji" style="position: fixed; left: 600px; top: 100px;">
+	<input type="submit" id="refresh" value="Odśwież"><br/>
+	Fraza1 <input id="f1" type="text" onkeyup="klik();"><br/>
+	Fraza2 <input id="f2" type="text" onkeyup="klik();"><br/>
+	<input type="submit" id="check_as_bought" value="Zakupiono">
+</div>
+
+		<% date = Date.today -%> &nbsp;| 
+		<%= link_to(date.strftime("%d.%m"), {:controller => "public", :action => "repertuar", :id => 1}, :class=>"date selected") %> |
+		<% date = date.tomorrow;-%>
+	<%	6.times do |i| -%>
+		<%= link_to(date.strftime("%d.%m"), {:controller => "public", :action => "repertuar", :id => (i+2)},:id => "d"+(i+2).to_s, :class=>"date") %> |
+		<% date = date.tomorrow;-%>
+	<% end -%><br/><br/>
+
+<% i=0 -%>
+<% @tickets_whole_week.each do |tickets| -%>
+	<% i = i+1; j = 0; -%>
+	<div id="dzien_nr_<%= i %>" class="tickets_div" style="display: <%= i==1 ? 'block' : 'none' %>;">
+		<% tickets.each do |t| %>
+			<% j = j + 1 %>
+			<% u = t.user -%>
+				<pre class="<%= u.first_name.upcase + "\t" + u.last_name.upcase + "\t" + u.email.upcase + "\t" + u.phone.to_s %>" onClick="this.firstChild.checked=!this.firstChild.checked" style='cursor:pointer;'><input type="checkbox" name="<%= t.id %>"><%= "\t" + u.last_name + " " + u.first_name + "\t" + t.seance.cinema_film.film.title + "\t" + t.seance.time_from.to_s[11,5]  + "\t" + t.seance.room.number.to_s + "\t" + t.seat %><br/></pre>
+		<% end -%>
+		<% if j==0 %>
+			W tym dniu nie ma żadnych rezerwacji.
+		<% end -%>
+	</div>
+<% end -%>
+
+<script>
+$j(".date").click(function(){
+	$j(".date").removeClass("selected");
+	$j(this).addClass("selected");
+	$j(".tickets_div").hide();
+	//alert("#dzien_nr_"+this.id.substring(0))
+	$j("#dzien_nr_"+this.id.substring(1)).myShow(500);
+	//$j("#dzien_nr_7").show();
+	return false;
+});
+
+function klik(){
+	var i = document.getElementById("f1").value.toUpperCase();
+	var n = document.getElementById("f2").value.toUpperCase();
+	$j("pre").hide();
+	var zapytanie = "pre";
+	if(i != "")
+		zapytanie += "[class*='"+i+"']"
+	if(n != "")
+		zapytanie += "[class*='"+n+"']"
+	
+	$j(zapytanie).myShow(500);
+}
+	
+function noNumbers(e){
+	var keynum;
+	var keychar;
+	var numcheck;
+	
+	if(window.event) // IE
+	{
+		keynum = e.keyCode;
+	}
+	else if(e.which) // Netscape/Firefox/Opera
+	{
+		keynum = e.which;
+	}
+	
+	keychar = String.fromCharCode(keynum);
+	numcheck = /\d/;
+	return (e.target.value.length <= 9 && numcheck.test(keychar)) || (keynum == 13 || keynum == 8);
+}
+</script>
+<%# debug(@tickets_whole_week) %>

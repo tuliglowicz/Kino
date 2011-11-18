@@ -1,83 +1,44 @@
 # encoding: utf-8
 class PrivateController < ApplicationController
 
-	layout :get_workers_layout 
+	layout :get_workers_layout  
   
-  
-  protect_from_forgery :except => "get_permissions"
-
+  	protect_from_forgery :except => "get_permissions"
 	before_filter :auth_access, :except => [:stats,:login, :logout, :send_login, :register]
 	
 	def panel
 	end
 	
-	
 	def panel_kasjera
 		# wyszukiwarka rezerwacji
-		# tworzenie nowego bitetu
+			# po Nazwisku	input
+			# => Imieniu	input
+			# emailu		input
+			# telefonie		input
+				# I oznaczenie jako kupione
+				# I wydruk
+					
+		# tworzenie nowego bitetu na konto anonima
+		
 		# na jaki czas te rezerwacje- na tydzien do przodu
+				
+		@tickets_whole_week = []
+		7.times do |i|
+			puts i
+			@tickets_whole_week[i] = Ticket.where("bought = false AND cancelled = false AND seance_id IN (
+										select id AS seance_id
+										from seances
+										where date_from = date(now()) + "+i.to_s+" AND room_id IN (
+										select id AS room_id
+										from rooms
+										where cinema_id = "+session[:worker].cinema_id.to_s+"
+										)
+									)");
+		end
+		
+		render :layout => false
 	end
 
-	def stats
-	    if Auth.try_to_login_stats(params[:password])
-	    				  					
-				sqlQuery = case 
-						when (not(params[:req]) or (params[:req].downcase == "users")) then
-							"Select * from main(); Select * from view"
-				  		when params[:req].downcase=="category" then
-				  			"SELECT distinct cat.id, cat.\"name\" As category,
-								(select count(t.id)
-									from tickets t, seances s, cinema_films cf, films f, categories c
-									where
-									t.seance_id = s.id and s.cinema_film_id = cf.id and cf.film_id = f.id and f.category_id = c.id and c.id = cat.id
-									) AS count
-								from categories cat
-								order by cat.\"name\"
-								"
-				  		when params[:req].downcase=="city" then
-				  			"SELECT distinct cit.id, cit.\"name\" As city,
-							(select count(t.id)
-								from tickets t, seances s, cinema_films cf, cinemas cin, cities c
-								where
-								t.seance_id = s.id and s.cinema_film_id = cf.id and cf.cinema_id = cin.id and cin.city_id = c.id and c.id = cit.id
-								) AS count
-							from cities cit
-							order by cit.\"name\"
-							"
-			  			when params[:req].downcase=="cinema" then
-				  			"SELECT distinct cin.id, cin.\"name\" As cinema,
-							(select count(t.id)
-								from tickets t, seances s, cinema_films cf, cinemas c
-								where
-								t.seance_id = s.id and s.cinema_film_id = cf.id and cf.cinema_id = cin.id and c.id = cin.id
-								) AS count
-							from cinemas cin
-							order by cin.\"name\"
-							"
-						else
-							""
-				end
-		if 	sqlQuery != ""	
-				@tmp = ActiveRecord::Base.connection.execute(sqlQuery)
-	    
-	    
-			if not params[:req] or params[:req].downcase == "users"
-				render :xml => @tmp[0]['y']
-			else
-				@cf = []
-				for c in @tmp do
-					@cf << c
-				end
-				render :xml => @cf
-			end
-			
-			else
-				render :text => ""
-			end
-		else 
-			render :text => ""
-		end
-	end
 	
 	def login
      

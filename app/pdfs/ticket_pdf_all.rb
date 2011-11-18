@@ -1,17 +1,21 @@
 # encoding: UTF-8
-class TicketPdf < Prawn::Document
+class TicketPdfAll < Prawn::Document
   def initialize(ticket, view)
     super(top_margin: 20)
     @ticket = ticket
     @view = view
     
-    order_number
-    mytable
-    mypicture
-    
+    @ticket.each do |w|
+      order_number(w)
+      mytable(w)
+      mypicture
+      
+    end
+    text "------------------------------------------------------------", size: 25, style: :bold
   end
   
-  def order_number
+  def order_number(w)
+    myticket=w
     font_families.update("arial" => {
                              :bold  => "#{Prawn::BASEDIR}/data/fonts/DejaVuSans.ttf",
                              :italic => "#{Prawn::BASEDIR}/data/fonts/DejaVuSans.ttf",
@@ -26,11 +30,12 @@ class TicketPdf < Prawn::Document
     image file, :background => file, :position => :left,   :valign => :bottom ,  :at => [320,713]
     
     font "arial", :size => 9
-    text "Bilet dla użytkownika: #{@ticket.user.first_name} #{@ticket.user.last_name}", size: 9, style: :bold
+    text "Bilet dla użytkownika: #{myticket.user.first_name} #{myticket.user.last_name}", size: 9, style: :bold
     move_down 40
   end
   
-  def mytable
+  def mytable(w)
+    myticket=w
     move_down 10
     font_families.update("BarcodeFont" => {
                              :bold  => "#{Prawn::BASEDIR}/data/fonts/code128.ttf",
@@ -38,7 +43,7 @@ class TicketPdf < Prawn::Document
                              :bold_italic => "#{Prawn::BASEDIR}/data/fonts/code128.ttf",
                              :normal => "#{Prawn::BASEDIR}/data/fonts/code128.ttf" })
     font "BarcodeFont"
-    z= @ticket.ticket_number + 1000234512342342
+    z= myticket.ticket_number + 1000234512342342
     #text "#{z}" , size: 50, style: :bold ,  :align => :right ,  :valign => :middle
     draw_text "#{z}" , size: 50, style: :bold , :at => [305,630], :valign => :middle
     font "arial", :size => 2
@@ -47,7 +52,7 @@ class TicketPdf < Prawn::Document
     font "arial", :size => 10
     move_up 50
     
-    table line_ticket_row  do
+    table line_ticket_row(myticket)  do
       row(0).font_style = :bold
       columns(1..2).align = :center
       self.row_colors = ["DDDDDD", "FFFFFF"]
@@ -56,7 +61,7 @@ class TicketPdf < Prawn::Document
       style(row(1), :border_colors => 'FFFFFF')
     end
     
-    table line_ticket_row2 do
+    table line_ticket_row2(myticket) do
       row(0).font_style = :bold
       columns(1..3).align = :center
       self.row_colors = ["DDDDDD", "FFFFFF"]
@@ -68,28 +73,30 @@ class TicketPdf < Prawn::Document
     
   end
   
-  def line_ticket_row
+  def line_ticket_row(w)
+    myticket=w
     font "arial", :size => 9
     
-    cinema_noletters = @ticket.seance.cinema_film.cinema.name
+    cinema_noletters = myticket.seance.cinema_film.cinema.name
     #cinema_noletters["ą"] = "a"
     [[ "Kino", "Film", "Data seansu", ]] + 
-    [[ cinema_noletters, @ticket.seance.cinema_film.film.title, @ticket.seance.date_from]]
+    [[ cinema_noletters, myticket.seance.cinema_film.film.title, myticket.seance.date_from]]
   end
   
-  def line_ticket_row2
+  def line_ticket_row2(w)
+    myticket=w
     font "arial", :size => 9
     
-    cinema_noletters = @ticket.seance.cinema_film.cinema.name
+    cinema_noletters = myticket.seance.cinema_film.cinema.name
     #cinema_noletters["ą"] = "a"
     [["Godzina seansu", "Sala", "Miejsce", "Cena", "Typ biletu"]] + 
-    [[ @ticket.seance.time_from.strftime("%H:%M"), @ticket.seance.room.number, @ticket.seat.to_s, @ticket.price, @ticket.ticket_type.name]]
+    [[ myticket.seance.time_from.strftime("%H:%M"), myticket.seance.room.number, myticket.seat.to_s, myticket.price, myticket.ticket_type.name]]
   end
   
   def mypicture
     
     font "arial"
-    text "------------------------------------------------------------", size: 25, style: :bold
+    #text "------------------------------------------------------------", size: 25, style: :bold
   end
   
 end

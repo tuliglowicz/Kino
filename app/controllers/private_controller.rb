@@ -1,9 +1,12 @@
 # encoding: utf-8
 class PrivateController < ApplicationController
-
+	
+		require 'rexml/document'
+		include REXML
+		
 	layout :get_workers_layout  
   
-  	protect_from_forgery :except => "get_permissions"
+  	protect_from_forgery :except => ["get_permissions", "panel_kasjera"]
 	before_filter :auth_access, :except => [:stats,:login, :logout, :send_login, :register]
 	
 	def panel
@@ -21,19 +24,46 @@ class PrivateController < ApplicationController
 		# tworzenie nowego bitetu na konto anonima
 		
 		# na jaki czas te rezerwacje- na tydzien do przodu
+		if request.xhr?
+			if params[:xml]
+				id_tab = []
+				root = Document.new(params[:xml]).root				
+				root.each { |id|
+					id_tab << id.text
+				}
 				
-		@tickets_whole_week = []
-		7.times do |i|
-			puts i
-			@tickets_whole_week[i] = Ticket.where("bought = false AND cancelled = false AND seance_id IN (
-										select id AS seance_id
-										from seances
-										where date_from = date(now()) + "+i.to_s+" AND room_id IN (
-										select id AS room_id
-										from rooms
-										where cinema_id = "+session[:worker].cinema_id.to_s+"
-										)
-									)");
+				t = Ticket.where("bought=false AND id IN ("+id_tab.join(",")+")");
+				
+				if t.length == id_tab.length
+					r = Reservation.new
+					r.date = Time.new
+					r.save
+					
+					sqlQuery = "Update tickets SET reservation_id = "+r.id.to_s+", bought=true, cancelled=false Where id IN ("+ id_tab.join(",")+")";
+					ActiveRecord::Base.connection.execute(sqlQuery);
+					
+					render :json => r.id
+					return
+				else
+					render :json => false
+					return
+				end
+			else
+			end
+		else
+			@tickets_whole_week = []
+			7.times do |i|
+				puts i
+				@tickets_whole_week[i] = Ticket.where("bought = false AND cancelled = false AND seance_id IN (
+											select id AS seance_id
+											from seances
+											where date_from = date(now()) + "+i.to_s+" AND room_id IN (
+											select id AS room_id
+											from rooms
+											where cinema_id = "+session[:worker].cinema_id.to_s+"
+											)
+										)");
+			end
 		end
 		
 		render :layout => false

@@ -17,6 +17,7 @@ Kino::Application.routes.draw do
   match 'public/delete_ticket' => 'public#delete_ticket'
   match 'public/zakup_wybrane_bilety' => 'public#purchase_tickets_from_profile', :as => 'purchase_tickets_from_profile'
   match 'public/ticket_number_price' => 'public#ticket_number_price', :as => 'ticket_number_price'
+  match 'public/tickets/print_all/:id' => 'tickets#print_all', :as => 'print_all'
   
   # Payment
   match 'public/finalizuj' => 'public#payment', :as => 'finalize'
@@ -45,7 +46,7 @@ Kino::Application.routes.draw do
 	# SeanceTypes
 	match "/seance_types/name_availability" => "seance_types#name_availability"
 
-  match 'private/panel_kasjera' => "private#panel_kasjera"
+  match 'private/panel_kasjera' => "private#panel_kasjera"  
   match '/private/privileges' => "private#permissions"
   match 'private/get_permissions' => "private#get_permissions"
   match 'private/permissions/create' => "permissions#create", :as => 'add_new_permission'

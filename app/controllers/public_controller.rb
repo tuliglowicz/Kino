@@ -2,7 +2,7 @@
 class PublicController < ApplicationController
 	
 		require 'rexml/document'
-require "pstore"
+		require "pstore"
 		include REXML
 	
 	protect_from_forgery :except => ["speedBooking", "login", "payment_ok", "payment_error"]

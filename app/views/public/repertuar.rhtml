@@ -5,20 +5,18 @@
 		</span> &nbsp; &nbsp; <a onClick="askForCinema()" style='cursor:pointer;'>zmień kino</a><br/>
 		<% unless cookies[:cinema_id] %>
 		<script>
-			askForCinema();
+			window.onLoad = askForCinema;
 		</script>
 		<% else -%>	
 			Dzisiaj i przyszly tydzien:
 			
-			<% 	i=0
-				date = Date.today -%>
+			<% 	i=0;	date = Date.today -%>
 			<%	7.times do -%> | 
 				<% if i == @date_foreward -%>
 					<b><%= date.strftime("%d.%m") %></b>
 				<% else -%>
 					<%= link_to(date.strftime("%d.%m"), {:controller => "public", :action => "repertuar", :id => i}, :class=>"repertuarTime") %>
 				<% end -%>
-				
 				<% date = date.tomorrow; i = i+1;-%>
 			<% end -%> &nbsp;| 
 		

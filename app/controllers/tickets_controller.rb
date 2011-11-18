@@ -41,7 +41,7 @@ class TicketsController < ApplicationController
   def print_all
     @reservationID = params[:id]
     sqlQuery = "SELECT *
-      FROM ticket
+      FROM tickets
       Where reservation_id = #{@reservationID}"
       
     @ticket = Ticket.find_by_sql(sqlQuery)

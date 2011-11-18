@@ -7,7 +7,7 @@
 	jQuery(document).ready(function()
 	{    
 	    jQuery('#cinema_name').focus();    
-	    jQuery("#cinema_form").validationEngine('attach', {bindMethod:"live"});    
+	    jQuery("#cinema_form").validationEngine('attach', { validationEventTrigger: 'submit'});    
 	    jQuery("#cinema_city_id").live('click', handleOnContextMenu)
  
   	});

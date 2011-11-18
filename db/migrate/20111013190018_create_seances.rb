@@ -9,7 +9,8 @@ class CreateSeances < ActiveRecord::Migration
       t.boolean :checked
       t.integer :seance_type_id
       t.integer :discount_sort_id
-
+      t.integer :max_reservable_seats
+      
       t.timestamps
     end
   end

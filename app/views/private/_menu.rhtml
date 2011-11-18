@@ -47,7 +47,7 @@
 		<% end %>
 	</div><br>
 	
-	<li class="header aMenu"><strong>Żadko edytowane</strong></li>
+	<li class="header aMenu"><strong>Rzadko edytowane</strong></li>
 	<div>
 		<% if Auth.can_read_in_self_cinema?(worker_id, "categories") -%>
 			<%= link_to("Kategorie Filmów", {:controller => "categories" }, :class=>"aMenu")%>

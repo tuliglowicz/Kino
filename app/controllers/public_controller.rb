@@ -2,7 +2,7 @@
 class PublicController < ApplicationController
 	
 		require 'rexml/document'
-require "pstore"
+		require "pstore"
 		include REXML
 	
 	protect_from_forgery :except => ["speedBooking", "login", "payment_ok", "payment_error"]
@@ -13,6 +13,7 @@ require "pstore"
 	end
 	
 	def index
+	  @facebook = "http://www.facebook.com/CinematoholixGroupWTW"
 	end
 	
 	def register
@@ -158,7 +159,7 @@ require "pstore"
 	end
 	
 	def ceny
-		cinema_id = cookies[:cinema_id]
+	  cinema_id = cookies[:cinema_id]
 
 		mySeanceID = 1 # zmiena przechowywująca wyświetlane kino w pętli
 		
@@ -178,7 +179,6 @@ require "pstore"
 		@cinema = Cinema.find(cinema_id)
 		@ticket_sort_prices = TicketSortPrice.find_by_sql(sqlQuery)
 		@querytask = SeanceType.find_by_sql(sqlQuery2)
-		# optymalizacja, Piotr!
 		if @querytask.empty?
 			@areSeances = false
 		else

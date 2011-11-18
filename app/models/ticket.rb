@@ -1,5 +1,7 @@
 # encoding: utf-8
+require 'acts_as_ordinalized'
 class Ticket < ActiveRecord::Base
+  acts_as_ordinalized
   belongs_to :seance
   belongs_to :reservation
   belongs_to :user

@@ -37,7 +37,7 @@ jQuery.fn.myHide = function(interval){
 		try {this.style.display = 'none';}
 		catch(e){alert("myHide:"+e);}
 	else
-		jQuery(this).animate({opacity: 0}, interval, function(){ this.style.display = 'none'}).css("opacity", 1)
+		jQuery(this).animate({opacity: 0}, interval, function(){ this.style.display = 'none'; $j(this).css("opacity", 1);});
 }
 jQuery.fn.myShow = function(interval){						
 	if(interval == undefined)

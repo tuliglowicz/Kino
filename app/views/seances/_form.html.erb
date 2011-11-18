@@ -24,7 +24,7 @@
   <div class="field">
     <%= f.label :"Film w kinie" %><br />
     <% if @f -%>
-    <%= select_tag('seance[cinema_film_id]', options_for_select([['Wybierz film', '']] + @f.collect{|c| [c.title, c.id]}, @seance.cinema_film_id), :class => 'validate[required]') %>
+    <%= select_tag('seance[cinema_film_id]', options_for_select([['Wybierz film', '']] + @f.collect{|c| [Film.find(c.film_id).title, c.id]}, @seance.cinema_film_id), :class => 'validate[required]') %>
     <% else -%>
     <%= f.text_field :cinema_film_id, :class => 'validate[required,custom[integer]' %>
     <% end -%>
@@ -45,10 +45,7 @@
     <%= f.label :"Godzina seansu" %><br />
     <%= f.time_select :time_from,  :minute_step => 5 %>
   </div>
-  <div class="field">
-    <%= f.label :Sprawdzony %><br />
-    <%= f.check_box :checked %>
-  </div>
+ 
   <div class="field">
   	<%= f.label :"Typ seansu" %><br />
     <% if @seance_types -%>
@@ -67,6 +64,13 @@
     <% end -%>
     
   </div>
+  
+  <% @max_reservable_seats = (@seance.max_reservable_seats == 0 || @seance.max_reservable_seats == nil ? 5 : @seance.max_reservable_seats)%>
+  <div class="field">
+    <%= f.label :"Maksymalna liczba rezerwowanych miejsc" %><br />
+    <%= f.text_field :max_reservable_seats, :class => "validate[required]; input", :type => 'number', :value => @max_reservable_seats, :min => 1, :step => 1%>
+  </div>
+  
   <div class="actions">
     <%= f.submit "Dodaj seans"%>
   </div>

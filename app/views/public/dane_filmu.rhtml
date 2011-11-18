@@ -2,9 +2,20 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<script type="text/javascript" src="https://apis.google.com/js/plusone.js">{lang: 'pl'}</script>
+		<script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
 		<title>Untitled Document</title>
 	</head>
 	<body>
+		<div id="fb-root"></div>
+		<script>(function(d, s, id) {
+		  var js, fjs = d.getElementsByTagName(s)[0];
+		  if (d.getElementById(id)) {return;}
+		  js = d.createElement(s); js.id = id;
+		  js.src = "//connect.facebook.net/pl_PL/all.js#xfbml=1";
+		  fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));</script>
+
 		<%film=@film %>
 		<table width=800 align=center border=0>
 			<tr>				
@@ -46,6 +57,11 @@
 									
 			<tr>
 				<td colspan="4" align="justify">
+					<br>
+					<div><g:plusone></g:plusone></div>
+					<div><a href="https://twitter.com/share" class="twitter-share-button" data-text="Cinematoholix" data-count="horizontal">Tweet</a></div>
+					<div class="fb-like" data-send="false" data-width="450" data-show-faces="false"></div>
+					</br>
 					<br/>Opis:<br/>	<br/>				
 					<%= film.description %>
 				</td>

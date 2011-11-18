@@ -35,9 +35,9 @@
   <div class="field">
     <%= f.label :Miejsce %><br />
     	<% if @seats -%>
-    <%= select_tag('ticket[seat_id]', options_for_select([['Wybierz siedzenie', '']] + @seats.collect{|r| [r.room_id, r.id]}, @ticket.seat_id), :class => 'validate[required]') %>
+    <%= select_tag('ticket[seat]', options_for_select([['Wybierz siedzenie', '']] + @seats.collect{|r| [r.room_id, r.id]}, @ticket.seat), :class => 'validate[required]') %>
     <% else -%>
-    <%= f.text_field :seat_id, :class => 'validate[required]' %>
+    <%= f.text_field :seat, :class => 'validate[required]' %>
     <% end -%>
   </div>
   

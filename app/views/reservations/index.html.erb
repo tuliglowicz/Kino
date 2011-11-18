@@ -3,6 +3,7 @@
 
 <table id="listaRekordow" cellspacing=0 cellpadding=5px>
   <tr>
+  	<th>Nr</th>
     <th>Data</th>
     <th></th>
     <th></th>
@@ -11,6 +12,7 @@
 
 <% @reservations.each do |reservation| %>
   <tr>
+  	<td><%= reservation.ordinal_number %></td>
     <td><%= reservation.date %></td>
     <td><%= link_to 'Pokaż', reservation %></td>
     <td><%= link_to 'Edytuj', edit_reservation_path(reservation) %></td>

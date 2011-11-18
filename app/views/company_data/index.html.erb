@@ -1,0 +1,33 @@
+<h3>Dane sieci</h3>
+<br />
+<br />
+<table>
+  <tr>
+    <th>Nip</th>
+    <th>Regon</th>
+    <th>Pełna nazwa</th>
+    <th>Adres</th>
+    <th>Vat</th>
+    <th>Facebook</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @company_data.each do |company_datum| %>
+  <tr>
+    <td><%= company_datum.nip %></td>
+    <td><%= company_datum.regon %></td>
+    <td><%= company_datum.name %></td>
+    <td><%= company_datum.address %></td>
+    <td><%= company_datum.vat %></td>
+    <td><%= company_datum.facebook_path %></td>
+    <td><%= link_to 'Show', company_datum %></td>
+    <td><%= link_to 'Edit', edit_company_datum_path(company_datum) %></td>
+    
+  </tr>
+<% end %>
+</table>
+
+<br />
+

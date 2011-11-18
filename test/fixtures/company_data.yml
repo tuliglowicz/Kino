@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  nip: 1
+  regon: 1
+  name: MyString
+  address: MyString
+  vat: 1
+  facebook_path: MyString
+
+two:
+  nip: 1
+  regon: 1
+  name: MyString
+  address: MyString
+  vat: 1
+  facebook_path: MyString

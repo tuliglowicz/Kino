@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Nip:</b>
+  <%= @company_datum.nip %>
+</p>
+
+<p>
+  <b>Regon:</b>
+  <%= @company_datum.regon %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @company_datum.name %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%= @company_datum.address %>
+</p>
+
+<p>
+  <b>Vat:</b>
+  <%= @company_datum.vat %>
+</p>
+
+<p>
+  <b>Facebook path:</b>
+  <%= @company_datum.facebook_path %>
+</p>
+
+
+<%= link_to 'Edit', edit_company_datum_path(@company_datum) %> |
+<%= link_to 'Back', company_data_path %>

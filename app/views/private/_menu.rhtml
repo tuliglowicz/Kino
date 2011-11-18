@@ -18,6 +18,9 @@
 		<% if Auth.can_read_in_self_cinema?(worker_id, "reservations") -%>
 			<%= link_to("Rezerwacje", {:controller => "reservations" }, :class=>"aMenu")%>
 		<% end %>
+		<% if Auth.can_read_in_self_cinema?(worker_id, "selling_tickets") -%>
+			<%= link_to("Panel kasjera", {:controller => "private", :action => 'panel_kasjera' }, :class=>"aMenu")%>
+		<% end %>
 	</div><br>
 	
 	<li class="header aMenu"><strong>Filmy i seanse</strong></li>
@@ -78,6 +81,13 @@
 		<% end %>
 		<% if Auth.can_read_in_self_cinema?(worker_id, "ticket_types") -%>
 			<%= link_to("Rodzaje biletów", {:controller => "ticket_types" }, :class=>"aMenu")%>
+		<% end %>
+		
+		<% if Auth.can_read_in_self_cinema?(worker_id, "receipts") -%>
+			<%= link_to("Paragony", {:controller => "receipts" }, :class=>"aMenu")%>
+		<% end %>
+		<% if Auth.can_read_in_self_cinema?(worker_id, "company_data") -%>
+			<%= link_to("Informacje o sieci", {:controller => "company_data" }, :class=>"aMenu")%>
 		<% end %>
 	</div><br>
 </ul>

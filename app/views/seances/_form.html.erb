@@ -64,6 +64,13 @@
     <% end -%>
     
   </div>
+  
+  <% @max_reservable_seats = (@seance.max_reservable_seats == 0 || @seance.max_reservable_seats == nil ? 5 : @seance.max_reservable_seats)%>
+  <div class="field">
+    <%= f.label :"Maksymalna liczba rezerwowanych miejsc" %><br />
+    <%= f.text_field :max_reservable_seats, :class => "validate[required]; input", :type => 'number', :value => @max_reservable_seats, :min => 1, :step => 1%>
+  </div>
+  
   <div class="actions">
     <%= f.submit "Dodaj seans"%>
   </div>

@@ -279,8 +279,9 @@
 								Po zaznaczeniu wszystkich wybranych siedzeń kliknij w strzałkę w prawo, aby przejść do wyboru typu biletów.
 						</span>
 						<br/><br/>
+							<% @max_reservable_seats = @seance == nil ? 5 : @seance.max_reservable_seats == nil || @seance.max_reservable_seats == 0 ? 5 : @seance.max_reservable_seats %>
 							 <center>
-							 	Pozostało <span id='ticket_count' style='color:lime;'>5</span> / 5 rezerwacji na ten seans.<br>
+							 	Pozostało <span id='ticket_count' style='color:lime;'><%= @max_reservable_seats %></span> / <%= @max_reservable_seats %> rezerwacji na ten seans.<br>
 							 </center>
 						</b>
 						<table align="center" bgcolor="white" border="0px" cellpadding="0px" cellspacing="5px" style="border-radius:25px;padding-bottom:25px;color:black;" id="sidzenia_table"></table>

@@ -11,6 +11,7 @@ class Seance < ActiveRecord::Base
  
   #default_scope order('cinema_film_id, date_from, time_from' )
 
+  validates_presence_of :max_reservable_seats, :message => 'Musisz podać maksymalną liczbę rezerwowanych miejsc dla seansu'
   validates_presence_of :cinema_film_id, :message => 'Pole cinema_film_id nie może być puste(Not NULL)'
   validates_presence_of :room_id, :message => 'Pole room_id nie może być puste(Not NULL)'
   validates_presence_of :seance_type_id, :message => 'Pole seance_type_id nie może być puste(Not NULL)'

@@ -32,15 +32,22 @@ class PrivateController < ApplicationController
 					id_tab << id.text
 				}
 				
-				r = Reservation.new
-				r.date = Time.new
-				r.save
+				t = Ticket.where("bought=false AND id IN ("+id_tab.join(",")+")");
 				
-				sqlQuery = "Update tickets SET reservation_id = "+r.id.to_s+", bought=true, cancelled=false Where id IN ("+ id_tab.join(",")+")";
-				ActiveRecord::Base.connection.execute(sqlQuery)
-				
-				render :json => r.id
-				return
+				if t.length == id_tab.length
+					r = Reservation.new
+					r.date = Time.new
+					r.save
+					
+					sqlQuery = "Update tickets SET reservation_id = "+r.id.to_s+", bought=true, cancelled=false Where id IN ("+ id_tab.join(",")+")";
+					ActiveRecord::Base.connection.execute(sqlQuery);
+					
+					render :json => r.id
+					return
+				else
+					render :json => false
+					return
+				end
 			else
 			end
 		else

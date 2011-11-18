@@ -39,17 +39,18 @@ class TicketsController < ApplicationController
   end
   
   def print_all
+  	#napisz jakieś sprawdzenie, czy id zostało podane w paramsach
     @reservationID = params[:id]
-    sqlQuery = "SELECT *
-      FROM tickets
-      Where reservation_id = #{@reservationID}"
-      
-    @ticket = Ticket.find_by_sql(sqlQuery)
+    #sqlQuery = "SELECT *      FROM tickets      Where reservation_id = #{@reservationID}"
+    #@ticket = Ticket.find_by_sql(sqlQuery)
+    
+    @tickets = Ticket.where(:reservation_id => @reservationID)
+    
     respond_to do |format|
       format.html # printAll.html.erb
       format.xml  { render :xml => @ticket }
       format.pdf do
-        pdf = TicketPdfAll.new(@ticket, view_context)
+        pdf = TicketPdfAll.new(@tickets, view_context)
         send_data pdf.render, filename: "ticket_#{@reservationID}.pdf",
                               type: "application/pdf",
                               disposition: "inline"

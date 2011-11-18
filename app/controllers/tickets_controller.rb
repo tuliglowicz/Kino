@@ -37,6 +37,25 @@ class TicketsController < ApplicationController
       end
     end
   end
+  
+  def print_all
+    @reservationID = params[:id]
+    sqlQuery = "SELECT *
+      FROM ticket
+      Where reservation_id = #{@reservationID}"
+      
+    @ticket = Ticket.find_by_sql(sqlQuery)
+    respond_to do |format|
+      format.html # printAll.html.erb
+      format.xml  { render :xml => @ticket }
+      format.pdf do
+        pdf = TicketPdfAll.new(@ticket, view_context)
+        send_data pdf.render, filename: "ticket_#{@reservationID}.pdf",
+                              type: "application/pdf",
+                              disposition: "inline"
+      end
+    end
+  end
 
   # GET /tickets/new
   # GET /tickets/new.xml

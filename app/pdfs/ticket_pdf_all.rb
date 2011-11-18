@@ -1,5 +1,5 @@
 # encoding: UTF-8
-class TicketPdf < Prawn::Document
+class TicketPdfAll < Prawn::Document
   def initialize(ticket, view)
     super(top_margin: 20)
     @ticket = ticket

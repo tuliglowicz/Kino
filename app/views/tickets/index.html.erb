@@ -4,7 +4,8 @@
 
 <h1>Bilety</h1>
 <br />
-<%= (link_to 'Dodaj nowy bilet', new_ticket_path) %><br><br>
+<!-- <%= (link_to 'Dodaj nowy bilet', new_ticket_path) %> -->
+<br><br>
 
 <% if @tickets.count == 0%>
 
@@ -13,6 +14,7 @@
 <% else %>
 <table id="listaRekordow" cellspacing=0 cellpadding=5px>
   <tr>
+  	<th>Nr</th>
     <th>Seans</th>
     <th>Miejsce</th>
     <th>Użytkownik</th>
@@ -27,8 +29,9 @@
 
 <% @tickets.each do |ticket| %>
   <tr>
+  	<td><%= ticket.ordinal_number %></td>
     <td align="center"><%= ticket.seance.cinema_film_id if ticket.seance %></td>
-    <td><%= ticket.seat_id %></td>
+    <td><%= ticket.seat %></td>
     <td><%= ticket.user_id %></td>
     <td><%= ticket.cancelled %></td>
     <td><%= ticket.reservation_id %></td>

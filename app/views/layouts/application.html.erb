@@ -23,7 +23,9 @@
 <link rel="shortcut icon" href="...../favicon.ico">
 http://www.metamorphozis.com/free_templates/free_css_templates/metamorph_circles/preview.php
 -->
-<script>
+
+<script type="text/javascript" >
+
 
 </script>
 
@@ -84,7 +86,7 @@ http://www.metamorphozis.com/free_templates/free_css_templates/metamorph_circles
 		<% else %>	
 			<div class='link_login bck_color'>
 				<a class='main_menu' href="/public/login">Logowanie</a>
-				<hr  align=center size=1 color=#000>
+				<hr  align=center size=1 color=#1A2429>
 				<a class='main_menu' href="<%= register_path %>">Rejestracja</a>
 			</div>
 		<% end %>
@@ -160,18 +162,6 @@ http://www.metamorphozis.com/free_templates/free_css_templates/metamorph_circles
 	</table>
 
 
-	<div id="footer">
-		<hr align="center" width="100%" color="#333" size="1">
-	  <div class="ft_bot">
-	
-	    <ul class="c0">
-	      <li class="copy">
-	      	<a href="#"  rel="nofollow">Copyright</a> &copy; <a href="#" rel="nofollow">CINEMATOHOLIX SA</a>
-	      </li>
-	      <li class="f"><a href=<%= contact_path %> rel="nofollow">O nas</a></li>
-	    </ul>
-	  </div>
-	 </div>
 
 <xml id="cinemas_xml" style='display:none'>
 	<cinemas type="array">
@@ -260,8 +250,32 @@ switch(x){
 }	
 
 
+
 </script>
 
-<br/><br/>
+	<div id="footer" class='zz'>
+		<hr align="center" width="100%" color="#333" size="1">
+	  	<div class="ft_bot">
+		    <ul class="c0">
+		      <li class="copy">
+		      	<a href="#"  rel="nofollow">Copyright</a> &copy; <a href="#" rel="nofollow">CINEMATOHOLIX SA</a>
+		      </li>
+		      <li class="f"><a href=<%= contact_path %> rel="nofollow">O nas</a></li>
+		    </ul>																								
+		</div>
+	</div>
+	
+<script>	
+
+var xxx = document.getElementById ("page");
+
+
+
+if(xxx.scrollHeight <600){
+	$j('#footer').attr('id','footer_fix');	
+}	
+
+</script>
+
 </body>
 </html>

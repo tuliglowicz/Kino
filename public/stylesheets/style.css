@@ -67,9 +67,9 @@ div.link_logout{
 	padding-right:5px;
 	padding-top:5px;
 	padding-bottom:5px;
-	border-radius :5px; 
-	-moz-border-radius:5px; 	
-	box-shadow: 3px 3px 5px #80b2dc inset;
+	border-radius :8px; 
+	-moz-border-radius:8px; 	
+	box-shadow: 1px 3px 13px #80b2dc inset;
 	
 }
 
@@ -80,9 +80,9 @@ div.link_login{
 	float:right;
 	width:10%;
 	padding:5px;
-	border-radius :5px; 
-	-moz-border-radius:5px; 
-	box-shadow: 3px 3px 5px #80b2dc inset;	
+	border-radius :9px; 
+	-moz-border-radius:9px; 
+	box-shadow: 1px 3px 14px #80b2dc inset;	
 }
 
 div.bck_color{
@@ -135,12 +135,22 @@ a.main_menu_selected{color: #80b2dc; display: block; text-align: center; padding
 
 .sep_col{color:purple}
 /* footer */
-#footer .ft_top {border-top: 1px solid #222; border-bottom: 1px solid #222;}
-#footer .ft_top .c1 {display:none;}
-#footer ul li {float: left;background: url('/images/pic/footerSpacer.gif') center left no-repeat;padding-left: 8px;margin-left: 8px;}
-#footer .ft_bot {font-size: 11px;}
-#footer .ft_bot a {color: #fff;}
-#footer .ft_bot .c0, #footer .ft_bot .c0 a {color: #fff;}
-#footer .ft_bot .c0 .copy, #footer .ft_bot .c0 .copy a {color: #999;}
-#footer .ft_bot .c0 a:hover, #footer .ft_bot .c1 a:hover {color: #c9dde7;}
-#footer .ft_bot .c0 .copy a:hover{color: #999;}
+
+#footer_fix{
+	position:fixed;
+	bottom: 0%;
+	left:10%;
+	width:80%;
+
+	clear: both;
+}
+
+#footer .ft_top, #footer_fix .ft_top  {border-top: 1px solid #222; border-bottom: 1px solid #222;}
+#footer .ft_top .c1,#footer_fix .ft_top .c1 {display:none;}
+#footer ul li, #footer_fix ul li {float: left;background: url('/images/pic/footerSpacer.gif') center left no-repeat;padding-left: 8px;margin-left: 8px;}
+#footer .ft_bot,#footer_fix .ft_bot  {font-size: 11px;}
+#footer .ft_bot a,#footer_fix .ft_bot a {color: #fff;}
+#footer .ft_bot .c0, #footer_fix .ft_bot .c0 a {color: #fff;}
+#footer .ft_bot .c0 .copy, #footer_fix .ft_bot .c0 .copy a {color: #999;}
+#footer .ft_bot .c0 a:hover, #footer_fix .ft_bot .c1 a:hover {color: #c9dde7;}
+#footer .ft_bot .c0 .copy a:hover, #footer_fix .ft_bot .c0 .copy a:hover{color: #999;}

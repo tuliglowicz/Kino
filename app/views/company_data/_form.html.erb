@@ -12,30 +12,30 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :nip %><br />
+    <%= f.label :'NIP' %><br />
     <%= f.text_field :nip %>
   </div>
   <div class="field">
-    <%= f.label :regon %><br />
+    <%= f.label :'REGON' %><br />
     <%= f.text_field :regon %>
   </div>
   <div class="field">
-    <%= f.label :name %><br />
+    <%= f.label :'Nazwa' %><br />
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :address %><br />
+    <%= f.label :'Adres' %><br />
     <%= f.text_field :address %>
   </div>
   <div class="field">
-    <%= f.label :vat %><br />
+    <%= f.label :'VAT' %><br />
     <%= f.text_field :vat %>
   </div>
   <div class="field">
-    <%= f.label :facebook_path %><br />
+    <%= f.label :'Facebook'%><br />
     <%= f.text_field :facebook_path %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :value => 'Zapisz'%>
   </div>
 <% end %>

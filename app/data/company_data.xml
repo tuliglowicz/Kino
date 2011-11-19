@@ -1,10 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" ?>
 <company_data>
-	<id>1</id>
-	<name>Cinematoholix Sp. z o.o.</name>
-	<address>Marszałkowska 12</address>
-	<nip>1234567890</nip>
-	<regon>123456789</regon>
-	<vat>23</vat>
-	<facebook_path>http://www.facebook.com/CinematoholixGroupWTW</facebook_path>
+  <id>1</id>
+  <name>Cinematoholix Sp. z o.o.</name>
+  <address>Marszałkowska 113</address>
+  <nip>1234567890</nip>
+  <regon>123456789</regon>
+  <vat>14</vat>
+  <facebook_path>http://www.facebook.com/CinematoholixGroupWTW</facebook_path>
 </company_data>

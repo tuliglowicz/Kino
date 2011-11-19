@@ -136,7 +136,7 @@ a.main_menu_selected{color: #80b2dc; display: block; text-align: center; padding
 .sep_col{color:purple}
 /* footer */
 
-footer_fix{
+#footer_fix{
 	position:fixed;
 	bottom: 0%;
 	left:10%;

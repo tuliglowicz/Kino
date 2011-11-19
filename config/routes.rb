@@ -20,6 +20,7 @@ Kino::Application.routes.draw do
   match 'public/zakup_wybrane_bilety' => 'public#purchase_tickets_from_profile', :as => 'purchase_tickets_from_profile'
   match 'public/ticket_number_price' => 'public#ticket_number_price', :as => 'ticket_number_price'
   match 'public/tickets/print_all/:id' => 'tickets#print_all', :as => 'print_all'
+  match 'public/receipts/printR/:id' => 'receipts#printR', :as => 'print_r'
   
   # Payment
   match 'public/finalizuj' => 'public#payment', :as => 'finalize'

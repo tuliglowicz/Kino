@@ -13,10 +13,10 @@ class TicketPdf < Prawn::Document
   
   def order_number
     font_families.update("arial" => {
-                             :bold  => "#{Prawn::BASEDIR}/data/fonts/DejaVuSans.ttf",
-                             :italic => "#{Prawn::BASEDIR}/data/fonts/DejaVuSans.ttf",
-                             :bold_italic => "#{Prawn::BASEDIR}/data/fonts/DejaVuSans.ttf",
-                             :normal => "#{Prawn::BASEDIR}/data/fonts/DejaVuSans.ttf" })
+                             :bold  => "public/fonts/DejaVuSans.ttf",
+                             :italic => "public/fonts/DejaVuSans.ttf",
+                             :bold_italic => "public/fonts/DejaVuSans.ttf",
+                             :normal => "public/fonts/DejaVuSans.ttf" })
     font "arial"
     text "------------------------------------------------------------", size: 25, style: :bold
     #zakomentowane zeby przetestowac na heroku
@@ -33,10 +33,10 @@ class TicketPdf < Prawn::Document
   def mytable
     move_down 10
     font_families.update("BarcodeFont" => {
-                             :bold  => "#{Prawn::BASEDIR}/data/fonts/code128.ttf",
-                             :italic => "#{Prawn::BASEDIR}/data/fonts/code128.ttf",
-                             :bold_italic => "#{Prawn::BASEDIR}/data/fonts/code128.ttf",
-                             :normal => "#{Prawn::BASEDIR}/data/fonts/code128.ttf" })
+                             :bold  => "public/fonts/code128.ttf",
+                             :italic => "public/fonts/code128.ttf",
+                             :bold_italic => "public/fonts/code128.ttf",
+                             :normal => "public/fonts/code128.ttf" })
     font "BarcodeFont"
     z= @ticket.ticket_number + 1000234512342342
     #text "#{z}" , size: 50, style: :bold ,  :align => :right ,  :valign => :middle

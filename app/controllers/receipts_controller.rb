@@ -28,6 +28,23 @@ class ReceiptsController < ApplicationController
       format.xml  { render :xml => @receipt }
     end
   end
+  
+  def printR
+    @reservationID = params[:id]
+
+    @receipt = Receipt.where(:reservation_id => @reservationID)
+    @company = CompanyDatum.first
+    respond_to do |format|
+      format.html # printR.html.erb
+      format.xml  { render :xml => @receipt }
+      format.pdf do
+        pdf = ReceiptPdf.new(@receipt, @company, view_context)
+        send_data pdf.render, filename: "receipt_#{@reservationID}.pdf",
+                              type: "application/pdf",
+                              disposition: "inline"
+      end
+    end
+  end
 
   # GET /receipts/new
   # GET /receipts/new.xml

@@ -13,7 +13,7 @@ require "pstore"
 	end
 	
 	def index
-	  @facebook = "http://www.facebook.com/CinematoholixGroupWTW"
+	  
 	end
 	
 	def register
@@ -476,5 +476,6 @@ private
     full_price_to_pay += amount_as_array[1].to_i 
     
     full_price_to_pay 
-  end
+  end 
+  
 end

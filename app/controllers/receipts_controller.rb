@@ -1,6 +1,11 @@
+# encoding: utf-8
 class ReceiptsController < ApplicationController
   
   layout 'admin'
+  
+  before_filter :is_worker
+  before_filter :can_read
+  before_filter :can_write
   
   # GET /receipts
   # GET /receipts.xml
@@ -83,4 +88,23 @@ class ReceiptsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+private 
+
+  def is_worker
+    redirect_to private_login_path unless session[:worker]
+  end   
+    
+  def can_read
+     redirect_to private_path, :notice => 'Brak uprawnień do wykonania akcji!' unless Auth.can_read_in_self_cinema?(session[:worker].id, get_table_name) or Auth.can_read_all?(session[:worker].id, get_table_name)
+  end
+
+  def can_write
+     redirect_to private_path, :notice => 'Brak uprawnień do wykonania akcji!' unless Auth.can_write_in_self_cinema?(session[:worker].id, get_table_name) or Auth.can_write_all?(session[:worker].id, get_table_name)
+  end 
+ 
+  def get_table_name
+    'receipts'
+  end
+  
 end

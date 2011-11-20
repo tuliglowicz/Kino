@@ -63,7 +63,7 @@ Kino::Application.routes.draw do
   # Private
   match 'private/panel' => 'private#panel', :as => 'private'
   match 'private/login' => 'private#login', :as => 'private_login'
-  
+  match 'unregistered_users/create' => "unregistered_users#create"
   
   scope 'private' do
       resources :workers, :cinemas, :seances, :tickets, :discount_sorts, :ticket_types,

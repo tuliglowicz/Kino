@@ -11,7 +11,20 @@ table {
 .odd {
 	background-color: #e0e0e0;
 }
-
+input, button {
+	background-color: black;
+	color: white;
+	border: 1px solid #333;
+	border-radius: 3px;
+}
+input[type='submit'], button {
+	background-color: #111;
+	background-image: linear-gradient(bottom, #000000 45%,#666 100%);
+	background-image: -o-linear-gradient(bottom, #000000 45%,#666 100%);
+	background-image: -moz-linear-gradient(bottom, #000000 45%,#666 100%);
+	background-image: -webkit-linear-gradient(bottom, #000000 45%,#666 100%);
+	background-image: -ms-linear-gradient(bottom, #000000 45%,#666 100%);
+}
 IMG {border:0;}
 pre {
 	background-color: #000;

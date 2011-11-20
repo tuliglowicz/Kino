@@ -19,7 +19,7 @@
 	.seat.deselected {
 		opacity: 0;
 	}
-	.seat {
+	.seat	{
 		cursor:pointer;
 		font-size:12px;
 		background-color:;
@@ -153,6 +153,8 @@
 					<button id="switcher">Przejdź do listy seansów wybranych filmów.</button>
 				
 					<script>
+					var page_name = "zakup";
+					
 					$j("#switcher").toggle(function(){
 						var i = 0;
 						$j(".selectedMovieTitle").each(function(){
@@ -279,7 +281,6 @@
 								Po zaznaczeniu wszystkich wybranych siedzeń kliknij w strzałkę w prawo, aby przejść do wyboru typu biletów.
 						</span>
 						<br/><br/>
-							<% @max_reservable_seats = @seance == nil ? 5 : @seance.max_reservable_seats == nil || @seance.max_reservable_seats == 0 ? 5 : @seance.max_reservable_seats %>
 							 <center>
 							 	Pozostało <span id='ticket_count' style='color:lime;'><%= @max_reservable_seats %></span> / <%= @max_reservable_seats %> rezerwacji na ten seans.<br>
 							 </center>
@@ -295,6 +296,9 @@
 						<div id="typy_biletow_inner">
 							
 						</div>
+						<br/>Kliknij, aby zaznaczyć wszystkie jako:
+						<div id="set_all_as_div">							
+						</div>
 						<script>
 						var typy = new Array();
 						var ceny = new Array();
@@ -306,6 +310,11 @@
 							<% } -%>
 						<% end -%>
 						
+							$j(".set_all_as_link").live("click", function(){
+								var wantedType = this.text;
+								$j("a[class*='typ_biletu']").filter(function(){return wantedType == this.text;}).click();
+							});
+							
 							$j("#typy_biletow_inner a").live("click", function() {
 								$j("."+this.className).removeClass("type_selected");
 								$j(this).addClass("type_selected");
@@ -367,15 +376,12 @@
 					<button id="plac">Płać on-line i oszczędź 1zł za każdy bilet</button> | 
 					<button id="zakoncz">Zakończ i zapłać on-line później lub przy kasie.</button>
 					<script>
-					// kto
-					// jakie bilety
-					// cena z sumą
 					// button: kup, button: zakończ
 					var xml = "";
 					$j("#plac").click(function(){
 						var tmp_ajax = $j.ajax({
 							url: "/public/speedBooking",
-							data: "xml="+xml,
+							data: "xml="+xml+"&buy=true",
 							type: "POST",
 							dataType : 'json',
 							success: function (json){
@@ -391,128 +397,131 @@
 						});
 					});
 					$j("#zakoncz").click(function(){
-						
+						var tmp_ajax = $j.ajax({
+							url: "/public/speedBooking",
+							data: "xml="+xml+"&buy=false",
+							type: "POST",
+							dataType : 'json',
+							success: function (json){
+								if(json != undefined && json){
+									alert("Transakcja przebiegła pomyślnie.\nDziękujemy.");
+								} else {
+									alert(json)
+								}
+							},
+							error: function(){
+								alert("Coś poszlo nie tak.\nProszę spróbować ponownie za kilka minut.")
+							}
+						});
 					});
-					<% if session[:user] %>
-						var user_id = "<%= session[:user].id %>";
-					<% else -%>
-						var user_id;
-					<% end -%>
-					
-					function getUserID(){
-						return user_id;
-					}
-					function gotUserData(user_json, isUser){
-						if(isUser != undefined && isUser){
-							user = user_json["user"];
-							user_id = user.id;
-							userDataString = "Użytkownik: "+user.first_name+" "+user.last_name+"<br/><br/>"
-							nextStep();
-							$j("#user_data").html(userDataString).myShow(250);
-						}
-					}
-							function nextStep(){
-								if(stepCounter<stepContener.length-1){
-									if(stepContener[stepCounter+1] == "typy_biletow"){
-										$j("#typy_biletow_inner").html("");
-										var c = 0;
-										var tmp;
-										$j(".seat.selected").each(function(){
-											c++;
-											tmp = c+". Miejsce: "+this.id+", typ: ";
-											for(var i = 0; i<typy.length; i++)
-												tmp += "<a id=typ"+this.id+i+" class='typ_biletu"+this.id+"' style='cursor: pointer;'>"+typy[i].name+"</a> | "
-											
-											$j("#typy_biletow_inner").append(tmp+" <br/>");
-										})
+						function nextStep(){
+							if(stepCounter<stepContener.length-1){
+								if(stepContener[stepCounter+1] == "typy_biletow"){
+									$j("#typy_biletow_inner").html("");
+									var c = 0;
+									var tmp;
+									$j(".seat.selected").each(function(){
+										c++;
+										tmp = c+". Miejsce: "+this.id+", typ: ";
+										for(var i = 0; i<typy.length; i++)
+											tmp += "<a id=typ"+this.id+i+" class='typ_biletu"+this.id+"' style='cursor: pointer;'>"+typy[i].name+"</a> | "
 										
-										if(c == 0){
-											alert("Wybierz najpierw siedzenia!")
-											return false;
-										} else if(c > 5){
-											alert("Bawisz się w hakera? Nic z tego! :D");
-											$j("#typy_biletow_inner").html("");
-											return false;
-										}
-									}
-									else if(stepContener[stepCounter+1] == "dane"){
-										var i, condition = false;
-										$j(".seat.selected").each(function(){
-											i=0
-											$j('a[class*="'+this.id+'"][class*="type_selected"]').each(function(){
-												i++;
-											});
-											if(i!=1){
-												condition = true;
-												return;
-											}
-										});
-										
-										if(condition){
-											alert("Zaznacz typ dla każdego biletu!");
-											return false;
-										} else {
-											if(<%= not session[:user].nil? %>){
-												$j("#"+stepContener[stepCounter]+"_step").animate({color: "white"}, 1250);
-												$j("#"+stepContener[stepCounter]).animate({opacity: 0}, 1250).hide();
-												stepCounter++;
-												nextStep();
-												return;
-											}
-											else {
-												
-											}
-										}
-									}
-									else if(stepContener[stepCounter+1] == "decyzja"){
-										var c = 0, i = 0;
-										var suma = 0;
-										xml ="<tickets>";
-										//<tickets><ticket><user_id></user_id><type></type><price></price><seat></seat></ticket></tickets>
-										$j("#ticket_list").html("");
-										$j(".seat.selected").each(function(){
-											c++;
-											tmp = c+". Miejsce: "+this.id+", typ: ";
-											xml += "<ticket><user_id>"+getUserID()+"</user_id>";
-											$j('a[class*="'+this.id+'"][class*="type_selected"]').each(function(){
-												tmp += this.innerHTML;
-												tmp += ", cena: "+ceny[this.innerHTML]+"zł";
-												
-												var typ_id = 0;
-												for(i=0; i<typy.length; i++)
-													if(typy[i].name == this.innerHTML){
-														typ_id = typy[i].id;
-													}
-												xml += "<type>"+typ_id+"</type><price>"+ceny[this.innerHTML]+"</price>";
-												suma += ceny[this.innerHTML];
-											});
-											xml += "<seat>"+this.id+"</seat><seance_id><% if @seance -%><%= @seance.id %><% end -%></seance_id></ticket>"
-											
-											$j("#ticket_list").append(tmp+"<br/>");
-										});
-										xml+="</tickets>";
-										
-										//alert(xml);
-										$j("#ticket_list").append("Suma: "+suma+"zł<br/><br/>");
-									}
-									$j("#"+stepContener[stepCounter]+"_step").animate({color: "white"}, 1250);
-									$j("#"+stepContener[stepCounter]).animate({opacity: 0}, 1250).hide();
-									stepCounter++;
-									$j("#"+stepContener[stepCounter]+"_step").animate({color: "red"}, 1250);
-									$j("#"+stepContener[stepCounter]).animate({opacity: 1}, 1250).show();
+										$j("#typy_biletow_inner").append(tmp+" <br/>");
+									})
 									
+									tmp="";
+									for(var i = 0; i<typy.length; i++)
+										tmp += "<a class='set_all_as_link' style='cursor: pointer;'>"+typy[i].name+"</a> | "
+										
+										$j("#set_all_as_div").html("").append(tmp+" <br/>");
+									
+									if(c == 0){
+										alert("Wybierz najpierw siedzenia!")
+										return false;
+									} else if(c > <%= @max_reservable_seats %>){
+										alert("Bawisz się w hakera? Nic z tego! :D");
+										$j("#typy_biletow_inner").html("");
+										return false;
+									}
 								}
-							}
-							function prevStep(){
-								if(stepCounter>0){
-									$j("#"+stepContener[stepCounter]+"_step").animate({color: "white"}, 1250);
-									$j("#"+stepContener[stepCounter]).animate({opacity: 0}, 1250).hide();
-									stepCounter--;
-									$j("#"+stepContener[stepCounter]+"_step").animate({color: "red"}, 1250);
-									$j("#"+stepContener[stepCounter]).animate({opacity: 1}, 1250).show();
+								else if(stepContener[stepCounter+1] == "dane"){
+									var i, condition = false;
+									$j(".seat.selected").each(function(){
+										i=0
+										$j('a[class*="'+this.id+'"][class*="type_selected"]').each(function(){
+											i++;
+										});
+										if(i!=1){
+											condition = true;
+											return;
+										}
+									});
+									
+									if(condition){
+										alert("Zaznacz typ dla każdego biletu!");
+										return false;
+									} else {
+										if(user_id){
+											$j("#"+stepContener[stepCounter]+"_step").animate({color: "white"}, 1250);
+											$j("#"+stepContener[stepCounter]).animate({opacity: 0}, 1250).hide();
+											stepCounter++;
+											nextStep();
+											return;
+										}
+										else {
+											
+										}
+									}
 								}
+								else if(stepContener[stepCounter+1] == "decyzja"){
+									var c = 0, i = 0;
+									var suma = 0;
+									xml ="<tickets>";
+									//<tickets><ticket><user_id></user_id><type></type><price></price><seat></seat></ticket></tickets>
+									$j("#ticket_list").html("");
+									$j(".seat.selected").each(function(){
+										c++;
+										tmp = c+". Miejsce: "+this.id+", typ: ";
+										xml += "<ticket><belongsToUnregisteredUser>"+(!isRegisteredUser)+"</belongsToUnregisteredUser><user_id>"+user_id+"</user_id>";
+										$j('a[class*="'+this.id+'"][class*="type_selected"]').each(function(){
+											tmp += this.innerHTML;
+											tmp += ", cena: "+ceny[this.innerHTML]+"zł";
+											
+											var typ_id = 0;
+											for(i=0; i<typy.length; i++)
+												if(typy[i].name == this.innerHTML){
+													typ_id = typy[i].id;
+												}
+											xml += "<type>"+typ_id+"</type><price>"+ceny[this.innerHTML]+"</price>";
+											suma += ceny[this.innerHTML];
+										});
+										xml += "<seat>"+this.id+"</seat><seance_id><% if @seance -%><%= @seance.id %><% end -%></seance_id></ticket>"
+										
+										$j("#ticket_list").append(tmp+"<br/>");
+									});
+									xml+="</tickets>";
+									
+									//alert(xml);
+									$j("#ticket_list").append("Suma: "+suma+"zł<br/><br/>");
+								}
+								$j("#"+stepContener[stepCounter]+"_step").animate({color: "white"}, 1250);
+								$j("#"+stepContener[stepCounter]).animate({opacity: 0}, 1250).hide();
+								stepCounter++;
+								$j("#"+stepContener[stepCounter]+"_step").animate({color: "red"}, 1250);
+								$j("#"+stepContener[stepCounter]).animate({opacity: 1}, 1250).show();
+								
 							}
-						</script>
+						}
+						function prevStep(){
+							if(stepCounter>0){
+								$j("#"+stepContener[stepCounter]+"_step").animate({color: "white"}, 1250);
+								$j("#"+stepContener[stepCounter]).animate({opacity: 0}, 1250).hide();
+								stepCounter--;
+								$j("#"+stepContener[stepCounter]+"_step").animate({color: "red"}, 1250);
+								$j("#"+stepContener[stepCounter]).animate({opacity: 1}, 1250).show();
+							}
+						}
+					</script>
 				</div>			
 			</td>
 			<td align="left">
@@ -530,8 +539,6 @@ var stepCounter = 0;
 for(i=0; i<stepContener.length; i++)
 	$j("#"+stepContener[i]).css("opacity", "0").hide();
 $j("#seans").css("opacity", "1").show();
-	
-$j("button").addClass("ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only");
 
 <% if @seance && @prices -%>
 		var bought = new Array();
@@ -568,13 +575,13 @@ $j("button").addClass("ui-button ui-widget ui-state-default ui-corner-all ui-but
 							$j(this).toggleClass("selected");
 	
 							ticket_counter += this.className == "seat selected" ? 1 : -1;
-							if(ticket_counter > 5){
+							if(ticket_counter > <%= @max_reservable_seats %>){
 								$j(this).toggleClass("selected");
-								ticket_counter = 5;
+								ticket_counter = <%= @max_reservable_seats %>;
 							}
 							
-							$j("#ticket_count").text(5-ticket_counter);
-							if(ticket_counter == 5) $j("#ticket_count").css("color", "red")
+							$j("#ticket_count").text(<%= @max_reservable_seats %>-ticket_counter);
+							if(ticket_counter == <%= @max_reservable_seats %>) $j("#ticket_count").css("color", "red")
 							else $j("#ticket_count").css("color", "lime")
 				});
 				for(i=0; i<bought.length; i++){

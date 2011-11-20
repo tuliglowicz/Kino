@@ -8,30 +8,55 @@
         <li><%= msg %></li>
       <% end %>
       </ul>
-    </div>
+    
   <% end %>
 
-  <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name %>
-  </div>
-  <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :phone %><br />
-    <%= f.text_field :phone %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <table style="border: 0px">
+  	<tr>
+  		<td class="label"><label for="unregistered_user_first_name">Imie</label></td>
+  		<td><%= f.text_field :first_name %></td>
+  	</tr>
+  	<tr>
+  		<td class="label"><label for="unregistered_user_last_name">Nazwisko</label></td>
+  		<td><%= f.text_field :last_name %></td>
+  	</tr>
+  	<tr>
+  		<td class="label"><label for="unregistered_user_email">E-mail</label></td>
+  		<td><%= f.text_field :email %></td>
+  	</tr>
+  	<tr>
+  		<td class="label"><label for="unregistered_user_phone">Telefon</label></td>
+  		<td><%= f.text_field :phone %></td>
+  	</tr>
+  </table>
+  
+<input id="unregistered_user_submit" type="submit" value="Zapisz dane" name="commit">
+  
 <% end %>
 
 <script>
-
+$j("#unregistered_user_submit").click( function(){
+			var dataString = "unregistered_user%5Bfirst_name%5D="+$j("#unregistered_user_first_name").val()+"&unregistered_user%5Blast_name%5D="+$j("#unregistered_user_last_name").val()+"&unregistered_user%5Bemail%5D="+$j("#unregistered_user_email").val()+"&unregistered_user%5Bphone%5D="+$j("#unregistered_user_phone").val()
+			//alert(dataString);
+			page = $j.ajax({
+							url: "/unregistered_users/create",
+							type: "POST",
+							data: dataString,
+							dataType : 'json',
+							success: function (result){
+									if(result){
+										setEverythingAfterLogin(result, false);
+									}
+									else{
+										alert("Podałeś nieprawidłowe dane!")
+									}
+							},
+							error: function(){
+								alert("error przy pobieraniu danych");
+							}
+			});
+			
+			
+			return false;
+		});
 </script>

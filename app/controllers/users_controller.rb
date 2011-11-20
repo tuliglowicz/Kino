@@ -3,7 +3,8 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.xml
   
-  layout :get_users_layout  
+  layout :get_users_layout
+  protect_from_forgery :except => ["create"]
       
   before_filter :is_worker_or_user, :except => ['remind_password', 'is_login_available', 'login_availability', 'create', 'new', 'edit', 'update']
   before_filter :can_read, :only => ['index', 'show']
@@ -53,25 +54,41 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.xml
   def create
-    
-    if params[:user][:hashed_password].to_s != params[:user][:hashed_password_confirmation]
-      redirect_to register_path, :notice => 'Hasła nie są identyczne'
-    else
-      @user = User.new(params[:user])
-      @user.hashed_password = Auth.hash_password(@user.hashed_password)
-      respond_to do |format|       
-        if @user.save
-           # confirmation email sending
-           UserMailer.registration_confirmation(@user).deliver     
-           logger.debug "uzytkownik zapisany, mail wyslany"  
-          
-           format.html { redirect_to("/", :notice => 'Konto utworzone.') }
-           format.xml  { render :xml => @user, :status => :created, :location => @user }                    
-        else
-           format.html { render :action => "new" }
-           format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
-        end         
-      end  
+
+    if request.xhr? && params[:user]
+    	@user = User.new(params[:user])
+    	if params[:user][:hashed_password] == params[:user][:hashed_password_confirmation]
+	    	@user.hashed_password = Auth.hash_password(@user.hashed_password)
+    		if @user.save
+				UserMailer.registration_confirmation(@user).deliver
+				session[:user] = @user
+				render :json => @user
+				return
+			end
+		end
+
+		render :json => @user
+		return
+    	
+	else if params[:user][:hashed_password].to_s != params[:user][:hashed_password_confirmation]
+      		redirect_to register_path, :notice => 'Hasła nie są identyczne'
+    	else
+			@user = User.new(params[:user])
+			@user.hashed_password = Auth.hash_password(@user.hashed_password)
+			respond_to do |format|       
+				if @user.save
+				   # confirmation email sending
+				   UserMailer.registration_confirmation(@user).deliver
+				   logger.debug "uzytkownik zapisany, mail wyslany"  
+				  
+				   format.html { redirect_to("/", :notice => 'Konto utworzone.') }
+				   format.xml  { render :xml => @user, :status => :created, :location => @user }                    
+				else
+				   format.html { render :controller => "public", :action => "register" }
+				   format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
+				end         
+			end
+		end
     end
   end
 

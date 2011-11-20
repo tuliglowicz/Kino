@@ -63,7 +63,7 @@
 							dataType : 'json',
 							success: function (result){
 									if(result)
-										gotUserData(result, true);
+										setEverythingAfterLogin(result, true);
 									else
 										alert("Podałeś nieprawidłowy login lub hasło!")
 							},

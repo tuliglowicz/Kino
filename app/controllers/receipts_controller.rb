@@ -31,14 +31,14 @@ class ReceiptsController < ApplicationController
   
   def printR
     @reservationID = params[:id]
-
     @receipt = Receipt.where(:reservation_id => @reservationID)
     @company = CompanyDatum.first
+    @ticket = Ticket.where(:reservation_id => @reservationID)
     respond_to do |format|
       format.html # printR.html.erb
       format.xml  { render :xml => @receipt }
       format.pdf do
-        pdf = ReceiptPdf.new(@receipt, @company, view_context)
+        pdf = ReceiptPdf.new(@receipt, @company, @ticket, view_context)
         send_data pdf.render, filename: "receipt_#{@reservationID}.pdf",
                               type: "application/pdf",
                               disposition: "inline"

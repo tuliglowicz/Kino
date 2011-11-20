@@ -46,10 +46,35 @@
   		
   </table>
  <br />
- <button type="submit" style="width: 110px">Załóż konto</button> 
+ <input type="submit" id="addNewUser" style="width: 110px" value="Załóż konto">
 	<% end%>
 </form>
 
 <script>
 
+
+		$j("#addNewUser").click( function(){
+			var dataString = "user%5Blogin%5D="+$j("#user_login").val()+"&user%5Bfirst_name%5D="+$j("#user_first_name").val()+"&user%5Blast_name%5D="+$j("#user_last_name").val()+"&user%5Bhashed_password%5D="+$j("#user_hashed_password").val()+"&user%5Bhashed_password_confirmation%5D="+$j("#user_hashed_password_confirmation").val()+"&user%5Bemail%5D="+$j("#user_email").val()+"&user%5Bphone%5D="+$j("#user_phone").val()
+			//alert(dataString);
+			page = $j.ajax({
+							url: "/private/users",
+							type: "POST",
+							data: dataString,
+							dataType : 'json',
+							success: function (result){
+									if(result){
+										setEverythingAfterLogin(result, true);
+									}
+									else {
+										alert("Podałeś nieprawidłowe dane!")
+									}
+							},
+							error: function(){
+								alert("error przy pobieraniu danych");
+							}
+			});
+			
+			
+			return false;
+		});
 </script>

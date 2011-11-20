@@ -45,6 +45,13 @@ class UnregisteredUsersController < ApplicationController
   # POST /unregistered_users.xml
   def create
     @unregistered_user = UnregisteredUser.new(params[:unregistered_user])
+    
+    if request.xhr?
+    	if @unregistered_user.save
+    		render :json => @unregistered_user
+    		return
+		end
+	end
 
     respond_to do |format|
       if @unregistered_user.save

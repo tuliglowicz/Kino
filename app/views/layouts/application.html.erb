@@ -11,7 +11,17 @@
 <%= stylesheet_link_tag :all %>
 <%= javascript_include_tag "jquery-1.6.2.min.js" %>
 <%= javascript_include_tag "jquery-ui-1.8.16.custom.min.js" %>
-<script> $j = jQuery.noConflict(); </script>
+<script> $j = jQuery.noConflict(); 
+var logout_path = "<%= user_logout_path %>"
+var page_name
+<% if session[:user] %>
+	var user_id = "<%= session[:user].id %>";
+	var isRegisteredUser = true;
+<% else -%>
+	var user_id;
+	var isRegisteredUser;
+<% end -%>
+</script>
 <%= javascript_include_tag :defaults %>
 <%= csrf_meta_tag %>
 <title><%= yield(:title) && yield(:title) != "" ? yield(:title) : "Cinematoholix- Kino na miarę Twoich oczekiwań" %></title>
@@ -81,7 +91,7 @@ http://www.metamorphozis.com/free_templates/free_css_templates/metamorph_circles
 		<% if session[:user] %>	
 			
 			<div class='link_logout bck_color'>
-				<a class='main_menu bck_color' href="<%= user_logout_path %>">Wyloguj (<%= session[:user].login %>)</a>
+				<a class='main_menu bck_color' href="<%= user_logout_path %>">Wyloguj (<%= session[:user].first_name + " " +session[:user].last_name %>)</a>
 			</div>
 		<% else %>	
 			<div class='link_login bck_color'>
@@ -97,7 +107,7 @@ http://www.metamorphozis.com/free_templates/free_css_templates/metamorph_circles
   
 
 	<div id="navH" class="bck_color">
-		<ul class="p0">
+		<ul class="p0" id="menu_list">
 			<!--<li id="e0" class="">
 				&nbsp;&nbsp; &nbsp;
 			</li>-->
@@ -134,14 +144,11 @@ http://www.metamorphozis.com/free_templates/free_css_templates/metamorph_circles
 			<!--<li id="e0" class="moje">
 				&nbsp;&nbsp; &nbsp;
 			</li>-->
-			<% if session[:user] %>	
-			<li id="e9" class="moje ">
+			<li id="e9" class="moje" style="display: <%= session[:user] ? "block" : "none" %>">
 				<div class='menu_el right_rad'>
-					<a class="main_menu" id='m7' href="/public/profil?id=<%=session[:user].id.to_s%>" title="Moje konto">Moje konto</a>
+					<a class="main_menu" id='m7' href="/public/profil" title="Moje konto">Moje konto</a>
 				</div>
 			</li>
-
-			<%end%>
 
 		</ul>
 	</div>

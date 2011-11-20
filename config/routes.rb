@@ -1,7 +1,5 @@
 Kino::Application.routes.draw do
   
-  
-
   # Public zone
   match 'public/index' => 'public#index', :as => 'public'
   match 'public/kontakt' => 'public#kontakt', :as => 'contact'
@@ -66,7 +64,8 @@ Kino::Application.routes.draw do
   # Private
   match 'private/panel' => 'private#panel', :as => 'private'
   match 'private/login' => 'private#login', :as => 'private_login'
-    
+  match 'unregistered_users/create' => "unregistered_users#create"
+  
   scope 'private' do
       resources :workers, :cinemas, :seances, :tickets, :discount_sorts, :ticket_types,
         :seance_types, :users, :reservations, :ticket_sort_prices, :discounts, :rooms, :cinema_films,

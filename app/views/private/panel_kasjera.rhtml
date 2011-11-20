@@ -11,10 +11,11 @@ body, input {
 	background-color: black;
 }
 input {
+	color: white;
 	border: 1px solid #333;
 	border-radius: 3px;
 }
-input[type='submit'] {
+input[type='submit'], button {
 	background-color: #111;
 	background-image: linear-gradient(bottom, #000000 45%,#666 100%);
 	background-image: -o-linear-gradient(bottom, #000000 45%,#666 100%);
@@ -70,10 +71,10 @@ pre:hover {
 		</div>
 		
 		<% date = Date.today -%> Wybierz datę: &nbsp; 
-		<%= link_to(date.strftime("%d.%m"), {:controller => "public", :action => "repertuar", :id => 1}, :class=>"date selected") %>
+		<%= link_to(date.strftime("%d.%m"), {:controller => "public", :action => "repertuar"}, :id => "d1", :class=>"date selected") %>
 		<% date = date.tomorrow;-%>
 		<%	6.times do |i| -%>
-			 | <%= link_to(date.strftime("%d.%m"), {:controller => "public", :action => "repertuar", :id => (i+2)},:id => "d"+(i+2).to_s, :class=>"date") %>
+			 | <%= link_to(date.strftime("%d.%m"), {:controller => "public", :action => "repertuar"},:id => "d"+(i+2).to_s, :class=>"date") %>
 			<% date = date.tomorrow;-%>
 		<% end -%>
 			<br/><br/>
@@ -106,7 +107,7 @@ $j(".date").click(function(){
 	$j(".date").removeClass("selected");
 	$j(this).addClass("selected");
 	$j(".tickets_div").hide();
-	$j("#dzien_nr_"+this.id.substring(1)).show();
+	$j("#dzien_nr_"+this.id.substring(1)).myShow(500);
 	return false;
 });
 
@@ -116,24 +117,25 @@ $j("#check_as_bought").click(function(){
 	
 	id_dnia = $j("a.date.selected")[0].id.substring(1)
 	$selected = $j("div #dzien_nr_"+id_dnia+" pre").filter(function(){	return this.style.display != "none" && this.firstChild.checked;	});
-	var $clone = $selected.clone();
-	
-	xml = "<ticket_ids>"
-	$clone.each(function(){
-			xml += "<t_id>"+this.firstChild.name+"</t_id>";
-			this.removeChild(this.firstChild);
-			this.removeAttribute("onclick");
-			this.removeAttribute("style");
-			this.removeAttribute("class");
-			
-		});
-	xml += "</ticket_ids>"
-	
-	$j("<div id='tresc_po_wybraniu'></div>").appendTo("#rezerwacje");
-	$j("<br/><br/>Wybrano:<br/>").appendTo("#tresc_po_wybraniu");
-	$clone.appendTo("#tresc_po_wybraniu");
-	$j("<br/><div id='buttons'><input type='submit' id='potwierdz' onclick='potwierdz()' value='Potwierdź Zakup'><img src='/images/pic/loader_min.gif' id='loader_potwierdz' style='display:none;' align='absbottom'></div>").appendTo("#tresc_po_wybraniu");
-
+	if($selected.length > 0){
+		var $clone = $selected.clone();
+		
+		xml = "<ticket_ids>"
+		$clone.each(function(){
+				xml += "<t_id>"+this.firstChild.name+"</t_id>";
+				this.removeChild(this.firstChild);
+				this.removeAttribute("onclick");
+				this.removeAttribute("style");
+				this.removeAttribute("class");
+				
+			});
+		xml += "</ticket_ids>"
+		
+		$j("<div id='tresc_po_wybraniu'></div>").appendTo("#rezerwacje");
+		$j("<br/><br/>Wybrano:<br/>").appendTo("#tresc_po_wybraniu");
+		$clone.appendTo("#tresc_po_wybraniu");
+		$j("<br/><div id='buttons'><input type='submit' id='potwierdz' onclick='potwierdz()' value='Potwierdź Zakup'><img src='/images/pic/loader_min.gif' id='loader_potwierdz' style='display:none;' align='absbottom'></div>").appendTo("#tresc_po_wybraniu");
+	}
 });
 
 function potwierdz(){
@@ -147,7 +149,7 @@ function potwierdz(){
 			success: function (json){
 				$j("#loader_potwierdz").hide();
 				if(json != false){
-					$j("#buttons").html("Wszystko poszło pomyślnie!<br/><a href=''>Drukuj Bilety</a> | <a href=''>Drukuj Paragon</a>")
+					$j("#buttons").html("Wszystko poszło pomyślnie!<br/><a href='/tickets/print_all/"+json+".pdf'>Drukuj Bilety</a> | <a href=''>Drukuj Paragon</a>")
 				}
 				else{
 					alert("Zaznaczone bilety prawdopodobnie zostały już kupione.\nJeśli wg Ciebie jest to niemożliwe, to odśwież stronę i spróbuj ponownie.")
@@ -188,4 +190,3 @@ function noNumbers(e){
 }
 </script>
 <%# debug(@tickets_whole_week) %>
-<%= print_all_path %>

@@ -1,0 +1,57 @@
+<!-- CSS/JS imports -->
+<script src="/javascripts/jquery.validationEngine-pl.js" type="text/javascript" charset="utf-8"></script>
+<script src="/javascripts/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
+
+<LINK REL=StyleSheet HREF="/stylesheets/new_user.css" TYPE="text/css" MEDIA=screen>
+<!-- EO CSS/JS imports -->
+
+<!-- JS code -->
+<script>
+	$j(document).ready(function(){
+    // binds form submission and fields to the validation engine
+    $j("#new_user").validationEngine('attach', { validationEventTrigger: 'submit'});
+    
+    $j("#user_login").blur(function()
+    {
+    	var login = $j("#user_login").val();
+    	
+    	if(login.length > 3)
+    	{
+    		var login_availability = $j.ajax({
+    			type: "POST",
+	    		url: "http://localhost:3000/users/login_availability",
+	    		data: "login=" + login,
+	    		
+	    		success: function(message)
+	    		{	    		
+	    			$j("#login_status").show('fast');
+	    			if (message == 'OK') 
+	    			{				
+	    				$j("#login_status").css("color", "lime");
+	    				$j("#login_status").text("Login dostępny");
+	    			}
+	    			else
+	    			{	    				
+	    				$j("#login_status").css("color", "red");
+	    				$j("#login_status").text("Login niedostępny");
+	    			}
+	    		},
+	    		error: function()
+	    		{
+	    			alert('Sprawdzenie dostępności nie powiodło się.');
+	    		}
+    		});
+    	}
+    	else
+    	{
+    		$j("#login_status").hide('fast');
+    	}
+    	
+    });
+ }); 
+</script>
+<!-- EO JS code -->
+
+
+<h3 align="left"> Uzupełnij swoje dane by utworzyć konto: </h3>
+<%= render 'form' %>

@@ -6,8 +6,28 @@ if (top.frames.length!=0) top.location=self.document.location;
 $j(document).ready(function(){
 	$j("a.youtube_trailer").live("click", centeredMovie);
 	$j("a.repertuarTime, a.change_cinema").live("click", ajaxPageLoad);
-})
+});
+
+function setEverythingAfterLogin(user_json, isUser){
+	isRegisteredUser = isUser;
+	user = isUser ? user_json["user"] : user_json["unregistered_user"] ;
+	user_id = user.id;
+	user_name = user.first_name+" "+user.last_name
+	userDataString = "Użytkownik: "+user_name+"<br/><br/>"
+	$j("#user_data").html(userDataString).myShow(250);	
+
+	if(isUser){
+		var newWyloguj = "<a class='main_menu bck_color' href='"+logout_path+"'>Wyloguj ("+user_name+")</a>";
+		$j("div.link_login").html("").removeClass("link_login").addClass("link_logout").append(newWyloguj).myShow(500);
+			
+		$j("#e9").myShow(500);
+	}
 	
+	if(page_name != undefined && page_name == "zakup"){
+		nextStep();
+	}
+}
+
 function ajaxPageLoad(target){
 	$j("#ajaxPageLoadTarget").animate({"opacity": "0"}, 250);
 	$j("#preloader_podluzny").show();

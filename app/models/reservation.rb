@@ -3,6 +3,7 @@ require 'acts_as_ordinalized'
 class Reservation < ActiveRecord::Base
   acts_as_ordinalized
   has_many :tickets
+  has_many :receipts
   
   validates_presence_of :date, :message => ' Pole date nie może być puste (Not NULL). '
   

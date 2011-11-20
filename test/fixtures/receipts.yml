@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  reservation_id: 1
+  sum: 9.99
+  worker_id: 1
+  date: 2011-11-18
+  cash_register: 1
+
+two:
+  reservation_id: 1
+  sum: 9.99
+  worker_id: 1
+  date: 2011-11-18
+  cash_register: 1

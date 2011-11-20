@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Reservation:</b>
+  <%= @receipt.reservation_id %>
+</p>
+
+<p>
+  <b>Sum:</b>
+  <%= @receipt.sum %>
+</p>
+
+<p>
+  <b>Worker:</b>
+  <%= @receipt.worker_id %>
+</p>
+
+<p>
+  <b>Date:</b>
+  <%= @receipt.date %>
+</p>
+
+<p>
+  <b>Cash register:</b>
+  <%= @receipt.cash_register %>
+</p>
+
+
+<%= link_to 'Edit', edit_receipt_path(@receipt) %> |
+<%= link_to 'Back', receipts_path %>

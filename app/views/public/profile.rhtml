@@ -3,6 +3,11 @@
 	<head>
 
 		<% user=@user %>
+		<% current_tickets=@tickets.find_all{|ticket| ticket.cancelled!=true && ticket.bought!=true } %>
+		
+		<% old_ticketz =@tickets.find_all{|ticket| ticket.bought==true && ((ticket.seance.time_from< Time.now && ticket.seance.date_from==DateTime.now) || ticket.seance.date_from<DateTime.now) } %>
+															
+		
 		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 		<title>Untitled Document</title>
 		
@@ -11,7 +16,7 @@
 				height:32px;
 				border-radius :10px;
 				 -moz-border-radius:10px;
-				background-color:#49A2DC;
+				background-color:#9933CC;
 				width:80%;
 				box-shadow: 3px 3px 5px #fff inset;	
 			}
@@ -53,7 +58,7 @@
 				cursor:pointer;
 			}
 			ul.profile_menu span.selected {
-				color:#333333;
+				color:#000;
 				
 			}
 
@@ -85,7 +90,7 @@
 
 			}
 			span.sep{
-				color: #146CB4;
+				color: #990099;
 				font-size:1em;
 				display:inline;
 				float: left;
@@ -101,7 +106,7 @@
 			}
 			
 			#tickety table, #tickety td, #tickety th{
-				border:1px ridge #80b2dc;
+				border:1px ridge #9933CC;
 				font-size:1em;
 				padding:3px 7px 2px 7px;
 				background-color:#CCCCCC;
@@ -322,57 +327,58 @@
 		</script>
 		
 		<div class="currentTickets divki" hidden=true>
-			<%#currentReserv=@tickets.reservation.id%>
-			<form action=<%= purchase_tickets_from_profile_path %> method='post'>
-				<div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" /></div>
-				<br />
-				<table id="tickety">
-						<tr>
-							<th>zakup?</th>
-							<th>tytuł</th>
-							<th>kino</th>
-							<th>termin</th>
-							<th>siedzenie</th>
-							<th>bilet</th>
-							<th>cena</th>
-						</tr>
-					<% i=1 %>	
-					
-					<% for ticket in @tickets do-%>
-						<% time = ticket.seance.time_from %>
-						<% date = ticket.seance.date_from%>						
-						<% if ticket.cancelled!=true && ticket.bought!=true%>
-						<tr <%=  if i%2==1 then "class=alt" end %> >
-							<td><input type="checkbox" name="buy<%= ticket.ticket_number %>" value=<%= ticket.ticket_number %> onClick='addRemoveTicket()'/></td>
-							<td><%= ticket.seance.cinema_film.film.title %></td>
-							<td><%= ticket.seance.cinema_film.cinema.name %></td>
-							<td><%= date.strftime("%d.%m.%Y") + time.strftime(" %H:%M") %></td>
-							<td><%= ticket.seat%></td>
-							<td><%= ticket.ticket_type.name %></td>
-							<td><label value='<%= ticket.price.to_s %>' id='price_<%= ticket.ticket_number %>'> <%= ticket.price.to_s %> </label></td>
+			<% if current_tickets.size>0 %>
+			<br /><br/> Wybierz bilety, które zamierzasz zakupić<br/>
+				<%#currentReserv=@tickets.reservation.id%>
+				<form action=<%= purchase_tickets_from_profile_path %> method='post'>
+					<div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" /></div>
+					<br />
+					<table id="tickety">
+							<tr>
+								<th></th>
+								<th>tytuł</th>
+								<th>kino</th>
+								<th>termin</th>
+								<th>siedzenie</th>
+								<th>bilet</th>
+								<th>cena</th>
+							</tr>
+						<% i=1 %>	
+						
+						<% for ticket in current_tickets do-%>
+							<tr <%=  if i%2==1 then "class=alt" end %> >
+								<td><input type="checkbox" name="buy<%= ticket.ticket_number %>" value=<%= ticket.ticket_number %> onClick='addRemoveTicket()'/></td>
+								<td><%= ticket.seance.cinema_film.film.title %></td>
+								<td><%= ticket.seance.cinema_film.cinema.name %></td>
+								<td><%= ticket.seance.date_from.strftime("%d.%m.%Y") + ticket.seance.time_from.strftime(" %H:%M") %></td>
+								<td><%= ticket.seat%></td>
+								<td><%= ticket.ticket_type.name %></td>
+								<td><label value='<%= ticket.price.to_s %>' id='price_<%= ticket.ticket_number %>'> <%= ticket.price.to_s %> </label></td>
+								
+								<td ><center>
+									<%= link_to( 'zrezygnuj', { :action=>"delete_ticket", :id=>ticket.id.to_s}, {:style=>'color:#F80000 ;', :class => "css_class"}  ) %>
+									<%= link_to image_tag("pic/delete.png", :size => "20x20", :align => "center"), :action => "delete_ticket", :id => ticket.id.to_s %></center>
+								</td>
+								<% i=i+1 %>
 							
-							<td style="background:none; border: none;">
-								<%= link_to( 'zrezygnuj', { :action=>"delete_ticket", :id=>ticket.id.to_s} ) %>
-							</td>
-							<% i=i+1 %>
 						<% end %>
-					<% end %>
-			
-				</table>
-				<br />
-				<table  style="width: 75%; ">
-					<tr>
-						<td style="font-weight: bold; width:90%">							
-							<input style="background-color: transparent; border-color: transparent; color: white" type="hidden" name='full_price' id="full_price" value="0.0" /> 
-							<label id="full_price_label" style="border-color: transparent; background-color: transparent; color: white">Cena łączna za wybrane bilety: 0 zł. </label>
-						</td>
-						<td style>
-							<button style="background-color: transparent; border-color: transparent" type="submit"><a >zakup wybrane</a></button>
-						</td>
-					</tr>
-				</table>
-			</form>
 				
+					</table>
+					<br />
+					<table  style="width: 75%; ">
+						<tr>
+							<td style="font-weight: bold; width:90%">							
+								<input style="background-color: transparent; border-color: transparent; color: white" type="hidden" name='full_price' id="full_price" value="0.0" /> 
+								<label id="full_price_label" style="border-color: transparent; background-color: transparent; color: white">Cena łączna za wybrane bilety: 0 zł. </label>
+							</td>
+							<td style>
+								<button style="background-color: transparent; border-color: transparent" type="submit"><a >zakup wybrane</a></button>
+							</td>
+						</tr>
+					</table>
+				</form>
+			<% else %><br>  <p>obecnie nie masz żadnych aktywnych rezerwacji</p>
+			<% end %>	
 		</div>
 		
 		
@@ -455,6 +461,7 @@
 								      		<table width=64 height=56 align=center valign=middle border=0 bordercolor="blue" background="/images/pic/free-printer.png" >
 												<a href="/private/tickets/<%=v.id%>.pdf"><font style="color:#CC0000 ">Drukuj</font></a>
 												<a href="<%= print_all_path(v.reservation_id) %>.pdf"><font style="color:#CC0000 ">DrukujR</font></a>
+												<a href="<%= print_r_path(v.reservation_id) %>.pdf"><font style="color:#CC0000 ">DrukujP</font></a>
 											</table>
 								      </td>	
 							</tr>		
@@ -478,37 +485,38 @@
 		
 				<div class="divki History" hidden=true>
 				<br />
-				<table id="tickety">
-						<tr>
-							<th>tytuł</th>
-							<th>kino</th>
-							<th>termin</th>
-							<th>bilet</th>
-							<th>cena</th>
-							
-		
-						</tr>
-					<% i=1 %>	
-					<% for ticket in @tickets do-%>
-						<% time = ticket.seance.time_from %>
-						<% date = ticket.seance.date_from%>							
-						<% if ticket.bought==true && ((time< Time.now && date==DateTime.now) || date<DateTime.now) %>
-						<tr <%=  if i%2==1 then "class=alt" end %> >
-							<td>
-								<span id="link_to_film">
-								<%=link_to(ticket.seance.cinema_film.film.title.to_s, {:action=>"dane_filmu", :id=>ticket.seance.cinema_film.film.id }) %>
-								</span>
-							</td>
-							<td><%= ticket.seance.cinema_film.cinema.name %></td>
-							<td><%= date.strftime("%d.%m.%Y") + time.strftime(" %H:%M") %></td>
-							<td><%= ticket.ticket_type.name %></td>
-							<td><%= ticket.price.to_s %></td>
-
-							<% i=i+1 %>
-						<% end %>
-					<% end %>
+				<% if  old_ticketz.size>0 %>
+					<table id="tickety">
+							<tr>
+								<th>tytuł</th>
+								<th>kino</th>
+								<th>termin</th>
+								<th>bilet</th>
+								<th>cena</th>
+								
 			
-				</table>
+							</tr>
+						<% i=1 %>	
+						<% for ticket in old_ticketz do-%>
+
+							<tr <%=  if i%2==1 then "class=alt" end %> >
+								<td>
+									<span id="link_to_film">
+									<%=link_to(ticket.seance.cinema_film.film.title.to_s, {:action=>"dane_filmu", :id=>ticket.seance.cinema_film.film.id }) %>
+									</span>
+								</td>
+								<td><%= ticket.seance.cinema_film.cinema.name %></td>
+								<td><%= ticket.seance.date_from.strftime("%d.%m.%Y") + ticket.seance.time_from.strftime(" %H:%M") %></td>
+								<td><%= ticket.ticket_type.name %></td>
+								<td><%= ticket.price.to_s %></td>
+	
+								<% i=i+1 %>
+							
+						<% end %>
+				
+					</table>
+				<% else %><br>  <p>jeszcze nie kupiłeś żadnego biletu</p>
+				<% end %>		
 
 		</div>
 		<script>

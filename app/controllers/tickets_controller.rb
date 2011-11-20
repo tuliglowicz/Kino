@@ -41,9 +41,6 @@ class TicketsController < ApplicationController
   def print_all
   	#napisz jakieś sprawdzenie, czy id zostało podane w paramsach
     @reservationID = params[:id]
-    #sqlQuery = "SELECT *      FROM tickets      Where reservation_id = #{@reservationID}"
-    #@ticket = Ticket.find_by_sql(sqlQuery)
-    
     @tickets = Ticket.where(:reservation_id => @reservationID)
     
     respond_to do |format|

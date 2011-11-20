@@ -1,6 +1,54 @@
 <% content_for :title do %>
 	Index
 <% end %>
+
+<head>
+<script src="/javascripts/imageflow.js" type="text/javascript" charset="utf-8"></script>
+<script src="/javascripts/imageflow.packed.js" type="text/javascript" charset="utf-8"></script>
+<link rel="Stylesheet" href="/stylesheets/imageflow.css" type="text/css" />
+<link rel="Stylesheet" href="/stylesheets/imageflow.packed.css" type="text/css" />
+
+<script>
+	jQuery(document).ready(function()
+	{
+		domReady(function()
+		{
+			var instanceOne = new ImageFlow();
+			instanceOne.init({ ImageFlowID: 'myrotator' , reflections: false , slideshow: true,
+                         slideshowAutoplay: true ,
+                         slideshowSpeed: 5000 ,
+                         opacity: true,
+                         startID: 1,
+                         circular: true,
+                         aspectRatio: 3.0, 
+                          imagesM: 0.7, 
+                          xStep: 70, 
+                          percentLandscape: 66, 
+                          percentOther: 50, 
+                          imageFocusMax: 3
+                         });
+		});
+		
+	});
+</script>
+</head>
+
+<body>
+		<div id="myrotator" class="imageflow" style="border-width:thin 0 thin 0; border-color: #808080;
+  border-style:solid; width: 900px; height: 50%;"> 
+			<img src="/images/film_posters/avatar.jpeg" longdesc="/images/film_posters/avatar.jpe" width="250" height="350" alt="Avatar" style="border: 20; border-color: white;"/>
+			<img src="/images/film_posters/erratum.jpeg" longdesc="/images/film_posters/erratum.jpeg" width="250" height="350" alt="Erratum" />
+			<img src="/images/film_posters/gladiator.jpeg" longdesc="/images/film_posters/gladiator.jpeg" width="250" height="350" alt="Gladiator" />
+			<img src="/images/film_posters/fighter.jpeg" longdesc="/images/film_posters/fighter.jpeg" width="250" height="350" alt="Gighter" />
+			<img src="/images/film_posters/ghost_writer.jpeg" longdesc="/images/film_posters/ghost_writer.jpeg" width="250" height="350" alt="Ghost writer" />
+			<img src="/images/film_posters/hp7a.jpeg" longdesc="/images/film_posters/hp7a.jpeg" width="250" height="350" alt="hp7a" />
+			<img src="/images/film_posters/incepcja.jpeg" longdesc="/images/film_posters/incepcja.jpeg" width="250" height="350" alt="incepcja" />
+			<img src="/images/film_posters/jak_zostac_krolem.jpeg" longdesc="/images/film_posters/jak_zostac_krolem.jpeg" width="250" height="350" alt="Jak zostać królem?" />
+			<img src="/images/film_posters/thor.jpeg" longdesc="/images/film_posters/thor.jpeg" width="250" height="350" alt="Thor" />
+		</div>
+</body>
+
+
 <!-- $.cookie("example", "foo", { expires: 7 }); -->
 <!-- To do list:
 	adjust tickets,

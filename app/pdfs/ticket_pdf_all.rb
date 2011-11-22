@@ -7,7 +7,7 @@ class TicketPdfAll < Prawn::Document
     @h1 = 713
     i=0
     @ticket.each do |w|
-      if i==5
+      if i==5 
         text "------------------------------------------------------------", size: 25, style: :bold
         start_new_page
         i=0

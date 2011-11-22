@@ -13,7 +13,7 @@ class PublicController < ApplicationController
 	end
 	
 	def index
-	  
+	  @films = Film.all
 	end
 	
 	def register

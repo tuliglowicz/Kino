@@ -209,7 +209,7 @@ class PublicController < ApplicationController
 			
 			if buy_online
 				r = Reservation.new
-				r.date = Time.new
+				r.date = Time.now
 				r.save
 				puts buy_online
 				puts r.id
@@ -223,11 +223,16 @@ class PublicController < ApplicationController
 			root.each do |xticket|				
 				isNotRegistered = (xticket.elements["belongsToUnregisteredUser"].text == "true")
 				
-				# Zapisywawnie do bazy z ticket_number'em				
-query="INSERT INTO tickets(" + (isNotRegistered ? "unregistered_user_id" : "user_id") +", belongsToUnregisteredUser, seat, ticket_type_id, price, seance_id, reservation_id, cancelled, bought, worker_id)" + "VALUES( "+ xticket.elements["user_id"].text.to_s + "," + isNotRegistered.to_s + ",'" + xticket.elements["seat"].text + "'," + xticket.elements["type"].text + "," + xticket.elements["price"].text + "," + xticket.elements["seance_id"].text + 
+				# Zapisywawnie do bazy z ticket_num er'em				
+query="INSERT INTO tickets(" + (isNotRegistered ? "unregistered_user_id" : "user_id") +", belongstounregistereduser, seat, ticket_type_id, price, seance_id, reservation_id, cancelled, bought, worker_id)" + "VALUES( "+ xticket.elements["user_id"].text.to_s + "," + isNotRegistered.to_s + ",'" + xticket.elements["seat"].text + "'," + xticket.elements["type"].text + "," + xticket.elements["price"].text + "," + xticket.elements["seance_id"].text + 
   ", "+(buy_online ? r.id.to_s : "null")+", false, false, 1);" # trzeba dodac odpowiednio spreparowanego workera
+				
+			  logger = Logger.new('log/pay.log')
+        logger.debug query
+				
 				ActiveRecord::Base.connection.execute(query) 
 			end
+			
 			
 			render :json => (buy_online ? r.id : true);
 			
@@ -271,31 +276,28 @@ query="INSERT INTO tickets(" + (isNotRegistered ? "unregistered_user_id" : "user
 	def payment
 		
 		# ToDo process incoming data
+		tickets = Ticket.where(:reservation_id => params[:id])
 		
-		@reservation = Reservation.new
-		@reservation.date = Time.now
+		user = nil
 		
-		if @reservation.save
- 			
-			# user is currently logged in, his data f.i. name is read from database
-			if session[:user]
-				@customer_full_name = session[:user].first_name.to_s + session[:user].last_name.to_s
-			  	@customer_email = session[:user].email 
-			else				
-				@customer_full_name = 'full_name'
-				@customer_email = 'dj.serwisy@gmail.com'
-			end
-			
-			payment = get_payment(params[:amount])
-			
-			@payment = (payment == 0 ? 10 : payment)
-      @customer_address = 'not_important '
+		if tickets
+  		if tickets[0].belongstounregistereduser
+  		  user = UnregisteredUser.find(tickets[0].unregistered_user_id)
+  		else
+  		  user = User.find(tickets[0].user_id)		  
+  		end
+  		
+  		@reservation = Reservation.find(params[:id])
+  		@customer_email = user.email
+  		@customer_full_name = user.first_name + ' ' + user.last_name
+  		@payment = get_payment(sum_payment(tickets))
+  		@customer_address = 'not_important '
       @city = 'not_important'
-      @description = 'TEST_OK'          # @reservation.id.to_s ma byc ponizej - zmienione tylko dla testow bo rezerwacja jeszcze nie zakonczona
-			@crc_hash = Digest::MD5.hexdigest(1.to_s + "|13132|" + @payment.to_s + "|a20c0ee19ecc09ac")
-		else
-			redirect_to "/"
-		end
+      @description = 'TEST_OK'  
+      @crc_hash = Digest::MD5.hexdigest(params[:id].to_s + "|13132|" + @payment.to_s + "|a20c0ee19ecc09ac")		
+	 else
+	   redirect_to root
+	 end
 	end
 	
 	def purchase_tickets_from_profile
@@ -438,5 +440,14 @@ private
     
     full_price_to_pay 
   end 
+  
+  def sum_payment(tickets)
+    payment = 0.0
+    tickets.each { |t|
+      payment += t.price
+    }
+    
+    payment
+  end
   
 end

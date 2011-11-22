@@ -60,34 +60,30 @@ class PublicController < ApplicationController
 	
 
 	def login
-		unless session[:user]
-			if params[:login] and  params[:password]
-				session[:user] = nil
-				logged_in_user = Auth.try_to_login(params[:login], params[:password])
-				
-				if logged_in_user && (logged_in_user.kind_of? User)
-					session[:user] = logged_in_user
-					flash[:notice] = 'Zalogowany jako użytkownik!'
-					result = logged_in_user
-				else
-					result = false
-					flash[:notice] = "Błędny login i/albo hasło!"
-				end
+		if params[:login] and params[:password]
+			session[:user] = nil
+			logged_in_user = Auth.try_to_login(params[:login], params[:password])
+			
+			if logged_in_user && (logged_in_user.kind_of? User)
+				session[:user] = logged_in_user
+				flash[:notice] = 'Zalogowany jako użytkownik!'
+				result = logged_in_user
 			else
 				result = false
-			end
-			
-			if request.xhr?
-				if params[:login] and params[:password]
-					render :json => result
-				else
-					render :layout => false
-				end
+				flash[:notice] = "Błędny login i/albo hasło!"
 			end
 		else
-			flash[:notice] = "Jesteś już zalogowany!"
-			redirect_to request.env["HTTP_REFERER"] ||= "/"
+			result = false
 		end
+		
+		if request.xhr?
+			if params[:login] and params[:password]
+				render :json => result
+			else
+				render :layout => false
+			end
+		end
+			@xhr = request.xhr?
 	end
 	
 	def logout
@@ -202,39 +198,45 @@ class PublicController < ApplicationController
 			
 			render :json => seances
 			return;
-		else if request.xhr? && params[:xml]
-			root = Document.new(params[:xml]).root
-			
-			buy_online = params[:buy] ? params[:buy] == "true" : false
-			
-			if buy_online
-				r = Reservation.new
-				r.date = Time.now
-				r.save
-				puts buy_online
-				puts r.id
-			end
+		else if request.xhr? && params[:xml] && params[:seance_id]
+				root = Document.new(params[:xml]).root			
 			
 			# żeby nie można było zamowic juz zamowionych
-			#defiled_seats = []
-			#root.each do |t|
-			#nd
+			defiled_seats = []
+			root.each do |t|
+				defiled_seats << t.elements["seat"].text
+			end
 			
-			root.each do |xticket|				
-				isNotRegistered = (xticket.elements["belongsToUnregisteredUser"].text == "true")
+			@problem_seats = Ticket.find(:all, :select => "seat, bought", :conditions => "seance_id = "+params[:seance_id]+" AND cancelled = false AND seat IN ('"+defiled_seats.join("','")+"')")
+			
+			if @problem_seats.empty?
 				
-				# Zapisywawnie do bazy z ticket_num er'em				
-query="INSERT INTO tickets(" + (isNotRegistered ? "unregistered_user_id" : "user_id") +", belongstounregistereduser, seat, ticket_type_id, price, seance_id, reservation_id, cancelled, bought, worker_id)" + "VALUES( "+ xticket.elements["user_id"].text.to_s + "," + isNotRegistered.to_s + ",'" + xticket.elements["seat"].text + "'," + xticket.elements["type"].text + "," + xticket.elements["price"].text + "," + xticket.elements["seance_id"].text + 
-  ", "+(buy_online ? r.id.to_s : "null")+", false, false, 1);" # trzeba dodac odpowiednio spreparowanego workera
+				buy_online = params[:buy] ? params[:buy] == "true" : false
+				
+				if buy_online
+					r = Reservation.new
+					r.date = Time.new
+					r.save
+					puts buy_online
+					puts r.id
+				end
+			
+				root.each do |xticket|				
+					isNotRegistered = (xticket.elements["belongsToUnregisteredUser"].text == "true")
+	
+					# Zapisywawnie do bazy z ticket_number'em				
+	query="INSERT INTO tickets(" + (isNotRegistered ? "unregistered_user_id" : "user_id") +", belongsToUnregisteredUser, seat, ticket_type_id, price, seance_id, reservation_id, cancelled, bought, worker_id)" + "VALUES( "+ xticket.elements["user_id"].text.to_s + "," + isNotRegistered.to_s + ",'" + xticket.elements["seat"].text + "'," + xticket.elements["type"].text + "," + xticket.elements["price"].text + "," + xticket.elements["seance_id"].text + 
+	  ", "+(buy_online ? r.id.to_s : "null")+", false, false, 1);" # trzeba dodac odpowiednio spreparowanego workera
 				
 			  logger = Logger.new('log/pay.log')
         logger.debug query
 				
-				ActiveRecord::Base.connection.execute(query) 
+					ActiveRecord::Base.connection.execute(query) 
+				end
+				render :json => (buy_online ? [true, r.id] : true);
+			else				
+				render :json => [false, Ticket.find(:all, :select => "seat, bought", :conditions => "seance_id = "+params[:seance_id]+" AND cancelled = false")]
 			end
-			
-			
-			render :json => (buy_online ? r.id : true);
 			
 			
 		else if request.xhr? && cookies[:cinema_id]

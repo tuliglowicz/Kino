@@ -49,6 +49,6 @@ cinema_films = CinemaFilm.create([{:cinema_id => cinemas.first, :film_id => film
 seance_types = SeanceType.create([{:name => 'zwykły seans'}, {:name => 'maraton'}, {:name => 'koncert'}])
 discount_sorts = DiscountSort.create([{:description => 'normalny', :is_weekend => false}])
 ticket_types = TicketType.create([{:name => 'zwykły', :description => 'Zwykły bilet'}, {:name => 'ulgowy', :description => 'Po okazaniu ważnej legitymacji studenckiej/szkolnej'}, {:name => 'emeryt', :description => 'Po ukończeniu 65 roku życia'}])
-ticket_sort_types = TicketSortPrice.create([{:cinema_id => cinemas.first, :seance_types => seance_types.first, :ticket_type_id => ticket_types.first, :discount_sort_id => discount_sorts.first, :price => 19},
-                                            {:cinema_id => cinemas.first, :seance_types => seance_types.first, :ticket_type_id => ticket_types[1], :discount_sort_id => discount_sorts.first, :price => 16},
-                                            {:cinema_id => cinemas.first, :seance_types => seance_types.first, :ticket_type_id => ticket_types[2], :discount_sort_id => discount_sorts.first, :price => 14}])
+ticket_sort_types = TicketSortPrice.create([{:cinema_id => cinemas.first, :seance_type_id => seance_types.first, :ticket_type_id => ticket_types.first, :discount_sort_id => discount_sorts.first, :price => 19},
+                                            {:cinema_id => cinemas.first, :seance_type_id => seance_types.first, :ticket_type_id => ticket_types[1], :discount_sort_id => discount_sorts.first, :price => 16},
+                                            {:cinema_id => cinemas.first, :seance_type_id => seance_types.first, :ticket_type_id => ticket_types[2], :discount_sort_id => discount_sorts.first, :price => 14}])

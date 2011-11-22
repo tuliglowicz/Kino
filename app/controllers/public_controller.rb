@@ -198,35 +198,41 @@ class PublicController < ApplicationController
 			
 			render :json => seances
 			return;
-		else if request.xhr? && params[:xml]
-			root = Document.new(params[:xml]).root
-			
-			buy_online = params[:buy] ? params[:buy] == "true" : false
-			
-			if buy_online
-				r = Reservation.new
-				r.date = Time.new
-				r.save
-				puts buy_online
-				puts r.id
-			end
+		else if request.xhr? && params[:xml] && params[:seance_id]
+				root = Document.new(params[:xml]).root			
 			
 			# żeby nie można było zamowic juz zamowionych
 			defiled_seats = []
 			root.each do |t|
+				defiled_seats << t.elements["seat"].text
+			end
+			
+			@problem_seats = Ticket.find(:all, :select => "seat, bought", :conditions => "seance_id = "+params[:seance_id]+" AND cancelled = false AND seat IN ('"+defiled_seats.join("','")+"')")
+			
+			if @problem_seats.empty?
 				
-			end
+				buy_online = params[:buy] ? params[:buy] == "true" : false
+				
+				if buy_online
+					r = Reservation.new
+					r.date = Time.new
+					r.save
+					puts buy_online
+					puts r.id
+				end
 			
-			root.each do |xticket|				
-				isNotRegistered = (xticket.elements["belongsToUnregisteredUser"].text == "true")
-
-				# Zapisywawnie do bazy z ticket_number'em				
-query="INSERT INTO tickets(" + (isNotRegistered ? "unregistered_user_id" : "user_id") +", belongsToUnregisteredUser, seat, ticket_type_id, price, seance_id, reservation_id, cancelled, bought, worker_id)" + "VALUES( "+ xticket.elements["user_id"].text.to_s + "," + isNotRegistered.to_s + ",'" + xticket.elements["seat"].text + "'," + xticket.elements["type"].text + "," + xticket.elements["price"].text + "," + xticket.elements["seance_id"].text + 
-  ", "+(buy_online ? r.id.to_s : "null")+", false, false, 1);" # trzeba dodac odpowiednio spreparowanego workera
-				ActiveRecord::Base.connection.execute(query) 
+				root.each do |xticket|				
+					isNotRegistered = (xticket.elements["belongsToUnregisteredUser"].text == "true")
+	
+					# Zapisywawnie do bazy z ticket_number'em				
+	query="INSERT INTO tickets(" + (isNotRegistered ? "unregistered_user_id" : "user_id") +", belongsToUnregisteredUser, seat, ticket_type_id, price, seance_id, reservation_id, cancelled, bought, worker_id)" + "VALUES( "+ xticket.elements["user_id"].text.to_s + "," + isNotRegistered.to_s + ",'" + xticket.elements["seat"].text + "'," + xticket.elements["type"].text + "," + xticket.elements["price"].text + "," + xticket.elements["seance_id"].text + 
+	  ", "+(buy_online ? r.id.to_s : "null")+", false, false, 1);" # trzeba dodac odpowiednio spreparowanego workera
+					ActiveRecord::Base.connection.execute(query) 
+				end
+				render :json => (buy_online ? [true, r.id] : true);
+			else				
+				render :json => [false, Ticket.find(:all, :select => "seat, bought", :conditions => "seance_id = "+params[:seance_id]+" AND cancelled = false")]
 			end
-			
-			render :json => (buy_online ? r.id : true);
 			
 			
 		else if request.xhr? && cookies[:cinema_id]

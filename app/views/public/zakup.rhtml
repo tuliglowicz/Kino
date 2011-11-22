@@ -279,7 +279,7 @@
 						<span class="opis">
 								Zaznacz wybrane miejsca poprzez kliknięcie w nie.<br/>
 								Jeśli chcesz zrezygnować z wybranego siedzenia kliknij w nie ponownie.<br/>
-								Możesz zamówić maksymalnie 5 biletów.<br/>
+								Możesz zamówić maksymalnie <%= @max_reservable_seats %> biletów na ten konkretny seans.<br/>
 								W calu zamówienia wiekszej liczby biletów skontaktuj się z nami telefonicznie.<br/>
 								Po zaznaczeniu wszystkich wybranych siedzeń kliknij w strzałkę w prawo, aby przejść do wyboru typu biletów.
 						</span>
@@ -380,20 +380,21 @@
 					<script>
 					// button: kup, button: zakończ
 					var xml = "";
+					var jj;
 					$j("#plac").click(function(){
 						$j("#plac_img").myShow(250);
 						var tmp_ajax = $j.ajax({
 							url: "/public/speedBooking",
-							data: "xml="+xml+"&buy=true",
+							data: "xml="+xml+"&buy=true&seance_id="+seance_id,
 							type: "POST",
 							dataType : 'json',
 							success: function (json){
 								$j("#plac_img").myHide(250);
-								if(json != undefined && json){
+								if(json[0]){
 									alert("Transakcja przebiegła pomyślnie.\nZostaniesz przekierowany na stronę zapłaty.");
-									document.location = "/public/finalizuj?id=" + json
+									document.location = "/public/finalizuj?id=" + json[1]
 								} else {
-									alert(json)
+									bilet_error(json);
 								}
 							},
 							error: function(){
@@ -406,17 +407,16 @@
 						$j("#nieplac_img").myShow(250);
 						var tmp_ajax = $j.ajax({
 							url: "/public/speedBooking",
-							data: "xml="+xml+"&buy=false",
+							data: "xml="+xml+"&buy=false&seance_id="+seance_id,
 							type: "POST",
 							dataType : 'json',
 							success: function (json){
-								if(json != undefined && json){
-									$j("#nieplac_img").myHide(250);
-									alert("Transakcja przebiegła pomyślnie.\nDziękujemy.");
-									document.location = "/public/repertuar";
+								$j("#plac_img").myHide(250);
+								if(json[0]){
+									alert("Transakcja przebiegła pomyślnie.\nZostaniesz przekierowany(a) na stronę główną.");
+									document.location = "/public/index";
 								} else {
-									$j("#nieplac_img").myHide(250);
-									alert(json)
+									bilet_error(json);
 								}
 							},
 							error: function(){
@@ -424,8 +424,34 @@
 							}
 						});
 					});
+					function bilet_error(json){
+						komunikat("Ktoś zajął wybrane przez Ciebie siedzenie odrobinę wcześniej. Proszę wybierz inne miejsce.", 1);
+						prevStep();
+						prevStep();
+						prevStep();
+						for(i=0; i< json[1].length; i++){
+							seat = json[1][i].ticket.seat
+							bought = json[1][i].ticket.bought
+								thisEl = document.getElementById(seat);
+								old_className = thisEl.className
+							if(bought){
+								thisEl.className = "seat bought";
+							}else {
+								thisEl.className = "seat reserved";
+							}
+							
+							if(old_className.indexOf("selected") >= 0){
+								thisEl.style.opacity = .7;
+								ticket_counter--;
+								$j("#ticket_count").text(<%= @max_reservable_seats %>-ticket_counter);
+							}
+								
+						}
+					}
 						function nextStep(){
 							if(stepCounter<stepContener.length-1){
+								$j("#prevStep").css({cursor: 'pointer', opacity: "1"});
+								
 								if(stepContener[stepCounter+1] == "typy_biletow"){
 									$j("#typy_biletow_inner").html("");
 									var c = 0;
@@ -484,6 +510,7 @@
 									}
 								}
 								else if(stepContener[stepCounter+1] == "decyzja"){
+									$j("#nextStep").css({cursor: 'default', opacity: ".1"});
 									var c = 0, i = 0;
 									var suma = 0;
 									xml ="<tickets>";
@@ -515,20 +542,36 @@
 									$j("#ticket_list").append("Suma: "+suma+"zł<br/><br/>");
 								}
 								$j("#"+stepContener[stepCounter]+"_step").animate({color: "white"}, 1250);
-								$j("#"+stepContener[stepCounter]).animate({opacity: 0}, 1250).hide();
+								$j("#"+stepContener[stepCounter]).hide();
 								stepCounter++;
 								$j("#"+stepContener[stepCounter]+"_step").animate({color: "red"}, 1250);
-								$j("#"+stepContener[stepCounter]).animate({opacity: 1}, 1250).show();
+								$j("#"+stepContener[stepCounter]).myShow(1250);
 								
 							}
 						}
 						function prevStep(){
 							if(stepCounter>0){
+								$j("#nextStep").css({cursor: 'pointer', opacity: "1"});
+								if(stepContener[stepCounter-1] == "decyzja"){
+									
+								}
+								else if(stepContener[stepCounter-1] == "seans"){
+									$j("#prevStep").css({cursor: 'default', opacity: ".1"});
+								}
+								else if(stepContener[stepCounter-1] == "dane"){
+									if(user_id){
+											$j("#"+stepContener[stepCounter]+"_step").animate({color: "white"}, 1250);
+											$j("#"+stepContener[stepCounter]).animate({opacity: 0}, 1250).hide();
+											stepCounter--;
+											prevStep();
+											return;
+										}
+								}
 								$j("#"+stepContener[stepCounter]+"_step").animate({color: "white"}, 1250);
-								$j("#"+stepContener[stepCounter]).animate({opacity: 0}, 1250).hide();
+								$j("#"+stepContener[stepCounter]).hide();
 								stepCounter--;
 								$j("#"+stepContener[stepCounter]+"_step").animate({color: "red"}, 1250);
-								$j("#"+stepContener[stepCounter]).animate({opacity: 1}, 1250).show();
+								$j("#"+stepContener[stepCounter]).myShow(1250);
 							}
 						}
 					</script>
@@ -645,5 +688,12 @@ $j("#seans").css("opacity", "1").show();
 
 <% end -%>
 
+function raport(arg){
+	//if(document.getElementById("raport"))
+	document.getElementById("raport").innerHTML +=arg+"<br/>"; //+ "----"+ typeof(arg)
+}
+
 </script>
+</div>
+<div id="raport">
 </div>

@@ -166,9 +166,10 @@ http://www.metamorphozis.com/free_templates/free_css_templates/metamorph_circles
 	    	$j(document).ready(function(){komunikat('<%= msg %>', 2);});
 	    <%elsif flash[:error] %>   
 	        $j(document).ready(function(){komunikat('<%= msg %>', 1);});
-	    <%end%>    
+	    <%end%>
     <% end %>
 <% end %>
+
 	<table class="Ww2" align="center" valign="middle" style="height:400px; overflow: auto; text-align: right;"><tr><td align="center" valign="top">
 		
 		<center id="preloader_podluzny" style="display:none;">
@@ -266,8 +267,6 @@ switch(x){
 	  break;
 }	
 
-
-
 </script>
 
 	<div id="footer" class='zz'>
@@ -291,7 +290,9 @@ var xxx = document.getElementById ("page");
 if(xxx.scrollHeight <600){
 	$j('#footer').attr('id','footer_fix');	
 	
-	
+	komunikat('tresc', 1);
+	komunikat('tresc', 2);
+	komunikat('tresc', 3);
 }	
 
 </script>

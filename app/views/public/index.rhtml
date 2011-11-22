@@ -18,7 +18,8 @@
 			var instanceOne = new ImageFlow();
 			instanceOne.init({ ImageFlowID: 'myrotator' , reflections: false , slideshow: true,
                          slideshowAutoplay: true ,
-                         captions: true,
+                         captions: false,
+                         slider: false,
                          slideshowSpeed: 4000 ,
                          opacity: true,
                          startID: 1,
@@ -39,13 +40,59 @@
 
 <body>
 	<br>
-		<div id="myrotator" class="imageflow" style="border-width:0 0 0 0; border-color: #808080; border-style:solid; width: 900px; height: 50%;"> 
+		<div id="myrotator" class="imageflow" style="border-width:0 0 0 0; border-color: #808080; border-style:solid; width: 900px; height: 50%; "> 
   		<% @films.each do |film| %>
 			<img src="/images/film_posters/<%= film.poster.to_s %>" longdesc="/public/dane_filmu?id=<%= film.id%>" width="250" height="350" alt="<%= film.description %>" />
 			
 		<% end -%>
 		
 		</div>
+		<br>
+		</br>
+		<table width=500 border="0" bordercolor="green" cellspacing="22">
+			<% i=0 %>
+			<% @films.each do |film| %>
+				<% if i==5 || i==0 %>
+					<tr>
+					<% if i==5 %>
+						<% i=0 %>
+					<% end %>				
+				<% end %>
+					<td valign="top" width="170" >
+						<table border="0" bordercolor="red" style=" align: TOP" >
+							<tr>
+								<td >
+									<div align="center" style=" color:  #7C7EE9; ">
+									<font style="font-family: Times;">OBECNIE W KINIE</font>
+									</div>	
+								</td>
+							</tr>	
+							<tr width=120>
+								<td>
+									<a href="/public/dane_filmu?id=<%= film.id%>" target="/public/dane_filmu?id=<%= film.id%>"><img src="/images/film_posters<%= film.poster %>" WIDTH=120 HEIGHT=173 alt="Tekst alternatywny" /></a>
+								</td>	
+							</tr>
+							<tr width=120 style="">
+								<td style="font-size: 14px !important; font-family: ZWAdobeF; font-weight: bold; text-align: left; ">
+									<div>
+										<center><a href="/public/zakup/" target="_blank"> <img src="/images/pic/but11.png" WIDTH=80 HEIGHT=30> </a></center>
+									</div>	
+									<div align="center" style="color: #E0CDBB; text-transform: uppercase; font-stretch: ultra-expanded;"><%= film.title%></div>
+									<div align="center" style="color: #A96E51; font-stretch: ultra-expanded; text-transform: uppercase; font-size: 10px !important; font-family: arial;  ">
+									<%= film.category.name%></div>
+								</td>	
+							</tr>		
+						</table>
+					</td>	
+				<% i=i+1 %>			
+			<% end -%>
+				
+		</table>	
+		<br>
+		</br>
+		<br>
+		</br>
+		
 </body>
 
 

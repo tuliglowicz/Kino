@@ -20,6 +20,9 @@ class CreatePrivileges < ActiveRecord::Migration
       t.integer :workers
       t.integer :permissions
       t.integer :roomviews
+      t.integer :receipts
+      t.integer :company_data
+      t.integer :selling_tickets
       
       t.timestamps
     end

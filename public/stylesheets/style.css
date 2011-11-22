@@ -1,11 +1,11 @@
 INPUT {
 	border: 1px solid #555;
 	font-family:Verdana, Arial, sans-serif;
-	font-size:12;
-	height:20;
+	font-size:12px;
+	height:20px;
 }
 table {
-	font-size:12;
+	font-size: 12px;
 }
 
 .odd {

@@ -1,7 +1,7 @@
 # encoding: UTF-8
 class ReceiptPdf < Prawn::Document
   def initialize(receipt, comapny, ticket, view)
-    super(top_margin: 5, :page_size => [160,320], left_margin: 5, right_margin: 5)
+    super(top_margin: 5, bottom_margin: 7, :page_size => [160,315], left_margin: 5, right_margin: 5)
     @comapny = comapny
     @receipt = receipt
     @ticket = ticket
@@ -23,28 +23,43 @@ class ReceiptPdf < Prawn::Document
                              :italic => "public/fonts/receipt.ttf",
                              :bold_italic => "public/fonts/receipt.ttf",
                              :normal => "public/fonts/receipt.ttf" })
-    font "arial", :size => 6
-    text "#{@comapny.name}", size: 6, style: :bold, :align => :center
-    text "ul.#{@comapny.address}", size: 6, style: :bold, :align => :center
-    text "#{@comapny.nip}", size: 6, style: :bold, :align => :center
-    move_down 5
-    text "#{@receipt.first.date}", size: 6, style: :bold, :align => :left
-    draw_text "#{Time.now.strftime("%H:%M")}" , size: 6, style: :bold , :at => [130,250], :valign => :right
-    font "arial", :size => 6
-    move_down 4
-    text "Kasjer #{@receipt.first.worker_id}", size: 6, style: :bold, :align => :left
-    draw_text "kasa #{@receipt.first.cash_register}" , size: 6, style: :bold , :at => [126,240], :valign => :right
-    font "arial", :size => 6
-    move_down 5
-    text "Kino", size: 6, style: :bold, :align => :left
-    font_families.update("arial" => {
+    font_families.update("myfont" => {
                              :bold  => "public/fonts/DejaVuSans.ttf",
                              :italic => "public/fonts/DejaVuSans.ttf",
                              :bold_italic => "public/fonts/DejaVuSans.ttf",
                              :normal => "public/fonts/DejaVuSans.ttf" })
-    font "arial", :size => 6
-    text "#{@ticket.first.seance.cinema_film.cinema.name}", size: 6, style: :bold, :align => :left
+    font "arial", :size => 6 
+    text "#{@comapny.name}", size: 6, style: :bold, :align => :center
+    text "ul.#{@comapny.address}", size: 6, style: :bold, :align => :center
+    text "#{@comapny.nip}", size: 6, style: :bold, :align => :center
     
+    move_down 3
+    text "PARAGON FISKALNY", size: 10, style: :bold, :align => :center
+    text "------------------------------------", size: 6, style: :bold, :align => :center
+    table line_ticket_row4  do
+            row(0).font_style = :bold
+            columns(0).align = :left
+            columns(1).align = :right
+            cells.padding = 2
+            self.row_colors = ["FFFFFF", "FFFFFF"]
+            self.header = true
+            style(row(0), :border_colors => 'FFFFFF')
+            style(row(1), :border_colors => 'FFFFFF')
+            self.width = 149
+    end
+    table line_ticket_row5  do
+            row(0).font_style = :bold
+            columns(0).align = :left
+            columns(1).align = :left
+            columns(0).width = 20
+            cells.padding = 2
+            self.row_colors = ["FFFFFF", "FFFFFF"]
+            self.header = true
+            style(row(0), :border_colors => 'FFFFFF')
+            style(row(1), :border_colors => 'FFFFFF')
+            self.width = 149
+    end
+    text "------------------------------------", size: 6, style: :bold, :align => :center
     @ticket.each do |w|
           table line_ticket_row(w)  do
             row(0).font_style = :bold
@@ -77,59 +92,91 @@ class ReceiptPdf < Prawn::Document
                              :bold_italic => "public/fonts/receipt.ttf",
                              :normal => "public/fonts/receipt.ttf" })
     font "arial", :size => 6
+    text "------------------------------------", size: 6, style: :bold, :align => :center
+    table line_ticket_row3  do
+            row(0).font_style = :bold
+            columns(1..6).align = :left
+            columns(1..5).align = :right
+            cells.padding = 2
+            self.row_colors = ["FFFFFF", "FFFFFF"]
+            self.header = true
+            style(row(0), :border_colors => 'FFFFFF')
+            style(row(1), :border_colors => 'FFFFFF')
+            style(row(2), :border_colors => 'FFFFFF')
+            style(row(3), :border_colors => 'FFFFFF')
+            style(row(4), :border_colors => 'FFFFFF')
+            style(row(5), :border_colors => 'FFFFFF')
+            self.width = 149
+    end
+    text "------------------------------------", size: 6, style: :bold, :align => :center
     move_down 5
-    text "Sprzedane", size: 6, style: :bold, :align => :center
-    move_down 5
-    text "SP.OP.A", size: 6, style: :bold, :align => :left
-    value0 = @comapny.vat/100.0
-    value1 = @receipt.first.sum - (@receipt.first.sum*value0)
-    draw_text "#{value1.round(2)}" , size: 6, style: :bold , :at => [127,93], :valign => :right
-    font "arial", :size => 6
-    move_down 4
-    text "PTU A #{@comapny.vat}%", size: 6, style: :bold, :align => :left
-    value3 = @receipt.first.sum - value1
-    draw_text "#{value3.round(2)}" , size: 6, style: :bold , :at => [127,83], :valign => :right
-    move_down 4
-    text "SUMA PTU", size: 6, style: :bold, :align => :left
-    value3 = @receipt.first.sum - value1
-    draw_text "#{value3.round(2)}" , size: 6, style: :bold , :at => [127,72], :valign => :right
-    font "arial", :size => 6
-    move_down 4
-    text "SUMA", size: 6, style: :bold, :align => :left
-    draw_text "#{@receipt.first.sum}" , size: 6, style: :bold , :at => [127,62], :valign => :right
-    font "arial", :size => 6
-    move_down 4
-    text "GOTOWKA", size: 6, style: :bold, :align => :left
-    draw_text "200" , size: 6, style: :bold , :at => [127,52], :valign => :right
-    font "arial", :size => 6
-    move_down 4
-    text "RESZTA", size: 6, style: :bold, :align => :left
-    value4 = 200 - @receipt.first.sum
-    draw_text "#{value4}" , size: 6, style: :bold , :at => [127,42], :valign => :right
-    font "arial", :size => 6
-    move_down 5
-    text "NR PARAGONU #{@receipt.first.id+1000123}", size: 6, style: :bold, :align => :center
+    font_families.update("BarcodeFont" => {
+                             :bold  => "public/fonts/code128.ttf",
+                             :italic => "public/fonts/code128.ttf",
+                             :bold_italic => "public/fonts/code128.ttf",
+                             :normal => "public/fonts/code128.ttf" })
+    font "BarcodeFont"
+    z= @receipt.first.id+10001231243443
+    #text "#{z}" , size: 50, style: :bold ,  :align => :right ,  :valign => :middle
+    draw_text "#{z}" , size: 30, style: :bold , :at => [20,5], :valign => :middle
+    font "arial"
+    draw_text "#{z}" , size: 6, style: :bold , :at => [47,0], :valign => :middle
     
   end
   
   def line_ticket_row(w)
     myticket=w
-    font "arial", :size => 4
+    font "arial", :size => 5
     
     cinema_noletters = myticket.seance.cinema_film.cinema.name
     #cinema_noletters["ą"] = "a"
     [[]] + 
-    [[ myticket.ticket_number + 1000234512342342, myticket.seance.cinema_film.film.title]]
+    [["Nr",myticket.ticket_number + 1000234512342342, myticket.seance.cinema_film.film.title]]
   end 
   
   def line_ticket_row2(w)
     myticket=w
-    font "arial", :size => 4
+    font "arial", :size => 6
     z = ""+ myticket.price.to_s
     cinema_noletters = myticket.seance.cinema_film.cinema.name
     #cinema_noletters["ą"] = "a"
     [[]] + 
     [[myticket.seance.date_from, myticket.seance.time_from.strftime("%H:%M"), myticket.ticket_type.name, z+" zł"]]
+  end
+  
+  def line_ticket_row3
+    font "arial", :size => 6
+    value0 = @comapny.vat/100.0
+    value1 = @receipt.first.sum - (@receipt.first.sum*value0)
+    value3 = @receipt.first.sum - value1
+    value4 = 200 - @receipt.first.sum
+    
+    [["SP.OP.A","#{value1.round(2)} zł"]] + 
+    [["PTU A #{@comapny.vat}%","#{value3.round(2)} zł"]] +
+    [["SUMA PTU","#{value3.round(2)} zł"]] +
+    [["SUMA","#{@receipt.first.sum} zł"]] +
+    [["GOTOWKA","200 zł"]] +
+    [["RESZTA","#{value4} zł"]]
+  end
+  
+  def line_ticket_row4
+    font "arial", :size => 6
+    [["#{@receipt.first.date}","#{Time.now.strftime("%H:%M")}"]] + 
+    [["Kasjer #{@receipt.first.worker_id}","Kasa #{@receipt.first.cash_register}"]]
+    
+  end
+  def line_ticket_row5
+    font "arial", :size => 6
+    
+    font_families.update("my" => {
+                             :bold  => "public/fonts/DejaVuSans.ttf",
+                             :italic => "public/fonts/DejaVuSans.ttf",
+                             :bold_italic => "public/fonts/DejaVuSans.ttf",
+                             :normal => "public/fonts/DejaVuSans.ttf" })
+    
+    [["Kino", {:content => "#{@ticket.first.seance.cinema_film.cinema.name}", :size => 6, :font => "my" } ]] +
+    [[]]
+    
   end
   
 end

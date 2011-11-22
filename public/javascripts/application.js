@@ -163,22 +163,22 @@ jQuery.cookie = function (key, value, options) {
 	var cloud_id = -1;	//zapewnia unikatowe id chmurek
 	var yOffset = 150;	//offset od dołu strony
 	var width = 240;	//szerokość chmurek
-	var height = 100;	//szerokość chmurek
+	var height = 80;	//szerokość chmurek
 	var padding = height+5;	//liczba px między górnymi krawędziami chmurek
-	var radius = 5; //miara zaokrąglenia rogów
+	//var radius = 8; //miara zaokrąglenia rogów kamil edit: problemy w chrome
 	function komunikat(tresc, nr_typu){
-
+		var kind;
 		cloud_count++;
 		cloud_id++;
 
 		if(tresc != undefined && nr_typu != undefined){
 			switch(nr_typu){
-				case 1:	className = "blad";		title = "Błąd!";	//inne przypisania;
+				case 1:	className = "blad";		title = "Błąd!"; kind="cloudError";	//inne przypisania;
 				break;
-				case 2: className = "ostrzezenie"; title = "Ostrzeżenie!" //inne przypisania;
+				case 2: className = "ostrzezenie"; title = "Ostrzeżenie!"; kind="cloudWarning"; //inne przypisania;
 				break;
 				default :	case 0 : 
-				className = "informacja"; title = "Informacja!";	//inne przypisania;
+				className = "informacja"; title = "Informacja!"; kind="cloudNotice";	//inne przypisania;
 				break;
 			}
 
@@ -188,9 +188,13 @@ jQuery.cookie = function (key, value, options) {
 			// jakieś style zewnętrzne opisujące
 			// przypisanie className z definicja klasy w css
 			
-			divHTML = "<div class='cloud' id='cloud"+cloud_id+"' style='opacity:.9;z-index:998;width:"+width+"px;border:1px solid black;border-radius:"+radius+"px;height:"+height+"px;position:absolute;top:"+(bot+100)+"px;left:"+leftPercent+"%;background-color:white;color:black;'><div style='width:100%;text-align:left;background-color:#000;color:white;'>&nbsp;"+title+"<div style='float:right;cursor:pointer;'><a onClick=hideCloud('"+cloud_id+"')> &nbsp;x&nbsp; </a></div></div><br/><b>&nbsp;"+tresc+"</b></div>"
+			divHTML = "<div class='cloud "+kind+"' id='cloud"+cloud_id+"' style='width:"+width+"px;"+
+			"px;height:"+height+"px;top:"+(bot+100)+"px;left:"+leftPercent+
+			"%;'><div class='flashBar "+kind+"'>&nbsp;"+title+
+			"<div style='float:right;cursor:pointer;'><a onClick=hideCloud('"+cloud_id+
+			"')><b> &nbsp;X&nbsp;&nbsp;</b> </a></div></div><br/>&nbsp;"+tresc+"</div>";
 			
-			$j(divHTML).appendTo("body").animate({top: (bot-yOffset-(cloud_count*padding))+"px"}, {duration:500,easing:'easeOutBounce'});
+			$j(divHTML).appendTo("body").animate({top: (bot-yOffset-(cloud_count*padding))+"px"}, {duration:2000,easing:'easeOutBounce'});
 			
 			
 			//setTimeout('$j("#cloud'+cloud_id+'").remove()', 10000);

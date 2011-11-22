@@ -154,6 +154,9 @@
 				
 					<script>
 					var page_name = "zakup";
+					<% if @seance -%>
+						var seance_id = <%= @seance.id %>;
+					<% end -%>
 					
 					$j("#switcher").toggle(function(){
 						var i = 0;
@@ -373,18 +376,19 @@
 					Lista Biletów:<br/>
 					<div id="ticket_list">
 					</div>
-					<button id="plac">Płać on-line i oszczędź 1zł za każdy bilet</button> | 
-					<button id="zakoncz">Zakończ i zapłać on-line później lub przy kasie.</button>
+					<pre style='border:0px;'><button id="plac">Płać on-line i oszczędź 1zł za każdy bilet</button><img src="/images/pic/loader_min.gif" id="plac_img" style='display:none;' align="absbottom">		<button id="zakoncz">Zakończ i zapłać on-line później lub przy kasie.</button><img src="/images/pic/loader_min.gif" id="nieplac_img" style='display:none;' align="absbottom"></pre>
 					<script>
 					// button: kup, button: zakończ
 					var xml = "";
 					$j("#plac").click(function(){
+						$j("#plac_img").myShow(250);
 						var tmp_ajax = $j.ajax({
 							url: "/public/speedBooking",
 							data: "xml="+xml+"&buy=true",
 							type: "POST",
 							dataType : 'json',
 							success: function (json){
+								$j("#plac_img").myHide(250);
 								if(json != undefined && json){
 									alert("Transakcja przebiegła pomyślnie.\nZostaniesz przekierowany na stronę zapłaty.");
 									document.location = "/public/finalizuj?id=" + json
@@ -393,11 +397,13 @@
 								}
 							},
 							error: function(){
+								$j("#plac_img").myHide(250);
 								alert("Coś poszlo nie tak.\nProszę spróbować ponownie za kilka minut.")
 							}
 						});
 					});
 					$j("#zakoncz").click(function(){
+						$j("#nieplac_img").myShow(250);
 						var tmp_ajax = $j.ajax({
 							url: "/public/speedBooking",
 							data: "xml="+xml+"&buy=false",
@@ -405,9 +411,11 @@
 							dataType : 'json',
 							success: function (json){
 								if(json != undefined && json){
+									$j("#nieplac_img").myHide(250);
 									alert("Transakcja przebiegła pomyślnie.\nDziękujemy.");
 									document.location = "/public/repertuar";
 								} else {
+									$j("#nieplac_img").myHide(250);
 									alert(json)
 								}
 							},
@@ -497,7 +505,7 @@
 											xml += "<type>"+typ_id+"</type><price>"+ceny[this.innerHTML]+"</price>";
 											suma += ceny[this.innerHTML];
 										});
-										xml += "<seat>"+this.id+"</seat><seance_id><% if @seance -%><%= @seance.id %><% end -%></seance_id></ticket>"
+										xml += "<seat>"+this.id+"</seat><seance_id>"+seance_id+"</seance_id></ticket>"
 										
 										$j("#ticket_list").append(tmp+"<br/>");
 									});

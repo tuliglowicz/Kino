@@ -47,7 +47,7 @@ Kino::Application.routes.draw do
 	# SeanceTypes
 	match "/seance_types/name_availability" => "seance_types#name_availability"
 
-  match 'private/panel_kasjera' => "private#panel_kasjera"  
+  match 'private/panel_kasjera' => "private#panel_kasjera"
   match '/private/privileges' => "private#permissions"
   match 'private/get_permissions' => "private#get_permissions"
   match 'private/permissions/create' => "permissions#create", :as => 'add_new_permission'

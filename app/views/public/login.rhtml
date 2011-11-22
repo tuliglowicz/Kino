@@ -4,6 +4,7 @@
 <!-- EO CSS and JS imports -->
 
 <script>
+var isXHR = <%= @xhr %>
 	jQuery(document).ready(function()
 	{
 		var isRemindPasswordDivShown = false;
@@ -66,6 +67,10 @@
 										setEverythingAfterLogin(result, true);
 									else
 										alert("Podałeś nieprawidłowy login lub hasło!")
+										
+									if (!isXHR){
+										document.location = "<%= repertoire_path %>"
+									}
 							},
 							error: function(){
 								alert("error przy pobieraniu danych");

@@ -60,34 +60,30 @@ class PublicController < ApplicationController
 	
 
 	def login
-		unless session[:user]
-			if params[:login] and  params[:password]
-				session[:user] = nil
-				logged_in_user = Auth.try_to_login(params[:login], params[:password])
-				
-				if logged_in_user && (logged_in_user.kind_of? User)
-					session[:user] = logged_in_user
-					flash[:notice] = 'Zalogowany jako użytkownik!'
-					result = logged_in_user
-				else
-					result = false
-					flash[:notice] = "Błędny login i/albo hasło!"
-				end
+		if params[:login] and params[:password]
+			session[:user] = nil
+			logged_in_user = Auth.try_to_login(params[:login], params[:password])
+			
+			if logged_in_user && (logged_in_user.kind_of? User)
+				session[:user] = logged_in_user
+				flash[:notice] = 'Zalogowany jako użytkownik!'
+				result = logged_in_user
 			else
 				result = false
-			end
-			
-			if request.xhr?
-				if params[:login] and params[:password]
-					render :json => result
-				else
-					render :layout => false
-				end
+				flash[:notice] = "Błędny login i/albo hasło!"
 			end
 		else
-			flash[:notice] = "Jesteś już zalogowany!"
-			redirect_to request.env["HTTP_REFERER"] ||= "/"
+			result = false
 		end
+		
+		if request.xhr?
+			if params[:login] and params[:password]
+				render :json => result
+			else
+				render :layout => false
+			end
+		end
+			@xhr = request.xhr?
 	end
 	
 	def logout
@@ -216,13 +212,14 @@ class PublicController < ApplicationController
 			end
 			
 			# żeby nie można było zamowic juz zamowionych
-			#defiled_seats = []
-			#root.each do |t|
-			#nd
+			defiled_seats = []
+			root.each do |t|
+				
+			end
 			
 			root.each do |xticket|				
 				isNotRegistered = (xticket.elements["belongsToUnregisteredUser"].text == "true")
-				
+
 				# Zapisywawnie do bazy z ticket_number'em				
 query="INSERT INTO tickets(" + (isNotRegistered ? "unregistered_user_id" : "user_id") +", belongsToUnregisteredUser, seat, ticket_type_id, price, seance_id, reservation_id, cancelled, bought, worker_id)" + "VALUES( "+ xticket.elements["user_id"].text.to_s + "," + isNotRegistered.to_s + ",'" + xticket.elements["seat"].text + "'," + xticket.elements["type"].text + "," + xticket.elements["price"].text + "," + xticket.elements["seance_id"].text + 
   ", "+(buy_online ? r.id.to_s : "null")+", false, false, 1);" # trzeba dodac odpowiednio spreparowanego workera

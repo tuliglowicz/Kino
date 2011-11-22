@@ -386,7 +386,8 @@
 							dataType : 'json',
 							success: function (json){
 								if(json != undefined && json){
-									alert("Transakcja przebiegła pomyślnie.\nDziękujemy.");
+									alert("Transakcja przebiegła pomyślnie.\nZostaniesz przekierowany na stronę zapłaty.");
+									document.location = "/public/finalizuj?id=" + json
 								} else {
 									alert(json)
 								}
@@ -405,6 +406,7 @@
 							success: function (json){
 								if(json != undefined && json){
 									alert("Transakcja przebiegła pomyślnie.\nDziękujemy.");
+									document.location = "/public/repertuar";
 								} else {
 									alert(json)
 								}

@@ -16,9 +16,10 @@
 				height:32px;
 				border-radius :10px;
 				 -moz-border-radius:10px;
-				background-color:#9933CC;
+				background-color:#1D1D1D;
+				/*opacity:.5;*/
 				width:80%;
-				box-shadow: 3px 3px 5px #fff inset;	
+				box-shadow: 1px 3px 15px #80b2dc inset;	
 			}
 			ul.profile_menu{
 
@@ -54,11 +55,11 @@
 			}
 
 			ul.profile_menu span.profile_menu_short:hover, span.profile_menu_long:hover {
-				color:#333333;
+				color:#49A2DC;
 				cursor:pointer;
 			}
 			ul.profile_menu span.selected {
-				color:#000;
+				color:#49A2DC;
 				
 			}
 
@@ -90,7 +91,7 @@
 
 			}
 			span.sep{
-				color: #990099;
+				color: #1A2429;
 				font-size:1em;
 				display:inline;
 				float: left;
@@ -102,11 +103,11 @@
 			#tickety{
 				width:80%;
 				border-collapse:collapse;
-
+				
 			}
 			
 			#tickety table, #tickety td, #tickety th{
-				border:1px ridge #9933CC;
+				border:1px ridge #336699;
 				font-size:1em;
 				padding:3px 7px 2px 7px;
 				background-color:#CCCCCC;
@@ -197,6 +198,7 @@
 		
 	</head>
 	<body>
+		<br />
 		<div id="p_menu" style="float:inherit; margin-left: 10%">
 			<ul class="profile_menu" >
 				<li class="profile_menu"><span class="profile_menu_long" id="curr" onclick="showRes();">Bieżące rezerwacje</span></li>
@@ -356,7 +358,7 @@
 								<td><label value='<%= ticket.price.to_s %>' id='price_<%= ticket.ticket_number %>'> <%= ticket.price.to_s %> </label></td>
 								
 								<td ><center>
-									<%= link_to( 'zrezygnuj', { :action=>"delete_ticket", :id=>ticket.id.to_s}, {:style=>'color:#F80000 ;', :class => "css_class"}  ) %>
+									<%#= link_to( 'zrezygnuj', { :action=>"delete_ticket", :id=>ticket.id.to_s}, {:style=>'color:#F80000 ;', :class => "css_class"}  ) %>
 									<%= link_to image_tag("pic/delete.png", :size => "20x20", :align => "center"), :action => "delete_ticket", :id => ticket.id.to_s %></center>
 								</td>
 								<% i=i+1 %>

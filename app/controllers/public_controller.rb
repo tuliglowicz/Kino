@@ -229,8 +229,8 @@ query="INSERT INTO tickets(" + (isNotRegistered ? "unregistered_user_id" : "user
 				ActiveRecord::Base.connection.execute(query) 
 			end
 			
-			render :json => (buy_online ? [true, r.id] : true)
-			return;
+			render :json => (buy_online ? r.id : true);
+			
 			
 		else if request.xhr? && cookies[:cinema_id]
 				resp = session[:user] == nil

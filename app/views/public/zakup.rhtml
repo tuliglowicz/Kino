@@ -416,6 +416,7 @@
 									alert("Transakcja przebiegła pomyślnie.\nZostaniesz przekierowany(a) na stronę główną.");
 									document.location = "/public/index";
 								} else {
+									alert(json[0])
 									bilet_error(json);
 								}
 							},

@@ -256,6 +256,12 @@ class PublicController < ApplicationController
 			if params[:id] && params[:id].length > 0
 				#@seance = Seance.where("id = "+params[:id]+" AND date_from < date(now()) + integer '7' AND date_from >= date(now())")[0]
 				@seance = Seance.where("id = "+params[:id])[0]
+				if @seance.checked && !session[:worker]
+				  
+				  redirect_to public_path, :error => 'Seans już miał miejsce'
+				  return
+				end
+				SeanceVerifier.verify_status_state_and_cancel_tickets(@seance)
 				@max_reservable_seats = @seance == nil ? 5 : @seance.max_reservable_seats == nil || @seance.max_reservable_seats == 0 ? 5 : @seance.max_reservable_seats
 				
 				#SeanceVerifier.verify_status_state_and_cancel_tickets(@seance)

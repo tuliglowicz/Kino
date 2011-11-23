@@ -37,7 +37,7 @@ workers = Worker.create!([{:cinema_id => cinemas.first.id, :status_id => statuse
                           {:cinema_id => cinemas.first.id, :status_id => statusez[2].id, :login => 'kasjer', :hashed_password => 'wtw', :first_name => 'Witek', :last_name => 'Kłos', :phone => 123456789, :email => 'projekt_iz2@o2.pl'},
                           {:cinema_id => cinemas.first.id, :status_id => statusez[1].id, :login => 'kierownik', :hashed_password => 'wtw', :first_name => 'Ola', :last_name => 'Kłodzka', :phone => 123456789, :email => 'projekt_iz3@o2.pl'}])
 roomviews = Roomview.create!([{:name => 'basic', :view => '<room><width>10</width><height>10</height><deletedSeats></deletedSeats></room>'}])
-rooms = Room.create!([{:cinema_id => cinemas.first.id, :number => 1, :size => 100}])
+rooms = Room.create!([{:cinema_id => cinemas.first.id, :roomview_id => roomviews.first.id, :number => 1, :size => 100}])
 categories = Category.create!([{:name => 'Przygodowy'}, {:name => 'Komedia'}])
 films = Film.create!([{:title => 'Avatar', :director => 'S. Spilberg', :year => 2010, :category_id => categories.first.id, :trailer => 'http://www.youtube.com/watch?v=lh-EoXYjB9g', :description => 'Avatar description', :poster => '/avatar.jpeg', :date_from => Time.now - 10.days },
                      {:title => 'Ghost Writer', :director => 'R. Polański', :year => 2010, :category_id => categories.first.id, :trailer => 'http://www.youtube.com/watch?v=L_AerBW0EcI', :description => 'Ghost Writer description', :poster => '/ghost_writer.jpeg', :date_from => Time.now - 10.days },

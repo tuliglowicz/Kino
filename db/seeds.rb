@@ -32,9 +32,9 @@ statusez = Status.create!([{:name => 'administrator', :privilege_id => privilege
                           {:name => 'kierownik', :privilege_id => privileges[2].id},
                           {:name => 'kasjer', :privilege_id => privileges[1].id}])
 
-workers = Worker.create!([{:cinema_id => cinemas.first.id, :status_id => statusez.first.id, :login => 'gadmin', :hashed_password => 'wtwwtw', :first_name => 'Jan', :last_name => 'Posypek', :phone => 123456789, :email => 'projekt_iz@o2.pl'},
-                         {:cinema_id => cinemas.first.id, :status_id => statusez[2].id, :login => 'kasjer', :hashed_password => 'wtwwtw', :first_name => 'Witek', :last_name => 'Kłos', :phone => 123456789, :email => 'projekt_iz2@o2.pl'},
-                         {:cinema_id => cinemas.first.id, :status_id => statusez[1].id, :login => 'kierownik', :hashed_password => 'wtwwtw', :first_name => 'Ola', :last_name => 'Kłodzka', :phone => 123456789, :email => 'projekt_iz3@o2.pl'}])
+workers = Worker.create!([{:cinema_id => cinemas.first.id, :status_id => statusez.first.id, :login => 'gadmin', :hashed_password => 'wtw', :first_name => 'Jan', :last_name => 'Posypek', :phone => 123456789, :email => 'projekt_iz@o2.pl'},
+                         {:cinema_id => cinemas.first.id, :status_id => statusez[2].id, :login => 'kasjer', :hashed_password => 'wtw', :first_name => 'Witek', :last_name => 'Kłos', :phone => 123456789, :email => 'projekt_iz2@o2.pl'},
+                         {:cinema_id => cinemas.first.id, :status_id => statusez[1].id, :login => 'kierownik', :hashed_password => 'wtw', :first_name => 'Ola', :last_name => 'Kłodzka', :phone => 123456789, :email => 'projekt_iz3@o2.pl'}])
 roomviews = Roomview.create!([{:name => 'basic', :view => '<room><width>10</width><height>10</height><deletedSeats></deletedSeats></room>'}])
 rooms = Room.create!([{:cinema_id => cinemas.first.id, :number => 1, :size => 100}])
 categories = Category.create!([{:name => 'Przygodowy'}, {:name => 'Komedia'}])
@@ -52,5 +52,5 @@ ticket_types = TicketType.create!([{:name => 'zwykły', :description => 'Zwykły
 ticket_sort_types = TicketSortPrice.create!([{:cinema_id => cinemas.first.id, :seance_type_id => seance_types.first.id, :ticket_type_id => ticket_types.first.id, :discount_sort_id => discount_sorts.first.id, :price => 19},
                                             {:cinema_id => cinemas.first.id, :seance_type_id => seance_types.first.id, :ticket_type_id => ticket_types[1].id, :discount_sort_id => discount_sorts.first.id, :price => 16},
                                             {:cinema_id => cinemas.first.id, :seance_type_id => seance_types.first.id, :ticket_type_id => ticket_types[2].id, :discount_sort_id => discount_sorts.first.id, :price => 14}])
-users = User.create!([{:login => 'damian', :hashed_password => 'wtwwtw', :email => 'projekt_iz@o2.pl', :phone => 123456789, :first_name => 'Damian', :last_name => 'Jaszczurowski'},
-                      {:login => 'andrzej', :hashed_password => 'wtwwtw', :email => 'dj.serwisy@gmail.com', :phone => 123456789, :first_name => 'Andrzej', :last_name => 'Kordian'}])                                  
+users = User.create!([{:login => 'damian', :hashed_password => '054e822ba7bbd507d19cbcabe9044c0620414183', :email => 'projekt_iz@o2.pl', :phone => 123456789, :first_name => 'Damian', :last_name => 'Jaszczurowski'},
+                      {:login => 'andrzej', :hashed_password => '054e822ba7bbd507d19cbcabe9044c0620414183', :email => 'dj.serwisy@gmail.com', :phone => 123456789, :first_name => 'Andrzej', :last_name => 'Kordian'}])                                  

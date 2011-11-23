@@ -258,7 +258,7 @@ class PublicController < ApplicationController
 				@seance = Seance.where("id = "+params[:id])[0]
 				if @seance.checked && !session[:worker]
 				  
-				  redirect_to public_path, :error => 'Seans już miał miejsce'
+				  redirect_to public_path, :notice => 'Seans już miał miejsce'
 				  return
 				end
 				SeanceVerifier.verify_status_state_and_cancel_tickets(@seance)

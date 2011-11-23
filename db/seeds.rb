@@ -300,7 +300,7 @@ seances = Seance.create!([{:cinema_film_id => cinema_films.first.id, :room_id =>
                           {:cinema_film_id => cinema_films[3].id, :room_id => rooms.first.id, :date_from => Time.now + 12.days, :time_from => '14:30', :checked => false, :seance_type_id => seance_types.first.id, :discount_sort_id => discount_sorts.first.id,:max_reservable_seats => 4},
                           {:cinema_film_id => cinema_films[3].id, :room_id => rooms.first.id, :date_from => Time.now + 12.days, :time_from => '16:30', :checked => false, :seance_type_id => seance_types.first.id, :discount_sort_id => discount_sorts.first.id,:max_reservable_seats => 4},
                           {:cinema_film_id => cinema_films[3].id, :room_id => rooms.first.id, :date_from => Time.now + 12.days, :time_from => '18:30', :checked => false, :seance_type_id => seance_types.first.id, :discount_sort_id => discount_sorts.first.id,:max_reservable_seats => 4},
-                          {:cinema_film_id => cinema_films[3].id, :room_id => rooms.first.id, :date_from => Time.now + 12.days, :time_from => '20:30', :checked => false, :seance_type_id => seance_types.first.id, :discount_sort_id => discount_sorts.first.id}])
+                          {:cinema_film_id => cinema_films[3].id, :room_id => rooms.first.id, :date_from => Time.now + 12.days, :time_from => '20:30', :checked => false, :seance_type_id => seance_types.first.id, :discount_sort_id => discount_sorts.first.id,:max_reservable_seats => 4}])
 
 r = Reservation.create!([{:date => Time.now}, {:date => Time.now + 1.days}, {:date => Time.now + 3.days}, {:date => Time.now + 4.days},
                                     {:date => Time.now}, {:date => Time.now + 1.days}, {:date => Time.now + 3.days}, {:date => Time.now + 4.days},

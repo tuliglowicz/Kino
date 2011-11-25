@@ -51,6 +51,7 @@
 		</br>
 		<table width=500 border="0" bordercolor="green" cellspacing="22">
 			<% i=0 %>
+			
 			<% @films.each do |film| %>
 				<% if i==5 || i==0 %>
 					<tr>
@@ -67,7 +68,7 @@
 									</div>	
 								</td>
 							</tr>	
-							<tr width=120>
+							<tr width=120 style="border-color: #008000;">
 								<td>
 									<a href="/public/dane_filmu?id=<%= film.id%>" target="/public/dane_filmu?id=<%= film.id%>"><img src="/images/film_posters<%= film.poster %>" WIDTH=120 HEIGHT=173 alt="Tekst alternatywny" /></a>
 								</td>	

@@ -160,13 +160,13 @@ http://www.metamorphozis.com/free_templates/free_css_templates/metamorph_circles
 	</div>- UZREditor -->
 <% flash.each do |key, msg| %>
     <%= content_tag :script, :type => "text/javascript" do -%>
-	    <%if flash[:notice]%>
-	    	$j(document).ready(function(){komunikat('<%= msg %>', 0);});
-	    <% elsif flash[:warning]%>
+	    <% if flash[:warning]%>
 	    	$j(document).ready(function(){komunikat('<%= msg %>', 2);});
-	    <%elsif flash[:error] %>   
+	    <% else if flash[:notice]%>
+	    	$j(document).ready(function(){komunikat('<%= msg %>', 0);});	    	
+	    <%else if flash[:error] %>   
 	        $j(document).ready(function(){komunikat('<%= msg %>', 1);});
-	    <%end%>    
+	    <%end end end%>
     <% end %>
 <% end %>
 	<table class="Ww2" align="center" valign="middle" style="height:400px; overflow: auto; text-align: right;"><tr><td align="center" valign="top">
@@ -266,8 +266,6 @@ switch(x){
 	  break;
 }	
 
-
-
 </script>
 
 	<div id="footer" class='zz'>
@@ -290,8 +288,6 @@ var xxx = document.getElementById ("page");
 
 if(xxx.scrollHeight <600){
 	$j('#footer').attr('id','footer_fix');	
-	
-	
 }	
 
 </script>

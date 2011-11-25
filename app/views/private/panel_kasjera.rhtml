@@ -23,7 +23,7 @@ input[type='submit'], button {
 	background-image: -webkit-linear-gradient(bottom, #000000 45%,#666 100%);
 	background-image: -ms-linear-gradient(bottom, #000000 45%,#666 100%);
 }
-input::-webkit-input-placeholder,  {
+input::-webkit-input-placeholder{
     color:    #292929;
 }
 input:-moz-placeholder {
@@ -36,11 +36,11 @@ a, a:visited, a:active {
 a.date.selected {
 	color: red;
 }
-pre {
+pre[name] {
 	display: inline;
 	font-family: arial;
 }
-pre:hover {
+pre[name]:hover {
 	color: red;
 }
 </style>
@@ -88,7 +88,7 @@ pre:hover {
 				<% tickets.each do |t| %>
 					<% j = j + 1 %>
 					<% u = t.user -%>
-						<pre class="<%= u.first_name.upcase+" "+u.last_name.upcase+" "+u.email.upcase+" "+u.phone.to_s %>" onClick="this.firstChild.checked=!this.firstChild.checked; return false;" style='cursor:pointer;'><input disabled="true" type="checkbox" name="<%= t.id %>"><%= "\t" + u.last_name + " " + u.first_name + "\t" + t.seance.cinema_film.film.title + "\t" + t.seance.time_from.to_s[11,5]  + "\t" + t.seance.room.number.to_s + "\t" + t.seat %><br/></pre>
+						<pre name="element" class="<%= u.first_name.upcase+" "+u.last_name.upcase+" "+u.email.upcase+" "+u.phone.to_s %>" onClick="this.firstChild.checked=!this.firstChild.checked; return false;" style='cursor:pointer;'><input disabled="true" type="checkbox" name="<%= t.id %>"><%= "\t" + u.last_name + " " + u.first_name + "\t" + t.seance.cinema_film.film.title + "\t" + t.seance.time_from.to_s[11,5]  + "\t" + t.seance.room.number.to_s + "\t" + t.seat %><br/></pre>
 				<% end -%>
 				<% if j==0 %>
 					&nbsp; &nbsp; W tym dniu nie ma żadnych rezerwacji.
@@ -118,6 +118,7 @@ $j("#check_as_bought").click(function(){
 	id_dnia = $j("a.date.selected")[0].id.substring(1)
 	$selected = $j("div #dzien_nr_"+id_dnia+" pre").filter(function(){	return this.style.display != "none" && this.firstChild.checked;	});
 	if($selected.length > 0){
+		$selected.css("opacity", "0");
 		var $clone = $selected.clone();
 		
 		xml = "<ticket_ids>"

@@ -101,7 +101,7 @@ class UsersController < ApplicationController
       if params[:user][:hashed_password].to_s != params[:user][:hashed_password_confirmation].to_s
         #format.html {redirect_to(:controller=> "public",:action=> "profile", :id=>session[:user].id.to_s)}
         format.html {redirect_to :back }
-        flash[:notice]= 'Podane hasła są różne'
+        flash[:error]= 'Podane hasła są różne'
       else
         if params[:user][:hashed_password]!=nil
           if params[:user][:hashed_password].length<40
@@ -110,12 +110,12 @@ class UsersController < ApplicationController
         end
         if @user.update_attributes(params[:user])
           if session[:worker] || session[:gadmin]
-            format.html { redirect_to(@user, :notice => 'User was successfully updated.') }
+            format.html { redirect_to(@user, :notice => 'Zaktualizowano profil') }
             format.xml  { head :ok }
           else
             format.html { redirect_to(:controller=> "public",:action=> "profile", :id=>session[:user].id.to_s ) }
             format.xml  { head :ok }
-            flash[:notice]= 'Zmieniono dane'
+            flash[:notice]= 'ZZaktualizowano profi'
           end         
         else
           format.html { render :action => "edit" }

@@ -42,11 +42,17 @@ categories = Category.create!([{:name => 'Przygodowy'}, {:name => 'Komedia'}])
 films = Film.create!([{:title => 'Avatar', :director => 'S. Spilberg', :year => 2010, :category_id => categories.first.id, :trailer => 'http://www.youtube.com/watch?v=lh-EoXYjB9g', :description => 'Avatar description', :poster => '/avatar.jpeg', :date_from => Time.now - 10.days },
                      {:title => 'Ghost Writer', :director => 'R. Polański', :year => 2010, :category_id => categories.first.id, :trailer => 'http://www.youtube.com/watch?v=L_AerBW0EcI', :description => 'Ghost Writer description', :poster => '/ghost_writer.jpeg', :date_from => Time.now - 10.days },
                      {:title => 'Gladiator', :director => 'R. Scott', :year => 2010, :category_id => categories.first.id, :trailer => 'http://www.youtube.com/watch?v=ol67qo3WhJk', :description => 'Gladiator description', :poster => '/gladiator.jpeg', :date_from => Time.now - 10.days },
-                     {:title => 'Thor', :director => 'R. Scott', :year => 2010, :category_id => categories.first.id, :trailer => 'http://www.youtube.com/watch?v=JOddp-nlNvQ', :description => 'Thor description', :poster => '/thor.jpeg', :date_from => Time.now - 10.days }])
+                     {:title => 'Thor', :director => 'R. Scott', :year => 2010, :category_id => categories.first.id, :trailer => 'http://www.youtube.com/watch?v=JOddp-nlNvQ', :description => 'Thor description', :poster => '/thor.jpeg', :date_from => Time.now - 10.days },
+                     {:title => 'Erratum', :director => 'R. Scott', :year => 2012, :category_id => categories.first.id, :trailer => 'http://www.youtube.com/watch?v=KrcApGRSjbw', :description => 'Erratum description', :poster => '/erratum.jpeg', :date_from => Time.now + 40.days },
+                     {:title => 'The Social Network', :director => 'R. Scott', :year => 2012, :category_id => categories.first.id, :trailer => 'http://www.youtube.com/watch?v=lB95KLmpLR4', :description => 'Erratum description', :poster => '/socialn.jpeg', :date_from => Time.now + 40.days }])
+
 cinema_films = CinemaFilm.create!([{:cinema_id => cinemas.first.id, :film_id => films.first, :date_from =>  Time.now - 1.days, :date_untill => Time.now + 100.days}, 
                                   {:cinema_id => cinemas.first.id, :film_id => films[1].id, :date_from =>  Time.now - 1.days, :date_untill => Time.now + 100.days},
                                   {:cinema_id => cinemas.first.id, :film_id => films[2].id, :date_from =>  Time.now - 1.days, :date_untill => Time.now + 100.days},
-                                  {:cinema_id => cinemas.first.id, :film_id => films[3].id, :date_from =>  Time.now - 1.days, :date_untill => Time.now + 100.days}])  
+                                  {:cinema_id => cinemas.first.id, :film_id => films[3].id, :date_from =>  Time.now - 1.days, :date_untill => Time.now + 100.days},
+                                  {:cinema_id => cinemas.first.id, :film_id => films[4].id, :date_from =>  Time.now + 31.days, :date_untill => Time.now + 200.days},
+                                  {:cinema_id => cinemas.first.id, :film_id => films[5].id, :date_from =>  Time.now + 31.days, :date_untill => Time.now + 200.days}])  
+
 seance_types = SeanceType.create!([{:name => 'zwykły seans'}, {:name => 'maraton'}, {:name => 'koncert'}])
 discount_sorts = DiscountSort.create!([{:description => 'normalny', :is_weekend => false}])
 ticket_types = TicketType.create!([{:name => 'zwykły', :description => 'Zwykły bilet'}, {:name => 'ulgowy', :description => 'Po okazaniu ważnej legitymacji studenckiej/szkolnej'}, {:name => 'emeryt', :description => 'Po ukończeniu 65 roku życia'}])

@@ -35,8 +35,8 @@
   	</tr>
   	<tr>
   		<td class="label"><label for="user_email">Email</label></td>
-  		<td><input type="text" id="user_email" name="user[email]" class="validate[required,custom[email]] text-input" type="email" /></td>	
-  		<td></td>
+  		<td><input type="email" id="user_email" name="user[email]" class="validate[required,custom[email]] text-input" type="email" /></td>	
+  		<td><label id="email_status" for="user_email" style="display: none" ></label></td>
   	</tr>
   	<tr>
   		<td class="label"><label for="user_phone">Telefon</label></td>
@@ -64,6 +64,7 @@
 							success: function (result){
 									if(result){
 										setEverythingAfterLogin(result, true);
+										komunikat('Konto utworzone. Wysłaliśmy do Ciebie maila powitalnego.', 0)
 									}
 									else {
 										alert("Podałeś nieprawidłowe dane!")

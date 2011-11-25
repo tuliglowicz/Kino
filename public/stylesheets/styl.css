@@ -83,7 +83,8 @@ img.border_pic {
     top: 1px;  
     width: 173px;  
     height: 54px;  
-    background: url(panel_button.png);  
+    background: url(panel_button.png); 
+    cursor: pointer; 
     z-index: 20;  
     filter:alpha(opacity=90);  
     -moz-opacity:0.90;  

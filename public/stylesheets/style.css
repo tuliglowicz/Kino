@@ -16,8 +16,10 @@ input, button {
 	color: white;
 	border: 1px solid #333;
 	border-radius: 3px;
+	
 }
 input[type='submit'], button {
+	cursor: pointer;
 	background-color: #111;
 	background-image: linear-gradient(bottom, #000000 45%,#666 100%);
 	background-image: -o-linear-gradient(bottom, #000000 45%,#666 100%);

@@ -50,8 +50,9 @@
 <%# debug(@room.roomview_id) %>
 <script>
 $j("#widok_link").css("color","red").click(function(){
-	link = "<%= roomview_path(@room.roomview) %>";
+	
 	roomview_id = $j("#room_roomview_id").val();
+	link = "/private/roomviews/#{roomview_id}";
 	if(roomview_id != "" && link != ""){
 		this.href = link.substring(0, link.lastIndexOf('/')+1)+roomview_id;
 		

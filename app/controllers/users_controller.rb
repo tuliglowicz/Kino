@@ -115,7 +115,7 @@ class UsersController < ApplicationController
           else
             format.html { redirect_to(:controller=> "public",:action=> "profile", :id=>session[:user].id.to_s ) }
             format.xml  { head :ok }
-            flash[:notice]= 'ZZaktualizowano profi'
+            flash[:notice]= 'Zaktualizowano profil'
           end         
         else
           format.html { render :action => "edit" }
@@ -137,20 +137,47 @@ class UsersController < ApplicationController
     end
   end
   
-  def login_availability
-    login = params[:login]
+  def user_email_availability
+  
+    @e
     
+    if params[:email]
+      email = params[:email]
+            
+      if User.where(:email => email).first
+        @e = "NO"
+      else
+        @e = "OK"
+      end
+      
+      render :text => @e
+    else
+      
+      @e = 'NO'
+      render :text => @e
+    end
+  end
+  
+  def login_availability    
     @tmp 
     
-    if User.where(:login => login).first || Worker.where(:login => login).first
-      @tmp = "NO"
+    if params[:login]
+      login = params[:login]
+            
+      if User.where(:login => login).first || Worker.where(:login => login).first
+        @tmp = "NO"
+      else
+        @tmp = "OK"
+      end
+      
+      render :text => @tmp
     else
-      @tmp = "OK"
+      
+      @tmp = 'NO'
+      render :text => @tmp
     end
-    
-    render :text => @tmp
   end
-
+  
   def is_login_available(login)
     User.where(:login => login).first.nil?    
   end

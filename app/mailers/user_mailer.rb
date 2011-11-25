@@ -18,7 +18,7 @@ class UserMailer < ActionMailer::Base
     @first_name = first_name
     @last_name = last_name
   
-    attachments['zakupione_bilety.pdf'] = TicketPdfAll.new(t, view_context).render
+    attachments['zakupione_bilety.pdf'] = TicketPdfAll.new(tickets, view_context).render
     
     mail(:to => email, :subject => 'Zakupione bilety w serwisie cinematoholix.pl')
   end

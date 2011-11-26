@@ -28,7 +28,7 @@ input[type='submit'], button {
 	background-image: -ms-linear-gradient(bottom, #000000 45%,#666 100%);
 }
 IMG {border:0;}
-pre {
+pre:not[name] {
 	background-color: #000;
 }
 

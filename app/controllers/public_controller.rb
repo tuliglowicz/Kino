@@ -279,7 +279,7 @@ class PublicController < ApplicationController
 				  redirect_to public_path, :notice => 'Seans już miał miejsce'
 				  return
 				end
-				SeanceVerifier.verify_status_state_and_cancel_tickets(@seance)
+				#SeanceVerifier.verify_status_state_and_cancel_tickets(@seance)
 				@max_reservable_seats = @seance == nil ? 5 : @seance.max_reservable_seats == nil || @seance.max_reservable_seats == 0 ? 5 : @seance.max_reservable_seats
 				
 				#SeanceVerifier.verify_status_state_and_cancel_tickets(@seance)

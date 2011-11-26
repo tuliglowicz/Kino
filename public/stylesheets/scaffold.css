@@ -6,7 +6,7 @@ body, p, ol, ul, td {
   line-height: 18px;
 }
 
-pre {
+pre:not[name] {
   background-color: #eee;
   padding: 10px;
   font-size: 11px;

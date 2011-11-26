@@ -280,7 +280,9 @@ class PublicController < ApplicationController
 				  return
 				end
 				#SeanceVerifier.verify_status_state_and_cancel_tickets(@seance)
-				@max_reservable_seats = @seance == nil ? 5 : @seance.max_reservable_seats == nil || @seance.max_reservable_seats == 0 ? 5 : @seance.max_reservable_seats
+				unless session[:worker]
+					@max_reservable_seats = @seance == nil ? 5 : @seance.max_reservable_seats == nil || @seance.max_reservable_seats == 0 ? 5 : @seance.max_reservable_seats
+				end
 				
 				#SeanceVerifier.verify_status_state_and_cancel_tickets(@seance)
 				@reserved_seats = Ticket.find(:all, :select => "seat, bought", :conditions => "seance_id = "+ params[:id] +" AND NOT cancelled")

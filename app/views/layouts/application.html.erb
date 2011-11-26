@@ -14,8 +14,8 @@
 <script> $j = jQuery.noConflict(); 
 var logout_path = "<%= user_logout_path %>"
 var page_name
-<% if session[:user] %>
-	var user_id = "<%= session[:user].id %>";
+<% if session[:user] || session[:worker] %>
+	var user_id = "<%= session[:user] ? session[:user].id : 1 %>";
 	var isRegisteredUser = true;
 <% else -%>
 	var user_id;

@@ -14,6 +14,7 @@ function setEverythingAfterLogin(user_json, isUser){
 	user_id = user.id;
 	user_name = user.first_name+" "+user.last_name
 	userDataString = "Użytkownik: "+user_name+"<br/><br/>"
+	$j("#dane_step").css("color", "#444");
 	$j("#user_data").html(userDataString).myShow(250);	
 
 	if(isUser){

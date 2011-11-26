@@ -13,17 +13,6 @@ class PrivateController < ApplicationController
 	end
 	
 	def panel_kasjera
-		# wyszukiwarka rezerwacji
-			# po Nazwisku	input
-			# => Imieniu	input
-			# emailu		input
-			# telefonie		input
-				# I oznaczenie jako kupione
-				# I wydruk
-					
-		# tworzenie nowego bitetu na konto anonima
-		
-		# na jaki czas te rezerwacje- na tydzien do przodu
 		if request.xhr?
 			if params[:xml]
 				id_tab = []

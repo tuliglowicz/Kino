@@ -1,5 +1,4 @@
-<div id="ajaxPageLoadTarget" width="750px" style="width:750px;">
-
+<%= stylesheet_link_tag :all %>
 <%= javascript_include_tag "jquery-1.6.2.min.js" %>
 <%= javascript_include_tag "jquery-ui-1.8.16.custom.min.js" %>
 <script> $j = jQuery.noConflict(); </script>
@@ -29,10 +28,6 @@ input::-webkit-input-placeholder{
 input:-moz-placeholder {
     color:    #292929;
 }
-a, a:visited, a:active {
-	color: blue;
-	text-decoration: none;
-}
 a.zakladka_chooser {
 	cursor: pointer
 }
@@ -50,6 +45,9 @@ pre[name]:hover {
 
 <div id="body">
 	<script>
+	var user_id = 1;
+	var isRegisteredUser = true;
+	
 	var today = new Date();
 	var Y = today.getFullYear();
 	var M = today.getMonth();
@@ -64,9 +62,11 @@ pre[name]:hover {
 	</script>
 	<input type="submit" id="refresh" value="Odśwież" onClick="$j(this).next().show();document.location.reload();"><img src="/images/pic/loader_min.gif" style='display:none;' align="absbottom"><br/><br/>
 				
+	
 	<a id="_sprzedarz" class="zakladka_chooser">Zakładka sprzedarzy biletów</a> | 
 	<a id="_rezerwacje" class="zakladka_chooser selected">Zakładka odbioru zarezerwowanych biletów.</a><br/><br/>
-	<div id="sprzedarz" style='display:none'></div>	
+	<center id='loader_potwierdz' style='display:none;'>Ładowanie strony...<br/><img src='/images/pic/loader.gif' align='absbottom'></center>
+	<div id="sprzedarz" style='display:none'></div>
 	
 	<div id="rezerwacje">		
 		<% date = Date.today -%> Wybierz datę: &nbsp; 
@@ -96,12 +96,30 @@ pre[name]:hover {
 		<% end -%>
 		<br/><input type="submit" id="check_as_bought" value="Wybrano">
 	</div>
-</div>
 
 <script>
 $j(document).ready(function(){
 	$j("input[type='text']").val("");
 })
+
+$j("a[href]:not([class='pdf']").live('click', function(){
+	$j("#ajaxPageLoadTarget").html("<br/><br/><center>Ładowanie strony...<br/><img src='/images/pic/loader.gif'></center>");
+	page = $j.ajax({
+		url: this.href,
+		type: "GET",
+		dataType : 'html',
+		success: function (recievedHTML){
+				$j("#loader_potwierdz").hide();
+				$j("#ajaxPageLoadTarget").html(recievedHTML).myShow(250);
+			},
+		error: function(){
+			$j("#loader_potwierdz").hide()
+			alert("error przy pobieraniu formularza");
+		}
+	  });
+	return false;
+})
+					  
 $j(".date").click(function(){
 	$j(".date").removeClass("selected");
 	$j(this).addClass("selected");
@@ -110,10 +128,42 @@ $j(".date").click(function(){
 	return false;
 });
 
-$j(".zakladka_chooser").click(function(){
-	$j(".zakladka_chooser").toggleClass("selected");
-	
-})
+$j("#_rezerwacje").click(function(){
+	if(this.className.indexOf("selected") < 0){
+		$j(this).toggleClass("selected").prev().toggleClass("selected");;
+		$j("#zakup, #ajaxPageLoadTarget").hide();
+		$j("#rezerwacje").myShow(500);
+	}
+});
+var loaded = false
+$j("#_sprzedarz").click(function(){
+	if(this.className.indexOf("selected") < 0){
+		$j(this).toggleClass("selected").next().toggleClass("selected");
+		
+		if(!loaded){
+			$j("#loader_potwierdz").show();
+			page = $j.ajax({
+						url: "/public/zakup",
+						type: "GET",
+						dataType : 'html',
+						success: function (recievedHTML){
+								$j("#loader_potwierdz").hide();
+								$j("#sprzedarz").html(recievedHTML).myShow(250);
+							},
+						error: function(){
+							$j("#loader_potwierdz").hide()
+							alert("error przy pobieraniu formularza");
+						}
+					  });
+			loaded = true;		
+		}else {
+			$j("#sprzedarz").show();
+			$j("#ajaxPageLoadTarget").myShow(500);
+		}
+		
+		$j("#rezerwacje").hide();
+	}
+});
 
 var xml = "";
 $j("#check_as_bought").click(function(){
@@ -141,6 +191,12 @@ $j("#check_as_bought").click(function(){
 		$clone.appendTo("#tresc_po_wybraniu");
 		$j("<br/><div id='buttons'><input type='submit' id='anuluj' onclick='anuluj()' value='Anuluj'> <input type='submit' id='potwierdz' onclick='potwierdz()' value='Potwierdź Zakup'><img src='/images/pic/loader_min.gif' id='loader_potwierdz' style='display:none;' align='absbottom'></div>").appendTo("#tresc_po_wybraniu");
 	}
+});
+
+$j("#zakoncz").live("click", function(){
+	loaded=false;
+	$j('#_rezerwacje').click();
+	$j('#_sprzedarz').click();
 });
 
 function anuluj(){

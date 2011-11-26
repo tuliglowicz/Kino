@@ -5,7 +5,7 @@ class PublicController < ApplicationController
 		require "pstore"
 		include REXML
 	
-	protect_from_forgery :except => ["speedBooking", "login", "payment_ok", "payment_error"]
+	protect_from_forgery :except => ["speedBooking", "login", "payment_ok", "payment_error", "zakup"]
 	before_filter :auth_access_user, :only => [:panel]
 			
 	def preindex
@@ -193,7 +193,7 @@ class PublicController < ApplicationController
 	end
 	
 	def speedBooking		
-		if request.xhr? && params[:cf_id] && params[:cf_id].length > 0 && cookies[:cinema_id]
+		if request.xhr? && params[:cf_id] && params[:cf_id].length > 0 && (cookies[:cinema_id] || session[:worker])
 			seances = Seance.find(:all, :conditions => "cinema_film_id =" + params[:cf_id]+" AND date_from < date(now()) + integer '7' AND date_from >= date(now())", :order => "date_from, time_from")
 			
 			render :json => seances
@@ -226,7 +226,7 @@ class PublicController < ApplicationController
 	
 					# Zapisywawnie do bazy z ticket_number'em				
 	query="INSERT INTO tickets(" + (isNotRegistered ? "unregistered_user_id" : "user_id") +", belongsToUnregisteredUser, seat, ticket_type_id, price, seance_id, reservation_id, cancelled, bought, worker_id)" + "VALUES( "+ xticket.elements["user_id"].text.to_s + "," + isNotRegistered.to_s + ",'" + xticket.elements["seat"].text + "'," + xticket.elements["type"].text + "," + xticket.elements["price"].text + "," + xticket.elements["seance_id"].text + 
-	  ", "+(buy_online ? r.id.to_s : "null")+", false, false, 1);" # trzeba dodac odpowiednio spreparowanego workera
+	  ", "+(buy_online ? r.id.to_s : "null")+", false, "+(session[:worker] ? "true" : "false")+", 1);" # trzeba dodac odpowiednio spreparowanego workera
 				
 			  logger = Logger.new('log/pay.log')
         logger.debug query
@@ -239,8 +239,8 @@ class PublicController < ApplicationController
 			end
 			
 			
-		else if request.xhr? && cookies[:cinema_id]
-				resp = session[:user] == nil
+		else if request.xhr? && (cookies[:cinema_id] || session[:worker])
+				resp = session[:user] == nil || session[:worker]
 				render :json => resp;
 				return;
 		end
@@ -249,20 +249,24 @@ class PublicController < ApplicationController
 	end
 	
 	def zakup
-		if cookies[:cinema_id] && cookies[:cinema_id].length > 0
-			@cinema = Cinema.find(cookies[:cinema_id])
+		if (cookies[:cinema_id] && cookies[:cinema_id].length > 0) || session[:worker]
+			cinema_id = cookies[:cinema_id] ||= session[:worker].cinema_id
+			@cinema = Cinema.find(cinema_id)
 						
-			@max_reservable_seats = 5
+			@max_reservable_seats = (session[:worker] ? 999 : 5)
 			if params[:id] && params[:id].length > 0
 				#@seance = Seance.where("id = "+params[:id]+" AND date_from < date(now()) + integer '7' AND date_from >= date(now())")[0]
 				@seance = Seance.where("id = "+params[:id])[0]
 				
+				unless session[:worker]
 				@max_reservable_seats = @seance == nil ? 5 : (@seance.max_reservable_seats == nil || @seance.max_reservable_seats == 0 ? 5 : @seance.max_reservable_seats)
+				end
 				
 				#SeanceVerifier.verify_status_state_and_cancel_tickets(@seance)
 				@reserved_seats = Ticket.find(:all, :select => "seat, bought", :conditions => "seance_id = "+ params[:id] +" AND NOT cancelled")
-				@prices = TicketSortPrice.where(:cinema_id => cookies[:cinema_id], :seance_type_id => @seance.seance_type_id, :discount_sort_id => @seance.discount_sort_id)
+				@prices = TicketSortPrice.where(:cinema_id => cinema_id, :seance_type_id => @seance.seance_type_id, :discount_sort_id => @seance.discount_sort_id)
 			end
+				flash[:notice] = "Zostałeś rozpoznany jako pracownik kina."	if session[:worker]
 		end
 		render :layout => false if request.xhr?
 	end

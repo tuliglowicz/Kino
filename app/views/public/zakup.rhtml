@@ -72,6 +72,7 @@
 	<div id="tmp" style='display:none'></div>
 
 	<table width="940px" bgcolor="" border="0px" bordercolor="purple" align="center">
+	<% unless session[:worker] -%>
 		<tr valign=top height="20px">
 			<td align="center" id="seans_step" style='color:red'>
 				1. Wybierz Seans
@@ -89,6 +90,7 @@
 				5. Podsumowanie
 			</td>
 		</tr>
+	<% end -%>
 	<% if @seance -%>
 		<tr>
 			<td colspan="5" id="dane_zbiorcze" valign="top" align="right">
@@ -112,8 +114,9 @@
 					<h2>1. Wybierz seans.</h2><br/>
 					<!-- kino -->
 					<div id="lista_kin">
-					1.1 Wybór kina: <b><%= @cinema.name %></b> &nbsp; &nbsp; <a onClick="askForCinema()" style='cursor:pointer;'>zmień kino</a><br/><br/></div>
+					1.1 Wybór kina: <b><%= @cinema.name if @cinema%></b> &nbsp; &nbsp; <% unless session[:worker] -%><a onClick="askForCinema()" style='cursor:pointer;'>zmień kino</a><% end -%><br/><br/></div>
 					<!-- filmy -->
+			<% if @cinema -%>
 					<div id="lista_seansow" style="display:none;">
 						1.3 Wybór seansu.<br>
 						<span class="opis">
@@ -151,7 +154,7 @@
 					</div>
 				<br/>
 					<button id="switcher">Przejdź do listy seansów wybranych filmów.</button>
-				
+			<% end -%>
 					<script>
 					var page_name = "zakup";
 					<% if @seance -%>
@@ -376,12 +379,16 @@
 					Lista Biletów:<br/>
 					<div id="ticket_list">
 					</div>
+					<% if session[:worker] -%>
+						<pre style='border:0px;' id="potwerdz"><button id="allOK">Potwierdź zakup</button><img src="/images/pic/loader_min.gif" id="allOK_img" style='display:none;' align="absbottom"></pre>
+					<% else -%>
 					<pre style='border:0px;'><button id="plac">Płać on-line i oszczędź 1zł za każdy bilet</button><img src="/images/pic/loader_min.gif" id="plac_img" style='display:none;' align="absbottom">		<button id="zakoncz">Zakończ i zapłać on-line później lub przy kasie.</button><img src="/images/pic/loader_min.gif" id="nieplac_img" style='display:none;' align="absbottom"></pre>
-					<script>
+					<% end -%>
+				<script>
 					// button: kup, button: zakończ
 					var xml = "";
 					var jj;
-					$j("#plac").click(function(){
+					$j("#plac, #allOK").click(function(){
 						$j("#plac_img").myShow(250);
 						var tmp_ajax = $j.ajax({
 							url: "/public/speedBooking",
@@ -391,8 +398,12 @@
 							success: function (json){
 								$j("#plac_img").myHide(250);
 								if(json[0]){
-									alert("Transakcja przebiegła pomyślnie.\nZostaniesz przekierowany na stronę zapłaty.");
-									document.location = "/public/finalizuj?id=" + json[1]
+									<% unless session[:worker] -%>
+										alert("Transakcja przebiegła pomyślnie.\nZostaniesz przekierowany na stronę zapłaty.");
+										document.location = "/public/finalizuj?id=" + json[1]
+									<% else -%>
+										$j("#potwerdz").html("<a href='/public/tickets/print_all/"+json[1]+".pdf' class='pdf'>Drukuj Bilety</a> | <a href='/public/receipts/printR/"+json[1]+".pdf' class='pdf'>Drukuj Paragon</a>").parent().append("<button id='zakoncz'>Zakończ</button>");
+									<% end -%>
 								} else {
 									bilet_error(json);
 								}
@@ -403,6 +414,10 @@
 							}
 						});
 					});
+					if(user_id != undefined){
+						$j("#dane_step").css("color", "#444");
+					}
+					
 					$j("#zakoncz").click(function(){
 						$j("#nieplac_img").myShow(250);
 						var tmp_ajax = $j.ajax({
@@ -540,7 +555,8 @@
 									//alert(xml);
 									$j("#ticket_list").append("Suma: "+suma+"zł<br/><br/>");
 								}
-								$j("#"+stepContener[stepCounter]+"_step").animate({color: "white"}, 1250);
+								kolor = stepCounter == 3 ? "#444" : "white"
+								$j("#"+stepContener[stepCounter]+"_step").animate({color: kolor}, 1250);
 								$j("#"+stepContener[stepCounter]).hide();
 								stepCounter++;
 								$j("#"+stepContener[stepCounter]+"_step").animate({color: "red"}, 1250);
@@ -566,7 +582,8 @@
 											return;
 										}
 								}
-								$j("#"+stepContener[stepCounter]+"_step").animate({color: "white"}, 1250);
+								kolor = stepCounter == 3 ? "#444" : "white"
+								$j("#"+stepContener[stepCounter]+"_step").animate({color: kolor}, 1250);
 								$j("#"+stepContener[stepCounter]).hide();
 								stepCounter--;
 								$j("#"+stepContener[stepCounter]+"_step").animate({color: "red"}, 1250);

@@ -9,6 +9,17 @@ body, input {
 	color: white;
 	background-color: black;
 }
+
+div{
+		border:solid 1px;
+}
+
+body{
+
+	position: relative;
+	left: 20%;
+	width: 60%;
+}
 input {
 	color: white;
 	border: 1px solid #333;
@@ -59,45 +70,61 @@ pre[name]:hover {
 	if(h<10) h = "0"+h;
 	if(M<10) M = "0"+M;
 	if(d<10) d = "0"+d;
-	document.write("Dane zgodne z bazą z godziny: "+d+"."+M+"."+Y+" "+h+":"+m);
-	</script>
-	<input type="submit" id="refresh" value="Odśwież" onClick="$j(this).next().show();document.location.reload();"><img src="/images/pic/loader_min.gif" style='display:none;' align="absbottom"><br/><br/>
-				
-	
-	<a id="_sprzedarz" class="zakladka_chooser">Zakładka sprzedarzy biletów</a> | 
-	<a id="_rezerwacje" class="zakladka_chooser selected">Zakładka odbioru zarezerwowanych biletów.</a><br/><br/>
-	<center id='loader_potwierdz' style='display:none;'>Ładowanie strony...<br/><img src='/images/pic/loader.gif' align='absbottom'></center>
-	<div id="sprzedarz" style='display:none'></div>
-	
-	<div id="rezerwacje">		
-		<% date = Date.today -%> Wybierz datę: &nbsp; 
-		<%= link_to(date.strftime("%d.%m"), {:controller => "public", :action => "repertuar"}, :id => "d1", :class=>"date selected") %>
-		<% date = date.tomorrow;-%>
-		<%	6.times do |i| -%>
-			 | <%= link_to(date.strftime("%d.%m"), {:controller => "public", :action => "repertuar"},:id => "d"+(i+2).to_s, :class=>"date") %>
-			<% date = date.tomorrow;-%>
-		<% end -%>
-			<br/><br/>
-		Wyszukiwanie biletów:<br/>
-		Fraza1: <input id="f1" type="text" onkeyup="klik();" placeholder="tekst wyszukania"> &nbsp; &nbsp;
-		Fraza2: <input id="f2" type="text" onkeyup="klik();" placeholder="tekst wyszukania"><br/><br/>
-		<% i=0 -%>
-		<% @tickets_whole_week.each do |tickets| -%>
-			<% i = i+1; j = 0; -%>
-			<div id="dzien_nr_<%= i %>" class="tickets_div" style="display: <%= i==1 ? 'block' : 'none' %>;">
-				<% tickets.each do |t| %>
-					<% j = j + 1 %>
-					<% u = t.user -%>
-						<pre name="element" class="<%= u.first_name.upcase+" "+u.last_name.upcase+" "+u.email.upcase+" "+u.phone.to_s %>" onClick="this.firstChild.checked=!this.firstChild.checked; return false;" style='cursor:pointer;'><input type="checkbox" name="<%= t.id %>" style='position: relative; top:6px;left:5px;'><%= "\t" + u.last_name + " " + u.first_name + "\t" + "tel.: " + u.phone.to_s + "\t" + t.seance.cinema_film.film.title + "\t" + t.seance.time_from.to_s[11,5]  + "\t" + t.seance.room.number.to_s + "\t" + t.seat %><br/></pre>
-				<% end -%>
-				<% if j==0 %>
-					&nbsp; &nbsp; W tym dniu nie ma żadnych rezerwacji.
-				<% end -%>
-			</div>
-		<% end -%>
-		<br/><input type="submit" id="check_as_bought" value="Wybrano">
-	</div>
 
+	$j(document).ready(function(){
+		document.getElementById("lastRefresh").innerHTML = "Dane zgodne z bazą z godziny: "+d+"."+M+"."+Y+" "+h+":"+m;
+	});
+	</script>
+	<br />
+	<div id="refreshPanel" style="text-align: center">
+		<div id="lastRefresh"></div>
+		<input type="submit" id="refresh" value="Odśwież" onClick="$j(this).next().show();document.location.reload();">
+		<img src="/images/pic/loader_min.gif" style='display:none;' align="absbottom"><br/><br/>
+	</div>
+	
+	<div id="xMenu">		
+		<a id="_sprzedarz" class="zakladka_chooser">Zakładka sprzedarzy biletów</a> | 
+		<a id="_rezerwacje" class="zakladka_chooser selected">Zakładka odbioru zarezerwowanych biletów.</a>
+	</div>	
+	
+	<br/><br/>
+	
+	<div id="xContent">
+		<center id='loader_potwierdz' style='display:none;'>Ładowanie strony...<br/>
+			<img src='/images/pic/loader.gif' align='absbottom'>
+		</center>
+		
+		<div id="sprzedarz" style='display:none'></div>
+		
+		<div id="rezerwacje">		
+			<% date = Date.today -%> Wybierz datę: &nbsp; 
+			<%= link_to(date.strftime("%d.%m"), {:controller => "public", :action => "repertuar"}, :id => "d1", :class=>"date selected") %>
+			<% date = date.tomorrow;-%>
+			<%	6.times do |i| -%>
+				 | <%= link_to(date.strftime("%d.%m"), {:controller => "public", :action => "repertuar"},:id => "d"+(i+2).to_s, :class=>"date") %>
+				<% date = date.tomorrow;-%>
+			<% end -%>
+				<br/><br/>
+			Wyszukiwanie biletów:<br/>
+			Fraza1: <input id="f1" type="text" onkeyup="klik();" placeholder="tekst wyszukania"> &nbsp; &nbsp;
+			Fraza2: <input id="f2" type="text" onkeyup="klik();" placeholder="tekst wyszukania"><br/><br/>
+			<% i=0 -%>
+			<% @tickets_whole_week.each do |tickets| -%>
+				<% i = i+1; j = 0; -%>
+				<div id="dzien_nr_<%= i %>" class="tickets_div" style="display: <%= i==1 ? 'block' : 'none' %>;">
+					<% tickets.each do |t| %>
+						<% j = j + 1 %>
+						<% u = t.user -%>
+							<pre name="element" class="<%= u.first_name.upcase+" "+u.last_name.upcase+" "+u.email.upcase+" "+u.phone.to_s %>" onClick="this.firstChild.checked=!this.firstChild.checked; return false;" style='cursor:pointer;'><input type="checkbox" name="<%= t.id %>" style='position: relative; top:6px;left:5px;'><%= "\t" + u.last_name + " " + u.first_name + "\t" + "tel.: " + u.phone.to_s + "\t" + t.seance.cinema_film.film.title + "\t" + t.seance.time_from.to_s[11,5]  + "\t" + t.seance.room.number.to_s + "\t" + t.seat %><br/></pre>
+					<% end -%>
+					<% if j==0 %>
+						&nbsp; &nbsp; W tym dniu nie ma żadnych rezerwacji.
+					<% end -%>
+				</div>
+			<% end -%>
+			<br/><input type="submit" id="check_as_bought" value="Wybrano">
+		</div>
+	</div>
 <script>
 $j(document).ready(function(){
 	$j("input[type='text']").val("");

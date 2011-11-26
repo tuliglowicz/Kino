@@ -33,13 +33,18 @@
                           onClick: function() { document.location = this.getAttribute('longdesc'); } 
                          });
 		});
-		
+		if(cookie[cinema_id]==null)
+			window.onLoad = askForCinema();
 	});
+
 </script>
 </head>
 
 <body>
 	<br>
+	<a onClick="askForCinema()"  style='cursor:pointer; float: right'>zmień kino</a><br/>
+
+		<br>
 		<div id="myrotator" class="imageflow" style="border-width:0 0 0 0; border-color: #808080; border-style:solid; width: 900px; height: 50%; "> 
   		<% @films.each do |film| %>
 			<img src="/images/film_posters/<%= film.poster.to_s %>" longdesc="/public/dane_filmu?id=<%= film.id%>" width="250" height="350" alt="<%= film.description %>" />
@@ -93,7 +98,7 @@
 		</br>
 		<br>
 		</br>
-		
+	
 </body>
 
 

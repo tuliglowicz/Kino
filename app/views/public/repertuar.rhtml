@@ -5,7 +5,9 @@
 		</span> &nbsp; &nbsp; <a onClick="askForCinema()" style='cursor:pointer;'>zmień kino</a><br/>
 		<% unless cookies[:cinema_id] %>
 		<script>
-			window.onLoad = askForCinema;
+			jQuery(document).ready(function(){
+			window.onLoad = askForCinema();
+			});
 		</script>
 		<% else -%>	
 			Dzisiaj i przyszly tydzien:

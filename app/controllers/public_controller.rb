@@ -252,10 +252,12 @@ class PublicController < ApplicationController
 		if cookies[:cinema_id] && cookies[:cinema_id].length > 0
 			@cinema = Cinema.find(cookies[:cinema_id])
 						
+			@max_reservable_seats = 5
 			if params[:id] && params[:id].length > 0
 				#@seance = Seance.where("id = "+params[:id]+" AND date_from < date(now()) + integer '7' AND date_from >= date(now())")[0]
 				@seance = Seance.where("id = "+params[:id])[0]
-				@max_reservable_seats = @seance == nil ? 5 : @seance.max_reservable_seats == nil || @seance.max_reservable_seats == 0 ? 5 : @seance.max_reservable_seats
+				
+				@max_reservable_seats = @seance == nil ? 5 : (@seance.max_reservable_seats == nil || @seance.max_reservable_seats == 0 ? 5 : @seance.max_reservable_seats)
 				
 				#SeanceVerifier.verify_status_state_and_cancel_tickets(@seance)
 				@reserved_seats = Ticket.find(:all, :select => "seat, bought", :conditions => "seance_id = "+ params[:id] +" AND NOT cancelled")

@@ -1,5 +1,5 @@
 <div id="ajaxPageLoadTarget" width="750px" style="width:750px;">
-		
+
 <%= javascript_include_tag "jquery-1.6.2.min.js" %>
 <%= javascript_include_tag "jquery-ui-1.8.16.custom.min.js" %>
 <script> $j = jQuery.noConflict(); </script>
@@ -33,7 +33,10 @@ a, a:visited, a:active {
 	color: blue;
 	text-decoration: none;
 }
-a.date.selected {
+a.zakladka_chooser {
+	cursor: pointer
+}
+a.date.selected, a.zakladka_chooser.selected {
 	color: red;
 }
 pre[name] {
@@ -61,15 +64,11 @@ pre[name]:hover {
 	</script>
 	<input type="submit" id="refresh" value="Odśwież" onClick="$j(this).next().show();document.location.reload();"><img src="/images/pic/loader_min.gif" style='display:none;' align="absbottom"><br/><br/>
 				
-	<a href="#" class="zakladka_chooser">Zakładka sprzedarzy biletów</a> | 
-	<a href="#" class="zakladka_chooser">Zakładka odbioru zarezerwowanych biletów.</a><br/><br/>
-	<div id="sprzedarz">
-	</div>	
+	<a id="_sprzedarz" class="zakladka_chooser">Zakładka sprzedarzy biletów</a> | 
+	<a id="_rezerwacje" class="zakladka_chooser selected">Zakładka odbioru zarezerwowanych biletów.</a><br/><br/>
+	<div id="sprzedarz" style='display:none'></div>	
 	
-	<div id="rezerwacje">
-		<div id="box_akcji" style="position: fixed; left: 600px; top: 100px;">
-		</div>
-		
+	<div id="rezerwacje">		
 		<% date = Date.today -%> Wybierz datę: &nbsp; 
 		<%= link_to(date.strftime("%d.%m"), {:controller => "public", :action => "repertuar"}, :id => "d1", :class=>"date selected") %>
 		<% date = date.tomorrow;-%>
@@ -88,7 +87,7 @@ pre[name]:hover {
 				<% tickets.each do |t| %>
 					<% j = j + 1 %>
 					<% u = t.user -%>
-						<pre name="element" class="<%= u.first_name.upcase+" "+u.last_name.upcase+" "+u.email.upcase+" "+u.phone.to_s %>" onClick="this.firstChild.checked=!this.firstChild.checked; return false;" style='cursor:pointer;'><input disabled="true" type="checkbox" name="<%= t.id %>"><%= "\t" + u.last_name + " " + u.first_name + "\t" + t.seance.cinema_film.film.title + "\t" + t.seance.time_from.to_s[11,5]  + "\t" + t.seance.room.number.to_s + "\t" + t.seat %><br/></pre>
+						<pre name="element" class="<%= u.first_name.upcase+" "+u.last_name.upcase+" "+u.email.upcase+" "+u.phone.to_s %>" onClick="this.firstChild.checked=!this.firstChild.checked; return false;" style='cursor:pointer;'><input disabled="true" type="checkbox" name="<%= t.id %>"><%= "\t" + u.last_name + " " + u.first_name + "\t" + "tel.: " + u.phone.to_s + "\t" + t.seance.cinema_film.film.title + "\t" + t.seance.time_from.to_s[11,5]  + "\t" + t.seance.room.number.to_s + "\t" + t.seat %><br/></pre>
 				<% end -%>
 				<% if j==0 %>
 					&nbsp; &nbsp; W tym dniu nie ma żadnych rezerwacji.
@@ -111,6 +110,11 @@ $j(".date").click(function(){
 	return false;
 });
 
+$j(".zakladka_chooser").click(function(){
+	$j(".zakladka_chooser").toggleClass("selected");
+	
+})
+
 var xml = "";
 $j("#check_as_bought").click(function(){
 	$j("#tresc_po_wybraniu").html("");
@@ -118,7 +122,7 @@ $j("#check_as_bought").click(function(){
 	id_dnia = $j("a.date.selected")[0].id.substring(1)
 	$selected = $j("div #dzien_nr_"+id_dnia+" pre").filter(function(){	return this.style.display != "none" && this.firstChild.checked;	});
 	if($selected.length > 0){
-		$selected.css("opacity", "0");
+		$selected.css("display", "none");
 		var $clone = $selected.clone();
 		
 		xml = "<ticket_ids>"
@@ -135,10 +139,15 @@ $j("#check_as_bought").click(function(){
 		$j("<div id='tresc_po_wybraniu'></div>").appendTo("#rezerwacje");
 		$j("<br/><br/>Wybrano:<br/>").appendTo("#tresc_po_wybraniu");
 		$clone.appendTo("#tresc_po_wybraniu");
-		$j("<br/><div id='buttons'><input type='submit' id='potwierdz' onclick='potwierdz()' value='Potwierdź Zakup'><img src='/images/pic/loader_min.gif' id='loader_potwierdz' style='display:none;' align='absbottom'></div>").appendTo("#tresc_po_wybraniu");
+		$j("<br/><div id='buttons'><input type='submit' id='anuluj' onclick='anuluj()' value='Anuluj'> <input type='submit' id='potwierdz' onclick='potwierdz()' value='Potwierdź Zakup'><img src='/images/pic/loader_min.gif' id='loader_potwierdz' style='display:none;' align='absbottom'></div>").appendTo("#tresc_po_wybraniu");
 	}
 });
 
+function anuluj(){
+	id_dnia = $j("a.date.selected")[0].id.substring(1)
+	$j("div #dzien_nr_"+id_dnia+" pre").css("display", "inline");
+	$j("#tresc_po_wybraniu").html("");
+}
 function potwierdz(){
 	$j("#loader_potwierdz").show();
 	//alert(xml);
@@ -150,7 +159,7 @@ function potwierdz(){
 			success: function (json){
 				$j("#loader_potwierdz").hide();
 				if(json != false){
-					$j("#buttons").html("Wszystko poszło pomyślnie!<br/><a href='/tickets/print_all/"+json+".pdf'>Drukuj Bilety</a> | <a href=''>Drukuj Paragon</a>")
+					$j("#buttons").html("Wszystko poszło pomyślnie!<br/><a href='/public/tickets/print_all/"+json+".pdf'>Drukuj Bilety</a> | <a href='/public/receipts/printR/"+json+".pdf'>Drukuj Paragon</a>")
 				}
 				else{
 					alert("Zaznaczone bilety prawdopodobnie zostały już kupione.\nJeśli wg Ciebie jest to niemożliwe, to odśwież stronę i spróbuj ponownie.")
@@ -174,7 +183,7 @@ function klik(){
 	
 	$j(zapytanie).show();
 }
-	
+
 function noNumbers(e){
 	var keynum;
 	var keychar;
@@ -191,3 +200,4 @@ function noNumbers(e){
 }
 </script>
 <%# debug(@tickets_whole_week) %>
+<%# debug(print_all_path) %>

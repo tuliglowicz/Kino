@@ -36,6 +36,38 @@
 		
 	});
 </script>
+<style type="text/css" media="screen">
+	button.css3button {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000000;
+	padding: 5px 5px;
+	width: 100px;
+	height: 25px;
+	background: -moz-linear-gradient(
+		top,
+		#FFFFFF 0%,
+		#1453A8);
+	background: -webkit-gradient(
+		linear, left top, left bottom, 
+		from(#FFFFFF),
+		to(#1453A8));
+	border-radius: 30px;
+	-moz-border-radius: 30px;
+	-webkit-border-radius: 30px;
+	border: 1px solid #AAAAAA ;
+	-moz-box-shadow:
+		0px 3px 11px rgba(000,000,000,0.5),
+		inset 0px 0px 1px rgba(001,054,001,0.5);
+	-webkit-box-shadow:
+		0px 3px 11px rgba(000,000,000,0.5),
+		inset 0px 0px 1px rgba(001,054,001,0.5);
+	text-shadow:
+		0px -1px 0px rgba(000,000,000,0.2),
+		10px 10pxpx 10pxpx rgba(255,255,255,0.3);
+}
+	
+</style>
 </head>
 
 <body>
@@ -70,13 +102,15 @@
 							</tr>	
 							<tr width=120 style="border-color: #008000;">
 								<td>
-									<a href="/public/dane_filmu?id=<%= film.id%>" target="/public/dane_filmu?id=<%= film.id%>"><img src="/images/film_posters<%= film.poster %>" WIDTH=120 HEIGHT=173 alt="Tekst alternatywny" /></a>
+									<a href="/public/dane_filmu?id=<%= film.id%>" target="/public/dane_filmu?id=<%= film.id%>"><img src="/images/film_posters<%= film.poster %>" WIDTH=160 HEIGHT=233 alt="Tekst alternatywny" /></a>
 								</td>	
 							</tr>
 							<tr width=120 style="">
 								<td style="font-size: 14px !important; font-family: ZWAdobeF; font-weight: bold; text-align: left; ">
-									<div>
-										<center><a href="/public/zakup/" target="_blank"> <img src="/images/pic/but11.png" WIDTH=80 HEIGHT=30> </a></center>
+									<div style=" padding: 2px">
+										
+										<center><a href="/public/zakup/" target="_blank"><button type="button" name="" value="" class="css3button">KUP/REZERWUJ</button></a></center>
+											
 									</div>	
 									<div align="center" style="color: #E0CDBB; text-transform: uppercase; font-stretch: ultra-expanded;"><%= film.title%></div>
 									<div align="center" style="color: #A96E51; font-stretch: ultra-expanded; text-transform: uppercase; font-size: 10px !important; font-family: arial;  ">

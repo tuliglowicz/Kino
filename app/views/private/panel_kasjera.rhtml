@@ -88,7 +88,7 @@ pre[name]:hover {
 				<% tickets.each do |t| %>
 					<% j = j + 1 %>
 					<% u = t.user -%>
-						<pre name="element" class="<%= u.first_name.upcase+" "+u.last_name.upcase+" "+u.email.upcase+" "+u.phone.to_s %>" onClick="this.firstChild.checked=!this.firstChild.checked; return false;" style='cursor:pointer;'><input disabled="true" type="checkbox" name="<%= t.id %>"><%= "\t" + u.last_name + " " + u.first_name + "\t" + "tel.: " + u.phone.to_s + "\t" + t.seance.cinema_film.film.title + "\t" + t.seance.time_from.to_s[11,5]  + "\t" + t.seance.room.number.to_s + "\t" + t.seat %><br/></pre>
+						<pre name="element" class="<%= u.first_name.upcase+" "+u.last_name.upcase+" "+u.email.upcase+" "+u.phone.to_s %>" onClick="this.firstChild.checked=!this.firstChild.checked; return false;" style='cursor:pointer;'><input type="checkbox" name="<%= t.id %>" style='position: relative; top:6px;left:5px;'><%= "\t" + u.last_name + " " + u.first_name + "\t" + "tel.: " + u.phone.to_s + "\t" + t.seance.cinema_film.film.title + "\t" + t.seance.time_from.to_s[11,5]  + "\t" + t.seance.room.number.to_s + "\t" + t.seat %><br/></pre>
 				<% end -%>
 				<% if j==0 %>
 					&nbsp; &nbsp; W tym dniu nie ma żadnych rezerwacji.

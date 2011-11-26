@@ -101,7 +101,7 @@ class UsersController < ApplicationController
       if params[:user][:hashed_password].to_s != params[:user][:hashed_password_confirmation].to_s
         #format.html {redirect_to(:controller=> "public",:action=> "profile", :id=>session[:user].id.to_s)}
         format.html {redirect_to :back }
-        flash[:notice]= 'Podane hasła są różne'
+        flash[:error]= 'Podane hasła są różne'
       else
         if params[:user][:hashed_password]!=nil
           if params[:user][:hashed_password].length<40
@@ -110,12 +110,12 @@ class UsersController < ApplicationController
         end
         if @user.update_attributes(params[:user])
           if session[:worker] || session[:gadmin]
-            format.html { redirect_to(@user, :notice => 'User was successfully updated.') }
+            format.html { redirect_to(@user, :notice => 'Zaktualizowano profil') }
             format.xml  { head :ok }
           else
             format.html { redirect_to(:controller=> "public",:action=> "profile", :id=>session[:user].id.to_s ) }
             format.xml  { head :ok }
-            flash[:notice]= 'Zmieniono dane'
+            flash[:notice]= 'Zaktualizowano profil'
           end         
         else
           format.html { render :action => "edit" }
@@ -137,20 +137,47 @@ class UsersController < ApplicationController
     end
   end
   
-  def login_availability
-    login = params[:login]
+  def user_email_availability
+  
+    @e
     
+    if params[:email]
+      email = params[:email]
+            
+      if User.where(:email => email).first
+        @e = "NO"
+      else
+        @e = "OK"
+      end
+      
+      render :text => @e
+    else
+      
+      @e = 'NO'
+      render :text => @e
+    end
+  end
+  
+  def login_availability    
     @tmp 
     
-    if User.where(:login => login).first || Worker.where(:login => login).first
-      @tmp = "NO"
+    if params[:login]
+      login = params[:login]
+            
+      if User.where(:login => login).first || Worker.where(:login => login).first
+        @tmp = "NO"
+      else
+        @tmp = "OK"
+      end
+      
+      render :text => @tmp
     else
-      @tmp = "OK"
+      
+      @tmp = 'NO'
+      render :text => @tmp
     end
-    
-    render :text => @tmp
   end
-
+  
   def is_login_available(login)
     User.where(:login => login).first.nil?    
   end
@@ -208,16 +235,11 @@ class UsersController < ApplicationController
   end  
   
   def can_read
-    if session[:worker]
-     redirect_to private_path, :notice => 'Brak uprawnień do wykonania akcji!' unless Auth.can_read_in_self_cinema?(session[:worker].id, get_table_name) or Auth.can_read_all?(session[:worker].id, get_table_name)
-    end
+     (redirect_to private_path, :flash => {:warning => 'Brak uprawnień do wykonania akcji!' })unless Auth.can_read_in_self_cinema?(session[:worker].id, get_table_name) or Auth.can_read_all?(session[:worker].id, get_table_name)
   end
 
   def can_write
-     if session[:worker]
-      redirect_to private_path, :notice => 'Brak uprawnień do wykonania akcji!' unless  Auth.can_write_in_self_cinema?(session[:worker].id, get_table_name) or Auth.can_write_all?(session[:worker].id, get_table_name)     
-      
-     end
+      (redirect_to private_path, :flash => {:warning => 'Brak uprawnień do wykonania akcji!' }) unless  Auth.can_write_in_self_cinema?(session[:worker].id, get_table_name) or Auth.can_write_all?(session[:worker].id, get_table_name)     
   end 
  
   def get_table_name

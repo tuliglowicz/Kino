@@ -73,14 +73,14 @@ http://www.metamorphozis.com/free_templates/free_css_templates/metamorph_circles
 <style type="text/css" media="screen">
 	.facebook{
         float:left;
-        width:260px;
+        width:280px;
         height:270px;
-        background-image:url('/images/pic/slider_fb.png');
+        background-image:url('/images/pic/slider_fb2.png');
         display:block;
         left:-245px;
         padding:0;
         position:fixed;
-        top:80px;
+        top:180px;
         z-index:10000;
     }
     
@@ -160,16 +160,15 @@ http://www.metamorphozis.com/free_templates/free_css_templates/metamorph_circles
 	</div>- UZREditor -->
 <% flash.each do |key, msg| %>
     <%= content_tag :script, :type => "text/javascript" do -%>
-	    <%if flash[:notice]%>
-	    	$j(document).ready(function(){komunikat('<%= msg %>', 0);});
-	    <% elsif flash[:warning]%>
+	    <% if flash[:warning]%>
 	    	$j(document).ready(function(){komunikat('<%= msg %>', 2);});
-	    <%elsif flash[:error] %>   
+	    <% else if flash[:notice]%>
+	    	$j(document).ready(function(){komunikat('<%= msg %>', 0);});	    	
+	    <%else if flash[:error] %>   
 	        $j(document).ready(function(){komunikat('<%= msg %>', 1);});
-	    <%end%>
+	    <%end end end%>
     <% end %>
 <% end %>
-
 	<table class="Ww2" align="center" valign="middle" style="height:400px; overflow: auto; text-align: right;"><tr><td align="center" valign="top">
 		
 		<center id="preloader_podluzny" style="display:none;">

@@ -86,6 +86,19 @@
 
 </head>
 <body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+	
+<% flash.each do |key, msg| %>
+    <%= content_tag :script, :type => "text/javascript" do -%>
+	    <% if flash[:warning]%>
+	    	$j(document).ready(function(){komunikat('<%= msg %>', 2);});
+	    <% else if flash[:notice]%>
+	    	$j(document).ready(function(){komunikat('<%= msg %>', 0);});	    	
+	    <%else if flash[:error] %>   
+	        $j(document).ready(function(){komunikat('<%= msg %>', 1);});
+	    <%end end end%>
+    <% end %>
+<% end %>
+	
 	<table align=center width="80%" bgcolor=white border="0px" cellspacing=0 cellpadding=0 background-color:#FFFFFF>
 		<tr style="background-color: #222222">
 			<td width=20%></td>
@@ -128,7 +141,7 @@
 		
 			</td>
 			<td valign=top colspan="3" >
-				<span style='color:green'><%= flash[:notice] %></span><br/>
+				
 				<span class="contentData">
 
 					<%= yield %>

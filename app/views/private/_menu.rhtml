@@ -9,87 +9,115 @@
 <% if session[:worker]-%>
 <ul class="aMenu">
 	<% worker_id = session[:worker].id %>
+	<% tickets = Auth.can_read_in_self_cinema?(worker_id, "tickets") %>
+	<% reservations = Auth.can_read_in_self_cinema?(worker_id, "reservations") %>
+	<% selling_tickets = Auth.can_read_in_self_cinema?(worker_id, "selling_tickets") %>
+	<% films = Auth.can_read_in_self_cinema?(worker_id, "films") %>
+	<% seances = Auth.can_read_in_self_cinema?(worker_id, "seances") %>
+	<% cinema_films = Auth.can_read_in_self_cinema?(worker_id, "cinema_films") %>
+	<% users = Auth.can_read_in_self_cinema?(worker_id, "users") %>
+	<% workers = Auth.can_read_in_self_cinema?(worker_id, "workers") %>
+	<% permissions = Auth.can_read_in_self_cinema?(worker_id, "permissions") %>
+	<% categories = Auth.can_read_in_self_cinema?(worker_id, "categories")%>
+	<% cinemas = Auth.can_read_in_self_cinema?(worker_id, "cinemas")%>
+	<% cities = Auth.can_read_in_self_cinema?(worker_id, "cities") %>
+	<% discount_sorts = Auth.can_read_in_self_cinema?(worker_id, "discount_sorts") %>
+	<% rooms = Auth.can_read_in_self_cinema?(worker_id, "rooms") %>
+	<% roomviews = Auth.can_read_in_self_cinema?(worker_id, "roomviews") %>
+	<% seance_types = Auth.can_read_in_self_cinema?(worker_id, "seance_types") %>
+	<% statuses = Auth.can_read_in_self_cinema?(worker_id, "statuses") %>
+	<% ticket_sort_prices = Auth.can_read_in_self_cinema?(worker_id, "ticket_sort_prices") %>
+	<% ticket_types = Auth.can_read_in_self_cinema?(worker_id, "ticket_types") %>
+	<% receipts = Auth.can_read_in_self_cinema?(worker_id, "receipts") %>
+	<% company_data = Auth.can_read_in_self_cinema?(worker_id, "company_data") %>
 	
+	
+	<% if tickets || reservations || selling_tickets %>
 	<li class="header aMenu"><strong>Bilety i rezerwacje</strong></li>
 	<div>
-		<% if Auth.can_read_in_self_cinema?(worker_id, "tickets") -%>
+		<% if tickets -%>
 			<%= link_to("Bilety", {:controller => "tickets" }, :class=>"aMenu")%>
 		<% end %>
-		<% if Auth.can_read_in_self_cinema?(worker_id, "reservations") -%>
+		<% if reservations -%>
 			<%= link_to("Rezerwacje", {:controller => "reservations" }, :class=>"aMenu")%>
 		<% end %>
-		<% if Auth.can_read_in_self_cinema?(worker_id, "selling_tickets") -%>
+		<% if selling_tickets -%>
 			<%= link_to("Panel kasjera", {:controller => "private", :action => 'panel_kasjera' }, :class=>"aMenu")%>
 		<% end %>
 	</div><br>
+	<% end %>
 	
+	<% if films || seances || cinema_films %>
 	<li class="header aMenu"><strong>Filmy i seanse</strong></li>
 	<div>
-		<% if Auth.can_read_in_self_cinema?(worker_id, "films") -%>
+		<% if films -%>
 			<%= link_to("Filmy", {:controller => "films" }, :class=>"aMenu")%>
 		<% end %>
-		<% if Auth.can_read_in_self_cinema?(worker_id, "seances") -%>
+		<% if seances -%>
 			<%= link_to("Seanse", {:controller => "seances" }, :class=>"aMenu")%>
 		<% end %>
-		<% if Auth.can_read_in_self_cinema?(worker_id, "cinema_films") -%>
+		<% if cinema_films -%>
 			<%= link_to("Filmy w Kinach", {:controller => "cinema_films" }, :class=>"aMenu")%>
 		<% end %>
 	</div><br>
+	<% end %>
 	
+	<% if users || workers || permissions %>
 	<li class="header aMenu"><strong>Pracownicy i Użytkownicy</strong></li>
 	<div>
-		<% if Auth.can_read_in_self_cinema?(worker_id, "users") -%>
+		<% if users -%>
 			<li><%= link_to("Użytkownicy", {:controller => "users" }, :class=>"aMenu")%></li>
 		<% end %>
-			
-		<% if Auth.can_read_in_self_cinema?(worker_id, "workers") -%>
+		<% if workers -%>
 			<li><%= link_to("Pracownicy", {:controller => "workers" }, :class=>"aMenu")%></li>
 		<% end %>
-		<% if Auth.can_read_in_self_cinema?(worker_id, "permissions") -%>
+		<% if permissions -%>
 			<li><%= link_to("Uprawnienia", {:controller => "permissions" }, :class=>"aMenu")%></li>
 		<% end %>
 	</div><br>
+	<% end %>
 	
+	<% if categories || cinemas || cities || discount_sorts || rooms || roomviews || seance_types || statuses || ticket_sort_prices || ticket_types || receipts || company_data %>
 	<li class="header aMenu"><strong>Rzadko edytowane</strong></li>
 	<div>
-		<% if Auth.can_read_in_self_cinema?(worker_id, "categories") -%>
+		<% if categories -%>
 			<%= link_to("Kategorie Filmów", {:controller => "categories" }, :class=>"aMenu")%>
 		<% end %>
-		<% if Auth.can_read_in_self_cinema?(worker_id, "cinemas") -%>
+		<% if cinemas -%>
 			<%= link_to("Kina", {:controller => "cinemas" }, :class=>"aMenu")%>
 		<% end %>
-		<% if Auth.can_read_in_self_cinema?(worker_id, "cities") -%>
+		<% if cities -%>
 			<%= link_to("Miasta", {:controller => "cities" }, :class=>"aMenu")%>
 		<% end %>
-		<% if Auth.can_read_in_self_cinema?(worker_id, "discount_sorts") -%>
+		<% if discount_sorts -%>
 			<%= link_to("Rodzaje zniżek", {:controller => "discount_sorts" }, :class=>"aMenu")%>
 		<% end %>
-		<% if Auth.can_read_in_self_cinema?(worker_id, "rooms") -%>
+		<% if rooms -%>
 			<%= link_to("Sale Filmowe", {:controller => "rooms" }, :class=>"aMenu")%>
 		<% end %>
-		<% if Auth.can_read_in_self_cinema?(worker_id, "roomviews") -%>
+		<% if roomviews -%>
 			<%= link_to("Widoki Sal", {:controller => "roomviews" }, :class=>"aMenu")%>
 		<% end %>
-		<% if Auth.can_read_in_self_cinema?(worker_id, "seance_types") -%>
+		<% if seance_types -%>
 			<%= link_to("Rodzaje seansów", {:controller => "seance_types" }, :class=>"aMenu")%>
 		<% end %>
-		<% if Auth.can_read_in_self_cinema?(worker_id, "statuses") -%>
+		<% if statuses -%>
 			<%= link_to("Statusy Pracowników", {:controller => "statuses" }, :class=>"aMenu")%>
 		<% end %>
-		<% if Auth.can_read_in_self_cinema?(worker_id, "ticket_sort_prices") -%>
+		<% if ticket_sort_prices -%>
 			<%= link_to("Rodzaje cen biletów", {:controller => "ticket_sort_prices" }, :class=>"aMenu")%>
 		<% end %>
-		<% if Auth.can_read_in_self_cinema?(worker_id, "ticket_types") -%>
+		<% if ticket_types -%>
 			<%= link_to("Rodzaje biletów", {:controller => "ticket_types" }, :class=>"aMenu")%>
 		<% end %>
-		
-		<% if Auth.can_read_in_self_cinema?(worker_id, "receipts") -%>
+		<% if receipts -%>
 			<%= link_to("Paragony", {:controller => "receipts" }, :class=>"aMenu")%>
 		<% end %>
-		<% if Auth.can_read_in_self_cinema?(worker_id, "company_data") -%>
+		<% if company_data -%>
 			<%= link_to("Informacje o sieci", {:controller => "company_data" }, :class=>"aMenu")%>
 		<% end %>
 	</div><br>
+	<% end %>
 </ul>
 <% end %>
 <br/><br/>

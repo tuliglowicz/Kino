@@ -13,7 +13,24 @@ class PublicController < ApplicationController
 	end
 	
 	def index
-	  @films = Film.all
+	  cinemaID = cookies[:cinema_id]
+	  if cinemaID
+	    sqlQuery = " SELECT films.id, films.title, films.description, films.category_id, films.poster FROM films
+                   RIGHT JOIN cinema_films
+                   ON films.id = cinema_films.film_id WHERE cinema_films.date_from <= date(now()) AND cinema_films.date_untill >= date(now()) AND cinema_films.cinema_id = "+cinemaID+"
+                  "
+  
+	     @films = Film.find_by_sql(sqlQuery)
+	  elsif
+	    
+	     sqlQuery2 = " SELECT films.id, films.title, films.description, films.category_id, films.poster FROM films
+	                   RIGHT JOIN cinema_films
+	                   ON films.id = cinema_films.film_id WHERE cinema_films.cinema_id = 1
+	                 "
+              
+         @films = Film.find_by_sql(sqlQuery2)    
+         #@films = Film.find(:all)
+	  end
 	end
 	
 	def register
@@ -257,10 +274,13 @@ class PublicController < ApplicationController
 			if params[:id] && params[:id].length > 0
 				#@seance = Seance.where("id = "+params[:id]+" AND date_from < date(now()) + integer '7' AND date_from >= date(now())")[0]
 				@seance = Seance.where("id = "+params[:id])[0]
-				
-				unless session[:worker]
-				@max_reservable_seats = @seance == nil ? 5 : (@seance.max_reservable_seats == nil || @seance.max_reservable_seats == 0 ? 5 : @seance.max_reservable_seats)
+				if @seance.checked && !session[:worker]
+				  
+				  redirect_to public_path, :notice => 'Seans już miał miejsce'
+				  return
 				end
+				SeanceVerifier.verify_status_state_and_cancel_tickets(@seance)
+				@max_reservable_seats = @seance == nil ? 5 : @seance.max_reservable_seats == nil || @seance.max_reservable_seats == 0 ? 5 : @seance.max_reservable_seats
 				
 				#SeanceVerifier.verify_status_state_and_cancel_tickets(@seance)
 				@reserved_seats = Ticket.find(:all, :select => "seat, bought", :conditions => "seance_id = "+ params[:id] +" AND NOT cancelled")

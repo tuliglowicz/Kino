@@ -27,29 +27,40 @@ var isXHR = <%= @xhr %>
 	});
 </script>
 
+<style>
+.login {
+	margin: 5px;
+}
+
+.reminder{
+	margin: 10px;
+	display: none;
+}
+</style>
+
 <% content_for :title do -%>
 	Logowanie
 <% end -%>
 </head>
 <body>
 	<center>
-		<div>
+		<div style="margin: 25px">
 			<%= form_tag(:controller => 'public', :action => 'login') do %>
-				<%= label_tag(:login, "Login:") %><input id="login" type="text" value="" class="validate[required]" name="login"><br/>
-				<%= label_tag(:password, "Hasło:") %><input id="password" type="password" value="" class="validate[required]" name="password"><br/>
-				<%= submit_tag "Login",  :id => "login_submit" %>
+				<%= label_tag(:login, "Login") %><input id="login" type="text" value="" class="validate[required], login" name="login"><br/>
+				<%= label_tag(:password, "Hasło") %><input id="password" type="password" value="" class="validate[required], login" name="password"><br/>
+				<%= submit_tag "Zaloguj",  :id => "login_submit", :class => 'login' %>
 			<% end %>
 		</div>
 	  </center>
 	  
 	  <br />
 	  <h4><a id="remind_password_a">Zapomniałeś hasła?(kliknij)</a></h4>
-	  <div id="remind_password_div" style="display: none;">
+	  <div  id="remind_password_div" class="reminder">
 	  	<form id="remind_password_form" method="post" action="<%= remind_password_path %> "/>
 	  		<label>Podaj email</label>
-	  		<input type="text" id="email" name="email" class="validate[required]"/>
+	  		<input type="text" id="email" name="email" class="validate[required], login"/>
 	  		<br />
-	  		<input type="submit" value="Wyślij" />
+	  		<input type="submit" value="Wyślij" class="login" />
 	  	</form>
 	  </div>
 	  

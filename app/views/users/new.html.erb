@@ -15,11 +15,11 @@
     {
     	var login = $j("#user_login").val();
     	
-    	if(login.length > 3)
+    	if(login.length > 2)
     	{
     		var login_availability = $j.ajax({
     			type: "POST",
-	    		url: "http://localhost:3000/users/login_availability",
+	    		url: "/public/users/login_availability",
 	    		data: "login=" + login,
 	    		
 	    		success: function(message)
@@ -44,14 +44,58 @@
     	}
     	else
     	{
-    		$j("#login_status").hide('fast');
-    	}
+    		$j("#login_status").show('fast');
+    		$j("#login_status").css("color", "red");
+	    	$j("#login_status").text("Login musi liczyć minimum 3 znaki");
+	    }
     	
     });
+   <!-- 
+    $j("#user_email").blur(function()
+    {
+    	var email = $j("#user_email").val();
+		var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;  
+   
+    	
+    	if(email.length > 2 && emailPattern.test(email))
+    	{
+    		var email_availability = $j.ajax({
+    			type: "POST",
+	    		url: "/public/users/user_email_availability",
+	    		data: "email=" + email,
+	    		
+	    		success: function(message)
+	    		{	    		
+	    			$j("#email_status").show('fast');
+	    			if (message == 'OK') 
+	    			{				
+	    				$j("#email_status").css("color", "lime");
+	    				$j("#email_status").text("email dostępny");
+	    			}
+	    			else
+	    			{	    				
+	    				$j("#email_status").css("color", "red");
+	    				$j("#email_status").text("email niedostępny");
+	    			}
+	    		},
+	    		error: function()
+	    		{
+	    			alert('Sprawdzenie dostępności nie powiodło się.');
+	    		}
+    		});
+    	}
+    	else
+    	{    		
+			$j("#email_status").show('fast');
+    		$j("#email_status").css("color", "red");
+	    	$j("#email_status").text("Nieprawidłowy format dla adresu email.");   		
+	    }
+    	
+    }); -->
  }); 
 </script>
 <!-- EO JS code -->
 
 
-<h3 align="left"> Uzupełnij swoje dane by utworzyć konto: </h3>
+<h3 style="margin: 30px;" align="left"> Uzupełnij swoje dane by utworzyć konto: </h3>
 <%= render 'form' %>

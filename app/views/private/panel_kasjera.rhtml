@@ -243,7 +243,7 @@ function potwierdz(){
 			success: function (json){
 				$j("#loader_potwierdz").hide();
 				if(json != false){
-					$j("#buttons").html("Wszystko poszło pomyślnie!<br/><a href='/public/tickets/print_all/"+json+".pdf'>Drukuj Bilety</a> | <a href='/public/receipts/printR/"+json+".pdf'>Drukuj Paragon</a>")
+					$j("#buttons").html("Wszystko poszło pomyślnie!<br/><a href='/public/tickets/print_all/"+json+".pdf' target='_blank' class='pdf'>Drukuj Bilety</a> | <a href='/public/receipts/printR/"+json+".pdf' target='_blank' class='pdf'>Drukuj Paragon</a>")
 				}
 				else{
 					alert("Zaznaczone bilety prawdopodobnie zostały już kupione.\nJeśli wg Ciebie jest to niemożliwe, to odśwież stronę i spróbuj ponownie.")

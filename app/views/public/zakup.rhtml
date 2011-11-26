@@ -402,7 +402,7 @@
 										alert("Transakcja przebiegła pomyślnie.\nZostaniesz przekierowany na stronę zapłaty.");
 										document.location = "/public/finalizuj?id=" + json[1]
 									<% else -%>
-										$j("#potwerdz").html("<a href='/public/tickets/print_all/"+json[1]+".pdf' class='pdf'>Drukuj Bilety</a> | <a href='/public/receipts/printR/"+json[1]+".pdf' class='pdf'>Drukuj Paragon</a>").parent().append("<button id='zakoncz'>Zakończ</button>");
+										$j("#potwerdz").html("<a href='/public/tickets/print_all/"+json[1]+".pdf' target='_blank' class='pdf'>Drukuj Bilety</a> | <a href='/public/receipts/printR/"+json[1]+".pdf' target='_blank' class='pdf'>Drukuj Paragon</a>").parent().append("<button id='zakoncz'>Zakończ</button>");
 									<% end -%>
 								} else {
 									bilet_error(json);

@@ -250,7 +250,7 @@ class PublicController < ApplicationController
 				
 					ActiveRecord::Base.connection.execute(query) 
 				end
-				render :json => (buy_online ? [true, r.id] : true);
+				render :json => (buy_online ? [true, r.id] : [true]);
 			else				
 				render :json => [false, Ticket.find(:all, :select => "seat, bought", :conditions => "seance_id = "+params[:seance_id]+" AND cancelled = false")]
 			end

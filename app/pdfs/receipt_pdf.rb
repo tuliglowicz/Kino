@@ -149,13 +149,13 @@ class ReceiptPdf < Prawn::Document
     value0 = @comapny.vat/100.0
     value1 = @receipt.first.sum - (@receipt.first.sum*value0)
     value3 = @receipt.first.sum - value1
-    value4 = 200 - @receipt.first.sum
+    value4 = @receipt.first.cash - @receipt.first.sum
     
     [["SP.OP.A","#{value1.round(2)} zł"]] + 
     [["PTU A #{@comapny.vat}%","#{value3.round(2)} zł"]] +
     [["SUMA PTU","#{value3.round(2)} zł"]] +
     [["SUMA","#{@receipt.first.sum} zł"]] +
-    [["GOTOWKA","200 zł"]] +
+    [["GOTOWKA","#{@receipt.first.cash} zł"]] +
     [["RESZTA","#{value4} zł"]]
   end
   

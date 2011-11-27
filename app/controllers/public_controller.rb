@@ -87,7 +87,6 @@ class PublicController < ApplicationController
 				result = logged_in_user
 			else
 				result = false
-				flash[:notice] = "Błędny login i/albo hasło!"
 			end
 		else
 			result = false

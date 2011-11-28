@@ -1,25 +1,41 @@
-<% if false %>
-	<% if @films and @films.size > 0 -%>
-		<table align=center border=1>
-			<% for film in @films do-%>
-			<tr>
-				<td width=450px>
-					<%= film.title + "(" + film.year.to_s + ")" %> &nbsp; 
-					<%= link_to("Trailer", {}, :target => "_blank", :href => film.trailer, :class=>"movieTitle") if film.trailer%>
-					<%= image_tag("film_posters"+film.poster, :size => "75x110", :align => "left") %><br/>
-					<strong>Rezyser:</strong> <%= film.director %><br/>
-					<strong>Czas trwania:</strong> <%= film.length %><br/>
-					<strong>Opis:</strong><br/> <%= film.description %> 
-				</td>	
-			</tr>	
+<table width=500 border="0" bordercolor="green" cellspacing="22">
+			<% i=0 %>
+			
+			<% @films.each do |film| %>
+				<% if i==5 || i==0 %>
+					<tr>
+					<% if i==5 %>
+						<% i=0 %>
+					<% end %>				
+				<% end %>
+					<td valign="top" width="170" >
+						<table border="0" bordercolor="red" style=" align: TOP" >
+							<tr>
+								<td >
+									<div align="center" style=" color:  #D2691E; ">
+									<font style="font-family: Times;">NIEZADŁUGO W KINIE</font>
+									</div>	
+								</td>
+							</tr>	
+							<tr width=120 style="border-color: #008000;">
+								<td>
+									<a href="/public/dane_filmu?id=<%= film.id%>" target="/public/dane_filmu?id=<%= film.id%>"><img src="/images/film_posters<%= film.poster %>" WIDTH=160 HEIGHT=233 alt="Tekst alternatywny" /></a>
+								</td>	
+							</tr>
+							<tr width=120 style="">
+								<td style="font-size: 14px !important; font-family: ZWAdobeF; font-weight: bold; text-align: left; ">
+									<div align="center" style="color: #E0CDBB; text-transform: uppercase; font-stretch: ultra-expanded;"><%= film.title%></div>
+									<div align="center" style="color: #A96E51; font-stretch: ultra-expanded; text-transform: uppercase; font-size: 10px !important; font-family: arial;  ">
+									<%= film.category.name%></div>
+								</td>	
+							</tr>		
+						</table>
+					</td>	
+				<% i=i+1 %>			
 			<% end -%>
-		</table>
-	<% else -%>	
-		<br/><br/>W wybranym przez Ciebie kinie nie ma żadnych zapowiedzi.
-	<% end -%>
-<% else -%>	
-	<br/><br/>Wybierz interesujące Cię kino z listy powyżej.==================
-	<script>
-		askForCinema();
-	</script>
-<% end -%>
+				
+		</table>	
+		<br>
+		</br>
+		<br>
+		</br>

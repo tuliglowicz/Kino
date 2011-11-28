@@ -80,8 +80,8 @@ class UsersController < ApplicationController
 				   # confirmation email sending
 				   UserMailer.registration_confirmation(@user).deliver
 				   
-				   format.html { redirect_to("/", :flash => {:notice => 'Konto utworzone. Powiadomienie zostało wysłane na maila.'}) }
-				   format.xml  { render :xml => @user, :status => :created, :location => @user }                    
+				   format.html { redirect_to(public_path, :flash => {:notice => 'Konto utworzone. Powiadomienie zostało wysłane na maila.'}) }
+				   #format.xml  { render :xml => @user, :status => :created, :location => @user }                    
 				else
 				   format.html { render :controller => "public", :action => "register" }
 				   format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }

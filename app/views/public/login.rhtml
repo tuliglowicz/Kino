@@ -66,30 +66,35 @@ var isXHR = <%= @xhr %>
 	  
 	  <script>
 		$j("#login_submit").click( function(){
-			var dataString = "login="+$j("#login").val()+"&password="+$j("#password").val();
 			
-			page = $j.ajax({
-							url: "/public/login",
-							type: "POST",
-							data: dataString,
-							dataType : 'json',
-							success: function (result){
-									if(result)
-										setEverythingAfterLogin(result, true);
-									else
-										alert("Podałeś nieprawidłowy login lub hasło!")
+			
+				var dataString = "login="+$j("#login").val()+"&password="+$j("#password").val();
+				
+				page = $j.ajax({
+								url: "/public/login",
+								type: "POST",
+								data: dataString,
+								dataType : 'json',
+								success: function (result){
+										if(result){
+											setEverythingAfterLogin(result, true);
+											if (!isXHR){
+												document.location = "<%= repertoire_path %>"
+											}
+										}
+										else
+											komunikat("Podałeś nieprawidłowy login lub hasło!", 1);
+											
 										
-									if (!isXHR){
-										document.location = "<%= repertoire_path %>"
-									}
-							},
-							error: function(){
-								alert("error przy pobieraniu danych");
-							}
+								},
+								error: function(){
+									alert("error przy pobieraniu danych");
+								}
+				});
+				
+				return false;
 			});
-			
-			return false;
-		});
+		
 	  </script>
 </body>
 </html>

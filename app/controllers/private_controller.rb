@@ -28,6 +28,15 @@ class PrivateController < ApplicationController
 					r.date = Time.new
 					r.save
 					
+					receipt = Receipt.new
+					receipt.date = Time.now
+					receipt.reservation_id = r.id
+					receipt.cash_register = 1
+					receipt.worker_id = session[:worker].id
+					receipt.sum = sum_payment(t)
+					receipt.cash = params[:cash]
+					receipt.save
+					
 					sqlQuery = "Update tickets SET reservation_id = "+r.id.to_s+", bought=true, cancelled=false Where id IN ("+ id_tab.join(",")+")";
 					ActiveRecord::Base.connection.execute(sqlQuery);
 					
@@ -108,6 +117,15 @@ class PrivateController < ApplicationController
     else
       "admin"
     end
+  end
+  
+  def sum_payment(tickets)
+    payment = 0.0
+    tickets.each { |t|
+      payment += t.price
+    }
+    
+    payment
   end
  
   end

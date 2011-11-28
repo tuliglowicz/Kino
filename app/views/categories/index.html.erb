@@ -9,6 +9,7 @@
 <script>
 	jQuery(document).ready(function()
 	{
+		jQuery("#new_category_form").validationEngine('attach', { validationEventTrigger: 'submit'});
 		jQuery('#new_category_a').bind('click', function(event)
 		{
 			jQuery('div:hidden').show('fast');

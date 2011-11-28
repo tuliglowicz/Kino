@@ -215,9 +215,9 @@ $j("#check_as_bought").click(function(){
 		xml += "</ticket_ids>"
 		
 		$j("<div id='tresc_po_wybraniu'></div>").appendTo("#rezerwacje");
-		$j("<br/><br/>Wybrano:<br/>").appendTo("#tresc_po_wybraniu");
+		$j("<br/><br/>Wybrano:<br/><label for='cash' value='Zapłacono'>Zapłacono</label> <input id='cash' name='cash' type='number' value='120'/><br/><br/>").appendTo("#tresc_po_wybraniu");
 		$clone.appendTo("#tresc_po_wybraniu");
-		$j("<br/><div id='buttons'><input type='submit' id='anuluj' onclick='anuluj()' value='Anuluj'> <input type='submit' id='potwierdz' onclick='potwierdz()' value='Potwierdź Zakup'><img src='/images/pic/loader_min.gif' id='loader_potwierdz' style='display:none;' align='absbottom'></div>").appendTo("#tresc_po_wybraniu");
+		$j("<br/> <br/><div id='buttons'><input type='submit' id='anuluj' onclick='anuluj()' value='Anuluj'> <input type='submit' id='potwierdz' onclick='potwierdz()' value='Potwierdź Zakup'><img src='/images/pic/loader_min.gif' id='loader_potwierdz' style='display:none;' align='absbottom'></div>").appendTo("#tresc_po_wybraniu");
 	}
 });
 
@@ -234,11 +234,12 @@ function anuluj(){
 }
 function potwierdz(){
 	$j("#loader_potwierdz").show();
+	var cash = $j("#cash").val();
 	//alert(xml);
 	var tmp_ajax = $j.ajax({
 			url: "/private/panel_kasjera",
 			type: "GET",
-			data: "xml="+xml,
+			data: "xml=" + xml + "&cash=" + cash,
 			dataType : 'json',
 			success: function (json){
 				$j("#loader_potwierdz").hide();

@@ -6,9 +6,9 @@ class UsersController < ApplicationController
   layout :get_users_layout
   protect_from_forgery :except => ["create"]
       
-  before_filter :is_worker_or_user, :except => ['remind_password', 'is_login_available', 'login_availability', 'create', 'new', 'edit', 'update']
+  before_filter :is_worker_or_user, :except => ['remind_password', 'is_login_available', 'login_availability', 'create', 'new', 'edit', 'update', 'email_availability']
   before_filter :can_read, :only => ['index', 'show']
-  before_filter :can_write, :except => ['index', 'show','remind_password', 'is_login_available', 'login_availability','new', 'create', 'edit', 'update']
+  before_filter :can_write, :except => ['index', 'show','remind_password', 'is_login_available', 'login_availability','new', 'create', 'edit', 'update', 'email_availability']
      
   def index
     #@users = User.all
@@ -137,24 +137,23 @@ class UsersController < ApplicationController
     end
   end
   
-  def user_email_availability
-  
-    @e
+  def email_availability
+    @email_availability
     
     if params[:email]
       email = params[:email]
             
       if User.where(:email => email).first
-        @e = "NO"
+        @email_availability = "NO"
       else
-        @e = "OK"
+        @email_availability = "OK"
       end
       
-      render :text => @e
+      render :text => @email_availability
     else
       
-      @e = 'NO'
-      render :text => @e
+      @email_availability = 'NO'
+      render :text => @email_availability
     end
   end
   

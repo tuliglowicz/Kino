@@ -293,7 +293,7 @@ $j("#check_as_bought").click(function(){
 		xml += "</ticket_ids>"
 		
 		$j("<div id='tresc_po_wybraniu'></div>").appendTo("#rezerwacje");
-		$j("<br/><br/>Wybrano:<br/><label for='cash' value='Zapłacono'>Zapłacono</label> <input id='cash' name='cash' type='number' value='120'/><br/><br/>").appendTo("#tresc_po_wybraniu");
+		$j("<br/><br/><label for='cash' value='Zapłacono'>Zapłacono</label> <input id='cash' name='cash' type='number' value='120'/><br/>Wybrano:<br/><br/>").appendTo("#tresc_po_wybraniu");
 		$clone.appendTo("#tresc_po_wybraniu");
 		$j("<br/> <br/><div id='buttons'><input type='submit' id='anuluj' onclick='anuluj()' value='Anuluj'> <input type='submit' id='potwierdz' onclick='potwierdz()' value='Potwierdź Zakup'><img src='/images/pic/loader_min.gif' id='loader_potwierdz' style='display:none;' align='absbottom'></div>").appendTo("#tresc_po_wybraniu");
 	}

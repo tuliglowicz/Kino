@@ -235,6 +235,15 @@ class PublicController < ApplicationController
 					r.save
 					puts buy_online
 					puts r.id
+					
+					receipt = Receipt.new
+          receipt.date = Time.now
+          receipt.reservation_id = r.id
+          receipt.cash_register = 1
+          receipt.worker_id = session[:worker].id
+          receipt.sum = sum_payment(t)
+          receipt.cash = params[:cash]
+          receipt.save
 				end
 			
 				root.each do |xticket|				

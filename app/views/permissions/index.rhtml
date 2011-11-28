@@ -1,37 +1,47 @@
 <!-- JSS code -->
 <script src="/javascripts/permissions/index.js" type="text/javascript" charset="utf-8"></script>
 <!-- EO JSS code -->
+<style>
+	button{
+		width: 200px;
+	}
+	
+</style>
+<br />
 
-<h4><a id="add_new_permission_a">Dodaj nowy poziom uprawnień</a></h4>
+<h3><button id="add_new_permission_a">Dodaj nowy poziom uprawnień</button></h3>
 <div id="add_new_permission_div" style="display: none">
 	<form id="add_new_permission_form" action=<%= add_new_permission_path %> method="post" accept-charset="utf-8">
 	  <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" /></div>
 	  <label>Nazwa</label>
 	  <input id="new_permission_name" name="new_permission_name" type="text" required="required"/>
 	  <label id="new_permission_name_availability_status"></label>
-	  <div>
-	 	<div>
-			<label for="write_all" class="permission_label">Zapis wszystkiego</label>
-			<input type="checkbox" id="write_all" name="write_all" class="permission_checkbox"/>			
-		</div>
-		<div>
-			<label for="write_cinema_only" class="permission_label">Zapis tylko dla swojego kina</label>
-			<input type="checkbox" id="write_cinema_only" name="write_cinema_only" class="permission_checkbox"/>			
-		</div>
-		<div>
-			<label for="read_all" class="permission_label">Odczyt wszystkiego</label>
-			<input type="checkbox" id="read_all" name="read_all" class="permission_checkbox"/>			
-		</div>
-		<div>
-			<label for="read_cinema_only" class="permission_label">Odczyt tylko dla swojego kina</label>
-			<input type="checkbox" id="read_cinema_only" name="read_cinema_only" class="permission_checkbox"/>			
-		</div>
-	  </div>
-		   <p><input type="submit" id="add_permission_button" disabled="disabled" value="Dodaj"/></p>
+	 <table>
+	 	<th></th>
+	 	<th></th>
+	 	<tr>
+	 		<td><label for="write_all" class="permission_label">Może modyfikować dane we wszystkich kinach</label></td>
+	 		<td><input type="checkbox" id="write_all" name="write_all" class="permission_checkbox"/>	</td>
+	 	</tr>
+	 	<tr>
+	 		<td><label for="write_cinema_only" class="permission_label">Może modyfikować dane tylko w kinie w którym pracuje</label></td>
+	 		<td><input type="checkbox" id="write_cinema_only" name="write_cinema_only" class="permission_checkbox"/></td>
+	 	</tr>
+	 	<tr>
+	 		<td><label for="read_all" class="permission_label">Może odczytywać dane ze wszystkich kin</label></td>
+	 		<td><input type="checkbox" id="read_all" name="read_all" class="permission_checkbox"/>	</td>
+	 	</tr>
+	 	<tr>
+	 		<td><label for="read_cinema_only" class="permission_label">Może odczytywać dane tylko z kina w którym pracuje</label></td>
+	 		<td><input type="checkbox" id="read_cinema_only" name="read_cinema_only" class="permission_checkbox"/></td>
+	 	</tr>
+	 </table>
+		
+		   <p><input type="submit" style="width: 100px" id="add_permission_button" disabled="disabled" value="Dodaj"/></p>
 	</form>
 </div>
-
-<h4><a id="edit_permissions_a">Sprawdź i edytuj dodane poziomy uprawnień</a></h4>
+<br />
+<h3><button id="edit_permissions_a">Sprawdź i edytuj dodane poziomy uprawnień</button></h3>
 <div id="edit_permissions_div" style="display: none">
 	<form id="edit_permissions_form" action="<%= permission_update_path %>" method="post">
 		<div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" /></div>
@@ -43,37 +53,40 @@
 	  			<%}%>
 	  			
 			</select>
-			<br />
-			<div>
-					<div>
-						<label class="permission_label">Zapis wszystkiego</label>
-						<input type="checkbox" id="edit_write_all" name="edit_write_all" class="permission_checkbox"/>			
-					</div>
-					<div>
-						<label class="permission_label">Zapis tylko dla swojego kina</label>
-						<input type="checkbox" id="edit_write_cinema_only" name="edit_write_cinema_only" class="permission_checkbox"/>			
-					</div>
-					<div>
-						<label class="permission_label">Odczyt wszystkiego</label>
-						<input type="checkbox" id="edit_read_all" name="edit_read_all" class="permission_checkbox"/>			
-					</div>
-					<div>
-						<label class="permission_label">Odczyt tylko dla swojego kina</label>
-						<input type="checkbox" id="edit_read_cinema_only" name="edit_read_cinema_only" class="permission_checkbox"/>			
-					</div>
-			</div>
+			<table>
+			 	<th></th>
+			 	<th></th>
+			 	
+			 	<tr>
+			 		<td><label class="permission_label">Może modyfikować dane we wszystkich kinach</label></td>
+					<td><input type="checkbox" id="edit_write_all" name="edit_write_all" class="permission_checkbox"/></td>			
+				</tr>
+				<tr>
+					<td><label class="permission_label">Może modyfikować dane tylko w kinie w którym pracuje</label></td>
+					<td><input type="checkbox" id="edit_write_cinema_only" name="edit_write_cinema_only" class="permission_checkbox"/></td>			
+				</tr>
+				<tr>
+					<td><label class="permission_label">Może odczytywać dane ze wszystkich kin</label></td>
+					<td><input type="checkbox" id="edit_read_all" name="edit_read_all" class="permission_checkbox"/></td>
+				</tr>
+				<tr>
+					<td><label class="permission_label">Może odczytywać dane tylko z kina w którym pracujea</label></td>
+					<td><input type="checkbox" id="edit_read_cinema_only" name="edit_read_cinema_only" class="permission_checkbox"/></td>
+				</tr>
+			</table>						
 		<p>
 			<input type="submit" id="edit_permissions_button" disabled="disabled" value="Zapisz"/>
 		</p>
 		
 	</form>
 </div>
-
-<h4><a id="status_permissions_a">Przeglądaj uprawnienia dla konkretnej grupy pracowników</a></h4>
+<br />
+<h3><button id="status_permissions_a">Przeglądaj uprawnienia dla konkretnej grupy pracowników</button></h3>
 
 <form id="permissions_changes" method="post" action= <%= change_status_privilege_permissions_path %> name="permissions_changes">
 	<div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" /></div>
 	<div id="statuses" style="display: none">
+		<label>Rola pracownika</label>
 		<select id="worker_status_name" name="worker_status_name">
 			<option value="">Wybierz rodzaj pracownika</option>
 			<% @statuses.each { |status| %>
@@ -83,6 +96,7 @@
 	</div>	
 	<br />
 	<div id="privileges" style="display: none">
+		<label>Obszar uprawnień</label>
 	  <select id="worker_privilege_name" name="worker_privilege_name">
 	  	<option value="">Wybierz obszar uprawnień</option>
 	  	<% @privileges.each { |privilege| %>
@@ -92,15 +106,16 @@
 	</div>
 	<br />
 	<div id="permissions" style="display: none">
+		<label>Poziom uprawnień</label>
 		<select id="worker_permission_level" name="worker_permission_level">
 			<option value="">Wybierz poziom uprawnień</option>
 				<% @permissions.each { |permission| %>
 	  			    <option value="<%= permission.name%>"><%= permission.name%></option>
 	  			<%}%>
 		</select>
-		
+		<br />
 		<p>
-			<input id="worker_permission_button" type="submit" value="Zapisz" disabled="disabled" />
+			<input id="worker_permission_button" type="submit" value="Zmień poziom uprawnień" disabled="disabled" />
 		</p>		
 	</div>
 		

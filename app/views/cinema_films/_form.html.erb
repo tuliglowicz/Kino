@@ -6,7 +6,11 @@
 		jQuery('#new_cinema_film').validationEngine('attach', { validationEventTrigger: 'submit'});
 	});
 </script>
-
+<style>
+.date_tag, .select_tag{
+	width: 150px;
+}
+</style>
 
 <%= form_for(@cinema_film) do |f| %>
   <% if @cinema_film.errors.any? %>
@@ -24,7 +28,7 @@
   <div class="field">
     <%= f.label :Kino %><br />
     <% if @cinemas.size > 1-%>
-      <%= select_tag('cinema_film[cinema_id]', options_for_select([['Wybierz kino', '']] + @cinemas.collect{|c| [c.name, c.id]}, @cinema_film.cinema_id), :class => 'validate[required]') %>
+      <%= select_tag('cinema_film[cinema_id]', options_for_select([['Wybierz kino', '']] + @cinemas.collect{|c| [c.name, c.id]}, @cinema_film.cinema_id), :class => 'validate[required], select_tag') %>
     <% else if -%>
       <%= select_tag('cinema_film[cinema_id]', options_for_select(@cinemas.collect{|c| [c.name, c.id]}, @cinema_film.cinema_id), :class => 'validate[required]') %>
     <% else -%>
@@ -34,18 +38,18 @@
   <div class="field">
     <%= f.label :Film %><br />
         <% if @films -%>
-    <%= select_tag('cinema_film[film_id]', options_for_select([['Wybierz film', '']] + @films.collect{|film| [film.title, film.id]}, @cinema_film.film_id), :class => 'validate[required]') %>
+    <%= select_tag('cinema_film[film_id]', options_for_select([['Wybierz film', '']] + @films.collect{|film| [film.title, film.id]}, @cinema_film.film_id), :class => 'validate[required], select_tag') %>
     <% else -%>
     <%= f.text_field :film_id, :class => 'validate[required]' %>
     <% end -%>
   </div>
   <div class="field">
     <%= f.label :"Data premiery" %><br />
-    <%= f.text_field :date_from, :class => 'datePick validate[required]'%>
+    <%= f.text_field :date_from, :class => 'datePick, validate[required], date_tag'%>
   </div>
     <div class="field">
     <%= f.label :"Data zakończenia" %><br />
-    <%= f.text_field :date_untill, :class => "datePick" %>
+    <%= f.text_field :date_untill, :class => "datePick, validate[required], date_tag" %>
   </div>
   <div class="actions">
     <%= f.submit "Zapisz"%>

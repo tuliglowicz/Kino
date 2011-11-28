@@ -221,7 +221,7 @@ class PublicController < ApplicationController
 			defiled_seats = []
 			root.each do |t|
 				defiled_seats << t.elements["seat"].text
-				sum += t.elements['price'].to_f
+				sum += t.elements['price'].text.to_f
 			end
 			
 			@problem_seats = Ticket.find(:all, :select => "seat, bought", :conditions => "seance_id = "+params[:seance_id]+" AND cancelled = false AND seat IN ('"+defiled_seats.join("','")+"')")

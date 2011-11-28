@@ -44,14 +44,20 @@ films = Film.create!([{:title => 'Avatar', :director => 'S. Spilberg', :year => 
                      {:title => 'Gladiator', :director => 'R. Scott', :year => 2010, :category_id => categories.first.id, :trailer => 'http://www.youtube.com/watch?v=ol67qo3WhJk', :description => 'Gladiator description', :poster => '/gladiator.jpeg', :date_from => Time.now - 10.days },
                      {:title => 'Thor', :director => 'R. Scott', :year => 2010, :category_id => categories.first.id, :trailer => 'http://www.youtube.com/watch?v=JOddp-nlNvQ', :description => 'Thor description', :poster => '/thor.jpeg', :date_from => Time.now - 10.days },
                      {:title => 'Erratum', :director => 'R. Scott', :year => 2012, :category_id => categories.first.id, :trailer => 'http://www.youtube.com/watch?v=KrcApGRSjbw', :description => 'Erratum description', :poster => '/erratum.jpeg', :date_from => Time.now + 40.days },
-                     {:title => 'The Social Network', :director => 'R. Scott', :year => 2012, :category_id => categories.first.id, :trailer => 'http://www.youtube.com/watch?v=lB95KLmpLR4', :description => 'Erratum description', :poster => '/socialn.jpeg', :date_from => Time.now + 40.days }])
+                     {:title => 'The Social Network', :director => 'R. Scott', :year => 2012, :category_id => categories.first.id, :trailer => 'http://www.youtube.com/watch?v=lB95KLmpLR4', :description => 'Erratum description', :poster => '/socialn.jpeg', :date_from => Time.now + 40.days },
+                     {:title => 'Fighter', :director => 'R. Scott', :year => 2009, :category_id => categories.first.id, :trailer => 'http://www.youtube.com/watch?v=1_zijS_UAtw', :description => 'Fighter description', :poster => '/fighter.jpeg', :date_from => Time.now - 40.days },
+                     {:title => 'Harry Potter', :director => 'R. Scott', :year => 2009, :category_id => categories.first.id, :trailer => 'http://www.youtube.com/watch?v=5NYt1qirBWg', :description => 'Harry Potter description', :poster => '/hp7a.jpeg', :date_from => Time.now - 40.days },
+                     {:title => 'Incepcja', :director => 'R. Scott', :year => 2009, :category_id => categories.first.id, :trailer => 'http://www.youtube.com/watch?v=66TuSJo4dZM', :description => 'Inception description', :poster => '/incepcja.jpeg', :date_from => Time.now - 40.days }])
 
 cinema_films = CinemaFilm.create!([{:cinema_id => cinemas.first.id, :film_id => films.first, :date_from =>  Time.now - 1.days, :date_untill => Time.now + 100.days}, 
                                   {:cinema_id => cinemas.first.id, :film_id => films[1].id, :date_from =>  Time.now - 1.days, :date_untill => Time.now + 100.days},
                                   {:cinema_id => cinemas.first.id, :film_id => films[2].id, :date_from =>  Time.now - 1.days, :date_untill => Time.now + 100.days},
                                   {:cinema_id => cinemas.first.id, :film_id => films[3].id, :date_from =>  Time.now - 1.days, :date_untill => Time.now + 100.days},
                                   {:cinema_id => cinemas.first.id, :film_id => films[4].id, :date_from =>  Time.now + 31.days, :date_untill => Time.now + 200.days},
-                                  {:cinema_id => cinemas.first.id, :film_id => films[5].id, :date_from =>  Time.now + 31.days, :date_untill => Time.now + 200.days}])  
+                                  {:cinema_id => cinemas.first.id, :film_id => films[5].id, :date_from =>  Time.now + 31.days, :date_untill => Time.now + 200.days},
+                                  {:cinema_id => cinemas.first.id, :film_id => films[6].id, :date_from =>  Time.now - 10.days, :date_untill => Time.now + 100.days},
+                                  {:cinema_id => cinemas.first.id, :film_id => films[7].id, :date_from =>  Time.now - 10.days, :date_untill => Time.now + 100.days},
+                                  {:cinema_id => cinemas.first.id, :film_id => films[8].id, :date_from =>  Time.now - 10.days, :date_untill => Time.now + 100.days}])  
 
 seance_types = SeanceType.create!([{:name => 'zwykły seans'}, {:name => 'maraton'}, {:name => 'koncert'}])
 discount_sorts = DiscountSort.create!([{:description => 'normalny', :is_weekend => false}])
@@ -60,13 +66,13 @@ ticket_sort_types = TicketSortPrice.create!([{:cinema_id => cinemas.first.id, :s
                                             {:cinema_id => cinemas.first.id, :seance_type_id => seance_types.first.id, :ticket_type_id => ticket_types[1].id, :discount_sort_id => discount_sorts.first.id, :price => 16},
                                             {:cinema_id => cinemas.first.id, :seance_type_id => seance_types.first.id, :ticket_type_id => ticket_types[2].id, :discount_sort_id => discount_sorts.first.id, :price => 14}])
 users = User.create!([{:login => 'damian', :hashed_password => '054e822ba7bbd507d19cbcabe9044c0620414183', :email => 'projekt_iz@o2.pl', :phone => 123456789, :first_name => 'Damian', :last_name => 'Jaszczurowski'},
-                      {:login => 'andrzej', :hashed_password => '054e822ba7bbd507d19cbcabe9044c0620414183', :email => 'dj.serwisy@gmail.com', :phone => 123456789, :first_name => 'Andrzej', :last_name => 'Kordian'},
+                      {:login => 'andrzej', :hashed_password => '054e822ba7bbd507d19cbcabe9044c0620414183', :email => 'dj.projekty.serwisy@gmail.com', :phone => 123456789, :first_name => 'Andrzej', :last_name => 'Kordian'},
                       {:login => 'ola', :hashed_password => '054e822ba7bbd507d19cbcabe9044c0620414183', :email => 'ola.projekt_iz@o2.com', :phone => 123456789, :first_name => 'Ola', :last_name => 'Nowicka'},
                       {:login => 'kasia', :hashed_password => '054e822ba7bbd507d19cbcabe9044c0620414183', :email => 'kasia.projekt_iz@o2.com', :phone => 123456789, :first_name => 'Kasia', :last_name => 'Kosowska'},
                       {:login => 'robert', :hashed_password => '054e822ba7bbd507d19cbcabe9044c0620414183', :email => 'robert.projekt_iz@o2.com', :phone => 123456789, :first_name => 'Robert', :last_name => 'Kocurek'},
                       {:login => 'asia', :hashed_password => '054e822ba7bbd507d19cbcabe9044c0620414183', :email => 'asia.projekt_iz@o2.com', :phone => 123456789, :first_name => 'Asia', :last_name => 'Limanowska'}])         
                       
-company_data = CompanyDatum.create!([{:nip => '1234567890', :regon => '123456789', :address => 'Marszałkowska 112, Warszawa', :name => 'Cinematoholix Sp. z o.o.', :vat => 23, :facebook_path => 'http://www.facebook.com/CinematoholixGroupWTW'}])   
+company_data = CompanyDatum.create!([{:nip => '9999999999', :regon => '111111111', :address => 'Marszałkowska 112, Warszawa', :name => 'Cinematoholix Sp. z o.o.', :vat => 23, :facebook_path => 'http://www.facebook.com/CinematoholixGroupWTW'}])   
 seances = Seance.create!([{:cinema_film_id => cinema_films.first.id, :room_id => rooms.first.id, :date_from => Time.now + 1.days, :time_from => '12:30', :checked => false, :seance_type_id => seance_types.first.id, :discount_sort_id => discount_sorts.first.id,:max_reservable_seats => 4},
                           {:cinema_film_id => cinema_films.first.id, :room_id => rooms.first.id, :date_from => Time.now + 1.days, :time_from => '14:30', :checked => false, :seance_type_id => seance_types.first.id, :discount_sort_id => discount_sorts.first.id,:max_reservable_seats => 4},
                           {:cinema_film_id => cinema_films.first.id, :room_id => rooms.first.id, :date_from => Time.now + 1.days, :time_from => '16:30', :checked => false, :seance_type_id => seance_types.first.id, :discount_sort_id => discount_sorts.first.id,:max_reservable_seats => 4},

@@ -50,18 +50,17 @@
 	    }
     	
     });
-   <!-- 
+ 
     $j("#user_email").blur(function()
     {
     	var email = $j("#user_email").val();
 		var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;  
-   
     	
     	if(email.length > 2 && emailPattern.test(email))
     	{
     		var email_availability = $j.ajax({
     			type: "POST",
-	    		url: "/public/users/user_email_availability",
+	    		url: "/public/users/email_availability",
 	    		data: "email=" + email,
 	    		
 	    		success: function(message)
@@ -91,7 +90,7 @@
 	    	$j("#email_status").text("Nieprawidłowy format dla adresu email.");   		
 	    }
     	
-    }); -->
+    }); 
  }); 
 </script>
 <!-- EO JS code -->

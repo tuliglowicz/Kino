@@ -32,15 +32,19 @@
   	<td><%= ticket.ordinal_number %></td>
     <td align="center"><%= ticket.seance.cinema_film_id if ticket.seance %></td>
     <td><%= ticket.seat %></td>
-    <td><%= ticket.user_id %></td>
+    <% if ticket.belongstounregistereduser %>
+    	<% user = UnregisteredUser.find(ticket.unregistered_user_id)%>
+    <% else %>
+    	<% user = User.find(ticket.user_id)%>	
+    <% end%>
+    <td><%= user.first_name + ' ' + user.last_name %></td>
     <td><%= ticket.cancelled %></td>
     <td><%= ticket.reservation_id %></td>
     <td><%= ticket.price %></td>
-    <td><%= ticket.worker_id %></td>
-    <td><%= link_to 'Pokaż', ticket %></td>
-    <td><%= link_to 'Edytuj', edit_ticket_path(ticket) %></td>
-    <td><%= link_to 'Usuń', ticket, :confirm => 'Czy napewno chcesz usunąć bilet?', :method => :delete %></td>
-  </tr>
+    <% worker = Worker.find(ticket.worker_id)%>
+    <td><%= worker.first_name + ' ' + worker.last_name %></td>
+    <td><%= link_to 'Pokaż/Drukuj bilet', ticket_path(ticket, format: "pdf") %></td>
+    </tr>
 <% end %>
 </table>
 <% end%>

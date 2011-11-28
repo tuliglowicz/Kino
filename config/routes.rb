@@ -34,7 +34,7 @@ Kino::Application.routes.draw do
 	
 	# Users
 	match "public/users/login_availability" => "users#login_availability"
-	match "public/users/user_email_availability" => "users#user_email_availability"
+	match "public/users/email_availability" => "users#email_availability"
   
 	match 'public/do' => 'users#do', :as => 'my_settings'
 	# poprawka do zatwierdzenia przez grupę

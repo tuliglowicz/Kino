@@ -6,9 +6,9 @@ class UsersController < ApplicationController
   layout :get_users_layout
   protect_from_forgery :except => ["create"]
       
-  before_filter :is_worker_or_user, :except => ['remind_password', 'is_login_available', 'login_availability', 'create', 'new', 'edit', 'update']
+  before_filter :is_worker_or_user, :except => ['remind_password', 'is_login_available', 'login_availability', 'create', 'new', 'edit', 'update', 'email_availability']
   before_filter :can_read, :only => ['index', 'show']
-  before_filter :can_write, :except => ['index', 'show','remind_password', 'is_login_available', 'login_availability','new', 'create', 'edit', 'update']
+  before_filter :can_write, :except => ['index', 'show','remind_password', 'is_login_available', 'login_availability','new', 'create', 'edit', 'update', 'email_availability']
      
   def index
     #@users = User.all
@@ -71,7 +71,7 @@ class UsersController < ApplicationController
 		return
     	
 	else if params[:user][:hashed_password].to_s != params[:user][:hashed_password_confirmation]
-      		redirect_to register_path, :notice => 'Hasła nie są identyczne'
+      		redirect_to register_path, :flash => {:error => 'Podane hasła nie są identyczne'}
     	else
 			@user = User.new(params[:user])
 			@user.hashed_password = Auth.hash_password(@user.hashed_password)
@@ -79,10 +79,9 @@ class UsersController < ApplicationController
 				if @user.save
 				   # confirmation email sending
 				   UserMailer.registration_confirmation(@user).deliver
-				   logger.debug "uzytkownik zapisany, mail wyslany"  
-				  
-				   format.html { redirect_to("/", :notice => 'Konto utworzone.') }
-				   format.xml  { render :xml => @user, :status => :created, :location => @user }                    
+				   
+				   format.html { redirect_to(public_path, :flash => {:notice => 'Konto utworzone. Powiadomienie zostało wysłane na maila.'}) }
+				   #format.xml  { render :xml => @user, :status => :created, :location => @user }                    
 				else
 				   format.html { render :controller => "public", :action => "register" }
 				   format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
@@ -110,7 +109,7 @@ class UsersController < ApplicationController
         end
         if @user.update_attributes(params[:user])
           if session[:worker] || session[:gadmin]
-            format.html { redirect_to(@user, :notice => 'Zaktualizowano profil') }
+            format.html { redirect_to(@user, :flash => {:notice => 'Zaktualizowano profil' }) }
             format.xml  { head :ok }
           else
             format.html { redirect_to(:controller=> "public",:action=> "profile", :id=>session[:user].id.to_s ) }
@@ -137,24 +136,23 @@ class UsersController < ApplicationController
     end
   end
   
-  def user_email_availability
-  
-    @e
+  def email_availability
+    @email_availability
     
     if params[:email]
       email = params[:email]
             
       if User.where(:email => email).first
-        @e = "NO"
+        @email_availability = "NO"
       else
-        @e = "OK"
+        @email_availability = "OK"
       end
       
-      render :text => @e
+      render :text => @email_availability
     else
       
-      @e = 'NO'
-      render :text => @e
+      @email_availability = 'NO'
+      render :text => @email_availability
     end
   end
   
@@ -194,12 +192,12 @@ class UsersController < ApplicationController
        user.hashed_password = Auth.hash_password(@new_password)
        if user.save
          UserMailer.remind_password(@login, @email, @new_password).deliver   
-         redirect_to public_login_path, :notice => 'Zmieniono hasło - sprawdź email'
+         redirect_to public_login_path, :flash => {:notice => 'Zmieniono hasło - sprawdź email' }
        else
-        redirect_to public_login_path, :notice => 'Nie udało się zmienić hasła - spróbuj wykonać operację ponownie'
+        redirect_to public_login_path, :flash => {:notice => 'Nie udało się zmienić hasła - spróbuj wykonać operację ponownie' }
        end
     else
-      redirect_to public_login_path, :notice => 'Brak konta o takim emailu'       
+      redirect_to public_login_path, :flash => {:notice => 'Brak konta o takim emailu' }       
     end    
   end
   

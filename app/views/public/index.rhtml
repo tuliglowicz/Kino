@@ -33,8 +33,10 @@
                           onClick: function() { document.location = this.getAttribute('longdesc'); } 
                          });
 		});
-		
+		if(cookie[cinema_id]==null)
+			window.onLoad = askForCinema();
 	});
+
 </script>
 <style type="text/css" media="screen">
 	button.css3button {
@@ -66,12 +68,45 @@
 		0px -1px 0px rgba(000,000,000,0.2),
 		10px 10pxpx 10pxpx rgba(255,255,255,0.3);
 }
+
+	button:hover.css3button {
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 10px;
+		color: #000000;
+		padding: 5px 5px;
+		width: 100px;
+		height: 25px;
+		background: -moz-linear-gradient(
+			top,
+			#FFFFFF 0%,
+			red);
+		background: -webkit-gradient(
+			linear, left top, left bottom, 
+			from(#FFFFFF),
+			to(red));
+		border-radius: 30px;
+		-moz-border-radius: 30px;
+		-webkit-border-radius: 30px;
+		border: 1px solid #AAAAAA ;
+		-moz-box-shadow:
+			0px 3px 11px rgba(000,000,000,0.5),
+			inset 0px 0px 1px rgba(001,054,001,0.5);
+		-webkit-box-shadow:
+			0px 3px 11px rgba(000,000,000,0.5),
+			inset 0px 0px 1px rgba(001,054,001,0.5);
+		text-shadow:
+			0px -1px 0px rgba(000,000,000,0.2),
+			10px 10pxpx 10pxpx rgba(255,255,255,0.3);
+}
 	
 </style>
 </head>
 
 <body>
 	<br>
+	<a onClick="askForCinema()"  style='cursor:pointer; float: right'>zmień kino</a><br/>
+
+		<br>
 		<div id="myrotator" class="imageflow" style="border-width:0 0 0 0; border-color: #808080; border-style:solid; width: 900px; height: 50%; "> 
   		<% @films.each do |film| %>
 			<img src="/images/film_posters/<%= film.poster.to_s %>" longdesc="/public/dane_filmu?id=<%= film.id%>" width="250" height="350" alt="<%= film.description %>" />
@@ -127,7 +162,7 @@
 		</br>
 		<br>
 		</br>
-		
+	
 </body>
 
 

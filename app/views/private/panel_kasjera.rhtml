@@ -5,89 +5,165 @@
 <%= javascript_include_tag "application.js" %>
 	
 <style>
-body, input {
-	color: white;
-	background-color: black;
-}
 
-div{
-		border:solid 1px;
-}
+	body, input {
+		color: white;
 
-body{
+		background-color: #black;
 
-	position: relative;
-	left: 20%;
-	width: 60%;
-}
-input {
-	color: white;
-	border: 1px solid #333;
-	border-radius: 3px;
-}
-input[type='submit'], button {
-	background-color: #111;
-	background-image: linear-gradient(bottom, #000000 45%,#666 100%);
-	background-image: -o-linear-gradient(bottom, #000000 45%,#666 100%);
-	background-image: -moz-linear-gradient(bottom, #000000 45%,#666 100%);
-	background-image: -webkit-linear-gradient(bottom, #000000 45%,#666 100%);
-	background-image: -ms-linear-gradient(bottom, #000000 45%,#666 100%);
-}
-input::-webkit-input-placeholder{
-    color:    #292929;
-}
-input:-moz-placeholder {
-    color:    #292929;
-}
-a.zakladka_chooser {
-	cursor: pointer
-}
-a.date.selected, a.zakladka_chooser.selected {
-	color: red;
-}
-pre[name] {
-	background-color:;
-	display: inline;
-	font-family: arial;
-}
-pre[name]:hover {
-	color: red;
-}
+	}
+	div.inlinez, li.inlinez{
+			display: inline;
+	}	
+	div{
+			border:solid 0px;
+	}
+	li{
+		text-align: center;
+		padding-left: 0px;
+		padding-right: 1px;
+	}
+	
+	body{
+		position: relative;
+		left: 20%;
+		width: 60%;
+	}
+	input {
+		color: white;
+		border: 1px solid #333;
+		border-radius: 3px;
+	}
+	input[type='submit'], button {
+		padding:2 8px;
+		background-color: #111;
+		background-image: linear-gradient(bottom, #000000 45%,#666 100%);
+		background-image: -o-linear-gradient(bottom, #000000 45%,#666 100%);
+		background-image: -moz-linear-gradient(bottom, #000000 45%,#666 100%);
+		background-image: -webkit-linear-gradient(bottom, #000000 45%,#666 100%);
+		background-image: -ms-linear-gradient(bottom, #000000 45%,#666 100%);
+	}
+	input::-webkit-input-placeholder{
+	    color:    #292929;
+	}
+	input:-moz-placeholder {
+	    color:    #292929;
+	}
+	a.zakladka_chooser {
+		cursor: pointer;
+	}
+	a.date.selected{
+		color: red;
+	}
+	a.zakladka_chooser.selected {
+		color: #80b2dc;
+	}
+	pre[name] {
+		background-color:;
+		display: inline;
+		font-family: arial;
+	}
+	pre[name]:hover {
+		color: red;
+	}
+	div#lastRefresh{
+		font-weight: bold;
+	}
+	div#lastRefreshInfo{
+		
+	}
+	div#refreshPanel{
+		font-size: 1.4em;			
+		text-align: left;
+	}
+	div.menu{
+		background-color:#1D1D1D;
+		
+		border-top-right-radius :5px; 
+		-moz-border-top-right-radius:5px;
+		border-top-left-radius :5px; 
+		-moz-border-top-left-radius:5px; 
+		box-shadow: -1px 2px 2px #ddd inset;	
+		padding: 10px; 
+	}
+	a.zakladka_chooser{
+		color: white;
+		font-size:1.3em;
+	}
+	a:hover.zakladka_chooser{
+		color:#80b2dc;
+		font-size:1.3em;
+	}
+	li{
+		cursor: pointer;
+	}
+	li div:hover.menu a.zakladka_chooser{
+		color:#80b2dc;
+
+	}
+	div#rezerwacje, div#sprzedarz{
+		padding-left:10px;
+		padding-bottom:10px;
+		border:solid 0px;
+		background:#1D1D1D;
+		box-shadow: 2px 2px 2px #ccc ;
+	}
+	div#xContent, div#xMenu{
+		color:white;
+		position:relative;
+	}
+
+	
+		
 </style>
 
 <div id="body">
 	<script>
-	var user_id = 1;
-	var isRegisteredUser = true;
+		var user_id = 1;
+		var isRegisteredUser = true;
+		
+		var today = new Date();
+		var Y = today.getFullYear();
+		var M = today.getMonth();
+		var d = today.getDate();
+		var h=today.getHours();
+		var m=today.getMinutes();
+		if(m<10) m = "0"+m;
+		if(h<10) h = "0"+h;
+		if(M<10) M = "0"+M;
+		if(d<10) d = "0"+d;
 	
-	var today = new Date();
-	var Y = today.getFullYear();
-	var M = today.getMonth();
-	var d = today.getDate();
-	var h=today.getHours();
-	var m=today.getMinutes();
-	if(m<10) m = "0"+m;
-	if(h<10) h = "0"+h;
-	if(M<10) M = "0"+M;
-	if(d<10) d = "0"+d;
-
-	$j(document).ready(function(){
-		document.getElementById("lastRefresh").innerHTML = "Dane zgodne z bazą z godziny: "+d+"."+M+"."+Y+" "+h+":"+m;
-	});
+		$j(document).ready(function(){
+			document.getElementById("lastRefresh").innerHTML = d+"."+M+"."+Y+" "+h+":"+m;
+		});
 	</script>
 	<br />
-	<div id="refreshPanel" style="text-align: center">
-		<div id="lastRefresh"></div>
-		<input type="submit" id="refresh" value="Odśwież" onClick="$j(this).next().show();document.location.reload();">
-		<img src="/images/pic/loader_min.gif" style='display:none;' align="absbottom"><br/><br/>
+	
+	<div id="refreshPanel" >
+		<div class='inlinez' id="lastRefreshInfo">Dane zgodne z bazą z godziny:&nbsp;</div>
+		<div class='inlinez' id="lastRefresh"></div>
+		<div class='inlinez'>&nbsp;&nbsp;
+			<input type="submit" id="refresh" value="Odśwież" onClick="$j(this).next().show();document.location.reload();">
+			<img src="/images/pic/loader_min.gif" style='display:none;' align="absbottom">
+		</div>
+		<br/><br/>
 	</div>
-	
-	<div id="xMenu">		
-		<a id="_sprzedarz" class="zakladka_chooser">Zakładka sprzedarzy biletów</a> | 
-		<a id="_rezerwacje" class="zakladka_chooser selected">Zakładka odbioru zarezerwowanych biletów.</a>
-	</div>	
-	
 	<br/><br/>
+	<div id="xMenu">
+		<ul>		
+			<li class="inlinez">
+				<div class="menu inlinez">
+					<a id="_sprzedarz" class="zakladka_chooser ">Sprzedaż biletów</a>
+				</div>		
+			</li>
+			<li class="inlinez">
+				<div class="menu inlinez">
+					<a id="_rezerwacje" class="zakladka_chooser selected">Odbior zarezerwowanych biletów</a>
+				</div>			
+			</li>
+		</ul>
+		
+	</div>	
 	
 	<div id="xContent">
 		<center id='loader_potwierdz' style='display:none;'>Ładowanie strony...<br/>
@@ -96,7 +172,8 @@ pre[name]:hover {
 		
 		<div id="sprzedarz" style='display:none'></div>
 		
-		<div id="rezerwacje">		
+		<div id="rezerwacje">	
+			<br />	
 			<% date = Date.today -%> Wybierz datę: &nbsp; 
 			<%= link_to(date.strftime("%d.%m"), {:controller => "public", :action => "repertuar"}, :id => "d1", :class=>"date selected") %>
 			<% date = date.tomorrow;-%>
@@ -158,7 +235,7 @@ $j(".date").click(function(){
 
 $j("#_rezerwacje").click(function(){
 	if(this.className.indexOf("selected") < 0){
-		$j(this).toggleClass("selected").prev().toggleClass("selected");;
+		$j('a.zakladka_chooser').toggleClass("selected");
 		$j("#zakup, #ajaxPageLoadTarget").hide();
 		$j("#rezerwacje").myShow(500);
 	}
@@ -166,7 +243,8 @@ $j("#_rezerwacje").click(function(){
 var loaded = false
 $j("#_sprzedarz").click(function(){
 	if(this.className.indexOf("selected") < 0){
-		$j(this).toggleClass("selected").next().toggleClass("selected");
+		//$j('a.zakladka_chooser').toggleClass("deselected");
+		$j('a.zakladka_chooser').toggleClass("selected");
 		
 		if(!loaded){
 			$j("#loader_potwierdz").show();

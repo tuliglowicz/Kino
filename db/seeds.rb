@@ -54,7 +54,10 @@ cinema_films = CinemaFilm.create!([{:cinema_id => cinemas.first.id, :film_id => 
                                   {:cinema_id => cinemas.first.id, :film_id => films[2].id, :date_from =>  Time.now - 1.days, :date_untill => Time.now + 100.days},
                                   {:cinema_id => cinemas.first.id, :film_id => films[3].id, :date_from =>  Time.now - 1.days, :date_untill => Time.now + 100.days},
                                   {:cinema_id => cinemas.first.id, :film_id => films[4].id, :date_from =>  Time.now + 31.days, :date_untill => Time.now + 200.days},
-                                  {:cinema_id => cinemas.first.id, :film_id => films[5].id, :date_from =>  Time.now + 31.days, :date_untill => Time.now + 200.days}])  
+                                  {:cinema_id => cinemas.first.id, :film_id => films[5].id, :date_from =>  Time.now + 31.days, :date_untill => Time.now + 200.days},
+                                  {:cinema_id => cinemas.first.id, :film_id => films[6].id, :date_from =>  Time.now - 10.days, :date_untill => Time.now + 100.days},
+                                  {:cinema_id => cinemas.first.id, :film_id => films[7].id, :date_from =>  Time.now - 10.days, :date_untill => Time.now + 100.days},
+                                  {:cinema_id => cinemas.first.id, :film_id => films[8].id, :date_from =>  Time.now - 10.days, :date_untill => Time.now + 100.days}])  
 
 seance_types = SeanceType.create!([{:name => 'zwykły seans'}, {:name => 'maraton'}, {:name => 'koncert'}])
 discount_sorts = DiscountSort.create!([{:description => 'normalny', :is_weekend => false}])

@@ -241,7 +241,7 @@ class PublicController < ApplicationController
           receipt.reservation_id = r.id
           receipt.cash_register = 1
           receipt.worker_id = session[:worker].id
-          receipt.sum = sum_payment(t)
+          receipt.sum = sum_payment(root)
           receipt.cash = params[:cash]
           receipt.save
 				end

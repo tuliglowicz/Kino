@@ -216,11 +216,12 @@ class PublicController < ApplicationController
 			return;
 		else if request.xhr? && params[:xml] && params[:seance_id]
 				root = Document.new(params[:xml]).root			
-			
+			 sum = 0.0
 			# żeby nie można było zamowic juz zamowionych
 			defiled_seats = []
 			root.each do |t|
 				defiled_seats << t.elements["seat"].text
+				sum += t.elements['price'].text.to_f
 			end
 			
 			@problem_seats = Ticket.find(:all, :select => "seat, bought", :conditions => "seance_id = "+params[:seance_id]+" AND cancelled = false AND seat IN ('"+defiled_seats.join("','")+"')")
@@ -235,6 +236,15 @@ class PublicController < ApplicationController
 					r.save
 					puts buy_online
 					puts r.id
+					
+					receipt = Receipt.new
+          receipt.date = Time.now
+          receipt.reservation_id = r.id
+          receipt.cash_register = 1
+          receipt.worker_id = session[:worker].id
+          receipt.sum = sum
+          receipt.cash = params[:cash]
+          receipt.save
 				end
 			
 				root.each do |xticket|				

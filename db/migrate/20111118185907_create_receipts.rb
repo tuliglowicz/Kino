@@ -6,6 +6,7 @@ class CreateReceipts < ActiveRecord::Migration
       t.integer :worker_id
       t.date :date
       t.integer :cash_register
+      t.decimal :cash
 
       t.timestamps
     end

@@ -166,7 +166,7 @@
 	</div>	
 	
 	<div id="xContent">
-		<center id='loader_potwierdz' style='display:none;'>≈Åadowanie strony...<br/>
+		<center id='loader_potwierdz' style='display:none;'>≈?adowanie strony...<br/>
 			<img src='/images/pic/loader.gif' align='absbottom'>
 		</center>
 		
@@ -208,7 +208,7 @@ $j(document).ready(function(){
 })
 
 $j("a[href]:not([class='pdf']").live('click', function(){
-	$j("#ajaxPageLoadTarget").html("<br/><br/><center>≈Åadowanie strony...<br/><img src='/images/pic/loader.gif'></center>");
+	$j("#ajaxPageLoadTarget").html("<br/><br/><center>≈?adowanie strony...<br/><img src='/images/pic/loader.gif'></center>");
 	page = $j.ajax({
 		url: this.href,
 		type: "GET",

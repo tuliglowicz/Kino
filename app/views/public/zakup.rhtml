@@ -380,6 +380,7 @@
 					<div id="ticket_list">
 					</div>
 					<% if session[:worker] -%>
+						<label for='cash' value='Zapłacono'>Zapłacono</label> <input id='cash' name='cash' type='number' value='120'/><br/>
 						<pre style='border:0px;' id="potwerdz"><button id="allOK">Potwierdź zakup</button><img src="/images/pic/loader_min.gif" id="allOK_img" style='display:none;' align="absbottom"></pre>
 					<% else -%>
 					<pre style='border:0px;'><button id="plac">Płać on-line i oszczędź 1zł za każdy bilet</button><img src="/images/pic/loader_min.gif" id="plac_img" style='display:none;' align="absbottom">		<button id="zakoncz">Zakończ i zapłać on-line później lub przy kasie.</button><img src="/images/pic/loader_min.gif" id="nieplac_img" style='display:none;' align="absbottom"></pre>
@@ -389,10 +390,11 @@
 					var xml = "";
 					var jj;
 					$j("#plac, #allOK").click(function(){
+						var cash = $j("#cash").val();
 						$j("#plac_img").myShow(250);
 						var tmp_ajax = $j.ajax({
 							url: "/public/speedBooking",
-							data: "xml="+xml+"&buy=true&seance_id="+seance_id,
+							data: "xml="+xml+"&buy=true&seance_id="+seance_id+'&cash='+cash,
 							type: "POST",
 							dataType : 'json',
 							success: function (json){

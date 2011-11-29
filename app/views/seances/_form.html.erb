@@ -34,7 +34,7 @@
   <div class="field">
     <%= f.label :"Film w kinie" %><br />
     <% if @f -%>
-    <%= select_tag('seance[cinema_film_id]', options_for_select([['Wybierz film', '']] + @f.collect{|c| [Film.find(c.film_id).title, c.id]}, @seance.cinema_film_id), :class => 'validate[required], select_tag') %>
+    <%= select_tag('seance[cinema_film_id]', options_for_select([['Wybierz film', '']] + @f.collect{|c| [Film.find(c.id).title, c.id]}, @seance.cinema_film_id), :class => 'validate[required], select_tag') %>
     <% else -%>
     <%= f.text_field :cinema_film_id, :class => 'validate[required,custom[integer]' %>
     <% end -%>

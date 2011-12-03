@@ -244,7 +244,7 @@ class PublicController < ApplicationController
           receipt.date = Time.now
           receipt.reservation_id = r.id
           receipt.cash_register = 1
-          if session[:worker].id
+          if session[:worker]
             receipt.worker_id = session[:worker].id 
           else
             receipt.worker_id = 1

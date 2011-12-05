@@ -48,23 +48,21 @@
   </div>
   
 <hr>
-  
+  <br />
 <div id="giveMeParams_width_height" align="left" syle='float:left;'>
-		<strong>Zbuduj widok:</strong><br>
+		<strong>Podaj dane dla szablonu</strong><br>
 		liczba kolumn: <input type="text" id="room_width_inp"> (0 &lt; x &lt; 30)<br/>
 		liczba rzędów: <input type="text" id="room_height_inp"> (0 &lt; x &lt; 24)
 </div>
 <br>
-<button onClick="submitParams();return false;">Generuj widok do obróbki</button><input class="roomview_submit" class="ui-button ui-widget ui-state-default ui-corner-all" type="submit" value="Create Roomview" name="commit" role="button" aria-disabled="false">
-
-
+<button onClick="submitParams();return false;">Generuj widok do obróbki</button>
   
 <table align=center bgcolor="white" border=0px cellpadding=0px cellspacing=5px style="padding-bottom:25px" id="theTable">
 </table>
 	  
   <div class="actions">
-    <input class="roomview_submit" class="ui-button ui-widget ui-state-default ui-corner-all" type="submit" value="Create Roomview" name="commit" role="button" aria-disabled="false">
-  </div>
+  	<button>Zapisz szablon</button>
+    </div>
 <% end %>
 
 
@@ -109,7 +107,7 @@ function drawFullRectangle(w, h){
 	var maxCols = w;
 	var wypełniacz, html;
 	
-	$j("#theTable").html("<tr><td></td><td align=center><br/><b>- E K R A N -</b><br/><br/><br/></td><td></td></tr> ")
+	$j("#theTable").html("<tr><td></td><td align=center><br/><b>- E K R A N -</b><br/><br/></td><td></td></tr> ")
 	
 	for(var i=0; i<h; i++)
 	{

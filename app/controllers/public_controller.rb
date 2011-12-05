@@ -25,7 +25,7 @@ class PublicController < ApplicationController
 	    
 	     sqlQuery2 = " SELECT films.id, films.title, films.description, films.category_id, films.poster FROM films
 	                   RIGHT JOIN cinema_films
-	                   ON films.id = cinema_films.film_id WHERE cinema_films.cinema_id = 1
+	                   ON films.id = cinema_films.film_id WHERE cinema_films.cinema_id == 1
 	                 "
               
          @films = Film.find_by_sql(sqlQuery2)    
@@ -160,21 +160,24 @@ class PublicController < ApplicationController
 	end
 	
 	def zapowiedzi
-		@title = "Zapowiedzi filmow"
-		
-			sqlQuery = "SELECT *
-			FROM films
-			Where id IN
-			(select distinct film_id AS id
-				from cinema_films
-				where date_from > date(now())
-				)
-				"							
-			@films = Seance.find_by_sql(sqlQuery)
-		
-		if not @films
-			flash[:notice] = "Nie ma w tej chwili zdefiniowanych zapowiedzi."
-		end
+		cinemaID = cookies[:cinema_id]
+    if cinemaID
+      sqlQuery = " SELECT films.id, films.title, films.description, films.category_id, films.poster FROM films
+                   RIGHT JOIN cinema_films
+                   ON films.id = cinema_films.film_id WHERE cinema_films.date_from > date(now()) AND cinema_films.date_untill > date(now()) AND cinema_films.cinema_id = "+cinemaID+"
+                  "
+  
+       @films = Film.find_by_sql(sqlQuery)
+    elsif
+      
+       sqlQuery2 = " SELECT films.id, films.title, films.description, films.category_id, films.poster FROM films
+                     RIGHT JOIN cinema_films
+                     ON films.id = cinema_films.film_id WHERE cinema_films.cinema_id == 1 AND cinema_films.date_from > date(now()) AND cinema_films.date_untill > date(now())
+                   "
+              
+         @films = Film.find_by_sql(sqlQuery2)    
+         #@films = Film.find(:all)
+    end
 	end
 	
 	def ceny
@@ -242,7 +245,11 @@ class PublicController < ApplicationController
           receipt.date = Time.now
           receipt.reservation_id = r.id
           receipt.cash_register = 1
-          receipt.worker_id = session[:worker].id
+          if session[:worker]
+            receipt.worker_id = session[:worker].id 
+          else
+            receipt.worker_id = 1
+          end
           receipt.sum = sum
           receipt.cash = params[:cash]
           receipt.save

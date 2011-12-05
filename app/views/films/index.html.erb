@@ -1,7 +1,8 @@
-<h1>Lista filmów </h1>
+<br />
+<h2>Zestawienie filmów</h2>
 
 <br />
-<%= (link_to 'Dodaj nowy film', new_film_path) %><br><br>
+<%= (link_to 'Dodaj nowy film', new_film_path) %><br>
 
 <% if @films.count == 0%>
 
@@ -47,7 +48,7 @@ $j(document).ready(function(){
     <td width=3%><%= link_to 'Pokaż', film %>
     	<%# if session[:isGA] -%>
     	<%= link_to 'Edytuj', edit_film_path(film) %>
-    	<%= link_to 'Usuń', film, :confirm => 'Czy na pewno chcesz usunąć ten rekord?', :method => :delete %></td>
+    	
     	<%# end -%>
 	</td>
   </tr>

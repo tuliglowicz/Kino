@@ -28,7 +28,7 @@ jQuery(document).ready(function()
 				var worker_permissions = jQuery.ajax(
 				{
 	    			type: "POST",
-		    		url: "http://localhost:3000/private/permissions/check_permission_name_availability",
+		    		url: "/private/permissions/check_permission_name_availability",
 		    		data: "name=" + name,
 		    		
 		    		success: function(message)
@@ -82,7 +82,7 @@ jQuery(document).ready(function()
 				var currentPermissionSettings = jQuery.ajax(
 				{
 					type: "POST",
-		    		url: "http://localhost:3000/private/permissions/get_permission_data",
+		    		url: "/private/permissions/get_permission_data",
 		    		data: "name="+permission,
 		    		
 		    		success: function(jsonResponse)
@@ -165,7 +165,7 @@ jQuery(document).ready(function()
 				var worker_permissions = jQuery.ajax(
 				{
 	    			type: "POST",
-		    		url: "http://localhost:3000/private/permissions/get_current_permission",
+		    		url: "/private/permissions/get_current_permission",
 		    		data: "status=" + status + "&privilege=" + privilege,
 		    		
 		    		success: function(message)

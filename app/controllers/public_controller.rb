@@ -104,9 +104,10 @@ class PublicController < ApplicationController
 	
 	def logout
 		session[:user] = nil
+		session[:worker] = nil
 		flash[:notice] = "Użytkownik wylogowany"
 		 #flash[:notice] = "Użytkownik wylogowany+#{session[:user]}"
-		redirect_to request.env["HTTP_REFERER"]
+		redirect_to request.env["HTTP_REFERER"] || "/"
 	end
 
 	def repertuar
